@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scenarios": [
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-001",
+      "title": "应用授权读取",
+      "specification": "挂载后loading/error/空/非空四态；refetch effect重复与旧缓存",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "getAppApprovals"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:getAppApprovals"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-002",
+      "title": "应用授权移除",
+      "specification": "取消确认无mutation；确认参数bundleIdentifier；success关框，reject/null保留与toast",
+      "categories": [
+        "success",
+        "failure",
+        "cancel"
+      ],
+      "methods": [
+        "removeAppApproval"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:removeAppApproval"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-003",
+      "title": "声音",
+      "specification": "三个enum、invalid nonnull、null隐藏、pending禁用；reject由框架处理待查",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "getSoundMode",
+        "setSoundMode"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setSoundMode",
+        "operation:cua:getSoundMode"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-004",
+      "title": "锁屏设置",
+      "specification": "capability/platform/availability三条件；true/false/null/reject及图标缓存",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "getLockedUseState",
+        "setLockedUseEnabled"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setLockedUseEnabled",
+        "operation:cua:getLockedUseState"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-005",
+      "title": "锁屏策略",
+      "specification": "flags、remote available缺省、accessRequired、allowLockedComputerUse false矩阵",
+      "categories": [
+        "failure"
+      ],
+      "methods": [
+        "getLockedUseState"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:getLockedUseState"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-006",
+      "title": "Messages导航",
+      "specification": "loading插件／未安装／已安装含disabled；直接路由与列表availability分别核对",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "getMessagesReadDecisions",
+        "getMessagesSendApprovals"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:getMessagesReadDecisions",
+        "operation:cua:getMessagesSendApprovals"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-007",
+      "title": "Messages读取",
+      "specification": "三种policy变化／相同值不提交；allowAll只隐藏不删除saved choices",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "setMessagesReadAccessPolicy"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setMessagesReadAccessPolicy"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-008",
+      "title": "逐聊天读取",
+      "specification": "三种decision、相同值不提交、精确三个服务参数、null/reject",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "setMessagesReadDecision"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setMessagesReadDecision"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-009",
+      "title": "读取新增",
+      "specification": "无选择/保存中阻止submit；已有chat恢复决定；仅成功回调关框",
+      "categories": [
+        "success",
+        "failure",
+        "cancel"
+      ],
+      "methods": [
+        "setMessagesReadDecision"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setMessagesReadDecision"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-010",
+      "title": "读取移除",
+      "specification": "chatGUID确认、pending重复、dismiss与cancel按钮差异；null/reject不清对象",
+      "categories": [
+        "success",
+        "failure",
+        "cancel"
+      ],
+      "methods": [
+        "removeMessagesReadDecision"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:removeMessagesReadDecision"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-011",
+      "title": "读取并发",
+      "specification": "三mutation的cancel先后与query refetch/缓存覆盖，待真实query框架验证",
+      "categories": [
+        "failure"
+      ],
+      "methods": [
+        "getMessagesReadDecisions",
+        "setMessagesReadDecision",
+        "removeMessagesReadDecision"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setMessagesReadDecision",
+        "operation:cua:removeMessagesReadDecision",
+        "operation:cua:getMessagesReadDecisions"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-012",
+      "title": "搜索",
+      "specification": "200ms debounce、key/session、同session placeholder、ready/permission/error/empty/retry",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "searchMessagesChats"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:searchMessagesChats"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-013",
+      "title": "搜索取消",
+      "specification": "清空/改词/选中cancel key，已排队前后abort；不重复触发native权限安装",
+      "categories": [
+        "cancel"
+      ],
+      "methods": [
+        "searchMessagesChats"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:searchMessagesChats"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-014",
+      "title": "搜索串行",
+      "specification": "前请求成功/reject后下一请求，取消等待中与宿主执行中两边界",
+      "categories": [
+        "success",
+        "failure",
+        "cancel"
+      ],
+      "methods": [
+        "searchMessagesChats"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:searchMessagesChats"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-015",
+      "title": "发送全局",
+      "specification": "boolean、pending互斥、cancel query、allowAll隐藏列表、null/reject",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "setMessagesSendAllowAllChats"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setMessagesSendAllowAllChats"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-016",
+      "title": "发送移除",
+      "specification": "确认chatGUID、缓存/清框、无onMutate cancel的refetch竞态",
+      "categories": [
+        "success",
+        "failure",
+        "cancel"
+      ],
+      "methods": [
+        "removeMessagesSendApproval"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:removeMessagesSendApproval"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-017",
+      "title": "读发独立",
+      "specification": "send query失败时read面板仍创建，read错误时send面板状态分别核对",
+      "categories": [
+        "failure"
+      ],
+      "methods": [
+        "getMessagesReadDecisions",
+        "getMessagesSendApprovals"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:getMessagesReadDecisions",
+        "operation:cua:getMessagesSendApprovals"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-018",
+      "title": "手机关闭插件",
+      "specification": "locked true先setLocked(false)，严格false才disable plugin；null/reject不得假定关闭",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "setLockedUseEnabled"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setLockedUseEnabled"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-019",
+      "title": "安装后锁屏",
+      "specification": "flag defaultfalse、非computer-use、返回true/false/null/reject；warning后安装流程状态",
+      "categories": [
+        "success",
+        "failure"
+      ],
+      "methods": [
+        "setLockedUseEnabled"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:setLockedUseEnabled"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    },
+    {
+      "scenarioId": "CUA-CONSUMER-SCENARIO-020",
+      "title": "持久化与主机",
+      "specification": "重开后sound/locked/app/read/send重新读取；host local/remote与操作系统全局文件来源核对",
+      "categories": [
+        "restore"
+      ],
+      "methods": [
+        "getAppApprovals",
+        "getMessagesReadDecisions",
+        "getMessagesSendApprovals",
+        "getSoundMode",
+        "getLockedUseState"
+      ],
+      "operationCandidateIds": [
+        "operation:cua:getAppApprovals",
+        "operation:cua:getMessagesReadDecisions",
+        "operation:cua:getMessagesSendApprovals",
+        "operation:cua:getSoundMode",
+        "operation:cua:getLockedUseState"
+      ],
+      "status": "not-executed",
+      "sourceContractOnly": true,
+      "featureId": null,
+      "requiresNewModelSubmission": false,
+      "executionAuthorizationProvidedByThisFile": false,
+      "scopeLimit": "specification only; any actual system/profile/service mutation needs its own authorized isolated environment"
+    }
+  ],
+  "executed": 0,
+  "featureScenarioLedgerUpdated": false,
+  "modelSubmissionsAdded": 0
+}

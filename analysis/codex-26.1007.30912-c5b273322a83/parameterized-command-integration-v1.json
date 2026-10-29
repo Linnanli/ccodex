@@ -1,0 +1,2911 @@
+{
+  "schemaVersion": "1.0",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T01:21:14.230024+00:00",
+  "scope": "Adopt exactly the three reviewed finite parameterized source goals; preserve all existing identities and runtime/mode gaps.",
+  "previousSourceContract": {
+    "path": "parameterized-command-paths-v1.json",
+    "bytes": 51161,
+    "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f"
+  },
+  "reviewedFeatureLedger": {
+    "path": "feature-scope-v36.json",
+    "bytes": 2407891,
+    "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9"
+  },
+  "adoptedGoals": [
+    {
+      "featureId": "FSC-0438",
+      "name": "按编号选择工作区标签",
+      "familyId": "PCP-TABS",
+      "commandIds": [
+        "focusTab1",
+        "focusTab2",
+        "focusTab3",
+        "focusTab4",
+        "focusTab5",
+        "focusTab6",
+        "focusTab7",
+        "focusTab8",
+        "focusTab9"
+      ],
+      "disposition": "new-scoped-user-goal",
+      "operations": [
+        {
+          "operationId": "operation:parameterized-command:fsc-0438:select-numbered-tab",
+          "operationType": "parameterized-command-user-goal",
+          "trigger": "select-numbered-tab"
+        }
+      ],
+      "taskId": "T49",
+      "moduleId": "PCG-M01",
+      "proposedPath": "apps/desktop/src/renderer/features/workspace/numbered-tab-commands.tsx",
+      "comparedFeatureIds": [
+        "FSC-0070",
+        "FSC-0394",
+        "FSC-0411"
+      ],
+      "comparedFeatureRefs": [
+        {
+          "path": "feature-scope-v36.json",
+          "bytes": 2407891,
+          "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9",
+          "jsonPointer": "/features/69"
+        },
+        {
+          "path": "feature-scope-v36.json",
+          "bytes": 2407891,
+          "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9",
+          "jsonPointer": "/features/393"
+        },
+        {
+          "path": "feature-scope-v36.json",
+          "bytes": 2407891,
+          "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9",
+          "jsonPointer": "/features/410"
+        }
+      ],
+      "rationale": "Workspace tab selection by ordinal is distinct from editing the shortcut preference, selecting a sidebar thread by ordinal, and adjacent-thread navigation.",
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/0"
+      },
+      "sourceIds": [
+        "PCG-SOURCE-001",
+        "PCG-SOURCE-002",
+        "PCG-SOURCE-003",
+        "PCG-SOURCE-004",
+        "PCG-SOURCE-005",
+        "PCG-SOURCE-015",
+        "PCG-SOURCE-016",
+        "PCG-SOURCE-017"
+      ],
+      "factIds": [
+        "PCP-E0001",
+        "PCP-E0002",
+        "PCP-E0003",
+        "PCP-E0004",
+        "PCP-E0005",
+        "PCP-E0015",
+        "PCP-E0016",
+        "PCP-E0017"
+      ],
+      "behavior": [
+        "jc maps Ti into Lc(commandId, index, mainTabPanelId); Lc registers Ln(commandId, callback).",
+        "Hji chooses the eligible tab list from split/layout state; a numeric index reverses in RTL. An absent target returns false.",
+        "Hji calls VW(store,target), optionally schedules focus with requestAnimationFrame, and returns true. VW/state providers and actual DOM outcomes remain delegated.",
+        "Lc calls dc only after Hji returns true. dc is a one-time shortcut migration notice with its own trigger, preference and custom-binding guards; the notice is not the tab-switch operation."
+      ],
+      "conditions": [
+        "保留jc实际挂载条件与同ID命令优先级。",
+        "数组索引按源生产顺序映射；布局、split和RTL决定实际候选及位置。",
+        "dc提示有独立触发来源、偏好、覆盖绑定与一次性状态条件。"
+      ],
+      "knownGaps": [
+        "Mount eligibility and full Codex/Chat mode closure.",
+        "Actual VW receiver/state and focus outcomes, multiple-window behavior and restoration."
+      ],
+      "mode": "unknown",
+      "completeChainProven": false,
+      "runtimeStatus": "not-observed-for-this-feature",
+      "supportOperationIds": [],
+      "scenarioIds": [
+        "PCG-FSC-0438-SC01",
+        "PCG-FSC-0438-SC02",
+        "PCG-FSC-0438-SC03",
+        "PCG-FSC-0438-SC04",
+        "PCG-FSC-0438-SC05"
+      ]
+    },
+    {
+      "featureId": "FSC-0439",
+      "name": "执行当前线程的本地环境动作",
+      "familyId": "PCP-ENV",
+      "commandIds": [
+        "environmentAction1",
+        "environmentAction2",
+        "environmentAction3",
+        "environmentAction4",
+        "environmentAction5",
+        "environmentAction6",
+        "environmentAction7",
+        "environmentAction8",
+        "environmentAction9"
+      ],
+      "disposition": "new-scoped-user-goal",
+      "operations": [
+        {
+          "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+          "operationType": "parameterized-command-user-goal",
+          "trigger": "run-environment-action"
+        }
+      ],
+      "taskId": "T14",
+      "moduleId": "PCG-M02",
+      "proposedPath": "apps/desktop/src/renderer/features/local-environments/action-commands.tsx",
+      "comparedFeatureIds": [
+        "FSC-0104",
+        "FSC-0105",
+        "FSC-0106",
+        "FSC-0107"
+      ],
+      "comparedFeatureRefs": [
+        {
+          "path": "feature-scope-v36.json",
+          "bytes": 2407891,
+          "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9",
+          "jsonPointer": "/features/103"
+        },
+        {
+          "path": "feature-scope-v36.json",
+          "bytes": 2407891,
+          "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9",
+          "jsonPointer": "/features/104"
+        },
+        {
+          "path": "feature-scope-v36.json",
+          "bytes": 2407891,
+          "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9",
+          "jsonPointer": "/features/105"
+        },
+        {
+          "path": "feature-scope-v36.json",
+          "bytes": 2407891,
+          "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9",
+          "jsonPointer": "/features/106"
+        }
+      ],
+      "rationale": "Running an action for the current thread is distinct from choosing, editing or saving the environment configuration.",
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceIds": [
+        "PCG-SOURCE-001",
+        "PCG-SOURCE-006",
+        "PCG-SOURCE-007",
+        "PCG-SOURCE-008",
+        "PCG-SOURCE-009",
+        "PCG-SOURCE-015",
+        "PCG-SOURCE-016",
+        "PCG-SOURCE-017"
+      ],
+      "factIds": [
+        "PCP-E0001",
+        "PCP-E0006",
+        "PCP-E0007",
+        "PCP-E0008",
+        "PCP-E0009",
+        "PCP-E0015",
+        "PCP-E0016",
+        "PCP-E0017"
+      ],
+      "behavior": [
+        "The selected HS branch mounts JS only with conversation, environment and config, and when registerCommands is truthy.",
+        "YS enables its registered command only when actionItem and conversationId exist; its callback invokes the supplied onRunAction(actionItem).",
+        "HS resolves cwd with ZS; missing cwd or conversation logs and returns. It updates the selected action preference, derives the terminal ID, shows the terminal, then delegates et.runAction with command/cwd/title.",
+        "YS also supplies a workspace command-menu item labelled codex. Its selected callback runs onRunAction before closing that menu. This label does not establish whole-feature mode ownership.",
+        "US can create runId=environmentAction10 and later for extra action items, with commandId=null. Nine command IDs do not cap the number of configured actions."
+      ],
+      "conditions": [
+        "HS分支要求conversation/environment/config存在，且registerCommands为真。",
+        "动作先经tC按平台筛选，按筛选后原顺序登记；槽位缺动作或会话时不启用。",
+        "cwd或会话缺失时记录错误并返回。"
+      ],
+      "knownGaps": [
+        "tC platform eligibility and ZS resolution are delegated boundaries.",
+        "Actual et.runAction backend, execution outcome, failure/cancel/restart and durable preference effects.",
+        "Full mount and Codex/Chat mode closure."
+      ],
+      "mode": "unknown",
+      "completeChainProven": false,
+      "runtimeStatus": "not-observed-for-this-feature",
+      "supportOperationIds": [],
+      "scenarioIds": [
+        "PCG-FSC-0439-SC01",
+        "PCG-FSC-0439-SC02",
+        "PCG-FSC-0439-SC03",
+        "PCG-FSC-0439-SC04",
+        "PCG-FSC-0439-SC05",
+        "PCG-FSC-0439-SC06",
+        "PCG-FSC-0439-SC07"
+      ]
+    },
+    {
+      "featureId": "FSC-0440",
+      "name": "切换页面编辑器的列表样式",
+      "familyId": "PCP-LISTS",
+      "commandIds": [
+        "page.formatNumberedList",
+        "page.formatBulletedList",
+        "page.formatChecklist"
+      ],
+      "disposition": "new-scoped-user-goal",
+      "operations": [
+        {
+          "operationId": "operation:parameterized-command:fsc-0440:toggle-numbered-list",
+          "operationType": "parameterized-command-user-goal",
+          "trigger": "toggle-numbered-list"
+        },
+        {
+          "operationId": "operation:parameterized-command:fsc-0440:toggle-bulleted-list",
+          "operationType": "parameterized-command-user-goal",
+          "trigger": "toggle-bulleted-list"
+        },
+        {
+          "operationId": "operation:parameterized-command:fsc-0440:toggle-checklist",
+          "operationType": "parameterized-command-user-goal",
+          "trigger": "toggle-checklist"
+        }
+      ],
+      "taskId": "T51",
+      "moduleId": "PCG-M03",
+      "proposedPath": "apps/desktop/src/renderer/features/pages/list-format-commands.tsx",
+      "comparedFeatureIds": [],
+      "comparedFeatureRefs": [],
+      "rationale": "No existing finite goal names this editor list-style toggle. File open/search/review and page navigation do not establish the same operation; no merge is inferred.",
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/2"
+      },
+      "sourceIds": [
+        "PCG-SOURCE-010",
+        "PCG-SOURCE-011",
+        "PCG-SOURCE-012",
+        "PCG-SOURCE-013",
+        "PCG-SOURCE-014",
+        "PCG-SOURCE-015"
+      ],
+      "factIds": [
+        "PCP-E0010",
+        "PCP-E0011",
+        "PCP-E0012",
+        "PCP-E0013",
+        "PCP-E0014",
+        "PCP-E0015"
+      ],
+      "behavior": [
+        "Jr supplies canWrite only when access.can_write===true, together with editorView and isPageActive.",
+        "Wr registers _t(command.id, callback, options): enabled=canWrite; isActive rejects destroyed, noneditable or composing editors and delegates the active-page predicate.",
+        "keyboardHandler returns false when editorView lacks focus and undefined when focused, allowing the existing Pw fallback behavior.",
+        "zr returns without selection on destroyed editors; otherwise it delegates Rr(editorView,ar(editorView)).select(style,\"toggle\",\"preserve\")."
+      ],
+      "conditions": [
+        "Jr按access.can_write===true传入写权限。",
+        "注册options保留未销毁、可编辑、不处于composing、页面active与键盘焦点要求。",
+        "元数据里的commandMenuFeature=chatgpt只说明菜单标签，尚不证明整条编辑器功能的模式闭包。"
+      ],
+      "knownGaps": [
+        "Page mount, access and full Codex/Chat mode closure; unknown remains retained.",
+        "Rr/ar editor implementation, transaction/history/persistence effects and actual focus behavior."
+      ],
+      "mode": "unknown",
+      "completeChainProven": false,
+      "runtimeStatus": "not-observed-for-this-feature",
+      "supportOperationIds": [],
+      "scenarioIds": [
+        "PCG-FSC-0440-SC01",
+        "PCG-FSC-0440-SC02",
+        "PCG-FSC-0440-SC03",
+        "PCG-FSC-0440-SC04",
+        "PCG-FSC-0440-SC05",
+        "PCG-FSC-0440-SC06"
+      ]
+    }
+  ],
+  "maintenanceProposals": [
+    {
+      "moduleId": "PCG-M01",
+      "responsibility": "按编号选择工作区标签的命令适配、守卫与回调协调",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "PCG-SOURCE-001",
+        "PCG-SOURCE-002",
+        "PCG-SOURCE-003",
+        "PCG-SOURCE-004",
+        "PCG-SOURCE-005",
+        "PCG-SOURCE-015",
+        "PCG-SOURCE-016",
+        "PCG-SOURCE-017"
+      ],
+      "imports": {
+        "status": "partial",
+        "sourceContract": {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/families/0"
+        },
+        "knownBoundaries": [
+          {
+            "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+            "bytes": 27864,
+            "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+            "jsonPointer": "/selectedBindings/0"
+          },
+          {
+            "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+            "bytes": 27864,
+            "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+            "jsonPointer": "/selectedBindings/1"
+          },
+          {
+            "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+            "bytes": 27864,
+            "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+            "jsonPointer": "/selectedBindings/2"
+          }
+        ],
+        "qualification": "原import/export与参数链已绑定；建议模块的完整公共依赖面尚未恢复。"
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "按编号选择工作区标签的命令注册与清理适配",
+        "qualification": "维护边界提议，不声称恢复原文件或稳定公共API。"
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "PCP-E0001",
+          "PCP-E0002",
+          "PCP-E0003",
+          "PCP-E0004",
+          "PCP-E0005",
+          "PCP-E0015",
+          "PCP-E0016",
+          "PCP-E0017"
+        ],
+        "qualification": "局部源状态读取/更新按合同保留；实际provider和持久authority尚未全部确认。"
+      },
+      "sideEffects": {
+        "status": "source-reviewed-not-executed",
+        "effects": [
+          "jc maps Ti into Lc(commandId, index, mainTabPanelId); Lc registers Ln(commandId, callback).",
+          "Hji chooses the eligible tab list from split/layout state; a numeric index reverses in RTL. An absent target returns false.",
+          "Hji calls VW(store,target), optionally schedules focus with requestAnimationFrame, and returns true. VW/state providers and actual DOM outcomes remain delegated.",
+          "Lc calls dc only after Hji returns true. dc is a one-time shortcut migration notice with its own trigger, preference and custom-binding guards; the notice is not the tab-switch operation."
+        ],
+        "remaining": [
+          "Mount eligibility and full Codex/Chat mode closure.",
+          "Actual VW receiver/state and focus outcomes, multiple-window behavior and restoration."
+        ]
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; never generate dependency implementation",
+        "candidates": [
+          "React/JSX/compiler runtime",
+          "application state/command-registration infrastructure"
+        ],
+        "inventory": {
+          "path": "dependencies.csv",
+          "bytes": 208587,
+          "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+        },
+        "investigation": {
+          "path": "dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+        },
+        "completeVersionedSet": "unresolved; reuse qualified existing package evidence, do not infer a lock from aliases"
+      },
+      "proposedPath": "apps/desktop/src/renderer/features/workspace/numbered-tab-commands.tsx",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "implementationStarted": false,
+      "proposalStatus": "qualified inferred maintenance boundary"
+    },
+    {
+      "moduleId": "PCG-M02",
+      "responsibility": "执行当前线程的本地环境动作的命令适配、守卫与回调协调",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "PCG-SOURCE-001",
+        "PCG-SOURCE-006",
+        "PCG-SOURCE-007",
+        "PCG-SOURCE-008",
+        "PCG-SOURCE-009",
+        "PCG-SOURCE-015",
+        "PCG-SOURCE-016",
+        "PCG-SOURCE-017"
+      ],
+      "imports": {
+        "status": "partial",
+        "sourceContract": {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/families/1"
+        },
+        "knownBoundaries": [
+          {
+            "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+            "bytes": 29238,
+            "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+            "jsonPointer": "/selectedBindings/0"
+          },
+          {
+            "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+            "bytes": 29238,
+            "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+            "jsonPointer": "/selectedBindings/3"
+          },
+          {
+            "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+            "bytes": 29238,
+            "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+            "jsonPointer": "/selectedBindings/1"
+          },
+          {
+            "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+            "bytes": 29238,
+            "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+            "jsonPointer": "/selectedBindings/2"
+          }
+        ],
+        "qualification": "原import/export与参数链已绑定；建议模块的完整公共依赖面尚未恢复。"
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "执行当前线程的本地环境动作的命令注册与清理适配",
+        "qualification": "维护边界提议，不声称恢复原文件或稳定公共API。"
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "PCP-E0001",
+          "PCP-E0006",
+          "PCP-E0007",
+          "PCP-E0008",
+          "PCP-E0009",
+          "PCP-E0015",
+          "PCP-E0016",
+          "PCP-E0017"
+        ],
+        "qualification": "局部源状态读取/更新按合同保留；实际provider和持久authority尚未全部确认。"
+      },
+      "sideEffects": {
+        "status": "source-reviewed-not-executed",
+        "effects": [
+          "The selected HS branch mounts JS only with conversation, environment and config, and when registerCommands is truthy.",
+          "YS enables its registered command only when actionItem and conversationId exist; its callback invokes the supplied onRunAction(actionItem).",
+          "HS resolves cwd with ZS; missing cwd or conversation logs and returns. It updates the selected action preference, derives the terminal ID, shows the terminal, then delegates et.runAction with command/cwd/title.",
+          "YS also supplies a workspace command-menu item labelled codex. Its selected callback runs onRunAction before closing that menu. This label does not establish whole-feature mode ownership.",
+          "US can create runId=environmentAction10 and later for extra action items, with commandId=null. Nine command IDs do not cap the number of configured actions."
+        ],
+        "remaining": [
+          "tC platform eligibility and ZS resolution are delegated boundaries.",
+          "Actual et.runAction backend, execution outcome, failure/cancel/restart and durable preference effects.",
+          "Full mount and Codex/Chat mode closure."
+        ]
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; never generate dependency implementation",
+        "candidates": [
+          "React/JSX/compiler runtime",
+          "application state/command-registration infrastructure"
+        ],
+        "inventory": {
+          "path": "dependencies.csv",
+          "bytes": 208587,
+          "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+        },
+        "investigation": {
+          "path": "dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+        },
+        "completeVersionedSet": "unresolved; reuse qualified existing package evidence, do not infer a lock from aliases"
+      },
+      "proposedPath": "apps/desktop/src/renderer/features/local-environments/action-commands.tsx",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "implementationStarted": false,
+      "proposalStatus": "qualified inferred maintenance boundary"
+    },
+    {
+      "moduleId": "PCG-M03",
+      "responsibility": "切换页面编辑器的列表样式的命令适配、守卫与回调协调",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "PCG-SOURCE-010",
+        "PCG-SOURCE-011",
+        "PCG-SOURCE-012",
+        "PCG-SOURCE-013",
+        "PCG-SOURCE-014",
+        "PCG-SOURCE-015"
+      ],
+      "imports": {
+        "status": "partial",
+        "sourceContract": {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/families/2"
+        },
+        "knownBoundaries": [
+          {
+            "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+            "bytes": 44845,
+            "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+            "jsonPointer": "/selectedBindings/1"
+          },
+          {
+            "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+            "bytes": 44845,
+            "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+            "jsonPointer": "/selectedBindings/2"
+          },
+          {
+            "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+            "bytes": 44845,
+            "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+            "jsonPointer": "/selectedBindings/3"
+          }
+        ],
+        "qualification": "原import/export与参数链已绑定；建议模块的完整公共依赖面尚未恢复。"
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "切换页面编辑器的列表样式的命令注册与清理适配",
+        "qualification": "维护边界提议，不声称恢复原文件或稳定公共API。"
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "PCP-E0010",
+          "PCP-E0011",
+          "PCP-E0012",
+          "PCP-E0013",
+          "PCP-E0014",
+          "PCP-E0015"
+        ],
+        "qualification": "局部源状态读取/更新按合同保留；实际provider和持久authority尚未全部确认。"
+      },
+      "sideEffects": {
+        "status": "source-reviewed-not-executed",
+        "effects": [
+          "Jr supplies canWrite only when access.can_write===true, together with editorView and isPageActive.",
+          "Wr registers _t(command.id, callback, options): enabled=canWrite; isActive rejects destroyed, noneditable or composing editors and delegates the active-page predicate.",
+          "keyboardHandler returns false when editorView lacks focus and undefined when focused, allowing the existing Pw fallback behavior.",
+          "zr returns without selection on destroyed editors; otherwise it delegates Rr(editorView,ar(editorView)).select(style,\"toggle\",\"preserve\")."
+        ],
+        "remaining": [
+          "Page mount, access and full Codex/Chat mode closure; unknown remains retained.",
+          "Rr/ar editor implementation, transaction/history/persistence effects and actual focus behavior."
+        ]
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; never generate dependency implementation",
+        "candidates": [
+          "React/JSX/compiler runtime",
+          "application state/command-registration infrastructure",
+          "editor transaction/list toolkit"
+        ],
+        "inventory": {
+          "path": "dependencies.csv",
+          "bytes": 208587,
+          "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+        },
+        "investigation": {
+          "path": "dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+        },
+        "completeVersionedSet": "unresolved; reuse qualified existing package evidence, do not infer a lock from aliases"
+      },
+      "proposedPath": "apps/desktop/src/renderer/features/pages/list-format-commands.tsx",
+      "featureIds": [
+        "FSC-0440"
+      ],
+      "implementationStarted": false,
+      "proposalStatus": "qualified inferred maintenance boundary"
+    }
+  ],
+  "entryAssociations": [
+    {
+      "entryId": "command-metadata-instance:595a2771b08c861746289b4c",
+      "commandId": "focusTab1",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/0"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:cd4c1a70bf881fdfde605947",
+      "commandId": "focusTab2",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/1"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:00ea071a006838f7ac910e8d",
+      "commandId": "focusTab3",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/2"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:a0cdb922182c8261b1e7721c",
+      "commandId": "focusTab4",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/3"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:9df1059524047bfc5c4ab6e9",
+      "commandId": "focusTab5",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/4"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:a3a11e493753c2256c493bf7",
+      "commandId": "focusTab6",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/5"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:23ea0a08efde06770330c052",
+      "commandId": "focusTab7",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/6"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:aca8b71be4b0d3fe306c7fa0",
+      "commandId": "focusTab8",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/7"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:2cde62eba052a14a36fba003",
+      "commandId": "focusTab9",
+      "featureIds": [
+        "FSC-0438"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/8"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:66424f6f247e51bd2a0ab387",
+      "commandId": "environmentAction1",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/9"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:186abefa78528d3a064ff6e9",
+      "commandId": "environmentAction2",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/10"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:8ea3f72b31879865e60506e6",
+      "commandId": "environmentAction3",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/11"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:8fc83fcf762841c5acfdf5a6",
+      "commandId": "environmentAction4",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/12"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:6a396b010c9d3d7d3be356bc",
+      "commandId": "environmentAction5",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/13"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:15317ceb394c6b46abb204dd",
+      "commandId": "environmentAction6",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/14"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:f79854615709b16bc1942955",
+      "commandId": "environmentAction7",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/15"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:ff35dc0f6fd6c403808756d9",
+      "commandId": "environmentAction8",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/16"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:9a6806922dc22c8b120c0dcf",
+      "commandId": "environmentAction9",
+      "featureIds": [
+        "FSC-0439"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/17"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:1f0e7e220327439912ee74c5",
+      "commandId": "page.formatNumberedList",
+      "featureIds": [
+        "FSC-0440"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/18"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:ecf98b5e7957a07eeae7a543",
+      "commandId": "page.formatBulletedList",
+      "featureIds": [
+        "FSC-0440"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/19"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    },
+    {
+      "entryId": "command-metadata-instance:89db8c949b0822c8c1f468d8",
+      "commandId": "page.formatChecklist",
+      "featureIds": [
+        "FSC-0440"
+      ],
+      "sourceContract": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/commandLinks/20"
+      },
+      "associationStatus": "conditional-source-parameter-chain-to-user-goal",
+      "qualification": "元数据/有限生产者到注册回调的源码关联；不证明真实挂载、命令赢家、模式或运行成功。"
+    }
+  ],
+  "scenarioSpecifications": [
+    {
+      "scenarioId": "PCG-FSC-0438-SC01",
+      "featureId": "FSC-0438",
+      "operationId": "operation:parameterized-command:fsc-0438:select-numbered-tab",
+      "relatedFeatureIds": [],
+      "kind": "normal",
+      "preconditions": "可用LTR布局，至少两个候选，目标槽位存在",
+      "trigger": "触发focusTabN",
+      "expectedEffect": "按数组索引选择相应候选，委托VW；按源条件调度焦点，dc提示另外判断",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/0"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0438-SC02",
+      "featureId": "FSC-0438",
+      "operationId": "operation:parameterized-command:fsc-0438:select-numbered-tab",
+      "relatedFeatureIds": [],
+      "kind": "layout",
+      "preconditions": "相同候选集合且locale为RTL",
+      "trigger": "触发focusTabN",
+      "expectedEffect": "Hji用length-1-index取候选；不能用ID数字直接替换源数组位置",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/0"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0438-SC03",
+      "featureId": "FSC-0438",
+      "operationId": "operation:parameterized-command:fsc-0438:select-numbered-tab",
+      "relatedFeatureIds": [],
+      "kind": "layout",
+      "preconditions": "split及chat/content候选组合",
+      "trigger": "触发focusTabN",
+      "expectedEffect": "按源split/layout谓词选择chat与auxiliary/content集合，保留hasExternalFocus的焦点分支",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/0"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0438-SC04",
+      "featureId": "FSC-0438",
+      "operationId": "operation:parameterized-command:fsc-0438:select-numbered-tab",
+      "relatedFeatureIds": [],
+      "kind": "guard",
+      "preconditions": "请求编号超过当前候选数",
+      "trigger": "触发focusTabN",
+      "expectedEffect": "找不到目标返回false；不执行VW、不安排焦点，也不显示dc成功后提示",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/0"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0438-SC05",
+      "featureId": "FSC-0438",
+      "operationId": "operation:parameterized-command:fsc-0438:select-numbered-tab",
+      "relatedFeatureIds": [],
+      "kind": "notice",
+      "preconditions": "目标选择成功；依次覆盖来源、primaryNumberShortcutTarget、自定义绑定与已显示状态",
+      "trigger": "触发命令",
+      "expectedEffect": "仅符合dc全部守卫才显示一次性提示；打开快捷键设置属于既有设置入口，不能改变tab选择语义",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/0"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0439-SC01",
+      "featureId": "FSC-0439",
+      "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+      "relatedFeatureIds": [],
+      "kind": "ordering",
+      "preconditions": "环境中有不同平台动作且主按钮展示排序不同",
+      "trigger": "触发environmentActionN",
+      "expectedEffect": "按tC筛选后原顺序匹配槽位；不采用主按钮的ce排序",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0439-SC02",
+      "featureId": "FSC-0439",
+      "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+      "relatedFeatureIds": [],
+      "kind": "guard",
+      "preconditions": "动作槽位或conversationId为空",
+      "trigger": "尝试触发对应命令",
+      "expectedEffect": "YS的enabled=false；不要把空槽位映射到其他动作",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0439-SC03",
+      "featureId": "FSC-0439",
+      "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+      "relatedFeatureIds": [],
+      "kind": "mount",
+      "preconditions": "会话/环境/config缺失或registerCommands=false",
+      "trigger": "渲染HS",
+      "expectedEffect": "当前源分支不挂载JS；不能据此宣称全局相同ID的其他注册均不可用",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0439-SC04",
+      "featureId": "FSC-0439",
+      "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+      "relatedFeatureIds": [],
+      "kind": "guard",
+      "preconditions": "动作存在但ZS无法给出cwd或会话缺失",
+      "trigger": "调用HS提供的onRunAction",
+      "expectedEffect": "记录Can not run action错误并返回；不更新动作偏好，不显示终端，不调用runAction",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0439-SC05",
+      "featureId": "FSC-0439",
+      "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+      "relatedFeatureIds": [],
+      "kind": "ordering",
+      "preconditions": "cwd和会话有效且委托正常返回",
+      "trigger": "从YS命令或菜单触发动作",
+      "expectedEffect": "先更新动作偏好，再derive终端ID、显示终端、委托runAction(command,cwd,title)；YS菜单在调用后关闭",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0439-SC06",
+      "featureId": "FSC-0439",
+      "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+      "relatedFeatureIds": [],
+      "kind": "failure",
+      "preconditions": "runAction在当前调用同步抛错",
+      "trigger": "从YS菜单触发动作",
+      "expectedEffect": "此前偏好更新/终端显示可能已发生；源回调无局部回滚，不能把后续菜单close或实际执行成功视为已证明",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0439-SC07",
+      "featureId": "FSC-0439",
+      "operationId": "operation:parameterized-command:fsc-0439:run-environment-action",
+      "relatedFeatureIds": [],
+      "kind": "boundary",
+      "preconditions": "筛选后动作数量大于9",
+      "trigger": "构造第10及后续US项",
+      "expectedEffect": "runId可为environmentAction10及后续值而commandId=null；有限快捷键不限制配置动作数",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/1"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0440-SC01",
+      "featureId": "FSC-0440",
+      "operationId": "operation:parameterized-command:fsc-0440:toggle-numbered-list",
+      "relatedFeatureIds": [],
+      "kind": "normal",
+      "preconditions": "可写、active、focused且非composing的编辑器",
+      "trigger": "触发page.formatNumberedList",
+      "expectedEffect": "请求select(orderedList,toggle,preserve)，保留实际编辑器事务/历史结果待验",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/2"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0440-SC02",
+      "featureId": "FSC-0440",
+      "operationId": "operation:parameterized-command:fsc-0440:toggle-bulleted-list",
+      "relatedFeatureIds": [],
+      "kind": "normal",
+      "preconditions": "可写、active、focused且非composing的编辑器",
+      "trigger": "触发page.formatBulletedList",
+      "expectedEffect": "请求select(unorderedList,toggle,preserve)，保留实际编辑器事务/历史结果待验",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/2"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0440-SC03",
+      "featureId": "FSC-0440",
+      "operationId": "operation:parameterized-command:fsc-0440:toggle-checklist",
+      "relatedFeatureIds": [],
+      "kind": "normal",
+      "preconditions": "可写、active、focused且非composing的编辑器",
+      "trigger": "触发page.formatChecklist",
+      "expectedEffect": "请求select(checklist,toggle,preserve)，保留实际编辑器事务/历史结果待验",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/2"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0440-SC04",
+      "featureId": "FSC-0440",
+      "operationId": "operation:parameterized-command:fsc-0440:toggle-numbered-list",
+      "relatedFeatureIds": [],
+      "kind": "guard",
+      "preconditions": "access.can_write为false、缺失或truthy非boolean",
+      "trigger": "触发列表命令",
+      "expectedEffect": "Jr只把严格true传为canWrite；options.enabled不允许其余值启用当前注册",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/2"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0440-SC05",
+      "featureId": "FSC-0440",
+      "operationId": "operation:parameterized-command:fsc-0440:toggle-bulleted-list",
+      "relatedFeatureIds": [],
+      "kind": "focus",
+      "preconditions": "其他编辑条件有效，editorView没有焦点",
+      "trigger": "键盘触发列表命令",
+      "expectedEffect": "keyboardHandler返回false，当前Pw注册拒绝处理；不得把此结论泛化到所有触发来源",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/2"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    },
+    {
+      "scenarioId": "PCG-FSC-0440-SC06",
+      "featureId": "FSC-0440",
+      "operationId": "operation:parameterized-command:fsc-0440:toggle-checklist",
+      "relatedFeatureIds": [],
+      "kind": "guard",
+      "preconditions": "依次覆盖destroyed、editable=false、composing及页面inactive",
+      "trigger": "尝试列表命令",
+      "expectedEffect": "isActive按源谓词拒绝；直接zr在destroyed时也不调用select。真实编辑器效果及模式归属仍未验证",
+      "executionStatus": "not-executed",
+      "runtimeObservationRefs": [],
+      "sourceRef": {
+        "path": "parameterized-command-paths-v1.json",
+        "bytes": 51161,
+        "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+        "jsonPointer": "/families/2"
+      },
+      "sourceQualification": "Static source specification; no UI, model, service or editor transaction executed."
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "PCG-SOURCE-001",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2749730,
+        "endExclusive": 2750679
+      },
+      "spanHash": "440b824421dadec2b65465ea54a611c56cb8977441841eefac6ea481252c97ff",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/0"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-002",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 60451,
+        "endExclusive": 68695
+      },
+      "spanHash": "b653e83390a678498b6b70589204d95a1a296a91ee354289226bacbe15540924",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/1"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-003",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 69238,
+        "endExclusive": 69453
+      },
+      "spanHash": "288e00e5ca0825d797d2b6a607f47d7a42308fbcab62ae7363e0dc3639f2c6cc",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/2"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-004",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4630006,
+        "endExclusive": 4631113
+      },
+      "spanHash": "b3e7dbcf9aa7a9fb5a470711087e706ff4a710f77eae33d273ff80cca872e6ab",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/3"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-005",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 48825,
+        "endExclusive": 50021
+      },
+      "spanHash": "e6c1926a283b538536ab95203fd0ed5ed9fa634c3c5e70312b1b4c343a8cc693",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/4"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-006",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 78759,
+        "endExclusive": 87867
+      },
+      "spanHash": "65435e3c44af84b621c590e17c9fa5666d1b5e1d73d9418783acbddebf1faaf3",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/5"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-007",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 87867,
+        "endExclusive": 87966
+      },
+      "spanHash": "6efc1184ecbb00db143d497418b4d4f292a5e78e88d69a440b507856082972bd",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/6"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-008",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 91009,
+        "endExclusive": 91344
+      },
+      "spanHash": "b1092db0fedc922cebb5358796b24176136a8a554d36b38399192936257d3113",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/7"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-009",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 91344,
+        "endExclusive": 92656
+      },
+      "spanHash": "b602e0d059b82ab69b01341a1f26572d385dd88cdfa93b4f666cd48071eb10b4",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/8"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-010",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "byteRange": {
+        "start": 22170,
+        "endExclusive": 22324
+      },
+      "spanHash": "afb4849d49f38755797b7d507a4881eabede214295edd729ac0f796ffb868acf",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/9"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-011",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "byteRange": {
+        "start": 22331,
+        "endExclusive": 22645
+      },
+      "spanHash": "74474268e6de6cc766fe4bbed6601291d2037b04bf668984b0764ebfa855f652",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/10"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-012",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "byteRange": {
+        "start": 22645,
+        "endExclusive": 23133
+      },
+      "spanHash": "86eb071f3d534419898f897e9f77483f9c8f1e39c92e6aa0a8f1534f67ce5bfa",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/11"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-013",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "byteRange": {
+        "start": 21782,
+        "endExclusive": 21856
+      },
+      "spanHash": "a54ed5a2267e482b2c1d944bc0d3373bddddb128dedab0a4a677e54547983a0d",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/12"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-014",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "byteRange": {
+        "start": 23205,
+        "endExclusive": 30356
+      },
+      "spanHash": "fda8bbdd9a72d51df8579c3bb28a895ed518d5053db29db11d06d65558fab17c",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/13"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-015",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2704426,
+        "endExclusive": 2744298
+      },
+      "spanHash": "88ee05cd2e92e168b616d0ec15dd3837d6972ee42bc3ba4c8d7373086d8a0061",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/14"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-016",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2744415,
+        "endExclusive": 2744495
+      },
+      "spanHash": "0ed940a7cff09c6c0f1dde74664663fbc9fff556ba26ace0439820cd6b485c70",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/15"
+        }
+      ]
+    },
+    {
+      "id": "PCG-SOURCE-017",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2744305,
+        "endExclusive": 2744356
+      },
+      "spanHash": "5fd3e072e9067a65e03c0571c83e92456f5c72d4370764b93e2a0bf0b15b42e1",
+      "origins": [
+        {
+          "path": "parameterized-command-paths-v1.json",
+          "bytes": 51161,
+          "sha256": "96b54543b5123c2938556bbc3ec9212f7f815662684a12ca111b0a2d1aba771f",
+          "jsonPointer": "/evidence/16"
+        }
+      ]
+    }
+  ],
+  "remainingCommandRecords": [
+    {
+      "commandId": "openThreadInNewWindow",
+      "entryId": "command-metadata-instance:28c2b248e837cd4e6c044f6a",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/3"
+      }
+    },
+    {
+      "commandId": "deleteChat",
+      "entryId": "command-metadata-instance:2619b6a8cc0c8d93e06dfd42",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/5"
+      }
+    },
+    {
+      "commandId": "markThreadUnread",
+      "entryId": "command-metadata-instance:90b85caad874950eea0f87eb",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/6"
+      }
+    },
+    {
+      "commandId": "copyConversationMarkdown",
+      "entryId": "command-metadata-instance:b6db3877c1ea12dabb3d67a3",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/8"
+      }
+    },
+    {
+      "commandId": "copyLastCodeBlock",
+      "entryId": "command-metadata-instance:290781486d3a9740fb27ee71",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/9"
+      }
+    },
+    {
+      "commandId": "openSideChat",
+      "entryId": "command-metadata-instance:22ba98845d7a88a573889373",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/10"
+      }
+    },
+    {
+      "commandId": "openControlWindow",
+      "entryId": "command-metadata-instance:d88b616f8f861dbf2fce0f11",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/11"
+      }
+    },
+    {
+      "commandId": "undoAppAction",
+      "entryId": "command-metadata-instance:349749622ee8ccf2988ff484",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/13"
+      }
+    },
+    {
+      "commandId": "redoAppAction",
+      "entryId": "command-metadata-instance:15084810c7057dee49f0d342",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/14"
+      }
+    },
+    {
+      "commandId": "reopenClosedTab",
+      "entryId": "command-metadata-instance:41e739030899acddb65e38b1",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/15"
+      }
+    },
+    {
+      "commandId": "composer.openModelPicker",
+      "entryId": "command-metadata-instance:dd2a4070c113fd9a0c88a870",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/16"
+      }
+    },
+    {
+      "commandId": "composer.openRecentModels",
+      "entryId": "command-metadata-instance:90bed47e2fda537f973a5120",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/17"
+      }
+    },
+    {
+      "commandId": "composer.openProjectPicker",
+      "entryId": "command-metadata-instance:c3a23e430450a8ddd9714251",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/18"
+      }
+    },
+    {
+      "commandId": "composer.startVoiceMode",
+      "entryId": "command-metadata-instance:2e78f6011409bc63c400a63a",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/19"
+      }
+    },
+    {
+      "commandId": "realtimeVoice.toggleMicrophoneMute",
+      "entryId": "command-metadata-instance:c38d05d8e5bfcfb3c20937c8",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/20"
+      }
+    },
+    {
+      "commandId": "realtimeVoice.toggleOutputMute",
+      "entryId": "command-metadata-instance:7cba5cbe15987b8c17690b64",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/21"
+      }
+    },
+    {
+      "commandId": "realtimeVoice.endCall",
+      "entryId": "command-metadata-instance:9bf9a9fdc7141009cc477d06",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/22"
+      }
+    },
+    {
+      "commandId": "meetings.takeNotes",
+      "entryId": "command-metadata-instance:14561fbe967c2b15377111e6",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/23"
+      }
+    },
+    {
+      "commandId": "browser.toggleAnnotationMode",
+      "entryId": "command-metadata-instance:b3c346618546c87907be6855",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/24"
+      }
+    },
+    {
+      "commandId": "artifact.sendAnnotations",
+      "entryId": "command-metadata-instance:c66f26db52dc76eac080eb1a",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/25"
+      }
+    },
+    {
+      "commandId": "composer.submitInBackground",
+      "entryId": "command-metadata-instance:e51ffd8f486c02a90f41ed4b",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/26"
+      }
+    },
+    {
+      "commandId": "composer.submit",
+      "entryId": "command-metadata-instance:f3b822152858f3bccb9b1e07",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/27"
+      }
+    },
+    {
+      "commandId": "composer.steer",
+      "entryId": "command-metadata-instance:419cc17858362ba47ec66f2a",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/28"
+      }
+    },
+    {
+      "commandId": "composer.queue",
+      "entryId": "command-metadata-instance:585e9e986ea6948a4d6a8646",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/29"
+      }
+    },
+    {
+      "commandId": "composer.clear",
+      "entryId": "command-metadata-instance:7b5f59bfbc0879a6ed744635",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/30"
+      }
+    },
+    {
+      "commandId": "composer.addPhotos",
+      "entryId": "command-metadata-instance:864192e51ec5300fbcc11f4c",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/31"
+      }
+    },
+    {
+      "commandId": "composer.captureAppshot",
+      "entryId": "command-metadata-instance:6da15ac22793f5c135b2427a",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/32"
+      }
+    },
+    {
+      "commandId": "composer.addFiles",
+      "entryId": "command-metadata-instance:a3b3e177eb110b94aa288ddc",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/33"
+      }
+    },
+    {
+      "commandId": "composer.toggleFastMode",
+      "entryId": "command-metadata-instance:301944eab85c7749850e7a98",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/34"
+      }
+    },
+    {
+      "commandId": "composer.increaseReasoningEffort",
+      "entryId": "command-metadata-instance:3ed5d99a659456cd659c85c7",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/35"
+      }
+    },
+    {
+      "commandId": "composer.decreaseReasoningEffort",
+      "entryId": "command-metadata-instance:494bc6da35493d4899abca16",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/36"
+      }
+    },
+    {
+      "commandId": "composer.cycleReasoningEffort",
+      "entryId": "command-metadata-instance:2fead429930bc12ad0596186",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/37"
+      }
+    },
+    {
+      "commandId": "composer.togglePlanMode",
+      "entryId": "command-metadata-instance:9e782c386fd78ec793ca0683",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/38"
+      }
+    },
+    {
+      "commandId": "composer.toggleWorktreeMode",
+      "entryId": "command-metadata-instance:e350cd71046db2a725d730a4",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/39"
+      }
+    },
+    {
+      "commandId": "composer.cycleHost",
+      "entryId": "command-metadata-instance:15bd5057aaf7b26365566d8f",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/40"
+      }
+    },
+    {
+      "commandId": "composer.toggleWorkRunLocation",
+      "entryId": "command-metadata-instance:02e6d9ea00bab223adfb0be4",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/41"
+      }
+    },
+    {
+      "commandId": "approval.approve",
+      "entryId": "command-metadata-instance:6c099dbe9dcb4268cd3ebc32",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/42"
+      }
+    },
+    {
+      "commandId": "approval.decline",
+      "entryId": "command-metadata-instance:17de3669ea0c932ef660d6b0",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/43"
+      }
+    },
+    {
+      "commandId": "git.commit",
+      "entryId": "command-metadata-instance:cf41666964679a308c1c34c5",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/44"
+      }
+    },
+    {
+      "commandId": "git.createPullRequest",
+      "entryId": "command-metadata-instance:16318a54a483e3608ef6525e",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/45"
+      }
+    },
+    {
+      "commandId": "git.createDraftPullRequest",
+      "entryId": "command-metadata-instance:9b4ba4adfb321bc3dec44f57",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/46"
+      }
+    },
+    {
+      "commandId": "git.createBranch",
+      "entryId": "command-metadata-instance:3b7f0b7ab992e447832ca25c",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/47"
+      }
+    },
+    {
+      "commandId": "git.mergePullRequest",
+      "entryId": "command-metadata-instance:e2f634d12f39e2f070f074f2",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/48"
+      }
+    },
+    {
+      "commandId": "git.openPullRequest",
+      "entryId": "command-metadata-instance:2f2f18813b69549d12e06edd",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/49"
+      }
+    },
+    {
+      "commandId": "git.toggleBlame",
+      "entryId": "command-metadata-instance:bae6a2064d5c67cce98f1025",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/50"
+      }
+    },
+    {
+      "commandId": "forkThread",
+      "entryId": "command-metadata-instance:6fba1c9b9d10a0e8794289ec",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/51"
+      }
+    },
+    {
+      "commandId": "openAvatarOverlay",
+      "entryId": "command-metadata-instance:e8081075918b4dde15a23e63",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/52"
+      }
+    },
+    {
+      "commandId": "togglePriorityFilter",
+      "entryId": "command-metadata-instance:c8d2bf0bc858b7cf0ca4fc8d",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/54"
+      }
+    },
+    {
+      "commandId": "focusMainChat",
+      "entryId": "command-metadata-instance:b01dc356270350c9293398b3",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/55"
+      }
+    },
+    {
+      "commandId": "focusSideChat",
+      "entryId": "command-metadata-instance:7c67a7ad9607985d3f863e37",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/56"
+      }
+    },
+    {
+      "commandId": "artifacts.selectTool",
+      "entryId": "command-metadata-instance:37101e62a18b5ba83c0af3bd",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/57"
+      }
+    },
+    {
+      "commandId": "artifacts.handTool",
+      "entryId": "command-metadata-instance:2cbed83a874f3bb5f81985c8",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/58"
+      }
+    },
+    {
+      "commandId": "canvas.prompt",
+      "entryId": "command-metadata-instance:3da9e5d4cd1809d61e554ddb",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/59"
+      }
+    },
+    {
+      "commandId": "artifacts.rectangleTool",
+      "entryId": "command-metadata-instance:f8bfffce7bc54a6190af016d",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/60"
+      }
+    },
+    {
+      "commandId": "artifacts.circleTool",
+      "entryId": "command-metadata-instance:f9b93d7c75cafbd846615a5a",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/61"
+      }
+    },
+    {
+      "commandId": "artifacts.arrowTool",
+      "entryId": "command-metadata-instance:28da6cb89fb8fc036d57b75e",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/62"
+      }
+    },
+    {
+      "commandId": "artifacts.lineTool",
+      "entryId": "command-metadata-instance:64b43a4838c4f9bb4ec63483",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/63"
+      }
+    },
+    {
+      "commandId": "artifacts.textTool",
+      "entryId": "command-metadata-instance:f49b673ac63229fdc3068443",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/64"
+      }
+    },
+    {
+      "commandId": "artifacts.noteTool",
+      "entryId": "command-metadata-instance:9422d6e420cb038f2e471743",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/65"
+      }
+    },
+    {
+      "commandId": "copyPageLink",
+      "entryId": "command-metadata-instance:9afd10b5175735af203ca149",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/66"
+      }
+    },
+    {
+      "commandId": "focusPageBlockControls",
+      "entryId": "command-metadata-instance:5a0fd6f8a1b216b68ca32ce0",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/67"
+      }
+    },
+    {
+      "commandId": "openOrbit",
+      "entryId": "command-metadata-instance:7160ae097392ec9535527b87",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/71"
+      }
+    },
+    {
+      "commandId": "nextThreadNeedingAttention",
+      "entryId": "command-metadata-instance:142e56a029b7407a6eddff52",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/72"
+      }
+    },
+    {
+      "commandId": "previousTab",
+      "entryId": "command-metadata-instance:b1042cc28366a59dc62a116e",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/73"
+      }
+    },
+    {
+      "commandId": "previousRecentThread",
+      "entryId": "command-metadata-instance:965f854bf3a4b2d894797835",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/75"
+      }
+    },
+    {
+      "commandId": "nextTab",
+      "entryId": "command-metadata-instance:65bc1d985a88dffd00c11409",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/76"
+      }
+    },
+    {
+      "commandId": "nextRecentThread",
+      "entryId": "command-metadata-instance:d2236f9cc96b88c7d8d44b0c",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/78"
+      }
+    },
+    {
+      "commandId": "recentThread1",
+      "entryId": "command-metadata-instance:ffa75f3db92e42568afc8dc2",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/79"
+      }
+    },
+    {
+      "commandId": "recentThread2",
+      "entryId": "command-metadata-instance:8cef0f806ac2ba07c0cbf9d0",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/80"
+      }
+    },
+    {
+      "commandId": "recentThread3",
+      "entryId": "command-metadata-instance:c437a9bec9a985254bc20ef3",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/81"
+      }
+    },
+    {
+      "commandId": "recentThread4",
+      "entryId": "command-metadata-instance:fb381169f3c039f6fdbc18b4",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/82"
+      }
+    },
+    {
+      "commandId": "recentThread5",
+      "entryId": "command-metadata-instance:6fffdbda70aa9c9d01996d83",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/83"
+      }
+    },
+    {
+      "commandId": "recentThread6",
+      "entryId": "command-metadata-instance:6629368f4f4342fadf66b654",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/84"
+      }
+    },
+    {
+      "commandId": "switchToMode1",
+      "entryId": "command-metadata-instance:d60f9cea0758658e8fecc4d3",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/94"
+      }
+    },
+    {
+      "commandId": "switchToMode2",
+      "entryId": "command-metadata-instance:0676befdd591899659975045",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/95"
+      }
+    },
+    {
+      "commandId": "switchToMode3",
+      "entryId": "command-metadata-instance:a473b1f69fa2d2d6e69d895c",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/96"
+      }
+    },
+    {
+      "commandId": "codexMicroSettings",
+      "entryId": "command-metadata-instance:e369f13ae4ccd1d745d010cb",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/98"
+      }
+    },
+    {
+      "commandId": "mcpSettings",
+      "entryId": "command-metadata-instance:edef57a5724973df2507b927",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/99"
+      }
+    },
+    {
+      "commandId": "personalitySettings",
+      "entryId": "command-metadata-instance:373b4182bb5c03354eae3de5",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/100"
+      }
+    },
+    {
+      "commandId": "importExternalAgent",
+      "entryId": "command-metadata-instance:319d490edee0a05900ba1514",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/101"
+      }
+    },
+    {
+      "commandId": "keyboardShortcuts",
+      "entryId": "command-metadata-instance:1291f84e3bee94f1f8ef91dd",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/102"
+      }
+    },
+    {
+      "commandId": "clearAllUnreads",
+      "entryId": "command-metadata-instance:1c4a2e8dfa8770c3e175a4bd",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/104"
+      }
+    },
+    {
+      "commandId": "forceReloadSkills",
+      "entryId": "command-metadata-instance:36584f3b273382683ba90b05",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/105"
+      }
+    },
+    {
+      "commandId": "openSkills",
+      "entryId": "command-metadata-instance:f8ffaf3aa824c156a5e0d031",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/106"
+      }
+    },
+    {
+      "commandId": "closeOtherTabs",
+      "entryId": "command-metadata-instance:72a1ebbcde8a1863580ee3e0",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/115"
+      }
+    },
+    {
+      "commandId": "openReviewTab",
+      "entryId": "command-metadata-instance:98bf0d0cccb3a1d0fe92779b",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/118"
+      }
+    },
+    {
+      "commandId": "toggleReviewTab",
+      "entryId": "command-metadata-instance:240ea1ec6948f690270bd028",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/119"
+      }
+    },
+    {
+      "commandId": "toggleMaximizeSidePanel",
+      "entryId": "command-metadata-instance:93f8327de31a778e1cac6c1d",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/121"
+      }
+    },
+    {
+      "commandId": "file.goToDefinition",
+      "entryId": "command-metadata-instance:ed8f15419d75c6261b99286c",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/122"
+      }
+    },
+    {
+      "commandId": "file.navigateBack",
+      "entryId": "command-metadata-instance:dddf388f1b1b3cfa3f3d0b70",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/123"
+      }
+    },
+    {
+      "commandId": "file.navigateForward",
+      "entryId": "command-metadata-instance:7d8298f84f22fe7bd13d4f4a",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/124"
+      }
+    },
+    {
+      "commandId": "goToLine",
+      "entryId": "command-metadata-instance:09fea0d5e31e2ca8b162e659",
+      "disposition": "registered-consumer-with-exact-business-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/126"
+      }
+    },
+    {
+      "commandId": "implementTodo",
+      "entryId": "command-metadata-instance:4dbc44eb884cb1f248cfe282",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/152"
+      }
+    },
+    {
+      "commandId": "openSidebar",
+      "entryId": "command-metadata-instance:a68991506351b18c3b0b3fa2",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/153"
+      }
+    },
+    {
+      "commandId": "newCodexPanel",
+      "entryId": "command-metadata-instance:f9ef4116590d4922514b2b5a",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/154"
+      }
+    },
+    {
+      "commandId": "addToThread",
+      "entryId": "command-metadata-instance:64dbba0b09cfe3b833026e3d",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/155"
+      }
+    },
+    {
+      "commandId": "addFileToThread",
+      "entryId": "command-metadata-instance:6dd5111da6e70f85cee98c4b",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/156"
+      }
+    },
+    {
+      "commandId": "showLspMcpCliArgs",
+      "entryId": "command-metadata-instance:c232f1cb8c3ad1963792eb97",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/157"
+      }
+    },
+    {
+      "commandId": "dumpNuxState",
+      "entryId": "command-metadata-instance:81ea282202cea6c5a213ff76",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/158"
+      }
+    },
+    {
+      "commandId": "resetNuxState",
+      "entryId": "command-metadata-instance:a7a883dc1b1fdbede07e3da0",
+      "disposition": "retained-platform-descriptor-with-exact-host-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/159"
+      }
+    },
+    {
+      "commandId": "spotlightSearch",
+      "entryId": "command-metadata-instance:b77e3693be6f88360a22b631",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/160"
+      }
+    },
+    {
+      "commandId": "toggleNotch",
+      "entryId": "command-metadata-instance:edd14fc897b5e72c58bcc07f",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/161"
+      }
+    },
+    {
+      "commandId": "notchVoice",
+      "entryId": "command-metadata-instance:4659ab529580f58ff2718ab4",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/162"
+      }
+    },
+    {
+      "commandId": "screenshotToCurrentChat",
+      "entryId": "command-metadata-instance:8cb38a5e5b3881a35a79f176",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/163"
+      }
+    },
+    {
+      "commandId": "screenshotToNewChat",
+      "entryId": "command-metadata-instance:c034fdf484f992536401a128",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/164"
+      }
+    },
+    {
+      "commandId": "hotkeyWindow",
+      "entryId": "command-metadata-instance:b2a4818ef9c243c578ecc320",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/165"
+      }
+    },
+    {
+      "commandId": "globalDictationHold",
+      "entryId": "command-metadata-instance:08afbdeb5611915286494d17",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/166"
+      }
+    },
+    {
+      "commandId": "globalDictationSingleTap",
+      "entryId": "command-metadata-instance:3747598e52c6a32115b27c65",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/167"
+      }
+    },
+    {
+      "commandId": "realtimeVoice",
+      "entryId": "command-metadata-instance:e0faef2b5590856f760aefc7",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/168"
+      }
+    },
+    {
+      "commandId": "toggleTraceRecording",
+      "entryId": "command-metadata-instance:f3be41cbe50966ade2457320",
+      "disposition": "retained-descriptor-with-exact-dispatch-gap",
+      "sourceRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/180"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PCG-E001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "按编号选择工作区标签采用一个独立用户目标；其命令ID和操作基数分别为9和1，运行及模式缺口保留。",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "locator": {
+        "byteRange": {
+          "start": 69238,
+          "endExclusive": 69453
+        },
+        "spanHash": "288e00e5ca0825d797d2b6a607f47d7a42308fbcab62ae7363e0dc3639f2c6cc",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+          "bytes": 27864,
+          "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+          "jsonPointer": "/selectedSourceUnits/3"
+        }
+      },
+      "method": "semantic goal comparison against pinned current ledger and source-qualified parameter path",
+      "confidence": "inferred maintenance/goal boundary; not recovered original module identity",
+      "verificationStatus": "source-and-ledger-reviewed; runtime-unverified"
+    },
+    {
+      "id": "PCG-E002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "执行当前线程的本地环境动作采用一个独立用户目标；其命令ID和操作基数分别为9和1，运行及模式缺口保留。",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "locator": {
+        "byteRange": {
+          "start": 91344,
+          "endExclusive": 92656
+        },
+        "spanHash": "b602e0d059b82ab69b01341a1f26572d385dd88cdfa93b4f666cd48071eb10b4",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedSourceUnits/7"
+        }
+      },
+      "method": "semantic goal comparison against pinned current ledger and source-qualified parameter path",
+      "confidence": "inferred maintenance/goal boundary; not recovered original module identity",
+      "verificationStatus": "source-and-ledger-reviewed; runtime-unverified"
+    },
+    {
+      "id": "PCG-E003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "切换页面编辑器的列表样式采用一个独立用户目标；其命令ID和操作基数分别为3和3，运行及模式缺口保留。",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "locator": {
+        "byteRange": {
+          "start": 22645,
+          "endExclusive": 23133
+        },
+        "spanHash": "86eb071f3d534419898f897e9f77483f9c8f1e39c92e6aa0a8f1534f67ce5bfa",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedSourceUnits/10"
+        }
+      },
+      "method": "semantic goal comparison against pinned current ledger and source-qualified parameter path",
+      "confidence": "inferred maintenance/goal boundary; not recovered original module identity",
+      "verificationStatus": "source-and-ledger-reviewed; runtime-unverified"
+    }
+  ],
+  "counts": {
+    "newFiniteDefinitions": 3,
+    "newUserOperations": 5,
+    "newSupportOperations": 0,
+    "newScenarioSpecifications": 18,
+    "newConditionalSourceAssociations": 21,
+    "remainingCommandGoalAssociations": 110,
+    "maintenanceProposals": 3,
+    "newSourceParses": 0,
+    "newReaRuns": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newProductPasses": 0,
+    "newClientImplementation": 0
+  },
+  "fullAnalysisCompleted": false,
+  "sourceQuestionCompleted": false,
+  "qualifications": [
+    "21个命令ID归入3个用户目标和5个操作；没有新增21个直接调用。",
+    "3个mode仍为unknown；page命令的chatgpt菜单标签不够证明整功能可删除。",
+    "第三方实现仍通过包/运行时/明确适配边界引入；本批不生成第三方实现或客户端源码。",
+    "本批只关闭所选源关联与目标/职责设计子步；原九项完成标准和真实产品验收不提升。"
+  ]
+}

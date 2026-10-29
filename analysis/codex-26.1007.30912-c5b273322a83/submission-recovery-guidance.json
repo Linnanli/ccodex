@@ -1,0 +1,571 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "status": "scoped-recovery-and-behavior-guidance",
+  "sourceCatalog": {
+    "path": "submission-host-instance.json",
+    "bytes": 449270,
+    "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e"
+  },
+  "modules": [
+    {
+      "id": "provider-lifecycle",
+      "title": "renderer provider 生命周期",
+      "responsibility": "组件所属 scope、effect 安装与清理；registry 存在性选择分支。",
+      "confidence": "inferred",
+      "verificationStatus": "maintenance-proposal-not-implemented",
+      "sourceContracts": [
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0003",
+          "jsonPointer": "/contracts/2"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0004",
+          "jsonPointer": "/contracts/3"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0005",
+          "jsonPointer": "/contracts/4"
+        }
+      ],
+      "sourceUnits": [
+        {
+          "label": "initial.OMc",
+          "jsonPointer": "/completeUnits/0",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10172288,
+                "endExclusive": 10172576
+              },
+              "spanSha256": "13b061bf7fc454ac6b558fea90575c8c9275e4026d41c1ea48030b57d22938cb",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "shared.Bfn",
+          "jsonPointer": "/completeUnits/9",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 3258772,
+                "endExclusive": 3258847
+              },
+              "spanSha256": "5c1fe0c2bff00448ec61c522410cfa611e95e8e80c017c602b92f4fbffd55639",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "shared.Vfn",
+          "jsonPointer": "/completeUnits/10",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 3258847,
+                "endExclusive": 3258902
+              },
+              "spanSha256": "79ce07bb7e6ecdc785a9bdc2c9a0c3bf070ffbd76f9c4233935c21fa4b93c507",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        }
+      ],
+      "unresolved": "实际 mount、effect 和 scope；不要把 registry 存在性当产品模式。",
+      "mode": "unknown",
+      "runtimeValidated": false
+    },
+    {
+      "id": "host-rpc-selector",
+      "title": "host RPC 选择与缓存",
+      "responsibility": "primary forHost、client.rpc、缓存、延迟 RPC 及退役条件。",
+      "confidence": "inferred",
+      "verificationStatus": "maintenance-proposal-not-implemented",
+      "sourceContracts": [
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0006",
+          "jsonPointer": "/contracts/5"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0007",
+          "jsonPointer": "/contracts/6"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0008",
+          "jsonPointer": "/contracts/7"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0009",
+          "jsonPointer": "/contracts/8"
+        }
+      ],
+      "sourceUnits": [
+        {
+          "label": "shared.KI",
+          "jsonPointer": "/completeUnits/5",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 2181016,
+                "endExclusive": 2181910
+              },
+              "spanSha256": "baadd5ff6f231813788c0be4bf0a0aa001565597223c2982dc63e7d04ddec9da",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        }
+      ],
+      "unresolved": "运行选中的分支、注册状态、RPC framework 的能力语义。",
+      "mode": "unknown",
+      "runtimeValidated": false
+    },
+    {
+      "id": "domain-host-registry",
+      "title": "域 manager 注册与替换",
+      "responsibility": "X3 注册、条件 Sii 创建、N3 发布／替换／删除及 disposal。",
+      "confidence": "inferred",
+      "verificationStatus": "maintenance-proposal-not-implemented",
+      "sourceContracts": [
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0010",
+          "jsonPointer": "/contracts/9"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0011",
+          "jsonPointer": "/contracts/10"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0012",
+          "jsonPointer": "/contracts/11"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0013",
+          "jsonPointer": "/contracts/12"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0014",
+          "jsonPointer": "/contracts/13"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0015",
+          "jsonPointer": "/contracts/14"
+        }
+      ],
+      "sourceUnits": [
+        {
+          "label": "initial.mRs",
+          "jsonPointer": "/completeUnits/4",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 8988976,
+                "endExclusive": 8989295
+              },
+              "spanSha256": "ba4c8d0470a58dac9ab10dfd3a930bb22d03c68b2c83760ed5425c9dba441af4",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "shared.Sii",
+          "jsonPointer": "/completeUnits/6",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 5695409,
+                "endExclusive": 5699751
+              },
+              "spanSha256": "9b99a8c7ec9a8d06b6b288e201c4930eb820c9a36c781977ba0c59738a4083a6",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "shared.loi",
+          "jsonPointer": "/completeUnits/7",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 5719770,
+                "endExclusive": 5719890
+              },
+              "spanSha256": "6407e934e2ffd57f6f38aeedf2a191ba0d0f4cdcf2d2b0047ff4da11714c7b1f",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "shared.X3",
+          "jsonPointer": "/completeUnits/8",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 5743687,
+                "endExclusive": 5745636
+              },
+              "spanSha256": "47c5c8eb1631b97da9b71a6ed7f7622192c5ebbd2243b549033072a0d2ab2b78",
+              "nodeType": "ClassExpression",
+              "locatorScope": "complete-class"
+            }
+          ]
+        },
+        {
+          "label": "shared.Vfn",
+          "jsonPointer": "/completeUnits/10",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 3258847,
+                "endExclusive": 3258902
+              },
+              "spanSha256": "79ce07bb7e6ecdc785a9bdc2c9a0c3bf070ffbd76f9c4233935c21fa4b93c507",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        }
+      ],
+      "unresolved": "其他 manager 发布者、ordinary host 注册与实际初始化顺序；X3 没有 forHost。",
+      "mode": "unknown",
+      "runtimeValidated": false
+    },
+    {
+      "id": "internal-manager-rpc-adapter",
+      "title": "内部 manager 到 RPC 的应用封装",
+      "responsibility": "捕获 manager、MessageChannel、manager／coordinator facade 的原参数转发及重连清理。",
+      "confidence": "inferred",
+      "verificationStatus": "maintenance-proposal-not-implemented",
+      "sourceContracts": [
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0016",
+          "jsonPointer": "/contracts/15"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0017",
+          "jsonPointer": "/contracts/16"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0018",
+          "jsonPointer": "/contracts/17"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0019",
+          "jsonPointer": "/contracts/18"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0020",
+          "jsonPointer": "/contracts/19"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0021",
+          "jsonPointer": "/contracts/20"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0022",
+          "jsonPointer": "/contracts/21"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0023",
+          "jsonPointer": "/contracts/22"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0024",
+          "jsonPointer": "/contracts/23"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0025",
+          "jsonPointer": "/contracts/24"
+        }
+      ],
+      "sourceUnits": [
+        {
+          "label": "initial.yMc",
+          "jsonPointer": "/completeUnits/1",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10166330,
+                "endExclusive": 10168916
+              },
+              "spanSha256": "d9a99cecf53c06166eee2e213b00c99c2dbd9461a6143a48da86eff667495753",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "initial.vMc",
+          "jsonPointer": "/completeUnits/3",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10166209,
+                "endExclusive": 10166330
+              },
+              "spanSha256": "777c7ac24e36adde468c7777534114d52c8ddcd5af0c55587878dc11ebe8fd87",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "shared.X2t-initializer",
+          "jsonPointer": "/completeUnits/11",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 2532636,
+                "endExclusive": 2547538
+              },
+              "spanSha256": "c640a9e668fe42a2daacd794116249c4cbb5bac1a5a6aca73c44b7a008068f7e",
+              "nodeType": "ArrowFunctionExpression",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        },
+        {
+          "label": "shared.G2t-W2t-initializer",
+          "jsonPointer": "/completeUnits/12",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+                "bytes": 8175575,
+                "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+              },
+              "byteRange": {
+                "start": 2530225,
+                "endExclusive": 2530953
+              },
+              "spanSha256": "ec66804fef9d27d3254b79db1bb813ceb4be986838b1a67968f41fd111d86fee",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        }
+      ],
+      "unresolved": "nIt／eIt 的来源、接口兼容与实际 port delivery；不要生成第三方实现。",
+      "mode": "unknown",
+      "runtimeValidated": false
+    },
+    {
+      "id": "host-provided-rpc-adapter",
+      "title": "host 提供的 RPC registry 适配",
+      "responsibility": "ready manager RPC 的 duplicate、watch、lease、connection 替换与清理。",
+      "confidence": "inferred",
+      "verificationStatus": "maintenance-proposal-not-implemented",
+      "sourceContracts": [
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0026",
+          "jsonPointer": "/contracts/25"
+        },
+        {
+          "id": "SUBMISSION-HOST-INSTANCE-0027",
+          "jsonPointer": "/contracts/26"
+        }
+      ],
+      "sourceUnits": [
+        {
+          "label": "initial.SMc",
+          "jsonPointer": "/completeUnits/2",
+          "sourceRanges": [
+            {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10169036,
+                "endExclusive": 10171488
+              },
+              "spanSha256": "002a031e1830d9c777baba3cf5bd202588be4dfa533b69a05503d512184c4935",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          ]
+        }
+      ],
+      "unresolved": "外部 registry endpoint 实现、manager 身份和实际连接；没有 Dfn 身份连接证明。",
+      "mode": "unknown",
+      "runtimeValidated": false
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "ordinary-submit-instance",
+      "title": "普通提交的实际接收实例",
+      "trigger": "一次获授权的自有提交；能关联同一 scope／host、provider、N3 manager 和 KI 分支。",
+      "expectedObservation": "原参数到 coordinator 的收据与同 turn 完成事件对应。",
+      "currentEvidence": "唯一只读样例已完成并重新打开，但未记录上述实例身份；本场景仍部分未验证。",
+      "newRuntimeRun": false,
+      "sourceContracts": [
+        "SUBMISSION-HOST-INSTANCE-0003",
+        "SUBMISSION-HOST-INSTANCE-0004",
+        "SUBMISSION-HOST-INSTANCE-0006",
+        "SUBMISSION-HOST-INSTANCE-0016",
+        "SUBMISSION-HOST-INSTANCE-0017",
+        "SUBMISSION-HOST-INSTANCE-0019",
+        "SUBMISSION-HOST-INSTANCE-0020",
+        "SUBMISSION-HOST-INSTANCE-0028",
+        "SUBMISSION-HOST-INSTANCE-0029"
+      ]
+    },
+    {
+      "id": "primary-unavailable-registration",
+      "title": "unavailable 状态与注册条件",
+      "trigger": "provider 存在；分别观察 unavailable 且已登记／未登记的 host。",
+      "expectedObservation": "未登记仍允许 primary 尝试；已登记跳过 primary，随后依据 client／cache 走 fallback。",
+      "currentEvidence": "仅源码条件已确认，未触发这两种实际状态。",
+      "newRuntimeRun": false,
+      "sourceContracts": [
+        "SUBMISSION-HOST-INSTANCE-0006"
+      ]
+    },
+    {
+      "id": "primary-error-fallback",
+      "title": "primary 异常后的 fallback",
+      "trigger": "primary 条件成立且 forHost 抛错；分别有 client、有 cache、均无。",
+      "expectedObservation": "异常被吞后按序选择 RPC；延迟能力的拒绝、duplicate 和 dispose 单独记录。",
+      "currentEvidence": "未执行；受控 fixture 的检查不能代替原客户端行为。",
+      "newRuntimeRun": false,
+      "sourceContracts": [
+        "SUBMISSION-HOST-INSTANCE-0006",
+        "SUBMISSION-HOST-INSTANCE-0007",
+        "SUBMISSION-HOST-INSTANCE-0008",
+        "SUBMISSION-HOST-INSTANCE-0009"
+      ]
+    },
+    {
+      "id": "manager-replacement",
+      "title": "同 host 的 manager 替换与重连",
+      "trigger": "经自有 host 生命周期产生不同 manager／broken callback，不操作个人 host。",
+      "expectedObservation": "旧能力清理、状态迁移、重获 client；stale callback 不覆盖新连接。",
+      "currentEvidence": "未触发；端口送达与重连时序仍待观察。",
+      "newRuntimeRun": false,
+      "sourceContracts": [
+        "SUBMISSION-HOST-INSTANCE-0013",
+        "SUBMISSION-HOST-INSTANCE-0016",
+        "SUBMISSION-HOST-INSTANCE-0022",
+        "SUBMISSION-HOST-INSTANCE-0023",
+        "SUBMISSION-HOST-INSTANCE-0024",
+        "SUBMISSION-HOST-INSTANCE-0025"
+      ]
+    },
+    {
+      "id": "host-registry-ready",
+      "title": "host registry 分支的 ready 与断开",
+      "trigger": "真实 host 提供 appServerManagers，registry 发出 ready／replacement／断开。",
+      "expectedObservation": "RPC duplicate 和 lease/watch 清理；独立确认 endpoint，不推定 Dfn。",
+      "currentEvidence": "未执行；平台、账户与 endpoint 条件尚未确定。",
+      "newRuntimeRun": false,
+      "sourceContracts": [
+        "SUBMISSION-HOST-INSTANCE-0005",
+        "SUBMISSION-HOST-INSTANCE-0026",
+        "SUBMISSION-HOST-INSTANCE-0027",
+        "SUBMISSION-HOST-INSTANCE-0029"
+      ]
+    },
+    {
+      "id": "cancel-during-turn",
+      "title": "任务执行中的普通取消",
+      "trigger": "额外合成任务获得授权并已进入执行状态；仅使用产品取消入口。",
+      "expectedObservation": "关联具体 provider、manager 与取消请求；请求发出、后台接受、终态分别验证。",
+      "currentEvidence": "未执行；已有唯一样例授权不覆盖额外任务。",
+      "newRuntimeRun": false,
+      "sourceContracts": [
+        "SUBMISSION-HOST-INSTANCE-0020",
+        "SUBMISSION-HOST-INSTANCE-0021",
+        "SUBMISSION-HOST-INSTANCE-0028",
+        "SUBMISSION-HOST-INSTANCE-0029"
+      ]
+    },
+    {
+      "id": "interrupted-restart",
+      "title": "执行中断后的重启恢复",
+      "trigger": "额外自有合成任务获得授权；进程归属确认后中断并重启同专用 profile。",
+      "expectedObservation": "旧能力清理、新连接、原 turn 状态和存储恢复对应；不能重发原任务作为恢复。",
+      "currentEvidence": "未执行；已完成任务重新打开的证据不覆盖执行中断。",
+      "newRuntimeRun": false,
+      "sourceContracts": [
+        "SUBMISSION-HOST-INSTANCE-0004",
+        "SUBMISSION-HOST-INSTANCE-0014",
+        "SUBMISSION-HOST-INSTANCE-0025",
+        "SUBMISSION-HOST-INSTANCE-0027",
+        "SUBMISSION-HOST-INSTANCE-0029"
+      ]
+    }
+  ],
+  "limits": [
+    "5 module proposals and 7 scenarios are new maintenance guidance, not features.",
+    "Static source composition is conditional; actual UI and host endpoint remain unverified.",
+    "No target/package execution or additional model tasks occurred."
+  ]
+}

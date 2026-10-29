@@ -1,0 +1,545 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-13T09:13:12.371770+00:00",
+  "status": "complete",
+  "phase": "schema-comparison-only; no-public-app-server-runtime-execution",
+  "scope": "nine direct client method candidates absent from checked-in public stable schema",
+  "publicTag": "rust-v0.162.0",
+  "publicSourceCommit": "c1382380de69521303b416720a52f42d51af6248",
+  "publicSourceFieldsRole": "Fixed Rust reference for method/response type mapping; not a source binding for the compared native CLI",
+  "publicCliSourceBinding": {
+    "source": "registry.npmjs.org fixed official @openai/codex package versions",
+    "npmGitHead": {
+      "wrapper": null,
+      "platform": null
+    },
+    "relationToReferenceCommit": "unknown: neither exact npm metadata provides gitHead; version equality is not source identity",
+    "npmSriIsGitHubReleaseDigest": false
+  },
+  "frozenCli": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+    "sha256": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8"
+  },
+  "publicCli": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/public-cli-npm/codex-26.1007.30912-c5b273322a83/0.162.0-darwin-x64/bin/codex",
+    "sha256": "fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d",
+    "generationStatus": "complete"
+  },
+  "evidenceInputs": {
+    "publicGeneration": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+      "sha256": "8eb9383db2c1a4540300b69a14e33ea7557167cf4182309875082a497749ccc6"
+    },
+    "frozenGeneration": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+      "sha256": "75235ff3de9231a1da1a90f2ef36caf1123a6e88ea668bade8adb3e2e191558c"
+    },
+    "candidateList": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-compatibility.json",
+      "sha256": "10999da6e304f538cd952cadad17e61c60f267b429234b6e4c042d9baba8e0e9"
+    },
+    "sourceMapping": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+      "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1"
+    },
+    "shapeAlgorithm": {
+      "path": "/Users/nallylin/Documents/code/ccodex/scripts/analysis/compare_protocol.py",
+      "sha256": "28cf974bd3289a1096ab34f06371906c45305b7a4e5fb927b27c7ab2ca3b2924"
+    },
+    "comparisonScript": {
+      "path": "/Users/nallylin/Documents/code/ccodex/scripts/analysis/compare_public_experimental.py",
+      "sha256": "2f8922947da3a01fbf40b449590ac85917bf5e4859dc7da9c8e50574d5cbf486"
+    }
+  },
+  "inputValidation": {
+    "frozenSchemaFilesHashVerified": 764,
+    "publicSchemaFilesHashVerified": 764,
+    "publicSchemasUsed": true,
+    "publicExperimentalSchemaRoot": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental"
+  },
+  "summary": {
+    "request": {
+      "equal": 9
+    },
+    "params": {
+      "equal": 9
+    },
+    "response": {
+      "equal": 9
+    }
+  },
+  "contracts": [
+    {
+      "method": "project/delete",
+      "responseType": "ProjectDeleteResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 30085,
+        "sourceByteEndExclusive": 30255,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "$ref": "#/definitions/ProjectDeleteParams"
+      },
+      "shippedParamsRequired": true,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ProjectDeleteResponse.json",
+        "sha256": "aade653dd65fdacd246b1a312e20e0de9a3dc76e11f15f9c4362b13931ceac78"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "$ref": "#/definitions/ProjectDeleteParams"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ProjectDeleteResponse.json",
+        "sha256": "aade653dd65fdacd246b1a312e20e0de9a3dc76e11f15f9c4362b13931ceac78"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "335a91cda1b80b83850f12f67512ec6e176a605bcf9df4da0da4089335007833",
+        "shippedShapeSha256": "335a91cda1b80b83850f12f67512ec6e176a605bcf9df4da0da4089335007833",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "a28fde2e53835b97283af28b8b1448ca9269f26a4f593a84adaa6544bb0f573e",
+        "shippedShapeSha256": "a28fde2e53835b97283af28b8b1448ca9269f26a4f593a84adaa6544bb0f573e",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "shippedShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "project/list",
+      "responseType": "ProjectListResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 28805,
+        "sourceByteEndExclusive": 28979,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "$ref": "#/definitions/ProjectListParams"
+      },
+      "shippedParamsRequired": true,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ProjectListResponse.json",
+        "sha256": "ce2b78869a985bb7bdbc910fae2509a1799bd0d30956a886b7d10858cda6e64e"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "$ref": "#/definitions/ProjectListParams"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ProjectListResponse.json",
+        "sha256": "ce2b78869a985bb7bdbc910fae2509a1799bd0d30956a886b7d10858cda6e64e"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "67910d12bccc08b6b80546a69e8738999a0f605e61032be390aaa55d14e27f3b",
+        "shippedShapeSha256": "67910d12bccc08b6b80546a69e8738999a0f605e61032be390aaa55d14e27f3b",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "e66a19f2c229a7cbc28244f107b477dfea7124cda3af2d18620792ce4040051a",
+        "shippedShapeSha256": "e66a19f2c229a7cbc28244f107b477dfea7124cda3af2d18620792ce4040051a",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "eb7aefda0624d3b60fc59701a1b62a9a8f8349092008d67c1ae1bb38bf0dcd86",
+        "shippedShapeSha256": "eb7aefda0624d3b60fc59701a1b62a9a8f8349092008d67c1ae1bb38bf0dcd86",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "project/move",
+      "responseType": "ProjectMoveResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 29879,
+        "sourceByteEndExclusive": 30041,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "$ref": "#/definitions/ProjectMoveParams"
+      },
+      "shippedParamsRequired": true,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ProjectMoveResponse.json",
+        "sha256": "767cb254e71f4be818896fb4331091fafcf793b913afdb16219c53d8a1835ad8"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "$ref": "#/definitions/ProjectMoveParams"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ProjectMoveResponse.json",
+        "sha256": "767cb254e71f4be818896fb4331091fafcf793b913afdb16219c53d8a1835ad8"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "661afb17a3da20758ae53f6812d81ce8d26e1dbb80fefb136e29ac87c194335a",
+        "shippedShapeSha256": "661afb17a3da20758ae53f6812d81ce8d26e1dbb80fefb136e29ac87c194335a",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "e750cf1c1ee4e7fdeaae53a8b297b038b2ea496e949940371b9c40e3202d1fe7",
+        "shippedShapeSha256": "e750cf1c1ee4e7fdeaae53a8b297b038b2ea496e949940371b9c40e3202d1fe7",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "shippedShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "project/read",
+      "responseType": "ProjectReadResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 29021,
+        "sourceByteEndExclusive": 29195,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "$ref": "#/definitions/ProjectReadParams"
+      },
+      "shippedParamsRequired": true,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ProjectReadResponse.json",
+        "sha256": "69e7ffd4075ea8f01649aab9d2370c31fe68eda7febdf6ee9ec92faa769b9ac0"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "$ref": "#/definitions/ProjectReadParams"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ProjectReadResponse.json",
+        "sha256": "69e7ffd4075ea8f01649aab9d2370c31fe68eda7febdf6ee9ec92faa769b9ac0"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "a960340c54dea980e3ce714e8450a9de59078b5931b7609cda20b36e86335e96",
+        "shippedShapeSha256": "a960340c54dea980e3ce714e8450a9de59078b5931b7609cda20b36e86335e96",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "490c79fe4ea8f4b036ab3fcf25e5d2770e7e5beba13edcf17351b9285303d749",
+        "shippedShapeSha256": "490c79fe4ea8f4b036ab3fcf25e5d2770e7e5beba13edcf17351b9285303d749",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "699c9e7781b57473c2fae8f9248d131e5bc9158676775792607714b18710a893",
+        "shippedShapeSha256": "699c9e7781b57473c2fae8f9248d131e5bc9158676775792607714b18710a893",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "project/update",
+      "responseType": "ProjectUpdateResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 29667,
+        "sourceByteEndExclusive": 29837,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "$ref": "#/definitions/ProjectUpdateParams"
+      },
+      "shippedParamsRequired": true,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ProjectUpdateResponse.json",
+        "sha256": "9551485fecc461d28801665965b4ff9b357dc9a05852fa41d5f2179dea6771f0"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "$ref": "#/definitions/ProjectUpdateParams"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ProjectUpdateResponse.json",
+        "sha256": "9551485fecc461d28801665965b4ff9b357dc9a05852fa41d5f2179dea6771f0"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "964ea9312b0557f84e4eab7a836c97daf4371e51859ea71b2517ac34d874fa33",
+        "shippedShapeSha256": "964ea9312b0557f84e4eab7a836c97daf4371e51859ea71b2517ac34d874fa33",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "5444a4398faa17e422037a45b36d3c20cc0e7217b01e2960b9cd6dfd1db98d14",
+        "shippedShapeSha256": "5444a4398faa17e422037a45b36d3c20cc0e7217b01e2960b9cd6dfd1db98d14",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "699c9e7781b57473c2fae8f9248d131e5bc9158676775792607714b18710a893",
+        "shippedShapeSha256": "699c9e7781b57473c2fae8f9248d131e5bc9158676775792607714b18710a893",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "remoteControl/enable",
+      "responseType": "RemoteControlEnableResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 43163,
+        "sourceByteEndExclusive": 43421,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/RemoteControlEnableParams"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "shippedParamsRequired": false,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/RemoteControlEnableResponse.json",
+        "sha256": "955555c2bd534d6e404eb86b52a23af91ec8af0af9f32ca79d0a3eb903703750"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/RemoteControlEnableParams"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/RemoteControlEnableResponse.json",
+        "sha256": "955555c2bd534d6e404eb86b52a23af91ec8af0af9f32ca79d0a3eb903703750"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "4c024639cc00ff2cb5fff0af00b2b2fcbe6431aa08437b4f4c6f55e8b9a3e956",
+        "shippedShapeSha256": "4c024639cc00ff2cb5fff0af00b2b2fcbe6431aa08437b4f4c6f55e8b9a3e956",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "fd874d4e186db366b419f28110e39b9944e3b176523252976a86781ab3ac9000",
+        "shippedShapeSha256": "fd874d4e186db366b419f28110e39b9944e3b176523252976a86781ab3ac9000",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "6842961d07401c7c874a9f31520988a21a3029357970e8e1e03482885a79a696",
+        "shippedShapeSha256": "6842961d07401c7c874a9f31520988a21a3029357970e8e1e03482885a79a696",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "rollout/compress",
+      "responseType": "RolloutCompressResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 26363,
+        "sourceByteEndExclusive": 26588,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "type": "null"
+      },
+      "shippedParamsRequired": false,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/RolloutCompressResponse.json",
+        "sha256": "4079ce97e285df4c7a0a93994df14872111c9e452cb84f7320a7d81d0150cb0c"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "type": "null"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/RolloutCompressResponse.json",
+        "sha256": "4079ce97e285df4c7a0a93994df14872111c9e452cb84f7320a7d81d0150cb0c"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "832b9bba3f1305906bd02718ab47fea25686c54ea78aa2e3624c6933cc1786d6",
+        "shippedShapeSha256": "832b9bba3f1305906bd02718ab47fea25686c54ea78aa2e3624c6933cc1786d6",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "3b97eb7b969cb64566fa3149894df9fe9750ea2bb23001b28237e5c9b06ed541",
+        "shippedShapeSha256": "3b97eb7b969cb64566fa3149894df9fe9750ea2bb23001b28237e5c9b06ed541",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "shippedShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "thread/realtime/stop",
+      "responseType": "ThreadRealtimeStopResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 40437,
+        "sourceByteEndExclusive": 40637,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "$ref": "#/definitions/ThreadRealtimeStopParams"
+      },
+      "shippedParamsRequired": true,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadRealtimeStopResponse.json",
+        "sha256": "0a138fb932680fd38add3e74473ff998266fb7c79e1dcec1d8762b42a29b9562"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "$ref": "#/definitions/ThreadRealtimeStopParams"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadRealtimeStopResponse.json",
+        "sha256": "0a138fb932680fd38add3e74473ff998266fb7c79e1dcec1d8762b42a29b9562"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "6f9a7ce738cecb86fada1978f5509b5a2510bb3971d3063bcc1ed8a03d5857c3",
+        "shippedShapeSha256": "6f9a7ce738cecb86fada1978f5509b5a2510bb3971d3063bcc1ed8a03d5857c3",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "2a1a6945cecff66f03d85cf84db6ff43e4a33bbf8e8f872097b6f92157e16960",
+        "shippedShapeSha256": "2a1a6945cecff66f03d85cf84db6ff43e4a33bbf8e8f872097b6f92157e16960",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "shippedShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "fieldDifferences": []
+      }
+    },
+    {
+      "method": "thread/settings/update",
+      "responseType": "ThreadSettingsUpdateResponse",
+      "responseMapping": {
+        "kind": "pinned-public-Rust-declaration",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/source/codex-rs/app-server-protocol/src/protocol/common.rs",
+        "sha256": "e25ebb90bf79be79def79ebf2dd704057577fa9806710fbea0ee240a909d0dc1",
+        "sourceByteStart": 25269,
+        "sourceByteEndExclusive": 25507,
+        "claim": "Response type mapping only; this is not a public generated contract or runtime result"
+      },
+      "shippedParamsSchema": {
+        "$ref": "#/definitions/ThreadSettingsUpdateParams"
+      },
+      "shippedParamsRequired": true,
+      "shippedResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadSettingsUpdateResponse.json",
+        "sha256": "adb6c5232ff2474b61ac1811c9fe0faf8beae7f629c9bb2182190679d82bf0b1"
+      },
+      "publicExperimentalGenerated": true,
+      "publicMethodPresent": true,
+      "publicParamsSchema": {
+        "$ref": "#/definitions/ThreadSettingsUpdateParams"
+      },
+      "publicResponseSchema": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadSettingsUpdateResponse.json",
+        "sha256": "adb6c5232ff2474b61ac1811c9fe0faf8beae7f629c9bb2182190679d82bf0b1"
+      },
+      "request": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "5bb3b52e7a13898d47a664eed502f9e0962edbbe0b1763082e225d2d63aaf8c3",
+        "shippedShapeSha256": "5bb3b52e7a13898d47a664eed502f9e0962edbbe0b1763082e225d2d63aaf8c3",
+        "fieldDifferences": []
+      },
+      "params": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "0a1361093ff0b3749accff113c490a48ec37ce3ce22921c223f3a9aefc03790f",
+        "shippedShapeSha256": "0a1361093ff0b3749accff113c490a48ec37ce3ce22921c223f3a9aefc03790f",
+        "fieldDifferences": []
+      },
+      "response": {
+        "status": "equal",
+        "shapeEqual": true,
+        "publicShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "shippedShapeSha256": "e15b4bd844d2e0c8c5b6673e2aaf303b0f42825d44729decff28723040439d3c",
+        "fieldDifferences": []
+      }
+    }
+  ],
+  "limitations": [
+    "Exact structure equality of recursively collected #/definitions reference closures; no runtime service compatibility is established.",
+    "Only description/title/$schema/$comment are removed; other annotations, defaults, constraints and array order remain.",
+    "Definition names and $ref spellings remain; semantically equivalent schemas may compare different.",
+    "Pinned Rust declarations map response type names; source presence alone does not establish generated public support.",
+    "Method candidates do not establish Codex/ChatGPT ownership or per-callsite parameter compatibility.",
+    "Public npm package metadata has no gitHead; the compared CLI is not bound to the fixed Rust source commit by version naming or SRI."
+  ]
+}

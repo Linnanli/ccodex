@@ -1,0 +1,1074 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T18:50:22.726692+00:00",
+  "scope": "Selected input-shape consumer/owner and interactivity contract in two frozen Programs. No full avatar/Pets/voice implementation or runtime adoption claim.",
+  "facts": [
+    {
+      "id": "ISO-01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "supportsInputShape位于Program绑定Uce的ClassProperty初始化器中，直接调用electron.BrowserWindow.isInputShapeSupported()且没有可选调用/方法存在性保护。它在管理器实例初始化时求值；旧RSDF-11的“顶层能力检测”不能解释为Program加载时直接执行。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 384582,
+        "endExclusive": 384641
+      },
+      "spanHash": "21d737c5b6899564071157483ba64c8d6aba808e7d6561b64c937726739d455a",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定M1e装配函数创建new Uce(windowManager,globalState,isRemoteHostedPIPEnabled)，返回avatarOverlayManager，且将petVisibility设置变动接到该实例。此选定装配返回notchOverlayManager为undefined；不是所有其它构造路径或模式归属证明。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 3757889,
+        "endExclusive": 3764145
+      },
+      "spanHash": "e26ca9c17cf1219522af5077ef47ceb18789b247026f9486f9a3ab0ab733f0a7",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "K5从options选择overlay manager：无notch manager时返回avatarOverlayManager；存在时结合ownsWebContents及isScreenOverlayWindow选择notch或avatar。createAppHost中的t=K5(this.options,e)传给new xpe(t,e)，故provider不能无条件写死为avatar实例。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 3288798,
+        "endExclusive": 3289040
+      },
+      "spanHash": "be1d0f4be778ad90f96b7d390b9cf7e160a6dc37f7c939266007164f992f2649",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "xpe保存注入manager与origin；setPointerRegions将origin.id作为首参数，随后透传两组矩形。该provider是窗口来源作用域的应用glue，静态方法形状不证明实际RPC送达。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 779702,
+        "endExclusive": 779776
+      },
+      "spanHash": "df4ba639ca588f60ac071282592b617658004266c613e6ff4b1db46ad42b6676",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Uce.setPointerRegions在window不存在、已销毁或webContents.id与来源ID不同时不更新；匹配时替换inputShape与petControlsProximityRects，再执行交互策略。所选方法没有本地矩形schema验证。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 414852,
+        "endExclusive": 415035
+      },
+      "spanHash": "f68dbefcf9c5107256dac8f131e7aa798484316c6907c5f9608924b84781470f",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "applyInputShape在能力为假或shape为nullish时返回false；否则必要时先禁用整窗鼠标穿透，再将left/top转换为x/y并保留width/height，调用window.setInputShape。空数组仍会提交；原生返回值原样返回，truthy才将mode再次标记disabled；本方法不捕获原生异常。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 451709,
+        "endExclusive": 452053
+      },
+      "spanHash": "ae8b37b12cca14e028b2e9bd659c6bc29465db3cb15d9a4a4df5df899267e00c",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "交互策略先尝试applyInputShape，再处理窗口可见性。隐藏窗口通常设置ignoreMouseEvents(true,{forward:false})，但win32且mode已disabled时直接返回；可见且shape结果truthy时结束，否则按pointerInteractive选择disabled或forwarding，并在关闭穿透时刷新光标。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 451044,
+        "endExclusive": 451709
+      },
+      "spanHash": "3987e917a9fd934ec3981d07d69117ac75bc4df84fd1f6159bbcc1c8f96ee938",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "createWindow可使用注入windowPresentation或windowManager创建avatarOverlay窗口，并把inputShape清为null、mousePassthroughMode重置disabled后应用策略；show/hide事件再次应用策略。macOS objc appearance桥有独立平台条件，该条件不包围ClassProperty中的能力查询。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 419280,
+        "endExclusive": 424863
+      },
+      "spanHash": "2e07007492871b676ac306fdfa095c1f5fe7acbc4afb041d8db0350234cb4223",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定renderer发布callback读取F_(root)与I_(root,layout)，两组结果任一不相等时更新引用并调用Li.setPointerRegions。当前Sv作用域的Li=On.avatarOverlay；On由app-shared的fN导入，另一个Zg函数中的同名局部On不在此作用域内。实际fN provider和RPC传输未由本轮证明。",
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "locator": {
+        "start": 308983,
+        "endExclusive": 309162
+      },
+      "spanHash": "159e80e35da8dcc55e2881e0d534238df130cdb73f0562e06bf1026674026c8a",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    },
+    {
+      "id": "ISO-10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "renderer矩形来自DOM：F_按document范围selector收集元素，经inert/CSS可见性与pointer-events筛选后调用M_；M_裁剪viewport及可滚动/裁剪祖先，向外floor/ceil取整。I_另生成proximity矩形。DOM祖先helper与完整渲染/坐标DPI行为不在本轮闭包中。",
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "locator": {
+        "start": 280650,
+        "endExclusive": 281396
+      },
+      "spanHash": "a7c73771f76b620beb952835d700b321240ccfe7031506a84cb97013b89075c8",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-full-Program-source-confirmed; actual-runtime-native-and-RPC-delivery-unverified"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 384601,
+        "endExclusive": 384640
+      },
+      "spanHash": "bac45e12eed186114304169545ba5f66de44bf2eef2d967d6e8e29db99c39ba8",
+      "nodeType": "CallExpression",
+      "id": "ISO-SOURCE-01",
+      "labels": [
+        "shape-call-1"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/01.js.txt",
+        "bytes": 39,
+        "sha256": "bac45e12eed186114304169545ba5f66de44bf2eef2d967d6e8e29db99c39ba8"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3761061,
+        "endExclusive": 3761075
+      },
+      "spanHash": "bba8be7beb146430ac73bacfbe127b9605d1fbdb8a72a972db8d957d3cd47393",
+      "nodeType": "NewExpression",
+      "id": "ISO-SOURCE-02",
+      "labels": [
+        "owner-instance-2"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/02.js.txt",
+        "bytes": 14,
+        "sha256": "bba8be7beb146430ac73bacfbe127b9605d1fbdb8a72a972db8d957d3cd47393"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 384582,
+        "endExclusive": 384641
+      },
+      "spanHash": "21d737c5b6899564071157483ba64c8d6aba808e7d6561b64c937726739d455a",
+      "nodeType": "ClassProperty",
+      "id": "ISO-SOURCE-03",
+      "labels": [
+        "member-supportsInputShape"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/03.js.txt",
+        "bytes": 59,
+        "sha256": "21d737c5b6899564071157483ba64c8d6aba808e7d6561b64c937726739d455a"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 386981,
+        "endExclusive": 388393
+      },
+      "spanHash": "9c6eb241e3382af17b822028823d23a20f3f56aac4133f60b68956df0f54b484",
+      "nodeType": "ClassMethod",
+      "id": "ISO-SOURCE-04",
+      "labels": [
+        "member-constructor"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/04.js.txt",
+        "bytes": 1412,
+        "sha256": "9c6eb241e3382af17b822028823d23a20f3f56aac4133f60b68956df0f54b484"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 451709,
+        "endExclusive": 452053
+      },
+      "spanHash": "ae8b37b12cca14e028b2e9bd659c6bc29465db3cb15d9a4a4df5df899267e00c",
+      "nodeType": "ClassMethod",
+      "id": "ISO-SOURCE-05",
+      "labels": [
+        "member-applyInputShape",
+        "Uce-applyInputShape"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/05.js.txt",
+        "bytes": 344,
+        "sha256": "ae8b37b12cca14e028b2e9bd659c6bc29465db3cb15d9a4a4df5df899267e00c"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 719,
+        "endExclusive": 740
+      },
+      "spanHash": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa",
+      "nodeType": "VariableDeclarator",
+      "id": "ISO-SOURCE-06",
+      "labels": [
+        "program-electron-import"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/06.js.txt",
+        "bytes": 21,
+        "sha256": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 384287,
+        "endExclusive": 384308
+      },
+      "spanHash": "7ce542f2e3c41e00acb43b802d532afbeaf251de5c92bbaa795311106c7e0588",
+      "nodeType": "VariableDeclarator",
+      "id": "ISO-SOURCE-07",
+      "labels": [
+        "program-Oce"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/07.js.txt",
+        "bytes": 21,
+        "sha256": "7ce542f2e3c41e00acb43b802d532afbeaf251de5c92bbaa795311106c7e0588"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 384309,
+        "endExclusive": 384328
+      },
+      "spanHash": "70208142c888c70e0c6f79d81782093c167491422925eae285fbc8f5d272a925",
+      "nodeType": "VariableDeclarator",
+      "id": "ISO-SOURCE-08",
+      "labels": [
+        "program-hh"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/08.js.txt",
+        "bytes": 19,
+        "sha256": "70208142c888c70e0c6f79d81782093c167491422925eae285fbc8f5d272a925"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 384357,
+        "endExclusive": 384363
+      },
+      "spanHash": "fd3a185f79a7f80b237fcef9bc1cc682a2acfcac5996d4fa1a97921a55993bc9",
+      "nodeType": "VariableDeclarator",
+      "id": "ISO-SOURCE-09",
+      "labels": [
+        "program-_h"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/09.js.txt",
+        "bytes": 6,
+        "sha256": "fd3a185f79a7f80b237fcef9bc1cc682a2acfcac5996d4fa1a97921a55993bc9"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 386091,
+        "endExclusive": 386123
+      },
+      "spanHash": "3ef6d0acc96cd6130d310bfe1e97b4ee18e1f70e5257916c120973dbe54ed52c",
+      "nodeType": "ClassProperty",
+      "id": "ISO-SOURCE-10",
+      "labels": [
+        "Uce-mousePassthroughMode"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/10.js.txt",
+        "bytes": 32,
+        "sha256": "3ef6d0acc96cd6130d310bfe1e97b4ee18e1f70e5257916c120973dbe54ed52c"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 386123,
+        "endExclusive": 386139
+      },
+      "spanHash": "cb22c5cdeb97ebb019b1704dbe3a882fd988dbfa2236e00adc8a83acf9cd0c9d",
+      "nodeType": "ClassProperty",
+      "id": "ISO-SOURCE-11",
+      "labels": [
+        "Uce-inputShape"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/11.js.txt",
+        "bytes": 16,
+        "sha256": "cb22c5cdeb97ebb019b1704dbe3a882fd988dbfa2236e00adc8a83acf9cd0c9d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 414852,
+        "endExclusive": 415035
+      },
+      "spanHash": "f68dbefcf9c5107256dac8f131e7aa798484316c6907c5f9608924b84781470f",
+      "nodeType": "ClassMethod",
+      "id": "ISO-SOURCE-12",
+      "labels": [
+        "Uce-setPointerRegions"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/12.js.txt",
+        "bytes": 183,
+        "sha256": "f68dbefcf9c5107256dac8f131e7aa798484316c6907c5f9608924b84781470f"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 419280,
+        "endExclusive": 424863
+      },
+      "spanHash": "2e07007492871b676ac306fdfa095c1f5fe7acbc4afb041d8db0350234cb4223",
+      "nodeType": "ClassMethod",
+      "id": "ISO-SOURCE-13",
+      "labels": [
+        "Uce-createWindow"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/13.js.txt",
+        "bytes": 5583,
+        "sha256": "2e07007492871b676ac306fdfa095c1f5fe7acbc4afb041d8db0350234cb4223"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 451044,
+        "endExclusive": 451709
+      },
+      "spanHash": "3987e917a9fd934ec3981d07d69117ac75bc4df84fd1f6159bbcc1c8f96ee938",
+      "nodeType": "ClassMethod",
+      "id": "ISO-SOURCE-14",
+      "labels": [
+        "Uce-applyPointerInteractivityPolicy"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/14.js.txt",
+        "bytes": 665,
+        "sha256": "3987e917a9fd934ec3981d07d69117ac75bc4df84fd1f6159bbcc1c8f96ee938"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 451900,
+        "endExclusive": 452001
+      },
+      "spanHash": "cf3bee67e01ad2cd3ee2ced2ffc9e0d2e7cb7b187127698e9183a11ee2e4b863",
+      "nodeType": "CallExpression",
+      "id": "ISO-SOURCE-15",
+      "labels": [
+        "native-set-input-shape-call"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/15.js.txt",
+        "bytes": 101,
+        "sha256": "cf3bee67e01ad2cd3ee2ced2ffc9e0d2e7cb7b187127698e9183a11ee2e4b863"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 779648,
+        "endExclusive": 779702
+      },
+      "spanHash": "841f508cbceb79c468a31c20d2ac31059c2d94e6181d9b6e109afd90589eda63",
+      "nodeType": "ClassMethod",
+      "id": "ISO-SOURCE-16",
+      "labels": [
+        "xpe-constructor"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/16.js.txt",
+        "bytes": 54,
+        "sha256": "841f508cbceb79c468a31c20d2ac31059c2d94e6181d9b6e109afd90589eda63"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 779702,
+        "endExclusive": 779776
+      },
+      "spanHash": "df4ba639ca588f60ac071282592b617658004266c613e6ff4b1db46ad42b6676",
+      "nodeType": "ClassMethod",
+      "id": "ISO-SOURCE-17",
+      "labels": [
+        "xpe-setPointerRegions"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/17.js.txt",
+        "bytes": 74,
+        "sha256": "df4ba639ca588f60ac071282592b617658004266c613e6ff4b1db46ad42b6676"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3288798,
+        "endExclusive": 3289040
+      },
+      "spanHash": "be1d0f4be778ad90f96b7d390b9cf7e160a6dc37f7c939266007164f992f2649",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISO-SOURCE-18",
+      "labels": [
+        "K5-manager-selector"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/18.js.txt",
+        "bytes": 242,
+        "sha256": "be1d0f4be778ad90f96b7d390b9cf7e160a6dc37f7c939266007164f992f2649"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3329831,
+        "endExclusive": 3329851
+      },
+      "spanHash": "e21e1192af91c2a02ad15e4f20fd0560a008541fadaa6af35a06b3eab12ea072",
+      "nodeType": "VariableDeclarator",
+      "id": "ISO-SOURCE-19",
+      "labels": [
+        "provider-manager-binding"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/19.js.txt",
+        "bytes": 20,
+        "sha256": "e21e1192af91c2a02ad15e4f20fd0560a008541fadaa6af35a06b3eab12ea072"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3333296,
+        "endExclusive": 3333308
+      },
+      "spanHash": "a302539daedfb1b14f785c5ef9a18a69d051bae0fda32dc045d13c421880c252",
+      "nodeType": "NewExpression",
+      "id": "ISO-SOURCE-20",
+      "labels": [
+        "new-xpe"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/20.js.txt",
+        "bytes": 12,
+        "sha256": "a302539daedfb1b14f785c5ef9a18a69d051bae0fda32dc045d13c421880c252"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3757889,
+        "endExclusive": 3764145
+      },
+      "spanHash": "e26ca9c17cf1219522af5077ef47ceb18789b247026f9486f9a3ab0ab733f0a7",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISO-SOURCE-21",
+      "labels": [
+        "M1e-window-services"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/21.js.txt",
+        "bytes": 6256,
+        "sha256": "e26ca9c17cf1219522af5077ef47ceb18789b247026f9486f9a3ab0ab733f0a7"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 1811,
+        "endExclusive": 1819
+      },
+      "spanHash": "29f0a2c1a1c2f02a17b4958ec38f9c784fb095a7de4172a7558206036bd991b4",
+      "nodeType": "ImportSpecifier",
+      "id": "ISO-SOURCE-22",
+      "labels": [
+        "On-provider-specifier"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/22.js.txt",
+        "bytes": 8,
+        "sha256": "29f0a2c1a1c2f02a17b4958ec38f9c784fb095a7de4172a7558206036bd991b4"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 2888,
+        "endExclusive": 2918
+      },
+      "spanHash": "c3a4035e463dc7f60dce7a71f6086506de3b0ef56c27dc19350b8e5217441f5b",
+      "nodeType": "StringLiteral",
+      "id": "ISO-SOURCE-23",
+      "labels": [
+        "On-provider-module"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/23.js.txt",
+        "bytes": 30,
+        "sha256": "c3a4035e463dc7f60dce7a71f6086506de3b0ef56c27dc19350b8e5217441f5b"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 280650,
+        "endExclusive": 281396
+      },
+      "spanHash": "a7c73771f76b620beb952835d700b321240ccfe7031506a84cb97013b89075c8",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISO-SOURCE-24",
+      "labels": [
+        "geometry-M_"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/24.js.txt",
+        "bytes": 746,
+        "sha256": "a7c73771f76b620beb952835d700b321240ccfe7031506a84cb97013b89075c8"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 281603,
+        "endExclusive": 281709
+      },
+      "spanHash": "607987c622dba6ef8554a300e4d3da2da156c0b84bfac6b2221597ccaafc7877",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISO-SOURCE-25",
+      "labels": [
+        "geometry-F_"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/25.js.txt",
+        "bytes": 106,
+        "sha256": "607987c622dba6ef8554a300e4d3da2da156c0b84bfac6b2221597ccaafc7877"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 281709,
+        "endExclusive": 283152
+      },
+      "spanHash": "d1676a2a2d6efe6d53c30fd51eeaf34f05c8b5dd4624ab36083febe7cb37deb5",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISO-SOURCE-26",
+      "labels": [
+        "geometry-I_"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/26.js.txt",
+        "bytes": 1443,
+        "sha256": "d1676a2a2d6efe6d53c30fd51eeaf34f05c8b5dd4624ab36083febe7cb37deb5"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 283790,
+        "endExclusive": 283861
+      },
+      "spanHash": "2a081f26ddfcf0972233f57c67400101771fe7bf9126206f44318150d67b1b69",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISO-SOURCE-27",
+      "labels": [
+        "geometry-R_"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/27.js.txt",
+        "bytes": 71,
+        "sha256": "2a081f26ddfcf0972233f57c67400101771fe7bf9126206f44318150d67b1b69"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 283861,
+        "endExclusive": 284052
+      },
+      "spanHash": "e8a04fa6377a5770fbbbc89d237c3027348250c48a58637348e9fa9f07ee41fb",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISO-SOURCE-28",
+      "labels": [
+        "geometry-z_"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/28.js.txt",
+        "bytes": 191,
+        "sha256": "e8a04fa6377a5770fbbbc89d237c3027348250c48a58637348e9fa9f07ee41fb"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 285827,
+        "endExclusive": 285871
+      },
+      "spanHash": "72bece69622810690eb3869c24614c24be295b3c1bb456c931e8f1e54e796cd3",
+      "nodeType": "AssignmentExpression",
+      "id": "ISO-SOURCE-29",
+      "labels": [
+        "selector-Z_"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/29.js.txt",
+        "bytes": 44,
+        "sha256": "72bece69622810690eb3869c24614c24be295b3c1bb456c931e8f1e54e796cd3"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 285872,
+        "endExclusive": 286124
+      },
+      "spanHash": "efac2c246b1d92054a2641783a62d400b6ac0626b6ba0941503d282fd1f42553",
+      "nodeType": "AssignmentExpression",
+      "id": "ISO-SOURCE-30",
+      "labels": [
+        "selector-Q_"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/30.js.txt",
+        "bytes": 252,
+        "sha256": "efac2c246b1d92054a2641783a62d400b6ac0626b6ba0941503d282fd1f42553"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 307718,
+        "endExclusive": 307737
+      },
+      "spanHash": "0d5c6b92acab4cd814c0dff59a42e7d928ef0f988845deee0b4a084c804c9e24",
+      "nodeType": "VariableDeclarator",
+      "id": "ISO-SOURCE-31",
+      "labels": [
+        "binding-Li-307704"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/31.js.txt",
+        "bytes": 19,
+        "sha256": "0d5c6b92acab4cd814c0dff59a42e7d928ef0f988845deee0b4a084c804c9e24"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/avatar-overlay-native-page-7ec1028a9c34.js",
+      "sourceHash": "c5dcfeecc9d984ee1a416e3de72f6d0580255e6b5b9dac08398379ae6c048aa5",
+      "byteRange": {
+        "start": 308983,
+        "endExclusive": 309162
+      },
+      "spanHash": "159e80e35da8dcc55e2881e0d534238df130cdb73f0562e06bf1026674026c8a",
+      "nodeType": "ArrowFunctionExpression",
+      "id": "ISO-SOURCE-32",
+      "labels": [
+        "pointer-regions-publisher"
+      ],
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/input-shape-owner/32.js.txt",
+        "bytes": 179,
+        "sha256": "159e80e35da8dcc55e2881e0d534238df130cdb73f0562e06bf1026674026c8a"
+      }
+    }
+  ],
+  "sourceJoins": [
+    {
+      "id": "ISO-J01",
+      "claim": "Program Uce class property -> one saved new Uce in M1e -> returned avatarOverlayManager",
+      "units": [
+        "ISO-SOURCE-03",
+        "ISO-SOURCE-02",
+        "ISO-SOURCE-21"
+      ],
+      "bindingProof": [
+        {
+          "byteRange": {
+            "start": 384477,
+            "endExclusive": 384480
+          },
+          "parentType": "VariableDeclarator",
+          "ancestors": [
+            {
+              "type": "VariableDeclarator",
+              "name": "Uce",
+              "byteRange": {
+                "start": 384477,
+                "endExclusive": 453355
+              }
+            }
+          ]
+        },
+        {
+          "byteRange": {
+            "start": 3761065,
+            "endExclusive": 3761068
+          },
+          "parentType": "NewExpression",
+          "ancestors": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "M1e",
+              "byteRange": {
+                "start": 3757889,
+                "endExclusive": 3764145
+              }
+            },
+            {
+              "type": "VariableDeclarator",
+              "name": "ne",
+              "byteRange": {
+                "start": 3761058,
+                "endExclusive": 3761075
+              }
+            }
+          ]
+        }
+      ],
+      "qualification": "Selected lexical/source assembly relationship only; not a complete caller census, mode classification or live provider identity."
+    },
+    {
+      "id": "ISO-J02",
+      "claim": "createAppHost local t -> K5 options/origin selector -> new xpe(t,e) -> origin-scoped manager call",
+      "units": [
+        "ISO-SOURCE-19",
+        "ISO-SOURCE-18",
+        "ISO-SOURCE-20",
+        "ISO-SOURCE-16",
+        "ISO-SOURCE-17"
+      ],
+      "bindingProof": [
+        {
+          "label": "new-xpe-method-owner",
+          "method": "createAppHost",
+          "byteRange": {
+            "start": 3329810,
+            "endExclusive": 3341402
+          }
+        }
+      ],
+      "qualification": "Selected lexical/source assembly relationship only; not a complete caller census, mode classification or live provider identity."
+    },
+    {
+      "id": "ISO-J03",
+      "claim": "renderer On import -> Sv-local Li -> selected callback/geometry -> setPointerRegions surface; no wire-delivery claim",
+      "units": [
+        "ISO-SOURCE-22",
+        "ISO-SOURCE-23",
+        "ISO-SOURCE-31",
+        "ISO-SOURCE-32",
+        "ISO-SOURCE-25",
+        "ISO-SOURCE-27",
+        "ISO-SOURCE-28",
+        "ISO-SOURCE-24",
+        "ISO-SOURCE-26",
+        "ISO-SOURCE-30",
+        "ISO-SOURCE-29"
+      ],
+      "bindingProof": [
+        {
+          "local": "On",
+          "byteRange": {
+            "start": 212566,
+            "endExclusive": 212568
+          },
+          "parentType": "VariableDeclarator",
+          "functionScopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "Zg",
+              "byteRange": {
+                "start": 205697,
+                "endExclusive": 243260
+              }
+            }
+          ],
+          "declaration": {
+            "type": "VariableDeclarator",
+            "byteRange": {
+              "start": 212566,
+              "endExclusive": 212586
+            },
+            "text": "On=Tn&&Cn!==`hidden`"
+          }
+        },
+        {
+          "local": "On",
+          "byteRange": {
+            "start": 307721,
+            "endExclusive": 307723
+          },
+          "parentType": "MemberExpression",
+          "functionScopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "Sv",
+              "byteRange": {
+                "start": 296632,
+                "endExclusive": 340149
+              }
+            }
+          ],
+          "declaration": {
+            "type": "VariableDeclarator",
+            "byteRange": {
+              "start": 307718,
+              "endExclusive": 307737
+            },
+            "text": "Li=On.avatarOverlay"
+          }
+        }
+      ],
+      "qualification": "Selected lexical/source assembly relationship only; not a complete caller census, mode classification or live provider identity."
+    }
+  ],
+  "priorEvidenceRefinement": {
+    "priorEvidence": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+      "bytes": 62319,
+      "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+      "jsonPointer": "/facts/10"
+    },
+    "priorClaimFragment": "保存的完整调用为顶层能力检测；该记录没有完整封闭owner",
+    "refinement": "The call is a Uce ClassProperty initializer, evaluated per constructed instance. M1e is a selected construction/return owner; complete product/provider closure remains unproven.",
+    "supportingFactIds": [
+      "ISO-01",
+      "ISO-02"
+    ],
+    "originalImmutableRecordChanged": false,
+    "publicPropertyAbsenceObservationChanged": false
+  },
+  "decision": {
+    "runtimeGroup": "RAM-06",
+    "status": "bounded-source-owner-and-interactivity-contract-resolved; native-provider-integration-open",
+    "firstPartyUnits": [
+      {
+        "responsibility": "Renderer DOM rectangle collection and change suppression",
+        "proposedPath": "apps/desktop/src/renderer/overlays/pointer-regions.ts"
+      },
+      {
+        "responsibility": "Origin-scoped RPC provider and overlay-manager selection",
+        "proposedPath": "apps/desktop/src/main/overlays/pointer-region-provider.ts"
+      },
+      {
+        "responsibility": "Overlay shape/passthrough state machine",
+        "proposedPath": "apps/desktop/src/main/overlays/pointer-interactivity.ts"
+      }
+    ],
+    "runtimeProviderContract": [
+      "Query actual input-shape support at manager creation with a defined unsupported result; raw missing-method invocation must not pass through unchanged.",
+      "Preserve setInputShape rectangles, empty-list submission, exact result/error behavior and setIgnoreMouseEvents interactions.",
+      "Preserve existing fallback policy, including hidden Windows handling and cursor refresh. Fallback existence does not waive native hit-testing parity."
+    ],
+    "mode": "unknown; retain; pet/Quick Chat/voice names are not positive ChatGPT-only ownership evidence",
+    "taskJoin": "W03/W07 foundation responsibility proposal; exact current feature-consumer joins remain open.",
+    "thirdPartyRule": "Keep window/native runtime and imported RPC/base/equality/DOM helpers behind dependencies; no vendor implementation generated.",
+    "newRuntimeBoundary": "window.setInputShape is an instance effect contract newly associated here; the historical fixed 17-path missing-member denominator is unchanged.",
+    "acceptance": [
+      "Capability query, window creation and pointer delivery on each target platform/runtime.",
+      "Rectangle scaling/viewport clipping, empty lists, native return/error and origin mismatch.",
+      "Visible/hidden, interactive/noninteractive, show/hide/recreate and mouse forwarding transitions.",
+      "Actual renderer service/IPC receiver and overlay-kind selection; complete retained-feature/mode consumer ownership."
+    ],
+    "fullRuntimeRouteAccepted": false
+  },
+  "replay": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/input-shape-owner-v1-replay.json",
+    "bytes": 2275,
+    "sha256": "9402f02b66ec52ad5c893d7162cab1c2e75dce11c156c9af7d15ca5f593d3602"
+  },
+  "evidence": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/input-shape-owner-v1-evidence.jsonl",
+    "bytes": 8062,
+    "sha256": "dab5f02e1affd12ddf494c927ac54198a62b887db467b9179e1f8231416a5622"
+  },
+  "query": {
+    "path": ".analysis-local/input-shape-owner-work/literal-query.json",
+    "bytes": 761,
+    "sha256": "b2132c7635095db4e81ed4fdae3a10fa1f4a535e1eee18a813207447beef943d"
+  },
+  "counts": {
+    "newSourceFacts": 10,
+    "selectedSourceUnits": 32,
+    "selectedSourceBytes": 18262,
+    "distinctProgramsParsed": 2,
+    "fullProgramParsePasses": 5,
+    "isolatedSourceCasesPassed": 16,
+    "newReaRuns": 0,
+    "newModelSubmissions": 0,
+    "newClientLaunches": 0,
+    "realNativeCalls": 0,
+    "productScenariosExecuted": 0,
+    "newFeatureDefinitions": 0,
+    "featureModeChanges": 0,
+    "newClientImplementation": 0
+  },
+  "remaining": [
+    "Actual native support/result/coordinate semantics and independently buildable runtime implementation.",
+    "Imported shared fN provider instance, RPC/base wire and DOM helper provenance/complete consumers.",
+    "Retained product-mode ownership and complete overlay/Pets/voice/remote-PIP flows."
+  ],
+  "inputPins": [
+    {
+      "path": ".analysis-local/input-shape-owner-work/inspect.cjs",
+      "bytes": 4083,
+      "sha256": "2c1ba80ad2277138412fefac0f5d011efe17a8dd9f393ee85f53bc6c3dff6233"
+    },
+    {
+      "path": ".analysis-local/input-shape-owner-work/inspect_detail.cjs",
+      "bytes": 4829,
+      "sha256": "6d1036115099a3ad4db3d2a1e822c3e2db63be26ad218c7e0acfcf69cf620939"
+    },
+    {
+      "path": ".analysis-local/input-shape-owner-work/inspection.json",
+      "bytes": 44020,
+      "sha256": "52c809942ed65ba21abd542a4e288a828226c354446cf4461d10a2a6e64572c4"
+    },
+    {
+      "path": ".analysis-local/input-shape-owner-work/detail.json",
+      "bytes": 32462,
+      "sha256": "a5dde652df18668acf83fe821b7092853d131a1a4312fc813637f9dfeebefa35"
+    },
+    {
+      "path": ".analysis-local/input-shape-owner-work/replay.cjs",
+      "bytes": 5772,
+      "sha256": "016229d41df0a9eebcabfd3111b8b5fc55a46fe9d6aeeae10ef5c479f507cdb5"
+    },
+    {
+      "path": ".analysis-local/input-shape-owner-work/replay.json",
+      "bytes": 2275,
+      "sha256": "9402f02b66ec52ad5c893d7162cab1c2e75dce11c156c9af7d15ca5f593d3602"
+    },
+    {
+      "path": ".analysis-local/input-shape-owner-work/literal-query.json",
+      "bytes": 761,
+      "sha256": "b2132c7635095db4e81ed4fdae3a10fa1f4a535e1eee18a813207447beef943d"
+    },
+    {
+      "path": "scripts/analysis/publish_input_shape_owner_v1.py",
+      "bytes": 18471,
+      "sha256": "89bbd5a59544fe70fce5a442822e86c354d8b922f1a852288993b0a02db0226b"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-adoption-matrix-v1.json",
+      "bytes": 54887,
+      "sha256": "a52d4b415dbef9ae6bdd0c084a64bfd2c4f5589a4be2ecd3d4149ec939d323bd"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+      "bytes": 62319,
+      "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+      "bytes": 2065758,
+      "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+      "bytes": 1171222,
+      "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v24-scenarios.json",
+      "bytes": 1944258,
+      "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+    }
+  ],
+  "fullAnalysisCompleted": false,
+  "fullRuntimeRouteSelected": false
+}

@@ -1,0 +1,1248 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T23:43:33.235229+00:00",
+  "scope": "Two frozen app inventory calls, their exact suggestion-policy and host eligibility consumers, and the positive Codex retention boundary.",
+  "inputs": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v42.json",
+      "bytes": 1649427,
+      "sha256": "f64e321c69956bd6df73ddc592523061d0770784c91335976a35cc23d9f89a57"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v26.json",
+      "bytes": 528968,
+      "sha256": "ac921b5a1e03c62e39e854406e8a1a4f9a72c7ff175cabb34d0daf11fd2e723d"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/entry-family-map.json",
+      "bytes": 3217503,
+      "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/mcp-app-entry-paths-v1.json",
+      "bytes": 850087,
+      "sha256": "cbb4405c442845e39e01e16a8592e5a5aa56fe1d55117647e06f615c063f402a"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "rawEvidence": {
+    "qualified-extraction-3.json.gz": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/app-inventory-suggestion-support-v1/qualified-extraction-3.json.gz",
+      "bytes": 17161,
+      "sha256": "ff5d020decc7a68e1f96ef7bc68395e30cd330d2490cc5cc0ea60471cd580d4e"
+    },
+    "extract-3.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/app-inventory-suggestion-support-v1/extract-3.cjs",
+      "bytes": 15178,
+      "sha256": "96c5ab872d3165fb5451b39b3945e5d70e2cb1d31e13f8ddfdd07453ad277695"
+    },
+    "verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/app-inventory-suggestion-support-v1/verification.json",
+      "bytes": 20339,
+      "sha256": "660dd3c5013728a7b2170e636b126e291ea3c0a83108bc507377bc13983bcfe8"
+    },
+    "verify.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/app-inventory-suggestion-support-v1/verify.cjs",
+      "bytes": 11098,
+      "sha256": "11fac65a67b1be4cf4e0ef5cf871bd26773772f6481a740bea311b3bc688b014"
+    },
+    "publish.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/app-inventory-suggestion-support-v1/publish.py",
+      "bytes": 22408,
+      "sha256": "449babb65fa3a85d7f4fbef1adfc0feb705bd95664ea93820beb4d44518435ac"
+    },
+    "final-readback.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/app-inventory-suggestion-support-v1/final-readback.py",
+      "bytes": 8776,
+      "sha256": "f1805efad010a0834b2be32e2738ff6848224fd4854ce012023cf566bd531ded"
+    }
+  },
+  "facts": [
+    {
+      "id": "AIS-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Br先await app/installed({})，再把已安装ID按100分组，并行app/read({appIds})。metadata以ID建Map，输出按installed顺序逐项归一化；callable/enabled来自installed。名称依次用metadata.name、runtimeName、id；两个图标URL互为后备。Br未加局部catch、重试、超时或取消逻辑，任一读取拒绝向调用方传播；继承的传输合同仍独立。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "byteRange": {
+          "start": 87471,
+          "endExclusive": 88165
+        },
+        "spanHash": "77f7ac50d380fb533ca697df30774d523f01cdb4e805e0bf1b4168c14b19ab47",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 77787,
+            "endExclusive": 77793
+          },
+          "spanHash": "6e5f2ab00951dc2116fcd8c53aa6ee5fbe871959ef30d2205ac28d9c9cfbd946"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 34510,
+            "endExclusive": 34523
+          },
+          "spanHash": "4a62ae1629d50fffa6ccee5aa0cf9b8de759ba44be348d32d4fba621ed842ca4"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    },
+    {
+      "id": "AIS-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Lr并行读取Br清单与项目saved configuration，仅保留accessible且enabled项。应用默认工具approval mode或任一工具approval mode为prompt，会把整个应用加入disabled集合。这是后台建议的应用可用性策略，不是用户卸载、停用或执行审批UI。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "byteRange": {
+          "start": 86316,
+          "endExclusive": 87102
+        },
+        "spanHash": "a498ecb5e327bebb1788c4226a467caf94a236192b03dcc9529b92ac15df14f5",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 87102,
+            "endExclusive": 87321
+          },
+          "spanHash": "684bd7c1e9ea27bad29d91081eb43faeaaa1fd6b3aefce31739ead3d00eab7df"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 88165,
+            "endExclusive": 88215
+          },
+          "spanHash": "9b3466dc09e2344a689699f0c4afe724b5aa640f173be60212f93c8b8fa6c6b9"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    },
+    {
+      "id": "AIS-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Lr仅对可用、启用且ID以connector_开头的项考虑TOS；无此类项不取token。无token时全部此类connector禁用；有token时，personalization_toggle_blurb非null或TOS查询抛错的connector也禁用。Hr通过具名HTTP端口查询TOS；Wr发送OAI-Product-Sku:CODEX。HTTP路径/错误文本中的ChatGPT不能作为整体排除依据。getAuthToken自身拒绝仍使Lr拒绝。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "byteRange": {
+          "start": 86316,
+          "endExclusive": 87102
+        },
+        "spanHash": "a498ecb5e327bebb1788c4226a467caf94a236192b03dcc9529b92ac15df14f5",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 88215,
+            "endExclusive": 88389
+          },
+          "spanHash": "1f458157f69527753250f65161266c66bc09746782cb2050a42ef93f1255b780"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 88389,
+            "endExclusive": 88577
+          },
+          "spanHash": "92c6c8020be2d779df3c2535ab16d2877ae099f8d581f8492ec347276ca2fc97"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 88577,
+            "endExclusive": 88836
+          },
+          "spanHash": "78e3c1cb238c0e540473f868c6553bfb0862243bae1cb0511b6f77d048f820ab"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 77794,
+            "endExclusive": 77809
+          },
+          "spanHash": "0fa4e680ff6ff35e26aaa45e7ca293583caa202d78c035805aacba93733ea2de"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 77810,
+            "endExclusive": 77820
+          },
+          "spanHash": "bd6fe5f9b37299cbbe7e9a79c50f175dda6524ef590d61f3e18f4279ab4f6856"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 77821,
+            "endExclusive": 77841
+          },
+          "spanHash": "76e407533f691317292e8ec1d8508a0dc92647134b6e218b2fafc4fa721c3995"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 77976,
+            "endExclusive": 78050
+          },
+          "spanHash": "44dbc735ee4503f376bee9ccd549b87562ecf97ebb21a7318ad329b938e230db"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 88836,
+            "endExclusive": 89045
+          },
+          "spanHash": "2ab45249b46af74e36f2c0c56aee4a874028705e5bf5aa0b30e3064b5bf4be38"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    },
+    {
+      "id": "AIS-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Jr把名称规范为小写ASCII slug，空slug后备到connector ID或原ID。Lr在全部可用且启用项上计slug碰撞，再只为未禁用且slug唯一的项建立prompt ID→真实ID映射；禁用项仍可阻止同名未禁用项映射。connected/disabled输出仅含规范ID与名称，生成结果后据映射恢复appIds。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "byteRange": {
+          "start": 89141,
+          "endExclusive": 89320
+        },
+        "spanHash": "c3f31a3744ef58c735178cd79386992af7dc440d82891761c973069e7d7e0787",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 86316,
+            "endExclusive": 87102
+          },
+          "spanHash": "a498ecb5e327bebb1788c4226a467caf94a236192b03dcc9529b92ac15df14f5"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 89097,
+            "endExclusive": 89141
+          },
+          "spanHash": "7a6a3cae266b14b7cbe7b70c8e5b4b9e0b707983b3451fa6b5d72bef0060a12d"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 79454,
+            "endExclusive": 83084
+          },
+          "spanHash": "8cc576015868fdd0294381a106c3e15d0d528e87e24e276db5398996814c1c91"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    },
+    {
+      "id": "AIS-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Or两处Lr调用均catch为zr：空清单、disableAllApps:true、appsLookupSucceeded:false。projectless早退要求查询成功且无可用connected app，并考虑featureDiscovery/productFeatures；失败不会被当作成功空清单走同一早退。Yr把disableAllApps转为apps._default三项false，并保留插件/MCP禁用配置。该错误降级不等于模型生成成功，其他读取与模型/安全筛查仍可失败。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "byteRange": {
+          "start": 79454,
+          "endExclusive": 83084
+        },
+        "spanHash": "8cc576015868fdd0294381a106c3e15d0d528e87e24e276db5398996814c1c91",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 87321,
+            "endExclusive": 87471
+          },
+          "spanHash": "3c90cb29c52ce191c0adce0655b7a7a53e387640e100006a197123d5ad379d38"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 89320,
+            "endExclusive": 89687
+          },
+          "spanHash": "eec4a43b657d0e3f5d6814f0acfe24dfecf947ad550deffccf0c54603eec911d"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 77915,
+            "endExclusive": 77975
+          },
+          "spanHash": "1bced493775f624c2e2cc2f1aae8ff0dec6447f28cff21c6da0a47d0d8732379"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    },
+    {
+      "id": "AIS-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "主进程i为require(src-BJv5Mk7n.js)，其ti/Zr/Xr分别经精确CJS getter连接Or/Br/Vr。yte后台事件路径经过Ni、Pi.enabled及启动阶段判断，明确以surface:codex调用Or；另一刷新处理器使用传入surface或vte(settings)后备。此为正向Codex保留依据，不证明全部建议UI模式或本次实际执行。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 71670,
+          "endExclusive": 73549
+        },
+        "spanHash": "dacefe5b92657783ac53c6a122523821819a82ef41495d335767c451ab360bd5",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "CallExpression",
+          "byteRange": {
+            "start": 72045,
+            "endExclusive": 72299
+          },
+          "spanHash": "16f3c927b84128c7b3b0dd49c353e193af2950340cc6443cece91d0071231a77"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "ArrowFunctionExpression",
+          "byteRange": {
+            "start": 1414636,
+            "endExclusive": 1415378
+          },
+          "spanHash": "5366b61635aa9c936d6c90e6e1c5a3d12d01bfe99345cbb864915654e8c0732e"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 167,
+            "endExclusive": 197
+          },
+          "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "CallExpression",
+          "byteRange": {
+            "start": 1588753,
+            "endExclusive": 1588830
+          },
+          "spanHash": "223aee8f1d911baf49f7b6410039205538d415274678a357e535e54cbce53579"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "CallExpression",
+          "byteRange": {
+            "start": 1580976,
+            "endExclusive": 1581053
+          },
+          "spanHash": "8655fa1b7b6c02790274e22b7c13badb0bbdfe29b2f22115c0885afd2e01631d"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "CallExpression",
+          "byteRange": {
+            "start": 1580354,
+            "endExclusive": 1580431
+          },
+          "spanHash": "23c4e4337f0e24487a0d3d2b430cc9aa765ea41967a28b2df15cda864ed52a91"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    },
+    {
+      "id": "AIS-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Jde在app-host对象的ambientSuggestions属性下注入。hasAccessibleAndEnabledApp按hostId选择连接，await同一Br再some(Vr)，没有局部catch，不走Lr配置/TOS禁用策略。renderer.c读取该可选服务，服务不存在时返回false，调用拒绝仍成为查询错误；query key含host与account，enabled由调用方传入，retry:false、staleTime五分钟。不能把这个布尔查询等同于后台建议最终可使用的应用集合。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 712021,
+          "endExclusive": 712147
+        },
+        "spanHash": "f37088ef88dbf7b19eac59642c71949152bdb202c2bd19458df115b389808a9b",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 711586,
+            "endExclusive": 712148
+          },
+          "spanHash": "df4a32a85c0b08e816bdeb5fd13b871f0a3366458b576fe92741dc69952c5a09"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "ObjectProperty",
+          "byteRange": {
+            "start": 3332502,
+            "endExclusive": 3332562
+          },
+          "spanHash": "cba1db44a1902b07f1b0f61dae2453eefd1e63d02b72bbd60bce6bb53be62407"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/new-chat-page-suggestions-eligibility-ef474babeaea.js",
+          "sourceHash": "3d427e4746e336d881495af0a4c444b30accd5dec91d153e5d08ea5408cd397c",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 158,
+            "endExclusive": 557
+          },
+          "spanHash": "5ddb7881cb8e11566abe4cf715caa4b48954041f2c3dd0ea2d93a30770db6a10"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/new-chat-page-suggestions-eligibility-ef474babeaea.js",
+          "sourceHash": "3d427e4746e336d881495af0a4c444b30accd5dec91d153e5d08ea5408cd397c",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 557,
+            "endExclusive": 591
+          },
+          "spanHash": "b63006dabb5958e442ff64f5f173a1cc01f803d5304e55872e6fa4b97ea93d0b"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/new-chat-page-suggestions-eligibility-ef474babeaea.js",
+          "sourceHash": "3d427e4746e336d881495af0a4c444b30accd5dec91d153e5d08ea5408cd397c",
+          "nodeType": "FunctionDeclaration",
+          "byteRange": {
+            "start": 591,
+            "endExclusive": 692
+          },
+          "spanHash": "37c54765ce190f4d9b32c3da8d98cc0d108329c322808c594d166d149512ee27"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    },
+    {
+      "id": "AIS-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Br的分组辅助函数fn来自e.a(c.t())，c为独立chunk-D4ZOuLf6.js，t getter返回该chunk的u工厂。该模块边界可保留为可替换依赖端口；本批没有证明其公开包名称、准确版本或与任意候选替换包完全兼容。恢复项目不得据此生成该辅助库实现副本；许可证/包身份继续保留为依赖调查条件。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "byteRange": {
+          "start": 34510,
+          "endExclusive": 34523
+        },
+        "spanHash": "4a62ae1629d50fffa6ccee5aa0cf9b8de759ba44be348d32d4fba621ed842ca4",
+        "nodeType": "VariableDeclarator"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 354,
+            "endExclusive": 386
+          },
+          "spanHash": "141273dd3d778c8649e7a92cbba744739870b86e559beb54c35fd8f7d23bbbef"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/chunk-D4ZOuLf6.js",
+          "sourceHash": "1aba95d70debf82808bfa88ee3e47930dbc895574400f3581fea7a802ba30d5d",
+          "nodeType": "VariableDeclarator",
+          "byteRange": {
+            "start": 1219,
+            "endExclusive": 1465
+          },
+          "spanHash": "8cb4593a3b1a64e6ab1f33ff1af77c1cfbf2c36b93ea82506a69464f486f7b28"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/chunk-D4ZOuLf6.js",
+          "sourceHash": "1aba95d70debf82808bfa88ee3e47930dbc895574400f3581fea7a802ba30d5d",
+          "nodeType": "CallExpression",
+          "byteRange": {
+            "start": 1922,
+            "endExclusive": 1997
+          },
+          "spanHash": "361f358d024b2d193d7cffddb05bceb500be25599774b495370c59a199f6a3a5"
+        }
+      ],
+      "method": "static-code: complete-Program lexical identities, exact CJS getter joins, independent AST/range and control-flow checks",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/account/flag, mount and provider effects unverified"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "AIS-D01",
+      "entryId": "app-server-direct-call-lexical-candidate:3e80fb5d49dadff1b2899242",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/903"
+      },
+      "sourceOwner": "Br",
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+        "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+        "nodeType": "CallExpression",
+        "byteRange": {
+          "start": 87510,
+          "endExclusive": 87552
+        },
+        "spanHash": "5c769f463fde2432571d4e9d8c774def643b2e447b3337d74efb8a5e18fc6938"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+        "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+        "byteRange": {
+          "start": 87512,
+          "endExclusive": 87548
+        },
+        "spanHash": "ae258a8f3b06541f94ffde9b0c94d6e7f14fe464deba08674414f43287b471d3"
+      },
+      "disposition": "explicit-app-inventory-suggestion-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "AIS-F01",
+        "AIS-F05",
+        "AIS-F06",
+        "AIS-F07"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "positiveRetainedConsumer": "main.yte → src export ti/Or → Lr → Br; explicit surface:codex",
+      "reason": "app/installed承担后台建议上下文和所选宿主应用资格查询的清单支撑；具体Codex调用成立，不能随同Jde的ChatGPT命名方法整体删除。",
+      "remainingWork": "全局功能模式、renderer实际挂载/enablement、服务/账户条件、真实批量读取及查询失效未验证；已明的Br/Lr职责和两种错误策略不再向下递归。",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false
+    },
+    {
+      "id": "AIS-D02",
+      "entryId": "app-server-direct-call-lexical-candidate:3a815b928889b1543924b737",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/904"
+      },
+      "sourceOwner": "Br",
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+        "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+        "nodeType": "CallExpression",
+        "byteRange": {
+          "start": 87614,
+          "endExclusive": 87659
+        },
+        "spanHash": "53479c8d0975661ab8134fd5c3d41a626bc7ddd16fe3eb9506763e966cca69a8"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+        "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+        "byteRange": {
+          "start": 87616,
+          "endExclusive": 87647
+        },
+        "spanHash": "e4f9ff71d567fc3c451b9765e455b1280f853250403456e6628ebf53ef581269"
+      },
+      "disposition": "explicit-app-inventory-suggestion-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "AIS-F01",
+        "AIS-F05",
+        "AIS-F06",
+        "AIS-F07"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "positiveRetainedConsumer": "main.yte → src export ti/Or → Lr → Br; explicit surface:codex",
+      "reason": "app/read承担后台建议上下文和所选宿主应用资格查询的清单支撑；具体Codex调用成立，不能随同Jde的ChatGPT命名方法整体删除。",
+      "remainingWork": "全局功能模式、renderer实际挂载/enablement、服务/账户条件、真实批量读取及查询失效未验证；已明的Br/Lr职责和两种错误策略不再向下递归。",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "AIS-S001",
+      "bindingOrBoundary": "Br",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 87471,
+        "endExclusive": 88165
+      },
+      "spanHash": "77f7ac50d380fb533ca697df30774d523f01cdb4e805e0bf1b4168c14b19ab47"
+    },
+    {
+      "id": "AIS-S002",
+      "bindingOrBoundary": "Lr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 86316,
+        "endExclusive": 87102
+      },
+      "spanHash": "a498ecb5e327bebb1788c4226a467caf94a236192b03dcc9529b92ac15df14f5"
+    },
+    {
+      "id": "AIS-S003",
+      "bindingOrBoundary": "Or",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 79454,
+        "endExclusive": 83084
+      },
+      "spanHash": "8cc576015868fdd0294381a106c3e15d0d528e87e24e276db5398996814c1c91"
+    },
+    {
+      "id": "AIS-S004",
+      "bindingOrBoundary": "Yr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 89320,
+        "endExclusive": 89687
+      },
+      "spanHash": "eec4a43b657d0e3f5d6814f0acfe24dfecf947ad550deffccf0c54603eec911d"
+    },
+    {
+      "id": "AIS-S005",
+      "bindingOrBoundary": "Hr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 88215,
+        "endExclusive": 88389
+      },
+      "spanHash": "1f458157f69527753250f65161266c66bc09746782cb2050a42ef93f1255b780"
+    },
+    {
+      "id": "AIS-S006",
+      "bindingOrBoundary": "Ur",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 88389,
+        "endExclusive": 88577
+      },
+      "spanHash": "92c6c8020be2d779df3c2535ab16d2877ae099f8d581f8492ec347276ca2fc97"
+    },
+    {
+      "id": "AIS-S007",
+      "bindingOrBoundary": "Wr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 88577,
+        "endExclusive": 88836
+      },
+      "spanHash": "78e3c1cb238c0e540473f868c6553bfb0862243bae1cb0511b6f77d048f820ab"
+    },
+    {
+      "id": "AIS-S008",
+      "bindingOrBoundary": "Gr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 88836,
+        "endExclusive": 89045
+      },
+      "spanHash": "2ab45249b46af74e36f2c0c56aee4a874028705e5bf5aa0b30e3064b5bf4be38"
+    },
+    {
+      "id": "AIS-S009",
+      "bindingOrBoundary": "ir",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 77794,
+        "endExclusive": 77809
+      },
+      "spanHash": "0fa4e680ff6ff35e26aaa45e7ca293583caa202d78c035805aacba93733ea2de"
+    },
+    {
+      "id": "AIS-S010",
+      "bindingOrBoundary": "rr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 77787,
+        "endExclusive": 77793
+      },
+      "spanHash": "6e5f2ab00951dc2116fcd8c53aa6ee5fbe871959ef30d2205ac28d9c9cfbd946"
+    },
+    {
+      "id": "AIS-S011",
+      "bindingOrBoundary": "ar",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 77810,
+        "endExclusive": 77820
+      },
+      "spanHash": "bd6fe5f9b37299cbbe7e9a79c50f175dda6524ef590d61f3e18f4279ab4f6856"
+    },
+    {
+      "id": "AIS-S012",
+      "bindingOrBoundary": "or",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 77821,
+        "endExclusive": 77841
+      },
+      "spanHash": "76e407533f691317292e8ec1d8508a0dc92647134b6e218b2fafc4fa721c3995"
+    },
+    {
+      "id": "AIS-S013",
+      "bindingOrBoundary": "ur",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 77915,
+        "endExclusive": 77975
+      },
+      "spanHash": "1bced493775f624c2e2cc2f1aae8ff0dec6447f28cff21c6da0a47d0d8732379"
+    },
+    {
+      "id": "AIS-S014",
+      "bindingOrBoundary": "dr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 77976,
+        "endExclusive": 78050
+      },
+      "spanHash": "44dbc735ee4503f376bee9ccd549b87562ecf97ebb21a7318ad329b938e230db"
+    },
+    {
+      "id": "AIS-S015",
+      "bindingOrBoundary": "Rr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 87102,
+        "endExclusive": 87321
+      },
+      "spanHash": "684bd7c1e9ea27bad29d91081eb43faeaaa1fd6b3aefce31739ead3d00eab7df"
+    },
+    {
+      "id": "AIS-S016",
+      "bindingOrBoundary": "zr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 87321,
+        "endExclusive": 87471
+      },
+      "spanHash": "3c90cb29c52ce191c0adce0655b7a7a53e387640e100006a197123d5ad379d38"
+    },
+    {
+      "id": "AIS-S017",
+      "bindingOrBoundary": "Vr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 88165,
+        "endExclusive": 88215
+      },
+      "spanHash": "9b3466dc09e2344a689699f0c4afe724b5aa640f173be60212f93c8b8fa6c6b9"
+    },
+    {
+      "id": "AIS-S018",
+      "bindingOrBoundary": "Jr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 89141,
+        "endExclusive": 89320
+      },
+      "spanHash": "c3f31a3744ef58c735178cd79386992af7dc440d82891761c973069e7d7e0787"
+    },
+    {
+      "id": "AIS-S019",
+      "bindingOrBoundary": "qr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 89097,
+        "endExclusive": 89141
+      },
+      "spanHash": "7a6a3cae266b14b7cbe7b70c8e5b4b9e0b707983b3451fa6b5d72bef0060a12d"
+    },
+    {
+      "id": "AIS-S020",
+      "bindingOrBoundary": "fn",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 34510,
+        "endExclusive": 34523
+      },
+      "spanHash": "4a62ae1629d50fffa6ccee5aa0cf9b8de759ba44be348d32d4fba621ed842ca4"
+    },
+    {
+      "id": "AIS-S021",
+      "bindingOrBoundary": "c",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 354,
+        "endExclusive": 386
+      },
+      "spanHash": "141273dd3d778c8649e7a92cbba744739870b86e559beb54c35fd8f7d23bbbef"
+    },
+    {
+      "id": "AIS-S022",
+      "bindingOrBoundary": "renderer.c",
+      "sourcePath": "app.asar/webview/assets/new-chat-page-suggestions-eligibility-ef474babeaea.js",
+      "sourceHash": "3d427e4746e336d881495af0a4c444b30accd5dec91d153e5d08ea5408cd397c",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 158,
+        "endExclusive": 557
+      },
+      "spanHash": "5ddb7881cb8e11566abe4cf715caa4b48954041f2c3dd0ea2d93a30770db6a10"
+    },
+    {
+      "id": "AIS-S023",
+      "bindingOrBoundary": "renderer.l",
+      "sourcePath": "app.asar/webview/assets/new-chat-page-suggestions-eligibility-ef474babeaea.js",
+      "sourceHash": "3d427e4746e336d881495af0a4c444b30accd5dec91d153e5d08ea5408cd397c",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 557,
+        "endExclusive": 591
+      },
+      "spanHash": "b63006dabb5958e442ff64f5f173a1cc01f803d5304e55872e6fa4b97ea93d0b"
+    },
+    {
+      "id": "AIS-S024",
+      "bindingOrBoundary": "renderer.u",
+      "sourcePath": "app.asar/webview/assets/new-chat-page-suggestions-eligibility-ef474babeaea.js",
+      "sourceHash": "3d427e4746e336d881495af0a4c444b30accd5dec91d153e5d08ea5408cd397c",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 591,
+        "endExclusive": 692
+      },
+      "spanHash": "37c54765ce190f4d9b32c3da8d98cc0d108329c322808c594d166d149512ee27"
+    },
+    {
+      "id": "AIS-S025",
+      "bindingOrBoundary": "chunk.factory",
+      "sourcePath": "app.asar/.vite/build/chunk-D4ZOuLf6.js",
+      "sourceHash": "1aba95d70debf82808bfa88ee3e47930dbc895574400f3581fea7a802ba30d5d",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 1219,
+        "endExclusive": 1465
+      },
+      "spanHash": "8cb4593a3b1a64e6ab1f33ff1af77c1cfbf2c36b93ea82506a69464f486f7b28"
+    },
+    {
+      "id": "AIS-S026",
+      "bindingOrBoundary": "export.Xr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "CallExpression",
+      "byteRange": {
+        "start": 1580354,
+        "endExclusive": 1580431
+      },
+      "spanHash": "23c4e4337f0e24487a0d3d2b430cc9aa765ea41967a28b2df15cda864ed52a91"
+    },
+    {
+      "id": "AIS-S027",
+      "bindingOrBoundary": "export.Zr",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "CallExpression",
+      "byteRange": {
+        "start": 1580976,
+        "endExclusive": 1581053
+      },
+      "spanHash": "8655fa1b7b6c02790274e22b7c13badb0bbdfe29b2f22115c0885afd2e01631d"
+    },
+    {
+      "id": "AIS-S028",
+      "bindingOrBoundary": "export.ti",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeType": "CallExpression",
+      "byteRange": {
+        "start": 1588753,
+        "endExclusive": 1588830
+      },
+      "spanHash": "223aee8f1d911baf49f7b6410039205538d415274678a357e535e54cbce53579"
+    },
+    {
+      "id": "AIS-S029",
+      "bindingOrBoundary": "chunk.export.t",
+      "sourcePath": "app.asar/.vite/build/chunk-D4ZOuLf6.js",
+      "sourceHash": "1aba95d70debf82808bfa88ee3e47930dbc895574400f3581fea7a802ba30d5d",
+      "nodeType": "CallExpression",
+      "byteRange": {
+        "start": 1922,
+        "endExclusive": 1997
+      },
+      "spanHash": "361f358d024b2d193d7cffddb05bceb500be25599774b495370c59a199f6a3a5"
+    },
+    {
+      "id": "AIS-S030",
+      "bindingOrBoundary": "main.Jde",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 711586,
+        "endExclusive": 712148
+      },
+      "spanHash": "df4a32a85c0b08e816bdeb5fd13b871f0a3366458b576fe92741dc69952c5a09"
+    },
+    {
+      "id": "AIS-S031",
+      "bindingOrBoundary": "main.hasAccessibleAndEnabledApp",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeType": "ClassMethod",
+      "byteRange": {
+        "start": 712021,
+        "endExclusive": 712147
+      },
+      "spanHash": "f37088ef88dbf7b19eac59642c71949152bdb202c2bd19458df115b389808a9b"
+    },
+    {
+      "id": "AIS-S032",
+      "bindingOrBoundary": "main.yte",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 71670,
+        "endExclusive": 73549
+      },
+      "spanHash": "dacefe5b92657783ac53c6a122523821819a82ef41495d335767c451ab360bd5"
+    },
+    {
+      "id": "AIS-S033",
+      "bindingOrBoundary": "main.backgroundGenerationCall",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeType": "CallExpression",
+      "byteRange": {
+        "start": 72045,
+        "endExclusive": 72299
+      },
+      "spanHash": "16f3c927b84128c7b3b0dd49c353e193af2950340cc6443cece91d0071231a77"
+    },
+    {
+      "id": "AIS-S034",
+      "bindingOrBoundary": "main.manualRefresh",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeType": "ArrowFunctionExpression",
+      "byteRange": {
+        "start": 1414636,
+        "endExclusive": 1415378
+      },
+      "spanHash": "5366b61635aa9c936d6c90e6e1c5a3d12d01bfe99345cbb864915654e8c0732e"
+    },
+    {
+      "id": "AIS-S035",
+      "bindingOrBoundary": "main.require",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 167,
+        "endExclusive": 197
+      },
+      "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb"
+    },
+    {
+      "id": "AIS-S036",
+      "bindingOrBoundary": "main.appHostProperty",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeType": "ObjectProperty",
+      "byteRange": {
+        "start": 3332502,
+        "endExclusive": 3332562
+      },
+      "spanHash": "cba1db44a1902b07f1b0f61dae2453eefd1e63d02b72bbd60bce6bb53be62407"
+    }
+  ],
+  "semanticChecks": [
+    {
+      "id": "AIS-C01",
+      "status": "passed",
+      "meaning": "Br has the qualified Lr caller and exported getter; no invented direct UI call."
+    },
+    {
+      "id": "AIS-C02",
+      "status": "passed",
+      "meaning": "Installed IDs are grouped with size100 and metadata batches joined with Promise.all."
+    },
+    {
+      "id": "AIS-C03",
+      "status": "passed",
+      "meaning": "Installed order/access flags survive metadata enrichment; local read errors propagate."
+    },
+    {
+      "id": "AIS-C04",
+      "status": "passed",
+      "meaning": "Suggestion app context requires callable+enabled inventory and saved configuration."
+    },
+    {
+      "id": "AIS-C05",
+      "status": "passed",
+      "meaning": "Prompt approval settings conservatively exclude the complete app from generated context."
+    },
+    {
+      "id": "AIS-C06",
+      "status": "passed",
+      "meaning": "Connector IDs are disabled on missing token, TOS failure, or non-null personalization blurb; no token fetch when there are no eligible connectors."
+    },
+    {
+      "id": "AIS-C07",
+      "status": "passed",
+      "meaning": "Prompt slug uniqueness is checked over all callable+enabled apps, before disabled-app omission."
+    },
+    {
+      "id": "AIS-C08",
+      "status": "passed",
+      "meaning": "Lookup failure and a successful empty inventory remain distinct in the projectless early-return condition."
+    },
+    {
+      "id": "AIS-C09",
+      "status": "passed",
+      "meaning": "Suggestion lookup fallback disables all app categories in generated config; it does not prove task success."
+    },
+    {
+      "id": "AIS-C10",
+      "status": "passed",
+      "meaning": "Main namespace members join exact frozen CJS getters for inventory, predicate and generator."
+    },
+    {
+      "id": "AIS-C11",
+      "status": "passed",
+      "meaning": "A guarded Codex background path positively consumes this support mechanism; no whole-mode classification follows."
+    },
+    {
+      "id": "AIS-C12",
+      "status": "passed",
+      "meaning": "Host-selected eligibility RPC shares the same inventory but propagates errors and is injected under ambientSuggestions."
+    },
+    {
+      "id": "AIS-C13",
+      "status": "passed",
+      "meaning": "Renderer query has host/account key, caller enablement, five-minute staleness and disabled retry; absent optional service returns false."
+    },
+    {
+      "id": "AIS-C14",
+      "status": "passed",
+      "meaning": "Batch helper is a separate module/factory import boundary; package identity and replacement compatibility are not inferred from its short name."
+    },
+    {
+      "id": "AIS-C15",
+      "status": "passed",
+      "meaning": "The ChatGPT HTTP boundary is called with CODEX SKU; endpoint branding alone does not establish ChatGPT-only usage."
+    },
+    {
+      "id": "AIS-C16",
+      "status": "passed",
+      "meaning": "Both original partial callee/argument anchors join exact complete AST calls without changing source identity."
+    }
+  ],
+  "reconstructionDecisions": [
+    {
+      "responsibility": "Installed app inventory reader",
+      "input": "Injected host-selected app-server request port",
+      "output": "Normalized installed order and enriched metadata, or rejection",
+      "boundary": "Br; first-party thin adapter around installed/read and a replaceable batch helper",
+      "sourceUnitNames": [
+        "Br",
+        "rr",
+        "fn"
+      ]
+    },
+    {
+      "responsibility": "Ambient suggestion app policy",
+      "input": "Inventory, project saved config and optional token/TOS port",
+      "output": "Allowed/disabled prompt apps, unique slug map, conservative generated config",
+      "boundary": "Lr/Rr/Jr/Yr/zr; keep policy separate from raw inventory and the UI eligibility Boolean",
+      "sourceUnitNames": [
+        "Lr",
+        "Rr",
+        "Jr",
+        "Yr",
+        "zr"
+      ]
+    },
+    {
+      "responsibility": "Suggestion eligibility bridge",
+      "input": "Host ID plus caller-controlled query enablement",
+      "output": "Boolean/query error, host/account-scoped cache key",
+      "boundary": "Jde.hasAccessibleAndEnabledApp and renderer.c; retain interface while analyzing neighboring ChatGPT composer methods separately",
+      "sourceUnitNames": [
+        "main.hasAccessibleAndEnabledApp",
+        "renderer.c"
+      ]
+    }
+  ],
+  "reconstructionQualification": "Maintenance responsibilities only. Reuse packages/backend-adapter and existing app-host/query contracts; no new canonical responsibility/path, dependency identity or implementation generated.",
+  "modeBoundary": {
+    "retainInventoryPort": true,
+    "evidenceIds": [
+      "AIS-F06",
+      "AIS-F07"
+    ],
+    "basis": "Explicit guarded Codex background consumer; shared class names and ChatGPT HTTP branding are insufficient for whole-module exclusion.",
+    "wholeFeatureClassification": "unknown; unchanged",
+    "neighboringComposerMethods": "getChatGptComposerItems/recordChatGptComposerItemInteraction require separate actual-consumer review"
+  },
+  "dependencyBoundary": {
+    "leaf": "chunk-D4ZOuLf6.js export t/u factory via fn",
+    "identity": "unqualified by this batch",
+    "action": "Reuse existing third-party catalog; establish exact identity/compatibility before choosing a locked package. Never emit the helper implementation into recovered business sources."
+  },
+  "runtimeObservationsRequired": [
+    "同一host下完整/空installed清单、metadata缺失与任一批读取拒绝；分别观察后台建议错误降级及资格查询错误。",
+    "saved config prompt审批、token缺失/TOS拒绝、名称碰撞；核对prompt应用清单和最终appIds，区别资格Boolean。",
+    "query host/account切换、enabled=false、五分钟缓存与具名失效事件；核对实际新任务页模式和挂载。"
+  ],
+  "runtimeObservationStatus": "Unexecuted observation conditions only; no additional canonical scenario IDs or model authorization.",
+  "counts": {
+    "sourcePurposesDecided": 2,
+    "sourceIdentities": 969,
+    "unassociatedSources": 700,
+    "explicitMechanisms": 240,
+    "pendingPurposeDecisions": 460,
+    "facts": 8,
+    "sourceUnits": 36,
+    "distinctCompletePrograms": 4,
+    "independentProgramParses": 4,
+    "independentAstRanges": 59,
+    "semanticChecks": 16,
+    "extractorProgramPassesIncludingTwoDiscoveryPasses": 6,
+    "newFeatures": 0,
+    "newOperations": 0,
+    "newCanonicalScenarios": 0,
+    "newModeClassifications": 0,
+    "newRuntimePasses": 0
+  },
+  "retainedBoundaries": [
+    "Existing app-server transport, schema/HTTP/auth provider and task generator contracts are reused; no recursive service/native expansion.",
+    "Source retention does not establish effective configuration, account/session/flag, client UI mount, real network calls, cache invalidation, persistence or build acceptance."
+  ],
+  "newExecution": {
+    "targetEvaluations": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "serviceCalls": 0,
+    "buildAttempts": 0,
+    "implementation": 0
+  },
+  "selectedSourceBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "qualification": "Two source-purpose gaps closed; global feature/mode/runtime and independent-client build acceptance remain open."
+}

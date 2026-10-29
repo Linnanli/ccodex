@@ -1,0 +1,4364 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "publishedAtUtc": "2026-10-25T14:51:07.919529+00:00",
+  "decision": "Runtime bootstrap boundaries recovered from frozen native framework; separate dependency policy for main and sandbox preload. Full native provider remains unqualified.",
+  "analysisMethod": "REA original application results supplemented under plan4.6 by complete AST parsing of newly selected embedded source; no new REA run.",
+  "source": {
+    "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+    "sha256": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+    "inventoryRef": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/files.json",
+      "jsonPointer": "/applicationFiles/3524"
+    },
+    "machO": {
+      "cpuType": 16777223,
+      "cpuSubtype": 3,
+      "fileType": 6,
+      "cstringSection": {
+        "section": "__cstring",
+        "segment": "__TEXT",
+        "offset": 256724688,
+        "bytes": 18144222,
+        "flags": 2
+      },
+      "scannedNulTerminatedStrings": 247645
+    },
+    "selectionRule": "Within __TEXT,__cstring select NUL strings longer than 2048 bytes with a leading license source label, or both process._linkedBinding( and ./lib/; this is a bounded selection, not a proof that all embedded JavaScript was found."
+  },
+  "rawInputs": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/native-runtime-embedded-sources-v1/analysis-inputs.json.gz",
+    "bytes": 274093,
+    "sha256": "c6a44d6e12a9bb90dec5aa6eebd7d8ea861a8d734896be784312074d4ae9b0b7"
+  },
+  "sourceUnits": [
+    {
+      "id": "RBS-S001",
+      "bundleId": "browser_init.js",
+      "moduleLabel": null,
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259429510,
+        "endExclusive": 259579791
+      },
+      "rangeSha256": "e09bc94e9c626ca407ee04016bdaf873efe225a58690b18c0bda7c99a94e998d"
+    },
+    {
+      "id": "RBS-S002",
+      "bundleId": "isolated_bundle.js",
+      "moduleLabel": null,
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259579792,
+        "endExclusive": 259595062
+      },
+      "rangeSha256": "e0afa533e9a5216a24b8dd2198bc8ab889b9b3052e23824a0185d3c8e86bd7fe"
+    },
+    {
+      "id": "RBS-S003",
+      "bundleId": "node_init.js",
+      "moduleLabel": null,
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259596227,
+        "endExclusive": 259616043
+      },
+      "rangeSha256": "119f8e8065b3d3d13c4bda13be373f451b55bda71ff539a2d639178e55013bfd"
+    },
+    {
+      "id": "RBS-S004",
+      "bundleId": "renderer_init.js",
+      "moduleLabel": null,
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259616044,
+        "endExclusive": 259659777
+      },
+      "rangeSha256": "ba97ed15d682adc3dc49f1a104a27b9c8bd4f76767b486a7ab7d5f617c69f8bc"
+    },
+    {
+      "id": "RBS-S005",
+      "bundleId": "sandbox_bundle.js",
+      "moduleLabel": null,
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259659778,
+        "endExclusive": 259822910
+      },
+      "rangeSha256": "5feee0fd0cfaa9c1d70e9cc7af1c4e799b2d33e2c87ceba19f0fa852e03d35fa"
+    },
+    {
+      "id": "RBS-S006",
+      "bundleId": "utility_init.js",
+      "moduleLabel": null,
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259822911,
+        "endExclusive": 259843689
+      },
+      "rangeSha256": "4d19588e57614229fbaeb2aa2c58d2c5a96bb6d19b9cedcfcc8e6cb608a66a5b"
+    },
+    {
+      "id": "RBS-S007",
+      "bundleId": "worker_init.js",
+      "moduleLabel": null,
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259843690,
+        "endExclusive": 259858573
+      },
+      "rangeSha256": "b558f2452a17751f9f41426a49115776768f7cd241b8199806a58d1eb8ebc9ba"
+    },
+    {
+      "id": "RBS-S008",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/module-list.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259480095,
+        "endExclusive": 259482964
+      },
+      "rangeSha256": "d3826e1d0cb0a9a2c22e7ead096b9b039177bf31b4827a47f0b07ce1d5a3cb5a"
+    },
+    {
+      "id": "RBS-S009",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/exports/electron.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259461672,
+        "endExclusive": 259462014
+      },
+      "rangeSha256": "1e8dab62361b98b2d0999daed1fee7c830b659864cecafa5b303fd602af0347a"
+    },
+    {
+      "id": "RBS-S010",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/common/define-properties.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259569761,
+        "endExclusive": 259570106
+      },
+      "rangeSha256": "e1181902a7433c84a1211c116879a04fff996e3475eefd5f38aa394bf74ccfc0"
+    },
+    {
+      "id": "RBS-S011",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/app.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259429606,
+        "endExclusive": 259431865
+      },
+      "rangeSha256": "fadd96edde5f72fa027294e08af05799c782502f5f6e2827fdc076f247b30a84"
+    },
+    {
+      "id": "RBS-S012",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/browser-window.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259447433,
+        "endExclusive": 259452300
+      },
+      "rangeSha256": "4ecc4a975fa229e006ae36343c23896e9080cf025d6877255e7c3d0045822f62"
+    },
+    {
+      "id": "RBS-S013",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/notification.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259486040,
+        "endExclusive": 259486339
+      },
+      "rangeSha256": "fede9c923ee5eb52d37ecc664f41d7e97ad6f4c8b79ab2dbb5befba2073fc736"
+    },
+    {
+      "id": "RBS-S014",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/screen.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259492408,
+        "endExclusive": 259493049
+      },
+      "rangeSha256": "40fc3b99b8c1490df8b43fd2139f0a247ed63a4047d3242717c87a99a26d3b18"
+    },
+    {
+      "id": "RBS-S015",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/system-preferences.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259499866,
+        "endExclusive": 259500552
+      },
+      "rangeSha256": "8dc85508cf08e5082e0b4a60a0acc09c7774463b52b2f14edca2aec607a11f6a"
+    },
+    {
+      "id": "RBS-S016",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/session.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259493823,
+        "endExclusive": 259496260
+      },
+      "rangeSha256": "7b3861e5f177fdbe09f1d20613d803e9b467edb8d354f53d6e590ce52a661180"
+    },
+    {
+      "id": "RBS-S017",
+      "bundleId": "renderer_init.js",
+      "moduleLabel": "./lib/common/webpack-provider.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259622636,
+        "endExclusive": 259622910
+      },
+      "rangeSha256": "73263fb4d92f0362840d7278ccfa90335bf1c18c5f965697ae4aef9f0fa8eedf"
+    },
+    {
+      "id": "RBS-S018",
+      "bundleId": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/context-bridge.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259623911,
+        "endExclusive": 259625100
+      },
+      "rangeSha256": "fcee78b0eb658c8ab2e0f02fc3819235d42416ba76b013d2dae79bc0d524b38f"
+    },
+    {
+      "id": "RBS-S019",
+      "bundleId": "sandbox_bundle.js",
+      "moduleLabel": "./lib/sandboxed_renderer/pre-init.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259807756,
+        "endExclusive": 259808273
+      },
+      "rangeSha256": "1e06450941d9c99d5b125a8c88dd31a57d7a929079956b7a28f94c3e5bf96681"
+    },
+    {
+      "id": "RBS-S020",
+      "bundleId": "sandbox_bundle.js",
+      "moduleLabel": "./lib/sandboxed_renderer/preload.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259808274,
+        "endExclusive": 259809822
+      },
+      "rangeSha256": "9e7d618187ffd896287aab390bdf8d4d2b2847ffed29918b654a27e9cd8e8689"
+    },
+    {
+      "id": "RBS-S021",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/rpc-server.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259555939,
+        "endExclusive": 259558632
+      },
+      "rangeSha256": "8dbe6ec3186dc9553c46e05d7f89286ffc626cc4e542943cd9db7da2b46ebb80"
+    },
+    {
+      "id": "RBS-S022",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/ipc-main-internal-utils.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259552923,
+        "endExclusive": 259554009
+      },
+      "rangeSha256": "df462801d806dc75038b366f752648580e4a9d87aef83d6685bb52ddde27eb6a"
+    },
+    {
+      "id": "RBS-S023",
+      "bundleId": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-internal-utils.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259782645,
+        "endExclusive": 259783116
+      },
+      "rangeSha256": "433ecce56e6eaab05b558b843e0b8ed8920e15f5f3cb43affd1143418cdaa958"
+    },
+    {
+      "id": "RBS-S024",
+      "bundleId": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-bindings.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259782175,
+        "endExclusive": 259782644
+      },
+      "rangeSha256": "1d74c5259a352884091e95da648aea68febb43e29c21ed229d8524eb067580f4"
+    },
+    {
+      "id": "RBS-S025",
+      "bundleId": "browser_init.js",
+      "moduleLabel": "./lib/browser/ipc-dispatch.ts",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259549171,
+        "endExclusive": 259552254
+      },
+      "rangeSha256": "fe86f841c50a2ce27831887cdad227ec2c17fd61db2404b0b48747aae192cbfa"
+    }
+  ],
+  "facts": [
+    {
+      "id": "RBS-E001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "冻结框架的 __TEXT,__cstring 选定规则提取7份可完整解析的JavaScript，共427893字节。该规则不证明所有嵌入JS均已找到。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259429510,
+        "endExclusive": 259579791
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S001",
+        "RBS-S002",
+        "RBS-S003",
+        "RBS-S004",
+        "RBS-S005",
+        "RBS-S006",
+        "RBS-S007"
+      ]
+    },
+    {
+      "id": "RBS-E002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "7份源码含213个有路径标签的模块工厂出现位置、150个不同标签；167个位置以./lib/开头，46个位置带node_modules路径。出现位置、路径标签及原始源文件不是同一分母。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259429510,
+        "endExclusive": 259579791
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S001",
+        "RBS-S002",
+        "RBS-S003",
+        "RBS-S004",
+        "RBS-S005",
+        "RBS-S006",
+        "RBS-S007"
+      ]
+    },
+    {
+      "id": "RBS-E003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "browserModuleList包含39个API loader；exports/electron通过defineProperties创建惰性getter并按__esModule/default拆包。app、BrowserWindow、Notification、Session等选定API随后装配到process._linkedBinding返回的对象或构造器。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259480095,
+        "endExclusive": 259482964
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S008",
+        "RBS-S009",
+        "RBS-S010",
+        "RBS-S011",
+        "RBS-S012",
+        "RBS-S013",
+        "RBS-S016"
+      ]
+    },
+    {
+      "id": "RBS-E004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "7份源码中有59处未被同名process声明遮蔽的process._linkedBinding调用，涉及44个字面绑定名；另有别名接收者。全部._linkedBinding成员调用共102处/49个字面名称，后者是语法清单，不能未经provider链检查全部计为同一全局process调用。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259429510,
+        "endExclusive": 259579791
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S001",
+        "RBS-S002",
+        "RBS-S003",
+        "RBS-S004",
+        "RBS-S005",
+        "RBS-S006",
+        "RBS-S007"
+      ]
+    },
+    {
+      "id": "RBS-E005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "screen导出Proxy，首次属性访问时调用原生createScreen，函数属性bind到该实例；systemPreferences直接导出绑定对象并增加少量getter。它们的目标平台效果没有在这些wrapper内恢复。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259492408,
+        "endExclusive": 259493049
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S014",
+        "RBS-S015"
+      ]
+    },
+    {
+      "id": "RBS-E006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定renderer contextBridge包装先检查contextIsolated，否则抛错；exposeInMainWorld调用绑定的exposeAPIInWorld(0,...)，executeInMainWorld调用executeInWorld(0,...)。这不证明任意runtime都提供这些原生方法。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259623911,
+        "endExclusive": 259625100
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S018",
+        "RBS-S017"
+      ]
+    },
+    {
+      "id": "RBS-E007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "sandbox pre-init把process/browser模块对象的_linkedBinding赋为外部binding.get，合并binding.process并接入EventEmitter原型；源码位置位于运行时装配层，包名相同不能充抵该装配。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259807756,
+        "endExclusive": 259808273
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S019",
+        "RBS-S005"
+      ]
+    },
+    {
+      "id": "RBS-E008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "sandbox入口建立5个已加载模块名与4个惰性模块名；preloadRequire先查缓存再查loader，未知名称抛错。preload process通常不主动增加_linkedBinding，仅测试switch分支赋入该属性；后续合并外部process对象的内容仍属外部输入，不能宣称最终对象绝对不含该属性。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259808274,
+        "endExclusive": 259809822
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S020",
+        "RBS-S005"
+      ]
+    },
+    {
+      "id": "RBS-E009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "BROWSER_SANDBOX_LOAD主侧按frame/service-worker选择preload，过滤非绝对路径，读取UTF-8内容并逐条返回contents/error；返回webPreferences及process元数据字段。handleSync以[null,await result]或[error]回复，renderer invokeSync解包并在error truthy时抛出。记录源码字段，不读取实际环境变量。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259555939,
+        "endExclusive": 259558632
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S021",
+        "RBS-S022",
+        "RBS-S023"
+      ]
+    },
+    {
+      "id": "RBS-E010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "sandbox逐条执行preload：contents truthy时包装require/process/exports/module和exposeGlobals；error truthy时报告BROWSER_PRELOAD_ERROR；空内容无error时跳过。getIPCRenderer按renderer/service-worker分别创建并缓存，其他类型抛错。这是进程类型分支，不能作为Codex/ChatGPT模式判定。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259808274,
+        "endExclusive": 259809822
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S020",
+        "RBS-S024"
+      ]
+    },
+    {
+      "id": "RBS-E011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定frame IPC invoke按frame.ipc、sender.ipc、全局ipcMain顺序选择第一个拥有handler的emitter；internal和service-worker有各自分流。此wrapper选择规则不证明RAM-13要求的底层网络或越界IPC enforcement。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259549171,
+        "endExclusive": 259552254
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S025"
+      ]
+    },
+    {
+      "id": "RBS-E012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "46个node_modules模块标签给出23个包名线索和31个包安装位置标签。嵌套位置分别保留；未据此推断实际版本、许可、未修改状态或跨位置同版本。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259659778,
+        "endExclusive": 259822910
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "inferred",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S005"
+      ]
+    },
+    {
+      "id": "RBS-E013",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "源码装配支持按进程制定构建规则：sandbox preload所需JS可以由锁定依赖在构建时打包，维护源码仍以包导入；不应把所有第三方依赖一律external。需要未列入loader的Node/native能力时，必须另行落实main/受控桥接口及其原有行为。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259808274,
+        "endExclusive": 259809822
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "inferred",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S020",
+        "RBS-S005"
+      ]
+    },
+    {
+      "id": "RBS-E014",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "恢复上述wrapper边界未取得原生C++实现、独立Owl SDK/headers或完整构建配方，也未验证ABI、clone、权限、特权设置或实际产品行为；现有完整运行时采用数维持0。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "locator": {
+        "kind": "byte-range",
+        "start": 259429510,
+        "endExclusive": 259579791
+      },
+      "method": "frozen-Mach-O-cstring-extraction + complete-source-Babel-AST + manual-wrapper-contract-review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only; target-not-executed; native-and-product-runtime-unverified",
+      "sourceUnitIds": [
+        "RBS-S001"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "id": "browser_init.js",
+      "sourceRange": {
+        "start": 259429510,
+        "endExclusive": 259579791
+      },
+      "bytes": 150281,
+      "sha256": "e09bc94e9c626ca407ee04016bdaf873efe225a58690b18c0bda7c99a94e998d",
+      "parsedNodes": 33492,
+      "factoryOccurrences": 70,
+      "literalBindingMemberNames": [
+        "electron_browser_app",
+        "electron_browser_auto_updater",
+        "electron_browser_base_window",
+        "electron_browser_content_tracing",
+        "electron_browser_crash_reporter",
+        "electron_browser_desktop_capturer",
+        "electron_browser_dialog",
+        "electron_browser_event_emitter",
+        "electron_browser_global_shortcut",
+        "electron_browser_image_view",
+        "electron_browser_in_app_purchase",
+        "electron_browser_menu",
+        "electron_browser_message_port",
+        "electron_browser_msix_updater",
+        "electron_browser_native_theme",
+        "electron_browser_notification",
+        "electron_browser_power_monitor",
+        "electron_browser_power_save_blocker",
+        "electron_browser_printing",
+        "electron_browser_protocol",
+        "electron_browser_push_notifications",
+        "electron_browser_safe_storage",
+        "electron_browser_screen",
+        "electron_browser_service_worker_main",
+        "electron_browser_session",
+        "electron_browser_system_preferences",
+        "electron_browser_tray",
+        "electron_browser_utility_process",
+        "electron_browser_view",
+        "electron_browser_web_contents",
+        "electron_browser_web_contents_view",
+        "electron_browser_web_frame_main",
+        "electron_browser_web_view_manager",
+        "electron_browser_window",
+        "electron_common_clipboard",
+        "electron_common_command_line",
+        "electron_common_environment",
+        "electron_common_native_image",
+        "electron_common_net",
+        "electron_common_shared_texture",
+        "electron_common_shell",
+        "electron_common_v8_util"
+      ]
+    },
+    {
+      "id": "isolated_bundle.js",
+      "sourceRange": {
+        "start": 259579792,
+        "endExclusive": 259595062
+      },
+      "bytes": 15270,
+      "sha256": "e0afa533e9a5216a24b8dd2198bc8ab889b9b3052e23824a0185d3c8e86bd7fe",
+      "parsedNodes": 2967,
+      "factoryOccurrences": 4,
+      "literalBindingMemberNames": []
+    },
+    {
+      "id": "node_init.js",
+      "sourceRange": {
+        "start": 259596227,
+        "endExclusive": 259616043
+      },
+      "bytes": 19816,
+      "sha256": "119f8e8065b3d3d13c4bda13be373f451b55bda71ff539a2d639178e55013bfd",
+      "parsedNodes": 5764,
+      "factoryOccurrences": 1,
+      "literalBindingMemberNames": [
+        "electron_common_asar"
+      ]
+    },
+    {
+      "id": "renderer_init.js",
+      "sourceRange": {
+        "start": 259616044,
+        "endExclusive": 259659777
+      },
+      "bytes": 43733,
+      "sha256": "ba97ed15d682adc3dc49f1a104a27b9c8bd4f76767b486a7ab7d5f617c69f8bc",
+      "parsedNodes": 8323,
+      "factoryOccurrences": 31,
+      "literalBindingMemberNames": [
+        "electron_common_clipboard",
+        "electron_common_command_line",
+        "electron_common_native_image",
+        "electron_common_shared_texture",
+        "electron_common_shell",
+        "electron_common_v8_util",
+        "electron_renderer_context_bridge",
+        "electron_renderer_crash_reporter",
+        "electron_renderer_ipc",
+        "electron_renderer_web_frame",
+        "electron_renderer_web_utils"
+      ]
+    },
+    {
+      "id": "sandbox_bundle.js",
+      "sourceRange": {
+        "start": 259659778,
+        "endExclusive": 259822910
+      },
+      "bytes": 163132,
+      "sha256": "5feee0fd0cfaa9c1d70e9cc7af1c4e799b2d33e2c87ceba19f0fa852e03d35fa",
+      "parsedNodes": 39825,
+      "factoryOccurrences": 76,
+      "literalBindingMemberNames": [
+        "electron_common_command_line",
+        "electron_common_native_image",
+        "electron_common_shared_texture",
+        "electron_common_v8_util",
+        "electron_renderer_context_bridge",
+        "electron_renderer_crash_reporter",
+        "electron_renderer_ipc",
+        "electron_renderer_web_frame",
+        "electron_renderer_web_utils"
+      ]
+    },
+    {
+      "id": "utility_init.js",
+      "sourceRange": {
+        "start": 259822911,
+        "endExclusive": 259843689
+      },
+      "bytes": 20778,
+      "sha256": "4d19588e57614229fbaeb2aa2c58d2c5a96bb6d19b9cedcfcc8e6cb608a66a5b",
+      "parsedNodes": 4849,
+      "factoryOccurrences": 12,
+      "literalBindingMemberNames": [
+        "electron_browser_event_emitter",
+        "electron_browser_session",
+        "electron_browser_system_preferences",
+        "electron_common_net",
+        "electron_common_v8_util",
+        "electron_utility_parent_port"
+      ]
+    },
+    {
+      "id": "worker_init.js",
+      "sourceRange": {
+        "start": 259843690,
+        "endExclusive": 259858573
+      },
+      "bytes": 14883,
+      "sha256": "b558f2452a17751f9f41426a49115776768f7cd241b8199806a58d1eb8ebc9ba",
+      "parsedNodes": 3207,
+      "factoryOccurrences": 19,
+      "literalBindingMemberNames": [
+        "electron_common_clipboard",
+        "electron_common_command_line",
+        "electron_common_native_image",
+        "electron_common_shared_texture",
+        "electron_common_shell",
+        "electron_renderer_context_bridge",
+        "electron_renderer_crash_reporter",
+        "electron_renderer_ipc",
+        "electron_renderer_web_frame",
+        "electron_renderer_web_utils"
+      ]
+    }
+  ],
+  "moduleBoundaries": [
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/app.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259429606,
+      "endExclusive": 259431865,
+      "rangeSha256": "fadd96edde5f72fa027294e08af05799c782502f5f6e2827fdc076f247b30a84",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/auto-updater.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259431866,
+      "endExclusive": 259432159,
+      "rangeSha256": "f653f90d9caab76208ccbc273316c9897f33067950df08923ea9b29499d30c85",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/auto-updater/auto-updater-msix.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259432160,
+      "endExclusive": 259437404,
+      "rangeSha256": "3e62fa3d6ce2f6545b3055eb95ab252167f38729f9e2740a039a5483e9a61bb2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/auto-updater/auto-updater-native.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259437405,
+      "endExclusive": 259437604,
+      "rangeSha256": "c69b88af4e27cb2d07b98ca70a61ce38f0dfc8deaebf3618d1b20e62164b1b36",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/auto-updater/auto-updater-win.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259437605,
+      "endExclusive": 259439090,
+      "rangeSha256": "a7eda27290cc38bc4a6e4106db8aca557fd6c787eea59d524309831acb426e0c",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/auto-updater/msix-update-win.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259439091,
+      "endExclusive": 259439497,
+      "rangeSha256": "08c0e2489c2b29cbc25b70efe5341a43693af73e59c66302ffc93fe2a7b8e3b2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/auto-updater/squirrel-update-win.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259439498,
+      "endExclusive": 259440829,
+      "rangeSha256": "3843a1d7104a35f060ef16f7ae6e12a966434ccca61a9cf63ef4582aa3f6aaf4",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/base-window.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259440830,
+      "endExclusive": 259443759,
+      "rangeSha256": "d9db0b184a0bebca41aa7d5e01dd50ae3e5133260e68d971de36ad1e96bf96c2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/browser-view.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259443760,
+      "endExclusive": 259447432,
+      "rangeSha256": "23a1a7271df4da2fd8aa6a0e91607427bc891061ae25fb8b878c01b60a459b70",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/browser-window.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259447433,
+      "endExclusive": 259452300,
+      "rangeSha256": "4ecc4a975fa229e006ae36343c23896e9080cf025d6877255e7c3d0045822f62",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/clipboard.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259452301,
+      "endExclusive": 259452460,
+      "rangeSha256": "a2e82059ea02218bea1a7f934fb44ea5e9860d241eecad624eed2700d8ecd049",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/content-tracing.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259452461,
+      "endExclusive": 259452623,
+      "rangeSha256": "099ca4ee4b14d96f6cdffce8d82428e02a692d86c4ccbb87e6e4041c6f430aad",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/crash-reporter.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259452624,
+      "endExclusive": 259454255,
+      "rangeSha256": "d2531155e276b373034ffea6f65a29814a9a0d1871035b91e2119fcc2c07fb12",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/desktop-capturer.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259454256,
+      "endExclusive": 259455694,
+      "rangeSha256": "76db224e11b0b62adf32823e55726a1659bbfbb4a09c2d1f6c70b0a12482439d",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/dialog.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259455695,
+      "endExclusive": 259461671,
+      "rangeSha256": "36f46c60c53b606a5d10001ad7eb0a01bc944cef527b9bd0a304088386a8dee3",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/exports/electron.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259461672,
+      "endExclusive": 259462014,
+      "rangeSha256": "1e8dab62361b98b2d0999daed1fee7c830b659864cecafa5b303fd602af0347a",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/global-shortcut.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259462015,
+      "endExclusive": 259462203,
+      "rangeSha256": "06f334b9931ef9f75244a0fe5d46c298ac18ea5cbb6430752b45bba1715d958e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/in-app-purchase.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259462204,
+      "endExclusive": 259462788,
+      "rangeSha256": "9fe4a294dba299ba1a6ceed6f554ca209080bffe87c0fc6c5e932cd150d166a0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/ipc-main.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259462789,
+      "endExclusive": 259462950,
+      "rangeSha256": "26267ea1f7482e6ccf9fdda0a4fd27d7fa5a51a7fa8af2f6877053a5c1f4eae6",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/menu-item-roles.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259462951,
+      "endExclusive": 259468839,
+      "rangeSha256": "7499ac2f8360649d78322ed08885905efbf0a3fb8b98ea2c2083801e5d13168f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/menu-item.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259468840,
+      "endExclusive": 259471385,
+      "rangeSha256": "f4b07b87dda880bfa190603e55117677bda70f8bba65543a05398e38d4f73aae",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/menu-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259471386,
+      "endExclusive": 259473632,
+      "rangeSha256": "98d979cfe19bac59952a27c0d7d120c7ab5363422baa9e71bcd78762450f8ad7",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/menu.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259473633,
+      "endExclusive": 259479666,
+      "rangeSha256": "dbd29533cbc5b69d573ade36967ad8c4e5e6d7a16e37cbc7c2f34cd4e9aa5dc2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/message-channel.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259479667,
+      "endExclusive": 259480094,
+      "rangeSha256": "5fcc1f1cf74c59ccfe8598e165afab65343e00e03d296a9bc013f901457ee7c8",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259480095,
+      "endExclusive": 259482964,
+      "rangeSha256": "d3826e1d0cb0a9a2c22e7ead096b9b039177bf31b4827a47f0b07ce1d5a3cb5a",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/native-theme.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259482965,
+      "endExclusive": 259483093,
+      "rangeSha256": "d2311a102734c9ae5fdf234c464472e3e803f208ea218e01dd5378f9655a733d",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/net-fetch.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259483094,
+      "endExclusive": 259484978,
+      "rangeSha256": "df9547a686d7c0d3ab2701126aaa67eadb2a7524f83be6cd93c3cb936940aa65",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/net-log.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259484979,
+      "endExclusive": 259485425,
+      "rangeSha256": "faaa18eb34ee3e1e2b16902b49133b5c0b27ea0813f99a3e9c04590f995fad34",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/net.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259485426,
+      "endExclusive": 259486039,
+      "rangeSha256": "340f97b78b01644a18d40d0526e31f2a0ffdadff1bf6601269122a7c55e949df",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/notification.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259486040,
+      "endExclusive": 259486339,
+      "rangeSha256": "fede9c923ee5eb52d37ecc664f41d7e97ad6f4c8b79ab2dbb5befba2073fc736",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/power-monitor.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259486340,
+      "endExclusive": 259487267,
+      "rangeSha256": "9433c51911117f74537e493c6770de42b633bab2e02d2141131d46f1e97219ce",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/power-save-blocker.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259487268,
+      "endExclusive": 259487464,
+      "rangeSha256": "602e3b6a04842e96164d638b99897ee2c6d6ee6c295b0afe9cd00a2ff9fbf561",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/protocol.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259487465,
+      "endExclusive": 259492029,
+      "rangeSha256": "447d9b78c03e94fd5a979ce0ff388db4ba1c6352a98a2f997e7e4f9cc3865ca8",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/push-notifications.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259492030,
+      "endExclusive": 259492227,
+      "rangeSha256": "ce92ffe2a82f289276f47b96a568506d2da106860af901a49bf5296fe21389b2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/safe-storage.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259492228,
+      "endExclusive": 259492407,
+      "rangeSha256": "bfa861d0cb420f6a5f8ad246bd7e1e0518c862f18c3c399464820abe84c99c28",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/screen.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259492408,
+      "endExclusive": 259493049,
+      "rangeSha256": "40fc3b99b8c1490df8b43fd2139f0a247ed63a4047d3242717c87a99a26d3b18",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/service-worker-main.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259493050,
+      "endExclusive": 259493822,
+      "rangeSha256": "cd5df12c54df1084346bca02309c94317af40e29567f87c5ded903fa3c8eab25",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/session.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259493823,
+      "endExclusive": 259496260,
+      "rangeSha256": "7b3861e5f177fdbe09f1d20613d803e9b467edb8d354f53d6e590ce52a661180",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/share-menu.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259496261,
+      "endExclusive": 259496603,
+      "rangeSha256": "4de5232ccdc780e1c5dfe787195fcd94b089498baf0ccb81cd6a6c30f3232754",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/shared-texture.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259496604,
+      "endExclusive": 259499865,
+      "rangeSha256": "3c33cbdf228c66ff6bf1747a14c1bfd183524bcfa86d36ac94434f882918f52b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/system-preferences.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259499866,
+      "endExclusive": 259500552,
+      "rangeSha256": "8dc85508cf08e5082e0b4a60a0acc09c7774463b52b2f14edca2aec607a11f6a",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/touch-bar.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259500553,
+      "endExclusive": 259510684,
+      "rangeSha256": "504f156bce787b5f71803f82c2bbd368386d481f8d724589c72c44ac69f842dc",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/tray.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259510685,
+      "endExclusive": 259510841,
+      "rangeSha256": "c86d38853a55260f82df754f1c6a4501e86e7a2961a7fa53e765f58d02c97fab",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/utility-process.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259510842,
+      "endExclusive": 259514363,
+      "rangeSha256": "87b582462cc16faacf746d0ba74adce7c8f8156bef8c9a4e708ba68776f9e345",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/view.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259514364,
+      "endExclusive": 259514597,
+      "rangeSha256": "5fe0a5813d651005993e2c46ee989e8cb781fb908eccbdeb742ae3122b2e7abc",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/views/image-view.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259514598,
+      "endExclusive": 259514877,
+      "rangeSha256": "a9c7156fab502e63e2ccdaef5290a7c69835d46aa5d3c15b773dfeb3fcb3fe73",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/web-contents-view.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259514878,
+      "endExclusive": 259515171,
+      "rangeSha256": "804325423dbf72d5c90283b3fdcc63afdd59a64b8cf159d75ef8345aac400a24",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/web-contents.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259515172,
+      "endExclusive": 259533229,
+      "rangeSha256": "70766b618bdadc026325cfcc45346200e7e22ce2d4271349e90f84be5e6e21d4",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/api/web-frame-main.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259533230,
+      "endExclusive": 259534255,
+      "rangeSha256": "b8aa97daf603b23c09ea54ecd451cf920f69d95da6318f5442ea7d8cb04d42f9",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/default-menu.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259534256,
+      "endExclusive": 259535323,
+      "rangeSha256": "2f383bb12c2e5538890ebb867cabfe80206a484682b569a565c134d9b22c26ce",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/devtools.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259535324,
+      "endExclusive": 259537333,
+      "rangeSha256": "573b992181ef13538560ef7887511ee95acc0bc3dac8acfb97a057bebe5603ca",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/guest-view-manager.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259537334,
+      "endExclusive": 259546624,
+      "rangeSha256": "de0daa8d6cf1808e29217dbd6e437bf7d5fbcbac1f69c304bb05af3ae30443d1",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/guest-window-manager.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259546625,
+      "endExclusive": 259549170,
+      "rangeSha256": "118772bffe47305d166e86f47a7f10a7c158818e892d2ab866053b339121ec5b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/ipc-dispatch.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259549171,
+      "endExclusive": 259552254,
+      "rangeSha256": "fe86f841c50a2ce27831887cdad227ec2c17fd61db2404b0b48747aae192cbfa",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/ipc-main-impl.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259552255,
+      "endExclusive": 259552922,
+      "rangeSha256": "55b3982708f3686083652cc0cef4e45e6fb669f22e573fe4de9148d7a2a9f41b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/ipc-main-internal-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259552923,
+      "endExclusive": 259554009,
+      "rangeSha256": "df462801d806dc75038b366f752648580e4a9d87aef83d6685bb52ddde27eb6a",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/ipc-main-internal.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259554010,
+      "endExclusive": 259554208,
+      "rangeSha256": "e8890c50a60dd1a77a8928b4f994e323fcb107e1ebd3ea52f93df4f8117e6f8e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/message-port-main.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259554209,
+      "endExclusive": 259554824,
+      "rangeSha256": "8dcdad4c31a741b6dfb2d254e3263f1116cbcadc5fe5ffd38ba1a31fc781ae76",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/parse-features-string.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259554825,
+      "endExclusive": 259555938,
+      "rangeSha256": "8e55205fac6fb79a12057d3c0a6e0960e1576e8173854b0c2cef3aeabbb67a4e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/rpc-server.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259555939,
+      "endExclusive": 259558632,
+      "rangeSha256": "8dbe6ec3186dc9553c46e05d7f89286ffc626cc4e542943cd9db7da2b46ebb80",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/browser/web-view-events.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259558633,
+      "endExclusive": 259560075,
+      "rangeSha256": "c9bbba867ad0d9aa78a30d73153e4ca648e2b0f35812c72dba7daa9bfc921297",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259560076,
+      "endExclusive": 259560340,
+      "rangeSha256": "a20f81ccb4a9b7919ed04d6d4263bc2e7265e823fa5d606c6d4778c9f3b3c8b3",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/api/native-image.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259560341,
+      "endExclusive": 259560518,
+      "rangeSha256": "f36c2e064fcb34e77322f5ba37f1c49290232cf74de51443cfd092a13552692d",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/api/net-client-request.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259560519,
+      "endExclusive": 259569609,
+      "rangeSha256": "7fadefa84ce1595635497c6fb8b4615e2bc5fb7d575ee3fa524f662d06e0ab24",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/api/shell.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259569610,
+      "endExclusive": 259569760,
+      "rangeSha256": "43640ace43e3d7621b403b047a281ee654f223d3e875942afadddabd9001ce5f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/define-properties.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259569761,
+      "endExclusive": 259570106,
+      "rangeSha256": "e1181902a7433c84a1211c116879a04fff996e3475eefd5f38aa394bf74ccfc0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/deprecate.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259570107,
+      "endExclusive": 259572211,
+      "rangeSha256": "7d18d627cd2b5909e12a9766c42d120d17295ef77fe34ff8c768cc117b647d63",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259572212,
+      "endExclusive": 259574122,
+      "rangeSha256": "1ef018d7109d3fc4d416ef381c243695e2919dbf23b4bd84df687964c0426c0c",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/web-view-methods.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259574123,
+      "endExclusive": 259575472,
+      "rangeSha256": "cdeb661b9b7d01c228e90c5afa9fe51d6235d30e83e7229528ee31e6d9a32768",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "browser_init.js",
+      "moduleLabel": "./lib/common/webpack-globals-provider.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259575473,
+      "endExclusive": 259575612,
+      "rangeSha256": "5c9e0a8c19e0dc63d16902c3c7eb3e96bbdd8cb03c4ba9663e32c62f76300a7e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "isolated_bundle.js",
+      "moduleLabel": "./lib/common/web-view-methods.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259579895,
+      "endExclusive": 259581244,
+      "rangeSha256": "cdeb661b9b7d01c228e90c5afa9fe51d6235d30e83e7229528ee31e6d9a32768",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "isolated_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-attributes.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259581245,
+      "endExclusive": 259585825,
+      "rangeSha256": "41228b260aaf7d51c803d799a4b3e8c0597e2e9160e889e708f69eed416f2a20",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "isolated_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-element.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259585826,
+      "endExclusive": 259588076,
+      "rangeSha256": "8818dde6ed4c20a14b64933be18b5d09a9c1fb2d998676a2bd1a61d467333723",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "isolated_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-impl.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259588077,
+      "endExclusive": 259594484,
+      "rangeSha256": "b065867daf434b75733c07b9fa38010aed824896960b3f3cf552ab2ea145c4f2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "node_init.js",
+      "moduleLabel": "./lib/node/asar-fs-wrapper.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259596320,
+      "endExclusive": 259614493,
+      "rangeSha256": "a904eaa7f626d0fcb51ebb5bbef2385c98b78ef5e7552711e94a0ac7bcee6a02",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259616183,
+      "endExclusive": 259616447,
+      "rangeSha256": "b7f22b4748b925cec9ae5c3721eec9f298e2c320ac800e3b554fc922a56affe9",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/api/native-image.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259616448,
+      "endExclusive": 259616673,
+      "rangeSha256": "4492d03b06658bc74e775774d787608525d80ade156c9c5bb07e39f11bb05498",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/api/shell.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259616674,
+      "endExclusive": 259616872,
+      "rangeSha256": "2338238a6316d35368cee7d718ec0cf5c442bf9526fb70385106826d0966cdeb",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/define-properties.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259616873,
+      "endExclusive": 259617218,
+      "rangeSha256": "74cffbae889c874e10eab097f9de241042cb4091d7b05c6c18d6d2363d368b26",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/deprecate.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259617219,
+      "endExclusive": 259619353,
+      "rangeSha256": "952befba4624644179d2565c547821f0b6af94a53909af61e7636ffbb5ae8c64",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259619354,
+      "endExclusive": 259621285,
+      "rangeSha256": "50e0115640d637bce76f2311e1f1abb18067fd2fb966dd73316863e3a61ce899",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/web-view-methods.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259621286,
+      "endExclusive": 259622635,
+      "rangeSha256": "cdeb661b9b7d01c228e90c5afa9fe51d6235d30e83e7229528ee31e6d9a32768",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/common/webpack-provider.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259622636,
+      "endExclusive": 259622910,
+      "rangeSha256": "73263fb4d92f0362840d7278ccfa90335bf1c18c5f965697ae4aef9f0fa8eedf",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/clipboard.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259622911,
+      "endExclusive": 259623910,
+      "rangeSha256": "a3c6c7ca8a1f064fc740bf36256f29d94495eee6a0ad423f687ab8c55ad64234",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/context-bridge.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259623911,
+      "endExclusive": 259625100,
+      "rangeSha256": "fcee78b0eb658c8ab2e0f02fc3819235d42416ba76b013d2dae79bc0d524b38f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/crash-reporter.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259625101,
+      "endExclusive": 259625457,
+      "rangeSha256": "88c6bd01bf19a501d31ddc2521418999099343112487765303eabbbea781330c",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/exports/electron.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259625458,
+      "endExclusive": 259625803,
+      "rangeSha256": "52c93abf8f0471b835389e97dc083787057c05b04707227ca36c85be26c6d76f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/ipc-renderer.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259625804,
+      "endExclusive": 259626371,
+      "rangeSha256": "d9d8d22b1a83e341401dfc42ac1f1b2f28fb2449141198e879e71413c65d8d92",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259626372,
+      "endExclusive": 259627014,
+      "rangeSha256": "ae399010cc5df73bb73a68dc61589d05393d7b26c51cbb5ea6620e3dda6c9a02",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/shared-texture.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259627015,
+      "endExclusive": 259627904,
+      "rangeSha256": "27c373c143d33ebf645c7a70ab69beb1dddb97334e4729bde1f09adfe3be9176",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/web-frame.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259627905,
+      "endExclusive": 259628657,
+      "rangeSha256": "396819c4f87e375b1c8079f1ad24151306dc8ac109100441367ece0b4f09325e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/api/web-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259628658,
+      "endExclusive": 259628914,
+      "rangeSha256": "71531d5379b790fdcb9ec409fd39b30ff515076e819b00bc41ebaf781438a4ba",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/common-init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259628915,
+      "endExclusive": 259629801,
+      "rangeSha256": "f49a9b587e5f579a9b203fd5f4bfc0d80312e6cc39a64f4a100dcc56fc737a09",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/inspector.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259629802,
+      "endExclusive": 259630883,
+      "rangeSha256": "bb752d550085e7e0af71430aa39f238c741064d5953b8e3e64e2c96ecd32c742",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/ipc-native-setup.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259630884,
+      "endExclusive": 259631313,
+      "rangeSha256": "12c935ab1716ad6934eeb6b97bce52352dddc75dee537afa3ab3e07a7c24958f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-bindings.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259631314,
+      "endExclusive": 259631777,
+      "rangeSha256": "a07f2a1d504c205c38ca5b74de7ef4e310d0c4d9788fddb744f8fe37bb59057b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-internal-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259631778,
+      "endExclusive": 259632236,
+      "rangeSha256": "a00c02743288e58428eb37f671ae8f49eb9a6fd882d256eb6ce0ef328be537a7",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-internal.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259632237,
+      "endExclusive": 259632775,
+      "rangeSha256": "3d1fc2dbce3ee1d67055bc940ff4a773273c94d71f113101b5ec7db82068ae96",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/security-warnings.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259632776,
+      "endExclusive": 259637321,
+      "rangeSha256": "de7bc6882247c70f8f17ce579c62352bc551af3a588e861c73b3dd319c989c77",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/web-frame-init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259637322,
+      "endExclusive": 259637631,
+      "rangeSha256": "3343c4dcf605003b3802cac1eeb838be900dda82a8bacd7b2e18e48dc08f172e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/web-view/guest-view-internal.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259637632,
+      "endExclusive": 259640303,
+      "rangeSha256": "2c737d731215f6a2abff5a6d5a7795417f1fbde39fce11a0052fb8d7c59a0f84",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-attributes.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259640304,
+      "endExclusive": 259644884,
+      "rangeSha256": "8f7b77d5adee21a45ea7d30e421ed4d29f9ee5d1ed63754d589dc8121a20c2f8",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-element.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259644885,
+      "endExclusive": 259647135,
+      "rangeSha256": "1bfaaa71857c62617256d6bf4e6c5cf715e8c40a3a577523454f62495d28ce12",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-impl.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259647136,
+      "endExclusive": 259653543,
+      "rangeSha256": "4e70d98e48c2e360add1d5b9c1088f9235b063ab4eae96d030adb0ae173a64de",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259653544,
+      "endExclusive": 259654494,
+      "rangeSha256": "1fb6fb0bfc8b22953ed771c6fc46dc54e914953d7d0862283b728028136f6b68",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "renderer_init.js",
+      "moduleLabel": "./lib/renderer/window-setup.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259654495,
+      "endExclusive": 259655819,
+      "rangeSha256": "ee6c369d0d241ecb5c1d4effa7bd0506db6402364f9301f6907b699e0c4cd2c4",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/base64-js/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259659905,
+      "endExclusive": 259661457,
+      "rangeSha256": "fbd0a0fccfe0fddda37c6f713bf690b17ceae6e0527a6c505cd8ee03b931bc73",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/buffer/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259661458,
+      "endExclusive": 259689947,
+      "rangeSha256": "2157d8fe546012c7ea793cbae0376d9fab382fb561a99fe2cf037906405fd43b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/define-data-property/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259689948,
+      "endExclusive": 259691442,
+      "rangeSha256": "d8bc9fe37e3537f6a10f1a54a30d482a83ae21c980dda474afb46fc276996515",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-define-property/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259691443,
+      "endExclusive": 259691678,
+      "rangeSha256": "459538cc4b9bba3ee8fe0ee12067f52b136033150c55a5efef7ee9027465b2a1",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-define-property/node_modules/get-intrinsic/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259691679,
+      "endExclusive": 259700455,
+      "rangeSha256": "c253678194cbccbbc60236c22e668e6d57e28773019f90f08fdea97b07c0f3b9",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-define-property/node_modules/has-proto/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259700456,
+      "endExclusive": 259700660,
+      "rangeSha256": "2945bf2618815267b9a34b0d1e72ab242ca1c226165cdd1a3c318face8b92e21",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-errors/eval.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259700661,
+      "endExclusive": 259700732,
+      "rangeSha256": "3b6542ed77205c534d41f722b1fb2d5569af05a750b35e3c586763c67f20d533",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-errors/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259700733,
+      "endExclusive": 259700801,
+      "rangeSha256": "40f651f0ec559ce0e5e34d7702df203a5fc4bb33f10666213c2caaaff32d391b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-errors/range.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259700802,
+      "endExclusive": 259700875,
+      "rangeSha256": "67771961510d9dae457e828b60f4b1d35c00217b5543b2960f80ff26a2e6e886",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-errors/ref.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259700876,
+      "endExclusive": 259700951,
+      "rangeSha256": "9a893e7b01ee5c8e6ac211471a98aa7ca8230ac6197c51a0e2bf947d6a9d3554",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-errors/syntax.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259700952,
+      "endExclusive": 259701027,
+      "rangeSha256": "b332015f6e4260847c6660ba86aecaf2ca131f10c2a02f89abc27aa08c60b598",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-errors/type.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259701028,
+      "endExclusive": 259701099,
+      "rangeSha256": "a24c02daa2b49a5c47d4e708ceb2a88b648e027bbc991c6374124d106f28ba4d",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/es-errors/uri.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259701100,
+      "endExclusive": 259701169,
+      "rangeSha256": "66f83eb555e72f35f69f7892a038cf66a536c54af04c0bdfedf1d52fac4abc50",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/events/events.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259701170,
+      "endExclusive": 259708329,
+      "rangeSha256": "232c458132d07a132dbb93c4678900872d7ad8d6e8d741d9dc83294c4e1b3b7c",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/function-bind/implementation.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259708330,
+      "endExclusive": 259709314,
+      "rangeSha256": "7c3d8d405c8ad5ca1fafff409c7ea711b9c16d3ee40653ed6e7e6c9ea111b615",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/function-bind/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259709315,
+      "endExclusive": 259709470,
+      "rangeSha256": "e375570a16ae4933170c09fbfebd076db6ebf01ce92523382302a3a37ffcecf1",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/gopd/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259709471,
+      "endExclusive": 259709681,
+      "rangeSha256": "d08118e1af58a6810772d2a23d48bb8cb93b1b671de4264b895b0012314564d1",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/gopd/node_modules/function-bind/implementation.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259709682,
+      "endExclusive": 259710448,
+      "rangeSha256": "f2d43ae66eb69c8baa40af4cec15b4191ecb10ccb843393abc2d87ceb8eba030",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/gopd/node_modules/function-bind/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259710449,
+      "endExclusive": 259710640,
+      "rangeSha256": "a7bf3e8af8aeccc3e5bbf015746a7ef696105bda978a5c50852d52d998bf1392",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/gopd/node_modules/get-intrinsic/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259710641,
+      "endExclusive": 259719163,
+      "rangeSha256": "9504eccd1371754b1e9ffb424ca51e0760518e51e808708a48ab99e83b0fda3f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/gopd/node_modules/has-proto/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259719164,
+      "endExclusive": 259719354,
+      "rangeSha256": "7dbaebc9271ef427ce16661c22b3f27305df0435ea3298146a6b1064de60c628",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/has-property-descriptors/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259719355,
+      "endExclusive": 259719685,
+      "rangeSha256": "16a750d921f682585648028b68630b58be81015d165d7fe0c3707e188afc91a9",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/has-symbols/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259719686,
+      "endExclusive": 259719991,
+      "rangeSha256": "1602dcc30a7a4d5917d58a981d67bbff0ba800bd07d0f510bbfb8e8d2766aa12",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/has-symbols/shams.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259719992,
+      "endExclusive": 259720895,
+      "rangeSha256": "7e09f378f84be25d04cf5649528f9026f4d1a3ef1509a2784c97d3820f4c13e2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/has/node_modules/function-bind/implementation.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259720896,
+      "endExclusive": 259721661,
+      "rangeSha256": "b38a0d2c17b0ed98c060f7dc6b4d921ab2c4d4c8d7bf4d632e243f6d2996f7ac",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/has/node_modules/function-bind/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259721662,
+      "endExclusive": 259721851,
+      "rangeSha256": "fb3c3e32104a72b300329bb9435fbbca47c4226b606bc8843b2f96bed0529927",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/has/src/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259721852,
+      "endExclusive": 259722036,
+      "rangeSha256": "afc6f18eafed5362f1c58d594e95903c3e897e9223d8373c1549ecbe01ce19f3",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/hasown/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259722037,
+      "endExclusive": 259722221,
+      "rangeSha256": "c33c9d8607800f96eb18a45c8b3fa66fb38950dcff712b99f557f3ad369fa68d",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/ieee754/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259722222,
+      "endExclusive": 259723128,
+      "rangeSha256": "cae602435646dbc0c3cbf6a5244473c4c78855c2aba62002118f81218363bcae",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/process/browser.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259723129,
+      "endExclusive": 259725104,
+      "rangeSha256": "4cb35ad3bf69c51cfc7438d0e5886254c3b98f080b6c08cdb1c1a20db36db3f3",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/lib/formats.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259725105,
+      "endExclusive": 259725357,
+      "rangeSha256": "aa3a7da0b17d7431d2f361fb0da8a7c221d9fb9907f020b238c6b0eaaf5c0fca",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/lib/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259725358,
+      "endExclusive": 259725577,
+      "rangeSha256": "5def9b050a51d60da53d00518221ed5da145a8c5577903f33669b5a9c420d6cf",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/lib/parse.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259725578,
+      "endExclusive": 259730971,
+      "rangeSha256": "443a00177c04937a00295b201d71857a8883a40efd0c3f7ca3e9caeca9ca1f3e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/lib/stringify.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259730972,
+      "endExclusive": 259736085,
+      "rangeSha256": "afe6055f94ad45c42c7190df456ac7d7e63b3526d9cbc5603b266d5e718e114f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/lib/utils.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259736086,
+      "endExclusive": 259738970,
+      "rangeSha256": "a6d68ae51e714a78830f24c5cbe00474eec8362224069317f251376bf4ef541e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/node_modules/call-bind/callBound.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259738971,
+      "endExclusive": 259739320,
+      "rangeSha256": "bb982090476135ea8d3578dec59fee0ddc443800c65effb892956d85fc0c094c",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/node_modules/call-bind/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259739321,
+      "endExclusive": 259740040,
+      "rangeSha256": "3c6b732400f86286d80714fa2999989041f240b7e7730f91f9df2d81ab4490ae",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/node_modules/get-intrinsic/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259740041,
+      "endExclusive": 259748785,
+      "rangeSha256": "3c8e1ccad77bdd6b2a3201758095cf56c307f5b8949dc3f12983d03bfb20c6f7",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/node_modules/has-proto/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259748786,
+      "endExclusive": 259748974,
+      "rangeSha256": "458b7c46dfa41ddc65850560434acbf30b17ce7a010303fba943216bbcec0a43",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/node_modules/object-inspect/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259748975,
+      "endExclusive": 259758761,
+      "rangeSha256": "3d20440d2edbd0bbd304f0a2aa1ef42bfcb9049282d899ae257634930674d0a9",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/qs/node_modules/side-channel/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259758762,
+      "endExclusive": 259760174,
+      "rangeSha256": "44543d3c10c072720be3f50453823853ee80bd8058f04437af38c1e8543e2e9f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/set-function-length/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259760175,
+      "endExclusive": 259760946,
+      "rangeSha256": "5398b7896bc8a7d40648608f0d359b3a1b03ad84dfdc01d64c9c54b031d1e130",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/set-function-length/node_modules/get-intrinsic/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259760947,
+      "endExclusive": 259769725,
+      "rangeSha256": "20e6eabaf974f23222588985c0dbdb1e73a21b0f5b047fbb57656e6dd9ffd31e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/set-function-length/node_modules/has-proto/index.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259769726,
+      "endExclusive": 259769931,
+      "rangeSha256": "53c7ad9674b76de359e3570d2d8c4d84c787c551d4042f8829cd6ba2679afdf1",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/common/api/native-image.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259769932,
+      "endExclusive": 259770163,
+      "rangeSha256": "8b59f5a69808851e7b02311a2fcbec418dcd9cc9bf55a9171801cee573c70e4e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/common/define-properties.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259770164,
+      "endExclusive": 259770522,
+      "rangeSha256": "2c65647c4b8d00c8836330b8ce188f904e19f7b8016dcf567942779e7440d5af",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/common/deprecate.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259770523,
+      "endExclusive": 259772663,
+      "rangeSha256": "9d017341f56f0111157436ffa221576e5d01ee0a9454ad930715b8e197f138b0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/common/timers-shim.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259772664,
+      "endExclusive": 259774132,
+      "rangeSha256": "8f4083a4b7e97c3c27fe1a9121231467c5fdb92bf7faccb14b549df6e037e289",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/common/web-view-methods.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259774133,
+      "endExclusive": 259775495,
+      "rangeSha256": "5a6949eb4bf4676529feaa622c9f47e735dde2598190b1ff2c1a3372df157d17",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/common/webpack-globals-provider.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259775496,
+      "endExclusive": 259775647,
+      "rangeSha256": "7623a9dc7540a10ac913098a6be75adeaaaa119fd6410071ae8b67b416fab403",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/api/context-bridge.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259775648,
+      "endExclusive": 259776843,
+      "rangeSha256": "b6d72af86715d487af37b4e10ba153f965a47b4d21a9325d92d1cc4724b69cd3",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/api/crash-reporter.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259776844,
+      "endExclusive": 259777206,
+      "rangeSha256": "d61fe79c4fac8eeaf05a5c28fe85ba5c5e3f04ad0e145465e0d78698de53c84e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/api/ipc-renderer.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259777207,
+      "endExclusive": 259777812,
+      "rangeSha256": "f3ee144fb66640d4745eeb87415465392f1c16e3f276990c8b0a78f72277e88c",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/api/shared-texture.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259777813,
+      "endExclusive": 259778708,
+      "rangeSha256": "42665cec105e2b5681640083b83ee8060161f43bead0f38fa33450a7c29e22e2",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/api/web-frame.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259778709,
+      "endExclusive": 259779467,
+      "rangeSha256": "2c056965309a5a3a2724f09c6f87b902bc18fc71309012c85a43d4ebbf1ca99a",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/api/web-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259779468,
+      "endExclusive": 259779730,
+      "rangeSha256": "0e25bb0c4cdaf680de6fb1d6c87cba9c3d73d1428855acf476fc1be8035dd7f5",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/common-init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259779731,
+      "endExclusive": 259780623,
+      "rangeSha256": "6b6bf9b60c1b7dcfd47645f09a52ce64872716e1953f2cf8835effdd7e8c71f7",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/inspector.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259780624,
+      "endExclusive": 259781728,
+      "rangeSha256": "5b4cc01007b91ec12fd227c07ad6aad613fdb7f05e32ea657b6ac38ab9ceae1f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/ipc-native-setup.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259781729,
+      "endExclusive": 259782174,
+      "rangeSha256": "5b1e0ec56e86e879d10cfbf19d409fd0fafc37341457b07db4ed08c859022d1a",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-bindings.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259782175,
+      "endExclusive": 259782644,
+      "rangeSha256": "1d74c5259a352884091e95da648aea68febb43e29c21ed229d8524eb067580f4",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-internal-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259782645,
+      "endExclusive": 259783116,
+      "rangeSha256": "433ecce56e6eaab05b558b843e0b8ed8920e15f5f3cb43affd1143418cdaa958",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-internal.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259783117,
+      "endExclusive": 259783693,
+      "rangeSha256": "415db806e99507d192bba5ab02e2d2d72eb72115fcff16b88b2731565e5658f6",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/security-warnings.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259783694,
+      "endExclusive": 259788245,
+      "rangeSha256": "ded48eb5d2add656d2e6474cc695bfe5d3263c5cbf11518f9191ac9a68197296",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/web-frame-init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259788246,
+      "endExclusive": 259788578,
+      "rangeSha256": "b16e290977a14de1f28a4fd4c618f888bd9eefd01fd1601cdc7f1bb32f398bb0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/guest-view-internal.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259788579,
+      "endExclusive": 259791256,
+      "rangeSha256": "21337c6c338c22f41c7072773528859bbff8499c1b41baaf7b39ffef439536b6",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-attributes.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259791257,
+      "endExclusive": 259795850,
+      "rangeSha256": "b85df7deb2ea591427e876f42457283a6e7f00bb0f254c832e5a5993e2af7335",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-element.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259795851,
+      "endExclusive": 259798114,
+      "rangeSha256": "e1c26c4fad85cc97f85e67c2a78c2aac797ca13802b6db688f48703a4f88311b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-impl.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259798115,
+      "endExclusive": 259804535,
+      "rangeSha256": "bdac468f31391d674fe63b3099b6eef19bfe784d49837419739eb6ab6bb078b1",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/web-view/web-view-init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259804536,
+      "endExclusive": 259805492,
+      "rangeSha256": "7667233cdb50c2279877f452a94ae686f5774c1f221294ad021a094e6d5da549",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/renderer/window-setup.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259805493,
+      "endExclusive": 259806823,
+      "rangeSha256": "1d0361fac5882d89123edcfd0254d9fd4529be469492452985a5d1e0ce98e986",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/sandboxed_renderer/api/exports/electron.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259806824,
+      "endExclusive": 259807102,
+      "rangeSha256": "d7cd1f3604454b30b335732816889769c4754f679f7e40041351b03dd7eb963d",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/sandboxed_renderer/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259807103,
+      "endExclusive": 259807755,
+      "rangeSha256": "4af1be8840a66b816633f9cd0e0f240b0944530cfe2b71830ccca9210e12dbae",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/sandboxed_renderer/pre-init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259807756,
+      "endExclusive": 259808273,
+      "rangeSha256": "1e06450941d9c99d5b125a8c88dd31a57d7a929079956b7a28f94c3e5bf96681",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./lib/sandboxed_renderer/preload.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259808274,
+      "endExclusive": 259809822,
+      "rangeSha256": "9e7d618187ffd896287aab390bdf8d4d2b2847ffed29918b654a27e9cd8e8689",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/url/node_modules/punycode/punycode.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259809823,
+      "endExclusive": 259812538,
+      "rangeSha256": "d58e98d91ea075f5da7d6147ef26f177a16e9a4d0b2dc982f273e82bdc2bee4d",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "sandbox_bundle.js",
+      "moduleLabel": "./node_modules/url/url.js",
+      "classification": "embedded-node-modules-labelled",
+      "start": 259812539,
+      "endExclusive": 259820288,
+      "rangeSha256": "beb91e4e3d3585a09f7962620c38820ee822a2ad40ada4e11003da3974623657",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/browser/api/net-fetch.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259823007,
+      "endExclusive": 259824891,
+      "rangeSha256": "165f3092483537dce2b05113aee04032d3e3c44ba3a7dcd319cc1ae2657be46f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/browser/api/system-preferences.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259824892,
+      "endExclusive": 259825578,
+      "rangeSha256": "5d19c53a9f0d53c9876687a26b45498864b2f762ea615188ec7d64e14fcb277e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/browser/message-port-main.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259825579,
+      "endExclusive": 259826194,
+      "rangeSha256": "6ed2845895c44a07c9a82349881ab2371af7317bba2ba2093771c9e8fb9944cb",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/common/api/net-client-request.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259826195,
+      "endExclusive": 259835285,
+      "rangeSha256": "86568263fa6b89bb3885dadf21703227e1cf926dfa685e103ea8430a1964d8c0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/common/define-properties.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259835286,
+      "endExclusive": 259835631,
+      "rangeSha256": "e1181902a7433c84a1211c116879a04fff996e3475eefd5f38aa394bf74ccfc0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/common/deprecate.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259835632,
+      "endExclusive": 259837736,
+      "rangeSha256": "7c96988f00ec1d39efe91efefd3c5efd3b3b6134365de71913192f5a2a5606a6",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/common/init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259837737,
+      "endExclusive": 259839647,
+      "rangeSha256": "7c8648cd86e4500c09a6fd1500b53e1f2c20432059bb7d2383bb8edabad5093f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/common/webpack-globals-provider.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259839648,
+      "endExclusive": 259839787,
+      "rangeSha256": "5c9e0a8c19e0dc63d16902c3c7eb3e96bbdd8cb03c4ba9663e32c62f76300a7e",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/utility/api/exports/electron.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259839788,
+      "endExclusive": 259840042,
+      "rangeSha256": "3521c26a6745c6e1d19d2c0644b418e74c356c917a47a82abcfa8a36f43109aa",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/utility/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259840043,
+      "endExclusive": 259840328,
+      "rangeSha256": "798e36abbc804f38f6dabb96727e0f3ffa78986b254b286a915a7029c167aff6",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/utility/api/net.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259840329,
+      "endExclusive": 259840802,
+      "rangeSha256": "a5be70b664f3231e5e5ac2fa75cf9dc2310f8cb38d370e67561380dc2dde50ad",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "utility_init.js",
+      "moduleLabel": "./lib/utility/parent-port.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259840803,
+      "endExclusive": 259842145,
+      "rangeSha256": "a5ab43d286735a1d04570a733fbe45470c5c950323dcf899a978b28a0a321d00",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/common/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259843789,
+      "endExclusive": 259844053,
+      "rangeSha256": "cccd61a9f33da5edd7335a5f9c6f868903cd51490c80a3df67f229fd8ff14b92",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/common/api/native-image.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259844054,
+      "endExclusive": 259844279,
+      "rangeSha256": "771589d285b0d474e21a4b92d65c930753ca667324c972059427a887cf8825da",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/common/api/shell.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259844280,
+      "endExclusive": 259844478,
+      "rangeSha256": "cb90ecc6f197902b7e7e55cdbb6bc18afb7d1175fc42cfd5d4ac4116fe61e594",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/common/define-properties.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259844479,
+      "endExclusive": 259844824,
+      "rangeSha256": "1f8cae6a28354f43a1a91a48813697e1300692653d81afe5b173a109ffda3378",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/common/deprecate.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259844825,
+      "endExclusive": 259846959,
+      "rangeSha256": "5cd88dfca3487fd4d46fe5f53295791ad0ab43d5f9395947197ced9f89fd7fc9",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/common/init.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259846960,
+      "endExclusive": 259848891,
+      "rangeSha256": "38c31e36959f02d1f39d653079121581a3d332013c61bc6a77adf6fb509e5c51",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/common/webpack-provider.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259848892,
+      "endExclusive": 259849166,
+      "rangeSha256": "55689f02f127ee905417efc8547a51de8310cc683d5647ae65a409c4a227f21f",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/clipboard.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259849167,
+      "endExclusive": 259850166,
+      "rangeSha256": "c15309591839836ff1884a999e2da36a68780f9a618a1e3faf872ac6927645b0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/context-bridge.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259850167,
+      "endExclusive": 259851356,
+      "rangeSha256": "dd8211925490ab18d3f037dd80ea93296ec653b88f5ad181151e761b0978962b",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/crash-reporter.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259851357,
+      "endExclusive": 259851713,
+      "rangeSha256": "1ac26ab9f7d374794a3f9d4f42536438fc850159dd1a201ce9a6b53fa4c51786",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/exports/electron.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259851714,
+      "endExclusive": 259852059,
+      "rangeSha256": "e1ddea5c54e2eb28ba59f458c787c5b9fc559d15e65790e62a0996bf8c9702ca",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/ipc-renderer.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259852060,
+      "endExclusive": 259852627,
+      "rangeSha256": "2067d678d281f022aff5ce0b7e3d490e6edcae69c444aa163090a0efd772a418",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/module-list.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259852628,
+      "endExclusive": 259853270,
+      "rangeSha256": "638fbf30b8a879335a777036eb1ead5f334417c2ef3134d9f937e34ee27e9bc0",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/shared-texture.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259853271,
+      "endExclusive": 259854160,
+      "rangeSha256": "28065c340863213e509742c03ba13d95bdf8f9f8e4839c19c4f669da724cf7b4",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/web-frame.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259854161,
+      "endExclusive": 259854913,
+      "rangeSha256": "c079d10be64235dac1507824dde21fb312513dc68812b91c652acd3365561fdf",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/api/web-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259854914,
+      "endExclusive": 259855170,
+      "rangeSha256": "e58d699301bde49c847bef1b1b7c9c1ef97aa764d7fa0ef18a6fbcd5b21d7d5a",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-bindings.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259855171,
+      "endExclusive": 259855634,
+      "rangeSha256": "d33801f0fada0f78a1d69962a8ca0d1847a1ac4d0a7e64c0b5da7858dbb0e285",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-internal-utils.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259855635,
+      "endExclusive": 259856093,
+      "rangeSha256": "6938c083e4628d99d3a313cb6f504078fa6d85975c15e90e069e2b6586d17529",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    },
+    {
+      "bundle": "worker_init.js",
+      "moduleLabel": "./lib/renderer/ipc-renderer-internal.ts",
+      "classification": "runtime-wrapper-labelled",
+      "start": 259856094,
+      "endExclusive": 259856632,
+      "rangeSha256": "b9da85ac0feb6049f75457c51a71ef5b21cea5b0a2abb686d90c181298537b70",
+      "productMode": "unknown",
+      "restorationPolicy": "runtime-dependency; do-not-generate-as-first-party-business-source"
+    }
+  ],
+  "browserApiLoaders": [
+    {
+      "name": "app",
+      "moduleId": "./lib/browser/api/app.ts",
+      "byteRange": {
+        "start": 259480234,
+        "endExclusive": 259480287
+      },
+      "source": "{name:\"app\",loader:()=>r(\"./lib/browser/api/app.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "autoUpdater",
+      "moduleId": "./lib/browser/api/auto-updater.ts",
+      "byteRange": {
+        "start": 259480288,
+        "endExclusive": 259480358
+      },
+      "source": "{name:\"autoUpdater\",loader:()=>r(\"./lib/browser/api/auto-updater.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "BaseWindow",
+      "moduleId": "./lib/browser/api/base-window.ts",
+      "byteRange": {
+        "start": 259480359,
+        "endExclusive": 259480427
+      },
+      "source": "{name:\"BaseWindow\",loader:()=>r(\"./lib/browser/api/base-window.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "BrowserView",
+      "moduleId": "./lib/browser/api/browser-view.ts",
+      "byteRange": {
+        "start": 259480428,
+        "endExclusive": 259480498
+      },
+      "source": "{name:\"BrowserView\",loader:()=>r(\"./lib/browser/api/browser-view.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "BrowserWindow",
+      "moduleId": "./lib/browser/api/browser-window.ts",
+      "byteRange": {
+        "start": 259480499,
+        "endExclusive": 259480573
+      },
+      "source": "{name:\"BrowserWindow\",loader:()=>r(\"./lib/browser/api/browser-window.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "clipboard",
+      "moduleId": "./lib/browser/api/clipboard.ts",
+      "byteRange": {
+        "start": 259480574,
+        "endExclusive": 259480639
+      },
+      "source": "{name:\"clipboard\",loader:()=>r(\"./lib/browser/api/clipboard.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "contentTracing",
+      "moduleId": "./lib/browser/api/content-tracing.ts",
+      "byteRange": {
+        "start": 259480640,
+        "endExclusive": 259480716
+      },
+      "source": "{name:\"contentTracing\",loader:()=>r(\"./lib/browser/api/content-tracing.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "crashReporter",
+      "moduleId": "./lib/browser/api/crash-reporter.ts",
+      "byteRange": {
+        "start": 259480717,
+        "endExclusive": 259480791
+      },
+      "source": "{name:\"crashReporter\",loader:()=>r(\"./lib/browser/api/crash-reporter.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "desktopCapturer",
+      "moduleId": "./lib/browser/api/desktop-capturer.ts",
+      "byteRange": {
+        "start": 259480792,
+        "endExclusive": 259480870
+      },
+      "source": "{name:\"desktopCapturer\",loader:()=>r(\"./lib/browser/api/desktop-capturer.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "dialog",
+      "moduleId": "./lib/browser/api/dialog.ts",
+      "byteRange": {
+        "start": 259480871,
+        "endExclusive": 259480930
+      },
+      "source": "{name:\"dialog\",loader:()=>r(\"./lib/browser/api/dialog.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "globalShortcut",
+      "moduleId": "./lib/browser/api/global-shortcut.ts",
+      "byteRange": {
+        "start": 259480931,
+        "endExclusive": 259481007
+      },
+      "source": "{name:\"globalShortcut\",loader:()=>r(\"./lib/browser/api/global-shortcut.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "ipcMain",
+      "moduleId": "./lib/browser/api/ipc-main.ts",
+      "byteRange": {
+        "start": 259481008,
+        "endExclusive": 259481070
+      },
+      "source": "{name:\"ipcMain\",loader:()=>r(\"./lib/browser/api/ipc-main.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "ImageView",
+      "moduleId": "./lib/browser/api/views/image-view.ts",
+      "byteRange": {
+        "start": 259481071,
+        "endExclusive": 259481143
+      },
+      "source": "{name:\"ImageView\",loader:()=>r(\"./lib/browser/api/views/image-view.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "inAppPurchase",
+      "moduleId": "./lib/browser/api/in-app-purchase.ts",
+      "byteRange": {
+        "start": 259481144,
+        "endExclusive": 259481219
+      },
+      "source": "{name:\"inAppPurchase\",loader:()=>r(\"./lib/browser/api/in-app-purchase.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "Menu",
+      "moduleId": "./lib/browser/api/menu.ts",
+      "byteRange": {
+        "start": 259481220,
+        "endExclusive": 259481275
+      },
+      "source": "{name:\"Menu\",loader:()=>r(\"./lib/browser/api/menu.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "MenuItem",
+      "moduleId": "./lib/browser/api/menu-item.ts",
+      "byteRange": {
+        "start": 259481276,
+        "endExclusive": 259481340
+      },
+      "source": "{name:\"MenuItem\",loader:()=>r(\"./lib/browser/api/menu-item.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "MessageChannelMain",
+      "moduleId": "./lib/browser/api/message-channel.ts",
+      "byteRange": {
+        "start": 259481341,
+        "endExclusive": 259481421
+      },
+      "source": "{name:\"MessageChannelMain\",loader:()=>r(\"./lib/browser/api/message-channel.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "nativeTheme",
+      "moduleId": "./lib/browser/api/native-theme.ts",
+      "byteRange": {
+        "start": 259481422,
+        "endExclusive": 259481492
+      },
+      "source": "{name:\"nativeTheme\",loader:()=>r(\"./lib/browser/api/native-theme.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "net",
+      "moduleId": "./lib/browser/api/net.ts",
+      "byteRange": {
+        "start": 259481493,
+        "endExclusive": 259481546
+      },
+      "source": "{name:\"net\",loader:()=>r(\"./lib/browser/api/net.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "netLog",
+      "moduleId": "./lib/browser/api/net-log.ts",
+      "byteRange": {
+        "start": 259481547,
+        "endExclusive": 259481607
+      },
+      "source": "{name:\"netLog\",loader:()=>r(\"./lib/browser/api/net-log.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "Notification",
+      "moduleId": "./lib/browser/api/notification.ts",
+      "byteRange": {
+        "start": 259481608,
+        "endExclusive": 259481679
+      },
+      "source": "{name:\"Notification\",loader:()=>r(\"./lib/browser/api/notification.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "powerMonitor",
+      "moduleId": "./lib/browser/api/power-monitor.ts",
+      "byteRange": {
+        "start": 259481680,
+        "endExclusive": 259481752
+      },
+      "source": "{name:\"powerMonitor\",loader:()=>r(\"./lib/browser/api/power-monitor.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "powerSaveBlocker",
+      "moduleId": "./lib/browser/api/power-save-blocker.ts",
+      "byteRange": {
+        "start": 259481753,
+        "endExclusive": 259481834
+      },
+      "source": "{name:\"powerSaveBlocker\",loader:()=>r(\"./lib/browser/api/power-save-blocker.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "pushNotifications",
+      "moduleId": "./lib/browser/api/push-notifications.ts",
+      "byteRange": {
+        "start": 259481835,
+        "endExclusive": 259481917
+      },
+      "source": "{name:\"pushNotifications\",loader:()=>r(\"./lib/browser/api/push-notifications.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "protocol",
+      "moduleId": "./lib/browser/api/protocol.ts",
+      "byteRange": {
+        "start": 259481918,
+        "endExclusive": 259481981
+      },
+      "source": "{name:\"protocol\",loader:()=>r(\"./lib/browser/api/protocol.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "safeStorage",
+      "moduleId": "./lib/browser/api/safe-storage.ts",
+      "byteRange": {
+        "start": 259481982,
+        "endExclusive": 259482052
+      },
+      "source": "{name:\"safeStorage\",loader:()=>r(\"./lib/browser/api/safe-storage.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "screen",
+      "moduleId": "./lib/browser/api/screen.ts",
+      "byteRange": {
+        "start": 259482053,
+        "endExclusive": 259482112
+      },
+      "source": "{name:\"screen\",loader:()=>r(\"./lib/browser/api/screen.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "ServiceWorkerMain",
+      "moduleId": "./lib/browser/api/service-worker-main.ts",
+      "byteRange": {
+        "start": 259482113,
+        "endExclusive": 259482196
+      },
+      "source": "{name:\"ServiceWorkerMain\",loader:()=>r(\"./lib/browser/api/service-worker-main.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "session",
+      "moduleId": "./lib/browser/api/session.ts",
+      "byteRange": {
+        "start": 259482197,
+        "endExclusive": 259482258
+      },
+      "source": "{name:\"session\",loader:()=>r(\"./lib/browser/api/session.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "sharedTexture",
+      "moduleId": "./lib/browser/api/shared-texture.ts",
+      "byteRange": {
+        "start": 259482259,
+        "endExclusive": 259482333
+      },
+      "source": "{name:\"sharedTexture\",loader:()=>r(\"./lib/browser/api/shared-texture.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "ShareMenu",
+      "moduleId": "./lib/browser/api/share-menu.ts",
+      "byteRange": {
+        "start": 259482334,
+        "endExclusive": 259482400
+      },
+      "source": "{name:\"ShareMenu\",loader:()=>r(\"./lib/browser/api/share-menu.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "systemPreferences",
+      "moduleId": "./lib/browser/api/system-preferences.ts",
+      "byteRange": {
+        "start": 259482401,
+        "endExclusive": 259482483
+      },
+      "source": "{name:\"systemPreferences\",loader:()=>r(\"./lib/browser/api/system-preferences.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "TouchBar",
+      "moduleId": "./lib/browser/api/touch-bar.ts",
+      "byteRange": {
+        "start": 259482484,
+        "endExclusive": 259482548
+      },
+      "source": "{name:\"TouchBar\",loader:()=>r(\"./lib/browser/api/touch-bar.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "Tray",
+      "moduleId": "./lib/browser/api/tray.ts",
+      "byteRange": {
+        "start": 259482549,
+        "endExclusive": 259482604
+      },
+      "source": "{name:\"Tray\",loader:()=>r(\"./lib/browser/api/tray.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "utilityProcess",
+      "moduleId": "./lib/browser/api/utility-process.ts",
+      "byteRange": {
+        "start": 259482605,
+        "endExclusive": 259482681
+      },
+      "source": "{name:\"utilityProcess\",loader:()=>r(\"./lib/browser/api/utility-process.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "View",
+      "moduleId": "./lib/browser/api/view.ts",
+      "byteRange": {
+        "start": 259482682,
+        "endExclusive": 259482737
+      },
+      "source": "{name:\"View\",loader:()=>r(\"./lib/browser/api/view.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "webContents",
+      "moduleId": "./lib/browser/api/web-contents.ts",
+      "byteRange": {
+        "start": 259482738,
+        "endExclusive": 259482808
+      },
+      "source": "{name:\"webContents\",loader:()=>r(\"./lib/browser/api/web-contents.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "WebContentsView",
+      "moduleId": "./lib/browser/api/web-contents-view.ts",
+      "byteRange": {
+        "start": 259482809,
+        "endExclusive": 259482888
+      },
+      "source": "{name:\"WebContentsView\",loader:()=>r(\"./lib/browser/api/web-contents-view.ts\")}",
+      "factoryBindingUnique": true
+    },
+    {
+      "name": "webFrameMain",
+      "moduleId": "./lib/browser/api/web-frame-main.ts",
+      "byteRange": {
+        "start": 259482889,
+        "endExclusive": 259482962
+      },
+      "source": "{name:\"webFrameMain\",loader:()=>r(\"./lib/browser/api/web-frame-main.ts\")}",
+      "factoryBindingUnique": true
+    }
+  ],
+  "thirdPartyDependencyCandidates": [
+    {
+      "nameHint": "base64-js",
+      "locationLabels": [
+        "./node_modules/base64-js"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/base64-js/index.js",
+          "byteRange": {
+            "start": 259659905,
+            "endExclusive": 259661457
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [
+        {
+          "dependencyId": "external-020",
+          "jsonPointer": "/rows/146"
+        }
+      ],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "buffer",
+      "locationLabels": [
+        "./node_modules/buffer"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/buffer/index.js",
+          "byteRange": {
+            "start": 259661458,
+            "endExclusive": 259689947
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [
+        {
+          "dependencyId": "external-021",
+          "jsonPointer": "/rows/147"
+        }
+      ],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "call-bind",
+      "locationLabels": [
+        "./node_modules/qs/node_modules/call-bind"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/node_modules/call-bind/callBound.js",
+          "byteRange": {
+            "start": 259738971,
+            "endExclusive": 259739320
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/node_modules/call-bind/index.js",
+          "byteRange": {
+            "start": 259739321,
+            "endExclusive": 259740040
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "define-data-property",
+      "locationLabels": [
+        "./node_modules/define-data-property"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/define-data-property/index.js",
+          "byteRange": {
+            "start": 259689948,
+            "endExclusive": 259691442
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "es-define-property",
+      "locationLabels": [
+        "./node_modules/es-define-property"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-define-property/index.js",
+          "byteRange": {
+            "start": 259691443,
+            "endExclusive": 259691678
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "es-errors",
+      "locationLabels": [
+        "./node_modules/es-errors"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-errors/eval.js",
+          "byteRange": {
+            "start": 259700661,
+            "endExclusive": 259700732
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-errors/index.js",
+          "byteRange": {
+            "start": 259700733,
+            "endExclusive": 259700801
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-errors/range.js",
+          "byteRange": {
+            "start": 259700802,
+            "endExclusive": 259700875
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-errors/ref.js",
+          "byteRange": {
+            "start": 259700876,
+            "endExclusive": 259700951
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-errors/syntax.js",
+          "byteRange": {
+            "start": 259700952,
+            "endExclusive": 259701027
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-errors/type.js",
+          "byteRange": {
+            "start": 259701028,
+            "endExclusive": 259701099
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-errors/uri.js",
+          "byteRange": {
+            "start": 259701100,
+            "endExclusive": 259701169
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "events",
+      "locationLabels": [
+        "./node_modules/events"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/events/events.js",
+          "byteRange": {
+            "start": 259701170,
+            "endExclusive": 259708329
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "function-bind",
+      "locationLabels": [
+        "./node_modules/function-bind",
+        "./node_modules/gopd/node_modules/function-bind",
+        "./node_modules/has/node_modules/function-bind"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/function-bind/implementation.js",
+          "byteRange": {
+            "start": 259708330,
+            "endExclusive": 259709314
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/function-bind/index.js",
+          "byteRange": {
+            "start": 259709315,
+            "endExclusive": 259709470
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/gopd/node_modules/function-bind/implementation.js",
+          "byteRange": {
+            "start": 259709682,
+            "endExclusive": 259710448
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/gopd/node_modules/function-bind/index.js",
+          "byteRange": {
+            "start": 259710449,
+            "endExclusive": 259710640
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/has/node_modules/function-bind/implementation.js",
+          "byteRange": {
+            "start": 259720896,
+            "endExclusive": 259721661
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/has/node_modules/function-bind/index.js",
+          "byteRange": {
+            "start": 259721662,
+            "endExclusive": 259721851
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "get-intrinsic",
+      "locationLabels": [
+        "./node_modules/es-define-property/node_modules/get-intrinsic",
+        "./node_modules/gopd/node_modules/get-intrinsic",
+        "./node_modules/qs/node_modules/get-intrinsic",
+        "./node_modules/set-function-length/node_modules/get-intrinsic"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-define-property/node_modules/get-intrinsic/index.js",
+          "byteRange": {
+            "start": 259691679,
+            "endExclusive": 259700455
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/gopd/node_modules/get-intrinsic/index.js",
+          "byteRange": {
+            "start": 259710641,
+            "endExclusive": 259719163
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/node_modules/get-intrinsic/index.js",
+          "byteRange": {
+            "start": 259740041,
+            "endExclusive": 259748785
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/set-function-length/node_modules/get-intrinsic/index.js",
+          "byteRange": {
+            "start": 259760947,
+            "endExclusive": 259769725
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "gopd",
+      "locationLabels": [
+        "./node_modules/gopd"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/gopd/index.js",
+          "byteRange": {
+            "start": 259709471,
+            "endExclusive": 259709681
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "has",
+      "locationLabels": [
+        "./node_modules/has"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/has/src/index.js",
+          "byteRange": {
+            "start": 259721852,
+            "endExclusive": 259722036
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "has-property-descriptors",
+      "locationLabels": [
+        "./node_modules/has-property-descriptors"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/has-property-descriptors/index.js",
+          "byteRange": {
+            "start": 259719355,
+            "endExclusive": 259719685
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "has-proto",
+      "locationLabels": [
+        "./node_modules/es-define-property/node_modules/has-proto",
+        "./node_modules/gopd/node_modules/has-proto",
+        "./node_modules/qs/node_modules/has-proto",
+        "./node_modules/set-function-length/node_modules/has-proto"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/es-define-property/node_modules/has-proto/index.js",
+          "byteRange": {
+            "start": 259700456,
+            "endExclusive": 259700660
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/gopd/node_modules/has-proto/index.js",
+          "byteRange": {
+            "start": 259719164,
+            "endExclusive": 259719354
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/node_modules/has-proto/index.js",
+          "byteRange": {
+            "start": 259748786,
+            "endExclusive": 259748974
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/set-function-length/node_modules/has-proto/index.js",
+          "byteRange": {
+            "start": 259769726,
+            "endExclusive": 259769931
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "has-symbols",
+      "locationLabels": [
+        "./node_modules/has-symbols"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/has-symbols/index.js",
+          "byteRange": {
+            "start": 259719686,
+            "endExclusive": 259719991
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/has-symbols/shams.js",
+          "byteRange": {
+            "start": 259719992,
+            "endExclusive": 259720895
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "hasown",
+      "locationLabels": [
+        "./node_modules/hasown"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/hasown/index.js",
+          "byteRange": {
+            "start": 259722037,
+            "endExclusive": 259722221
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "ieee754",
+      "locationLabels": [
+        "./node_modules/ieee754"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/ieee754/index.js",
+          "byteRange": {
+            "start": 259722222,
+            "endExclusive": 259723128
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [
+        {
+          "dependencyId": "external-026",
+          "jsonPointer": "/rows/152"
+        }
+      ],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "object-inspect",
+      "locationLabels": [
+        "./node_modules/qs/node_modules/object-inspect"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/node_modules/object-inspect/index.js",
+          "byteRange": {
+            "start": 259748975,
+            "endExclusive": 259758761
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "process",
+      "locationLabels": [
+        "./node_modules/process"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/process/browser.js",
+          "byteRange": {
+            "start": 259723129,
+            "endExclusive": 259725104
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "punycode",
+      "locationLabels": [
+        "./node_modules/url/node_modules/punycode"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/url/node_modules/punycode/punycode.js",
+          "byteRange": {
+            "start": 259809823,
+            "endExclusive": 259812538
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "qs",
+      "locationLabels": [
+        "./node_modules/qs"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/lib/formats.js",
+          "byteRange": {
+            "start": 259725105,
+            "endExclusive": 259725357
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/lib/index.js",
+          "byteRange": {
+            "start": 259725358,
+            "endExclusive": 259725577
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/lib/parse.js",
+          "byteRange": {
+            "start": 259725578,
+            "endExclusive": 259730971
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/lib/stringify.js",
+          "byteRange": {
+            "start": 259730972,
+            "endExclusive": 259736085
+          }
+        },
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/lib/utils.js",
+          "byteRange": {
+            "start": 259736086,
+            "endExclusive": 259738970
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "set-function-length",
+      "locationLabels": [
+        "./node_modules/set-function-length"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/set-function-length/index.js",
+          "byteRange": {
+            "start": 259760175,
+            "endExclusive": 259760946
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "side-channel",
+      "locationLabels": [
+        "./node_modules/qs/node_modules/side-channel"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/qs/node_modules/side-channel/index.js",
+          "byteRange": {
+            "start": 259758762,
+            "endExclusive": 259760174
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    },
+    {
+      "nameHint": "url",
+      "locationLabels": [
+        "./node_modules/url"
+      ],
+      "factoryRefs": [
+        {
+          "bundle": "sandbox_bundle.js",
+          "moduleLabel": "./node_modules/url/url.js",
+          "byteRange": {
+            "start": 259812539,
+            "endExclusive": 259820288
+          }
+        }
+      ],
+      "actualVersion": null,
+      "upstreamModificationStatus": "unresolved",
+      "license": "unresolved",
+      "mode": "unknown",
+      "recommendedIntegration": "keep inside independently sourced runtime provider; do not emit copied business source",
+      "confidence": "inferred-from-preserved-bundler-path",
+      "sameNameCanonicalRows": [],
+      "nameJoinQualification": "Name equality does not identify the same installed instance or version."
+    }
+  ],
+  "nonstandardNameObservations": {
+    "scope": "17 names from prior runtime-surface-disposition; exact NUL-terminated __cstring atoms only",
+    "items": [
+      {
+        "name": "beginNativeMenuTracking",
+        "occurrences": [
+          {
+            "start": 270993094,
+            "endExclusive": 270993117
+          }
+        ]
+      },
+      {
+        "name": "collectMeasurements",
+        "occurrences": [
+          {
+            "start": 270993006,
+            "endExclusive": 270993025
+          }
+        ]
+      },
+      {
+        "name": "configureMeasurementCollection",
+        "occurrences": [
+          {
+            "start": 270992975,
+            "endExclusive": 270993005
+          }
+        ]
+      },
+      {
+        "name": "endNativeMenuTracking",
+        "occurrences": [
+          {
+            "start": 270993118,
+            "endExclusive": 270993139
+          }
+        ]
+      },
+      {
+        "name": "isRuntimeFeatureEnabled",
+        "occurrences": [
+          {
+            "start": 270992898,
+            "endExclusive": 270992921
+          }
+        ]
+      },
+      {
+        "name": "setDebugChromePagesEnabled",
+        "occurrences": [
+          {
+            "start": 270992922,
+            "endExclusive": 270992948
+          }
+        ]
+      },
+      {
+        "name": "setLegacyChromePolicyFallbackEnabled",
+        "occurrences": []
+      },
+      {
+        "name": "setRuntimeFeatures",
+        "occurrences": [
+          {
+            "start": 270992879,
+            "endExclusive": 270992897
+          }
+        ]
+      },
+      {
+        "name": "showTaskManager",
+        "occurrences": [
+          {
+            "start": 270992343,
+            "endExclusive": 270992358
+          }
+        ]
+      },
+      {
+        "name": "isAlwaysOnTopSupported",
+        "occurrences": [
+          {
+            "start": 271003159,
+            "endExclusive": 271003181
+          }
+        ]
+      },
+      {
+        "name": "isInputShapeSupported",
+        "occurrences": [
+          {
+            "start": 271003367,
+            "endExclusive": 271003388
+          }
+        ]
+      },
+      {
+        "name": "isSystemBackdropSupported",
+        "occurrences": [
+          {
+            "start": 271003389,
+            "endExclusive": 271003414
+          }
+        ]
+      },
+      {
+        "name": "setHistorySwipeNavigationState",
+        "occurrences": [
+          {
+            "start": 271002806,
+            "endExclusive": 271002836
+          }
+        ]
+      },
+      {
+        "name": "getPermissionStatus",
+        "occurrences": [
+          {
+            "start": 271014819,
+            "endExclusive": 271014838
+          }
+        ]
+      },
+      {
+        "name": "isCursorScreenPointSupported",
+        "occurrences": [
+          {
+            "start": 271019560,
+            "endExclusive": 271019588
+          }
+        ]
+      },
+      {
+        "name": "setPermissionPromptHandler",
+        "occurrences": [
+          {
+            "start": 271020782,
+            "endExclusive": 271020808
+          }
+        ]
+      },
+      {
+        "name": "getFontFamilies",
+        "occurrences": [
+          {
+            "start": 271024658,
+            "endExclusive": 271024673
+          }
+        ]
+      }
+    ],
+    "qualification": "String presence is not registration, callable method presence, native implementation or semantic proof; no matching atom for setLegacyChromePolicyFallbackEnabled does not prove absence of its implementation."
+  },
+  "preloadBuildDecisions": [
+    {
+      "id": "RBS-B01",
+      "decision": "Keep runtime bootstrap and embedded upstream implementations outside restored first-party business source. Runtime dependency must have independent provenance/version/ABI/build policy.",
+      "evidenceIds": [
+        "RBS-E003",
+        "RBS-E007",
+        "RBS-E012"
+      ]
+    },
+    {
+      "id": "RBS-B02",
+      "decision": "Use process-specific externalization. Bundle required sandbox-preload JS from package dependencies; retain source-level package imports and exact new lock. A package installed on disk is not automatically visible to preloadRequire.",
+      "evidenceIds": [
+        "RBS-E008",
+        "RBS-E009",
+        "RBS-E013"
+      ]
+    },
+    {
+      "id": "RBS-B03",
+      "decision": "Register preload resources using independent packaged absolute paths; preserve per-entry read/execute failures and process-type handling. Do not depend on the original application path.",
+      "evidenceIds": [
+        "RBS-E009",
+        "RBS-E010"
+      ]
+    },
+    {
+      "id": "RBS-B04",
+      "decision": "Keep privileged Node/native operations behind explicitly restored main/bridge contracts where required. Do not expose _linkedBinding merely to bypass sandbox packaging.",
+      "evidenceIds": [
+        "RBS-E006",
+        "RBS-E007",
+        "RBS-E008",
+        "RBS-E013"
+      ]
+    }
+  ],
+  "counts": {
+    "embeddedSources": 7,
+    "sourceBytes": 427893,
+    "parsedNodes": 98427,
+    "factoryOccurrences": 213,
+    "uniqueFactoryLabels": 150,
+    "runtimeWrapperFactoryOccurrences": 167,
+    "embeddedNodeModulesFactoryOccurrences": 46,
+    "linkedBindingCallOccurrences": 59,
+    "uniqueLiteralLinkedBindingNames": 44,
+    "bindingMemberCallOccurrences": 102,
+    "uniqueLiteralBindingMemberNames": 49,
+    "browserApiLoaders": 39,
+    "sourceUnits": 25,
+    "evidenceRecords": 14,
+    "runtimeEmbeddedPackageNameHints": 23,
+    "runtimeEmbeddedPackageLocationLabels": 31,
+    "sameNameHintsInCanonicalDependencyRows": 3,
+    "selectedNonstandardMethodNames": 17,
+    "selectedNamesWithExactCStringAtoms": 16,
+    "newReaRuns": 0,
+    "distinctEmbeddedProgramsParsed": 7,
+    "newTargetExecutions": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newProductPasses": 0,
+    "newClientImplementation": 0,
+    "newFullRuntimeQualifications": 0
+  },
+  "remaining": {
+    "runtimeSourceAndBuild": "Native C++ implementation, independently sourced provider/headers/toolchain, ABI and complete runtime behavior still require evidence. No provider adopted.",
+    "dependencyIdentity": "23 runtime-embedded name hints require actual release/version/license/modification evidence. Do not add23 to202 as a count of distinct installed dependencies.",
+    "selectionCoverage": "The cstring predicate is bounded; scripts with other encodings, compression, naming or no factory labels may be missed.",
+    "productModeAndBehavior": "No new mode classification, launch, model submission, UI observation, persistence or restart acceptance."
+  },
+  "canonicalCountsUnchanged": {
+    "finiteFeatureDefinitions": 509,
+    "userOperations": 582,
+    "supportOperations": 125,
+    "productScenarioSpecifications": 1844,
+    "owningTaskGroupsWithFiniteDefinitions": 51,
+    "additionalSourceContractTaskGroups": 0,
+    "pendingSettingsPages": 0,
+    "featuresImplemented": 0,
+    "newProductScenarioPasses": 0,
+    "confirmedChatGptExclusions": 0,
+    "modeCounts": {
+      "unknown": 504,
+      "shared": 5
+    },
+    "qualifiedResponsibilityRecords": 115,
+    "coarseWorkflowFacades": 48,
+    "sourceWitnesses": 2874,
+    "sharedWitnessDispositions": 34,
+    "runtimeCapabilityGroups": 15,
+    "storageDomains": 11,
+    "selectedStorageBoundaries": 16,
+    "dependencyRecords": 202,
+    "buildInputOccurrences": 30,
+    "fullRuntimeRoutesQualified": 0,
+    "modelSubmissionsRemaining": 0,
+    "savedLegacyEntriesWithoutFeatureMapping": 706,
+    "remainingCommandGoalAssociations": 20,
+    "explicitMechanisms": 181,
+    "sourceEntriesRequiringGoalOrMechanismDecision": 525
+  },
+  "sourceBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "independentRuntimeBuildProven": false
+}

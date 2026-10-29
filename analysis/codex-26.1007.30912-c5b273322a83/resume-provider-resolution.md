@@ -1,0 +1,13 @@
+# 恢复入口与provider的有限结论
+
+唯一待分类操作TTC-OP-thread-resume已登记为保留的支撑机制。页面的resumeConversation与低层resumeThread保持不同职责；没有新建功能、合并业务操作或确认模式。
+
+新增源码证据接上了主进程提供的manager：启动开关只允许非打包应用且CODEX_APP_SERVER_MANAGER_IN_MAIN严格为1时发布appServerManagers；有效资源经jfe/vp转发到Ofe创建的kM，再经_fe和mB的GR/JI/MR到注入的底层connection.send。打包条件为真时该host服务不提供，renderer选择与内部manager的条件链沿用既有provider调查。实际UI的scope、host、注册对象与选支未观察。
+
+raw resumeThread有具体消费者：云环境草稿恢复的check分支先找已提交的clientUserMessageId，再恢复线程、核对唯一目标环境并加载历史。它不是页面恢复操作的同义名称。raw入口返回完整响应并合并状态；页面入口还负责in-flight协调、输入释放、权限/配置与历史恢复，返回ready/not-ready及已有turn信息。
+
+当前功能仍373项、用户操作377项、恢复任务48个、未执行规格1216条；支撑机制从116变为117，操作分类队列从1变为0。12项关联、3项重叠、旧来源角色及完整产品分母仍未完成。unknown模式372项与shared 1项保持不变，整项排除0。
+
+本批只做冻结源码分析：7次完整Program解析（3个文件，重复查询计入）及1次已选启动函数解析，0个REA新运行、模型提交、客户端启动、源码执行或产品通过。查询中间产物均保留；最终脚本不宣称逐字节重现所有中间metadata格式。第三方RPC实现没有转成客户端维护代码。
+
+实际传输端、公开CLI采用、hydration委托、通知顺序、持久化和模式闭包继续未知。本结论关闭的是操作分类与明确的静态接收链，不关闭整个后台问题。详见[源码事实和精确范围](resume-provider-resolution.json)；完整分析仍未完成。

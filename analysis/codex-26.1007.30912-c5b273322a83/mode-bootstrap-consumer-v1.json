@@ -1,0 +1,1516 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scope": "One named persistence bootstrap caller and selected direct product-mode consumers",
+  "selectedBootstrapCallerClosed": true,
+  "fullProductModeBoundaryClosed": false,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "existingFeatureRefinements": [
+    "FSC-0481"
+  ],
+  "moduleProposalIds": [
+    "RCGA-M05"
+  ],
+  "counts": {
+    "sourceFacts": 14,
+    "cataloguedSourceUnits": 48,
+    "sourceFiles": 2,
+    "exactEsmJoins": 6,
+    "wholeProgramParsePasses": 3,
+    "parsedNodes": 6816324,
+    "boundedExpressionParsePasses": 1,
+    "newCanonicalIds": 0,
+    "newModelSubmissions": 0,
+    "newClientLaunches": 0,
+    "newRuntimePasses": 0
+  },
+  "canonicalLedgerPinsUnchanged": {
+    "scope": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v48.json",
+      "bytes": 2810067,
+      "sha256": "f29f5fdd7ef4a7339fbf3d644237f6b311ed38f870d37612f7142279a3aa564f"
+    },
+    "scenario": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v45-scenarios.json",
+      "bytes": 2651102,
+      "sha256": "5d9537c3c383b4fc7ce171a564b5d976a0c524985bc512d34e659a3b2e4a4334"
+    },
+    "coverage": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v39.json",
+      "bytes": 1532754,
+      "sha256": "a507f84f4586fa9639c1a0636b78f2bac51b5fd105b4e8239c1338a446cf6e4a"
+    },
+    "order": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-current-ordering-v22.json",
+      "bytes": 49711,
+      "sha256": "e6187aa690dd426548fccf4b2369a5de6716672ec68b92dc1947140e1d8d60cf"
+    },
+    "fmo": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v14.json",
+      "bytes": 8152320,
+      "sha256": "cd8e375b3236bdd5ca0572f24857353010144c7060ac1fa963d31722bf5531e0"
+    },
+    "legacy": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v27.json",
+      "bytes": 1558197,
+      "sha256": "2f1bdcfa693344a3afad35b51c3021d050ccddae53269ddafb04a06ab2552e18"
+    },
+    "backlog": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v11.json",
+      "bytes": 486224,
+      "sha256": "d5989505dc155ef40982175b3293eb242212cc2907445986ae80fa0f4008cbc6"
+    }
+  },
+  "canonicalCountsUnchanged": {
+    "finiteFeatureDefinitions": 504,
+    "userOperations": 571,
+    "supportOperations": 125,
+    "productScenarioSpecifications": 1786,
+    "owningTaskGroupsWithFiniteDefinitions": 51,
+    "additionalSourceContractTaskGroups": 0,
+    "pendingSettingsPages": 0,
+    "featuresImplemented": 0,
+    "newProductScenarioPasses": 0,
+    "confirmedChatGptExclusions": 0,
+    "modeCounts": {
+      "unknown": 503,
+      "shared": 1
+    },
+    "qualifiedResponsibilityRecords": 106,
+    "coarseWorkflowFacades": 48,
+    "sourceWitnesses": 2479,
+    "sharedWitnessDispositions": 34,
+    "runtimeCapabilityGroups": 15,
+    "storageDomains": 11,
+    "selectedStorageBoundaries": 16,
+    "dependencyRecords": 202,
+    "buildInputOccurrences": 30,
+    "fullRuntimeRoutesQualified": 0,
+    "modelSubmissionsRemaining": 0,
+    "savedLegacyEntriesWithoutFeatureMapping": 715,
+    "remainingCommandGoalAssociations": 20
+  },
+  "facts": [
+    {
+      "id": "MBC-F01",
+      "claim": "Gkc 的 excludedKeys 参数 r 进入 useState 初始化闭包中的 Rkc(r)；setup 收到 responsePriority 和 onHydrated，effect 依赖为 [u,i]。",
+      "sourceUnitIds": [
+        "MBC-S0001",
+        "MBC-S0002",
+        "MBC-S0003",
+        "MBC-S0004"
+      ],
+      "qualification": "只闭合具名源码调用方；excludedKeys 改变后的实际挂载行为、React 执行和运行实例未验证。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F02",
+      "claim": "GPc 给 Gkc 的 excludedKeys 为 z5?aHa:undefined，优先级为 z5?critical:undefined；gFc 内 z5=Nd()。",
+      "sourceUnitIds": [
+        "MBC-S0005",
+        "MBC-S0006",
+        "MBC-S0007",
+        "MBC-S0008"
+      ],
+      "qualification": "这是根组件源码中的参数生产关系，不证明初始化器已在目标实例执行。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F03",
+      "claim": "Nd 精确导入 shared 的 fIt；其本地定义 lW 调用 lbn(dbn())。lbn 比较 pathname 或 initialRoute 去查询参数后的路径是否等于 /avatar-overlay。",
+      "sourceUnitIds": [
+        "MBC-S0009",
+        "MBC-S0010",
+        "MBC-S0011",
+        "MBC-S0012",
+        "MBC-S0013",
+        "MBC-S0014"
+      ],
+      "qualification": "z5 是头像叠加窗口条件，不能当作 Codex/ChatGPT 模式条件。不读取实际窗口 URL。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F04",
+      "claim": "oHa 构造七个排除键：五个 MCP 缓存/侧栏键、prompt-history 和 heartbeat-thread-permissions-by-id；其中没有 home-composer-mode-v1。",
+      "sourceUnitIds": [
+        "MBC-S0015",
+        "MBC-S0004"
+      ],
+      "qualification": "只说明该参数集合；不由此推定其他存储策略或模式数据在所有窗口中的实际保存结果。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F05",
+      "claim": "OFc 返回 jFc()；jFc 返回 bFc JSX；bFc 在有/无 startupReady 两个分支构造 GPc；DFc 的初始化序列包含 gFc。",
+      "sourceUnitIds": [
+        "MBC-S0016",
+        "MBC-S0017",
+        "MBC-S0018",
+        "MBC-S0019",
+        "MBC-S0006",
+        "MBC-S0005"
+      ],
+      "qualification": "闭合所选源码启动/组件构造链；OFc 的最外层执行者、React mount 与真实启动仍未观察。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F06",
+      "claim": "Gkc 的 pending/enabled/disabled 来自持久化 hydration 与 canWritePrimaryWindowTabPersistence。CPe 是 iRn context，AXe 是 tRn 写入 aRn，OTe 是 LRt 读取 nzt。",
+      "sourceUnitIds": [
+        "MBC-S0001",
+        "MBC-S0020",
+        "MBC-S0021",
+        "MBC-S0022"
+      ],
+      "qualification": "这些状态不是 work/chat 产品模式；跨文件连接见 esmJoins。nzt 的所有写入者不在本批闭合范围。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F07",
+      "claim": "Rkc 超时路径以 legacy/pending 数据调用 onHydrated，并标记 timeout；Gkc 此时允许显示 children，但 context 保持 pending。其后首次 host sync 仍有独立分支。cleanup 清理 timer 和两个订阅。",
+      "sourceUnitIds": [
+        "MBC-S0004",
+        "MBC-S0001"
+      ],
+      "qualification": "定时参数符号 Ukc 的数值不在本批核定；没有真实超时、晚到同步、异常清理或耐久保存验证。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F08",
+      "claim": "vS 定义 home-composer-mode-v1、瞬态覆盖和持久值读取链；hPt 按 transient、persisted、chat 回退。gPt 通过 lPt 综合能力、loading、surface、workOnly、workModeEnabled，而非直接输出持久字符串。",
+      "sourceUnitIds": [
+        "MBC-S0023",
+        "MBC-S0024"
+      ],
+      "qualification": "lPt 的若干分支原样返回 persistedMode，所选源码不足以证明输入只有 work/chat 两值。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F09",
+      "claim": "Qoe 经 IAt 连接 ijn，其值为 yq!==lq.Unrestricted；yq/NAn 使用账户、开关、权限和 loading/error 条件产生 unrestricted/instant_only/disabled。",
+      "sourceUnitIds": [
+        "MBC-S0025",
+        "MBC-S0026",
+        "MBC-S0027",
+        "MBC-S0028",
+        "MBC-S0024"
+      ],
+      "qualification": "instant_only 与 disabled 都可能使该谓词为真；实际权限、账户和开关输入未知，不能把 Qoe 当作固定 Codex 开关。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F10",
+      "claim": "wp 经 mAt 连接 gjn，比较 Tq 是否为 xq；xq 为 STEPS_PROSE，Tq 经 cjn/sjn 派生 detail level。",
+      "sourceUnitIds": [
+        "MBC-S0029",
+        "MBC-S0030",
+        "MBC-S0031",
+        "MBC-S0032",
+        "MBC-S0033"
+      ],
+      "qualification": "这是一条与 work/chat 字符串不同的派生轴；本批止于具体 detail-level 生产函数，不递归查询服务提供方。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F11",
+      "claim": "syi 在 !wp 时返回 codex；否则根据 _S 返回 chatgpt/work_tab/null。",
+      "sourceUnitIds": [
+        "MBC-S0034",
+        "MBC-S0035"
+      ],
+      "qualification": "产品标签与 work/chat 不是一一对应关系。完整赋值表达式由保存的 Program 定位提取，并做有界语法解析；没有执行表达式。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F12",
+      "claim": "ces 以 previewNavigationState.sidebarProductMode 查询 gPt，存在 aeonDraft 时在消费端使用 work；vS 中 preview 参数只影响 workModeEnabled 的比较条件。",
+      "sourceUnitIds": [
+        "MBC-S0036",
+        "MBC-S0023"
+      ],
+      "qualification": "draft 分支不等于模式持久写入；预览值不保证无条件成为最终产品模式。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F13",
+      "claim": "pss 同时存在 ChatGPT 项目展示与本地任务分支：V 检查 R===work 及 Ji；按钮按 linked local project/H 条件选择 kt 或 At；kt 调用 FSi，且本地任务标签明确描述 Codex task in a ChatGPT project。",
+      "sourceUnitIds": [
+        "MBC-S0037"
+      ],
+      "qualification": "组件内存在应保留的本地任务入口；FSi 后效、门控实际值及该组件全部分支未闭合，不能按名称删除整个模块。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MBC-F14",
+      "claim": "gS 在请求 chat 且 Qoe 为真时跳过写入，否则视瞬态值是否存在写入 dPt，并写入 pPt；函数本身没有模式字符串域验证。",
+      "sourceUnitIds": [
+        "MBC-S0038",
+        "MBC-S0023"
+      ],
+      "qualification": "它是已有 FSC-0481 的相关内部路径；显式切换入口 a1s/kti 的参数、迁移与 guard 留给下一批。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    }
+  ],
+  "esmJoins": [
+    {
+      "importer": "Qoe",
+      "module": "./app-shared-8bd9d0399038.js",
+      "exported": "IAt",
+      "targetLocal": "ijn",
+      "sourceUnitIds": [
+        "MBC-S0039",
+        "MBC-S0040"
+      ]
+    },
+    {
+      "importer": "OTe",
+      "module": "./app-shared-8bd9d0399038.js",
+      "exported": "Z$t",
+      "targetLocal": "LRt",
+      "sourceUnitIds": [
+        "MBC-S0041",
+        "MBC-S0042"
+      ]
+    },
+    {
+      "importer": "CPe",
+      "module": "./app-shared-8bd9d0399038.js",
+      "exported": "gEt",
+      "targetLocal": "iRn",
+      "sourceUnitIds": [
+        "MBC-S0043",
+        "MBC-S0044"
+      ]
+    },
+    {
+      "importer": "AXe",
+      "module": "./app-shared-8bd9d0399038.js",
+      "exported": "vEt",
+      "targetLocal": "tRn",
+      "sourceUnitIds": [
+        "MBC-S0045",
+        "MBC-S0046"
+      ]
+    },
+    {
+      "importer": "wp",
+      "module": "./app-shared-8bd9d0399038.js",
+      "exported": "mAt",
+      "targetLocal": "gjn",
+      "sourceUnitIds": [
+        "MBC-S0047",
+        "MBC-S0048"
+      ]
+    },
+    {
+      "importer": "Nd",
+      "module": "./app-shared-8bd9d0399038.js",
+      "exported": "fIt",
+      "targetLocal": "lW",
+      "sourceUnitIds": [
+        "MBC-S0009",
+        "MBC-S0010"
+      ]
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MBC-S0001",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10125884,
+        "endExclusive": 10126594
+      },
+      "spanHash": "996e7783250a9980eae0d561eecf4b25088b9fd5b3392b1f23ed2c933d9af30b",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Gkc",
+        "use-parent:Gkc",
+        "use-owner:Gkc"
+      ],
+      "code": "function Gkc(e){let t=(0,Kkc.c)(10),{children:n,excludedKeys:r,responsePriority:i}=e,[a,o]=(0,qkc.useState)(Ykc),[s,c]=(0,qkc.useState)(`pending`),l;t[0]===r?l=t[1]:(l=()=>Rkc(r),t[0]=r,t[1]=l);let[u]=(0,qkc.useState)(l),d,f;if(t[2]!==i||t[3]!==u?(d=()=>{let e=u({responsePriority:i,onHydrated:e=>{AXe(e),OTe()===`host`?c(e?`enabled`:`disabled`):c(`pending`),o(!0)}});return()=>{e(),AXe(!1)}},f=[u,i],t[2]=i,t[3]=u,t[4]=d,t[5]=f):(d=t[4],f=t[5]),(0,qkc.useEffect)(d,f),!a){let e;return t[6]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,Jkc.jsx)(X6,{debugName:`PersistedStateProvider`}),t[6]=e):e=t[6],e}let p;return t[7]!==n||t[8]!==s?(p=(0,Jkc.jsx)(CPe,{value:s,children:n}),t[7]=n,t[8]=s,t[9]=p):p=t[9],p}"
+    },
+    {
+      "id": "MBC-S0002",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10126056,
+        "endExclusive": 10126062
+      },
+      "spanHash": "c69e27c40f792922c95442689df06eea74adb23d8476f2eb8d64d936bc816320",
+      "nodeType": "CallExpression",
+      "labels": [
+        "use-parent:Rkc"
+      ],
+      "code": "Rkc(r)"
+    },
+    {
+      "id": "MBC-S0003",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10126052,
+        "endExclusive": 10126062
+      },
+      "spanHash": "8bc7ac2acfea965be4cc8c6109d2e06d119871e3cfeb856be7597cc3ad50eee3",
+      "nodeType": "ArrowFunctionExpression",
+      "labels": [
+        "use-owner:Rkc"
+      ],
+      "code": "()=>Rkc(r)"
+    },
+    {
+      "id": "MBC-S0004",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10123422,
+        "endExclusive": 10124940
+      },
+      "spanHash": "9be567d8bfb6db61edeb8497ff50498b9e8878ccb4a72ebbebd6b50448d19b32",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Rkc",
+        "use-parent:Rkc",
+        "use-owner:Rkc"
+      ],
+      "code": "function Rkc(e){let t=WKe(tle,e,Pd?.savedCustomSections==null?[]:[jEe]),n=!1,r=!1,i=!1,a={},o=new Set;function s(e,t,r){e===`unread-thread-ids-by-host-v1`&&od.isHostBacked()||(n||(a={...a,[e]:t}),Ho.dispatchMessage(`persisted-atom-update`,{key:e,value:r==null?t:void 0,deleted:r==null&&t===void 0,recordUpdate:r}))}return mIe(t,s),({responsePriority:c,onHydrated:l})=>{let u=!1,d=Ho.subscribe(`persisted-atom-sync`,({state:c,canWritePrimaryWindowTabPersistence:d})=>{if(u)return;d!=null&&(i=d);let f=!n,p=c??{},m=Lkc({hostState:p,isInitialHostSync:f,legacyState:t,pendingExternalUpdates:a});mIe(m,s,{preservePendingPublishes:f&&r,savedCustomSectionOperationIds:[...o].filter(VDe)}),o.clear(),f&&Hkc(t),zkc(t);let h=f?Vkc(t,{...p,...a}):[];ZHe(`host`),a={},n=!0,r=!0,l(i),f&&(h.forEach(({key:e,value:t})=>s(e,t)),Bkc(e))}),f=Ho.subscribe(`persisted-atom-updated`,({key:e,value:t,deleted:i,savedCustomSectionOperationId:s})=>{let c=i?void 0:t;if(n||(a={...a,[e]:c}),!r){for(let e of o)VDe(e)||o.delete(e);e===`sidebar-custom-sections-v3`&&s!=null&&VDe(s)&&o.add(s);return}XWe(e,c,e===`sidebar-custom-sections-v3`&&s!=null?[s]:void 0)});Ho.dispatchMessage(`persisted-atom-sync-request`,{responsePriority:c});let p=window.setTimeout(()=>{u||r||(gr.error(`[persisted-atom] host did not respond to sync request; continuing with legacy state only`),mIe(Ikc(t,{},a),s,{savedCustomSectionOperationIds:[...o].filter(VDe)}),o.clear(),Hkc(t),ZHe(`timeout`),r=!0,l(i),zkc(t))},Ukc);return()=>{u=!0,window.clearTimeout(p),d(),f()}}}"
+    },
+    {
+      "id": "MBC-S0005",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10201576,
+        "endExclusive": 10208032
+      },
+      "spanHash": "973827066dd5c60f2aa724d666c62be19b6fb0290df2edb174d9b9073981650b",
+      "nodeType": "FunctionDeclaration",
+      "code": "function GPc(e){let t=(0,F5.c)(54),{startupReady:n}=e===void 0?{}:e;n!=null&&(0,I5.use)(n);let r;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(r=(0,L5.jsx)(k0s,{}),t[0]=r):r=t[0];let i;t[1]===Symbol.for(`react.memo_cache_sentinel`)?(i=(0,L5.jsx)(Ccc,{}),t[1]=i):i=t[1];let a;t[2]===Symbol.for(`react.memo_cache_sentinel`)?(a=(0,L5.jsx)(hGs,{}),t[2]=a):a=t[2];let o,s,c,l,u,d;t[3]===Symbol.for(`react.memo_cache_sentinel`)?(o=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(EGs,{})}),s=z5?null:(0,L5.jsx)(lFc,{}),c=z5?null:(0,L5.jsx)(Xlc,{}),l=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(R0s,{isCompactWindow:R5})}),u=R5?null:(0,L5.jsx)(dzs,{}),d=(0,L5.jsx)(L5.Fragment,{children:R5?null:(0,L5.jsx)(Q7s,{})}),t[3]=o,t[4]=s,t[5]=c,t[6]=l,t[7]=u,t[8]=d):(o=t[3],s=t[4],c=t[5],l=t[6],u=t[7],d=t[8]);let f,p;t[9]===Symbol.for(`react.memo_cache_sentinel`)?(f=(0,L5.jsx)(dpc,{}),p=(0,L5.jsx)(Spc,{}),t[9]=f,t[10]=p):(f=t[9],p=t[10]);let m,h,g;t[11]===Symbol.for(`react.memo_cache_sentinel`)?(m=!R5&&!z5?(0,L5.jsxs)(L5.Fragment,{children:[null,(0,L5.jsx)(bGs,{})]}):null,h=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(Xgc,{phase:`first_content_visible`,children:(0,L5.jsx)(Elc,{})})}),g=R5||z5?null:(0,L5.jsxs)(L5.Fragment,{children:[ole()?(0,L5.jsx)($0s,{}):null,(0,L5.jsxs)(Xgc,{phase:`background_ready`,children:[(0,L5.jsx)(jUa,{}),(0,L5.jsxs)(L5.Fragment,{children:[(0,L5.jsx)(mFc,{}),(0,L5.jsx)(aFc,{})]})]})]}),t[11]=m,t[12]=h,t[13]=g):(m=t[11],h=t[12],g=t[13]);let _,v,y,b,x,S,C,w,T,E,D,O,k,A,j,M,N;t[14]===Symbol.for(`react.memo_cache_sentinel`)?(_=(0,L5.jsxs)(L5.Fragment,{children:[(0,L5.jsx)(vBs,{logFocusEvents:!R5&&!z5}),z5?(0,L5.jsx)(TWs,{}):null,(0,L5.jsx)(ehc,{})]}),v=R5||z5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(Cmc,{})}),y=(0,L5.jsx)(R9s,{}),b=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(I_c,{})}),x=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(ptc,{})}),S=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(k_c,{})}),C=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(c_c,{})}),w=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(d1s,{})}),T=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsxs)(Xgc,{phase:`background_ready`,children:[(0,L5.jsx)(Ouc,{}),(0,L5.jsx)(oFc,{}),(0,L5.jsx)(ogc,{})]})}),E=!R5&&(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(Xgc,{phase:`first_content_visible`,children:(0,L5.jsx)(q7s,{})})}),D=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsxs)(Xgc,{phase:`first_content_visible`,children:[(0,L5.jsx)(nWs,{}),(0,L5.jsx)(YUs,{})]})}),O=(0,L5.jsx)(L5.Fragment,{children:R5?null:(0,L5.jsx)(w_c,{})}),k=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(Upc,{})}),A=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)($pc,{})}),j=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(NLs,{})}),M=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(Czs,{})}),N=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(lhc,{})}),t[14]=_,t[15]=v,t[16]=y,t[17]=b,t[18]=x,t[19]=S,t[20]=C,t[21]=w,t[22]=T,t[23]=E,t[24]=D,t[25]=O,t[26]=k,t[27]=A,t[28]=j,t[29]=M,t[30]=N):(_=t[14],v=t[15],y=t[16],b=t[17],x=t[18],S=t[19],C=t[20],w=t[21],T=t[22],E=t[23],D=t[24],O=t[25],k=t[26],A=t[27],j=t[28],M=t[29],N=t[30]);let P,F,I;t[31]===Symbol.for(`react.memo_cache_sentinel`)?(P=(0,L5.jsx)(wtc,{}),F=(0,L5.jsx)(nLs,{}),I=(0,L5.jsx)(P9s,{}),t[31]=P,t[32]=F,t[33]=I):(P=t[31],F=t[32],I=t[33]);let L;t[34]===Symbol.for(`react.memo_cache_sentinel`)?(L=null,t[34]=L):L=t[34];let R,z;t[35]===Symbol.for(`react.memo_cache_sentinel`)?(R=R5?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)($zs,{})}),z=R5||z5||iFc?null:(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(cFc,{})}),t[35]=R,t[36]=z):(R=t[35],z=t[36]);let B;t[37]===Symbol.for(`react.memo_cache_sentinel`)?(B=R5?null:(0,L5.jsxs)(L5.Fragment,{children:[null,(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(_7s,{includeDesktopLogArchive:!0,nativeHostDiagnosticsAvailable:!0})})]}),t[37]=B):B=t[37];let V;t[38]===Symbol.for(`react.memo_cache_sentinel`)?(V=(0,L5.jsxs)(b0s,{children:[null,(0,L5.jsx)(W0s,{})]}),t[38]=V):V=t[38];let H,ee;t[39]===Symbol.for(`react.memo_cache_sentinel`)?(H=(0,L5.jsx)(gcc,{}),ee=(0,L5.jsx)(qgc,{}),t[39]=H,t[40]=ee):(H=t[39],ee=t[40]);let U,te,ne,re;t[41]===Symbol.for(`react.memo_cache_sentinel`)?(U=(0,L5.jsx)(B_c,{}),te=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(LPc,{})}),ne=(0,L5.jsxs)(L5.Fragment,{children:[(0,L5.jsx)(AWs,{}),!z5&&(0,L5.jsx)(zuc,{})]}),re=z5?null:(0,L5.jsx)(puc,{}),t[41]=U,t[42]=te,t[43]=ne,t[44]=re):(U=t[41],te=t[42],ne=t[43],re=t[44]);let ie,ae,oe,se;t[45]===Symbol.for(`react.memo_cache_sentinel`)?(ie=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(epc,{prefetchVoiceCatalog:z5})}),ae=(0,L5.jsx)(ERs,{}),oe=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(zpc,{})}),se=R5?null:(0,L5.jsxs)(L5.Fragment,{children:[(0,L5.jsx)(rFc,{}),(0,L5.jsx)(Dcc,{}),(0,L5.jsx)(ylc,{}),(0,L5.jsx)(Hcc,{}),(0,L5.jsxs)(L5.Fragment,{children:[(0,L5.jsx)(Xhc,{}),Pd.windowsShell!=null&&(0,L5.jsx)(vgc,{})]}),(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(MBs,{})}),(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(KBs,{})}),(0,L5.jsx)(Nuc,{}),(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(YPc,{})}),(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)($ec,{})}),(0,L5.jsx)(Wuc,{}),(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(b8s,{})}),(0,L5.jsx)(Mmc,{})]}),t[45]=ie,t[46]=ae,t[47]=oe,t[48]=se):(ie=t[45],ae=t[46],oe=t[47],se=t[48]);let ce,le,ue,de;t[49]===Symbol.for(`react.memo_cache_sentinel`)?(ce=(0,L5.jsx)(_tc,{}),le=(0,L5.jsx)(WVs,{}),ue=(0,L5.jsx)(eHs,{}),de=(0,L5.jsx)(L5.Fragment,{children:(0,L5.jsx)(KPc,{})}),t[49]=ce,t[50]=le,t[51]=ue,t[52]=de):(ce=t[49],le=t[50],ue=t[51],de=t[52]);let fe;return t[53]===Symbol.for(`react.memo_cache_sentinel`)?(fe=(0,L5.jsx)(Gkc,{excludedKeys:z5?aHa:void 0,responsePriority:z5?`critical`:void 0,children:(0,L5.jsxs)($Nc,{children:[r,(0,L5.jsx)(Dhc,{children:(0,L5.jsxs)(JPc,{children:[i,(0,L5.jsx)(m9s,{children:(0,L5.jsx)(TUs,{children:(0,L5.jsx)(Fsc,{children:(0,L5.jsxs)(pQs,{children:[a,null,o,s,c,l,u,d,null,f,p,null,m,h,g,_,v,y,b,x,S,C,w,T,E,D,O,k,A,j,M,N,(0,L5.jsx)(T9s,{children:(0,L5.jsxs)(NN,{name:`AppIntl`,children:[P,F,I,(0,L5.jsxs)(gVs,{children:[L,(0,L5.jsxs)(oDi,{children:[null,(0,L5.jsx)(PSe,{children:(0,L5.jsxs)(Omc,{children:[R,z,(0,L5.jsxs)(KWs,{children:[B,V,(0,L5.jsx)(j8s,{children:(0,L5.jsxs)(NN,{name:`AppRoutes`,children:[H,ee,null,U,te,ne,re,null,ie,ae,oe,se,(0,L5.jsxs)(b0s,{children:[ce,le,ue,de,(0,L5.jsx)(y9s,{children:(0,L5.jsx)(ZPc,{})})]})]})})]})]})})]})]})]})})]})})})})]})})]})}),t[53]=fe):fe=t[53],fe}",
+      "metadataPointer": "/programBindings/32906/declarations/0"
+    },
+    {
+      "id": "MBC-S0006",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10214808,
+        "endExclusive": 10218685
+      },
+      "spanHash": "f60b9057f005915520ddeb0ca4bd3d209d21e81fdff2350751155d87c10935ba",
+      "nodeType": "FunctionDeclaration",
+      "code": "function gFc(){return(gFc=e((()=>{F5=J(),$Va(),Ns(),iHa(),Y(),_g(),oHa(),I5=us(),tf(),$Ha(),Do(),GHa(),AUa(),LUa(),GUa(),ZIs(),sLs(),nRs(),LRs(),Szs(),Ezs(),Oj(),iBs(),DBs(),jBs(),IBs(),$Bs(),FVs(),YVs(),aHs(),bw(),OUs(),Xu(),tWs(),oWs(),kWs(),NWs(),XWs(),sGs(),yGs(),CGs(),AGs(),BQs(),QQs(),jw(),q$s(),e1s(),i1s(),s1s(),p1s(),R1s(),y0s(),C0s(),rd(),F0s(),PN(),U0s(),uf(),X0s(),lDi(),Jc(),r2s(),y8s(),w8s(),I8s(),D7s(),K7s(),Z7s(),FVe(),c9s(),v9s(),aF(),C9s(),N9s(),L9s(),K9s(),$9s(),ftc(),gtc(),Ctc(),KBe(),$Oe(),GEe(),To(),Dtc(),Ysc(),Scc(),Ecc(),jcc(),zcc(),Gcc(),Slc(),U5o(),Tlc(),Alc(),OR(),Ilc(),euc(),crs(),O(),gqs(),aJe(),bWe(),vuc(),Muc(),Ruc(),Rd(),Uuc(),Yuc(),Wg(),mJe(),upc(),mpc(),Tpc(),Hpc(),Jpc(),imc(),Dmc(),jmc(),Fmc(),vm(),Z(),GWs(),$mc(),fu(),ihc(),yhc(),Ehc(),Ahc(),uo(),Bhc(),tgc(),_gc(),jgc(),Ygc(),t_c(),f_c(),O_c(),M_c(),z_c(),vo(),U_c(),y$s(),Fkc(),Zkc(),uAc(),DAc(),iPc(),WPc(),L5=W(),Gt(),R5=gm(),z5=Nd(),iFc=iF===ur,aFc=nf(async()=>(await Q(async()=>{let{LinkedProjectProvisioningBridge:e}=await import(`./provisioning-bridge-8ddc6b03e2c1.js`);return{LinkedProjectProvisioningBridge:e}},__vite__mapDeps([2540,1,409,410,427]),import.meta.url)).LinkedProjectProvisioningBridge),nf(ZVa),oFc=nf(async()=>(await Q(async()=>{let{FirstPartyPluginBackgroundBridge:e}=await import(`./lifetime-e9319e293e2b.js`);return{FirstPartyPluginBackgroundBridge:e}},__vite__mapDeps([2541,1,409,410]),import.meta.url)).FirstPartyPluginBackgroundBridge),sFc=nf(async()=>(await Q(async()=>{let{MeetingsTakeNotesCommand:e}=await import(`./take-notes-command-d2d198608612.js`);return{MeetingsTakeNotesCommand:e}},__vite__mapDeps([2542,1,409,410]),import.meta.url)).MeetingsTakeNotesCommand),cFc=nf(async()=>(await Q(async()=>{let{HabitatAutomationMigrationPrompt:e}=await import(`./habitat-automation-migration-dialog-8cadbc3f3845.js`);return{HabitatAutomationMigrationPrompt:e}},__vite__mapDeps([2543,1,409,410,789]),import.meta.url)).HabitatAutomationMigrationPrompt),lFc=nf(async()=>(await Q(async()=>{let{ResourceUpdatesBridge:e}=await import(`./resource-updates-bridge-3021a4d21be1.js`);return{ResourceUpdatesBridge:e}},__vite__mapDeps([2544,1,409,410]),import.meta.url)).ResourceUpdatesBridge),uFc=nf(async()=>(await Q(async()=>{let{CheckoutCreditWebviewHost:e}=await import(`./webview-page-f15129326e35.js`);return{CheckoutCreditWebviewHost:e}},__vite__mapDeps([2281,1,409,410,1930,1931]),import.meta.url)).CheckoutCreditWebviewHost,{propagateLoadError:!0}),dFc=nf(async()=>(await Q(async()=>{let{CheckoutPricingWebviewHost:e}=await import(`./webview-page-f15129326e35.js`);return{CheckoutPricingWebviewHost:e}},__vite__mapDeps([2281,1,409,410,1930,1931]),import.meta.url)).CheckoutPricingWebviewHost,{propagateLoadError:!0}),fFc=nf(async()=>(await Q(async()=>{let{WorkspaceSettingsWebviewHost:e}=await import(`./webview-page-adf38d0c2f37.js`);return{WorkspaceSettingsWebviewHost:e}},__vite__mapDeps([2284,1,409,410,1930,1931,2107]),import.meta.url)).WorkspaceSettingsWebviewHost,{propagateLoadError:!0}),pFc=nf(async()=>(await Q(async()=>{let{VisualizationSandboxPrewarmer:e}=await import(`./visualization-sandbox-prewarmer-6cef240e85a0.js`);return{VisualizationSandboxPrewarmer:e}},__vite__mapDeps([2545,1,409,410,1602,640,1601,1597,1565]),import.meta.url)).VisualizationSandboxPrewarmer),mFc=nf(async()=>(await Q(async()=>{let{PinnedContentTabPreloadBridge:e}=await import(`./preload-bridge-9abe901c1192.js`);return{PinnedContentTabPreloadBridge:e}},__vite__mapDeps([2546,1,409,410]),import.meta.url)).PinnedContentTabPreloadBridge),hFc=nf(async()=>(await Q(async()=>{let{DetachedBrowserAnnotationHost:e}=await import(`./source-annotation-host-cec9f0301e59.js`);return{DetachedBrowserAnnotationHost:e}},__vite__mapDeps([2547,1,409,410,411,412,1388,1389,828,1390,1391,1392,1393,1394,1395,1396,1397,1387,1417]),import.meta.url)).DetachedBrowserAnnotationHost)})))()}",
+      "metadataPointer": "/programBindings/32936/declarations/0"
+    },
+    {
+      "id": "MBC-S0007",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10214757,
+        "endExclusive": 10214759
+      },
+      "spanHash": "5bf9f5aa2bcd8de51821bbd78cdad3846ceb18812aca1c5c663ea5fc157bdc39",
+      "nodeType": "VariableDeclarator",
+      "code": "z5",
+      "metadataPointer": "/programBindings/32923/declarations/0"
+    },
+    {
+      "id": "MBC-S0008",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6057567,
+        "endExclusive": 6057570
+      },
+      "spanHash": "80c1be75426330a674175175e6051b1ea7f68fe307787a5c6d4d96fc0aa972c2",
+      "nodeType": "VariableDeclarator",
+      "code": "aHa",
+      "metadataPointer": "/programBindings/22357/declarations/0"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 121203,
+        "endExclusive": 121212
+      },
+      "spanHash": "8aaa91aa6b09acd098d7dc59b1d640487d8cdd66c009b1dbca760f0e460834b3",
+      "nodeType": "ImportSpecifier",
+      "code": "fIt as Nd",
+      "id": "MBC-S0009"
+    },
+    {
+      "id": "MBC-S0010",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8142784,
+        "endExclusive": 8142793
+      },
+      "spanHash": "61491338e099d327dc75823b6a32dc69108495c6ceaa08dcae5aa8d0b5a783a9",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:fIt"
+      ],
+      "code": "lW as fIt"
+    },
+    {
+      "id": "MBC-S0011",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402196,
+        "endExclusive": 3402228
+      },
+      "spanHash": "3a85b6b199b10339306b19b9a5927fa4eab9382edfa116bb83870e497eb57b0b",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:lW"
+      ],
+      "code": "function lW(){return lbn(dbn())}"
+    },
+    {
+      "id": "MBC-S0012",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402115,
+        "endExclusive": 3402196
+      },
+      "spanHash": "e13db885f54542e88b1e415cdbd96476ceb7c735f6996fbab23e68c3d1be7cfb",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:lbn"
+      ],
+      "code": "function lbn({pathname:e,initialRoute:t}){return e===fbn||t?.split(`?`)[0]===fbn}"
+    },
+    {
+      "id": "MBC-S0013",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402302,
+        "endExclusive": 3402488
+      },
+      "spanHash": "2030cc4dcc193445f00a832e2803e8f1f0fda02e0d5317339a5c790da1458440",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:dbn"
+      ],
+      "code": "function dbn(){if(typeof window>`u`)return{pathname:``,initialRoute:null};let e=new URL(window.location.href);return{pathname:e.pathname,initialRoute:e.searchParams.get(`initialRoute`)}}"
+    },
+    {
+      "id": "MBC-S0014",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402521,
+        "endExclusive": 3402663
+      },
+      "spanHash": "fe82cf84ee6bae10c87dcf73ef8ac318ade3df43f3de363c5cd31d76c1f8f2b8",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:uW"
+      ],
+      "code": "uW=t((()=>{IP(),Aj(),fbn=`/avatar-overlay`,pbn=[`/spotlight`,`/global-dictation`,`/global-dictation/*`,`/hotkey-window`,`/hotkey-window/*`]}))"
+    },
+    {
+      "id": "MBC-S0015",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6057571,
+        "endExclusive": 6057841
+      },
+      "spanHash": "f480ce7544d34eb603d178458ca68cd054e5281371c4a9de1f7f0d1124271fa7",
+      "nodeType": "FunctionDeclaration",
+      "code": "function oHa(){return(oHa=e((()=>{aHa=new Set([`mcp-extension-sidebar-catalog`,`mcp-server-tools-cache-v2`,`mcp-extension-sidebar-tools-v1`,`mcp-extension-sidebar-tools-v2`,`mcp-extension-sidebar-entries-v1`,`prompt-history`,`heartbeat-thread-permissions-by-id`])})))()}",
+      "metadataPointer": "/programBindings/22358/declarations/0"
+    },
+    {
+      "id": "MBC-S0016",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10219932,
+        "endExclusive": 10220273
+      },
+      "spanHash": "b9efbb4243f0fbb584faeed405078fd19ba62000e2ec044ff9dc8e18380f1e32",
+      "nodeType": "FunctionDeclaration",
+      "code": "async function OFc(){kFc(),await MFc();let e;return e=IFc?FFs.prefetch():LFc?IFs.prefetch():EJa?.(),e=e?.catch(e=>{gr.warning(`Initial route prefetch failed; rendering will retry`,{safe:{isAvatarOverlayWindow:IFc,isSpotlightWindow:LFc,windowType:`electron`},sensitive:{error:e}})}),await tVe(),k1n(),AFc(),!IFc&&!LFc&&e!=null&&await e,jFc()}",
+      "metadataPointer": "/programBindings/32949/declarations/0"
+    },
+    {
+      "id": "MBC-S0017",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10220549,
+        "endExclusive": 10221069
+      },
+      "spanHash": "accd1d18920a9ff4619f26bfd9d7b448a830fbc121d10daf5112d3c3e953fbf2",
+      "nodeType": "FunctionDeclaration",
+      "code": "function jFc(){gr.info(`[statsig-refresh-diagnostics] React root render requested`,{safe:{windowType:`electron`}});let e=FFc||IFc||RFc||Pd.startup?.whenReady==null?void 0:Promise.resolve(Pd.startup.whenReady()).then(e=>{try{var t=hg();let n=t.u(e),r=performance.getEntriesByType(`navigation`)[0];n!=null&&r instanceof PerformanceNavigationTiming&&r.type===`navigate`&&vs.setHostStartupTiming(n,HFc),vs.markInitializationPhase(`host_startup_ready`)}catch(e){t.e=e}finally{t.d()}});return(0,NFc.jsx)(bFc,{startupReady:e})}",
+      "metadataPointer": "/programBindings/32952/declarations/0"
+    },
+    {
+      "id": "MBC-S0018",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10218800,
+        "endExclusive": 10219669
+      },
+      "spanHash": "2822a0736676df8f5bd3e70ad69e5c04fc2075097b1a9c4f04a436c28459f104",
+      "nodeType": "FunctionDeclaration",
+      "code": "function bFc(e){let t=(0,SFc.c)(5),{startupReady:n}=e,r;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(r=!wFc&&!TFc?(0,B5.jsx)(B5.Fragment,{children:(0,B5.jsx)(`div`,{\"aria-hidden\":!0,className:ng(`pointer-events-none fixed inset-x-0 top-0 h-toolbar draggable`,vFc.fallbackDragRegion)})}):null,t[0]=r):r=t[0];let i;t[1]===Symbol.for(`react.memo_cache_sentinel`)?(i=(0,B5.jsx)(WVa,{}),t[1]=i):i=t[1];let a;t[2]===Symbol.for(`react.memo_cache_sentinel`)?(a=!wFc&&!TFc&&!EFc&&Pd.startup!=null?(0,B5.jsx)(`span`,{ref:xFc,\"aria-hidden\":!0,hidden:!0}):null,t[2]=a):a=t[2];let o;return t[3]===n?o=t[4]:(o=(0,B5.jsxs)(CFc.StrictMode,{children:[r,(0,B5.jsxs)(NN,{name:`App`,fallback:i,onError:void 0,children:[a,n==null?(0,B5.jsx)(GPc,{}):(0,B5.jsx)(CFc.Suspense,{fallback:(0,B5.jsx)(X6,{debugName:`Startup`}),children:(0,B5.jsx)(GPc,{startupReady:n})})]})]}),t[3]=n,t[4]=o),o}",
+      "metadataPointer": "/programBindings/32940/declarations/0"
+    },
+    {
+      "id": "MBC-S0019",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10219774,
+        "endExclusive": 10219932
+      },
+      "spanHash": "710cef7f9b98cf8fc2038d63d41cf7e0e0359a6db5b5f3c7e0f2e90bca1eb812",
+      "nodeType": "FunctionDeclaration",
+      "code": "function DFc(){return(DFc=e((()=>{SFc=J(),Hg(),_g(),CFc=us(),rd(),PN(),JVa(),gFc(),aF(),Z6(),Mse(),vm(),iq(),yFc(),B5=W(),wFc=gm(),TFc=Nd(),EFc=iF===ur})))()}",
+      "metadataPointer": "/programBindings/32948/declarations/0"
+    },
+    {
+      "id": "MBC-S0020",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2173840,
+        "endExclusive": 2173866
+      },
+      "spanHash": "acd6663b041e91841dc0b217e6717722f945e796be7855f41f359262d2cb1af9",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:LRt"
+      ],
+      "code": "function LRt(){return nzt}"
+    },
+    {
+      "id": "MBC-S0021",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3677441,
+        "endExclusive": 3677463
+      },
+      "spanHash": "b19e2f91eec38a16d035f9d1c06362b42a3bebb094054beee1f3a2bd4f5ca2a3",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:tRn"
+      ],
+      "code": "function tRn(e){aRn=e}"
+    },
+    {
+      "id": "MBC-S0022",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3677547,
+        "endExclusive": 3677583
+      },
+      "spanHash": "5a8745758cb62687585d90994107e2d67aedf0932dcd6f342dd4ef94fd85f13d",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:iRn"
+      ],
+      "code": "iRn=(0,rRn.createContext)(`pending`)"
+    },
+    {
+      "id": "MBC-S0023",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310984,
+        "endExclusive": 1312261
+      },
+      "spanHash": "0c761f5eca541012a50bf2bbd81d29d8afbb9f82b5e05990ad8959003e7a3f81",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:vS"
+      ],
+      "code": "function vS(){return(vS=e((()=>{Y(),ys(),cs(),Z(),dm(),fpe(),Um(),Zh(),mae(),nPt(),rPt(),uPt=`home-composer-mode-v1`,dPt=fd(q,()=>void 0),fPt=Tu(q,({get:e})=>e(dPt)),pPt=Fu(uPt,void 0),afe(`oai-chat-surface-mode`,()=>void 0),mPt=Tu(q,({get:e})=>e(pPt)??Ch(uPt,void 0)),hPt=Tu(q,({get:e})=>e(fPt)??e(mPt)??`chat`),gPt=Ih(q,(e,{get:t})=>{let n=t(hPt);return lPt({chatGptProductAccess:t(Bo,{name:`chatgpt`}),chatSeatAccess:t(Bo,{name:`chatgpt.seat-access`}),persistedMode:n,workModeLoading:t(REe),windowType:`electron`,workOnlyModeEnabled:t(Qoe),workModeSurfaceAvailable:t(Dc).status===`allowed`||n===`work`&&t(Dc).status===`loading`,workModeEnabled:e==null?t(wp):e===`work`})}),_S=Tu(q,({get:e})=>e(gPt,void 0)),_Pt=Tu(q,({get:e})=>lPt({chatGptProductAccess:e(Bo,{name:`chatgpt`}),persistedMode:e(fPt)??e(mPt)??`work`,workModeLoading:e(REe),windowType:`electron`,workOnlyModeEnabled:e(Qoe),workModeSurfaceAvailable:e(vPt),workModeEnabled:e(wp)})),vPt=Tu(q,({get:e})=>{let t=e(wp);return!oPt({windowType:`electron`,workModeEnabled:t})||e(t?Dc:ep).status===`allowed`}),yPt=Tu(q,({get:e})=>{let t=e(Bo,{name:`chatgpt`});if(t.isLoading||t.isError||!t.isCapable||e(REe))return!1;let n=e(wp);return!oPt({windowType:`electron`,workModeEnabled:n})||e(n?Dc:ep).status!==`loading`})})))()}"
+    },
+    {
+      "id": "MBC-S0024",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310609,
+        "endExclusive": 1310937
+      },
+      "spanHash": "7d1096822a1103fd9d308139e2ac5960bb8821e684cb94dd4ae40588837e7eff",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:lPt"
+      ],
+      "code": "function lPt({chatGptProductAccess:e,chatSeatAccess:t,persistedMode:n,workModeLoading:r,windowType:i,workOnlyModeEnabled:a=!1,workModeSurfaceAvailable:o,workModeEnabled:s}){let c=!t?.isCapable&&!t?.isLoading&&(e.isError||!e.isLoading&&!e.isCapable);return i===`extension`||a?`work`:s?o?c?`work`:n:c?void 0:`chat`:c||!r?`work`:n}"
+    },
+    {
+      "id": "MBC-S0025",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593228,
+        "endExclusive": 3593271
+      },
+      "spanHash": "425b1263d9fbbb9102fa6e826f93786eb842dbbe10e334a0ad1b8840aaa6df12",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:ijn"
+      ],
+      "code": "ijn=J(X,({get:e})=>e(yq)!==lq.Unrestricted)"
+    },
+    {
+      "id": "MBC-S0026",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3589581,
+        "endExclusive": 3589660
+      },
+      "spanHash": "cf7b08f33ae727fff695d3edd79b4b1e7b98de4d4ee1ec545c9745f8dad29f50",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:lq"
+      ],
+      "code": "lq={Unrestricted:`unrestricted`,InstantOnly:`instant_only`,Disabled:`disabled`}"
+    },
+    {
+      "id": "MBC-S0027",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3592950,
+        "endExclusive": 3593227
+      },
+      "spanHash": "deabea4fbe6f88d436c5498970b37b6ebae4edd462848e97678352bb8204b993",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:yq"
+      ],
+      "code": "yq=J(X,({get:e})=>{let t=e(dq);if(!e($U,HAn)||!RAn(t)||t.accountId==null)return lq.Unrestricted;let n=e(uq,t.accountId);return NAn({chatInstantEnforcementEnabled:e($U,UAn),permissions:n.data?.permissions,workspaceSettingsError:n.isError,workspaceSettingsLoading:n.isLoading})})"
+    },
+    {
+      "id": "MBC-S0028",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3586905,
+        "endExclusive": 3587126
+      },
+      "spanHash": "ba1d09f360eca70ea11c20f00d080b6e1aea25071b388deeab7938e37c509077",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:NAn"
+      ],
+      "code": "function NAn({chatInstantEnforcementEnabled:e,permissions:t,workspaceSettingsError:n,workspaceSettingsLoading:r}){return n||r||!t?.includes(KAn)?lq.Unrestricted:e?t.includes(qAn)?lq.InstantOnly:lq.Disabled:lq.InstantOnly}"
+    },
+    {
+      "id": "MBC-S0029",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3594828,
+        "endExclusive": 3594858
+      },
+      "spanHash": "1dcb80ed58d92c6cb78d27321f0b6bce57f55058eda46ae61ae340a07cb33b11",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:gjn"
+      ],
+      "code": "gjn=J(X,({get:e})=>e(Tq)===xq)"
+    },
+    {
+      "id": "MBC-S0030",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593469,
+        "endExclusive": 3593485
+      },
+      "spanHash": "8653667316de0a0a1d1a0bc1104d135b63e0ca354d871f60717bb6d9c85bc3d1",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:xq"
+      ],
+      "code": "xq=`STEPS_PROSE`"
+    },
+    {
+      "id": "MBC-S0031",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3594776,
+        "endExclusive": 3594801
+      },
+      "spanHash": "4457ef19a331c46795f12f3f762f6f3b34604fce5c2ac5ccaca8117fbadaf444",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:Tq"
+      ],
+      "code": "Tq=J(X,({get:e})=>e(cjn))"
+    },
+    {
+      "id": "MBC-S0032",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593733,
+        "endExclusive": 3593923
+      },
+      "spanHash": "5b3d1bd76eac5f79920b108ea62ca05ebc00a697ad1eba85fdda70ac1da083c8",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:cjn"
+      ],
+      "code": "cjn=J(X,({get:e})=>{let t=e(sjn);return t===`coding`?Sq:t===`everyday`?xq:e(Cq)?.detailLevel??ojn(e6?.workModeAccess==null?BK(e,mP.conversationDetailMode):nAn(e,mP.conversationDetailMode))})"
+    },
+    {
+      "id": "MBC-S0033",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593524,
+        "endExclusive": 3593732
+      },
+      "spanHash": "af004aeafe0a5c804655fe056e01ec6086bd6e1ee36fec52a6bc76d8ab755094",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:sjn"
+      ],
+      "code": "sjn=J(X,({get:e})=>{let t=e(gq);if(t.status===`denied`&&t.reason===`unsupported-auth`)return`coding`;let n=e(pq);return n.status===`allowed`||n.status===`loading`||n.status===`error`?`preference`:`everyday`})"
+    },
+    {
+      "id": "MBC-S0034",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4347226,
+        "endExclusive": 4347339
+      },
+      "spanHash": "4bc0f6707fe9645ab01b399005bf387b3b413a6fadb28556791fe69ac590b6cc",
+      "nodeType": "AssignmentExpression",
+      "code": "syi=Tu(q,({get:e})=>{if(!e(wp))return`codex`;let t=e(_S);return t===`chat`?`chatgpt`:t===`work`?`work_tab`:null})",
+      "metadataPointer": "matching allCompleteFunctionLocators parent CallExpression plus adjacent Program syi binding; independently parsed as expression"
+    },
+    {
+      "id": "MBC-S0035",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4347093,
+        "endExclusive": 4347096
+      },
+      "spanHash": "d60a0c28d9f0ea610f197c3e37da935bc311e3e03fe872f72b2115b8a6887a21",
+      "nodeType": "VariableDeclarator",
+      "code": "syi",
+      "metadataPointer": "/programBindings/17262/declarations/0"
+    },
+    {
+      "id": "MBC-S0036",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 8008394,
+        "endExclusive": 8008662
+      },
+      "spanHash": "f20ba0144fd3a07a259cb06a2e82d81db6b3d69bd4f9b75f7bf4017480b3b7cd",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "use-owner:gPt"
+      ],
+      "code": "function ces(){let e=(0,q2.c)(2),{previewNavigationState:t}=(0,J2.useContext)(xH),n=Zs(gPt,t?.sidebarProductMode),{state:r}=Pr(),i=r?.aeonDraft==null?n:`work`;if(i==null)return null;let a;return e[0]===i?a=e[1]:(a=(0,Y2.jsx)(les,{homeComposerMode:i}),e[0]=i,e[1]=a),a}"
+    },
+    {
+      "id": "MBC-S0037",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 8216225,
+        "endExclusive": 8230845
+      },
+      "spanHash": "7f70adffaaad537225869caa57d3f5f346096452b862984de8021524b1c72a1b",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "use-owner:gPt"
+      ],
+      "code": "function pss(e){\"use forget\";let t=(0,Iss.c)(242),{activeConversationId:n,activeProjectId:r,activeServerConversationId:i,conversationFilter:a,expandable:o,isActive:s,isPinned:c,linkedLocalProjectId:l,localThreadKeys:u,navigationListId:d,onOpenProject:f,excludePinnedConversations:p,project:m,projectCrudStatus:h,showConversationTypeHoverLabel:g,sortMode:_}=e,v=a===void 0?`all`:a,y=u===void 0?[]:u,b=p!==void 0&&p,x=Di(q),{previewNavigationState:S}=(0,T4.useContext)(xH),C=m.gizmo.id,w=G($m)?l:void 0,T=Zs(zos,C),E=fs(`2929091547`),D=Pd?.localThreadCatalog!=null,O=G(JF),k=G(nl),A;if(t[0]!==v||t[1]!==C||t[2]!==O){let e=rPr(v);A=D&&O!=null?Vor({hostId:O,projectId:C,conversationOrigin:e}):null,t[0]=v,t[1]=C,t[2]=O,t[3]=A}else A=t[3];let j=A,M=Zs(XJe,`chatgpt:${C}`),N=Zs(Uss,w),P=zd(),F=Pr(),I=Cc(),L=ju(),R=Zs(gPt,S?.sidebarProductMode),z=G(_n),B=G(Ji),V=R===`work`&&B&&!0,H=V&&w==null,ee=z||v===`chats`||R===`chat`,[U,te]=(0,T4.useState)(!1),ne=(0,T4.useRef)(null),[re,ie]=(0,T4.useState)(null),[ae,oe]=(0,T4.useState)(!1),[se,ce]=(0,T4.useState)(!1),le=M??N??r===C,{data:ue}=lf(na.SIDEBAR_PROJECT_THREAD_ORDERS),de=o&&le,fe=de?j:null,pe=Zs(Zz,fe),me=Zs(vr,fe),he=!pe?.length||!me?.pageState.hasMore,ge,_e;t[4]!==j||t[5]!==k||t[6]!==de?(ge=()=>{de&&j!=null&&k!=null&&k.ensurePage(j,Bss).catch(wss)},_e=[j,k,de,Bss],t[4]=j,t[5]=k,t[6]=de,t[7]=ge,t[8]=_e):(ge=t[7],_e=t[8]),(0,T4.useEffect)(ge,_e);let ve=Zs(Jsr,C),ye=!T&&de,be=!he,xe;t[9]!==v||t[10]!==C||t[11]!==ye||t[12]!==be?(xe=Jgn(C,{conversationFilter:v,enabled:ye,refetchOnWindowFocus:`always`,surface:`sidebar`,hasPopulatedCatalog:be}),t[9]=v,t[10]=C,t[11]=ye,t[12]=be,t[13]=xe):xe=t[13];let Se=xe,Ce;t[14]!==he||t[15]!==Se||t[16]!==L?(Ce=he?{retry:(e,t)=>{if(L.getQueryState(Se.queryKey)?.fetchMeta?.fetchMore!=null)return!1;let n=L.defaultQueryOptions(Se).retry;return typeof n==`function`?n(e,t):typeof n==`number`?e<n:n??e<(cfe.isServer()?0:3)}}:{},t[14]=he,t[15]=Se,t[16]=L,t[17]=Ce):Ce=t[17];let we;t[18]!==Se||t[19]!==Ce?(we={...Se,staleTime:Se.staleTime,...Ce},t[18]=Se,t[19]=Ce,t[20]=we):we=t[20];let{data:Te,fetchNextPage:Ee,hasNextPage:De,isError:Oe,isFetchingNextPage:ke,isPending:Ae,refetch:je}=kTe(we),Me=Te?.pages.flatMap(Css),Ne=w!=null&&de&&_===`manual`,Pe;t[21]===Ne?Pe=t[22]:(Pe={enabled:Ne},t[21]=Ne,t[22]=Pe);let{data:Fe,isError:Ie,refetch:Le}=Zs(nis,C,Pe),Re=Me==null?pe:(0,Rss.default)([...Me,...De?pe??[]:[]],Sss),ze=w!=null&&_===`manual`&&Fe!=null?(0,Rss.default)([...Re??[],...Fe],xss):Re,Be;t[23]===Symbol.for(`react.memo_cache_sentinel`)?(Be={enabled:!1},t[23]=Be):Be=t[23];let{data:Ve}=G(eB,Be),He=new Set(b?Ve?.map(bss):[]),Ue={collapsed:!0,conversationFilter:v,conversations:ze,excludePinnedConversations:b,localThreadKeys:y,pinnedConversationIds:He,projectId:C},We=G(uPo(Ue)),Ge=G(Dp),Ke=G(zg),qe=We?()=>{x.get(Dp)===Ge&&x.get(zg)===Ke&&Nos(x,Ue)}:void 0,Je=Zs(Gss,[...ve,...(ze??[]).map(yss)]),Ye=Pss(m),Xe=P.formatMessage({id:`chatgptConversations.sidebar.project.newChat`,defaultMessage:`New chat in {projectName}`,description:`Accessible label for starting a new chat in a ChatGPT project`},{projectName:Ye}),Ze=P.formatMessage({id:`chatgptConversations.sidebar.project.newLocalTaskInProject`,defaultMessage:`New local chat in {projectName}`,description:`Accessible label for starting a local Codex task in a ChatGPT project`},{projectName:Ye}),Qe=(e,t)=>{let n=t===void 0?Je:t;return gT(e.conversation_origin,v)&&(!b||!He.has(e.id)&&e.is_starred!==!0)&&!n.includes(e.id)},$e=de?ze?.filter(e=>Qe(e)):void 0,et=de?($e??[]).map(vss):zss,tt=Zs(uQt,{conversationFilter:v,conversationIds:de?ve.filter(e=>!Je.includes(e)):zss,serverConversationIds:et}),nt=Zs(LZt,tt),rt;t[24]===C?rt=t[25]:(rt=Dss(C),t[24]=C,t[25]=rt);let it=rt,at=LFr({manualOrder:ue?.[it]?.threadIds??[],optimisticConversationIds:tt,optimisticConversationRecencyAts:nt,serverConversations:$e,sortMode:_}),ot=at.map(lB),st=async e=>{let t=new Set(ot.map(e=>x.get(TT,e)??e)),n=t.size;for(let r=0;r<(he?5:Vss);r+=1){let r=await Ee(),i=r.data?.pages.at(-1)?.items,a=i==null?[]:x.get(Gss,i.map(_ss));if(r.isError)return`paused`;for(let e of i??[])Qe(e,a)&&t.add(e.id);if(!r.hasNextPage||t.size-n>=(he?e:1))return}if(he)return`paused`},ct;t[26]!==n||t[27]!==i?(ct=e=>e===n||e===i,t[26]=n,t[27]=i,t[28]=ct):ct=t[28];let lt=Zs(Wss,ot.find(ct)),ut=P.formatMessage({id:`chatgptConversations.sidebar.chatsInProject`,defaultMessage:`Chats in {projectName}`,description:`Accessible label for the list of chats in a ChatGPT project`},{projectName:Ye}),dt=m.gizmo.current_user_permission?.can_delete,ft;t[29]!==m.gizmo.gizmo_snorlax_type||t[30]!==h||t[31]!==dt?(ft=bmn(dt,m.gizmo.gizmo_snorlax_type,h),t[29]=m.gizmo.gizmo_snorlax_type,t[30]=h,t[31]=dt,t[32]=ft):ft=t[32];let pt=ft,mt;t[33]!==pt||t[34]!==h?(mt=pt?void 0:D7o({action:`delete`,projectCrudStatus:h}),t[33]=pt,t[34]=h,t[35]=mt):mt=t[35];let ht=mt,gt;t[36]!==ot||t[37]!==ue||t[38]!==x||t[39]!==it?(gt=e=>{x.get(aI).projectSortMode===`manual`&&rso(x,it,Gu({threadIds:(0,Lss.default)([...ue?.[it]?.threadIds??[],...ot]),visibleThreadIds:ot,nextVisibleThreadIds:e}))},t[36]=ot,t[37]=ue,t[38]=x,t[39]=it,t[40]=gt):gt=t[40];let _t=gt,vt;t[41]!==m||t[42]!==L||t[43]!==x?(vt=e=>{Kz({scope:x,isPinned:e,project:m,queryClient:L}).catch(e=>ior(x,e))},t[41]=m,t[42]=L,t[43]=x,t[44]=vt):vt=t[44];let yt=vt,bt;t[45]!==m||t[46]!==L||t[47]!==x?(bt=()=>Kz({scope:x,isPinned:!1,project:m,queryClient:L}).then(gss).catch(hss),t[45]=m,t[46]=L,t[47]=x,t[48]=bt):bt=t[48];let xt=bt,St;t[49]!==P||t[50]!==ae||t[51]!==m||t[52]!==h||t[53]!==C||t[54]!==x||t[55]!==oe?(St=()=>{!ae&&Omn(m)&&Ap(x,Zns,{projectId:C,entrySurface:`sidebar_overflow`,isSharedProject:m.gizmo.share_recipient!==`private`||(m.gizmo.sharing?.subjects.length??0)>0}),oe(!0)},t[49]=P,t[50]=ae,t[51]=m,t[52]=h,t[53]=C,t[54]=x,t[55]=oe,t[56]=St):St=t[56];let Ct=St,wt;t[57]!==m||t[58]!==h||t[59]!==C||t[60]!==x||t[61]!==ie?(wt=e=>{let t=e===void 0?m:e;bmn(t.gizmo.current_user_permission?.can_delete,t.gizmo.gizmo_snorlax_type,h)&&(nI({scope:x,projectType:`cloud`,projectId:C}),ie(t))},t[57]=m,t[58]=h,t[59]=C,t[60]=x,t[61]=ie,t[62]=wt):wt=t[62];let Tt=Dd(wt),Et;t[63]!==r||t[64]!==F||t[65]!==I||t[66]!==h||t[67]!==re||t[68]!==C||t[69]!==L||t[70]!==x||t[71]!==ce||t[72]!==ie?(Et=()=>{re!=null&&bmn(re.gizmo.current_user_permission?.can_delete,re.gizmo.gizmo_snorlax_type,h)&&(ce(!0),APr({scope:x,activeProjectId:r??xfe(F.pathname)??(id(F.pathname)?S8i(F.state):null),navigate:I,projectId:C,queryClient:L}).catch(mss).finally(()=>{ce(!1)}),ie(null))},t[63]=r,t[64]=F,t[65]=I,t[66]=h,t[67]=re,t[68]=C,t[69]=L,t[70]=x,t[71]=ce,t[72]=ie,t[73]=Et):Et=t[73];let Dt=Et,Ot;t[74]!==m||t[75]!==x?(Ot=()=>{FSi(x,m)},t[74]=m,t[75]=x,t[76]=Ot):Ot=t[76];let kt=Ot,W;t[77]!==w||t[78]!==I||t[79]!==S||t[80]!==E||t[81]!==C||t[82]!==x?(W=()=>{if(YI(x,w==null?null:{projectId:w,projectKind:`local`}),E||w!=null){I(SLe(C),{state:S});return}I(`/`,{state:{chatGptProjectId:C,...S}})},t[77]=w,t[78]=I,t[79]=S,t[80]=E,t[81]=C,t[82]=x,t[83]=W):W=t[83];let At=W,jt;if(!de)jt=null;else if(w!=null){let e=Oe||Ie,r=Ae&&!ze?.length,a=d==null?void 0:`${d}:recent`,o;t[84]!==Ie||t[85]!==st||t[86]!==Le?(o=async e=>{let[t]=await Promise.all([st(e),Ie?Le():void 0]);return t??void 0},t[84]=Ie,t[85]=st,t[86]=Le,t[87]=o):o=t[87];let s;t[88]!==Ie||t[89]!==Le||t[90]!==je?(s=()=>{Promise.all([je(),Ie?Le():void 0])},t[88]=Ie,t[89]=Le,t[90]=je,t[91]=s):s=t[91];let c;t[92]!==n||t[93]!==i||t[94]!==C||t[95]!==Ye||t[96]!==g?(c=e=>(0,E4.jsx)(Tss,{archiveGroup:{kind:`chatgpt-project`,id:C,label:Ye},activeConversationId:n,activeServerConversationId:i,item:e,projectId:C,showConversationTypeHoverLabel:g}),t[92]=n,t[93]=i,t[94]=C,t[95]=Ye,t[96]=g,t[97]=c):c=t[97];let l;t[98]!==he||t[99]!==lt||t[100]!==De||t[101]!==ke||t[102]!==w||t[103]!==y||t[104]!==at||t[105]!==ut||t[106]!==C||t[107]!==Ye||t[108]!==_||t[109]!==e||t[110]!==r||t[111]!==a||t[112]!==o||t[113]!==s||t[114]!==c?(l=(0,E4.jsx)(Tis,{ariaLabel:ut,conversations:at,conversationRevealKey:lt,hasLoadError:e,boundedLivePaging:he,hasMoreConversations:De,isLoadingConversations:r,isLoadingMoreConversations:ke,localProjectId:w,localThreadKeys:y,navigationListId:a,onLoadMoreConversations:o,onRetryConversations:s,projectId:C,projectTitle:Ye,renderConversation:c,sortMode:_}),t[98]=he,t[99]=lt,t[100]=De,t[101]=ke,t[102]=w,t[103]=y,t[104]=at,t[105]=ut,t[106]=C,t[107]=Ye,t[108]=_,t[109]=e,t[110]=r,t[111]=a,t[112]=o,t[113]=s,t[114]=c,t[115]=l):l=t[115],jt=l}else{let e=_===`manual`?_t:void 0,r;t[116]===De?r=t[117]:(r=De?null:(0,E4.jsxs)(E4.Fragment,{children:[(0,E4.jsx)(vZ,{}),(0,E4.jsx)($,{id:`chatgptConversations.sidebar.projectChats.emptyState`,defaultMessage:`No chats`,description:`Empty state shown when a ChatGPT project has no conversations`})]}),t[116]=De,t[117]=r);let a=d==null?void 0:`${d}:threads`,o=Ae&&!ze?.length,s;t[118]!==n||t[119]!==i||t[120]!==m.gizmo.display.name||t[121]!==C||t[122]!==g?(s=e=>(0,E4.jsx)(Tss,{archiveGroup:{kind:`chatgpt-project`,id:C,label:m.gizmo.display.name},activeConversationId:n,activeServerConversationId:i,item:e,projectId:C,showConversationTypeHoverLabel:g}),t[118]=n,t[119]=i,t[120]=m.gizmo.display.name,t[121]=C,t[122]=g,t[123]=s):s=t[123];let c;t[124]!==he||t[125]!==lt||t[126]!==De||t[127]!==Oe||t[128]!==ke||t[129]!==st||t[130]!==y||t[131]!==at||t[132]!==ut||t[133]!==C||t[134]!==Ye||t[135]!==_||t[136]!==r||t[137]!==a||t[138]!==o||t[139]!==s?(c=(0,E4.jsx)(ass,{ariaLabel:ut,emptyState:r,emptyStateClassName:`flex items-center pe-8 text-base text-codex-description opacity-50`,items:at,getKey:lB,forcedVisibleItemKey:lt,hasLoadError:Oe,localThreadKeys:y,projectId:C,projectTitle:Ye,sortMode:_,navigationListId:a,boundedLivePaging:he,hasMoreItems:De,isLoading:o,isLoadingMore:ke,onLoadMore:st,renderRow:s}),t[124]=he,t[125]=lt,t[126]=De,t[127]=Oe,t[128]=ke,t[129]=st,t[130]=y,t[131]=at,t[132]=ut,t[133]=C,t[134]=Ye,t[135]=_,t[136]=r,t[137]=a,t[138]=o,t[139]=s,t[140]=c):c=t[140];let l;t[141]!==ot||t[142]!==C||t[143]!==e||t[144]!==c?(l=(0,E4.jsx)(Kos,{conversationIds:ot,projectId:C,onOrderChange:e,children:c}),t[141]=ot,t[142]=C,t[143]=e,t[144]=c,t[145]=l):l=t[145],jt=l}let Mt;if(Tmn(m)===`shared`){let e;t[146]===de?e=t[147]:(e=de?(0,E4.jsx)(lrs,{}):(0,E4.jsx)(cKo,{}),t[146]=de,t[147]=e),Mt=e}let Nt;t[148]===de?Nt=t[149]:(Nt=de?(0,E4.jsx)(jDe,{}):(0,E4.jsx)(am,{}),t[148]=de,t[149]=Nt);let Pt;t[150]!==m.gizmo.display.emoji||t[151]!==m.gizmo.display.theme||t[152]!==Mt||t[153]!==Nt?(Pt=(0,E4.jsx)(YGr,{className:`icon-xs`,color:m.gizmo.display.theme,fallbackIcon:Nt,icon:m.gizmo.display.emoji,sharedIcon:Mt}),t[150]=m.gizmo.display.emoji,t[151]=m.gizmo.display.theme,t[152]=Mt,t[153]=Nt,t[154]=Pt):Pt=t[154];let Ft=Pt,It=w==null,Lt=U||ae||re!=null,Rt;t[155]!==w||t[156]!==C?(Rt=w==null?null:(0,E4.jsx)(Xrs,{chatGptProjectId:C,localProjectId:w}),t[155]=w,t[156]=C,t[157]=Rt):Rt=t[157];let zt,Bt;t[158]===Symbol.for(`react.memo_cache_sentinel`)?(zt=()=>ne.current?.getContextMenuItems()??[],Bt=()=>(Nm(),ne.current?.onBeforeOpen?.()),t[158]=zt,t[159]=Bt):(zt=t[158],Bt=t[159]);let Vt=!de,Ht=o?le:void 0,Ut;t[160]!==o||t[161]!==le||t[162]!==f||t[163]!==C||t[164]!==x?(Ut=()=>{o&&fGe(x,`chatgpt:${C}`,!le),f?.()},t[160]=o,t[161]=le,t[162]=f,t[163]=C,t[164]=x,t[165]=Ut):Ut=t[165];let Wt;t[166]!==de||t[167]!==We||t[168]!==P?(Wt=!de&&We?(0,E4.jsx)(`span`,{className:`sidebar-item-icon shrink-0`,role:`img`,\"aria-label\":P.formatMessage({id:`chatgptConversations.sidebar.project.unread`,defaultMessage:`Unread chats`,description:`Unread activity indicator on a collapsed ChatGPT project`}),children:(0,E4.jsx)(Q1,{statusState:{type:`idle`,unread:!0}})}):null,t[166]=de,t[167]=We,t[168]=P,t[169]=Wt):Wt=t[169];let Gt;t[170]!==ee||t[171]!==V||t[172]!==At||t[173]!==kt||t[174]!==c||t[175]!==w||t[176]!==Ze||t[177]!==Xe||t[178]!==H?(Gt=V||c||ee?(0,E4.jsx)(n4,{ariaLabel:H?Ze:Xe,onClick:()=>{if(w!=null||H){kt();return}At()},children:(0,E4.jsx)(aMo,{className:`icon-xs`})}):null,t[170]=ee,t[171]=V,t[172]=At,t[173]=kt,t[174]=c,t[175]=w,t[176]=Ze,t[177]=Xe,t[178]=H,t[179]=Gt):Gt=t[179];let Kt;t[180]!==c||t[181]!==C||t[182]!==x||t[183]!==xt?(Kt=h0(x,jo(C),{isPinned:c,onUnpin:xt}),t[180]=c,t[181]=C,t[182]=x,t[183]=xt,t[184]=Kt):Kt=t[184];let qt=H?kt:void 0,Jt;t[185]!==pt||t[186]!==ht||t[187]!==Tt||t[188]!==qe||t[189]!==yt||t[190]!==Ct||t[191]!==U||t[192]!==c||t[193]!==w||t[194]!==Ye||t[195]!==te||t[196]!==Kt||t[197]!==qt?(Jt=(0,E4.jsxs)(E4.Fragment,{children:[null,(0,E4.jsx)(E4.Fragment,{children:(0,E4.jsx)(oos,{ref:ne,canDeleteProject:pt,deleteDisabledMessage:ht,isPinned:c,linkedLocalProjectId:w,customSectionItems:Kt,open:U,projectTitle:Ye,onDelete:Tt,onMarkRead:qe,onNewLocalTask:qt,onOpenChange:te,onPinnedChange:yt,onSettings:Ct})})]}),t[185]=pt,t[186]=ht,t[187]=Tt,t[188]=qe,t[189]=yt,t[190]=Ct,t[191]=U,t[192]=c,t[193]=w,t[194]=Ye,t[195]=te,t[196]=Kt,t[197]=qt,t[198]=Jt):Jt=t[198];let Yt;t[199]!==U||t[200]!==Wt||t[201]!==Gt||t[202]!==Jt?(Yt=(0,E4.jsx)(t4,{indicator:Wt,action:Gt,isMenuOpen:U,menu:Jt}),t[199]=U,t[200]=Wt,t[201]=Gt,t[202]=Jt,t[203]=Yt):Yt=t[203];let Xt;t[204]!==s||t[205]!==Ft||t[206]!==C||t[207]!==Ye||t[208]!==Vt||t[209]!==Ht||t[210]!==Ut||t[211]!==Yt?(Xt=(0,E4.jsx)(jc,{getItems:zt,onBeforeOpen:Bt,children:(0,E4.jsx)(Jis,{collapsed:Vt,icon:Ft,isActive:s,ariaExpanded:Ht,label:Ye,onPress:Ut,projectId:C,actions:Yt})}),t[204]=s,t[205]=Ft,t[206]=C,t[207]=Ye,t[208]=Vt,t[209]=Ht,t[210]=Ut,t[211]=Yt,t[212]=Xt):Xt=t[212];let Zt;t[213]!==It||t[214]!==Lt||t[215]!==Rt||t[216]!==Xt?(Zt=(0,E4.jsx)(Uis,{disabled:It,disableHoverOpen:Lt,tooltipContent:Rt,children:Xt}),t[213]=It,t[214]=Lt,t[215]=Rt,t[216]=Xt,t[217]=Zt):Zt=t[217];let Qt;t[218]!==de||t[219]!==jt||t[220]!==C||t[221]!==Zt?(Qt=(0,E4.jsx)(`div`,{className:`flex flex-col gap-px`,children:(0,E4.jsx)(Z$a,{animateContentResize:!0,expanded:de,contentKey:C,contentSpacing:`none`,header:Zt,children:jt})}),t[218]=de,t[219]=jt,t[220]=C,t[221]=Zt,t[222]=Qt):Qt=t[222];let $t=T?null:Qt,en=re!=null,tn;t[223]===re?tn=t[224]:(tn=re!=null&&Omn(re)?re:void 0,t[223]=re,t[224]=tn);let nn;t[225]===ie?nn=t[226]:(nn=e=>{e||ie(null)},t[225]=ie,t[226]=nn);let rn;t[227]!==Dt||t[228]!==se||t[229]!==en||t[230]!==tn||t[231]!==nn?(rn=(0,E4.jsx)(mos,{isDeleting:se,open:en,project:tn,onConfirm:Dt,onOpenChange:nn}),t[227]=Dt,t[228]=se,t[229]=en,t[230]=tn,t[231]=nn,t[232]=rn):rn=t[232];let an;t[233]!==ae||t[234]!==m||t[235]!==h||t[236]!==oe?(an=ae&&Omn(m)?(0,E4.jsx)(Dos,{onOpenChange:oe,project:m,projectCrudStatus:h}):null,t[233]=ae,t[234]=m,t[235]=h,t[236]=oe,t[237]=an):an=t[237];let on;return t[238]!==$t||t[239]!==rn||t[240]!==an?(on=(0,E4.jsxs)(E4.Fragment,{children:[$t,rn,an]}),t[238]=$t,t[239]=rn,t[240]=an,t[241]=on):on=t[241],on}"
+    },
+    {
+      "id": "MBC-S0038",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310108,
+        "endExclusive": 1310195
+      },
+      "spanHash": "7abb47bc3e652dd1aa48557f232380767a7f01afcc41b3248e49d4842469dba8",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:gS"
+      ],
+      "code": "function gS(e,t){t===`chat`&&e.get(Qoe)||(e.get(dPt)!=null&&e.set(dPt,t),e.set(pPt,t))}"
+    },
+    {
+      "id": "MBC-S0039",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 102677,
+        "endExclusive": 102687
+      },
+      "spanHash": "97f1dfb3c90ede16e2c7fcc1252eb27720412222133e7417d0000fb58f6ef156",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Qoe"
+      ],
+      "code": "IAt as Qoe"
+    },
+    {
+      "id": "MBC-S0040",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8104876,
+        "endExclusive": 8104886
+      },
+      "spanHash": "5e75bf4d819915e783053083477b63238c82ce59334b0f6fc38dbdf248d989a5",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:IAt"
+      ],
+      "code": "ijn as IAt"
+    },
+    {
+      "id": "MBC-S0041",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 115730,
+        "endExclusive": 115740
+      },
+      "spanHash": "d0b5c22c984a2e756c9bac3af79af934dfbe69e97e82660e54722d7739fad897",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:OTe"
+      ],
+      "code": "Z$t as OTe"
+    },
+    {
+      "id": "MBC-S0042",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8131352,
+        "endExclusive": 8131362
+      },
+      "spanHash": "c311aad2f81f77cd45e6da80c8018358769c99c6ee8e2517e01d37ec50b80c28",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:Z$t"
+      ],
+      "code": "LRt as Z$t"
+    },
+    {
+      "id": "MBC-S0043",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 121937,
+        "endExclusive": 121947
+      },
+      "spanHash": "d2604df18856f20261dbee186a0bf4c0888e9f313f08b0a6dde284bae38c4aa9",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:CPe"
+      ],
+      "code": "gEt as CPe"
+    },
+    {
+      "id": "MBC-S0044",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8144278,
+        "endExclusive": 8144288
+      },
+      "spanHash": "24757d390a6ffe3cb6482eaccf03c143fb5ab733fdface72652e72bafdb49336",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:gEt"
+      ],
+      "code": "iRn as gEt"
+    },
+    {
+      "id": "MBC-S0045",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 133272,
+        "endExclusive": 133282
+      },
+      "spanHash": "0bd596dca144534d789cbc865ec28e2e18c428be6af57cce40e6acc5d872d1d5",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:AXe"
+      ],
+      "code": "vEt as AXe"
+    },
+    {
+      "id": "MBC-S0046",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8167971,
+        "endExclusive": 8167981
+      },
+      "spanHash": "5321d4bfb61aa4eb407cdc2e112fe3d29f73703871590a3928acdbd3a37dd582",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:vEt"
+      ],
+      "code": "tRn as vEt"
+    },
+    {
+      "id": "MBC-S0047",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 126342,
+        "endExclusive": 126351
+      },
+      "spanHash": "c56dec5b50b2d3c9e21c60618839d7483a742f735b33e78893df152748d72168",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:wp"
+      ],
+      "code": "mAt as wp"
+    },
+    {
+      "id": "MBC-S0048",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8153670,
+        "endExclusive": 8153680
+      },
+      "spanHash": "9734e5f2bd01d7276ca9137cc6c14c0d83e5a59e43a43bb1b47ae22428bbdae9",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:mAt"
+      ],
+      "code": "gjn as mAt"
+    }
+  ],
+  "sourceAliases": {
+    "1:RP-S0014": "MBC-S0001",
+    "1:RP-S0137": "MBC-S0002",
+    "1:RP-S0138": "MBC-S0003",
+    "1:RP-S0013": "MBC-S0004",
+    "m:META-S003": "MBC-S0005",
+    "m:META-S006": "MBC-S0006",
+    "m:META-S005": "MBC-S0007",
+    "m:META-S001": "MBC-S0008",
+    "m:Nd-import": "MBC-S0009",
+    "2:RP-S0018": "MBC-S0010",
+    "2:RP-S0002": "MBC-S0011",
+    "3:RP-S0003": "MBC-S0012",
+    "3:RP-S0004": "MBC-S0013",
+    "3:RP-S0017": "MBC-S0014",
+    "m:META-S002": "MBC-S0015",
+    "m:META-S010": "MBC-S0016",
+    "m:META-S015": "MBC-S0017",
+    "m:META-S014": "MBC-S0018",
+    "m:META-S009": "MBC-S0019",
+    "2:RP-S0001": "MBC-S0020",
+    "2:RP-S0006": "MBC-S0021",
+    "2:RP-S0012": "MBC-S0022",
+    "1:RP-S0012": "MBC-S0023",
+    "1:RP-S0004": "MBC-S0024",
+    "2:RP-S0009": "MBC-S0025",
+    "3:RP-S0019": "MBC-S0026",
+    "3:RP-S0020": "MBC-S0027",
+    "3:RP-S0007": "MBC-S0028",
+    "2:RP-S0011": "MBC-S0029",
+    "3:RP-S0021": "MBC-S0030",
+    "3:RP-S0024": "MBC-S0031",
+    "3:RP-S0023": "MBC-S0032",
+    "3:RP-S0022": "MBC-S0033",
+    "m:META-S016": "MBC-S0034",
+    "m:META-S013": "MBC-S0035",
+    "1:RP-S0124": "MBC-S0036",
+    "1:RP-S0127": "MBC-S0037",
+    "1:RP-S0001": "MBC-S0038",
+    "1:RP-S0034": "MBC-S0039",
+    "2:RP-S0014": "MBC-S0040",
+    "1:RP-S0047": "MBC-S0041",
+    "2:RP-S0016": "MBC-S0042",
+    "1:RP-S0057": "MBC-S0043",
+    "2:RP-S0019": "MBC-S0044",
+    "1:RP-S0069": "MBC-S0045",
+    "2:RP-S0021": "MBC-S0046",
+    "1:RP-S0060": "MBC-S0047",
+    "2:RP-S0020": "MBC-S0048"
+  },
+  "savedProgramMetadataPin": {
+    "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+    "bytes": 98261941,
+    "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189"
+  },
+  "selectedProgramBindings": [
+    {
+      "name": "aHa",
+      "metadataPointer": "/programBindings/22357",
+      "value": {
+        "name": "aHa",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 6057567,
+                "endExclusive": 6057570
+              },
+              "spanSha256": "80c1be75426330a674175175e6051b1ea7f68fe307787a5c6d4d96fc0aa972c2",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "oHa",
+      "metadataPointer": "/programBindings/22358",
+      "value": {
+        "name": "oHa",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 6057571,
+                "endExclusive": 6057841
+              },
+              "spanSha256": "f480ce7544d34eb603d178458ca68cd054e5281371c4a9de1f7f0d1124271fa7",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "GPc",
+      "metadataPointer": "/programBindings/32906",
+      "value": {
+        "name": "GPc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10201576,
+                "endExclusive": 10208032
+              },
+              "spanSha256": "973827066dd5c60f2aa724d666c62be19b6fb0290df2edb174d9b9073981650b",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "R5",
+      "metadataPointer": "/programBindings/32922",
+      "value": {
+        "name": "R5",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10214754,
+                "endExclusive": 10214756
+              },
+              "spanSha256": "d9a37366a195e2efef8c64a72b24d75e4e7eb395cc56f1bbcdf3bf03e48cd909",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "z5",
+      "metadataPointer": "/programBindings/32923",
+      "value": {
+        "name": "z5",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10214757,
+                "endExclusive": 10214759
+              },
+              "spanSha256": "5bf9f5aa2bcd8de51821bbd78cdad3846ceb18812aca1c5c663ea5fc157bdc39",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "gFc",
+      "metadataPointer": "/programBindings/32936",
+      "value": {
+        "name": "gFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10214808,
+                "endExclusive": 10218685
+              },
+              "spanSha256": "f60b9057f005915520ddeb0ca4bd3d209d21e81fdff2350751155d87c10935ba",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "vFc",
+      "metadataPointer": "/programBindings/32938",
+      "value": {
+        "name": "vFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10218693,
+                "endExclusive": 10218696
+              },
+              "spanSha256": "528bac7466046acc8cc3ece7a5c0b76a12a688e1d9ce3e57b1825a0082514a60",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "yFc",
+      "metadataPointer": "/programBindings/32939",
+      "value": {
+        "name": "yFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10218697,
+                "endExclusive": 10218800
+              },
+              "spanSha256": "ad65d4f8e95d71a57cdcbaa01f8ef355ebf97a2b512e38dfd84d40c47a2f4d9e",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DFc",
+      "metadataPointer": "/programBindings/32948",
+      "value": {
+        "name": "DFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10219774,
+                "endExclusive": 10219932
+              },
+              "spanSha256": "710cef7f9b98cf8fc2038d63d41cf7e0e0359a6db5b5f3c7e0f2e90bca1eb812",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "OFc",
+      "metadataPointer": "/programBindings/32949",
+      "value": {
+        "name": "OFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10219932,
+                "endExclusive": 10220273
+              },
+              "spanSha256": "b9efbb4243f0fbb584faeed405078fd19ba62000e2ec044ff9dc8e18380f1e32",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "kFc",
+      "metadataPointer": "/programBindings/32950",
+      "value": {
+        "name": "kFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10220273,
+                "endExclusive": 10220472
+              },
+              "spanSha256": "c81d9d432ebc2fccdbc24fcb47b2861348cc8d791ed40bfb32d804c07c5905d3",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "MFc",
+      "metadataPointer": "/programBindings/32953",
+      "value": {
+        "name": "MFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10221069,
+                "endExclusive": 10221091
+              },
+              "spanSha256": "c93c9de7a4ce39367b671a15217cc226fa26b332cbf01d311b7c75adb8b2679c",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "syi",
+      "metadataPointer": "/programBindings/17262",
+      "value": {
+        "name": "syi",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4347093,
+                "endExclusive": 4347096
+              },
+              "spanSha256": "d60a0c28d9f0ea610f197c3e37da935bc311e3e03fe872f72b2115b8a6887a21",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "bFc",
+      "metadataPointer": "/programBindings/32940",
+      "value": {
+        "name": "bFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10218800,
+                "endExclusive": 10219669
+              },
+              "spanSha256": "2822a0736676df8f5bd3e70ad69e5c04fc2075097b1a9c4f04a436c28459f104",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "jFc",
+      "metadataPointer": "/programBindings/32952",
+      "value": {
+        "name": "jFc",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 10220549,
+                "endExclusive": 10221069
+              },
+              "spanSha256": "accd1d18920a9ff4619f26bfd9d7b448a830fbc121d10daf5112d3c3e953fbf2",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "boundedExpressionCheck": {
+    "type": "AssignmentExpression",
+    "target": "syi",
+    "characters": 113,
+    "targetEvaluated": false
+  },
+  "rawIdentifierUseLimitation": "Name-matched import/export specifiers and property keys are hints, not lexical references; they are not used as accepted caller evidence.",
+  "stopBoundary": "No recursive provider/service/native expansion. OFc outer execution, actual hook/mount/store/service behavior and complete mode classification remain open.",
+  "nextAction": "Resolve the concrete a1s -> kti -> gS explicit mode-switch arguments/guards for FSC-0481; reuse this bootstrap result. No canonical regeneration without a normalized-goal correction."
+}

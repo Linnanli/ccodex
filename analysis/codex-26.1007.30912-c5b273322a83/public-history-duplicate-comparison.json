@@ -1,0 +1,876 @@
+{
+  "schemaVersion": "public-history-duplicate/1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T11:16:13.527688+00:00",
+  "previousRouteQualification": {
+    "path": "browser-clone-route-qualification.json",
+    "bytes": 9927,
+    "sha256": "5c44bc58bdb7aef35307e50198557d2cf3dac57a78d1e4be9e2b33d5afe8bd7e"
+  },
+  "owningTask": "W03",
+  "affectedTransportTask": "W04",
+  "runtimeVersions": {
+    "electron": "42.3.0",
+    "node": "24.15.0",
+    "chrome": "148.0.7778.180",
+    "modules": "146",
+    "napi": "10"
+  },
+  "officialApi": {
+    "url": "https://github.com/electron/electron/blob/v42.3.0/docs/api/navigation-history.md",
+    "snapshot": {
+      "path": "raw/public-history-duplicate/electron-navigation-history-doc.txt",
+      "bytes": 4062,
+      "sha256": "a8d616425fb83011f9fe5a6f2b841ca02d4489b2c1a550ba175cf2af8134b059"
+    },
+    "guarantee": "Best effort navigation-stack and individual-page state restoration; no arbitrary JS-heap cloning guarantee."
+  },
+  "attempts": [
+    {
+      "name": "owned-history-duplicate-01",
+      "receipt": {
+        "path": "raw/public-history-duplicate/owned-history-duplicate-01/receipt.json",
+        "bytes": 2728,
+        "sha256": "1e60871e83eaa17fef23937477968568126848b917009f5af54d295299f85b7b"
+      },
+      "completeCapabilityProbe": false,
+      "exitCode": -6,
+      "disposition": "No observation file; not evidence of history API success or failure."
+    },
+    {
+      "name": "owned-history-duplicate-02",
+      "receipt": {
+        "path": "raw/public-history-duplicate/owned-history-duplicate-02/receipt.json",
+        "bytes": 2729,
+        "sha256": "74271cdb699247cb87a55a88d804ed9dacc17ebcab6044493c58eed1e07f5aa8"
+      },
+      "observations": {
+        "path": "raw/public-history-duplicate/owned-history-duplicate-02/runtime-observations.json",
+        "bytes": 33975,
+        "sha256": "6c223d067de30b427db88b98984679367061eb91604a0e271d39ac3554e2ae52"
+      },
+      "completeCapabilityProbe": true,
+      "exitCode": 0,
+      "casesPassed": 12,
+      "casesFailed": 1
+    }
+  ],
+  "cases": [
+    {
+      "id": "HD-01",
+      "claim": "Independent WebContents identities share the explicitly owned session.",
+      "passed": true,
+      "actual": {
+        "sourceId": 1,
+        "destinationId": 2,
+        "sameSession": true
+      }
+    },
+    {
+      "id": "HD-02",
+      "claim": "Copy restores the three-entry stack and current C index without navigating source.",
+      "passed": true,
+      "actual": {
+        "label": "destination-after-copy",
+        "webContentsId": 2,
+        "activeIndex": 2,
+        "length": 3,
+        "canGoBack": true,
+        "canGoForward": false,
+        "entries": [
+          {
+            "label": "A",
+            "title": "CCODEX_HISTORY_A",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+          },
+          {
+            "label": "B",
+            "title": "CCODEX_HISTORY_B",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "d67c596129d5d7f4aad260bfb43e1db2dbe336cb29358f04dac8e1c73db34e33"
+          },
+          {
+            "label": "C",
+            "title": "CCODEX_HISTORY_C",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "a2105dfee1bd0276c0714befd537b0d2cc47ef084b4bb3c58bd4bfbbc97f9bad"
+          }
+        ],
+        "page": "C",
+        "title": "CCODEX_HISTORY_C",
+        "input": "initial-C",
+        "heap": "loaded-C"
+      }
+    },
+    {
+      "id": "HD-03",
+      "claim": "Candidate preserves the currently edited form value at copy time.",
+      "passed": false,
+      "actual": {
+        "sourceInput": "edited-source-C",
+        "destinationInput": "initial-C",
+        "qualification": "Candidate property, not an established Owl native guarantee."
+      }
+    },
+    {
+      "id": "HD-04",
+      "claim": "Restored page has a separately initialized JS heap.",
+      "passed": true,
+      "actual": {
+        "sourceHeap": "source-heap-C",
+        "destinationHeap": "loaded-C"
+      }
+    },
+    {
+      "id": "HD-05",
+      "claim": "Destination DOM/heap edits do not change the source C page.",
+      "passed": true,
+      "actual": {
+        "label": "source-after-destination-edit",
+        "webContentsId": 1,
+        "activeIndex": 2,
+        "length": 3,
+        "canGoBack": true,
+        "canGoForward": false,
+        "entries": [
+          {
+            "label": "A",
+            "title": "CCODEX_HISTORY_A",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+          },
+          {
+            "label": "B",
+            "title": "CCODEX_HISTORY_B",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "d67c596129d5d7f4aad260bfb43e1db2dbe336cb29358f04dac8e1c73db34e33"
+          },
+          {
+            "label": "C",
+            "title": "CCODEX_HISTORY_C",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "a2105dfee1bd0276c0714befd537b0d2cc47ef084b4bb3c58bd4bfbbc97f9bad"
+          }
+        ],
+        "page": "C",
+        "title": "CCODEX_HISTORY_C",
+        "input": "edited-source-C",
+        "heap": "source-heap-C"
+      }
+    },
+    {
+      "id": "HD-06",
+      "claim": "Copied history can go back to B and retains its saved form.",
+      "passed": true,
+      "actual": {
+        "label": "destination-back-B",
+        "webContentsId": 2,
+        "activeIndex": 1,
+        "length": 3,
+        "canGoBack": true,
+        "canGoForward": true,
+        "entries": [
+          {
+            "label": "A",
+            "title": "CCODEX_HISTORY_A",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+          },
+          {
+            "label": "B",
+            "title": "CCODEX_HISTORY_B",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "499e51825cc80bcd3e56102f9920a69ddd6671c9222e6a948ef5a0531918ac7b"
+          },
+          {
+            "label": "C",
+            "title": "CCODEX_HISTORY_C",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "73729fcef7fa88710689e81f698f9f3d8e5a450939f689b707ffee662750e1b5"
+          }
+        ],
+        "page": "B",
+        "title": "CCODEX_HISTORY_B",
+        "input": "edited-source-B",
+        "heap": "loaded-B"
+      }
+    },
+    {
+      "id": "HD-07",
+      "claim": "Copied history can reach oldest A and retains its saved form.",
+      "passed": true,
+      "actual": {
+        "label": "destination-back-A",
+        "webContentsId": 2,
+        "activeIndex": 0,
+        "length": 3,
+        "canGoBack": false,
+        "canGoForward": true,
+        "entries": [
+          {
+            "label": "A",
+            "title": "CCODEX_HISTORY_A",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "61a927d0775c0d7f95d20c3800f1432449dea69b05adf08947d49ac26bbefb04"
+          },
+          {
+            "label": "B",
+            "title": "CCODEX_HISTORY_B",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "d67c596129d5d7f4aad260bfb43e1db2dbe336cb29358f04dac8e1c73db34e33"
+          },
+          {
+            "label": "C",
+            "title": "CCODEX_HISTORY_C",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "73729fcef7fa88710689e81f698f9f3d8e5a450939f689b707ffee662750e1b5"
+          }
+        ],
+        "page": "A",
+        "title": "CCODEX_HISTORY_A",
+        "input": "edited-source-A",
+        "heap": "loaded-A"
+      }
+    },
+    {
+      "id": "HD-08",
+      "claim": "Forward reaches B with both directions still available.",
+      "passed": true,
+      "actual": {
+        "label": "destination-forward-B",
+        "webContentsId": 2,
+        "activeIndex": 1,
+        "length": 3,
+        "canGoBack": true,
+        "canGoForward": true,
+        "entries": [
+          {
+            "label": "A",
+            "title": "CCODEX_HISTORY_A",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+          },
+          {
+            "label": "B",
+            "title": "CCODEX_HISTORY_B",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "499e51825cc80bcd3e56102f9920a69ddd6671c9222e6a948ef5a0531918ac7b"
+          },
+          {
+            "label": "C",
+            "title": "CCODEX_HISTORY_C",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "73729fcef7fa88710689e81f698f9f3d8e5a450939f689b707ffee662750e1b5"
+          }
+        ],
+        "page": "B",
+        "title": "CCODEX_HISTORY_B",
+        "input": "edited-source-B",
+        "heap": "loaded-B"
+      }
+    },
+    {
+      "id": "HD-09",
+      "claim": "Reload keeps the B entry/index and reinitializes its script.",
+      "passed": true,
+      "actual": {
+        "label": "destination-reload-B",
+        "webContentsId": 2,
+        "activeIndex": 1,
+        "length": 3,
+        "canGoBack": true,
+        "canGoForward": true,
+        "entries": [
+          {
+            "label": "A",
+            "title": "CCODEX_HISTORY_A",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+          },
+          {
+            "label": "B",
+            "title": "CCODEX_HISTORY_B",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "499e51825cc80bcd3e56102f9920a69ddd6671c9222e6a948ef5a0531918ac7b"
+          },
+          {
+            "label": "C",
+            "title": "CCODEX_HISTORY_C",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "73729fcef7fa88710689e81f698f9f3d8e5a450939f689b707ffee662750e1b5"
+          }
+        ],
+        "page": "B",
+        "title": "CCODEX_HISTORY_B",
+        "input": "initial-B",
+        "heap": "loaded-B"
+      }
+    },
+    {
+      "id": "HD-10",
+      "claim": "New destination navigation cuts only its own forward stack; source remains C.",
+      "passed": true,
+      "actual": {
+        "source": {
+          "label": "source-after-destination-diverges",
+          "webContentsId": 1,
+          "activeIndex": 2,
+          "length": 3,
+          "canGoBack": true,
+          "canGoForward": false,
+          "entries": [
+            {
+              "label": "A",
+              "title": "CCODEX_HISTORY_A",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+            },
+            {
+              "label": "B",
+              "title": "CCODEX_HISTORY_B",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "d67c596129d5d7f4aad260bfb43e1db2dbe336cb29358f04dac8e1c73db34e33"
+            },
+            {
+              "label": "C",
+              "title": "CCODEX_HISTORY_C",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "a2105dfee1bd0276c0714befd537b0d2cc47ef084b4bb3c58bd4bfbbc97f9bad"
+            }
+          ],
+          "page": "C",
+          "title": "CCODEX_HISTORY_C",
+          "input": "edited-source-C",
+          "heap": "source-heap-C"
+        },
+        "destination": {
+          "label": "destination-new-D",
+          "webContentsId": 2,
+          "activeIndex": 2,
+          "length": 3,
+          "canGoBack": true,
+          "canGoForward": false,
+          "entries": [
+            {
+              "label": "A",
+              "title": "CCODEX_HISTORY_A",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+            },
+            {
+              "label": "B",
+              "title": "CCODEX_HISTORY_B",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "2432853515da1dcf649d7b2a6ad283c762409b3909f5d0bb1db3f1f9def9f780"
+            },
+            {
+              "label": "D",
+              "title": "CCODEX_HISTORY_D",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "7c815bb1bc0fae911af34e577014ad777292b6fdee50db7ee5d5a8051912d8c9"
+            }
+          ],
+          "page": "D",
+          "title": "CCODEX_HISTORY_D",
+          "input": "initial-D",
+          "heap": "loaded-D"
+        }
+      }
+    },
+    {
+      "id": "HD-11",
+      "claim": "Source history remains usable and its navigation does not move destination D.",
+      "passed": true,
+      "actual": {
+        "sourceBack": {
+          "label": "source-back-B",
+          "webContentsId": 1,
+          "activeIndex": 1,
+          "length": 3,
+          "canGoBack": true,
+          "canGoForward": true,
+          "entries": [
+            {
+              "label": "A",
+              "title": "CCODEX_HISTORY_A",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+            },
+            {
+              "label": "B",
+              "title": "CCODEX_HISTORY_B",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "499e51825cc80bcd3e56102f9920a69ddd6671c9222e6a948ef5a0531918ac7b"
+            },
+            {
+              "label": "C",
+              "title": "CCODEX_HISTORY_C",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "cf6f8d66b72bb1176baa00c0bf96580a6445e7bea84ab9eaaf686006aa1a3892"
+            }
+          ],
+          "page": "B",
+          "title": "CCODEX_HISTORY_B",
+          "input": "edited-source-B",
+          "heap": "loaded-B"
+        },
+        "sourceForward": {
+          "label": "source-forward-C",
+          "webContentsId": 1,
+          "activeIndex": 2,
+          "length": 3,
+          "canGoBack": true,
+          "canGoForward": false,
+          "entries": [
+            {
+              "label": "A",
+              "title": "CCODEX_HISTORY_A",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+            },
+            {
+              "label": "B",
+              "title": "CCODEX_HISTORY_B",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "d67c596129d5d7f4aad260bfb43e1db2dbe336cb29358f04dac8e1c73db34e33"
+            },
+            {
+              "label": "C",
+              "title": "CCODEX_HISTORY_C",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "6456c9de5a273679f94bad9e17aee160f4f55b2d459d544bfac470a38927377b"
+            }
+          ],
+          "page": "C",
+          "title": "CCODEX_HISTORY_C",
+          "input": "edited-source-C",
+          "heap": "loaded-C"
+        },
+        "destination": {
+          "label": "destination-after-source-navigation",
+          "webContentsId": 2,
+          "activeIndex": 2,
+          "length": 3,
+          "canGoBack": true,
+          "canGoForward": false,
+          "entries": [
+            {
+              "label": "A",
+              "title": "CCODEX_HISTORY_A",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+            },
+            {
+              "label": "B",
+              "title": "CCODEX_HISTORY_B",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "2432853515da1dcf649d7b2a6ad283c762409b3909f5d0bb1db3f1f9def9f780"
+            },
+            {
+              "label": "D",
+              "title": "CCODEX_HISTORY_D",
+              "keys": [
+                "pageState",
+                "title",
+                "url"
+              ],
+              "pageStateSha256": "7c815bb1bc0fae911af34e577014ad777292b6fdee50db7ee5d5a8051912d8c9"
+            }
+          ],
+          "page": "D",
+          "title": "CCODEX_HISTORY_D",
+          "input": "initial-D",
+          "heap": "loaded-D"
+        }
+      }
+    },
+    {
+      "id": "HD-12",
+      "claim": "Closing destination leaves the original source alive and at C.",
+      "passed": true,
+      "actual": {
+        "label": "source-after-destination-close",
+        "webContentsId": 1,
+        "activeIndex": 2,
+        "length": 3,
+        "canGoBack": true,
+        "canGoForward": false,
+        "entries": [
+          {
+            "label": "A",
+            "title": "CCODEX_HISTORY_A",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "78caae57cca6e60974071da3ce707e172594cb2f9f00076d69e5449b16efc1f5"
+          },
+          {
+            "label": "B",
+            "title": "CCODEX_HISTORY_B",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "d67c596129d5d7f4aad260bfb43e1db2dbe336cb29358f04dac8e1c73db34e33"
+          },
+          {
+            "label": "C",
+            "title": "CCODEX_HISTORY_C",
+            "keys": [
+              "pageState",
+              "title",
+              "url"
+            ],
+            "pageStateSha256": "6456c9de5a273679f94bad9e17aee160f4f55b2d459d544bfac470a38927377b"
+          }
+        ],
+        "page": "C",
+        "title": "CCODEX_HISTORY_C",
+        "input": "edited-source-C",
+        "heap": "loaded-C"
+      }
+    },
+    {
+      "id": "HD-13",
+      "claim": "History access on the destroyed destination is rejected.",
+      "passed": true,
+      "actual": {
+        "error": "Object has been destroyed"
+      }
+    }
+  ],
+  "candidatePropertyFailures": [
+    {
+      "id": "HD-03",
+      "claim": "Candidate preserves the currently edited form value at copy time.",
+      "passed": false,
+      "actual": {
+        "sourceInput": "edited-source-C",
+        "destinationInput": "initial-C",
+        "qualification": "Candidate property, not an established Owl native guarantee."
+      }
+    }
+  ],
+  "properties": [
+    {
+      "id": "HISTORY-P01",
+      "status": "observed-on-owned-fixtures",
+      "finding": "Two independent WebContents in one explicit owned session retain three history entries and current index; back/forward/reload work.",
+      "cases": [
+        "HD-01",
+        "HD-02",
+        "HD-06",
+        "HD-07",
+        "HD-08",
+        "HD-09"
+      ]
+    },
+    {
+      "id": "HISTORY-P02",
+      "status": "observed-on-owned-fixtures",
+      "finding": "Destination edits, divergent navigation and close do not change the source page or its history; source navigation does not move destination.",
+      "cases": [
+        "HD-05",
+        "HD-10",
+        "HD-11",
+        "HD-12",
+        "HD-13"
+      ]
+    },
+    {
+      "id": "HISTORY-P03",
+      "status": "candidate-property-failed",
+      "finding": "The currently active C entry restored initial-C instead of edited-source-C, while earlier A/B entries restored their saved edited values.",
+      "cases": [
+        "HD-03",
+        "HD-06",
+        "HD-07"
+      ],
+      "scope": "Programmatic input.value mutations immediately followed by getAllEntries; no native key input or original Owl comparison. This does not establish universal active-page input loss."
+    },
+    {
+      "id": "HISTORY-P04",
+      "status": "observed-on-owned-fixtures",
+      "finding": "Restored/reloaded pages initialize their scripts again; the public candidate does not preserve the edited JS heap in this run.",
+      "cases": [
+        "HD-04",
+        "HD-09"
+      ],
+      "scope": "A property of this candidate, not a proven original native-clone requirement."
+    }
+  ],
+  "routeDecision": {
+    "routeId": "CLONE-ROUTE-03",
+    "qualification": "partial-public-history-primitive; full-clone-equivalence-unproven",
+    "retainedCapability": "Owned source/destination navigation-history independence and first-party controller feasibility.",
+    "unresolved": [
+      "Whether baseline Owl clone has stronger active-page state guarantees",
+      "Active-document state capture if required by original behavior",
+      "Real host/renderer ownership and adoption replacement",
+      "Session partition, preload/security, network pages, popups and full browser capabilities"
+    ],
+    "prohibitedConclusions": [
+      "All 13 checks passed",
+      "Direct Owl replacement works",
+      "Original Owl necessarily copies or necessarily discards JS heap",
+      "All active user edits are always lost by the public API",
+      "Whole runtime route is qualified"
+    ]
+  },
+  "processCheck": {
+    "path": "raw/public-history-duplicate/owned-history-duplicate-02/process-check.json",
+    "bytes": 178,
+    "sha256": "dcafd6bcb46f65ea94f7babdef2b415110f8198b54c435db5e13d5f5aa5b0235"
+  },
+  "rawFiles": [
+    {
+      "path": "raw/public-history-duplicate/before-analysis-state.json",
+      "bytes": 215415,
+      "sha256": "5a181b5c9bafac2e326bc66e23af6b16e7bbdab005b52f473718aae1d2e4d57f"
+    },
+    {
+      "path": "raw/public-history-duplicate/electron-navigation-history-doc.txt",
+      "bytes": 4062,
+      "sha256": "a8d616425fb83011f9fe5a6f2b841ca02d4489b2c1a550ba175cf2af8134b059"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-01/probe_public_history_duplicate.cjs",
+      "bytes": 11648,
+      "sha256": "e3c7298b88b7b5d4ad74d90ae8dabed17a3c15bbd6478584a0d71b755ecc885f"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-01/process-check.json",
+      "bytes": 79,
+      "sha256": "ea5c595b6dbef56b03fd9ba637113f631f7f5817dac0bff359e5ea1a7b8d9adc"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-01/receipt.json",
+      "bytes": 2728,
+      "sha256": "1e60871e83eaa17fef23937477968568126848b917009f5af54d295299f85b7b"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-01/run_public_electron_probe.py",
+      "bytes": 4738,
+      "sha256": "e67a79a444839881a036575fc89512b11caf4c59bf1f4882ee3b22c251189cfc"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/fixtures/A.html",
+      "bytes": 138,
+      "sha256": "0127448b99b65367a935cb250693249c0fe5534c41cbbf3e71fc454d854695f0"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/fixtures/B.html",
+      "bytes": 138,
+      "sha256": "488e22049bf6a8a87527231aaeeafe30095bd026c0854bf22abc3aaf4225ad08"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/fixtures/C.html",
+      "bytes": 138,
+      "sha256": "673ae9589235331b07e49d5a60145c399d39ae20aa37c9c07e2f62ec0b7e19f5"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/fixtures/D.html",
+      "bytes": 138,
+      "sha256": "0b6e8e6fb7a0621151cb956ff98115ddfef4d971aa462ec680ef202885ca88cd"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/probe_public_history_duplicate.cjs",
+      "bytes": 11648,
+      "sha256": "e3c7298b88b7b5d4ad74d90ae8dabed17a3c15bbd6478584a0d71b755ecc885f"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/process-check.json",
+      "bytes": 178,
+      "sha256": "dcafd6bcb46f65ea94f7babdef2b415110f8198b54c435db5e13d5f5aa5b0235"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/receipt.json",
+      "bytes": 2729,
+      "sha256": "74271cdb699247cb87a55a88d804ed9dacc17ebcab6044493c58eed1e07f5aa8"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/run_public_electron_probe.py",
+      "bytes": 4738,
+      "sha256": "e67a79a444839881a036575fc89512b11caf4c59bf1f4882ee3b22c251189cfc"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/runtime-observations.json",
+      "bytes": 33975,
+      "sha256": "6c223d067de30b427db88b98984679367061eb91604a0e271d39ac3554e2ae52"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/public-history-duplicate/owned-history-duplicate-02/stdout.txt",
+      "bytes": 185,
+      "sha256": "b0d3a06eb2022930fe6124714673cf55f99941fe8ae3ba17f659eb64a403ce2e"
+    },
+    {
+      "path": "raw/public-history-duplicate/publish_public_history_duplicate.py",
+      "bytes": 13389,
+      "sha256": "c9b3bf3906cfb7d8b0ff875c09f0713d14cf2c6bc6f9155b4545ae178b9fffc5"
+    }
+  ],
+  "counts": {
+    "publicRuntimeLaunchAttempts": 2,
+    "completeCapabilityProbes": 1,
+    "incompleteAttempts": 1,
+    "candidateChecks": 13,
+    "checksPassed": 12,
+    "checksFailed": 1,
+    "observedSnapshots": 13,
+    "originalClientRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "productScenarioPassesAdded": 0,
+    "featureDefinitionsAdded": 0,
+    "clientImplementationAdded": 0
+  },
+  "nextAction": "Close this bounded public-history comparison with its positive and failed properties. Continue the already selected ads-controls, archived-chats and data-controls scope contracts; retain runtime residuals as W03-specific acceptance, not a global source-analysis blocker.",
+  "fullRuntimeRouteSelected": false,
+  "fullAnalysisCompleted": false
+}

@@ -1,0 +1,978 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T12:43:54.919901+00:00",
+  "scope": "The selected host inbox write adapter and its automation_runs SQL store, linked to existing FSC-0434/AUT-M03; no new product-mode or complete-storage claim.",
+  "facts": [
+    {
+      "id": "ISA-F01",
+      "title": "选定主进程工厂的实例传递",
+      "claim": "vXe创建eue实例，经hXe的inboxManager属性传至new MMe的第17个参数；MMe构造器将该参数赋给this.inboxManager。这是选定工厂的条件实例连接，不证明所有实际窗口均由该工厂创建。",
+      "sourceIds": [
+        "ISA-S003",
+        "ISA-S001",
+        "ISA-S009",
+        "ISA-S008"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F01-E01"
+    },
+    {
+      "id": "ISA-F02",
+      "title": "renderer先改缓存再发消息",
+      "claim": "既存K7r先更新r9n缓存，再发送inbox-item-set-read-state。q7r的markAllRead先更新选定状态的缓存readAt并清空unreadRunCounts，再发送批量消息；这些回调没有等待数据库确认或在此处回滚。",
+      "sourceIds": [
+        "ISA-S038",
+        "ISA-S039"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F02-E01"
+    },
+    {
+      "id": "ISA-F03",
+      "title": "单项已读和批量截止时间",
+      "claim": "主进程对truthy isRead使用自己的Date.now()调用markRead，否则调用markUnread；批量分支将消息readAt原样传给markAllAutomationRunsRead。缺少inboxManager时这些可选调用跳过。",
+      "sourceIds": [
+        "ISA-S040",
+        "ISA-S041"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F03-E01"
+    },
+    {
+      "id": "ISA-F04",
+      "title": "收件项载荷规范化",
+      "claim": "inbox-items-create在缺少manager时直接结束；否则为输入项生成id、默认null字段和createdAt，然后调用persistAndNotify。threadId取conversationId??null。输入项并不因此获得已插入数据库的保证。",
+      "sourceIds": [
+        "ISA-S042",
+        "ISA-S001"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F04-E01"
+    },
+    {
+      "id": "ISA-F05",
+      "title": "创建消息的实际写操作",
+      "claim": "eue.persistAndNotify调用导出w即X$。X$逐项选threadId??id，值为真才调用da；da只UPDATE已有automation_runs，按thread_id匹配，写inbox_title/inbox_summary，将IN_PROGRESS改为PENDING_REVIEW并更新updated_at。选定路径没有INSERT；这个UPDATE也没有单项已读所用的automation_id身份子查询。重复项不会在X$中去重。",
+      "sourceIds": [
+        "ISA-S020",
+        "ISA-S024",
+        "ISA-S001"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F05-E01"
+    },
+    {
+      "id": "ISA-F06",
+      "title": "单项已读的身份筛选",
+      "claim": "eue.markRead和markUnread均调用导出x即$$，分别传时间值和null。$$在q返回数据库时UPDATE read_at，按thread_id及automations身份子查询限制范围，RETURNING行或null；manager只在返回行truthy时发送变更通知。",
+      "sourceIds": [
+        "ISA-S021",
+        "ISA-S025",
+        "ISA-S001"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F06-E01"
+    },
+    {
+      "id": "ISA-F07",
+      "title": "批量已读的额外条件",
+      "claim": "导出b即e1只更新read_at为空、状态在PENDING_REVIEW/ACCEPTED/ARCHIVED、updated_at<=截止时间且通过身份子查询的记录；截止时间同时写入read_at。无数据库时返回0，manager只在changes>0时广播。renderer的缓存改写不含同样的updated_at条件，因此缓存更新和实际SQL结果不能合并为一次成功。",
+      "sourceIds": [
+        "ISA-S022",
+        "ISA-S025",
+        "ISA-S001",
+        "ISA-S038",
+        "ISA-S039"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F07-E01"
+    },
+    {
+      "id": "ISA-F08",
+      "title": "身份参数与旧记录",
+      "claim": "wF构造[+!!sF, accountId??null, userId??null, installationId??null]。SQL接受开启旧记录分支且三个身份字段全NULL的automation，或三个身份字段均与参数匹配的automation。模块中oF/sF有赋值；实际有效值、身份切换和安全隔离仍需另行验证。",
+      "sourceIds": [
+        "ISA-S025",
+        "ISA-S028",
+        "ISA-S029",
+        "ISA-S030",
+        "ISA-S031",
+        "ISA-S021",
+        "ISA-S022"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F08-E01"
+    },
+    {
+      "id": "ISA-F09",
+      "title": "数据库打开边界",
+      "claim": "q只在process.versions.electron为真时返回已有Zi或调用ea($i(...), migration callback)初始化；否则返回null。本批没有执行该分支，也未核实实际迁移、连接关闭或首次打开时机。",
+      "sourceIds": [
+        "ISA-S023",
+        "ISA-S027",
+        "ISA-S026"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F09-E01"
+    },
+    {
+      "id": "ISA-F10",
+      "title": "数据库路径的源码规则",
+      "claim": "$i从application-network-startup模块的ot()取得home，拼接sqlite和显式databaseFileName或Qi()。Qi依据BUILD_FLAVOR及NODE_ENV选择codex.db或codex-dev.db。q的选定调用未传参数；真实home和环境变量值未读取。",
+      "sourceIds": [
+        "ISA-S026",
+        "ISA-S035",
+        "ISA-S032"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F10-E01"
+    },
+    {
+      "id": "ISA-F11",
+      "title": "SQLite初始化和原生依赖",
+      "claim": "ea递归创建父目录，通过na()取得构造器并打开数据库；请求WAL后按返回值设synchronous=NORMAL或FULL，执行迁移回调，失败则close并重新抛错。na加载better-sqlite3；冻结包版本12.11.1。独立ABI/构建和真实迁移效果保持未验证。",
+      "sourceIds": [
+        "ISA-S027",
+        "ISA-S036",
+        "ISA-S043"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F11-E01"
+    },
+    {
+      "id": "ISA-F12",
+      "title": "通知和运行完成监听各有边界",
+      "claim": "选定vXe将eue广播回调接到sendMessageToAllWindows({type})。eue仅在其各写方法的成功条件满足时发r.po.CHANGED；发送不等于renderer查询已刷新。bindTurnCompletions另外要求本地连接、host匹配及context.identity.kind===chatgpt；这是身份条件，本批不据此判定产品模式专属。",
+      "sourceIds": [
+        "ISA-S003",
+        "ISA-S001"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "ISA-F12-E01"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 512733,
+        "endExclusive": 513913
+      },
+      "spanHash": "c7d70da7d67de9803547faece3f46000ddd068fd05d64b6598cbaf72d0d72b14",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S001",
+      "code": "eue=class{broadcaster;constructor(e){this.broadcaster=e}bindTurnCompletions({manager:e,connection:t,context:n,globalState:a,assertCurrent:o}){if(!t.isLocal||e.getHostId()!==t.hostId||n.identity.kind!==`chatgpt`)return null;let{accountId:s,userId:c}=n.identity;return i.Yn.addTurnStartRequestedListener(e,e=>{let n=a.get(l._);if(n==null)return null;let u=i.Lr(e.conversationId,{accountId:s,userId:c,installationId:n},()=>{if(!e.isCurrent()||e.hostId!==t.hostId||a.get(`electron-automations-installation-id`)!==n)return!1;try{return o(),!0}catch{return!1}});return u==null?null:{isCurrent:u.isCurrent,onAccepted:()=>u.isCurrent(),onCompleted:({conversationId:e,lastAgentMessage:t})=>{if(t==null)return;let n=$le(e,t).at(-1);n!=null&&u.apply(n.title,n.description)&&this.broadcaster.inboxItemsChanged(r.po.CHANGED)},dispose(){}}})}persistAndNotify(e){let t=i.w(e);return t.length<=0?0:(this.broadcaster.inboxItemsChanged(r.po.CHANGED),t.length)}markRead(e,t){i.x(e,t)&&this.broadcaster.inboxItemsChanged(r.po.CHANGED)}markUnread(e){i.x(e,null)&&this.broadcaster.inboxItemsChanged(r.po.CHANGED)}markAllAutomationRunsRead(e){i.b(e)>0&&this.broadcaster.inboxItemsChanged(r.po.CHANGED)}}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3363888,
+        "endExclusive": 3363903
+      },
+      "spanHash": "088971a84fdbea255603e02434efcbfb0ab9fb7193a5f4f65d0223430ed9fcb1",
+      "nodeType": "ObjectProperty",
+      "id": "ISA-S002",
+      "code": "inboxManager:pe"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3361693,
+        "endExclusive": 3366660
+      },
+      "spanHash": "d3dc99db6944d9f12885e44e0fda7707d518659a32e359a7ad4fdb6a20b15618",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S003",
+      "code": "function vXe({app:e,applicationNetwork:t,runAppServerManagerInMain:n,quitState:r,chunkedMessageSender:a,globalState:o,settingsStore:s,pluginServicePreviewEnabled:u,startupPhases:d,windowServices:m,repoRoot:h,executionCodexHome:v,errorReporter:y,desktopSentry:b,datadogLogger:x,maxLogLevel:S,buildFlavor:C,appUpdates:w,avatarOverlayManager:T,hotkeyWindowLifecycleManager:E,hasActiveComputerUseTurn:D,globalDictationHotkeyController:O,appshotHotkeysService:k,requestComputerUseCaptureUpdate:A,requestComputerUseWorker:j,completeLocalGitTurn:M,requestGitWorker:N,requestOpenInWorker:ee,remoteHostedPIPContentController:P,refreshApplicationMenu:F,subscribeComputerUseCaptureWorkerEvent:te,subscribeGitWorkerEvent:I,gitWorkerInvocationSampler:L,updateWorkerSentryUser:R,setGitWorkerTracingSampleRate:z,appEvent:ne,onCompletedThreadsChanged:B,onAppEntrySource:re,shouldShowPrimaryWindow:ie,onAppServerSqliteRecovery:ae,getSkysightRecorderController:oe,artifactSessionHostLifecycle:se}){let V=new Ble(e),ce=new Map,le=new zle({platform:process.platform,appViewsByWebContentsId:ce,getSound:()=>s.getEffective(`notifications-sound`),getTurnMode:()=>s.getEffective(`notifications-turn-mode`),getDotEnabled:()=>s.getEffective(`notifications-dot-enabled`),onCompletedThreadsChanged:B,onAppEntrySource:re}),ue=new lue,de,fe=new ag({getRecordingGeneration:()=>ue.getGeneration(),isRecordingEnabled:()=>ue.isEnabled(),getRolloutPath:async e=>(await de.appServerConnectionRegistry.getConnection(`local`).readThread(e))?.path??null,hostId:l.h,rootDirectory:ag.getRootDirectory({codexHome:c.ot()})}),pe=new eue({inboxItemsChanged:e=>{m.sendMessageToAllWindows({type:e})}}),me=i.qr(),he=me==null?null:(e,t)=>new Nle(me,e,t),ge=()=>{};ri(o),de=new hXe({appViewsByWebContentsId:ce,applicationNetwork:t,hostProcess:V,runAppServerManagerInMain:n,chunkedMessageSender:a,appGlobalState:o,settingsStore:s,pluginServicePreviewEnabled:u,startupPhases:d,windowManager:m.windowManager,ensureWindow:m.ensureWindow,globalState:o,repoRoot:h,executionCodexHome:v,errorReporter:y,desktopSentry:b,desktopNotificationManager:le,onAppEntrySource:re,shouldShowPrimaryWindow:ie,updateWorkerSentryUser:R,setGitWorkerTracingSampleRate:z,inboxManager:pe,datadogLogger:x,maxLogLevel:S,buildFlavor:C,appUpdates:w,gitWorkerInvocationSampler:L,desktopOriginator:g.ht,devApiBaseUrl:g.gt,prodApiBaseUrl:g.It,messageChannel:g.bt,avatarOverlayManager:T,notchOverlayManager:m.notchOverlayManager,syncAvatarOverlayHotkey:m.overlayHotkeyController.syncCommandKeybinding,syncSpotlightHotkey:()=>m.spotlightController.syncCommandKeybinding(),hotkeyWindowLifecycleManager:E,hasActiveComputerUseTurn:D,globalDictationHotkeyController:O,realtimeSessionRecorder:fe,realtimeVoiceHotkeyController:m.realtimeVoiceHotkeyController,refreshApplicationMenu:F,updateDockIcon:m.updateDockIcon,appshotHotkeysService:k,regionScreenshotHotkeys:m.regionScreenshotHotkeys,windowsCaptureNativeBridge:m.windowsCaptureNativeBridge,remoteHostedPIPContentController:P,requestComputerUseCaptureUpdate:A,requestComputerUseWorker:j,requestGitWorker:N,requestOpenInWorker:ee,subscribeComputerUseCaptureWorkerEvent:te,subscribeGitWorkerEvent:I,onAppServerSqliteRecovery:ae,getSkysightRecorderController:oe,artifactSessionHostLifecycle:se,appEvent:ne,createThreadCatalogStore:he}),de.getMessageHandler().setOnBrowserStateChanged(ge);let _e=de.appServerConnectionRegistry.getConnection(l.h),ve=t.observeRequirements(_e,t=>{f.n().error(`Application network requirements prevented startup`,{safe:{},sensitive:{error:t}}),_.dialog.showErrorBox(e.getName(),t.message),e.exit(1)},gXe(_e,r)),ye={desktopOriginator:g.ht,devApiBaseUrl:g.gt,prodApiBaseUrl:g.It},be=()=>{process.platform===`darwin`&&C===p.t.Prod&&nue({appServerClient:_e,desktopApiOptions:ye}).then(e=>{e!=null&&o.set(l.P,e)}).catch(e=>{f.n().warning(`Failed to register macOS push notifications`,{safe:{},sensitive:{error:e}})})};return be(),_e.registerInternalNotificationHandler(e=>{if(fe.record(e),e.method===`account/login/completed`){be(),m.windowManager.showPrimaryWindow({stealFocus:!0});return}if(e.method===`account/updated`&&e.params?.authMode==null){let e=o.get(l.P);e!=null&&rue({deregistrationToken:e,desktopApiOptions:ye}).then(()=>{o.delete(l.P)}).catch(e=>{f.n().warning(`Failed to deregister macOS push notifications`,{safe:{},sensitive:{error:e}})});return}e.method===`turn/completed`&&M(_e.takeCompletedTurnCwds(e.params))}),m.setWindowContext(de),{desktopNotificationManager:le,getWindowContext:()=>de,getElectronMessageHandlerForWindow:e=>{let t=m.getContextForWebContents(e.webContents);return t?t.getMessageHandler():null},getAppServerClientForHost:({hostId:e})=>{try{return de.getAppServerClient(e)}catch{return null}},setOnBrowserStateChanged:e=>{ge=e,de.getMessageHandler().setOnBrowserStateChanged(ge)},setRealtimeSessionRecordingEnabled:e=>{ue.setEnabled(e)},flushAndDisposeContext:async()=>{ve();try{await de.dispose(),await se?.dispose()}finally{await x.flush()}}}}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 512733,
+        "endExclusive": 512736
+      },
+      "spanHash": "61bade2bdb58efc5900f9bf29ffb9d26ae682e7c72430322152a42b5765ce11e",
+      "nodeType": "Identifier",
+      "id": "ISA-S004",
+      "code": "eue"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3363282,
+        "endExclusive": 3363285
+      },
+      "spanHash": "61bade2bdb58efc5900f9bf29ffb9d26ae682e7c72430322152a42b5765ce11e",
+      "nodeType": "Identifier",
+      "id": "ISA-S005",
+      "code": "eue"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3363278,
+        "endExclusive": 3363347
+      },
+      "spanHash": "179726925d82844dc2d1551c0511f0f2c4a74ab80bd688e017001703301c6120",
+      "nodeType": "NewExpression",
+      "id": "ISA-S006",
+      "code": "new eue({inboxItemsChanged:e=>{m.sendMessageToAllWindows({type:e})}})"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 167,
+        "endExclusive": 197
+      },
+      "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S007",
+      "code": "i=require(\"./src-BJv5Mk7n.js\")"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2069689,
+        "endExclusive": 2117518
+      },
+      "spanHash": "d75e45c64c47251dd2a49827240f5a05b5b7eeac0b0aa712f4f29766797ed904",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S008",
+      "code": "MMe=class{hostId;appServerClient;windowManager;chunkedMessageSender;avatarOverlayManager;appServerConnectionRegistry;fetchWrapper;globalState;projectsManager;sharedObjectRepository;desktopNotificationManager;errorReporter;desktopSentry;updateWorkerSentryUser;inboxManager;getHostConfigForHostId;hasActiveComputerUseTurn;settingsStore;getPinnedThreadIdsForWorktreeCleanup;onAppEntrySource;enqueueAutomaticArchive;shouldShowPrimaryWindow;getOverlayManagerForOrigin;sharedObjectSubscribers=new Map;sharedObjectSubscriberOrigins=new WeakSet;host;primaryWindowRestoreBounds=null;primaryWindowMode=null;datadogLogger;maxLogLevel;powerSaveBlockerId=null;powerSaveBlockerType=null;isSystemSuspended=!1;isScreenLocked=!1;handleSuspend=()=>{this.setSystemFocusState(`suspended`,!0,Date.now())};handleResume=()=>{this.setSystemFocusState(`suspended`,!1)};handleScreenLock=()=>{this.setSystemFocusState(`screen-locked`,!0,Date.now())};handleScreenUnlock=()=>{this.setSystemFocusState(`screen-locked`,!1)};powerSaveBlockingWebContentsIds=new Set;displaySleepBlockingWebContentsIds=new Set;pluggedInRemoteControlPowerSaveWebContentsIds=new Set;powerSaveTrackedWebContentsIds=new Set;pendingDynamicToolsForThreadStartRequests=new Map;dynamicAppToolResponses=new Uv;samplerManager;projectFolderPicker;worktreeServicesByHostId=new Map;requestGitWorker;subscribeGitWorkerEvent;browserSessionRegistry;browserHostManager;unsubscribeSiteAnnotationSettings;browserAutocompleteCoordinator;automationSchedulerController=null;unsubscribeHeartbeatPrimaryWindowChanges;onBrowserStateChanged=()=>{};constructor(e,t,n,a,o,s,c,l,u,d,f,p,m,h,v,y,b,x,S,C,w,T,E=e=>{if(e===this.hostId)return this.host;throw Error(`Host config for host ID ${e} not found`)},D,O,k,A,j,M=()=>!0,N){this.hostId=e,this.appServerClient=n,this.windowManager=a,this.chunkedMessageSender=o,this.avatarOverlayManager=s,this.appServerConnectionRegistry=c,this.fetchWrapper=l,this.globalState=u,this.projectsManager=d,this.sharedObjectRepository=f,this.desktopNotificationManager=m,this.errorReporter=h,this.desktopSentry=v,this.updateWorkerSentryUser=y,this.inboxManager=b,this.getHostConfigForHostId=E,this.hasActiveComputerUseTurn=D,this.settingsStore=O,this.getPinnedThreadIdsForWorktreeCleanup=k,this.onAppEntrySource=A,this.enqueueAutomaticArchive=j,this.shouldShowPrimaryWindow=M,this.getOverlayManagerForOrigin=N,this.host=t,this.projectFolderPicker=new Mje(t,this.windowManager,this.projectsManager),this.sharedObjectRepository.addSubscriber((e,t)=>{this.sharedObjectSubscribers.get(e)?.forEach((n,r)=>{this.sendSharedObjectUpdate(r,e,t)})}),this.datadogLogger=x,this.maxLogLevel=S,this.requestGitWorker=p,this.subscribeGitWorkerEvent=w,_.powerMonitor.on(`on-ac`,()=>{this.syncPowerSaveBlocker()}),_.powerMonitor.on(`on-battery`,()=>{this.syncPowerSaveBlocker()}),_.powerMonitor.on(`suspend`,this.handleSuspend),_.powerMonitor.on(`resume`,this.handleResume),_.powerMonitor.on(`lock-screen`,this.handleScreenLock),_.powerMonitor.on(`unlock-screen`,this.handleScreenUnlock),this.browserSessionRegistry=new kq(g.Bt,C,this.errorReporter),this.browserAutocompleteCoordinator=new Uy((e,t)=>{let n=this.browserHostManager.getBrowserSession();if(n==null)throw Error(`In-app browser is unavailable.`);return t.surface===`composer`?n.autocomplete.createController(K().browserExtensions&&e?.session===n?e:void 0):n.autocomplete.createController(e)},(e,t)=>this.browserHostManager.getCurrentPageWebContents(e,t.conversationId,t.browserTabId)??(t.surface===`composer`?e:null),async e=>{let t=this.browserHostManager.getBrowserSession();return t==null?null:wb(t.faviconService,e)}),this.browserHostManager=new kje(this.windowManager,this.errorReporter,this.hostId,wR({appServerClient:this.getAppServerConnection(this.hostId)}),this.browserSessionRegistry,void 0,{appServerNotificationSource:this.getAppServerConnection(this.hostId),settingsStore:this.settingsStore,getSiteBootstrapToken:_Ae(this.getAppServerConnection(this.hostId)),browserPersistenceDirectory:_.app.getPath(`userData`),isDefaultBrowser:this.isDefaultBrowser.bind(this),getCommandKeymapState:()=>({...i.wt(),primaryNumberShortcutTarget:K().unifiedTabStrip?this.settingsStore?.getEffective(r.U.primaryNumberShortcutTarget.key):void 0}),getDownloadDirectory:()=>this.settingsStore?.getEffective(r.J.downloadDirectory.key)??_.app.getPath(`downloads`),getPromptForUserDownloads:()=>this.settingsStore?.getEffective(r.J.promptForDownloadLocation.key)??!1,onAppEntrySource:this.onAppEntrySource}),this.browserHostManager.setInAppBrowserFeatureEnabled(!1),this.unsubscribeSiteAnnotationSettings=this.settingsStore?.onDidChange(r.J.disabledSiteAnnotationHostnames.key,()=>this.browserHostManager.refreshSiteAnnotationFeatures()),this.samplerManager=new Xje(this.hostId,this.windowManager,this.desktopSentry,T,this.browserSessionRegistry,this.appServerConnectionRegistry),this.ensureWorktreeService(this.hostId)}getWorktreeService(e=this.hostId){return this.ensureWorktreeService(e)}createOrSelectProject(e){return this.projectFolderPicker.createOrSelectProject(e)}setAutomationSchedulerController(e){this.automationSchedulerController=e,this.unsubscribeHeartbeatPrimaryWindowChanges?.(),this.unsubscribeHeartbeatPrimaryWindowChanges=this.windowManager.subscribePrimaryWindowChanges(e=>{e!=null&&this.windowManager.sendMessageToWindow(e,{type:`heartbeat-automation-thread-state-request`})})}setLocalAutomationsCapability(e){this.automationSchedulerController?.setLocalAutomationsCapability(e)}getBrowserHostManager(){return this.browserHostManager}isDefaultBrowser(){return this.sharedObjectRepository.get(`is_default_browser`)===!0}startPerformanceSpanCpuSampling(e,t){this.samplerManager.startPerformanceSpanCpuSampling(e,t)}cancelPerformanceSpanCpuSampling(e){this.samplerManager.cancelPerformanceSpanCpuSampling(e)}finishPerformanceSpanCpuSampling(e){return this.samplerManager.finishPerformanceSpanCpuSampling(e)}getBrowserAutocompleteCoordinator(){return this.browserAutocompleteCoordinator}deletePersistedBrowserConversation(e,{browserConversationId:t,conversationId:n}){this.browserHostManager.deletePersistedBrowserConversation(e,t)&&this.deletePersistedAtomStateKeys(e,[it(n),zt(n),Lt(n)])}getBrowserSessionRegistry(){return this.browserSessionRegistry}forwardBrowserNavigationUrl(e,t){return YJ({appServerConnectionRegistry:this.appServerConnectionRegistry,getHostConfigForHostId:this.getHostConfigForHostId,hostId:t,url:e})}getBrowserOwnerWebContentsForOrigin(e){let t=_.BrowserWindow.fromWebContents(e);return t!=null&&this.windowManager.getPrimaryWindows().includes(t)?e:this.getPrimaryWindow()?.webContents??null}getBrowserCommentOverlayOwner(e,t,n){return n==null?e:this.windowManager.getBrowserCommentPopupOwner(e,t,n)??e}setOnBrowserStateChanged(e){this.onBrowserStateChanged=e,this.browserHostManager.setOnBrowserStateChanged(e)}getAppServerConnection(e){return this.appServerConnectionRegistry.getConnection(e)}ensureWorktreeService(e){let t=this.worktreeServicesByHostId.get(e);if(t)return t;let n=this.getAppServerConnection(e);return t=new TMe({appServerConnection:n,enqueueAutomaticArchive:async()=>{if(this.enqueueAutomaticArchive==null)throw Error(`Worktree archive queue is unavailable.`);await this.enqueueAutomaticArchive(e)},desktopNotificationManager:this.desktopNotificationManager,globalState:this.globalState,getPinnedThreadIds:this.getPinnedThreadIdsForWorktreeCleanup?.bind(null,e),settingsStore:this.getSettingsStore(),getHostConfigForHostId:this.getHostConfigForHostId,getHostWorktreeSettings:()=>vMe({appServerConnection:n,globalState:this.globalState,isPackaged:_.app.isPackaged}),executionHost:e===this.hostId?this.appServerClient:n,hostConfig:this.getHostConfigForHostId(e),hostId:e,requestGitWorker:this.requestGitWorker,setSharedPendingWorktrees:()=>{this.publishPendingWorktrees()},subscribeGitWorkerEvent:this.subscribeGitWorkerEvent,windowManager:this.windowManager}),this.worktreeServicesByHostId.set(e,t),this.publishPendingWorktrees(),t}publishPendingWorktrees(){this.sharedObjectRepository.set(`pending_worktrees`,Array.from(this.worktreeServicesByHostId.values()).flatMap(e=>e.getPendingWorktrees()))}async handleMessage(e,t){if(gR(t)){await vR(this.getOverlayManagerForOrigin?.(e)??this.avatarOverlayManager,e,t,t=>{this.windowManager.sendMessageToWebContents(e,t)});return}switch(t.type){case`checkout-webview-presentation-changed`:$Se(e,t);break;case`workspace-settings-webview-presentation-changed`:TCe(e,t);break;case`open-codex-bundle`:break;case`reload-bundled-plugins`:break;case`debug-window-origin-conversation-changed`:this.windowManager.debugWindowManager?.setOriginConversation(e,t.conversationId);break;case`debug-window-client-analytics-history-changed`:this.windowManager.debugWindowManager?.setClientAnalyticsHistory(e,t.events);break;case`remote-hosted-pip-host-layout-changed`:case`remote-hosted-pip-active-thread-changed`:break;case`set-telemetry-user`:{this.updateWorkerSentryUser(t.authMethod,t.userId,t.email,t.accountId);let e=t.authMethod==null?null:{id:t.userId??void 0,authMethod:t.authMethod};this.datadogLogger.setUserInfo(e),this.desktopSentry.setUser(e==null?null:{...e,account_id:t.accountId??void 0});break}case`ready`:{t.initializationOnly||(this.windowManager.markWebContentsReady(e),(this.getOverlayManagerForOrigin?.(e)??this.avatarOverlayManager).handleRendererReady(e.id));let n=new XJ(e,this.chunkedMessageSender);for(let e of this.appServerConnectionRegistry.getAllHostIds()){let t=this.getAppServerConnection(e);t.sendConnectionStateSnapshot(n),t.sendInitializationSnapshot(n),t.sendRequestUserInputAutoResolutionSnapshot(n)}if(t.initializationOnly)break;this.sendCustomPrompts(e).catch(e=>{this.errorReporter.reportNonFatal(e instanceof Error?e:r.sn(e),{kind:`send-custom-prompts`})}),this.sendPersistedAtomState(e,t.persistedStateResponsePriority),this.samplerManager.handleRendererReady(e),xY().info(`Handled 'ready' message, sent ide-context-updated`);break}case`open-in-main-window`:case`open-browser-in-main-window`:case`open-current-main-window`:case`open-in-new-window`:case`mac-menu-bar-enabled-changed`:case`electron-avatar-overlay-feedback-diagnostics-changed`:case`electron-avatar-overlay-restore-ready`:case`electron-sparkle-gates-changed`:case`electron-desktop-features-changed`:case`global-dictation-enabled-changed`:case`global-dictation-force-lock-changed`:case`global-dictation-pet-renderer-ready`:case`global-dictation-renderer-ready`:case`global-dictation-stop-requested`:case`global-dictation-pointer-interaction-changed`:case`global-dictation-recording-stopped`:case`global-dictation-dismiss`:case`global-dictation-close`:case`global-dictation-completed`:case`global-dictation-record-history-item`:case`global-dictation-in-app-started`:case`global-dictation-failed`:break;case`power-save-blocker-set`:this.updatePowerSaveBlocker(e,t.shouldBlock,t.keepRemoteControlAwakeWhilePluggedIn,t.preventDisplaySleep);break;case`local-thread-activity-changed`:Wp(t.hasInProgressLocalConversation,e.id),Gp(t.hasInProgressRegularLocalConversation,e.id,t.updateResumeState);break;case`electron-set-window-mode`:this.setPrimaryWindowMode(e,{mode:t.mode,onboardingVariant:t.onboardingVariant});break;case`inbox-item-set-read-state`:if(t.isRead){let e=Date.now();this.inboxManager?.markRead(t.id,e);break}this.inboxManager?.markUnread(t.id);break;case`inbox-automation-runs-mark-all-read`:this.inboxManager?.markAllAutomationRunsRead(t.readAt);break;case`inbox-items-create`:{if(!this.inboxManager)break;let e=Date.now(),n=t.conversationId||t.turnId||(0,R.randomUUID)(),r=t.items.map((r,i)=>({id:t.items.length>1&&!r.id?`${n}-${i+1}`:r.id||n,automationId:null,automationName:null,title:r.title??null,description:r.description??null,archivedAssistantMessage:null,archivedUserMessage:null,archivedReason:null,sourceCwd:null,threadId:t.conversationId??null,readAt:null,createdAt:e,status:null}));this.inboxManager.persistAndNotify(r);break}case`archive-thread`:await this.getAppServerConnection(t.hostId).registerArchiveThread(t.conversationId,{cwd:t.cwd,cleanupWorktree:t.cleanupWorktree});break;case`unarchive-thread`:await this.getAppServerConnection(t.hostId).registerUnarchiveThread(t.conversationId);break;case`dynamic-tools-for-thread-start-response`:this.handleDynamicToolsForThreadStartResponse(e,t);break;case`persisted-atom-sync-request`:this.sendPersistedAtomState(e,t.responsePriority);break;case`persisted-atom-update`:this.updatePersistedAtomState(e,t.key,t.deleted?void 0:t.value,t.recordUpdate);break;case`browser-sidebar-owner-sync`:if(xY().info(`IAB_LIFECYCLE received browser sidebar owner sync`,{safe:{browserTabId:t.browserTabId??null,conversationId:t.conversationId,originWebContentsId:e.id,windowId:_.BrowserWindow.fromWebContents(e)?.id??null},sensitive:{ownerRoutePath:t.ownerRoutePath}}),this.getBrowserOwnerWebContentsForOrigin(e)!==e){xY().warning(`IAB_LIFECYCLE ignored browser sidebar owner sync from auxiliary window`,{safe:{conversationId:t.conversationId,originWebContentsId:e.id,windowId:_.BrowserWindow.fromWebContents(e)?.id??null},sensitive:{}});break}this.browserHostManager.syncOwner(e,t.conversationId,t.browserTabId,t.ownerRoutePath,t.annotationModeEnabled,t.sessionConversationId,t.presentedBrowserTabIds),this.onBrowserStateChanged();break;case`browser-sidebar-sync`:this.browserHostManager.sync(e,t.payload),this.onBrowserStateChanged();break;case`browser-settings-webview-mounted`:this.browserHostManager.browserSettingsWebviewMounted(e,t.mountId,t.themeVariant);break;case`browser-settings-webview-theme-changed`:this.browserHostManager.browserSettingsWebviewThemeChanged(e,t.themeVariant);break;case`browser-settings-webview-unmounted`:this.browserHostManager.browserSettingsWebviewUnmounted(e,t.mountId);break;case`browser-sidebar-webview-destroyed`:this.browserHostManager.browserWebviewDestroyed(e,t.conversationId,t.browserTabId,t.teardownId),this.onBrowserStateChanged();break;case`browser-use-session-route-capture`:{let n=this.getBrowserOwnerWebContentsForOrigin(e);if(xY().info(`IAB_LIFECYCLE received browser use session route capture`,{safe:{conversationId:t.conversationId,disposeAfterSessionActivity:t.disposeAfterSessionActivity??!1,originWebContentsId:e.id,ownerWebContentsId:n?.id??null,windowId:_.BrowserWindow.fromWebContents(e)?.id??null},sensitive:{}}),n==null){xY().warning(`IAB_LIFECYCLE ignored browser use session route capture without primary window`,{safe:{conversationId:t.conversationId,originWebContentsId:e.id},sensitive:{}});break}this.browserSessionRegistry.captureSessionRoute({browserConversationId:t.browserConversationId,conversationId:t.conversationId,disposeAfterSessionActivity:t.disposeAfterSessionActivity,owner:n});break}case`browser-use-session-activity-ended`:this.browserSessionRegistry.endSessionActivity({conversationId:t.conversationId});break;case`browser-use-cursor-arrived`:this.browserSessionRegistry.notifyBrowserUseCursorArrived({owner:e,payload:{conversationId:t.conversationId,moveSequence:t.moveSequence}});break;case`open-browser-tab`:this.sendMessageToView(e,t);break;case`browser-sidebar-tweaks-enabled-changed`:this.browserHostManager.setTweaksEnabled(e,t.enabled);break;case`browser-sidebar-annotation-multi-select-enabled-changed`:this.browserHostManager.setAnnotationMultiSelectFeatureEnabled(t.enabled);break;case`browser-sidebar-site-annotation-api-enabled-changed`:this.browserHostManager.setSiteAnnotationApiFeatureEnabled(t.enabled,t.permissionRequired);break;case`browser-sidebar-command`:switch(t.command.type){case`navigate`:{let n=await this.forwardBrowserNavigationUrl(t.command.url,t.command.hostId);if(n==null)break;this.browserHostManager.navigate(e,t.conversationId,n,t.command.source,t.command.initiator,t.browserTabId,t.pagePersistence);break}case`capture-screenshot`:await this.browserHostManager.captureScreenshotToClipboard(e,t.conversationId,t.browserTabId);break;case`set-interaction-mode`:this.browserHostManager.setInteractionMode(e,t.conversationId,t.command.interactionMode,t.browserTabId,t.command.annotationModeEntrySource);break;case`set-design-modifier-pressed`:this.browserHostManager.setDesignModifierPressed(e,t.conversationId,t.command.pressed,t.browserTabId);break;case`set-original-view-enabled`:this.browserHostManager.setOriginalViewEnabled(e,t.conversationId,t.command.enabled,t.browserTabId);break;case`clear-comments`:this.browserHostManager.clearComments(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t.conversationId,t.browserTabId);break;case`discard-pending-annotations`:this.browserHostManager.discardPendingAnnotations(e,t.conversationId,t.browserTabId);break;case`add-annotations-to-composer`:this.browserHostManager.addAnnotationsToComposer(e,t.conversationId,t.browserTabId);break;case`close-tab`:this.browserHostManager.closePage(e,t.conversationId,t.browserTabId,t.pagePersistence?.browserStorageId);break;case`go-back`:this.browserHostManager.goBack(e,t.conversationId,t.browserTabId);break;case`go-forward`:this.browserHostManager.goForward(e,t.conversationId,t.browserTabId);break;case`scroll`:this.browserHostManager.scroll(e,t.conversationId,t.command.scroll,t.browserTabId);break;case`open-find`:this.browserHostManager.openFind(e,t.conversationId,t.browserTabId);break;case`set-find-query`:this.browserHostManager.setFindQuery(e,t.conversationId,t.command.query,t.browserTabId);break;case`find-next`:this.browserHostManager.findNext(e,t.conversationId,t.browserTabId);break;case`find-previous`:this.browserHostManager.findPrevious(e,t.conversationId,t.browserTabId);break;case`close-find`:this.browserHostManager.closeFind(e,t.conversationId,t.browserTabId);break;case`focus-address`:break;case`refresh-cursor`:this.browserHostManager.refreshCursor(e,t.conversationId,t.browserTabId);break;case`step-zoom`:this.browserHostManager.stepZoom(e,t.conversationId,t.command.delta,t.browserTabId);break;case`set-zoom-percent`:this.browserHostManager.setZoomPercent(e,t.conversationId,t.command.zoomPercent,t.browserTabId);break;case`reset-zoom`:this.browserHostManager.resetZoom(e,t.conversationId,t.browserTabId);break;case`reload`:this.browserHostManager.reload(e,t.conversationId,{ignoreCache:t.command.ignoreCache},t.browserTabId);break;case`print`:this.browserHostManager.print(e,t.conversationId,t.browserTabId);break;case`reset`:this.browserHostManager.reset(e,t.conversationId,t.browserTabId);break;case`stop`:this.browserHostManager.stop(e,t.conversationId,t.browserTabId);break;case`select-comment`:this.browserHostManager.selectComment(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t.conversationId,t.command.commentId,t.browserTabId);break;case`transfer-conversation`:this.browserHostManager.transferConversation(e,t.conversationId,t.command.targetConversationId,t.browserTabId,t.command.targetBrowserTabId)}break;case`browser-sidebar-runtime-open-comment-preview`:this.browserHostManager.handleRuntimeOpenCommentPreview(e,t);break;case`browser-sidebar-runtime-close-comment-preview`:this.browserHostManager.handleRuntimeCloseCommentPreview(e,t);break;case`browser-sidebar-runtime-cancel-editor`:this.browserHostManager.handleAnnotationEditorMessage(e,t);break;case`browser-sidebar-runtime-open-editor`:await this.browserHostManager.handleRuntimeOpenEditor(e,t);break;case`browser-sidebar-runtime-open-design-editor`:await this.browserHostManager.handleRuntimeOpenDesignEditor(e,t);break;case`browser-sidebar-runtime-comment-screenshot-ready`:this.browserHostManager.handleRuntimeCommentScreenshotReady(e,t);break;case`browser-sidebar-runtime-update-anchor`:this.browserHostManager.handleRuntimeUpdateAnchor(e,t);break;case`browser-sidebar-runtime-annotation-selection-modifier-state`:this.browserHostManager.handleAnnotationEditorMessage(e,t);break;case`browser-sidebar-runtime-focus-editor`:this.browserHostManager.handleRuntimeFocusEditor(e);break;case`browser-sidebar-runtime-exit-comment-mode`:this.browserHostManager.handleRuntimeExitCommentMode(e);break;case`browser-sidebar-runtime-toggle-annotation-mode`:this.browserHostManager.handleRuntimeToggleAnnotationMode(e,t.force);break;case`browser-sidebar-runtime-request-annotation-permission`:{let n=!1,r=(e,t,r,i)=>{i&&!r&&(n=!0)};e.on(`did-start-navigation`,r);try{let r=await this.browserHostManager.requestSiteAnnotationPermission(e);e.isDestroyed()||e.send(g.bt,{type:`browser-sidebar-runtime-annotation-permission-result`,requestId:t.requestId,allowed:r&&!n})}finally{e.removeListener(`did-start-navigation`,r)}break}case`browser-sidebar-runtime-annotation-suspension`:this.browserHostManager.handleRuntimeAnnotationSuspension(e,t.suspended);break;case`browser-sidebar-runtime-design-modifier-state`:this.browserHostManager.handleRuntimeDesignModifierState(e,t);break;case`browser-sidebar-runtime-image-drag-started`:this.browserHostManager.handleRuntimeImageDragStarted(e,t);break;case`browser-sidebar-runtime-image-drag-ended`:this.browserHostManager.handleRuntimeImageDragEnded(e);break;case`browser-sidebar-runtime-mouse-navigation`:this.browserHostManager.handleRuntimeMouseNavigation(e,t);break;case`browser-sidebar-attach-dragged-image`:await this.browserHostManager.attachDraggedImageToThread(e,t.conversationId,t.browserTabId);break;case`browser-sidebar-comment-overlay-submit`:await this.browserHostManager.handleCommentOverlaySubmit(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-design-overlay-update`:this.browserHostManager.handleDesignOverlayUpdate(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-design-overlay-add`:await this.browserHostManager.handleDesignOverlayAdd(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-design-overlay-delete`:this.browserHostManager.handleDesignOverlayDelete(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-delete`:this.browserHostManager.handleCommentOverlayDelete(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-mounted`:this.browserHostManager.handleCommentOverlayMounted(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t.conversationId,t.browserTabId,t.sessionId,t.surfaceSize,t.placementSurfaceSize,t.metadataHeaderHeight,t.isLayoutReady);break;case`browser-sidebar-comment-overlay-preview-open-changed`:this.browserHostManager.handleCommentOverlayPreviewOpenChanged(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-tweaks-open-changed`:this.browserHostManager.handleCommentOverlayTweaksOpenChanged(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-annotation-selection-modifier-state`:this.browserHostManager.handleAnnotationEditorMessage(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-annotation-selection-hover-state`:this.browserHostManager.handleAnnotationEditorMessage(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-annotation-selection-pointer-state`:this.browserHostManager.handleAnnotationEditorMessage(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-remove-annotation-selection`:this.browserHostManager.handleAnnotationEditorMessage(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-design-scrub-changed`:this.browserHostManager.handleCommentOverlayDesignScrubChanged(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t);break;case`browser-sidebar-comment-overlay-close`:this.browserHostManager.handleCommentOverlayClose(this.getBrowserCommentOverlayOwner(e,t.conversationId,t.browserTabId),t.conversationId,t.browserTabId,t.sessionId);break;case`persisted-atom-reset`:this.resetPersistedAtomState();break;case`codex-runtimes-config-changed`:this.sharedObjectRepository.set(`codex_runtimes_config`,t.config);break;case`heartbeat-automation-thread-state-changed`:if(this.windowManager.getPrimaryWindow()?.webContents.id!==e.id)break;this.automationSchedulerController?.setHeartbeatThreadRendererState({threadId:t.threadId,isEligible:t.isEligible,collaborationMode:t.collaborationMode,permissions:t.permissions,reason:t.reason});break;case`codex-app-server-restart`:{let e=this.getAppServerConnection(t.hostId);await e.restart({intent:t.intent,killCodexProcess:t.killCodexProcess??!1}),t.remoteControlEnabled&&await e.sendAppServerRequest(`remoteControl/enable`,null),xY().info(`Codex app-server restart requested`);break}case`debug-run-eval-control-request`:{let n=this.windowManager.debugWindowManager?.getOwnerWebContentsId(e.id)??null;if(n!=null){this.windowManager.sendMessageToWebContentsId(n,{type:`debug-run-eval-control-request`,requestId:t.requestId,sourceWebContentsId:e.id,action:t.action});break}let r=_.BrowserWindow.fromWebContents(e),i=r!=null&&this.windowManager.getPrimaryWindows().includes(r)?r:this.windowManager.getPrimaryWindow();if(i==null){this.windowManager.sendMessageToWebContents(e,{type:`debug-run-eval-control-response`,requestId:t.requestId,ok:!1,errorMessage:`No primary app window is available`});break}this.windowManager.sendMessageToWindow(i,{type:`debug-run-eval-control-request`,requestId:t.requestId,sourceWebContentsId:e.id,action:t.action});break}case`debug-run-eval-control-response`:this.windowManager.sendMessageToWebContentsId(t.sourceWebContentsId,{type:`debug-run-eval-control-response`,requestId:t.requestId,ok:t.ok,result:t.result,errorMessage:t.errorMessage});break;case`set-primary-runtime-install-release`:this.windowManager.sendMessageToAllWindows(t);break;case`toggle-trace-recording`:await dMe();break;case`log-message`:{let{level:n}=t;if(!g.Ut(n,this.maxLogLevel))break;xY().log(n,t.message,{safe:{...t.tags?.safe,...this.windowManager.getRendererWindowLogFields(e)},sensitive:t.tags?.sensitive??{}});break}case`electron-app-state-snapshot-trigger`:case`electron-app-state-snapshot-response`:await this.samplerManager.handleMessage(e,t);break;case`shared-object-subscribe`:{this.sharedObjectSubscriberOrigins.has(e)||(this.sharedObjectSubscriberOrigins.add(e),e.once(`destroyed`,()=>{for(let[t,n]of this.sharedObjectSubscribers)n.delete(e),n.size===0&&this.sharedObjectSubscribers.delete(t)}));let n=this.sharedObjectSubscribers.get(t.key)??new Map;n.set(e,(n.get(e)??0)+1),this.sharedObjectSubscribers.set(t.key,n);let r=this.sharedObjectRepository.get(t.key);this.sendSharedObjectUpdate(e,t.key,r);break}case`shared-object-unsubscribe`:{let n=this.sharedObjectSubscribers.get(t.key);if(n==null)break;let r=(n.get(e)??0)-1;if(r>0){n.set(e,r);break}n.delete(e),n.size===0&&this.sharedObjectSubscribers.delete(t.key);break}case`shared-object-set`:this.sharedObjectRepository.set(t.key,t.value);break;case`mcp-request`:{xY().debug(`app_server.bridge_received`,{safe:{messageType:`mcp-request`,requestId:String(t.request.id),method:t.request.method,originWebcontentsId:e.id,originHostId:t.hostId},sensitive:{}});let n=t.request;if(r.Li(t.hostId)){let r=Bv.send(t.request);if(r.type===`response`){this.sendAppServerResponseToView(e,t.hostId,t.request.method,r.response,t.request.trace,t.priority);break}n=r.request}try{let r=()=>this.getAppServerConnection(t.hostId).handleClientRequest(new XJ(e,this.chunkedMessageSender),n,{coalesce:t.coalesce,priority:t.priority,source:t.source,timeoutMs:t.timeoutMs,expiresAtMs:t.expiresAtMs,widget:t.widget},t.retainResponse,t.savedEnvironmentConfig,t.threadAccess,t.environmentDraftReplacement);n.trace==null?await r():await c.rn({attributes:{\"app_server.method\":n.method},name:`electron.ipc_request_delivery`,op:`codex.app_server.ipc_request_delivery`,startTimeMs:t.dispatchedAtMs,trace:n.trace},r)}catch(n){if(t.retainResponse){this.sendMessageToView(e,{type:`mcp-request-delivery`,hostId:t.hostId,update:{type:`failed`,delivery:{requestId:t.request.id,method:t.request.method,stage:`not-sent`},message:n instanceof Error?n.message:`Desktop app server request failed`}});break}this.sendAppServerResponseToView(e,t.hostId,t.request.method,{id:t.request.id,error:{code:-32e3,message:n instanceof Error?n.message:`Desktop app server request failed`}},t.request.trace,t.priority)}break}case`thread-prewarm-start`:{xY().debug(`app_server.bridge_received`,{safe:{messageType:`thread-prewarm-start`,requestId:String(t.request.id),method:t.request.method,originWebcontentsId:e.id,originHostId:t.hostId},sensitive:{}});let n=t.request;if(r.Li(t.hostId)){let r=Bv.send(n);if(r.type===`response`){this.sendAppServerResponseToView(e,t.hostId,n.method,r.response,n.trace,t.priority);break}n=r.request}try{let r=()=>this.getAppServerConnection(t.hostId).handlePrewarmThreadStart(new XJ(e,this.chunkedMessageSender),n,{priority:t.priority,source:t.source,timeoutMs:t.timeoutMs,expiresAtMs:t.expiresAtMs},t.retainResponse,t.savedEnvironmentConfig);t.request.trace==null?await r():await c.rn({attributes:{\"app_server.method\":t.request.method},name:`electron.ipc_request_delivery`,op:`codex.app_server.ipc_request_delivery`,startTimeMs:t.dispatchedAtMs,trace:t.request.trace},r)}catch(n){if(t.retainResponse){this.sendMessageToView(e,{type:`mcp-request-delivery`,hostId:t.hostId,update:{type:`failed`,delivery:{requestId:t.request.id,method:t.request.method,stage:`not-sent`},message:n instanceof Error?n.message:`Desktop app server request failed`}});break}this.sendAppServerResponseToView(e,t.hostId,t.request.method,{id:t.request.id,error:{code:-32e3,message:n instanceof Error?n.message:`Desktop app server request failed`}},t.request.trace,t.priority)}break}case`mcp-request-abandon`:this.appServerConnectionRegistry.getMaybeConnection(t.hostId)?.abandonClientRequest(new XJ(e,this.chunkedMessageSender),t.requestId);break;case`mcp-notification`:xY().debug(`app_server.bridge_received`,{safe:{messageType:`mcp-notification`,method:t.request.method,originWebcontentsId:e.id,originHostId:t.hostId},sensitive:{}}),await this.getAppServerConnection(t.hostId).handleClientNotification(t.request);break;case`mcp-response`:{if(xY().debug(`app_server.bridge_received`,{safe:{messageType:`mcp-response`,requestId:String(t.response.id),originWebcontentsId:e.id,originHostId:t.hostId},sensitive:{}}),this.dynamicAppToolResponses.route(t.response))break;let n=()=>this.getAppServerConnection(t.hostId).handleClientResponse(t.response,t.threadId);if(t.trace==null||t.requestMethod==null){await n();break}await c.rn({attributes:{\"app_server.method\":t.requestMethod},name:`electron.app_server_response_delivery`,op:`codex.app_server.response_delivery`,trace:t.trace},n);break}case`fetch`:await this.fetchWrapper.handleRequest(e,t);break;case`cancel-fetch`:this.fetchWrapper.cancelRequest(e,t);break;case`pending-worktree-cancel`:this.getWorktreeService(t.hostId).cancel(t.id,t.continueLocally);break;case`pending-worktree-create`:this.getWorktreeService(t.hostId).create(t.request);break;case`pending-worktree-dismiss`:this.getWorktreeService(t.hostId).dismiss(t.id);break;case`pending-worktree-retry`:this.getWorktreeService(t.hostId).retry(t.id);break;case`pending-worktree-continue`:this.getWorktreeService(t.hostId).continueWithoutSetup(t.id);break;case`pending-worktree-update-metadata`:this.getWorktreeService(t.hostId).updateMetadata(t.id,t.update);break;case`show-diff`:this.windowManager.sendMessageToWebContents(e,{type:`toggle-diff-panel`,open:!0});break;case`show-plan-summary`:break;case`update-diff-if-open`:break;case`electron-add-new-workspace-root-option`:await this.projectFolderPicker.createOrSelectProject(e,t.root);break;case`electron-create-new-workspace-root-option`:{let n=await this.createDefaultWorkspaceRoot(t.projectName??wY,t.initializeGitRepository),r=t.projectName??wY,i=this.projectsManager.hasProjectNamed(r)?void 0:r;await this.projectFolderPicker.createOrSelectProject(e,n,i);break}case`electron-pick-workspace-root-option`:await this.projectFolderPicker.pickProjectSources(e,t.allowMultiple);break;case`electron-onboarding-skip-workspace`:await this.skipOnboardingWorkspace(e,t.initializeGitRepository);break;case`electron-update-workspace-root-options`:t.roots.length===0?this.globalState.get(r.gs.SELECTED_PROJECT)?.type===`local`&&(ti(this.globalState,void 0),this.windowManager.sendMessageToAllWindows({type:`global-state-updated`,keys:[r.gs.SELECTED_PROJECT]})):await this.projectsManager.createOrSelectLocalProjects(t.roots);break;case`open-in-browser`:await vL({request:t,targetWebContents:e,windowManager:this.windowManager,isDefaultBrowser:this.isDefaultBrowser(),settingsStore:this.settingsStore,getExternalBrowserUrl:e=>YJ({appServerConnectionRegistry:this.appServerConnectionRegistry,getHostConfigForHostId:this.getHostConfigForHostId,hostId:t.hostId??t.originHostId,url:e}),queueCodexDeepLinkUrl:this.windowManager.queueCodexDeepLinkUrl.bind(this.windowManager)});break;case`electron-set-badge-count`:this.windowManager.setAppBadgeCount(e,t.count);break;case`view-focused`:case`quit-app`:case`tray-menu-threads-changed`:break;case`keyboard-layout-map-changed`:oI(t.keyboardLayoutMap);break;case`app-shell-shortcut-state-changed`:{let n=this.windowManager.getAppShellShortcutState(e.id);this.windowManager.setAppShellShortcutState(e.id,{bottomPanelBrowserCanZoom:t.bottomPanelBrowserCanZoom,bottomPanelBrowserConversationId:t.bottomPanelBrowserConversationId,bottomPanelBrowserTabId:t.bottomPanelBrowserTabId,canAcceptAppshotShortcut:t.canAcceptAppshotShortcut,canTakeMeetingNotes:t.canTakeMeetingNotes,canRedoAppAction:t.canRedoAppAction,canUndoAppAction:t.canUndoAppAction,bottomPanelCanCloseActiveTab:t.bottomPanelCanCloseActiveTab,focusArea:t.focusArea,focusedEditable:t.focusedEditable,imagePreviewOpen:t.imagePreviewOpen,isNewChatRoute:t.isNewChatRoute,newProjectEnabled:t.newProjectEnabled,quickChatAppshotThreadTarget:t.quickChatAppshotThreadTarget,temporaryChatEnabled:t.temporaryChatEnabled,terminalFocused:t.terminalFocused,threadNavigationShortcutLocked:t.threadNavigationShortcutLocked,rightPanelBrowserCanZoom:t.rightPanelBrowserCanZoom,rightPanelBrowserConversationId:t.rightPanelBrowserConversationId,rightPanelBrowserTabId:t.rightPanelBrowserTabId,rightPanelCanCloseActiveTab:t.rightPanelCanCloseActiveTab,workspaceHomeClosable:t.workspaceHomeClosable}),(n?.temporaryChatEnabled!==t.temporaryChatEnabled||n?.newProjectEnabled!==t.newProjectEnabled)&&this.onBrowserStateChanged();break}case`subagent-thread-full-fidelity-changed`:this.getAppServerConnection(t.hostId).setSubagentThreadFullFidelityForSurface(t.conversationId,e.id,t.enabled);break;case`electron-window-focus-request`:{let t=_.BrowserWindow.fromWebContents(e),n=!this.isSystemSuspended&&!this.isScreenLocked&&t?.isFocused()===!0;this.windowManager.sendMessageToWebContents(e,{type:`electron-window-focus-changed`,isFocused:n,...n?{}:{occurredAtMs:Date.now()}});break}case`electron-window-zoom-changed`:this.windowManager.setWindowZoom(e,t.windowZoom);break;case`worker-request`:case`worker-request-cancel`:break;case`navigate-in-new-editor-tab`:case`open-vscode-command`:case`open-extension-settings`:case`open-keyboard-shortcuts`:case`show-settings`:case`install-wsl`:throw Error(`\"${t.type}\" is not implemented in Electron.`);case`open-config-toml`:{let e=c.ot({preferWsl:this.shouldUseWslPaths()}),t=C.join(e,`config.toml`);await(0,x.mkdir)(e,{recursive:!0});try{await(0,x.writeFile)(t,``,{flag:`wx`,mode:384})}catch(e){if(!(e instanceof Error&&`code`in e&&e.code===`EEXIST`))throw e}let n=await _.shell.openPath(t);if(n)throw Error(n);break}}}setPrimaryWindowMode(e,t){let n=_.BrowserWindow.fromWebContents(e);if(!n||n.isDestroyed())return;let r=this.windowManager.getPrimaryWindow();if(!r||r.isDestroyed()||r.id!==n.id)return;if(!this.shouldShowPrimaryWindow()&&!n.isVisible()){n.once(`show`,()=>this.setPrimaryWindowMode(e,t));return}let i=jMe(t);if((0,U.default)(this.primaryWindowMode,t)){i!=null&&this.showPrimaryWindow(n);return}if(this.primaryWindowMode=t,i!=null){this.primaryWindowRestoreBounds??={bounds:n.getNormalBounds(),wasMaximized:n.isMaximized(),wasFullScreen:n.isFullScreen()},n.isFullScreen()&&n.setFullScreen(!1),n.isMaximized()&&n.unmaximize(),n.setResizable(!0);let e=_.screen.getDisplayMatching(n.getNormalBounds()).workAreaSize,t=process.platform===`win32`?{width:Math.max(0,n.getBounds().width-n.getContentBounds().width),height:Math.max(0,n.getBounds().height-n.getContentBounds().height)}:{width:0,height:0},r={width:e.width-t.width,height:e.height-t.height},a={width:Math.min(i.width,r.width),height:Math.min(i.height,r.height)},o=process.platform===`win32`,s=o&&(a.width>=r.width*CY||a.height>=r.height*CY),c=this.windowManager.getPrimaryMinimumSize();n.setMaximizable(o),n.setFullScreenable(!1),n.setMinimumSize(Math.min(c.width,a.width),Math.min(c.height,a.height)),n.setSize(a.width,a.height),s||n.center(),this.showPrimaryWindow(n),s&&n.maximize();return}if(n.setResizable(!0),n.setMaximizable(!0),n.setFullScreenable(!0),this.primaryWindowRestoreBounds){let{bounds:e,wasMaximized:t,wasFullScreen:r}=this.primaryWindowRestoreBounds;this.primaryWindowRestoreBounds=null;let i=this.windowManager.getPrimaryMinimumSize();n.setMinimumSize(i.width,i.height);let a={...e,width:Math.max(e.width,i.width),height:Math.max(e.height,i.height)};n.isMaximized()&&n.unmaximize(),n.setBounds(a),t&&n.maximize(),r&&n.setFullScreen(!0)}this.windowManager.syncPrimaryMinimumSize(),this.showPrimaryWindow(n)}showPrimaryWindow(e){e.isVisible()||(e.show(),e.focus())}dispose(){this.unsubscribeHeartbeatPrimaryWindowChanges?.(),this.unsubscribeSiteAnnotationSettings?.(),_.powerMonitor.off(`suspend`,this.handleSuspend),_.powerMonitor.off(`resume`,this.handleResume),_.powerMonitor.off(`lock-screen`,this.handleScreenLock),_.powerMonitor.off(`unlock-screen`,this.handleScreenUnlock),this.dynamicAppToolResponses.dispose(),this.samplerManager.dispose();for(let e of this.worktreeServicesByHostId.values())e.dispose();this.worktreeServicesByHostId.clear()}waitForDynamicAppToolResponse(e){return this.dynamicAppToolResponses.wait(e)}discardDynamicAppToolResponse(e){this.dynamicAppToolResponses.discard(e)}cancelDynamicAppToolResponse(e){this.dynamicAppToolResponses.cancel(e)}sendMessageToOrigin(e,t){this.windowManager.sendMessageToWebContents(e,t)}requestDynamicToolsForThreadStart(e,t=`default`){return this.requestDynamicToolsAndHostedAutomationAppForThreadStart(e,t).then(e=>{if(e==null)throw Error(`The Codex app renderer is unavailable`);return e.dynamicTools})}requestHostedAutomationsAvailabilityForThreadStart(){return this.requestDynamicToolsAndHostedAutomationAppForThreadStart(null,`default`).then(e=>e?.hostedAutomationsAvailable??!1)}requestDynamicToolsAndHostedAutomationAppForThreadStart(e,t){let n=this.windowManager.getPrimaryWindow();return n==null?Promise.resolve(null):new Promise(r=>{let i=(0,R.randomUUID)(),a=setTimeout(()=>{this.pendingDynamicToolsForThreadStartRequests.delete(i),r(null)},AMe);this.pendingDynamicToolsForThreadStartRequests.set(i,{originId:n.webContents.id,resolve:r,timeout:a}),this.sendMessageToOrigin(n.webContents,{type:`dynamic-tools-for-thread-start-requested`,hostId:this.hostId,requestId:i,featureOverrides:e,requestedHistoryMode:`legacy`,responseTarget:`electron`,mode:`default`,threadStartKind:t,useDefaultFeatureOverrides:!0})})}resolvePendingDynamicToolsForThreadStartRequestsForOrigin(e){for(let[t,n]of this.pendingDynamicToolsForThreadStartRequests.entries())n.originId===e.id&&(clearTimeout(n.timeout),n.resolve(null),this.pendingDynamicToolsForThreadStartRequests.delete(t))}handleDynamicToolsForThreadStartResponse(e,t){let n=this.pendingDynamicToolsForThreadStartRequests.get(t.requestId);if(!n||n.originId!==e.id){xY().warning(`Unknown dynamic tools response requestId`,{safe:{requestId:t.requestId},sensitive:{}});return}this.pendingDynamicToolsForThreadStartRequests.delete(t.requestId),clearTimeout(n.timeout),n.resolve({dynamicTools:t.dynamicTools,hostedAutomationsAvailable:t.hostedAutomationsAvailable===!0})}sendPersistedAtomState(e,t){let n=this.globalState.get(`electron-persisted-atom-state`)??{},r=this.browserHostManager.isPrimaryWindowPersistenceOwner(e),i={type:`persisted-atom-sync`,state:Object.fromEntries(Object.entries(n).filter(([t])=>(r||!TY(t))&&this.windowManager.shouldSyncPersistedAtom(e,t))),canWritePrimaryWindowTabPersistence:r};t===`critical`?this.chunkedMessageSender.sendCritical(e,g.bt,i):this.sendMessageToView(e,i)}updatePersistedAtomState(e,t,n,r){if(t===`unread-thread-ids-by-host-v1`||(TY(t)||t===`page-sidebar-expansion-v1`)&&!this.browserHostManager.isPrimaryWindowPersistenceOwner(e))return;let i=this.globalState.get(`electron-persisted-atom-state`)??{};if(!pR(t,i[t],n)){this.broadcastPersistedAtomUpdate(e,t,i[t]);return}let a=r==null?n:hR(i[t]??(r.legacyStorageKey==null?void 0:i[r.legacyStorageKey]),r);a===void 0?delete i[t]:Object.defineProperty(i,t,{configurable:!0,enumerable:!0,value:a,writable:!0}),this.globalState.set(`electron-persisted-atom-state`,i),this.broadcastPersistedAtomUpdate(e,t,a)}broadcastPersistedAtomUpdate(e,t,n){let r=n===void 0,i={type:`persisted-atom-updated`,key:t,value:r?null:n,deleted:r};if(!TY(t)||r){this.windowManager.sendMessageToAllWindows(i);return}let a=_.BrowserWindow.fromWebContents(e);a!=null&&this.windowManager.sendMessageToWindow(a,i)}deletePersistedAtomStateKeys(e,t){let n=this.globalState.get(`electron-persisted-atom-state`)??{},r=t.filter(e=>e in n);if(r.length===0)return;let i={...n};for(let e of r)delete i[e];this.globalState.set(`electron-persisted-atom-state`,i);for(let t of r)this.broadcastPersistedAtomUpdate(e,t,void 0)}resetPersistedAtomState(){this.globalState.set(`electron-persisted-atom-state`,{}),this.windowManager.sendMessageToAllWindows({type:`persisted-atom-sync`,state:{}})}async skipOnboardingWorkspace(e,t){let n=null;try{if(n=await this.createDefaultWorkspaceRoot(wY,t),(await this.projectsManager.createOrSelectLocalProjects([n])).length===0){this.chunkedMessageSender.sendInlineMessageForView(e,{type:`electron-onboarding-skip-workspace-result`,success:!1});return}this.chunkedMessageSender.sendInlineMessageForView(e,{type:`electron-onboarding-skip-workspace-result`,success:!0,root:n}),this.chunkedMessageSender.sendInlineMessageForView(e,{type:`navigate-to-route`,path:`/`,onboardingCompletion:`skip-workspace`,state:{focusComposerNonce:Date.now()}})}catch(t){xY().error(`Failed to skip onboarding workspace selection`,{safe:{},sensitive:{error:t}});let r=t instanceof Error?t.message:String(t);this.chunkedMessageSender.sendInlineMessageForView(e,{type:`electron-onboarding-skip-workspace-result`,success:!1,root:n??void 0,error:r})}}sanitizeDefaultProjectName(e){let t=Array.from(C.basename(e).trim(),e=>e.charCodeAt(0)<32||`<>:\"/\\\\|?*`.includes(e)?`_`:e).join(``).replace(/[ .]+$/g,``);return t.length===0?wY:/^(?:con|prn|aux|nul|com[1-9¹²³]|lpt[1-9¹²³])(?:\\.|$)/i.test(t)?`_${t}`:t}async findAvailableDefaultWorkspaceRoot(e,t,n){let r=n==null?t:`${t} ${n}`,i=C.join(e,r);if(!await this.folderExists(i))return i;let a=n==null?2:n+1;return this.findAvailableDefaultWorkspaceRoot(e,t,a)}async createDefaultWorkspaceRoot(e,t){if(r.Bi(this.host))throw Error(`Creating a default workspace is only supported for local hosts`);let n=this.sanitizeDefaultProjectName(e),a=await this.findAvailableDefaultWorkspaceRoot(C.join(_.app.getPath(`documents`),`ChatGPT`),n,void 0);return await i.di.mkdir(a,{recursive:!0},this.appServerClient),t&&await this.initializeDefaultWorkspace(a),a}async folderExists(e){try{return await i.di.stat(e,this.appServerClient),!0}catch{return!1}}async initializeDefaultWorkspace(e){try{let{available:t}=await this.requestGitWorker({method:`availability`,params:{hostConfig:this.host,operationSource:`onboarding_workspace_select`}});if(!t)return;await this.requestGitWorker({method:`git-init-repo`,params:{hostConfig:this.host,operationSource:`onboarding_workspace_select`,cwd:r.Nn(e)}})}catch(e){xY().warning(`Failed to initialize default workspace git repository`,{safe:{},sensitive:{error:e}})}}revealWindowsReviewRequest(e,t){if(!NMe(t,this.hasActiveComputerUseTurn))return;let n=this.getPrimaryWindow();n!=null&&(xY().info(`[windows-review-request] reveal requested`,{safe:{conversationId:t.params.threadId,hostId:e,method:t.method,requestId:t.id,wasMinimized:n.isMinimized()},sensitive:{}}),n.webContents.isDestroyed()||this.windowManager.sendMessageToWebContents(n.webContents,{type:`navigate-to-route`,path:r.Za(r.bs(t.params.threadId))}),this.restoreShowAndFocusWindow(n,{stealFocus:!0}))}getPrimaryWindow(){let e=this.windowManager.getPrimaryWindow();return e==null||e.isDestroyed()?null:e}restoreShowAndFocusWindow(e,{stealFocus:t}){e.isMinimized()&&e.restore(),t&&process.platform===`win32`&&e.setAlwaysOnTop(!0),e.show(),e.focus(),t&&process.platform===`win32`&&e.setAlwaysOnTop(!1)}updatePowerSaveBlocker(e,t,n,r){let i=e.id;this.powerSaveTrackedWebContentsIds.has(i)||(this.powerSaveTrackedWebContentsIds.add(i),e.once(`destroyed`,()=>{this.powerSaveTrackedWebContentsIds.delete(i),this.powerSaveBlockingWebContentsIds.delete(i),this.displaySleepBlockingWebContentsIds.delete(i),this.pluggedInRemoteControlPowerSaveWebContentsIds.delete(i),this.syncPowerSaveBlocker()})),t?this.powerSaveBlockingWebContentsIds.add(i):this.powerSaveBlockingWebContentsIds.delete(i),n?this.pluggedInRemoteControlPowerSaveWebContentsIds.add(i):this.pluggedInRemoteControlPowerSaveWebContentsIds.delete(i),r?this.displaySleepBlockingWebContentsIds.add(i):this.displaySleepBlockingWebContentsIds.delete(i),this.syncPowerSaveBlocker()}setSystemFocusState(e,t,n){let r=this.isSystemSuspended||this.isScreenLocked;e===`suspended`?this.isSystemSuspended=t:this.isScreenLocked=t;let i=this.isSystemSuspended||this.isScreenLocked;if(r===i)return;if(this.windowManager.setSystemFocusSuppressed(i),i){this.windowManager.sendMessageToAllWindows({type:`electron-window-focus-changed`,isFocused:!1,occurredAtMs:n});return}let a=_.BrowserWindow.getFocusedWindow();a?.isFocused()===!0&&this.windowManager.sendMessageToWindow(a,{type:`electron-window-focus-changed`,isFocused:!0})}syncPowerSaveBlocker(){let e=null;this.displaySleepBlockingWebContentsIds.size>0?e=`prevent-display-sleep`:(this.powerSaveBlockingWebContentsIds.size>0||!_.powerMonitor.isOnBatteryPower()&&this.pluggedInRemoteControlPowerSaveWebContentsIds.size>0)&&(e=`prevent-app-suspension`),e!==this.powerSaveBlockerType&&(this.powerSaveBlockerId!=null&&(_.powerSaveBlocker.stop(this.powerSaveBlockerId),this.powerSaveBlockerId=null),e!=null&&(this.powerSaveBlockerId=_.powerSaveBlocker.start(e)),this.powerSaveBlockerType=e)}async sendCustomPrompts(e){let t=await i.d();this.sendMessageToView(e,{type:`custom-prompts-updated`,prompts:t})}sendMessageToView(e,t){this.chunkedMessageSender.sendInlineMessageForView(e,t)}sendAppServerResponseToView(e,t,n,r,i,a){let o=i=>{let o={type:`mcp-response`,hostId:t,message:r,...i==null?{}:{receivedAtMs:Date.now(),requestMethod:n,trace:i}};if(a===`critical`){this.chunkedMessageSender.sendCritical(e,g.bt,o);return}this.sendMessageToView(e,o)};if(i==null){o();return}c.rn({attributes:{\"app_server.method\":n,\"app_server.response_error\":r.error!=null,\"electron.broadcast_fallback\":!1,...r.error==null?{}:c.Xt(r.error.code,r.error)},name:`electron.response_route`,op:`codex.app_server.response_route`,trace:i},()=>{r.error!=null&&c.tn(`failure`,`app_server`),o(c.Jt()??i)})}sendSharedObjectUpdate(e,t,n){e.isDestroyed()||this.sendMessageToView(e,{type:`shared-object-updated`,key:t,value:n})}shouldUseWslPaths(){return c.yt(this.host)}getSettingsStore(){if(this.settingsStore==null)throw Error(`Settings store unavailable`);return this.settingsStore}}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3302496,
+        "endExclusive": 3360341
+      },
+      "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S009",
+      "code": "hXe=class{appServerConnectionRegistry;publishedStatsig;diamondController;settings;statsig;secretAuthStorageConfigOverrides;threadReadState;hostAppServerManagers;appServerManagersService;handleHostedInteractiveTool;localClientCoordinationEnabled;threadArchive;appActionHostService;remoteControlDeviceKeyClient;messageHandler;detachedWindowManager;pageWindowPrewarm;lastAuthenticatedPrincipal=null;contentTabServiceManager;remoteConnectionsHandler;remoteControlEnvironmentService;environmentConfigService;sharedObjectRepository;fetchHandler;habitatAutomationsService;fetchWrapper;customInstructions;accessInputs;daybreakPreferences;cloudTasks;triggerSubscriptionReader;browserSettingsSync;appState;errorReporter;localEnvironments;deviceStorage;managedWorktrees;worktreeComposerEducation=new i.fi;projectsManager;projectChatGptProvisioning;projectFolderConsent;lsp;workspaceFiles;workspaceSearch;dictationAudio;dictationStreaming;dictationHistory;terminalManager;cloudPortals;options;scopedState;durableThreadHostConfig;customRuntime;conversationExecutor;restrictedDevboxService;devboxService;primaryRuntimeService;threadTurnSummaries;threadMetadataGeneration;cumberbatchController;artifactDocuments;computerUseSettings;conversationalOnboarding;orbPicker;dynamicToolCalls=new h_e;localThreadCatalogSyncCoordinator;threadCatalogSyncManager;keyboardModifierService=new RNe;demoTools;realtime;initialRemoteConnectionsRefresh;primaryWindowContentReady=Promise.withResolvers();initialStartupWebContentsId;sshConnectTimeoutSeconds;codexMicroServiceManager;disposables=new i.Nr;registeredWindows=new Map;executionHostRegistry=new WMe;fileDragServices=new WeakMap;downloadsViewPublisher;appUpdatesViewPublisher;primaryWindowEvents;readyAppViewWebContentsIds=new Set;browserSessionProbeState={hasOpenedTab:!1};ipcClientsByWebContentsId=new Map;threadProjectAssignments;constructor(e){this.options=e,this.primaryWindowEvents=new nXe(e.windowManager,e.appViewsByWebContentsId,this.readyAppViewWebContentsIds),this.appUpdatesViewPublisher=new wYe(e.appViewsByWebContentsId,e.appUpdates),this.downloadsViewPublisher=new eXe(e.appViewsByWebContentsId,()=>this.getDownloadsSnapshot()),this.orbPicker=new sze(e.globalState,e.settingsStore,()=>e.avatarOverlayManager.isOpen(),()=>e.avatarOverlayManager.wake()),this.computerUseSettings=new Ghe(e.requestComputerUseWorker),this.codexMicroServiceManager=new bC({ensureWindow:e.ensureWindow,windowManager:e.windowManager}),this.disposables.add(this.codexMicroServiceManager),this.appState=e.appGlobalState,this.errorReporter=e.errorReporter,this.scopedState=e.globalState,this.threadProjectAssignments=new AJe(this.scopedState,e.windowManager,(...e)=>d.writeThreadAssignment(...e),e=>d.getThreadStartProjectId(e));let t=tUe({codexHome:e.executionCodexHome,getStatsig:()=>this.publishedStatsig,getAppServerClient:()=>o,desktopApiOptions:e});this.projectFolderConsent=new FHe(e=>this.appServerConnectionRegistry.getConnection(e),e=>this.getHostConfigForHostId(e),e.ensureWindow,t.isEnabled),this.projectsManager=new qHe(this.scopedState,this.threadProjectAssignments,l.m,e.windowManager,(e,t,n)=>this.projectFolderConsent.confirm(e,t,n),e=>this.appServerConnectionRegistry.getConnection(l.h).listThreads(e),e=>this.appServerConnectionRegistry.getConnection(l.h).readThread(e,{includeTurns:!1}),async t=>(await e.requestGitWorker({method:`origin-url`,params:{cwd:r.Nn(t),hostConfig:l.m,operationSource:`git_direct_call`}})).originUrl,(e,t)=>this.messageHandler.createDefaultWorkspaceRoot(e,t),void 0,t),this.durableThreadHostConfig=Vv({desktopOriginator:e.desktopOriginator,devApiBaseUrl:e.devApiBaseUrl,prodApiBaseUrl:e.prodApiBaseUrl}),this.sharedObjectRepository=new wee,this.sharedObjectRepository.set(`host_config`,l.m),this.sharedObjectRepository.set(`is_default_browser`,_.app.isDefaultProtocolClient(`https`)),this.sharedObjectRepository.set(`remote_ssh_connections`,[]),this.sharedObjectRepository.set(`remote_control_connections_state`,{available:!1,accessRequired:!1,authRequired:!1,clientAuthorized:!1}),this.sharedObjectRepository.set(`local_remote_control_client_id`,null),this.sharedObjectRepository.set(`local_remote_control_environment_id`,e.appGlobalState.get(l.M)),this.sharedObjectRepository.set(`local_remote_control_installation_id`,e.appGlobalState.get(l.N));let n=i.q();n!=null&&this.sharedObjectRepository.set(`local_remote_control_enabled`,n);let a=gqe(C.default.join(_.app.getPath(`userData`),`statsig-state.json`),e.hostProcess.getVersion(),e.applicationNetwork);this.statsig=a.service,this.secretAuthStorageConfigOverrides=a.secretAuthStorageConfigOverrides,this.localClientCoordinationEnabled=A5(l.m)==null;let o=this.createAppServerConnection(l.h);this.conversationalOnboarding=new hT(o,this.scopedState,e.requestComputerUseWorker,e=>this.broadcastQueryCacheInvalidation([`conversational-onboarding-completion`,e])),this.disposables.add(()=>hT.dispose(this.conversationalOnboarding));let s=e=>PT(o,e);this.publishedStatsig=new Que(this.sharedObjectRepository,async()=>{let[e,t]=await Promise.all([o.getAuthenticatedPrincipal(),o.getAuthMethod()]),n=t==null?await o.getAccount():null;return{principal:e,authMethod:t,unauthenticatedStableId:n?.account==null&&n?.requiresOpenaiAuth===!1?await this.statsig.getStableId():null}},s),this.disposables.add(this.publishedStatsig),this.diamondController=null;let u=new i.O;this.deviceStorage=new hue(e.executionCodexHome,u,e=>o.listThreads(e),e=>o.readThread(e,{includeTurns:!1}),C.default.join(_.app.getPath(`userData`),`storage-cache`)),this.remoteControlDeviceKeyClient=new bKe(l.Rt({env:process.env,resourcesPath:process.resourcesPath})),this.executionHostRegistry.add(l.h,u),this.appServerConnectionRegistry=new tee,this.appServerConnectionRegistry.addConnection(l.h,o),this.cumberbatchController=new mge(this.appServerConnectionRegistry,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t),e.settingsStore),this.disposables.add(this.cumberbatchController),this.disposables.add(new afe(this.appServerConnectionRegistry,this.publishedStatsig,e=>{e===`local`&&this.daybreakPreferences?.refreshAvailability(),this.broadcastQueryCacheInvalidation([`experimental-features`,`list`,e]),this.broadcastQueryCacheInvalidation([`models`,`list`,e])})),this.habitatAutomationsService=gpe(o,e,this.appState,this.disposables,(...e)=>this.broadcastQueryCacheInvalidation(...e)),this.demoTools=Zge({buildFlavor:e.buildFlavor,isPackaged:_.app.isPackaged}),this.demoTools!=null&&this.disposables.add(this.demoTools);let d=new NHe(this.scopedState,o,new x4(this.scopedState),t=>e.windowManager.sendMessageToAllWindows({type:`thread-project-memberships-updated`,memberships:t}),()=>e.windowManager.sendMessageToAllWindows({type:`global-state-updated`,keys:[r.gs.LOCAL_PROJECTS]})),f=()=>{d.setThreadAssignmentsEnabled(K().localProjectTaskMembership)};f(),this.disposables.add(Oi(f)),this.projectsManager.setProjectBackend(d),this.projectChatGptProvisioning=t.createProvisioning(this.projectsManager),this.disposables.add(d.start());let m=e=>{let t=this.appServerConnectionRegistry.getMaybeConnection(e);if(t==null)return null;let{hostConfig:n}=t,r;switch(n.kind){case`local`:r=[n.kind,n.id,A5(n)];break;case`ssh`:r=[n.kind,n.id,n[i.dn]];break;case`wsl`:r=[n.kind,n.id,n.distro];break;case`remote-control`:r=[n.kind,n.id,n.env_id]}let a=(0,R.createHash)(`sha256`).update(JSON.stringify(r)).digest(`hex`);return`${n.id}:${a}`};this.threadReadState=RJe({localClientCoordinationEnabled:this.localClientCoordinationEnabled,localConnection:o,connections:this.appServerConnectionRegistry,sharedObjects:this.sharedObjectRepository,globalState:this.scopedState,errorReporter:this.errorReporter,getConfiguredHostIds:()=>[l.h,...this.durableThreadHostConfig==null?[]:[this.durableThreadHostConfig.id],...this.getSharedRemoteConnections().map(e=>e.hostId)],getHostConfig:this.getHostConfigForHostId.bind(this),getLocalWebsocketUrl:A5}),this.disposables.add(this.threadReadState.dispose);let h;if(this.threadTurnSummaries=new VJe({getPrincipal:()=>o.getAuthenticatedPrincipal(),getStore:()=>{if(h!==void 0)return h;let e=$ue();return h=e==null?null:new nde(e),h},getHostKey:m,onHostRemoved:e=>this.appServerConnectionRegistry.subscribe(t=>{t.type===`removed`&&e(t.hostId)}),onPrincipalChange:e=>o.registerInternalAuthenticatedPrincipalChangeHandler(e)}),this.disposables.add(()=>this.threadTurnSummaries.dispose()),this.threadMetadataGeneration=new p5(this.appServerConnectionRegistry,this.threadTurnSummaries,this.publishedStatsig),this.disposables.add(()=>p5.dispose(this.threadMetadataGeneration)),this.conversationExecutor=$Ye({options:e,appServerConnectionRegistry:this.appServerConnectionRegistry,projectsManager:this.projectsManager,scopedState:this.scopedState,disposables:this.disposables}),e.buildFlavor,p.t.Dev,this.customRuntime=null,this.durableThreadHostConfig!=null){let e=this.createAppServerConnection(this.durableThreadHostConfig.id,this.durableThreadHostConfig,!1,o);this.executionHostRegistry.add(this.durableThreadHostConfig.id,e),this.appServerConnectionRegistry.addConnection(this.durableThreadHostConfig.id,e)}let v=new dUe(o),y=new mUe(o),b=new AUe(this.appServerConnectionRegistry),x=i.qr();if(x==null)throw Error(`Voice history requires Electron SQLite`);let S=new vUe(b,new bue(x)),w=new FUe(b),T=new WUe(b,this.appServerConnectionRegistry,o,this.publishedStatsig),E=MUe.create(b,async({hostId:e,conversationId:t})=>{await this.appServerConnectionRegistry.getConnection(e).sendAppServerRequest(`thread/realtime/stop`,{threadId:t})},oUe()?{isEnabled:()=>this.publishedStatsig.getReadyClient()?.checkGate(`codex-airpods-mute`)===!0,start:e=>new sUe(e)}:void 0),D=BUe.create(E.rpc,{overlayFocus:{subscribe:t=>e.avatarOverlayManager.subscribePresentationFocus(t)},overlayMotion:{cancelDock:()=>{e.avatarOverlayManager.cancelPresentationDock()},dockTo:(t,n)=>{e.avatarOverlayManager.dockPresentation(t,n)},fadeOutPresentation:t=>{e.avatarOverlayManager.fadeOutPresentation(t)},preparePresentationForFadeIn:()=>{e.avatarOverlayManager.preparePresentationForFadeIn()},presentFrom:(t,n)=>{e.avatarOverlayManager.preparePresentation(t,n)},restoreAccessories:()=>{e.avatarOverlayManager.restorePresentationAccessories()},setDockTarget:(t,n)=>{e.avatarOverlayManager.setPresentationDockTarget(t,n)},updatePresentationOffset:t=>{e.avatarOverlayManager.updatePresentationOffset(t)}},overlayVisibility:{setVisibility:t=>{e.avatarOverlayManager.setPresentationVisibility(t)}}});this.realtime={continuity:v,memory:y,presentation:D.rpc,voiceHistory:S,multiAgentActivity:w,voice:E.rpc},this.disposables.add(D.dispose),this.disposables.add(E.dispose),this.disposables.add(S),this.disposables.add(w),this.disposables.add(T),this.disposables.add(()=>b.dispose()),this.threadCatalogSyncManager=e.createThreadCatalogStore==null?null:new yJe(l.h,e.createThreadCatalogStore,(e,t)=>{X5.warning(`Thread catalog sync failed`,{safe:{},sensitive:{error:t,hostId:e}})},new r5),this.localThreadCatalogSyncCoordinator=this.threadCatalogSyncManager?.attachSource(l5(`local`,`local`,o))??null,this.threadCatalogSyncManager!=null&&this.disposables.add(this.threadCatalogSyncManager),this.threadArchive=new iJe(this.executionHostRegistry,this.appServerConnectionRegistry,this.localThreadCatalogSyncCoordinator),this.artifactDocuments=new VKe({getAllowedWorkspaceRoots:async()=>{let{workspaceRoots:t}=await hX({appServerConnection:o,globalState:this.scopedState,localThreadIds:new Set((this.scopedState.get(r.gs.PROJECTLESS_THREAD_IDS)??[]).filter(e=>this.threadCatalogSyncManager?.readThreadHostId(e)===l.h)),settingsStore:e.settingsStore});return[...t,...this.projectsManager.getProjectRootPathsForHost(l.h)]},store:new $Ke({directory:C.default.join(C.default.dirname(e.appGlobalState.getStateFilePath()),`artifact-documents`)})});let O=new $Me(this.executionHostRegistry,this.scopedState);this.workspaceFiles=O,this.workspaceSearch=new pXe(this.executionHostRegistry,(t,n)=>e.applicationNetwork.fetch(t,n)),this.disposables.add(()=>this.workspaceSearch.dispose()),this.disposables.add(()=>O.dispose()),this.dictationAudio=process.platform===`darwin`?new hNe:void 0,this.dictationStreaming=new l_e({getAuth:()=>o.getBackendRequestAuth({refreshToken:!1}),desktopApiOptions:e,applicationNetwork:e.applicationNetwork}),this.disposables.add(()=>this.dictationStreaming[Symbol.dispose]()),this.dictationHistory=new kNe({directory:C.default.join(c.ot(),`dictation-history`),onChanged:()=>this.broadcastQueryCacheInvalidation([`dictation-history`])});let k=new PPe({fetchImpl:(e,t)=>_.net.fetch(e,t)});this.lsp=new $Fe(e=>this.getAppServerClient(e),C.default.join(_.app.getPath(`userData`),`language-servers`),{getRoot:e=>k.getRuntimeRoot(e),markExpired:e=>k.markRuntimeExpired(e)},()=>void this.options.appUpdates.checkForUpdates()),this.disposables.add(this.lsp),this.localEnvironments=new uPe(this.executionHostRegistry),this.managedWorktrees=new cIe(this.appServerConnectionRegistry,e=>this.messageHandler.getWorktreeService(e),this.scopedState,({id:e,owner:t,hostId:n,threadId:r},i)=>this.primaryWindowEvents.notifyManagedWorktreeArchiveCompleted(e,t,n,r,i),e=>this.primaryWindowEvents.sendModelWorktreeCreationEvent(e));let A=()=>this.appServerConnectionRegistry.getConnection(r.ki),j=e=>INe(A(),e);this.cloudPortals=new eC({statsig:this.publishedStatsig,assertDestinationAllowed:t=>e.applicationNetwork.assertAllowed(t),auth:o,desktopApiOptions:e,hostConfig:this.durableThreadHostConfig,getConnection:A,fallback:j}),this.disposables.add(this.cloudPortals),j=this.cloudPortals.create,this.terminalManager=new Qqe(this.scopedState,()=>e.settingsStore.getEffective(r.H.integratedTerminalShell.key),l.m.terminal_command??null,async t=>(await e.requestGitWorker({method:`worktree-shell-environment`,params:{cwd:r.Nn(t),hostConfig:u.hostConfig,operationSource:`git_direct_call`}})).shellEnvironment,e=>this.getHostConfigForHostId(e),e=>this.appServerConnectionRegistry.getMaybeConnection(e),j),this.remoteConnectionsHandler=new fKe(this.appState,this.sharedObjectRepository,l.h,this.appServerConnectionRegistry,{desktopOriginator:e.desktopOriginator,devApiBaseUrl:e.devApiBaseUrl,prodApiBaseUrl:e.prodApiBaseUrl},o,this.remoteControlDeviceKeyClient,this.getHostConfigForHostId.bind(this),this.getAppServerClient.bind(this),this.createAndRegisterRemoteConnection.bind(this),this.disposeRemoteConnection.bind(this),(e,t)=>{this.threadCatalogSyncManager?.reconcileAuthoritativeHostKind(e,t)}),this.appActionHostService=new Yde(e.windowManager,this.options.appViewsByWebContentsId),this.remoteControlEnvironmentService=new CKe(this.remoteConnectionsHandler),this.environmentConfigService=bS(o,e,e.globalState),this.devboxService=null,this.restrictedDevboxService=null;let M=new xHe(this.appServerConnectionRegistry,e.errorReporter,this.scopedState,this.sharedObjectRepository,e.windowManager,void 0);this.primaryRuntimeService=M,this.disposables.add(CIe({captureMessage:e.desktopSentry.captureMessage,diagnosePrimaryRuntimeDependencies:()=>M.diagnoseDependencies({hostId:l.h}),getMetadataTags:async t=>{let n={app_build:g.et.value??void 0,app_version:i.Ti(e.hostProcess.getVersion()).version,cli_version:o.appServerVersion??void 0},[r,a]=await Promise.all([M.getInstalledBundleVersion().catch(()=>null),o.readThread(t).catch(()=>null)]);return{...n,runtime_bundle_version:r??void 0,session_source:wIe(a?.source)}},getPlatformOs:()=>o.platformOs(),getPrimaryRuntimeDependencyRoot:c.W,registerInternalNotificationHandler:e=>o.registerInternalNotificationHandler(e)})),this.disposables.add(e.settingsStore.onDidChange(r.U.primaryNumberShortcutTarget.key,()=>{K().unifiedTabStrip&&(e.refreshApplicationMenu?.(),this.messageHandler.getBrowserHostManager().refreshOwnerCommandAccelerators(),this.broadcastQueryCacheInvalidation([`vscode`,`codex-command-keymap-state`]))})),this.customInstructions=new Sge(()=>o.getCachedAuthenticatedPrincipal()??null,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t),e=>this.publishedStatsig.getClientForPrincipal(e)?.checkGate(`codex-unified-custom-instructions`)===!0),this.fetchHandler=new $L(this.scopedState,this.projectsManager,this.threadProjectAssignments,this.appServerConnectionRegistry,u,this.remoteConnectionsHandler,e.hotkeyWindowLifecycleManager,e.windowManager,M.isWorkspaceDependenciesFeatureEnabled,e=>this.getAppServerClient(e),e=>this.messageHandler.getWorktreeService(e),e.requestGitWorker,this.sharedObjectRepository,e.errorReporter,e.repoRoot,e.globalDictationHotkeyController,async e=>{let t=this.messageHandler.getBrowserHostManager();await t.clearBrowsingData(e),t.reloadOpenPages()},e.refreshApplicationMenu,e.requestComputerUseWorker,e.subscribeComputerUseCaptureWorkerEvent,()=>{e.windowManager.refreshAppShellCommandAccelerators(),this.messageHandler.getBrowserHostManager().refreshOwnerCommandAccelerators()},e.settingsStore,e.updateDockIcon,e.realtimeSessionRecorder,({includeBrowserTabs:t,includeDesktopLogs:n})=>[...n?e.avatarOverlayManager.getFeedbackLogEntries():[],...n?this.conversationExecutor.getFeedbackLogEntries():[],...t?[{contents:Buffer.from(JSON.stringify(this.messageHandler.getBrowserHostManager().getFeedbackDiagnostics())),name:`browser-tabs.json`}]:[]],e.realtimeVoiceHotkeyController,e.executionCodexHome,()=>this.messageHandler.requestDynamicToolsForThreadStart(null),void 0,e=>this.localThreadCatalogSyncCoordinator?.handleImportedThreads(e),e.windowsCaptureNativeBridge??null,e.syncAvatarOverlayHotkey,()=>e.artifactSessionHostLifecycle??null,(e,t)=>this.browserSettingsSync.update(e,t),this.publishedStatsig,this.habitatAutomationsService,()=>this.messageHandler.requestHostedAutomationsAvailabilityForThreadStart(),this.threadReadState.prepareCronTurnReadState,this.threadReadState.owner,this.customInstructions,e.regionScreenshotHotkeys,e.syncSpotlightHotkey);let N=this.fetchHandler.settings;if(N==null)throw Error(`Settings store unavailable`);this.settings=N,this.disposables.add(()=>N.dispose()),this.disposables.add(M.startUpdatePolling());let ee=new z_(this.scopedState);this.pageWindowPrewarm=new nHe(e.windowManager),this.disposables.add(()=>this.pageWindowPrewarm.dispose()),this.disposables.add(Oi(()=>this.refreshPageWindowPrewarm()));let P=()=>{fze(this.appState),dze()},F=()=>{this.detachedWindowManager?.clearPrewarm(),this.pageWindowPrewarm.clear()};if(_.app.on(`before-quit`,F),this.disposables.add(()=>{F(),_.app.removeListener(`before-quit`,F)}),this.disposables.add(sXe(o)),this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(({previous:e,current:t})=>{if(t==null){this.lastAuthenticatedPrincipal=this.lastAuthenticatedPrincipal??e;return}let n=this.lastAuthenticatedPrincipal??e;n!=null&&(n.accountId!==t.accountId||n.userId!==t.userId)?(this.cumberbatchController.clear(),this.clearSitesAuthentication(),this.messageHandler?.getBrowserHostManager().setSiteAnnotationApiFeatureEnabled(null,!0),P(),ji({pageCreation:!1}),F()):this.lastAuthenticatedPrincipal??pze(this.appState,t),this.lastAuthenticatedPrincipal=t;let r=this.options.windowManager.getPrimaryWindow();r!=null&&this.readyAppViewWebContentsIds.has(r.webContents.id)&&this.detachedWindowManager?.startPrewarming(r.webContents),this.refreshPageWindowPrewarm()})),this.disposables.add(o.registerInternalNotificationHandler(e=>{if(e.method!==`account/updated`)return;let t=e.params?.authMode;t!=null&&this.messageHandler?.getBrowserHostManager().cancelSiteBootstraps(),t!==`chatgpt`&&t!==`chatgptAuthTokens`&&(this.browserSettingsSync.logout(),ji({pageCreation:!1}),F(),this.lastAuthenticatedPrincipal=null,P()),t??(this.cumberbatchController.clear(),this.clearSitesAuthentication(),this.messageHandler?.getBrowserHostManager().setSiteAnnotationApiFeatureEnabled(null,!0),ee.clear())})),this.disposables.add(o.registerInternalConnectionStateHandler(e=>{e===`error`&&o.getConnectionError()?.code===`login-required`&&this.clearSitesAuthentication()})),this.fetchWrapper=new Ude(this.fetchHandler,{applicationNetwork:e.applicationNetwork,desktopOriginator:e.desktopOriginator,devApiBaseUrl:e.devApiBaseUrl,deviceCheckCookieManager:new o_e({bundleIdentifier:g.tt(e.buildFlavor),errorReporter:e.errorReporter,generateToken:()=>ste({resourcesPath:l.Rt({env:process.env,resourcesPath:process.resourcesPath})}),url:g.dt(e,`/devicecheck`)}),integrityStateStore:ee,chunkedMessageSender:e.chunkedMessageSender,pluginServicePreviewEnabled:e.pluginServicePreviewEnabled,backendPreviewEnabled:void 0,appServerConnectionRegistry:this.appServerConnectionRegistry,prodApiBaseUrl:e.prodApiBaseUrl}),this.accessInputs=new Kde(this.appServerConnectionRegistry,o,this.threadReadState.getContext,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t)),this.disposables.add(this.accessInputs.dispose),this.cloudTasks=new rC(this.appServerConnectionRegistry,o,this.threadReadState.getContext,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t)),this.disposables.add(this.cloudTasks.dispose),this.localClientCoordinationEnabled){let e=new i.y(`desktop`,this.errorReporter);this.disposables.add(e.addAnyBroadcastHandler(async e=>{e.method!==`query-cache-invalidate`||(e.version??0)!==i.hi(e.method)||Array.from(this.ipcClientsByWebContentsId.values()).some(({client:t})=>t.getClientId()===e.sourceClientId)||(this.accessInputs.invalidateQueryCache(e.params.queryKey),this.cloudTasks.invalidateQueryCache(e.params.queryKey),this.customInstructions.invalidateQueryCache(e.params.queryKey))})),this.disposables.add(()=>e.dispose())}g.H(e=>this.fetchWrapper.exportTraceBatch(e)),this.browserSettingsSync=new nme({configFile:new uy(c.ot()),getAuthenticatedPrincipal:()=>o.getAuthenticatedPrincipal(),createApi:e=>new $pe(this.fetchWrapper.fetchAuthenticatedJson.bind(this.fetchWrapper),e),isEnabled:()=>K().browserSettingsCloudSync,onSettingsChanged:()=>{my(c.ot()),this.broadcastQueryCacheInvalidation([`vscode`,`browser-use-origin-state-read`])}}),this.disposables.add(()=>this.browserSettingsSync.dispose()),this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(({current:e})=>this.browserSettingsSync.principalChanged(e)));let te=()=>this.browserSettingsSync.requestRefresh();_.app.on(`browser-window-focus`,te),this.disposables.add(()=>_.app.removeListener(`browser-window-focus`,te)),this.browserSettingsSync.start();let I=()=>{this.customInstructions.refresh()};this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(I)),this.disposables.add(this.publishedStatsig.onDidChange(I)),_.app.on(`browser-window-focus`,I),this.disposables.add(()=>{_.app.removeListener(`browser-window-focus`,I),this.customInstructions.dispose()}),I(),this.triggerSubscriptionReader=new qJe(()=>o.getAuthenticatedPrincipal(),(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t)),this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(()=>this.triggerSubscriptionReader.cancelPendingReads())),this.disposables.add(()=>this.triggerSubscriptionReader.cancelPendingReads());let L=new Rje(e.buildFlavor,e.gitWorkerInvocationSampler,e=>this.messageHandler.getBrowserHostManager().isBrowserPageWebContents(e));this.messageHandler=new MMe(l.h,l.m,u,e.windowManager,e.chunkedMessageSender,e.avatarOverlayManager,this.appServerConnectionRegistry,this.fetchWrapper,this.scopedState,this.projectsManager,this.sharedObjectRepository,e.requestGitWorker,e.desktopNotificationManager,e.errorReporter,e.desktopSentry,e.updateWorkerSentryUser,e.inboxManager,e.datadogLogger,e.maxLogLevel,e.buildFlavor,e.subscribeGitWorkerEvent,L,e=>this.getHostConfigForHostId(e),e.hasActiveComputerUseTurn,e.settingsStore,e=>this.fetchHandler.getPinnedThreadIdsForWorktreeCleanup(e),e.onAppEntrySource,e=>this.managedWorktrees.enqueueAutomaticArchive(e),e.shouldShowPrimaryWindow,e=>K5(this.options,e));let{downloadStore:z}=this.messageHandler.getBrowserHostManager();z.setChangeListener(()=>{this.broadcastDownloadsState()}),z.setLifecycleEventListener(e=>{this.broadcastDownloadLifecycleEvent(e)});let ne=!1;this.disposables.add(this.sharedObjectRepository.addSubscriber(e=>{if(e===`remote_ssh_connections`||e===`remote_wsl_connections`||e===`remote_control_connections`){this.remoteConnectionsHandler.reconcileRemoteConnections(this.getSharedRemoteConnections());return}if(e===`local_remote_control_environment_id`||e===`local_remote_control_installation_id`){let e=this.sharedObjectRepository.get(`local_remote_control_environment_id`),t=this.sharedObjectRepository.get(`local_remote_control_installation_id`);this.appState.set(l.M,e??void 0),t!=null&&this.appState.set(l.N,t),ne||(ne=!0,queueMicrotask(()=>{ne=!1,this.remoteConnectionsHandler.handleLocalRemoteControlIdentityChanged()}))}}));let B=e=>{let t=[o.registerInternalAuthenticatedPrincipalChangeHandler(e),o.registerInternalNotificationHandler(t=>{t.method===`account/updated`&&e()})];return()=>t.forEach(e=>e())};this.hostAppServerManagers=new Afe({connections:this.appServerConnectionRegistry,localConnection:o,readContext:this.threadReadState.getContext,create:t=>Ofe({...t,localClientCoordinationEnabled:this.localClientCoordinationEnabled,executeDynamicToolCall:e.runAppServerManagerInMain?(e,n)=>this.callDynamicAppTool({callerSource:`codex`,hostId:t.hostId,params:e.params},n):void 0,executionHost:this.executionHostRegistry.get(t.hostId),fetchHandler:this.fetchHandler,globalState:this.scopedState,settingsStore:e.settingsStore,evaluations:this.publishedStatsig,remoteConnections:this.remoteConnectionsHandler,archive:this.threadArchive,catalog:this.threadCatalogSyncManager,threadProjectAssignments:this.threadProjectAssignments,threadReadState:this.threadReadState.owner,getThreadReadStateContext:this.threadReadState.getContext,subscribeIdentityChanges:B,windowManager:e.windowManager,errorReporter:this.errorReporter,browserSessionRegistry:this.getBrowserSessionRegistry()}),onError:e=>X5.warning(`Failed to construct hosted AppServerManager`,{safe:{},sensitive:{error:e}})}),this.appServerManagersService=e.runAppServerManagerInMain?new jfe(this.hostAppServerManagers):void 0,this.handleHostedInteractiveTool=this.appServerManagersService==null?void 0:(e,t)=>this.hostAppServerManagers.getCurrent(e.hostId)?.resource?.callInteractiveDynamicAppTool({id:r.xs(e.params.callId),method:`item/tool/call`,params:e.params},t)??null,this.daybreakPreferences=new Age(this.sharedObjectRepository,{connection:o,statsig:this.publishedStatsig,getConnection:e=>this.appServerConnectionRegistry.getConnection(e),getThreadOwner:(e,t)=>this.getThreadOwnerView(e,t),clearPrewarmedThreads:e=>Nge({hostId:e,appViews:this.options.appViewsByWebContentsId,readyAppViewIds:this.readyAppViewWebContentsIds}),onSelectionAccepted:e=>{this.broadcastQueryCacheInvalidation([`config`]),this.broadcastQueryCacheInvalidation([`user-saved-config`,e])}}),this.disposables.add(this.daybreakPreferences),this.disposables.add(this.sharedObjectRepository.addSubscriber(e=>{(e===`remote_ssh_connections`||e===`remote_wsl_connections`||e===`remote_control_connections`)&&this.hostAppServerManagers.refreshInBackground()})),this.disposables.add(this.managedWorktrees.start()),this.initialRemoteConnectionsRefresh=Promise.all([this.remoteConnectionsHandler.refreshRemoteConnections(),this.remoteConnectionsHandler.refreshLocalRemoteControlClientId()]).then(()=>void 0).catch(e=>{X5.warning(`Failed to refresh remote connections`,{safe:{},sensitive:{error:e}})})}createAppHost(e){let t=K5(this.options,e),n=this.initialStartupWebContentsId===e.id;n&&(this.initialStartupWebContentsId=null);let a=_.BrowserWindow.fromWebContents(e),o=this.appServerConnectionRegistry.getConnection(l.h),s=eHe({allowLocalConnections:this.options.buildFlavor===p.t.Dev,applicationNetwork:this.options.applicationNetwork,localConnection:o,origin:e}),u=this.messageHandler.getBrowserHostManager();this.detachedWindowManager=this.detachedWindowManager??new n_e(this.options.windowManager,{browser:zb(u)});let d=this.detachedWindowManager;this.options.windowManager.setBrowserCommentPopupOwnerResolver((e,t,n)=>Hb(d,e,t,n)),this.contentTabServiceManager=this.contentTabServiceManager??new Khe(this.options.windowManager,this.detachedWindowManager);let{downloadStore:f}=u,m=this.threadCatalogSyncManager==null?void 0:new dPe(this.threadCatalogSyncManager,{getPrincipal:()=>o.getAuthenticatedPrincipal(),getCachedPrincipal:()=>o.getCachedAuthenticatedPrincipal(),onPrincipalChange:e=>o.registerInternalAuthenticatedPrincipalChangeHandler(e),createSource:e=>bJe(e,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t))});m!=null&&e.once(`destroyed`,()=>m[Symbol.dispose]());let h=e=>this.appServerConnectionRegistry.getConnection(e),v=this.options.remoteHostedPIPContentController==null?void 0:new wKe(this.options.remoteHostedPIPContentController,e),y=new LNe(this.options.hotkeyWindowLifecycleManager,e),b=C.default.join(this.options.executionCodexHome,`memories`,`extensions`,`skysight`,`resources`),x=new i.mi((e,t,n,r)=>this.fetchWrapper.fetchHttp(e,t,n,r,s.pageCheckpointDownloads.observeResponse()));e.once(`destroyed`,()=>x[Symbol.dispose]());let S=new i.pi(lYe);e.once(`destroyed`,()=>S[Symbol.dispose]());let w=new cHe({localClient:o,clientForHost:h,desktopOriginator:this.options.desktopOriginator,fetch:(e,t)=>this.fetchWrapper.fetchHttp(crypto.randomUUID(),e,t)});e.once(`destroyed`,()=>w[Symbol.dispose]());let T=new JQ(this.scopedState,this.executionHostRegistry,this.options.settingsStore,this.options.requestOpenInWorker,e,this.options.chunkedMessageSender),E=QYe({lifecycle:this.options.artifactSessionHostLifecycle,getViewerConnectionInfo:()=>this.getArtifactSessionHostViewerConnectionInfo(),workspaceFiles:this.workspaceFiles,openIn:T,origin:e}),D=new mze(this.options.globalState,e=>{this.options.windowManager.sendMessageToAllWindows({type:`persisted-atom-updated`,key:hg,value:e,deleted:!1})});return new Zde({globalState:this.scopedState,appServerManagers:this.appServerManagersService,httpFetch:x,websitePreviews:S,...LWe(e,h,this.cloudPortals),pluginIncentives:w,appServerLifecycle:new sfe(this.appServerConnectionRegistry,this.options.applicationNetwork),ambientSuggestions:new Jde(this.appServerConnectionRegistry),automations:this.habitatAutomationsService,applicationMenu:new Hfe(e),customRuntime:void 0,appActions:this.appActionHostService,clientCoordination:this.ipcClientsByWebContentsId.get(e.id)?.hostService,threadReadState:new zJe(this.threadReadState.owner),statsig:this.statsig,statsigEvaluations:this.publishedStatsig,diamond:void 0,settings:this.settings,configSettingsWriteConfirmations:this.settings.configWriteConfirmations,workModeAccess:this.settings,appInfo:new Qde,accessInputs:this.accessInputs,daybreakPreferences:this.daybreakPreferences,cloudTasks:this.cloudTasks,installerAttribution:_p(),artifactDocuments:this.artifactDocuments,latex:XNe(e,this.options.repoRoot),artifactSessions:E,orbPicker:this.orbPicker,avatarOverlay:new xpe(t,e),avatarOverlayScroll:process.platform===`darwin`?new Spe(e):void 0,appUpdates:new Vfe(this.options.windowManager,e,this.options.appUpdates,this.options.globalState),realtimeVoiceRuntime:new rUe(Mm(t),e,this.realtime.voice,e=>this.realtime.voiceHistory.markEphemeral(e)),browserProfileImport:Mb.create(()=>o.getConfigRequirements(),()=>u.getBrowserSession()),browserHost:new jb(this.messageHandler,u,e,Yb(this.options.globalState),e=>D.forgetConversation(e),(e,t,n)=>Hb(d,e,t,n),new Ub(d,e,(e,t,n)=>u.getCurrentPageUrl(e,t,n))),browserTabs:new Tpe(u.iabTabMentions,e),browserAutocomplete:new Jy(this.messageHandler.getBrowserAutocompleteCoordinator(),e),browsingHistory:Fb.create(e,()=>u.getBrowserSession()),debug:new Kge(this.options.windowManager.debugWindowManager,u,e,this.options.windowManager,void 0),demoTools:this.demoTools?.createService(e),downloads:new Kb(f,e,this.downloadsViewPublisher.registerDetachedView),dynamicToolCalls:this.dynamicToolCalls,fileDrags:this.getFileDragService(e),tabDragPreview:Vqe.create(e),detachedWindows:this.detachedWindowManager.createService(e),contentTabs:this.contentTabServiceManager.createService(e),hotkeyWindowCommands:y,hotkeyWindowHotkeys:y,inAppBrowserIncompleteNavigation:this.options.windowManager.getRendererWindowLogFields(e).rendererWindowAppearance===`primary`?new Ike(e):void 0,keyboardModifiers:this.keyboardModifierService,shortcutCapture:new oqe(e),libraryFiles:new lPe(new tPe(o,this.scopedState,this.options.settingsStore)),localEnvironments:this.localEnvironments,managedWorktrees:this.managedWorktrees,deviceStorage:this.deviceStorage,worktreeComposerEducation:this.worktreeComposerEducation,projects:this.projectsManager,projectChatGptProvisioning:this.projectChatGptProvisioning,projectFolderConsent:this.projectFolderConsent.serviceForWindow(e),sshConnectionRegistration:new uqe(this.appState,this.remoteConnectionsHandler),projectlessWorkspace:new THe(e,this.options.settingsStore),executionPaths:new kfe(this.fetchHandler),localThreadCatalog:m,localAutomationsScheduler:this.options.windowManager.getRendererWindowLogFields(e).rendererWindowAppearance===`primary`?new ype(e,this.options.windowManager,e=>this.messageHandler.setLocalAutomationsCapability(e)):void 0,appshot:new Qfe(this.options.appshotHotkeysService,({requestId:e})=>this.options.requestComputerUseCaptureUpdate==null?Promise.resolve(!1):Gme({requestComputerUseCaptureUpdate:this.options.requestComputerUseCaptureUpdate,requestId:e})),lsp:this.lsp,browserUsePermissions:new zpe(c.ot(),()=>this.appServerConnectionRegistry.getConnection(l.h).getConfigRequirements(),(e,t)=>this.browserSettingsSync.update(e,t)),browserPluginConfig:new pc({appServerConnection:o,appVersion:_.app.getVersion(),isPackaged:_.app.isPackaged,repoRoot:this.options.repoRoot},()=>this.refreshConversationExecutorPlugins()),conversationalOnboarding:this.conversationalOnboarding,customAvatars:new bge(this.executionHostRegistry),fileAttachments:new qMe(this.executionHostRegistry),github:uXe(this.options.requestGitWorker,e=>this.getAppServerClient(e).hostConfig,e=>this.options.subscribeGitWorkerEvent(`github-request-progress`,e)),workspaceFiles:this.workspaceFiles,workspaceSearch:this.workspaceSearch,dictationAudio:this.dictationAudio,microphoneDiagnostics:new vIe,dictationStreaming:this.dictationStreaming,systemAudioSpectrum:_qe(e),dictationHistory:this.dictationHistory,owlFeatures:new uze(this.appState,()=>o.getAuthenticatedPrincipal()),owlBrowserCrashCounter:this.options.windowManager.getRendererWindowLogFields(e).rendererWindowAppearance===`primary`?new g.Q(e):void 0,primaryRuntime:this.primaryRuntimeService,localAutomations:this.fetchHandler.automationsService,pluginScheduledTasks:new lHe(o),chromeNativeHost:new wx(this.executionHostRegistry,process.env.NODE_ENV===`development`?this.options.repoRoot:void 0),chromiumBrowser:new $x,chatGptProjectFiles:new ox(c.ot(),e=>this.fetchWrapper.getDownloadStream(e),this.projectsManager.registerManagedContextFolder),chatGptBrowserSession:a==null?void 0:new HIe(a,()=>{this.options.windowManager.showWindow(a,{stealFocus:!0})},this.browserSessionProbeState),chronicle:process.platform===`darwin`&&this.options.getSkysightRecorderController!=null?new rS(o,this.options.getSkysightRecorderController,()=>K().skysight,Lme,e=>Rme({bundleIdentifiers:e}),{list:()=>Pme({resourcesDirectory:b}),listSuggestions:()=>Fme({resourcesDirectory:b}),listSummaryIntervals:e=>Ime({resourcesDirectory:b,sinceMs:e})}):void 0,pagesRealtime:s.pagesRealtime,...HVe(this.options.globalState),pageCompanionTasks:D,performanceTelemetry:new iHe(this.messageHandler,e),histogramCollector:jNe(),pinnedThreads:this.fetchHandler.pinnedThreadsService,processMemory:mXe,clipboard:new cS,computerUseSettings:this.computerUseSettings,...RMe(h,this.appServerConnectionRegistry,this.publishedStatsig),textGeneration:new i.tt(e=>{let t=this.appServerConnectionRegistry.getConnection(e??`local`);return e===`durable`?{startThread:e=>t.startThread(e),startTurn:e=>t.startTurn(e),interruptTurn:e=>t.interruptTurn(e),registerInternalNotificationHandler:e=>t.registerInternalNotificationHandler(e),unsubscribeThread:async e=>{await t.sendAppServerExtensionRequest(`thread/stop`,{threadId:e})}}:t}),realtimeContinuity:this.realtime.continuity,realtimeMemory:this.realtime.memory,realtimeVoiceHistory:this.realtime.voiceHistory,realtimeVoiceMultiAgentActivity:this.realtime.multiAgentActivity,realtimeVoice:this.realtime.voice,realtimeVoicePresentation:this.realtime.presentation,requestUserInputAutoResolution:new FKe(this.appServerConnectionRegistry,e.id),userVerification:eYe(this.appServerConnectionRegistry,this.options,this.options.applicationNetwork),remoteControlEnvironments:this.remoteControlEnvironmentService,remoteHostedPIP:v,startup:new fqe(e,this.options.windowManager,this.options.startupPhases,this.primaryWindowContentReady.promise,n),notificationPermissionsSupported:process.platform===`darwin`||process.platform===`win32`,windowsShell:cXe(e,this.options.windowManager),systemPermissions:process.platform===`darwin`||process.platform===`win32`?new Pqe(this.options.buildFlavor,g.tt(this.options.buildFlavor)):null,systemFonts:new bqe,terminal:new qqe(this.terminalManager,e),threadArchive:this.threadArchive,threadMetadataGeneration:this.threadMetadataGeneration,threadMetadata:this.options.windowManager.threadMetadataService,threadProjectAssignments:this.threadProjectAssignments,threadTurnSummaries:this.threadTurnSummaries,triggers:this.triggerSubscriptionReader,tracing:new WJe(this.options.setGitWorkerTracingSampleRate,e=>{this.options.globalState.getStored(`electron-desktop-otraces-sample-rate`)!==e&&this.options.globalState.set(l.T,e)}),hostedThreadFiles:new fue((e,t)=>h(r.ki).sendAppServerExtensionRequest(e,t),e=>this.getAppServerClient(r.Mi(e))),environmentConfigs:this.environmentConfigService,localPersonalSecrets:new lS(this.environmentConfigService),cumberbatch:this.cumberbatchController.service,tppLocalExecutor:new UJe(this.conversationExecutor),mcpAppSandbox:new pIe(e,()=>this.getBrowserSessionRegistry()),visualizations:new sYe(this.executionHostRegistry,e,async(e,t)=>{let n=r.Ii(e);if(n!=null){let e=(await h(r.ki).readThread(t,{includeTurns:!1}))?.environments?.find(e=>e.environmentId===n);if(e==null)throw Error(`No executor is attached to this cloud task`);return e.runtimeWorkspaceRoots}if(r.Li(e))return[];let i=this.threadCatalogSyncManager?.readEntries([{hostId:e,threadId:t}]).at(0);return i?.sourceKind!==`chatgpt`&&i?.cwd!=null?[i.cwd]:[]},e=>this.getAppServerClient(e)),codexMicro:new yC(this.codexMicroServiceManager,this.options.windowManager,e),notifications:new aqe(this.options.windowManager,e,this.options.desktopNotificationManager),openIn:new JQ(this.scopedState,this.executionHostRegistry,this.options.settingsStore,this.options.requestOpenInWorker,e,this.options.chunkedMessageSender),windowNavigation:new lXe(this.options.windowManager,e),spotlight:a!=null&&this.options.windowManager.isSpotlightWindow(a)?new cqe(a,this.options.windowManager):void 0,pageWindows:new rHe(this.pageWindowPrewarm,e)})}startFileDrag(e,t){return this.getFileDragService(e).startDrag(t)}getFileDragService(e){let t=this.fileDragServices.get(e);if(t!=null)return t;let n=new rNe(this.executionHostRegistry,this.scopedState,e);return this.fileDragServices.set(e,n),n}async registerAppView(e,t){if(this.detachedWindowManager?.isDetachedViewer(e.id))return;this.readyAppViewWebContentsIds.delete(e.id);let{clientCoordination:n,downloads:r}=await t.services;if(e.isDestroyed())return;let a=this.ipcClientsByWebContentsId.get(e.id);a?.removeViewServiceHandlers?.(),a!=null&&(a.removeViewServiceHandlers=i._({hostId:l.h,ipcClient:a.client,viewService:n,registerThreadOwner:this.appServerManagersService==null,shouldForwardThreadReadState:async()=>!1})),this.options.appViewsByWebContentsId.set(e.id,t),e.once(`destroyed`,()=>{this.options.appViewsByWebContentsId.get(e.id)===t&&(this.options.appViewsByWebContentsId.delete(e.id),this.readyAppViewWebContentsIds.delete(e.id))}),await this.appUpdatesViewPublisher.publish(e.id,t);let o;try{o=await this.getDownloadsSnapshot()}catch(e){X5.warning(`Failed to read native download history`,{safe:{},sensitive:{error:e}});return}await r.stateChanged(o)}broadcastAppUpdateState(){for(let[e,t]of this.options.appViewsByWebContentsId)this.appUpdatesViewPublisher.publish(e,t)}getRestartParticipants(){return[this,this.terminalManager,this.getBrowserHostManager().downloadStore]}async getRestartBlockers(){let e=[];return e.push(...this.realtime.voice.getRestartBlockers(),...this.managedWorktrees.getRestartBlockers(),...this.messageHandler.getWorktreeService().getRestartBlockers()),e}async prepareForRestart(){}broadcastDownloadsState(){this.downloadsViewPublisher.broadcastDownloadsState()}broadcastDownloadLifecycleEvent(e){this.downloadsViewPublisher.broadcastDownloadLifecycleEvent(e)}async getThreadOwnerView(e,t){for(let[n,r]of this.options.appViewsByWebContentsId){if(!this.readyAppViewWebContentsIds.has(n))continue;let a=r.services,o=!1;try{if(await i.h(a.clientCoordination,e,t))return o=!0,await a}catch{}finally{o||a.then(e=>e[Symbol.dispose](),()=>void 0)}}return null}broadcastQueryCacheInvalidation(e,t=!1){this.accessInputs.invalidateQueryCache(e),this.cloudTasks.invalidateQueryCache(e),this.customInstructions.invalidateQueryCache(e),TYe(this.options.appViewsByWebContentsId.values(),e,t)}async applyCodexAppConfigFromDisk(e){let t=await wie(e);return t.status===`loaded`?{status:`applied`,configPath:t.configPath,result:await this.applyCodexAppConfig(t.config)}:(t.status===`missing`&&(this.sshConnectTimeoutSeconds=void 0,this.appState.get(`electron-codex-app-config-applied-remote-declarations`)!=null&&this.appState.delete(l.C)),t)}async applyCodexAppConfig(e){this.sshConnectTimeoutSeconds=e.sshConnectTimeoutSeconds,await this.initialRemoteConnectionsRefresh;let t=Wfe({config:e,globalState:this.appState}),{remoteConnections:n}=await this.remoteConnectionsHandler.refreshRemoteConnections(),i=await Gfe({confirmProjectFolders:async(e,t)=>(await this.remoteConnectionsHandler.ensureRemoteConnectionConnected(e),this.projectFolderConsent.confirm(e,t)),config:e,globalState:this.appState,setProjectOrder:e=>this.projectsManager.setProjectOrder(e),remoteConnections:n.filter(r.Vi)});t&&i.changedGlobalStateKeys.unshift(r.gs.CODEX_MANAGED_REMOTE_CONNECTIONS),i.changedGlobalStateKeys.includes(r.gs.REMOTE_CONNECTION_AUTO_CONNECT_BY_HOST_ID)&&await this.remoteConnectionsHandler.refreshRemoteConnections();let a=i.changedGlobalStateKeys.filter(e=>e!==r.gs.PROJECT_ORDER);return a.length>0&&this.options.windowManager.sendMessageToAllWindows({type:`global-state-updated`,keys:a}),i.remoteProjectsChanged&&this.options.windowManager.sendMessageToAllWindows({type:`workspace-root-options-updated`}),this.remoteConnectionsHandler.connectRemoteConnectionsAndLogFailures(i.remoteConnectionHostIdsToConnect),i}registerWindow(e){let{webContents:t}=e;this.initialStartupWebContentsId===void 0&&this.options.windowManager.getPrimaryWindow()?.webContents.id===t.id&&(this.initialStartupWebContentsId=t.id);let n=new XJ(t,this.options.chunkedMessageSender,e,this.options.windowManager.isAvatarOverlayWindow(e)?(e,n)=>this.ipcClientsByWebContentsId.get(t.id)?.hostService.ownsThread(e,r.bs(n))===!0:null);this.registeredWindows.set(t.id,n),t.once(`destroyed`,()=>{this.registeredWindows.delete(t.id),Wp(!1,t.id),Gp(!1,t.id)});for(let e of this.appServerConnectionRegistry.getAllHostIds())this.appServerConnectionRegistry.getConnection(e).registerWebviewWindow(n);this.registerIpcClientForWebContents(e.webContents)}async callDynamicAppTool(e,t){return t.throwIfAborted(),this.handleHostedInteractiveTool!=null&&(e.params.namespace===`codex_app`||e.params.namespace==null)&&i.wr(e.params)!=null?this.handleHostedInteractiveTool(e,t):f_e(this.appServerManagersService&&this.hostAppServerManagers,{request:e,signal:t,primaryWebContentsId:this.options.windowManager.getPrimaryWindow()?.webContents.id,appViewsByWebContentsId:this.options.appViewsByWebContentsId,readyAppViewWebContentsIds:this.readyAppViewWebContentsIds,registeredWindows:this.registeredWindows,messageHandler:this.messageHandler})}async handleMessage(e,t){await this.messageHandler.handleMessage(e,t),t.type===`ready`&&(this.readyAppViewWebContentsIds.add(e.id),this.managedWorktrees.archiveViewReady(),this.options.windowManager.getRendererWindowLogFields(e).rendererWindowAppearance===`primary`&&this.appServerConnectionRegistry.getMaybeConnection(`local`)?.getCachedAuthenticatedPrincipal()!=null&&this.detachedWindowManager?.startPrewarming(e),this.refreshPageWindowPrewarm(),this.primaryWindowEvents.flushPendingEvents())}getBrowserHostManager(){return this.messageHandler.getBrowserHostManager()}refreshPageWindowPrewarm(){let{pageCreation:e,multiWindow:t}=K();this.pageWindowPrewarm.setEnabled(e&&t&&this.options.windowManager.getPrimaryWindows().some(e=>this.readyAppViewWebContentsIds.has(e.webContents.id))&&(this.lastAuthenticatedPrincipal!=null||this.appServerConnectionRegistry.getMaybeConnection(`local`)?.getCachedAuthenticatedPrincipal()!=null))}getBrowserSessionRegistry(){return this.messageHandler.getBrowserSessionRegistry()}getProjectsManager(){return this.projectsManager}async prepareChildTaskWorkspace(e){return rXe({request:e,executor:this.conversationExecutor,configuredWorkspaceRoot:this.options.settingsStore.getEffective(r.H.projectlessWorkspaceRoot.key),projectRoots:this.projectsManager.getProjectRootPathsForHost(l.h),getLocalConnection:()=>this.getLocalAppServerClient(),getLocalProjects:()=>this.projectsManager.getLocalProjects()})}async listChildTaskProjects(e){return iXe({request:e,executor:this.conversationExecutor,projects:this.projectsManager})}async assignChildTaskProject(e){let t=await aXe({request:e,executor:this.conversationExecutor,projects:this.projectsManager,connection:this.appServerConnectionRegistry.getConnection(r.ki),assignments:this.threadProjectAssignments});return await this.scopedState.flushOrThrow(),t}getArtifactSessionHostViewerConnectionInfo(){if(!K().artifactSession)return null;let e=this.options.artifactSessionHostLifecycle;return e?.isViewerAvailable()===!0?e.getViewerConnectionInfo():null}startConversationExecutor(){let e=this.conversationExecutor;e.getState().then(({enabled:t})=>t?e.restart():e.setEnabled(vv()))}async refreshConversationExecutorPlugins(){await this.conversationExecutor?.refreshPluginRegistration()}markPrimaryWindowContentReady(e){this.primaryWindowContentReady.resolve({processStartedAtMs:ae.performance.timeOrigin,phaseDurationsMs:e})}refreshBrowserSettingsSync(){this.browserSettingsSync.requestRefresh()}setDynamicAppToolsPipePath(e){this.conversationExecutor.setAppToolsPipePath(e)}readLocalWorkBrowserAccess(e){return this.conversationExecutor.readBrowserAccess(e.executorId,()=>this.getBrowserSessionRegistry().prepareLocalWorkBrowserSession(e.sessionId,this.options.windowManager.getPrimaryWindow()?.webContents))}sendAmbientSuggestionGenerationEvent(e){this.primaryWindowEvents.sendAmbientSuggestionGenerationEvent(e)}stopCodexMicro(){return this.codexMicroServiceManager.stop()}async dispose(){this.remoteConnectionsHandler.dispose(),this.managedWorktrees.stopArchives(),this.hostAppServerManagers.dispose(),await this.threadProjectAssignments.flush();let e=this.appServerConnectionRegistry.getAllHostIds();this.contentTabServiceManager?.dispose(),this.messageHandler.dispose(),await this.terminalManager.dispose(),this.disposables.dispose();for(let t of e)this.appServerConnectionRegistry.getMaybeConnection(t)?.dispose(),this.appServerConnectionRegistry.removeConnection(t),this.executionHostRegistry.remove(t);this.registeredWindows.clear(),this.primaryWindowEvents.dispose(),this.options.appViewsByWebContentsId.clear(),this.downloadsViewPublisher.dispose(),this.readyAppViewWebContentsIds.clear();for(let{dispose:e}of this.ipcClientsByWebContentsId.values())e();this.ipcClientsByWebContentsId.clear(),await null}confirmWindowClose=e=>dYe(e,this.options,this.readyAppViewWebContentsIds);getMessageHandler(){return this.messageHandler}getHabitatAutomationsService(){return this.habitatAutomationsService}getSharedObject(e){return this.sharedObjectRepository.get(e)}getDownloadsSnapshot(){return this.messageHandler.getBrowserHostManager().downloadStore.getSnapshot()}getSharedObjectSnapshot(){return this.sharedObjectRepository.getSnapshot()}getInitialSidebarBootstrap(){let e=this.threadCatalogSyncManager;if(e==null)return{globalStateEntries:O4.map(e=>({key:e,value:this.fetchHandler.getGlobalStateValue(e)})),...this.fetchHandler.getInitialSidebarWorkspaceState()};let t=this.appState.get(r.gs.REMOTE_CONNECTION_AUTO_CONNECT_BY_HOST_ID)??{},n=new Set(this.getSharedRemoteConnections().filter(({autoConnect:e})=>e).map(({hostId:e})=>e)),i=this.appServerConnectionRegistry.getConnection(l.h).getCachedAuthenticatedPrincipal(),a=this.publishedStatsig.getClientForPrincipal(i??null)?.checkGate(`codex_unified_projects`)===!0,o=i==null?null:`chatgpt:${i.accountId}:${i.userId}`,s=e.readStatus().hosts.map(({hostId:e})=>e).filter(r=>r.startsWith(`chatgpt:`)?r===o&&e.getCoordinator(r)!=null:r===`local`||t[r]===!0||t[r]!==!1&&(n.has(r)||r.startsWith(`remote-wsl:`))),c=new Set(s),u=this.appState.get(`electron-persisted-atom-state`)?.[`thread-sort-key`]===`created_at`?`created_at`:`updated_at`,d=this.appState.get(r.gs.SELECTED_PROJECT),f=d?.type===`remote`?this.appState.get(r.gs.REMOTE_PROJECTS)?.find(({id:e})=>e===d.projectId):void 0,p=f?.hostId??`local`,m=this.appState.get(r.gs.SIDEBAR_PROJECT_THREAD_ORDERS)??{},h=this.appState.get(r.gs.PINNED_THREAD_IDS)??[],g=this.appState.get(r.gs.THREAD_PROJECT_ASSIGNMENTS)??{};function*_(){if(yield*h,d!=null){yield*m[d.projectId]?.threadIds??[];let e=100;for(let t in g){if(e--===0)break;let n=g[t];n?.projectKind===d.type&&n.projectId===d.projectId&&(yield t)}}yield*nUe(m,a?i:null)}let v=[],y=new Set,b=100,x=100;for(let t of _()){if(b--===0)break;if(t.length===0)continue;let n=e.readThreadHostId(t);if(n!=null&&!c.has(n)&&(n=[p,...s.slice(0,x)].find(n=>c.has(n)&&x>0&&x-->0&&e.readEntries([{hostId:n,threadId:t}]).length>0)),n==null||!c.has(n))continue;let r=`${n}\\0${t}`;y.has(r)||(y.add(r),v.push({hostId:n,threadId:t}))}let S=e.readEntries(v),C=100-v.length,w=(t,n)=>{if(C===0||!c.has(t))return;let r=Math.min(10,C);C-=r;let{entries:i}=e.readPage({hostId:t,limit:r,sortKey:u,filter:n&&{cwdValues:n,cwdPrefixes:n.map(e=>/[\\\\/]$/.test(e)?e:`${e}${e.includes(`\\\\`)?`\\\\`:`/`}`),includeThreadIds:[],excludeThreadIds:[]}});for(let e of i){let t=`${e.hostId}\\0${e.threadId}`;y.has(t)||(y.add(t),S.push(e))}},T=f==null?[]:[f.remotePath];d?.type===`local`&&(T=this.appState.get(r.gs.LOCAL_PROJECTS)?.[d.projectId]?.rootPaths??[]),T.length>0&&w(p,T);for(let e of s){if(C===0)break;w(e)}return{catalogEntries:dqe(S,i,this.threadReadState.owner),catalogHostIds:s,globalStateEntries:O4.map(e=>({key:e,value:this.fetchHandler.getGlobalStateValue(e)})),...this.fetchHandler.getInitialSidebarWorkspaceState()}}getHostConfigForHostId(e){if(e===`local`)return l.m;if(this.durableThreadHostConfig?.id===e)return this.durableThreadHostConfig;let t=this.getSharedRemoteConnections().find(t=>t.hostId===e);if(!t)throw Error(`Host config for host ID ${e} not found`);return s8(t)}getSharedRemoteConnections(){return[...this.sharedObjectRepository.get(`remote_ssh_connections`)??[],...this.sharedObjectRepository.get(`remote_wsl_connections`)??[],...this.sharedObjectRepository.get(`remote_control_connections`)??[]]}clearSitesAuthentication(){let e=this.getBrowserHostManager(),t=e.getBrowserSession();t!=null&&(e.cancelSiteBootstraps(),sf(t).catch(e=>{X5.warning(`Failed to clear Sites authentication cookies`,{safe:{},sensitive:{error:e}})}))}createAppServerConnection(e,t=l.m,n=!1,a,o){let s={desktopOriginator:this.options.desktopOriginator,devApiBaseUrl:this.options.devApiBaseUrl,prodApiBaseUrl:this.options.prodApiBaseUrl},u=l.Rt({env:process.env,resourcesPath:process.resourcesPath}),d;if(r.zi(t)){if(a==null)throw Error(`Remote control transport requires a desktop app-server client for authentication.`);if(o==null)throw Error(`Remote control transport requires the remote-control device-key client.`);d=j5({transportKind:`remote-control`,hostConfig:t,repoRoot:this.options.repoRoot,resourcesPath:u,desktopApiOptions:s,desktopAuthAppServerClient:a,remoteControlDeviceKeyClient:o,globalState:this.appState,getSshConnectTimeoutSeconds:()=>this.sshConnectTimeoutSeconds,onEnrollmentAuthorizationRequired:()=>this.remoteConnectionsHandler.handleRemoteControlEnrollmentAuthorizationRequired()})}else d=j5({transportKind:`standard`,getThreadProductSku:t=>{let n=this.hostAppServerManagers.getCurrent(e)?.resource?.manager.getConversation(r.bs(t));return n==null?`unknown`:i.Cr(n.threadStartKind,n.threadSource)?`aeon`:`codex`},secretAuthStorageConfigOverrides:this.secretAuthStorageConfigOverrides,hostConfig:t,repoRoot:this.options.repoRoot,resourcesPath:u,desktopApiOptions:s,desktopAuthAppServerClient:a,globalState:this.appState,getSshConnectTimeoutSeconds:()=>this.sshConnectTimeoutSeconds});let f=this.options.hostProcess.getVersion(),p=ma({getHostLifecycle:()=>this.options.artifactSessionHostLifecycle??null,getExpectedThreadConfig:()=>da({enabled:K().artifactSession,hostLifecycle:this.options.artifactSessionHostLifecycle??null,isPackaged:_.app.isPackaged,repoRoot:this.options.repoRoot,shouldUseWslPaths:!1}),isLocalStdio:()=>e===`local`&&t.id===`local`&&d.kind===`stdio`}),m=new i.pn(this.options.messageChannel,{buildFlavor:this.options.buildFlavor,clientInfo:{name:g.ht,title:`Codex Desktop`,version:f},defaultServiceName:g.mt,repoRoot:this.options.repoRoot,resourcesPath:u,errorReporter:this.options.errorReporter,sharedObjectRepository:this.sharedObjectRepository,getStatsigEvaluations:()=>this.publishedStatsig,hostId:e,hostConfig:t,continueWaitingForStdioInitializeTimeout:t.id===l.h,onAutomationCapabilityEvent:e=>{this.primaryWindowEvents.sendAutomationCapabilityEvent(e),vpe(m,e,()=>Array.from(this.ipcClientsByWebContentsId.values(),({hostService:e})=>e),this.options.appViewsByWebContentsId.values())},onAutomationRunTriggeredEvent:e=>{this.primaryWindowEvents.sendAutomationRunTriggeredEvent(e)},onChatgptAuthTokenUnavailable:t.id===`local`?()=>this.clearSitesAuthentication():void 0,transformOutgoingMessage:e=>{if(`method`in e&&e.method===`account/rateLimitResetCredit/consume`&&this.options.settingsStore.getEffective(r.U.agentUsageResetEnabled.key)!==!0)throw new c.M(`Usage resets are disabled in settings.`);return p?.(e)??e},worktreeArchiveQueue:{prepare:t=>this.managedWorktrees.prepareThreadArchive(e,t),pause:t=>this.managedWorktrees.pauseThreadArchive(e,t),resume:t=>this.managedWorktrees.resumeThreadArchive(e,t),finishUndo:(t,n)=>this.managedWorktrees.finishThreadArchiveUndo(e,t,n)},..._pe(e,()=>this.habitatAutomationsService),transport:d,hostProcess:this.options.hostProcess,isOnline:()=>_.net.isOnline(),supportsAttestationRequests:ci,isMcpAppsDilEnabled:()=>K().dil,supportsOpenAIFormElicitation:!0,getSkysightRecorderController:t.id===`local`?this.options.getSkysightRecorderController:void 0,onSkysightChronicleActivationStateChanged:t.id===`local`?()=>{this.broadcastQueryCacheInvalidation([`chronicle-state`])}:void 0,prepareRemoteChatgptLoginPortForward:async()=>{await l.s({caller:`ssh_connect`})},ensureAuth:n,getRemoteConnectionMaxRetryAttempts:()=>this.appState.get(r.gs.REMOTE_CONNECTION_MAX_RETRY_ATTEMPTS)??null});if(t.id===`local`&&this.options.onAppServerSqliteRecovery!=null){let e=this.options.onAppServerSqliteRecovery;m.registerInternalNotificationHandler(t=>{let n=Oee(t);n!=null&&(X5.info(`App-server SQLite recovery config warning received`,{safe:{},sensitive:{backupFolder:n.backupFolder,databasePath:n.databasePath}}),e(n))})}return m.registerInternalServerRequestHandler({methods:[`item/commandExecution/requestApproval`,`mcpServer/elicitation/request`],handler:t=>(this.messageHandler.revealWindowsReviewRequest(e,t),null)}),m.registerInternalServerRequestHandler({methods:[`attestation/generate`],handler:ate({bundleIdentifier:g.tt(this.options.buildFlavor),getSignals:ape,resourcesPath:u})}),cC(m,(e,t)=>this.callDynamicAppTool(e,t)),wS(m,this.scopedState),m}createAndRegisterRemoteConnection(e){let t=s8(e),n=this.createAppServerConnection(e.hostId,t,!0,this.getLocalAppServerClient(),this.remoteControlDeviceKeyClient);this.executionHostRegistry.add(e.hostId,n),this.threadCatalogSyncManager?.attachSource(l5(e.hostId,t.kind,n));for(let e of this.registeredWindows.values())n.registerWebviewWindow(e);return n}disposeRemoteConnection(e){this.threadCatalogSyncManager?.detachSource(e);let t=this.appServerConnectionRegistry.getMaybeConnection(e);t&&(t.dispose(),this.appServerConnectionRegistry.removeConnection(e),this.executionHostRegistry.remove(e))}getLocalAppServerClient(){return this.appServerConnectionRegistry.getConnection(l.h)}getLocalAuthToken({refreshToken:e}){return this.getLocalAppServerClient().getAuthToken({refreshToken:e})}getAppServerClient(e=l.h){return this.executionHostRegistry.getWithGitAliases(e,this.appServerConnectionRegistry)}registerIpcClientForWebContents(e){let t=this.appServerConnectionRegistry.getConnection(l.h);if(!this.localClientCoordinationEnabled||this.ipcClientsByWebContentsId.has(e.id))return;let n=new i.y(`desktop`,this.errorReporter),r={client:n,hostService:new sS(n,t,this.threadReadState.getContext,e=>{this.accessInputs.invalidateQueryCache(e),this.cloudTasks.invalidateQueryCache(e),this.customInstructions.invalidateQueryCache(e)}),removeViewServiceHandlers:null,dispose:()=>{r.removeViewServiceHandlers?.(),r.removeViewServiceHandlers=null,n.dispose(),this.messageHandler.resolvePendingDynamicToolsForThreadStartRequestsForOrigin(e)}};this.ipcClientsByWebContentsId.set(e.id,r),e.once(`destroyed`,()=>{this.disposeIpcClientForWebContents(e)})}disposeIpcClientForWebContents(e){let t=this.ipcClientsByWebContentsId.get(e.id);t&&(this.ipcClientsByWebContentsId.delete(e.id),t.dispose())}}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2069689,
+        "endExclusive": 2069692
+      },
+      "spanHash": "07f39b9c00ee98b5d05c1b9e856178ca9665bc8ed510e90547e22e6969ad20ab",
+      "nodeType": "Identifier",
+      "id": "ISA-S010",
+      "code": "MMe"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3302496,
+        "endExclusive": 3302499
+      },
+      "spanHash": "6f9df09f47de17c7876b899e896dd49652ca0abc2e119db777e8e378a3b8cac4",
+      "nodeType": "Identifier",
+      "id": "ISA-S011",
+      "code": "hXe"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3325573,
+        "endExclusive": 3325576
+      },
+      "spanHash": "07f39b9c00ee98b5d05c1b9e856178ca9665bc8ed510e90547e22e6969ad20ab",
+      "nodeType": "Identifier",
+      "id": "ISA-S012",
+      "code": "MMe"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3325569,
+        "endExclusive": 3326215
+      },
+      "spanHash": "c50e736d4631277077f082c400b3b3b63a0d44b2851e413f2ae3e74c8b25a6af",
+      "nodeType": "NewExpression",
+      "id": "ISA-S013",
+      "code": "new MMe(l.h,l.m,u,e.windowManager,e.chunkedMessageSender,e.avatarOverlayManager,this.appServerConnectionRegistry,this.fetchWrapper,this.scopedState,this.projectsManager,this.sharedObjectRepository,e.requestGitWorker,e.desktopNotificationManager,e.errorReporter,e.desktopSentry,e.updateWorkerSentryUser,e.inboxManager,e.datadogLogger,e.maxLogLevel,e.buildFlavor,e.subscribeGitWorkerEvent,L,e=>this.getHostConfigForHostId(e),e.hasActiveComputerUseTurn,e.settingsStore,e=>this.fetchHandler.getPinnedThreadIdsForWorktreeCleanup(e),e.onAppEntrySource,e=>this.managedWorktrees.enqueueAutomaticArchive(e),e.shouldShowPrimaryWindow,e=>K5(this.options,e))"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "id": "ISA-S014",
+      "code": "constructor(e){this.options=e,this.primaryWindowEvents=new nXe(e.windowManager,e.appViewsByWebContentsId,this.readyAppViewWebContentsIds),this.appUpdatesViewPublisher=new wYe(e.appViewsByWebContentsId,e.appUpdates),this.downloadsViewPublisher=new eXe(e.appViewsByWebContentsId,()=>this.getDownloadsSnapshot()),this.orbPicker=new sze(e.globalState,e.settingsStore,()=>e.avatarOverlayManager.isOpen(),()=>e.avatarOverlayManager.wake()),this.computerUseSettings=new Ghe(e.requestComputerUseWorker),this.codexMicroServiceManager=new bC({ensureWindow:e.ensureWindow,windowManager:e.windowManager}),this.disposables.add(this.codexMicroServiceManager),this.appState=e.appGlobalState,this.errorReporter=e.errorReporter,this.scopedState=e.globalState,this.threadProjectAssignments=new AJe(this.scopedState,e.windowManager,(...e)=>d.writeThreadAssignment(...e),e=>d.getThreadStartProjectId(e));let t=tUe({codexHome:e.executionCodexHome,getStatsig:()=>this.publishedStatsig,getAppServerClient:()=>o,desktopApiOptions:e});this.projectFolderConsent=new FHe(e=>this.appServerConnectionRegistry.getConnection(e),e=>this.getHostConfigForHostId(e),e.ensureWindow,t.isEnabled),this.projectsManager=new qHe(this.scopedState,this.threadProjectAssignments,l.m,e.windowManager,(e,t,n)=>this.projectFolderConsent.confirm(e,t,n),e=>this.appServerConnectionRegistry.getConnection(l.h).listThreads(e),e=>this.appServerConnectionRegistry.getConnection(l.h).readThread(e,{includeTurns:!1}),async t=>(await e.requestGitWorker({method:`origin-url`,params:{cwd:r.Nn(t),hostConfig:l.m,operationSource:`git_direct_call`}})).originUrl,(e,t)=>this.messageHandler.createDefaultWorkspaceRoot(e,t),void 0,t),this.durableThreadHostConfig=Vv({desktopOriginator:e.desktopOriginator,devApiBaseUrl:e.devApiBaseUrl,prodApiBaseUrl:e.prodApiBaseUrl}),this.sharedObjectRepository=new wee,this.sharedObjectRepository.set(`host_config`,l.m),this.sharedObjectRepository.set(`is_default_browser`,_.app.isDefaultProtocolClient(`https`)),this.sharedObjectRepository.set(`remote_ssh_connections`,[]),this.sharedObjectRepository.set(`remote_control_connections_state`,{available:!1,accessRequired:!1,authRequired:!1,clientAuthorized:!1}),this.sharedObjectRepository.set(`local_remote_control_client_id`,null),this.sharedObjectRepository.set(`local_remote_control_environment_id`,e.appGlobalState.get(l.M)),this.sharedObjectRepository.set(`local_remote_control_installation_id`,e.appGlobalState.get(l.N));let n=i.q();n!=null&&this.sharedObjectRepository.set(`local_remote_control_enabled`,n);let a=gqe(C.default.join(_.app.getPath(`userData`),`statsig-state.json`),e.hostProcess.getVersion(),e.applicationNetwork);this.statsig=a.service,this.secretAuthStorageConfigOverrides=a.secretAuthStorageConfigOverrides,this.localClientCoordinationEnabled=A5(l.m)==null;let o=this.createAppServerConnection(l.h);this.conversationalOnboarding=new hT(o,this.scopedState,e.requestComputerUseWorker,e=>this.broadcastQueryCacheInvalidation([`conversational-onboarding-completion`,e])),this.disposables.add(()=>hT.dispose(this.conversationalOnboarding));let s=e=>PT(o,e);this.publishedStatsig=new Que(this.sharedObjectRepository,async()=>{let[e,t]=await Promise.all([o.getAuthenticatedPrincipal(),o.getAuthMethod()]),n=t==null?await o.getAccount():null;return{principal:e,authMethod:t,unauthenticatedStableId:n?.account==null&&n?.requiresOpenaiAuth===!1?await this.statsig.getStableId():null}},s),this.disposables.add(this.publishedStatsig),this.diamondController=null;let u=new i.O;this.deviceStorage=new hue(e.executionCodexHome,u,e=>o.listThreads(e),e=>o.readThread(e,{includeTurns:!1}),C.default.join(_.app.getPath(`userData`),`storage-cache`)),this.remoteControlDeviceKeyClient=new bKe(l.Rt({env:process.env,resourcesPath:process.resourcesPath})),this.executionHostRegistry.add(l.h,u),this.appServerConnectionRegistry=new tee,this.appServerConnectionRegistry.addConnection(l.h,o),this.cumberbatchController=new mge(this.appServerConnectionRegistry,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t),e.settingsStore),this.disposables.add(this.cumberbatchController),this.disposables.add(new afe(this.appServerConnectionRegistry,this.publishedStatsig,e=>{e===`local`&&this.daybreakPreferences?.refreshAvailability(),this.broadcastQueryCacheInvalidation([`experimental-features`,`list`,e]),this.broadcastQueryCacheInvalidation([`models`,`list`,e])})),this.habitatAutomationsService=gpe(o,e,this.appState,this.disposables,(...e)=>this.broadcastQueryCacheInvalidation(...e)),this.demoTools=Zge({buildFlavor:e.buildFlavor,isPackaged:_.app.isPackaged}),this.demoTools!=null&&this.disposables.add(this.demoTools);let d=new NHe(this.scopedState,o,new x4(this.scopedState),t=>e.windowManager.sendMessageToAllWindows({type:`thread-project-memberships-updated`,memberships:t}),()=>e.windowManager.sendMessageToAllWindows({type:`global-state-updated`,keys:[r.gs.LOCAL_PROJECTS]})),f=()=>{d.setThreadAssignmentsEnabled(K().localProjectTaskMembership)};f(),this.disposables.add(Oi(f)),this.projectsManager.setProjectBackend(d),this.projectChatGptProvisioning=t.createProvisioning(this.projectsManager),this.disposables.add(d.start());let m=e=>{let t=this.appServerConnectionRegistry.getMaybeConnection(e);if(t==null)return null;let{hostConfig:n}=t,r;switch(n.kind){case`local`:r=[n.kind,n.id,A5(n)];break;case`ssh`:r=[n.kind,n.id,n[i.dn]];break;case`wsl`:r=[n.kind,n.id,n.distro];break;case`remote-control`:r=[n.kind,n.id,n.env_id]}let a=(0,R.createHash)(`sha256`).update(JSON.stringify(r)).digest(`hex`);return`${n.id}:${a}`};this.threadReadState=RJe({localClientCoordinationEnabled:this.localClientCoordinationEnabled,localConnection:o,connections:this.appServerConnectionRegistry,sharedObjects:this.sharedObjectRepository,globalState:this.scopedState,errorReporter:this.errorReporter,getConfiguredHostIds:()=>[l.h,...this.durableThreadHostConfig==null?[]:[this.durableThreadHostConfig.id],...this.getSharedRemoteConnections().map(e=>e.hostId)],getHostConfig:this.getHostConfigForHostId.bind(this),getLocalWebsocketUrl:A5}),this.disposables.add(this.threadReadState.dispose);let h;if(this.threadTurnSummaries=new VJe({getPrincipal:()=>o.getAuthenticatedPrincipal(),getStore:()=>{if(h!==void 0)return h;let e=$ue();return h=e==null?null:new nde(e),h},getHostKey:m,onHostRemoved:e=>this.appServerConnectionRegistry.subscribe(t=>{t.type===`removed`&&e(t.hostId)}),onPrincipalChange:e=>o.registerInternalAuthenticatedPrincipalChangeHandler(e)}),this.disposables.add(()=>this.threadTurnSummaries.dispose()),this.threadMetadataGeneration=new p5(this.appServerConnectionRegistry,this.threadTurnSummaries,this.publishedStatsig),this.disposables.add(()=>p5.dispose(this.threadMetadataGeneration)),this.conversationExecutor=$Ye({options:e,appServerConnectionRegistry:this.appServerConnectionRegistry,projectsManager:this.projectsManager,scopedState:this.scopedState,disposables:this.disposables}),e.buildFlavor,p.t.Dev,this.customRuntime=null,this.durableThreadHostConfig!=null){let e=this.createAppServerConnection(this.durableThreadHostConfig.id,this.durableThreadHostConfig,!1,o);this.executionHostRegistry.add(this.durableThreadHostConfig.id,e),this.appServerConnectionRegistry.addConnection(this.durableThreadHostConfig.id,e)}let v=new dUe(o),y=new mUe(o),b=new AUe(this.appServerConnectionRegistry),x=i.qr();if(x==null)throw Error(`Voice history requires Electron SQLite`);let S=new vUe(b,new bue(x)),w=new FUe(b),T=new WUe(b,this.appServerConnectionRegistry,o,this.publishedStatsig),E=MUe.create(b,async({hostId:e,conversationId:t})=>{await this.appServerConnectionRegistry.getConnection(e).sendAppServerRequest(`thread/realtime/stop`,{threadId:t})},oUe()?{isEnabled:()=>this.publishedStatsig.getReadyClient()?.checkGate(`codex-airpods-mute`)===!0,start:e=>new sUe(e)}:void 0),D=BUe.create(E.rpc,{overlayFocus:{subscribe:t=>e.avatarOverlayManager.subscribePresentationFocus(t)},overlayMotion:{cancelDock:()=>{e.avatarOverlayManager.cancelPresentationDock()},dockTo:(t,n)=>{e.avatarOverlayManager.dockPresentation(t,n)},fadeOutPresentation:t=>{e.avatarOverlayManager.fadeOutPresentation(t)},preparePresentationForFadeIn:()=>{e.avatarOverlayManager.preparePresentationForFadeIn()},presentFrom:(t,n)=>{e.avatarOverlayManager.preparePresentation(t,n)},restoreAccessories:()=>{e.avatarOverlayManager.restorePresentationAccessories()},setDockTarget:(t,n)=>{e.avatarOverlayManager.setPresentationDockTarget(t,n)},updatePresentationOffset:t=>{e.avatarOverlayManager.updatePresentationOffset(t)}},overlayVisibility:{setVisibility:t=>{e.avatarOverlayManager.setPresentationVisibility(t)}}});this.realtime={continuity:v,memory:y,presentation:D.rpc,voiceHistory:S,multiAgentActivity:w,voice:E.rpc},this.disposables.add(D.dispose),this.disposables.add(E.dispose),this.disposables.add(S),this.disposables.add(w),this.disposables.add(T),this.disposables.add(()=>b.dispose()),this.threadCatalogSyncManager=e.createThreadCatalogStore==null?null:new yJe(l.h,e.createThreadCatalogStore,(e,t)=>{X5.warning(`Thread catalog sync failed`,{safe:{},sensitive:{error:t,hostId:e}})},new r5),this.localThreadCatalogSyncCoordinator=this.threadCatalogSyncManager?.attachSource(l5(`local`,`local`,o))??null,this.threadCatalogSyncManager!=null&&this.disposables.add(this.threadCatalogSyncManager),this.threadArchive=new iJe(this.executionHostRegistry,this.appServerConnectionRegistry,this.localThreadCatalogSyncCoordinator),this.artifactDocuments=new VKe({getAllowedWorkspaceRoots:async()=>{let{workspaceRoots:t}=await hX({appServerConnection:o,globalState:this.scopedState,localThreadIds:new Set((this.scopedState.get(r.gs.PROJECTLESS_THREAD_IDS)??[]).filter(e=>this.threadCatalogSyncManager?.readThreadHostId(e)===l.h)),settingsStore:e.settingsStore});return[...t,...this.projectsManager.getProjectRootPathsForHost(l.h)]},store:new $Ke({directory:C.default.join(C.default.dirname(e.appGlobalState.getStateFilePath()),`artifact-documents`)})});let O=new $Me(this.executionHostRegistry,this.scopedState);this.workspaceFiles=O,this.workspaceSearch=new pXe(this.executionHostRegistry,(t,n)=>e.applicationNetwork.fetch(t,n)),this.disposables.add(()=>this.workspaceSearch.dispose()),this.disposables.add(()=>O.dispose()),this.dictationAudio=process.platform===`darwin`?new hNe:void 0,this.dictationStreaming=new l_e({getAuth:()=>o.getBackendRequestAuth({refreshToken:!1}),desktopApiOptions:e,applicationNetwork:e.applicationNetwork}),this.disposables.add(()=>this.dictationStreaming[Symbol.dispose]()),this.dictationHistory=new kNe({directory:C.default.join(c.ot(),`dictation-history`),onChanged:()=>this.broadcastQueryCacheInvalidation([`dictation-history`])});let k=new PPe({fetchImpl:(e,t)=>_.net.fetch(e,t)});this.lsp=new $Fe(e=>this.getAppServerClient(e),C.default.join(_.app.getPath(`userData`),`language-servers`),{getRoot:e=>k.getRuntimeRoot(e),markExpired:e=>k.markRuntimeExpired(e)},()=>void this.options.appUpdates.checkForUpdates()),this.disposables.add(this.lsp),this.localEnvironments=new uPe(this.executionHostRegistry),this.managedWorktrees=new cIe(this.appServerConnectionRegistry,e=>this.messageHandler.getWorktreeService(e),this.scopedState,({id:e,owner:t,hostId:n,threadId:r},i)=>this.primaryWindowEvents.notifyManagedWorktreeArchiveCompleted(e,t,n,r,i),e=>this.primaryWindowEvents.sendModelWorktreeCreationEvent(e));let A=()=>this.appServerConnectionRegistry.getConnection(r.ki),j=e=>INe(A(),e);this.cloudPortals=new eC({statsig:this.publishedStatsig,assertDestinationAllowed:t=>e.applicationNetwork.assertAllowed(t),auth:o,desktopApiOptions:e,hostConfig:this.durableThreadHostConfig,getConnection:A,fallback:j}),this.disposables.add(this.cloudPortals),j=this.cloudPortals.create,this.terminalManager=new Qqe(this.scopedState,()=>e.settingsStore.getEffective(r.H.integratedTerminalShell.key),l.m.terminal_command??null,async t=>(await e.requestGitWorker({method:`worktree-shell-environment`,params:{cwd:r.Nn(t),hostConfig:u.hostConfig,operationSource:`git_direct_call`}})).shellEnvironment,e=>this.getHostConfigForHostId(e),e=>this.appServerConnectionRegistry.getMaybeConnection(e),j),this.remoteConnectionsHandler=new fKe(this.appState,this.sharedObjectRepository,l.h,this.appServerConnectionRegistry,{desktopOriginator:e.desktopOriginator,devApiBaseUrl:e.devApiBaseUrl,prodApiBaseUrl:e.prodApiBaseUrl},o,this.remoteControlDeviceKeyClient,this.getHostConfigForHostId.bind(this),this.getAppServerClient.bind(this),this.createAndRegisterRemoteConnection.bind(this),this.disposeRemoteConnection.bind(this),(e,t)=>{this.threadCatalogSyncManager?.reconcileAuthoritativeHostKind(e,t)}),this.appActionHostService=new Yde(e.windowManager,this.options.appViewsByWebContentsId),this.remoteControlEnvironmentService=new CKe(this.remoteConnectionsHandler),this.environmentConfigService=bS(o,e,e.globalState),this.devboxService=null,this.restrictedDevboxService=null;let M=new xHe(this.appServerConnectionRegistry,e.errorReporter,this.scopedState,this.sharedObjectRepository,e.windowManager,void 0);this.primaryRuntimeService=M,this.disposables.add(CIe({captureMessage:e.desktopSentry.captureMessage,diagnosePrimaryRuntimeDependencies:()=>M.diagnoseDependencies({hostId:l.h}),getMetadataTags:async t=>{let n={app_build:g.et.value??void 0,app_version:i.Ti(e.hostProcess.getVersion()).version,cli_version:o.appServerVersion??void 0},[r,a]=await Promise.all([M.getInstalledBundleVersion().catch(()=>null),o.readThread(t).catch(()=>null)]);return{...n,runtime_bundle_version:r??void 0,session_source:wIe(a?.source)}},getPlatformOs:()=>o.platformOs(),getPrimaryRuntimeDependencyRoot:c.W,registerInternalNotificationHandler:e=>o.registerInternalNotificationHandler(e)})),this.disposables.add(e.settingsStore.onDidChange(r.U.primaryNumberShortcutTarget.key,()=>{K().unifiedTabStrip&&(e.refreshApplicationMenu?.(),this.messageHandler.getBrowserHostManager().refreshOwnerCommandAccelerators(),this.broadcastQueryCacheInvalidation([`vscode`,`codex-command-keymap-state`]))})),this.customInstructions=new Sge(()=>o.getCachedAuthenticatedPrincipal()??null,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t),e=>this.publishedStatsig.getClientForPrincipal(e)?.checkGate(`codex-unified-custom-instructions`)===!0),this.fetchHandler=new $L(this.scopedState,this.projectsManager,this.threadProjectAssignments,this.appServerConnectionRegistry,u,this.remoteConnectionsHandler,e.hotkeyWindowLifecycleManager,e.windowManager,M.isWorkspaceDependenciesFeatureEnabled,e=>this.getAppServerClient(e),e=>this.messageHandler.getWorktreeService(e),e.requestGitWorker,this.sharedObjectRepository,e.errorReporter,e.repoRoot,e.globalDictationHotkeyController,async e=>{let t=this.messageHandler.getBrowserHostManager();await t.clearBrowsingData(e),t.reloadOpenPages()},e.refreshApplicationMenu,e.requestComputerUseWorker,e.subscribeComputerUseCaptureWorkerEvent,()=>{e.windowManager.refreshAppShellCommandAccelerators(),this.messageHandler.getBrowserHostManager().refreshOwnerCommandAccelerators()},e.settingsStore,e.updateDockIcon,e.realtimeSessionRecorder,({includeBrowserTabs:t,includeDesktopLogs:n})=>[...n?e.avatarOverlayManager.getFeedbackLogEntries():[],...n?this.conversationExecutor.getFeedbackLogEntries():[],...t?[{contents:Buffer.from(JSON.stringify(this.messageHandler.getBrowserHostManager().getFeedbackDiagnostics())),name:`browser-tabs.json`}]:[]],e.realtimeVoiceHotkeyController,e.executionCodexHome,()=>this.messageHandler.requestDynamicToolsForThreadStart(null),void 0,e=>this.localThreadCatalogSyncCoordinator?.handleImportedThreads(e),e.windowsCaptureNativeBridge??null,e.syncAvatarOverlayHotkey,()=>e.artifactSessionHostLifecycle??null,(e,t)=>this.browserSettingsSync.update(e,t),this.publishedStatsig,this.habitatAutomationsService,()=>this.messageHandler.requestHostedAutomationsAvailabilityForThreadStart(),this.threadReadState.prepareCronTurnReadState,this.threadReadState.owner,this.customInstructions,e.regionScreenshotHotkeys,e.syncSpotlightHotkey);let N=this.fetchHandler.settings;if(N==null)throw Error(`Settings store unavailable`);this.settings=N,this.disposables.add(()=>N.dispose()),this.disposables.add(M.startUpdatePolling());let ee=new z_(this.scopedState);this.pageWindowPrewarm=new nHe(e.windowManager),this.disposables.add(()=>this.pageWindowPrewarm.dispose()),this.disposables.add(Oi(()=>this.refreshPageWindowPrewarm()));let P=()=>{fze(this.appState),dze()},F=()=>{this.detachedWindowManager?.clearPrewarm(),this.pageWindowPrewarm.clear()};if(_.app.on(`before-quit`,F),this.disposables.add(()=>{F(),_.app.removeListener(`before-quit`,F)}),this.disposables.add(sXe(o)),this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(({previous:e,current:t})=>{if(t==null){this.lastAuthenticatedPrincipal=this.lastAuthenticatedPrincipal??e;return}let n=this.lastAuthenticatedPrincipal??e;n!=null&&(n.accountId!==t.accountId||n.userId!==t.userId)?(this.cumberbatchController.clear(),this.clearSitesAuthentication(),this.messageHandler?.getBrowserHostManager().setSiteAnnotationApiFeatureEnabled(null,!0),P(),ji({pageCreation:!1}),F()):this.lastAuthenticatedPrincipal??pze(this.appState,t),this.lastAuthenticatedPrincipal=t;let r=this.options.windowManager.getPrimaryWindow();r!=null&&this.readyAppViewWebContentsIds.has(r.webContents.id)&&this.detachedWindowManager?.startPrewarming(r.webContents),this.refreshPageWindowPrewarm()})),this.disposables.add(o.registerInternalNotificationHandler(e=>{if(e.method!==`account/updated`)return;let t=e.params?.authMode;t!=null&&this.messageHandler?.getBrowserHostManager().cancelSiteBootstraps(),t!==`chatgpt`&&t!==`chatgptAuthTokens`&&(this.browserSettingsSync.logout(),ji({pageCreation:!1}),F(),this.lastAuthenticatedPrincipal=null,P()),t??(this.cumberbatchController.clear(),this.clearSitesAuthentication(),this.messageHandler?.getBrowserHostManager().setSiteAnnotationApiFeatureEnabled(null,!0),ee.clear())})),this.disposables.add(o.registerInternalConnectionStateHandler(e=>{e===`error`&&o.getConnectionError()?.code===`login-required`&&this.clearSitesAuthentication()})),this.fetchWrapper=new Ude(this.fetchHandler,{applicationNetwork:e.applicationNetwork,desktopOriginator:e.desktopOriginator,devApiBaseUrl:e.devApiBaseUrl,deviceCheckCookieManager:new o_e({bundleIdentifier:g.tt(e.buildFlavor),errorReporter:e.errorReporter,generateToken:()=>ste({resourcesPath:l.Rt({env:process.env,resourcesPath:process.resourcesPath})}),url:g.dt(e,`/devicecheck`)}),integrityStateStore:ee,chunkedMessageSender:e.chunkedMessageSender,pluginServicePreviewEnabled:e.pluginServicePreviewEnabled,backendPreviewEnabled:void 0,appServerConnectionRegistry:this.appServerConnectionRegistry,prodApiBaseUrl:e.prodApiBaseUrl}),this.accessInputs=new Kde(this.appServerConnectionRegistry,o,this.threadReadState.getContext,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t)),this.disposables.add(this.accessInputs.dispose),this.cloudTasks=new rC(this.appServerConnectionRegistry,o,this.threadReadState.getContext,(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t)),this.disposables.add(this.cloudTasks.dispose),this.localClientCoordinationEnabled){let e=new i.y(`desktop`,this.errorReporter);this.disposables.add(e.addAnyBroadcastHandler(async e=>{e.method!==`query-cache-invalidate`||(e.version??0)!==i.hi(e.method)||Array.from(this.ipcClientsByWebContentsId.values()).some(({client:t})=>t.getClientId()===e.sourceClientId)||(this.accessInputs.invalidateQueryCache(e.params.queryKey),this.cloudTasks.invalidateQueryCache(e.params.queryKey),this.customInstructions.invalidateQueryCache(e.params.queryKey))})),this.disposables.add(()=>e.dispose())}g.H(e=>this.fetchWrapper.exportTraceBatch(e)),this.browserSettingsSync=new nme({configFile:new uy(c.ot()),getAuthenticatedPrincipal:()=>o.getAuthenticatedPrincipal(),createApi:e=>new $pe(this.fetchWrapper.fetchAuthenticatedJson.bind(this.fetchWrapper),e),isEnabled:()=>K().browserSettingsCloudSync,onSettingsChanged:()=>{my(c.ot()),this.broadcastQueryCacheInvalidation([`vscode`,`browser-use-origin-state-read`])}}),this.disposables.add(()=>this.browserSettingsSync.dispose()),this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(({current:e})=>this.browserSettingsSync.principalChanged(e)));let te=()=>this.browserSettingsSync.requestRefresh();_.app.on(`browser-window-focus`,te),this.disposables.add(()=>_.app.removeListener(`browser-window-focus`,te)),this.browserSettingsSync.start();let I=()=>{this.customInstructions.refresh()};this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(I)),this.disposables.add(this.publishedStatsig.onDidChange(I)),_.app.on(`browser-window-focus`,I),this.disposables.add(()=>{_.app.removeListener(`browser-window-focus`,I),this.customInstructions.dispose()}),I(),this.triggerSubscriptionReader=new qJe(()=>o.getAuthenticatedPrincipal(),(e,t)=>this.fetchWrapper.fetchAuthenticatedJson(e,t)),this.disposables.add(o.registerInternalAuthenticatedPrincipalChangeHandler(()=>this.triggerSubscriptionReader.cancelPendingReads())),this.disposables.add(()=>this.triggerSubscriptionReader.cancelPendingReads());let L=new Rje(e.buildFlavor,e.gitWorkerInvocationSampler,e=>this.messageHandler.getBrowserHostManager().isBrowserPageWebContents(e));this.messageHandler=new MMe(l.h,l.m,u,e.windowManager,e.chunkedMessageSender,e.avatarOverlayManager,this.appServerConnectionRegistry,this.fetchWrapper,this.scopedState,this.projectsManager,this.sharedObjectRepository,e.requestGitWorker,e.desktopNotificationManager,e.errorReporter,e.desktopSentry,e.updateWorkerSentryUser,e.inboxManager,e.datadogLogger,e.maxLogLevel,e.buildFlavor,e.subscribeGitWorkerEvent,L,e=>this.getHostConfigForHostId(e),e.hasActiveComputerUseTurn,e.settingsStore,e=>this.fetchHandler.getPinnedThreadIdsForWorktreeCleanup(e),e.onAppEntrySource,e=>this.managedWorktrees.enqueueAutomaticArchive(e),e.shouldShowPrimaryWindow,e=>K5(this.options,e));let{downloadStore:z}=this.messageHandler.getBrowserHostManager();z.setChangeListener(()=>{this.broadcastDownloadsState()}),z.setLifecycleEventListener(e=>{this.broadcastDownloadLifecycleEvent(e)});let ne=!1;this.disposables.add(this.sharedObjectRepository.addSubscriber(e=>{if(e===`remote_ssh_connections`||e===`remote_wsl_connections`||e===`remote_control_connections`){this.remoteConnectionsHandler.reconcileRemoteConnections(this.getSharedRemoteConnections());return}if(e===`local_remote_control_environment_id`||e===`local_remote_control_installation_id`){let e=this.sharedObjectRepository.get(`local_remote_control_environment_id`),t=this.sharedObjectRepository.get(`local_remote_control_installation_id`);this.appState.set(l.M,e??void 0),t!=null&&this.appState.set(l.N,t),ne||(ne=!0,queueMicrotask(()=>{ne=!1,this.remoteConnectionsHandler.handleLocalRemoteControlIdentityChanged()}))}}));let B=e=>{let t=[o.registerInternalAuthenticatedPrincipalChangeHandler(e),o.registerInternalNotificationHandler(t=>{t.method===`account/updated`&&e()})];return()=>t.forEach(e=>e())};this.hostAppServerManagers=new Afe({connections:this.appServerConnectionRegistry,localConnection:o,readContext:this.threadReadState.getContext,create:t=>Ofe({...t,localClientCoordinationEnabled:this.localClientCoordinationEnabled,executeDynamicToolCall:e.runAppServerManagerInMain?(e,n)=>this.callDynamicAppTool({callerSource:`codex`,hostId:t.hostId,params:e.params},n):void 0,executionHost:this.executionHostRegistry.get(t.hostId),fetchHandler:this.fetchHandler,globalState:this.scopedState,settingsStore:e.settingsStore,evaluations:this.publishedStatsig,remoteConnections:this.remoteConnectionsHandler,archive:this.threadArchive,catalog:this.threadCatalogSyncManager,threadProjectAssignments:this.threadProjectAssignments,threadReadState:this.threadReadState.owner,getThreadReadStateContext:this.threadReadState.getContext,subscribeIdentityChanges:B,windowManager:e.windowManager,errorReporter:this.errorReporter,browserSessionRegistry:this.getBrowserSessionRegistry()}),onError:e=>X5.warning(`Failed to construct hosted AppServerManager`,{safe:{},sensitive:{error:e}})}),this.appServerManagersService=e.runAppServerManagerInMain?new jfe(this.hostAppServerManagers):void 0,this.handleHostedInteractiveTool=this.appServerManagersService==null?void 0:(e,t)=>this.hostAppServerManagers.getCurrent(e.hostId)?.resource?.callInteractiveDynamicAppTool({id:r.xs(e.params.callId),method:`item/tool/call`,params:e.params},t)??null,this.daybreakPreferences=new Age(this.sharedObjectRepository,{connection:o,statsig:this.publishedStatsig,getConnection:e=>this.appServerConnectionRegistry.getConnection(e),getThreadOwner:(e,t)=>this.getThreadOwnerView(e,t),clearPrewarmedThreads:e=>Nge({hostId:e,appViews:this.options.appViewsByWebContentsId,readyAppViewIds:this.readyAppViewWebContentsIds}),onSelectionAccepted:e=>{this.broadcastQueryCacheInvalidation([`config`]),this.broadcastQueryCacheInvalidation([`user-saved-config`,e])}}),this.disposables.add(this.daybreakPreferences),this.disposables.add(this.sharedObjectRepository.addSubscriber(e=>{(e===`remote_ssh_connections`||e===`remote_wsl_connections`||e===`remote_control_connections`)&&this.hostAppServerManagers.refreshInBackground()})),this.disposables.add(this.managedWorktrees.start()),this.initialRemoteConnectionsRefresh=Promise.all([this.remoteConnectionsHandler.refreshRemoteConnections(),this.remoteConnectionsHandler.refreshLocalRemoteControlClientId()]).then(()=>void 0).catch(e=>{X5.warning(`Failed to refresh remote connections`,{safe:{},sensitive:{error:e}})})}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3363421,
+        "endExclusive": 3363424
+      },
+      "spanHash": "6f9df09f47de17c7876b899e896dd49652ca0abc2e119db777e8e378a3b8cac4",
+      "nodeType": "Identifier",
+      "id": "ISA-S015",
+      "code": "hXe"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3363417,
+        "endExclusive": 3364988
+      },
+      "spanHash": "33e27472345c1a1c2eecee77cbe0ac5ab189de1670a1dfe69bef1741132835e5",
+      "nodeType": "NewExpression",
+      "id": "ISA-S016",
+      "code": "new hXe({appViewsByWebContentsId:ce,applicationNetwork:t,hostProcess:V,runAppServerManagerInMain:n,chunkedMessageSender:a,appGlobalState:o,settingsStore:s,pluginServicePreviewEnabled:u,startupPhases:d,windowManager:m.windowManager,ensureWindow:m.ensureWindow,globalState:o,repoRoot:h,executionCodexHome:v,errorReporter:y,desktopSentry:b,desktopNotificationManager:le,onAppEntrySource:re,shouldShowPrimaryWindow:ie,updateWorkerSentryUser:R,setGitWorkerTracingSampleRate:z,inboxManager:pe,datadogLogger:x,maxLogLevel:S,buildFlavor:C,appUpdates:w,gitWorkerInvocationSampler:L,desktopOriginator:g.ht,devApiBaseUrl:g.gt,prodApiBaseUrl:g.It,messageChannel:g.bt,avatarOverlayManager:T,notchOverlayManager:m.notchOverlayManager,syncAvatarOverlayHotkey:m.overlayHotkeyController.syncCommandKeybinding,syncSpotlightHotkey:()=>m.spotlightController.syncCommandKeybinding(),hotkeyWindowLifecycleManager:E,hasActiveComputerUseTurn:D,globalDictationHotkeyController:O,realtimeSessionRecorder:fe,realtimeVoiceHotkeyController:m.realtimeVoiceHotkeyController,refreshApplicationMenu:F,updateDockIcon:m.updateDockIcon,appshotHotkeysService:k,regionScreenshotHotkeys:m.regionScreenshotHotkeys,windowsCaptureNativeBridge:m.windowsCaptureNativeBridge,remoteHostedPIPContentController:P,requestComputerUseCaptureUpdate:A,requestComputerUseWorker:j,requestGitWorker:N,requestOpenInWorker:ee,subscribeComputerUseCaptureWorkerEvent:te,subscribeGitWorkerEvent:I,onAppServerSqliteRecovery:ae,getSkysightRecorderController:oe,artifactSessionHostLifecycle:se,appEvent:ne,createThreadCatalogStore:he})"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1581910,
+        "endExclusive": 1581986
+      },
+      "spanHash": "4c183f09e86b0ba8f70b113b59f70e6c89ad62683eda9c1e830e46065ee90085",
+      "nodeType": "CallExpression",
+      "id": "ISA-S017",
+      "code": "Object.defineProperty(exports,\"b\",{enumerable:!0,get:function(){return e1}})"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1589843,
+        "endExclusive": 1589919
+      },
+      "spanHash": "8121818c2585743bac6fa1c9e28324a702e798f48ada6c9517e2a66c032e7b7d",
+      "nodeType": "CallExpression",
+      "id": "ISA-S018",
+      "code": "Object.defineProperty(exports,\"w\",{enumerable:!0,get:function(){return X$}})"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1590231,
+        "endExclusive": 1590307
+      },
+      "spanHash": "871ca10e33a8bcff798ed7f819301bf266eae34e7ca1b0d77704a9caf4514902",
+      "nodeType": "CallExpression",
+      "id": "ISA-S019",
+      "code": "Object.defineProperty(exports,\"x\",{enumerable:!0,get:function(){return $$}})"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1519522,
+        "endExclusive": 1519636
+      },
+      "spanHash": "4916699fc07b46eb3083c1634967c129e3d4b08b86398614302e68206f53a740",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S020",
+      "code": "function X$(e){let t=[];for(let n of e){let e=n.threadId??n.id;e&&da(e,n.title,n.description)&&t.push(n)}return t}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1521500,
+        "endExclusive": 1522303
+      },
+      "spanHash": "3084f8acbe2b0d621158e6d8abb4a3de5e75d4e9f017e8c3b9d9c32e3cfaf972",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S021",
+      "code": "function $$(e,t){let n=q();return n?n.prepare(`UPDATE automation_runs SET read_at = ?\n      WHERE thread_id = ? AND automation_id IN (\n        SELECT id FROM automations WHERE ((? = 1 AND automations.account_id IS NULL AND automations.user_id IS NULL AND automations.installation_id IS NULL) OR (automations.account_id = ? AND automations.user_id = ? AND automations.installation_id = ?))\n      )\n      RETURNING thread_id as id, automation_id as automationId, NULL as automationName, inbox_title as title, inbox_summary as description, archived_assistant_message as archivedAssistantMessage, archived_user_message as archivedUserMessage, archived_reason as archivedReason, source_cwd as sourceCwd, thread_id as threadId, read_at as readAt, created_at as createdAt, status`).get(t,e,...wF())??null:null}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1522303,
+        "endExclusive": 1522843
+      },
+      "spanHash": "af41ae06e6681ef4aa0db930fbdf6034a88e84b54054147ef10cd2317549995f",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S022",
+      "code": "function e1(e){let t=q();return t?t.prepare(`UPDATE automation_runs\n      SET read_at = ?\n      WHERE read_at IS NULL\n        AND status IN ('PENDING_REVIEW', 'ACCEPTED', 'ARCHIVED')\n        AND updated_at <= ?\n        AND automation_id IN (\n          SELECT id FROM automations WHERE ((? = 1 AND automations.account_id IS NULL AND automations.user_id IS NULL AND automations.installation_id IS NULL) OR (automations.account_id = ? AND automations.user_id = ? AND automations.installation_id = ?))\n        )`).run(e,e,...wF()).changes??0:0}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 112142,
+        "endExclusive": 112248
+      },
+      "spanHash": "0fd9d45a70a2f8db3181e02093b8b8ac840c2bf5f808016d6e7a91e64cdacbde",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S023",
+      "code": "function q(e){return process.versions.electron?Zi||(Zi=ea($i(e),t=>Bi(t,e?.migrationProvenance)),Zi):null}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 114908,
+        "endExclusive": 115220
+      },
+      "spanHash": "1cde2a41946204716f768f36fe4b1f81b105bb19670eb19f97bbd0c68cc220d5",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S024",
+      "code": "function da(e,t,n){let r=q();if(!r)return!1;let i=r.prepare(`UPDATE automation_runs SET inbox_title = ?, inbox_summary = ?, status = CASE WHEN status = 'IN_PROGRESS' THEN 'PENDING_REVIEW' ELSE status END, updated_at = ? WHERE thread_id = ?`).run(t,n,Date.now(),e);return typeof i?.changes==`number`&&i.changes>0}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1064595,
+        "endExclusive": 1064691
+      },
+      "spanHash": "5a90d3c81b030e825466932ead88f91bf42aa09cb5e2549358a97ceebe7a4242",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S025",
+      "code": "function wF(){let e=oF;return[+!!sF,e?.accountId??null,e?.userId??null,e?.installationId??null]}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 112055,
+        "endExclusive": 112142
+      },
+      "spanHash": "7d1eaac974ee5d1198f2179b01d6183c5e90a946ab2935a3b6aa50e05e6c8c25",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S026",
+      "code": "function $i(e){let t=o.ot(),n=e?.databaseFileName??Qi();return(0,m.join)(t,`sqlite`,n)}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 112248,
+        "endExclusive": 112520
+      },
+      "spanHash": "1836a0b292f5c34b47a136f75ab5a0e758d01e96b6d12fef182ca192f04e591d",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S027",
+      "code": "function ea(e,t){(0,f.mkdirSync)((0,m.dirname)(e),{recursive:!0});let n=new(na())(e);try{let e=n.prepare(`PRAGMA journal_mode = WAL`).get()?.journal_mode;return n.exec(e===`wal`?`PRAGMA synchronous = NORMAL`:`PRAGMA synchronous = FULL`),t(n),n}catch(e){throw n.close(),e}}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1059665,
+        "endExclusive": 1059672
+      },
+      "spanHash": "8de0b6f352ea9680db22c72072a06c75f40cbc8584101f6ad861509ba9a8727d",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S028",
+      "code": "oF=null"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1059673,
+        "endExclusive": 1059678
+      },
+      "spanHash": "bfc70fc5ab432b1f2aa502f487eead0ffe0e210166f0255233dcbc1bbd32318f",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S029",
+      "code": "sF=!0"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1064338,
+        "endExclusive": 1064342
+      },
+      "spanHash": "3c0e1b9c7e0855034d4bddb6200bacbd28c3d2b966b60c99773d647dfdcb98f2",
+      "nodeType": "AssignmentExpression",
+      "id": "ISA-S030",
+      "code": "oF=e"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1064343,
+        "endExclusive": 1064372
+      },
+      "spanHash": "594795f25b59b8c6e9afcc5769f39156701d4bdf5adcb17fc3c14bb584176d95",
+      "nodeType": "AssignmentExpression",
+      "id": "ISA-S031",
+      "code": "sF=e==null||t===`in_progress`"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 251,
+        "endExclusive": 305
+      },
+      "spanHash": "b925ba2a13b0dc690eac930c79fced50b29f557b75d1d7cef49f53742c0a207f",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S032",
+      "code": "o=require(\"./application-network-startup-CfAQmSYg.js\")"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 506,
+        "endExclusive": 526
+      },
+      "spanHash": "400749f03a9b74c58e54d8884feb42c0aecb3f5cb575078eee4fd40e552cf598",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S033",
+      "code": "f=require(\"node:fs\")"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 570,
+        "endExclusive": 592
+      },
+      "spanHash": "1e83b3b814f9c8996f635f071efce28fa9d7700cb1d701082396c6b6b8bc79c0",
+      "nodeType": "VariableDeclarator",
+      "id": "ISA-S034",
+      "code": "m=require(\"node:path\")"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 111902,
+        "endExclusive": 112055
+      },
+      "spanHash": "04b936b7b6c5d7c658880cbe25c6664b04dc532ab639eaf8d0907d0bb08f87af",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S035",
+      "code": "function Qi(){let e=process.env.BUILD_FLAVOR;return e===`prod`?`codex.db`:e?`codex-dev.db`:process.env.NODE_ENV===`production`?`codex.db`:`codex-dev.db`}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 112565,
+        "endExclusive": 112691
+      },
+      "spanHash": "add91afa93cfac47c412cf2cd4a0e31a7ebd24307039bc28d15f95c80d6c757e",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S036",
+      "code": "function na(){try{return require(\"better-sqlite3\")}catch{throw Error(`better-sqlite3 is only bundled with the Electron app`)}}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 593,
+        "endExclusive": 601
+      },
+      "spanHash": "9b383ababc72371724da82c3dce3317f3dcfa9a993aa2c7d43211f2486e294f1",
+      "nodeType": "AssignmentExpression",
+      "id": "ISA-S037",
+      "code": "m=e.a(m)"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4022878,
+        "endExclusive": 4024143
+      },
+      "spanHash": "89996dd1183ecd9505533fb3398a974193d5bb160e97da07a0e593fdac008b20",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S038",
+      "code": "function q7r(e){let t=(0,J7r.c)(22),n;t[0]===e?n=t[1]:(n=e===void 0?{}:e,t[0]=e,t[1]=n);let{enabled:r}=n,i=r===void 0||r,a=Di(q),o=ju(),s;t[2]===i?s=t[3]:(s={enabled:i},t[2]=i,t[3]=s);let c=G(r9n,s),l;t[4]===a?l=t[5]:(l=e=>{K7r(a,{itemId:e},!0)},t[4]=a,t[5]=l);let u=l,d;t[6]===a?d=t[7]:(d=e=>{K7r(a,{itemId:e},!1)},t[6]=a,t[7]=d);let f=d,p;t[8]===o?p=t[9]:(p=async()=>{let e=Date.now();o.setQueryData(Io(`inbox-items`,{limit:200}),t=>t==null?t:{...t,items:t.items.map(t=>t.readAt==null&&(t.status===`PENDING_REVIEW`||t.status===`ACCEPTED`||t.status===`ARCHIVED`)?{...t,readAt:e}:t),unreadRunCounts:{total:0,automationIds:[],unreadRuns:[]}}),Ho.dispatchMessage(`inbox-automation-runs-mark-all-read`,{readAt:e})},t[8]=o,t[9]=p);let m=p,h;t[10]===c.data?.items?h=t[11]:(h=c.data?.items??[],t[10]=c.data?.items,t[11]=h);let g=c.data!=null,_=c.data?.unreadRunCounts,v;return t[12]!==c.fetchStatus||t[13]!==c.isError||t[14]!==c.isLoading||t[15]!==m||t[16]!==u||t[17]!==f||t[18]!==h||t[19]!==g||t[20]!==_?(v={items:h,isLoading:c.isLoading,isError:c.isError,fetchStatus:c.fetchStatus,hasData:g,markAllRead:m,markRead:u,markUnread:f,unreadRunCounts:_},t[12]=c.fetchStatus,t[13]=c.isError,t[14]=c.isLoading,t[15]=m,t[16]=u,t[17]=f,t[18]=h,t[19]=g,t[20]=_,t[21]=v):v=t[21],v}"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4022640,
+        "endExclusive": 4022878
+      },
+      "spanHash": "636dd497c8e32c3e7d4739ab41b234a18d04f50237f139bbc3c424e75f133adb",
+      "nodeType": "FunctionDeclaration",
+      "id": "ISA-S039",
+      "code": "function K7r(e,t,n){let r=e.query.snapshot(r9n),i=`itemId`in t?t.itemId:r.getData()?.items.find(e=>e.threadId===t.threadId)?.id;i!=null&&(r.setData(e=>e==null?e:G7r(e,i,n)),Ho.dispatchMessage(`inbox-item-set-read-state`,{id:i,isRead:n}))}"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2080881,
+        "endExclusive": 2081027
+      },
+      "spanHash": "94567527a5c3b00ebd38e260f35921c1a7dc1cfb4b69142ea6264c359815c8ec",
+      "nodeType": "SwitchCase",
+      "id": "ISA-S040",
+      "code": "case`inbox-item-set-read-state`:if(t.isRead){let e=Date.now();this.inboxManager?.markRead(t.id,e);break}this.inboxManager?.markUnread(t.id);break;"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081027,
+        "endExclusive": 2081130
+      },
+      "spanHash": "122e645b52d9170518152c7a6c8a1efb842f06e9aa97f7ba04ab52ae62cc6d3e",
+      "nodeType": "SwitchCase",
+      "id": "ISA-S041",
+      "code": "case`inbox-automation-runs-mark-all-read`:this.inboxManager?.markAllAutomationRunsRead(t.readAt);break;"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081130,
+        "endExclusive": 2081617
+      },
+      "spanHash": "1639c085f156f00b39210f4a2ff15ff2f7246396e95baea1a9de3977bf67e446",
+      "nodeType": "SwitchCase",
+      "id": "ISA-S042",
+      "code": "case`inbox-items-create`:{if(!this.inboxManager)break;let e=Date.now(),n=t.conversationId||t.turnId||(0,R.randomUUID)(),r=t.items.map((r,i)=>({id:t.items.length>1&&!r.id?`${n}-${i+1}`:r.id||n,automationId:null,automationName:null,title:r.title??null,description:r.description??null,archivedAssistantMessage:null,archivedUserMessage:null,archivedReason:null,sourceCwd:null,threadId:t.conversationId??null,readAt:null,createdAt:e,status:null}));this.inboxManager.persistAndNotify(r);break}"
+    },
+    {
+      "sourcePath": "app.asar/node_modules/better-sqlite3/package.json",
+      "sourceHash": "4665126292eff5dffe6c0ffabf98c4de18e479aa0b53edd775028eb567b3ecc1",
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 1436
+      },
+      "spanHash": "4665126292eff5dffe6c0ffabf98c4de18e479aa0b53edd775028eb567b3ecc1",
+      "nodeType": "JSON package metadata",
+      "id": "ISA-S043",
+      "code": "{\n  \"name\": \"better-sqlite3\",\n  \"version\": \"12.11.1\",\n  \"description\": \"The fastest and simplest library for SQLite in Node.js.\",\n  \"homepage\": \"http://github.com/WiseLibs/better-sqlite3\",\n  \"author\": \"Joshua Wise <joshuathomaswise@gmail.com>\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git://github.com/WiseLibs/better-sqlite3.git\"\n  },\n  \"main\": \"lib/index.js\",\n  \"files\": [\n    \"binding.gyp\",\n    \"src/**/*.[ch]pp\",\n    \"lib/**\",\n    \"deps/**\"\n  ],\n  \"engines\": {\n    \"node\": \"20.x || 22.x || 23.x || 24.x || 25.x || 26.x\"\n  },\n  \"dependencies\": {\n    \"bindings\": \"^1.5.0\",\n    \"prebuild-install\": \"^7.1.1\"\n  },\n  \"overrides\": {\n    \"prebuild\": {\n      \"node-abi\": \"^4.25.0\"\n    }\n  },\n  \"devDependencies\": {\n    \"chai\": \"^4.3.8\",\n    \"cli-color\": \"^2.0.3\",\n    \"fs-extra\": \"^11.1.1\",\n    \"mocha\": \"^11.7.5\",\n    \"nodemark\": \"^0.3.0\",\n    \"prebuild\": \"^13.0.1\",\n    \"sqlite\": \"^5.0.1\",\n    \"sqlite3\": \"^5.1.6\"\n  },\n  \"scripts\": {\n    \"install\": \"prebuild-install || node-gyp rebuild --release\",\n    \"build-release\": \"node-gyp rebuild --release\",\n    \"build-debug\": \"node-gyp rebuild --debug\",\n    \"test\": \"mocha --exit --slow=75 --timeout=5000\",\n    \"benchmark\": \"node benchmark\",\n    \"download\": \"bash ./deps/download.sh\"\n  },\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"sql\",\n    \"sqlite\",\n    \"sqlite3\",\n    \"transactions\",\n    \"user-defined functions\",\n    \"aggregate functions\",\n    \"window functions\",\n    \"database\"\n  ]\n}\n"
+    }
+  ],
+  "sql": {
+    "$$": {
+      "sql": "UPDATE automation_runs SET read_at = ?\n      WHERE thread_id = ? AND automation_id IN (\n        SELECT id FROM automations WHERE ((? = 1 AND automations.account_id IS NULL AND automations.user_id IS NULL AND automations.installation_id IS NULL) OR (automations.account_id = ? AND automations.user_id = ? AND automations.installation_id = ?))\n      )\n      RETURNING thread_id as id, automation_id as automationId, NULL as automationName, inbox_title as title, inbox_summary as description, archived_assistant_message as archivedAssistantMessage, archived_user_message as archivedUserMessage, archived_reason as archivedReason, source_cwd as sourceCwd, thread_id as threadId, read_at as readAt, created_at as createdAt, status",
+      "operation": "get",
+      "arguments": [
+        "t",
+        "e",
+        {
+          "spreadCall": "wF"
+        }
+      ]
+    },
+    "e1": {
+      "sql": "UPDATE automation_runs\n      SET read_at = ?\n      WHERE read_at IS NULL\n        AND status IN ('PENDING_REVIEW', 'ACCEPTED', 'ARCHIVED')\n        AND updated_at <= ?\n        AND automation_id IN (\n          SELECT id FROM automations WHERE ((? = 1 AND automations.account_id IS NULL AND automations.user_id IS NULL AND automations.installation_id IS NULL) OR (automations.account_id = ? AND automations.user_id = ? AND automations.installation_id = ?))\n        )",
+      "operation": "run",
+      "arguments": [
+        "e",
+        "e",
+        {
+          "spreadCall": "wF"
+        }
+      ]
+    },
+    "da": {
+      "sql": "UPDATE automation_runs SET inbox_title = ?, inbox_summary = ?, status = CASE WHEN status = 'IN_PROGRESS' THEN 'PENDING_REVIEW' ELSE status END, updated_at = ? WHERE thread_id = ?",
+      "operation": "run",
+      "arguments": [
+        "t",
+        "n",
+        "CallExpression",
+        "e"
+      ]
+    }
+  },
+  "factoryWiring": {
+    "factory": "vXe",
+    "manager": "eue",
+    "context": "hXe",
+    "handler": "MMe",
+    "inboxArgumentIndex": 16,
+    "inboxParameter": "b",
+    "methodCalls": {
+      "persistAndNotify": {
+        "exported": "w",
+        "arguments": [
+          "e"
+        ]
+      },
+      "markRead": {
+        "exported": "x",
+        "arguments": [
+          "e",
+          "t"
+        ]
+      },
+      "markUnread": {
+        "exported": "x",
+        "arguments": [
+          "e",
+          null
+        ]
+      },
+      "markAllAutomationRunsRead": {
+        "exported": "b",
+        "arguments": [
+          "e"
+        ]
+      }
+    }
+  },
+  "existingFeatureLink": {
+    "featureId": "FSC-0434",
+    "taskId": "T50",
+    "moduleProposalId": "AUT-M03",
+    "operationIds": [
+      "operation:automations:fsc-0434:mark-read",
+      "operation:automations:fsc-0434:mark-unread",
+      "operation:automations:fsc-0434:mark-all-read"
+    ],
+    "qualification": "Adds the selected host receiver and literal SQL boundary to the existing renderer contract; does not establish actual mount/delivery, mode closure or native results."
+  },
+  "engineeringDecisions": [
+    {
+      "id": "ISA-D01",
+      "responsibility": "Main-process inbox adapter",
+      "proposedPath": "apps/desktop/src/main/automations/inbox-adapter.ts",
+      "sourceFacts": [
+        "ISA-F01",
+        "ISA-F03",
+        "ISA-F04",
+        "ISA-F12"
+      ],
+      "result": "Separate transport normalization, optional manager handling and broadcasting from the renderer run-history owner AUT-M03."
+    },
+    {
+      "id": "ISA-D02",
+      "responsibility": "Automation-run SQLite store",
+      "proposedPath": "apps/desktop/src/main/automations/run-store.ts",
+      "sourceFacts": [
+        "ISA-F05",
+        "ISA-F06",
+        "ISA-F07",
+        "ISA-F08",
+        "ISA-F09",
+        "ISA-F10",
+        "ISA-F11"
+      ],
+      "result": "Preserve each SQL predicate, cutoff and returned-row/change-count contract. Reintroduce better-sqlite3 as a versioned dependency; independent native build remains an acceptance condition."
+    }
+  ],
+  "dependency": {
+    "name": "better-sqlite3",
+    "version": "12.11.1",
+    "existingDependencyIds": [
+      "root-016",
+      "installed-042"
+    ],
+    "integration": "Versioned package and independently qualified native build; no generated third-party implementation copy.",
+    "nativeAbiOrBuildVerified": false
+  },
+  "unexecutedSupplementaryScenarios": [
+    {
+      "id": "ISA-SC01",
+      "title": "无manager",
+      "expected": "三个选定消息按源码跳过写调用；缓存改写不计数据库成功。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC02",
+      "title": "无Electron数据库",
+      "expected": "q返回null时，X$/$$/e1分别表现为空成功集合、null和0，不发送对应成功变更广播。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC03",
+      "title": "创建目标存在或缺失",
+      "expected": "已有thread_id记录按UPDATE变更；不存在时不创建普通收件行。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC04",
+      "title": "空线程与id回退",
+      "expected": "threadId为null/undefined才回退id；空字符串不会通过后续truthy检查。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC05",
+      "title": "重复输入",
+      "expected": "同一threadId多次出现按顺序多次调用da；不能自动去重或把返回数量当作新增行数。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC06",
+      "title": "单项读写身份",
+      "expected": "分别核对旧记录分支和三身份匹配分支；不匹配行保持原值。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC07",
+      "title": "批量截止时间",
+      "expected": "updated_at晚于readAt的行不被本条SQL标读。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC08",
+      "title": "批量状态",
+      "expected": "仅空read_at且三个指定status的行可更新。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC09",
+      "title": "缓存与SQL结果不同",
+      "expected": "renderer乐观清零后SQL更新0行时，不虚构回滚或持久化确认。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC10",
+      "title": "构建文件名",
+      "expected": "核对prod、其他非空BUILD_FLAVOR和缺省情况下的文件名规则。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC11",
+      "title": "初始化失败",
+      "expected": "核对ea在迁移或PRAGMA失败时关闭连接并向上抛错。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "ISA-SC12",
+      "title": "跨重启",
+      "expected": "在另行授权的自有profile验证有效home、迁移、身份切换及耐久性；本批未执行。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    }
+  ],
+  "remainingBoundaries": [
+    "Effective ot() home, selected build environment and loaded native ABI.",
+    "Actual factory/mount/transport and renderer invalidation after r.po.CHANGED.",
+    "Effective oF/sF identity lifecycle, migration, credentials/isolation and cross-restart durability.",
+    "Complete read/query-store coverage and all other automation operations.",
+    "Product-mode closure; identity.kind chatgpt is not itself a product-mode exclusion."
+  ],
+  "counts": {
+    "fullProgramParsePasses": 6,
+    "distinctSourcePrograms": 2,
+    "fullProgramAstNodes": 3560272,
+    "distinctSelectedUnits": 37,
+    "boundedParsedNodes": 21652,
+    "selectedHostCases": 3,
+    "targetCodeExecuted": 0,
+    "modelSubmissions": 0,
+    "serviceCalls": 0,
+    "clientLaunches": 0,
+    "runtimePasses": 0,
+    "frozenFilesRechecked": 4,
+    "sourceWitnesses": 43,
+    "sourceFacts": 12,
+    "existingFeatureLinks": 1,
+    "unexecutedSupplementaryScenarios": 12,
+    "newCanonicalFeatures": 0,
+    "newCanonicalScenarios": 0,
+    "newClientImplementation": 0
+  },
+  "unchangedCanonicalCounts": {
+    "finiteFeatureDefinitions": 509,
+    "userOperations": 582,
+    "supportOperations": 125,
+    "productScenarioSpecifications": 1844,
+    "owningTaskGroupsWithFiniteDefinitions": 51,
+    "additionalSourceContractTaskGroups": 0,
+    "pendingSettingsPages": 0,
+    "featuresImplemented": 0,
+    "newProductScenarioPasses": 0,
+    "confirmedChatGptExclusions": 0,
+    "modeCounts": {
+      "unknown": 505,
+      "shared": 4
+    },
+    "qualifiedResponsibilityRecords": 115,
+    "coarseWorkflowFacades": 48,
+    "sourceWitnesses": 2874,
+    "sharedWitnessDispositions": 34,
+    "runtimeCapabilityGroups": 15,
+    "storageDomains": 11,
+    "selectedStorageBoundaries": 16,
+    "dependencyRecords": 202,
+    "buildInputOccurrences": 30,
+    "fullRuntimeRoutesQualified": 0,
+    "modelSubmissionsRemaining": 0,
+    "savedLegacyEntriesWithoutFeatureMapping": 709,
+    "remainingCommandGoalAssociations": 20,
+    "explicitMechanisms": 141,
+    "sourceEntriesRequiringGoalOrMechanismDecision": 568
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/automations-entry-contracts-v1.json",
+      "bytes": 135245,
+      "sha256": "fc689405ff1eb0c9a1a95040ddf03838112934ae8893473bc7ea6645461414b7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-dispatch-roles-v1.json",
+      "bytes": 184266,
+      "sha256": "4e667f06031619f2a05ac54ab25bba8454ba99106bc3060c4d7f45615b5755ff"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-terminal-disposition-v1.json",
+      "bytes": 53390,
+      "sha256": "d14a73aca8cd18d49719ebcf7df926ef1498099c62f2528115c61677127b21a6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v18.json",
+      "bytes": 8560856,
+      "sha256": "6b000f0c8a5e50596906f1cb40b557b8d5b8e3bf6f30f56151d0be6c7e483600"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    }
+  ],
+  "selectedWriteBoundaryClosed": true,
+  "actualRuntimeVerified": false,
+  "fullAnalysisCompleted": false,
+  "sourceSelectionArchive": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/inbox-storage-authority-v1/source-selections.json",
+    "bytes": 452482,
+    "sha256": "e2a2434b67677a00c71fe8e034ab88b8b496837829f46bc544db622c356fa1c3"
+  },
+  "evidence": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/inbox-storage-authority-v1-evidence.jsonl",
+    "bytes": 11314,
+    "sha256": "faf3a8f2c8a9d24efcb794bf9d391288e3cbe007f4be32cb3a0a3f223dae2491"
+  }
+}

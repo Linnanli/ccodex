@@ -1,0 +1,2318 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "publishedAtUtc": "2026-10-25T15:16:27.231011+00:00",
+  "scope": "Three first-party preload entry/build boundaries joined to frozen main/bootstrap and saved runtime/third-party contracts.",
+  "method": {
+    "staticOnly": true,
+    "tooling": {
+      "node": "v22.23.2",
+      "babel": "8.0.4"
+    },
+    "rangeUnits": "UTF-8 bytes; AST UTF-16 offsets converted with Buffer.byteLength",
+    "sourceReviewCount": 5,
+    "selectedBindingReviews": 2,
+    "parserLimits": [
+      "The source parser and binding collector are supplemental tools under plan 4.6, not a new REA semantic run. The saved initial REA run remains the discovery basis.",
+      "Lexical joins establish the selected declaration/call relationships, not the runtime object returned by require, later mutations, native receiver identity or actual bridge delivery.",
+      "The ordinary Electron call census excludes optional calls, constructors, aliases and dynamically computed API shapes. AST counts include File wrappers and are not directly comparable to older collectors."
+    ]
+  },
+  "sourceReviews": [
+    {
+      "fileName": "preload.js",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "bytes": 6909,
+      "parsedNodes": 1814,
+      "tooling": {
+        "node": "v22.23.2",
+        "babel": "8.0.4"
+      }
+    },
+    {
+      "fileName": "browser-page-preload.js",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "bytes": 527604,
+      "parsedNodes": 171101,
+      "tooling": {
+        "node": "v22.23.2",
+        "babel": "8.0.4"
+      }
+    },
+    {
+      "fileName": "sandbox-preload.js",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/sandbox-preload.js",
+      "sourceHash": "e24e4d655e339484eb0ef842393bebfa13fb86a7863350ef49cd6a63eb1bddfa",
+      "bytes": 2102,
+      "parsedNodes": 580,
+      "tooling": {
+        "node": "v22.23.2",
+        "babel": "8.0.4"
+      }
+    },
+    {
+      "fileName": "bootstrap-CooIJpZm.js",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "bytes": 461537,
+      "parsedNodes": 121917,
+      "tooling": {
+        "node": "v22.23.2",
+        "babel": "8.0.4"
+      }
+    },
+    {
+      "fileName": "main-CqEoQDOU.js",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "bytes": 3824411,
+      "parsedNodes": 958316,
+      "tooling": {
+        "node": "v22.23.2",
+        "babel": "8.0.4"
+      }
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "PBB-S001",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 6,
+        "endExclusive": 25
+      },
+      "rangeSha256": "6227e5e56c8b86767d71000100cae190f703c57e758a0240827062c0e67a4087",
+      "labels": [
+        "global require electron"
+      ]
+    },
+    {
+      "id": "PBB-S002",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 777,
+        "endExclusive": 796
+      },
+      "rangeSha256": "6227e5e56c8b86767d71000100cae190f703c57e758a0240827062c0e67a4087",
+      "labels": [
+        "global require electron"
+      ]
+    },
+    {
+      "id": "PBB-S003",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/sandbox-preload.js",
+      "sourceHash": "e24e4d655e339484eb0ef842393bebfa13fb86a7863350ef49cd6a63eb1bddfa",
+      "locator": {
+        "kind": "byte-range",
+        "start": 6,
+        "endExclusive": 25
+      },
+      "rangeSha256": "6227e5e56c8b86767d71000100cae190f703c57e758a0240827062c0e67a4087",
+      "labels": [
+        "global require electron"
+      ]
+    },
+    {
+      "id": "PBB-S004",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3328,
+        "endExclusive": 3340
+      },
+      "rangeSha256": "b26385b3754afe2645e7e81689a58ffe9759803d9f2ace0b37f14f2ec55ca72d",
+      "labels": [
+        "electronBridge.windowType"
+      ]
+    },
+    {
+      "id": "PBB-S005",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3341,
+        "endExclusive": 3401
+      },
+      "rangeSha256": "bb0f3cf15298906bec20f8cf5f1f6442c0783cf19e940d273d07f71c937ccd5b",
+      "labels": [
+        "electronBridge.acknowledgeChunkedMessage"
+      ]
+    },
+    {
+      "id": "PBB-S006",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3402,
+        "endExclusive": 3429
+      },
+      "rangeSha256": "892fe17c4a491836b4d4be61b0577d6e96b051f9f5ff082230c197e233409fb7",
+      "labels": [
+        "electronBridge.getPreloadStartedAtMs"
+      ]
+    },
+    {
+      "id": "PBB-S007",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3430,
+        "endExclusive": 3539
+      },
+      "rangeSha256": "42f42bb760d6c7194a7c1c8491d01a80a57e419d639229f9874b567e9c8694dc",
+      "labels": [
+        "electronBridge.sendMessageFromView"
+      ]
+    },
+    {
+      "id": "PBB-S008",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3540,
+        "endExclusive": 3592
+      },
+      "rangeSha256": "2383b0b679e71aa7e0f16b4c6919c4ec244dd7b364460c291ca3a0b3835373fe",
+      "labels": [
+        "electronBridge.getPathForFile"
+      ]
+    },
+    {
+      "id": "PBB-S009",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3593,
+        "endExclusive": 3642
+      },
+      "rangeSha256": "e25d366b29635c1203225765a00b38b264a3cd813ebd0730054dfce722b447bd",
+      "labels": [
+        "electronBridge.startFileDrag"
+      ]
+    },
+    {
+      "id": "PBB-S010",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3643,
+        "endExclusive": 3685
+      },
+      "rangeSha256": "92f37e716e19daee733d1a650e967fb8e7ca9aca1f2a3be7ec4a8ab3148ee489",
+      "labels": [
+        "electronBridge.startLinkDrag"
+      ]
+    },
+    {
+      "id": "PBB-S011",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3686,
+        "endExclusive": 3760
+      },
+      "rangeSha256": "388e156854cb38c1ce524dbc8698c2e5ee4e82affbbe2dc7a81ace5bea400782",
+      "labels": [
+        "electronBridge.sendWorkerMessageFromView"
+      ]
+    },
+    {
+      "id": "PBB-S012",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3761,
+        "endExclusive": 4095
+      },
+      "rangeSha256": "71e7a93890f2f7b9e2a3ea7b8b4629681c5bde9eaa0755ed40ece335b8ae54ad",
+      "labels": [
+        "electronBridge.subscribeToWorkerMessages"
+      ]
+    },
+    {
+      "id": "PBB-S013",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4096,
+        "endExclusive": 4151
+      },
+      "rangeSha256": "3c0a1e30ad08a6a6a1ddc888c3074fccf0a1cd5f87e36e8072b7d07a629b63fa",
+      "labels": [
+        "electronBridge.showContextMenu"
+      ]
+    },
+    {
+      "id": "PBB-S014",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4152,
+        "endExclusive": 4212
+      },
+      "rangeSha256": "7d3ca23df3703b8e3aefdf3ba1ef21c726207a98223f8620eb4a6857a8b088c3",
+      "labels": [
+        "electronBridge.getFastModeRolloutMetrics"
+      ]
+    },
+    {
+      "id": "PBB-S015",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4213,
+        "endExclusive": 4249
+      },
+      "rangeSha256": "abd98a61b3edf63fbed0047340a74ea54b95bbd9694e8c688a5404e1b5875287",
+      "labels": [
+        "electronBridge.getSharedObjectSnapshotValue"
+      ]
+    },
+    {
+      "id": "PBB-S016",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4250,
+        "endExclusive": 4326
+      },
+      "rangeSha256": "86f2d81699dbe0611b231564a83c0eef88bb1e04008a9918e9c75d5cd15d09b9",
+      "labels": [
+        "electronBridge.getInitialSidebarBootstrap"
+      ]
+    },
+    {
+      "id": "PBB-S017",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4327,
+        "endExclusive": 4350
+      },
+      "rangeSha256": "24754a716fd29bd351de076e171bdbe6a1521c926175459add1fac84de0c5c6a",
+      "labels": [
+        "electronBridge.getSystemThemeVariant"
+      ]
+    },
+    {
+      "id": "PBB-S018",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4351,
+        "endExclusive": 4412
+      },
+      "rangeSha256": "b3cdb603d49732db8d22388d60d7506b1d2cd4e476371a8299659c93b8089737",
+      "labels": [
+        "electronBridge.subscribeToSystemThemeVariant"
+      ]
+    },
+    {
+      "id": "PBB-S019",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4413,
+        "endExclusive": 4476
+      },
+      "rangeSha256": "deff8cac4ec8b57411f8f626c3e6a11283a6c34d4bdd5e8851b37e9944d6f598",
+      "labels": [
+        "electronBridge.triggerSentryTestError"
+      ]
+    },
+    {
+      "id": "PBB-S020",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4477,
+        "endExclusive": 4503
+      },
+      "rangeSha256": "ab7c891f139fdb089055a1c970d8d1a3513084c9e11f396f01a9418781c43634",
+      "labels": [
+        "electronBridge.getSentryInitOptions"
+      ]
+    },
+    {
+      "id": "PBB-S021",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4504,
+        "endExclusive": 4556
+      },
+      "rangeSha256": "5a1aa04cc0dcfa7f8b2d550b504d3ff2a926d286f24a7942b5c6e3f915982443",
+      "labels": [
+        "electronBridge.getDesktopUserAgent"
+      ]
+    },
+    {
+      "id": "PBB-S022",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4557,
+        "endExclusive": 4596
+      },
+      "rangeSha256": "a8ecd563dabc6cf14345f6f24a209ecb432070fd832353f81a9fd54c73ea6ae3",
+      "labels": [
+        "electronBridge.getAppSessionId"
+      ]
+    },
+    {
+      "id": "PBB-S023",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4597,
+        "endExclusive": 4617
+      },
+      "rangeSha256": "9a2a37c9ccf474cbf607d8bb949e2267ab6c177d57b2d32239c17c241e3beb0b",
+      "labels": [
+        "electronBridge.getBuildFlavor"
+      ]
+    },
+    {
+      "id": "PBB-S024",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4618,
+        "endExclusive": 4696
+      },
+      "rangeSha256": "68b16228c333e6c536a7b60d137f996b3c4133333103005cb17065881cfe30ee",
+      "labels": [
+        "electronBridge.isDeviceCheckSupported"
+      ]
+    },
+    {
+      "id": "PBB-S025",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4697,
+        "endExclusive": 4766
+      },
+      "rangeSha256": "e0a374d9a6fafa5af27315f81ee20a02c704c5dd51cee1089a244904e20cafe9",
+      "labels": [
+        "electronBridge.isIntelMacBuild"
+      ]
+    },
+    {
+      "id": "PBB-S026",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 915,
+        "endExclusive": 988
+      },
+      "rangeSha256": "9d85699bded89a58f92eaaa9595271d44b25c516219d388275b413c4481a9265",
+      "labels": [
+        "contextBridge expose:__SENTRY_IPC__"
+      ]
+    },
+    {
+      "id": "PBB-S027",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 6583,
+        "endExclusive": 6637
+      },
+      "rangeSha256": "3ab36f890b63414e3bd95e49333df5418c04a223685a6fa868527c8810457df2",
+      "labels": [
+        "contextBridge expose:codexWindowType"
+      ]
+    },
+    {
+      "id": "PBB-S028",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 6638,
+        "endExclusive": 6691
+      },
+      "rangeSha256": "b1d6f055f4e1e7e53d458ad18da60fc1863bf224effcb0fe25368638ecd5b298",
+      "labels": [
+        "contextBridge expose:electronBridge"
+      ]
+    },
+    {
+      "id": "PBB-S029",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2807,
+        "endExclusive": 2832
+      },
+      "rangeSha256": "2733241d47592d2436b3f9270aff348aca8d5c53da53f9f7b83386f2e34cf5d3",
+      "labels": [
+        "startup synchronous read:codex_desktop:get-sentry-init-options"
+      ]
+    },
+    {
+      "id": "PBB-S030",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2835,
+        "endExclusive": 2860
+      },
+      "rangeSha256": "1fb488f4d99730c7399a615489a52e0c9c9ea852cb616646fb098372f5b203ff",
+      "labels": [
+        "startup synchronous read:codex_desktop:get-build-flavor"
+      ]
+    },
+    {
+      "id": "PBB-S031",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2863,
+        "endExclusive": 2929
+      },
+      "rangeSha256": "a4ed540ad1f579669ab072b9b05122397f55d9855c828dbc340b4160d1596e2a",
+      "labels": [
+        "startup synchronous read:codex_desktop:get-shared-object-snapshot"
+      ]
+    },
+    {
+      "id": "PBB-S032",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2936,
+        "endExclusive": 2961
+      },
+      "rangeSha256": "2c6872bfbc8503312949a1ee6839b563bcf8d3e3b59b8ebe38210c9403328ecb",
+      "labels": [
+        "startup synchronous read:codex_desktop:get-system-theme-variant"
+      ]
+    },
+    {
+      "id": "PBB-S033",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 0,
+        "endExclusive": 6909
+      },
+      "rangeSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "labels": [
+        "complete app preload with protocol constants and forwarding paths"
+      ]
+    },
+    {
+      "id": "PBB-S034",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2800,
+        "endExclusive": 3325
+      },
+      "rangeSha256": "cc9e753102b036c8a7bfa3385b638fffe7a16ace65aecbb13954d1e223da719a",
+      "labels": [
+        "startup values, theme setup, shared snapshot and worker state; bounded context"
+      ]
+    },
+    {
+      "id": "PBB-S035",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3191,
+        "endExclusive": 3243
+      },
+      "rangeSha256": "879982a45f9e2e8b0043d2e40dc0814a3841ec2b7b16ca740958bba9de95df2f",
+      "labels": [
+        "inbound listener:h"
+      ]
+    },
+    {
+      "id": "PBB-S036",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3923,
+        "endExclusive": 3947
+      },
+      "rangeSha256": "0977bcf13552c5eec66b9873e9ac3a22fc2ea1c672f460e0fc66d8bae6eac821",
+      "labels": [
+        "inbound listener:x(t)"
+      ]
+    },
+    {
+      "id": "PBB-S037",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4768,
+        "endExclusive": 5123
+      },
+      "rangeSha256": "8550e1b83e6a2280be69c03cbd436d6859b87cfd26035640cd0df5a7cc9c990b",
+      "labels": [
+        "inbound listener:D"
+      ]
+    },
+    {
+      "id": "PBB-S038",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 5124,
+        "endExclusive": 5225
+      },
+      "rangeSha256": "d7e418e7c922325144546482bb75dbe555bb3fbd8d6442c7f1794e106c539f58",
+      "labels": [
+        "inbound listener:c"
+      ]
+    },
+    {
+      "id": "PBB-S039",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 5240,
+        "endExclusive": 6582
+      },
+      "rangeSha256": "79621ea17528f883ac13ac3f3a4f97b6da9ed70905513dda07ef45a53899dc74",
+      "labels": [
+        "inbound listener:s"
+      ]
+    },
+    {
+      "id": "PBB-S040",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 6692,
+        "endExclusive": 6874
+      },
+      "rangeSha256": "b4209312c58d46429b39752fe9d0d631e7bd55d441ae6eead2a0cb36220fffb6",
+      "labels": [
+        "window message to app-host transferred-port forwarding"
+      ]
+    },
+    {
+      "id": "PBB-S041",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 353827,
+        "endExclusive": 353873
+      },
+      "rangeSha256": "d107b9c8dfd59c433859e6d8157650adb7b773731732cca465b2de43757d162a",
+      "labels": [
+        "lexically qualified declaration:_se"
+      ]
+    },
+    {
+      "id": "PBB-S042",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1960076,
+        "endExclusive": 1960126
+      },
+      "rangeSha256": "9061edcd0a861043d91ddbde295bfd3348d7a5adfa7a3fdd8281007291e33962",
+      "labels": [
+        "lexically qualified declaration:JJ"
+      ]
+    },
+    {
+      "id": "PBB-S043",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3757889,
+        "endExclusive": 3764145
+      },
+      "rangeSha256": "e26ca9c17cf1219522af5077ef47ceb18789b247026f9486f9a3ab0ab733f0a7",
+      "labels": [
+        "lexically qualified declaration:M1e"
+      ]
+    },
+    {
+      "id": "PBB-S044",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3721899,
+        "endExclusive": 3753777
+      },
+      "rangeSha256": "f0d0b8385d879efd7ba5eab16f3b97d39c57d1a73f42227759e290c673078c48",
+      "labels": [
+        "lexically qualified declaration:y1e"
+      ]
+    },
+    {
+      "id": "PBB-S045",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1517908,
+        "endExclusive": 1528135
+      },
+      "rangeSha256": "63a253c9c656e6b6066855c1aec291f7fa0f16cc020f6def1d213ae88de8b4dd",
+      "labels": [
+        "lexically qualified declaration:ICe"
+      ]
+    },
+    {
+      "id": "PBB-S046",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1528135,
+        "endExclusive": 1528303
+      },
+      "rangeSha256": "9a495500b1712c615a8202a40f5ba4ddcb2e27017cc5564c4312f07695fcf9c7",
+      "labels": [
+        "lexically qualified declaration:LCe"
+      ]
+    },
+    {
+      "id": "PBB-S047",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1528474,
+        "endExclusive": 1528810
+      },
+      "rangeSha256": "affde0789d7b47f7364244a033d6670931d95628e22384839bdc387a25f2346a",
+      "labels": [
+        "lexically qualified declaration:cU"
+      ]
+    },
+    {
+      "id": "PBB-S048",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 357381,
+        "endExclusive": 359385
+      },
+      "rangeSha256": "8e595c6b4afcb2a04735f80f3b4d54f3ee4f9ed41cda825b36481f37711a2e2c",
+      "labels": [
+        "lexically qualified declaration:Ese"
+      ]
+    },
+    {
+      "id": "PBB-S049",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "kind": "byte-range",
+        "start": 393007,
+        "endExclusive": 393906
+      },
+      "rangeSha256": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf",
+      "labels": [
+        "lexically qualified declaration:gT"
+      ]
+    },
+    {
+      "id": "PBB-S050",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "kind": "byte-range",
+        "start": 347234,
+        "endExclusive": 347381
+      },
+      "rangeSha256": "b2be6cdc0748de6746250c338917d17279fb1982dc112f8d2ab3d87698e950e0",
+      "labels": [
+        "lexically qualified declaration:Lx"
+      ]
+    },
+    {
+      "id": "PBB-S051",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "kind": "byte-range",
+        "start": 358753,
+        "endExclusive": 358941
+      },
+      "rangeSha256": "94993f3ece2f2a0dcc201dcbea5b7dc528c590db66f2784be1e3f92d70772a2a",
+      "labels": [
+        "lexically qualified declaration:FS"
+      ]
+    },
+    {
+      "id": "PBB-S052",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "kind": "byte-range",
+        "start": 358945,
+        "endExclusive": 359311
+      },
+      "rangeSha256": "b4d288ec8a35a0d646df1e691392d061f6f26d563e0dc55dd79614bb93fe536c",
+      "labels": [
+        "lexically qualified declaration:IS"
+      ]
+    },
+    {
+      "id": "PBB-S053",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3796148,
+        "endExclusive": 3796174
+      },
+      "rangeSha256": "91878cff7475c5e5388e7ec871ab669b6fe3049c2f1d88ac9805296620fb5638",
+      "labels": [
+        "bootstrap exported path factory call"
+      ]
+    },
+    {
+      "id": "PBB-S054",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 678,
+        "endExclusive": 714
+      },
+      "rangeSha256": "3322e6f3e0f6aa5dfaaf1c559925ee1f81f47e4502f60e2c8595b12d44765933",
+      "labels": [
+        "bootstrap CJS import"
+      ]
+    },
+    {
+      "id": "PBB-S055",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "kind": "byte-range",
+        "start": 460669,
+        "endExclusive": 460681
+      },
+      "rangeSha256": "7299fcd7ab8a3278f7b862434b5cf993787897aac049dcc321dad2a16b062bc1",
+      "labels": [
+        "bootstrap gT export as U"
+      ]
+    },
+    {
+      "id": "PBB-S056",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3796136,
+        "endExclusive": 3796174
+      },
+      "rangeSha256": "af644212e3049dbb4554b96094058aa6597ac82ac389ce01f21998b840919d2c",
+      "labels": [
+        "local startup V awaits bootstrap U result"
+      ]
+    },
+    {
+      "id": "PBB-S057",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3797672,
+        "endExclusive": 3798120
+      },
+      "rangeSha256": "cc8814ca51e1faee5493c045e2ea08158b0a18ac51cc9f43f6a922c39064f3b0",
+      "labels": [
+        "M1e input options with V.preloadPath"
+      ]
+    },
+    {
+      "id": "PBB-S058",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3760461,
+        "endExclusive": 3761056
+      },
+      "rangeSha256": "330258fa9b762acb38ea774d29290d17128ec0721c16911396187aef39f1d126",
+      "labels": [
+        "y1e options with preloadPath parameter d"
+      ]
+    },
+    {
+      "id": "PBB-S059",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3735863,
+        "endExclusive": 3736138
+      },
+      "rangeSha256": "f160d3cc29b502ef05d042429e7144966b806aea7533ae5d27b25254c34f6ff2",
+      "labels": [
+        "app shell webPreferences"
+      ]
+    },
+    {
+      "id": "PBB-S060",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3734705,
+        "endExclusive": 3744405
+      },
+      "rangeSha256": "7d05ab5b834ef53470a0ee8235874e7c5c85236644e1057e101a83afcdab18b0",
+      "labels": [
+        "complete app shell createWindow method with BrowserWindow preferences and guest hooks"
+      ]
+    },
+    {
+      "id": "PBB-S061",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3723365,
+        "endExclusive": 3723896
+      },
+      "rangeSha256": "f84bfdc419818dead9713b1c74ba69dd4caa1594df1233e8bd2e2c3acc2b7323",
+      "labels": [
+        "complete window manager constructor stores options"
+      ]
+    },
+    {
+      "id": "PBB-S062",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1524137,
+        "endExclusive": 1524150
+      },
+      "rangeSha256": "c74b2aab65e48d6489089513d8303661322f61d7fb85d3d8454672db44841e9f",
+      "labels": [
+        "browser path injection"
+      ]
+    },
+    {
+      "id": "PBB-S063",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2002638,
+        "endExclusive": 2002652
+      },
+      "rangeSha256": "391dc2596696a6298582e49d1a1395a378a4e4336cf645b942aa86c70e52ac11",
+      "labels": [
+        "browser path injection"
+      ]
+    },
+    {
+      "id": "PBB-S064",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2003268,
+        "endExclusive": 2003293
+      },
+      "rangeSha256": "a4b64673ce7b466d87f93aa0ec013f0252b849e49a0771c623fbead47dc01fef",
+      "labels": [
+        "browser path injection"
+      ]
+    },
+    {
+      "id": "PBB-S065",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1883433,
+        "endExclusive": 1885089
+      },
+      "rangeSha256": "9c964fe8a3985cfab1cb13b9d27dcdeafd94b3fe351dc307c73376b8d649b5b3",
+      "labels": [
+        "window.open local handler with preload input and adoption contract"
+      ]
+    },
+    {
+      "id": "PBB-S066",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 357491,
+        "endExclusive": 358721
+      },
+      "rangeSha256": "01d2859ed22ea313fb1366fd69d2ac1e79ea7fe7a5c63be5e796513e115039a2",
+      "labels": [
+        "MCP will-attach admission and forced webPreferences"
+      ]
+    },
+    {
+      "id": "PBB-S067",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 135839,
+        "endExclusive": 135910
+      },
+      "rangeSha256": "c757f21574530ec7b94bb51341f75890c1c694e112760ce43dfb17b773c7a0b2",
+      "labels": [
+        "executeInMainWorld call"
+      ]
+    },
+    {
+      "id": "PBB-S068",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 136027,
+        "endExclusive": 141291
+      },
+      "rangeSha256": "9235089bacf9cc0a72ee664e7eccf2d29adf6374bb436781bf358b6640fab315",
+      "labels": [
+        "executeInMainWorld call"
+      ]
+    },
+    {
+      "id": "PBB-S069",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 149217,
+        "endExclusive": 149272
+      },
+      "rangeSha256": "f685c8ed97d7ff5512ae1cad69a481e0a71252bcfb47e151087d205be47e7293",
+      "labels": [
+        "executeInMainWorld call"
+      ]
+    },
+    {
+      "id": "PBB-S070",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 517997,
+        "endExclusive": 527556
+      },
+      "rangeSha256": "fd97a2cd9c0bffb6e99d42dfcbacc6c0e02e2634f0fef1cfa2cdd66c298bba88",
+      "labels": [
+        "browser lifecycle, policy, trusted input and webMCP setup through entry calls"
+      ]
+    },
+    {
+      "id": "PBB-S071",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 517997,
+        "endExclusive": 519338
+      },
+      "rangeSha256": "68ca326abc5e4ae584a1ed44a10391ed96b07ff8ad83b04da807266e536addc4",
+      "labels": [
+        "complete DS annotation admission and teardown"
+      ]
+    },
+    {
+      "id": "PBB-S072",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 527143,
+        "endExclusive": 527556
+      },
+      "rangeSha256": "50b5c83ed24ca70a15c69a2a00689a98c799f738d2fcf6a38ae4fb5f47c2cee4",
+      "labels": [
+        "complete ZS webMCP gate and entry calls"
+      ]
+    },
+    {
+      "id": "PBB-S073",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/sandbox-preload.js",
+      "sourceHash": "e24e4d655e339484eb0ef842393bebfa13fb86a7863350ef49cd6a63eb1bddfa",
+      "locator": {
+        "kind": "byte-range",
+        "start": 0,
+        "endExclusive": 2102
+      },
+      "rangeSha256": "e24e4d655e339484eb0ef842393bebfa13fb86a7863350ef49cd6a63eb1bddfa",
+      "labels": [
+        "complete guest preload with URL, port and one-shot checks"
+      ]
+    },
+    {
+      "id": "PBB-S074",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/sandbox-preload.js",
+      "sourceHash": "e24e4d655e339484eb0ef842393bebfa13fb86a7863350ef49cd6a63eb1bddfa",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1728,
+        "endExclusive": 1830
+      },
+      "rangeSha256": "7cf37d93cfdc38f81018dea30f0fa263c9df70674ce7272d681e9a23b4c7698d",
+      "labels": [
+        "MCP guest postMessage and transfer list"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "id": "PBB-E001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "三个发布preload均只有一处未被局部require绑定遮蔽的require(\"electron\")调用。词法绑定匹配的普通CallExpression共48处（30/17/1）；该统计不覆盖OptionalCallExpression、NewExpression或任意别名传播，不代表完整Electron能力面。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 6,
+        "endExclusive": 25
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S001",
+        "PBB-S002",
+        "PBB-S003"
+      ]
+    },
+    {
+      "id": "PBB-E002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "bootstrap gT以moduleDir拼接preload.js并作为U导出；main从对应CJS导入调用g.U，V.preloadPath经M1e传入y1e options，createWindow把该路径放入BrowserWindow的webPreferences。源码显式contextIsolation=true、nodeIntegration=false；该对象未显式给出sandbox，不推断实际默认值。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "kind": "byte-range",
+        "start": 393007,
+        "endExclusive": 393906
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S049",
+        "PBB-S053",
+        "PBB-S054",
+        "PBB-S055",
+        "PBB-S056",
+        "PBB-S057",
+        "PBB-S043",
+        "PBB-S058",
+        "PBB-S044",
+        "PBB-S061",
+        "PBB-S059",
+        "PBB-S060"
+      ]
+    },
+    {
+      "id": "PBB-E003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "主桥接用contextBridge暴露codexWindowType及包含22项属性的electronBridge；Sentry命名空间在另一个受try/catch保护的条件分支中暴露。22项是该对象属性分母，不包含窗口message通道及Sentry接口，也不证明全部主进程处理已运行。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 915,
+        "endExclusive": 988
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S026",
+        "PBB-S027",
+        "PBB-S028",
+        "PBB-S004",
+        "PBB-S005",
+        "PBB-S006",
+        "PBB-S007",
+        "PBB-S008",
+        "PBB-S009",
+        "PBB-S010",
+        "PBB-S011",
+        "PBB-S012",
+        "PBB-S013",
+        "PBB-S014",
+        "PBB-S015",
+        "PBB-S016",
+        "PBB-S017",
+        "PBB-S018",
+        "PBB-S019",
+        "PBB-S020",
+        "PBB-S021",
+        "PBB-S022",
+        "PBB-S023",
+        "PBB-S024",
+        "PBB-S025"
+      ]
+    },
+    {
+      "id": "PBB-E004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "preload启动有四次同步IPC读取：Sentry初始化元数据、build flavor、共享对象快照和系统主题。只有共享快照在此处有nullish空对象回退。首次侧栏bootstrap另行惰性同步读取；返回undefined时下次仍会读取。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2807,
+        "endExclusive": 2832
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S029",
+        "PBB-S030",
+        "PBB-S031",
+        "PBB-S032",
+        "PBB-S016",
+        "PBB-S034",
+        "PBB-S033"
+      ]
+    },
+    {
+      "id": "PBB-E005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "worker订阅使用每worker的Set和listener Map；最后一个callback删除后移除对应IPC listener。主题回调Set返回删除函数；共享快照在本地shared-object-set发送前乐观更新，收到shared-object-updated时再次更新，undefined值删除键。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3430,
+        "endExclusive": 3539
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S007",
+        "PBB-S012",
+        "PBB-S018",
+        "PBB-S034",
+        "PBB-S035",
+        "PBB-S036",
+        "PBB-S037",
+        "PBB-S038",
+        "PBB-S039",
+        "PBB-S033"
+      ]
+    },
+    {
+      "id": "PBB-E006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "主preload保留message-for-view转发、MCP host转移端口、PIP decoder/frame生命周期与connect-app-host窗口message入口；这些能力不属于22个对象属性的完整分母。connect-app-host复用既有绑定分析，外部端口接收方和原生交付仍待运行验证。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3191,
+        "endExclusive": 3243
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S035",
+        "PBB-S036",
+        "PBB-S037",
+        "PBB-S038",
+        "PBB-S039",
+        "PBB-S040"
+      ],
+      "reusedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/preload-app-host.json",
+          "bytes": 115244,
+          "sha256": "36dd5008715b488bfb739ca65cd29b05a75175ae5c250549a59270ea235e1dcc"
+        }
+      ]
+    },
+    {
+      "id": "PBB-E007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "main的JJ绑定拼接browser-page-preload.js，并以preloadPath传给ICe。ICe的同一参数h交给LCe；LCe设置session/preload后调用cU。cU移除guest传入的allowpopups/disablewebsecurity/webpreferences并显式设sandbox/contextIsolation/webSecurity=true和Node集成=false等参数。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1960076,
+        "endExclusive": 1960126
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S042",
+        "PBB-S062",
+        "PBB-S063",
+        "PBB-S064",
+        "PBB-S045",
+        "PBB-S046",
+        "PBB-S047"
+      ]
+    },
+    {
+      "id": "PBB-E008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定window.open handler还通过输入e.browserPagePreloadPath设置overrideBrowserWindowOptions，并要求能adopt的真实WebContents。getPageLifecycleHelpers输出中存在同名字段JJ；本批没有把整个helper对象到该局部参数的所有中间调用都证明为同一对象，不能以字段同名补齐该数据流。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1883433,
+        "endExclusive": 1885089
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S065",
+        "PBB-S064"
+      ]
+    },
+    {
+      "id": "PBB-E009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "浏览器preload存在三处词法匹配的contextBridge.executeInMainWorld调用；DS先登记IPC，再对安全顶层窗口读取annotation policy。webMCP的ZS有独立同步policy读取，未套用DS的安全顶层条件；toolchange订阅在非persisted pagehide移除。可选webFrame zoom调用在普通CallExpression计数之外。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 135839,
+        "endExclusive": 135910
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S067",
+        "PBB-S068",
+        "PBB-S069",
+        "PBB-S070",
+        "PBB-S071",
+        "PBB-S072"
+      ]
+    },
+    {
+      "id": "PBB-E010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "sandbox-preload校验协议、host及子域、无端口/凭据、skybridge路径查询、当前origin和initId；要求12个port并选取7个可选port。shape检查只要求postMessage/start函数。一次性标志在ipcRenderer.postMessage前置true，未在此代码中设置失败回退；传输选中的port及replyPort。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/sandbox-preload.js",
+      "sourceHash": "e24e4d655e339484eb0ef842393bebfa13fb86a7863350ef49cd6a63eb1bddfa",
+      "locator": {
+        "kind": "byte-range",
+        "start": 0,
+        "endExclusive": 2102
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S073",
+        "PBB-S074"
+      ]
+    },
+    {
+      "id": "PBB-E011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "main的Ese will-attach回调在partition/source/initId/view实例等检查后设置sandbox-preload.js和明确的sandbox/contextIsolation/webSecurity参数。_se读取与赋值由同一program binding解析；Ese由createWindow在相应窗口条件下安装。既有MCP入口合同继续负责更广用户流程，不新增模式排除。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 353827,
+        "endExclusive": 353873
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S041",
+        "PBB-S048",
+        "PBB-S066",
+        "PBB-S060"
+      ],
+      "reusedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/mcp-app-entry-paths-v1.json",
+          "bytes": 850087,
+          "sha256": "cbb4405c442845e39e01e16a8592e5a5aa56fe1d55117647e06f615c063f402a"
+        }
+      ]
+    },
+    {
+      "id": "PBB-E012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "bootstrap中Lx的唯一选定调用来自PreloadInjection集成：Classic位、app ready、FS返回绝对路径且existsSync成功后，对getSessions逐一登记。FS尝试解析../../preload/default.js；Lx优先registerPreloadScript({type:frame,filePath})，否则getPreloads后setPreloads前置路径。这是单独的Sentry注入线索，不能当作应用preload.js的加载链；未证明该分支实际成功。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "kind": "byte-range",
+        "start": 358753,
+        "endExclusive": 358941
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S051",
+        "PBB-S052",
+        "PBB-S050"
+      ]
+    },
+    {
+      "id": "PBB-E013",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "已保存的运行时脚本给出受控preloadRequire、绝对路径过滤、逐条UTF-8读取和执行/错误传播，以及contextBridge的隔离检查。三个第一方入口与这些接口相接，但相接不证明native provider、ABI或真实运行效果可用。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 6,
+        "endExclusive": 25
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S001",
+        "PBB-S002",
+        "PBB-S003"
+      ],
+      "reusedEvidence": [
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+            "bytes": 177162,
+            "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+          },
+          "jsonPointer": "/facts/5",
+          "valueSha256": "cad06fae7373daa30215cbf1d0a9790dea890ca9257a4fcc98ffa983bd2725ef"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+            "bytes": 177162,
+            "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+          },
+          "jsonPointer": "/facts/6",
+          "valueSha256": "d30da159400ec45d83398b68d545f4227ec9d0383d7d188a3404a9777aa00def"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+            "bytes": 177162,
+            "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+          },
+          "jsonPointer": "/facts/7",
+          "valueSha256": "ecce3642833f1f4567c08fb6181088b236f30943880befe4282e64e598b2b866"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+            "bytes": 177162,
+            "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+          },
+          "jsonPointer": "/facts/8",
+          "valueSha256": "47acbd29d40b3c25d66e07b61c009cb74d958a260177931ef6733781d3a15849"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+            "bytes": 177162,
+            "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+          },
+          "jsonPointer": "/facts/9",
+          "valueSha256": "f2bd5acdfda902fa18d7b2c65291bfeb60c8bde61c7653f2b612a0c5545ebabd"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+            "bytes": 177162,
+            "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+          },
+          "jsonPointer": "/facts/12",
+          "valueSha256": "ccd007c0269034ccb2a5b338dc473e8ddba007f414cdb7a415164e9b461436b1"
+        }
+      ]
+    },
+    {
+      "id": "PBB-E014",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "浏览器preload的既有React/ReactDOM合同记录19.2.7源码自报版本及annotation第一方adapter候选。实际上游发行、修改状态、完整依赖闭包和新工程精确锁仍待资格验证；本批不生成第三方实现副本，也不增加202条canonical依赖分母。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/browser-page-preload.js",
+      "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+      "locator": {
+        "kind": "byte-range",
+        "start": 517997,
+        "endExclusive": 527556
+      },
+      "method": "complete-program Babel AST, lexical-binding joins and bounded frozen-source review",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; actual runtime not verified",
+      "sourceUnitIds": [
+        "PBB-S070"
+      ],
+      "reusedEvidence": [
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+            "bytes": 54499,
+            "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+          },
+          "jsonPointer": "/contracts/6",
+          "valueSha256": "d47943b29b04505ec786b62fec648b4e5f3cb69039be57fc97835ed4830b2a57"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+            "bytes": 54499,
+            "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+          },
+          "jsonPointer": "/contracts/7",
+          "valueSha256": "01c08a702db1040c1a63f5b8bccf8b71fbd408a405e5e70f42c34221020c862b"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+            "bytes": 54499,
+            "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+          },
+          "jsonPointer": "/firstPartyWrappers/0",
+          "valueSha256": "65c76ea861c093dee655e2c52e2f73a39c084a8ddd13f0c4230240306f578a37"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+            "bytes": 54499,
+            "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+          },
+          "jsonPointer": "/firstPartyWrappers/1",
+          "valueSha256": "b461a7be995e7e9a5558a9e5bd15d285f675b76051333321d098b7f6c1dd6c03"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "PBB-APP",
+      "publishedInput": "app.asar/.vite/build/preload.js",
+      "proposedEntry": "apps/desktop/src/preload/app.ts",
+      "proposedOutput": "apps/desktop/dist/preload.js",
+      "role": "isolated application bridge; delegates existing app-host-bridge.ts",
+      "loadedBy": "independent app-window webPreferences.preload path",
+      "sourceUnitIds": [
+        "PBB-S049",
+        "PBB-S059",
+        "PBB-S026",
+        "PBB-S027",
+        "PBB-S028"
+      ],
+      "evidenceIds": [
+        "PBB-E002",
+        "PBB-E003",
+        "PBB-E004",
+        "PBB-E005",
+        "PBB-E006"
+      ],
+      "runtimeApiRequirements": [
+        "ipcRenderer.send/sendSync/invoke/on/removeListener/postMessage",
+        "contextBridge.exposeInMainWorld",
+        "webUtils.getPathForFile"
+      ],
+      "webRequirements": [
+        "MessageEvent/window.postMessage/MessagePort",
+        "MutationObserver",
+        "VideoDecoder/EncodedVideoChunk/VideoFrame where the PIP path is active"
+      ],
+      "exposedGlobals": [
+        "codexWindowType",
+        "electronBridge",
+        "__SENTRY_IPC__ (conditional SDK branch)"
+      ],
+      "preferences": {
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "sandbox": "not explicit in selected app-window preferences; provider-default qualification required"
+      },
+      "proposedBuildFormat": "single CommonJS-compatible entry bundle",
+      "runtimeExternal": [
+        "electron"
+      ],
+      "pureJsDependencies": "package imports in maintained source; installed from exact new lock and bundled when reachable",
+      "classification": "entry/build boundary, not an original source-file reconstruction or new business module",
+      "mode": "unknown at whole-entry level; existing branch decisions and positive consumers remain authoritative",
+      "implementationStatus": "not started"
+    },
+    {
+      "id": "PBB-BROWSER",
+      "publishedInput": "app.asar/.vite/build/browser-page-preload.js",
+      "proposedEntry": "apps/desktop/src/browser-preload/index.ts",
+      "proposedOutput": "apps/desktop/dist/browser-page-preload.js",
+      "role": "browser page annotation lifecycle, policy, input and webMCP notifications",
+      "loadedBy": "admitted browser guest attach; a second local window.open override consumer is separately qualified",
+      "sourceUnitIds": [
+        "PBB-S042",
+        "PBB-S046",
+        "PBB-S047",
+        "PBB-S070"
+      ],
+      "evidenceIds": [
+        "PBB-E007",
+        "PBB-E008",
+        "PBB-E009",
+        "PBB-E014"
+      ],
+      "runtimeApiRequirements": [
+        "ipcRenderer.send/sendSync/invoke/on/removeListener",
+        "contextBridge.executeInMainWorld",
+        "webFrame.setVisualZoomLevelLimits (optional call)"
+      ],
+      "webRequirements": [
+        "secure top-window policy branch",
+        "DOM/EventTarget/pagehide and trusted input",
+        "document.modelContext when enabled"
+      ],
+      "exposedGlobals": "No exposeInMainWorld call to the resolved electron binding in this selected complete Program; main-world execution functions are separate.",
+      "preferences": {
+        "contextIsolation": true,
+        "sandbox": true,
+        "nodeIntegration": false,
+        "nodeIntegrationInSubFrames": false,
+        "nodeIntegrationInWorker": false,
+        "webSecurity": true
+      },
+      "proposedBuildFormat": "single CommonJS-compatible entry bundle",
+      "runtimeExternal": [
+        "electron"
+      ],
+      "pureJsDependencies": "package imports in maintained source; installed from exact new lock and bundled when reachable",
+      "classification": "entry/build boundary, not an original source-file reconstruction or new business module",
+      "mode": "unknown at whole-entry level; existing branch decisions and positive consumers remain authoritative",
+      "implementationStatus": "not started"
+    },
+    {
+      "id": "PBB-MCP",
+      "publishedInput": "app.asar/.vite/build/sandbox-preload.js",
+      "proposedEntry": "apps/desktop/src/preload/mcp-sandbox.ts",
+      "proposedOutput": "apps/desktop/dist/sandbox-preload.js",
+      "role": "validated guest message/port initialization; delegates existing MCP entry contract",
+      "loadedBy": "MCP will-attach admission overwrites the guest preload path",
+      "sourceUnitIds": [
+        "PBB-S041",
+        "PBB-S066",
+        "PBB-S073"
+      ],
+      "evidenceIds": [
+        "PBB-E010",
+        "PBB-E011"
+      ],
+      "runtimeApiRequirements": [
+        "ipcRenderer.postMessage"
+      ],
+      "webRequirements": [
+        "URL/URLSearchParams",
+        "window message source/origin matching",
+        "port transfer"
+      ],
+      "exposedGlobals": "No exposeInMainWorld call to the resolved electron binding in this selected complete Program.",
+      "preferences": {
+        "contextIsolation": true,
+        "sandbox": true,
+        "nodeIntegration": false,
+        "nodeIntegrationInSubFrames": false,
+        "webSecurity": true,
+        "webviewTag": false
+      },
+      "proposedBuildFormat": "single CommonJS-compatible entry bundle",
+      "runtimeExternal": [
+        "electron"
+      ],
+      "pureJsDependencies": "package imports in maintained source; installed from exact new lock and bundled when reachable",
+      "classification": "entry/build boundary, not an original source-file reconstruction or new business module",
+      "mode": "unknown at whole-entry level; existing branch decisions and positive consumers remain authoritative",
+      "implementationStatus": "not started"
+    }
+  ],
+  "appBridge": {
+    "properties": [
+      {
+        "name": "windowType",
+        "sourceUnitId": "PBB-S004",
+        "sourceExpression": "windowType:T",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "acknowledgeChunkedMessage",
+        "sourceUnitId": "PBB-S005",
+        "sourceExpression": "acknowledgeChunkedMessage:(t,n)=>{e.ipcRenderer.send(o,t,n)}",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getPreloadStartedAtMs",
+        "sourceUnitId": "PBB-S006",
+        "sourceExpression": "getPreloadStartedAtMs:()=>w",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "sendMessageFromView",
+        "sourceUnitId": "PBB-S007",
+        "sourceExpression": "sendMessageFromView:async t=>{t.type===`shared-object-set`&&I(t.key,t.value),await e.ipcRenderer.invoke(E,t)}",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getPathForFile",
+        "sourceUnitId": "PBB-S008",
+        "sourceExpression": "getPathForFile:t=>e.webUtils.getPathForFile(t)||null",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "startFileDrag",
+        "sourceUnitId": "PBB-S009",
+        "sourceExpression": "startFileDrag:t=>e.ipcRenderer.sendSync(v,t)===!0",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "startLinkDrag",
+        "sourceUnitId": "PBB-S010",
+        "sourceExpression": "startLinkDrag:t=>{e.ipcRenderer.send(y,t)}",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "sendWorkerMessageFromView",
+        "sourceUnitId": "PBB-S011",
+        "sourceExpression": "sendWorkerMessageFromView:async(t,n)=>{await e.ipcRenderer.invoke(b(t),n)}",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "subscribeToWorkerMessages",
+        "sourceUnitId": "PBB-S012",
+        "sourceExpression": "subscribeToWorkerMessages:(t,n)=>{let r=L.get(t);r||(r=new Set,L.set(t,r));let i=R.get(t);return i||(i=(e,n)=>{let r=L.get(t);r&&r.forEach(e=>{e(n)})},R.set(t,i),e.ipcRenderer.on(x(t),i)),r.add(n),()=>{let r=L.get(t);if(!r||(r.delete(n),r.size>0))return;L.delete(t);let i=R.get(t);i&&e.ipcRenderer.removeListener(x(t),i),R.delete(t)}}",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "showContextMenu",
+        "sourceUnitId": "PBB-S013",
+        "sourceExpression": "showContextMenu:async(t,n)=>e.ipcRenderer.invoke(l,t,n)",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getFastModeRolloutMetrics",
+        "sourceUnitId": "PBB-S014",
+        "sourceExpression": "getFastModeRolloutMetrics:async t=>e.ipcRenderer.invoke(m,t)",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getSharedObjectSnapshotValue",
+        "sourceUnitId": "PBB-S015",
+        "sourceExpression": "getSharedObjectSnapshotValue:e=>A[e]",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getInitialSidebarBootstrap",
+        "sourceUnitId": "PBB-S016",
+        "sourceExpression": "getInitialSidebarBootstrap:()=>(F===void 0&&(F=e.ipcRenderer.sendSync(p)),F)",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getSystemThemeVariant",
+        "sourceUnitId": "PBB-S017",
+        "sourceExpression": "getSystemThemeVariant:N",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "subscribeToSystemThemeVariant",
+        "sourceUnitId": "PBB-S018",
+        "sourceExpression": "subscribeToSystemThemeVariant:e=>(P.add(e),()=>{P.delete(e)})",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "triggerSentryTestError",
+        "sourceUnitId": "PBB-S019",
+        "sourceExpression": "triggerSentryTestError:async()=>{await e.ipcRenderer.invoke(g)}",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getSentryInitOptions",
+        "sourceUnitId": "PBB-S020",
+        "sourceExpression": "getSentryInitOptions:()=>O",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getDesktopUserAgent",
+        "sourceUnitId": "PBB-S021",
+        "sourceExpression": "getDesktopUserAgent:()=>C({appVersion:O.appVersion})",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getAppSessionId",
+        "sourceUnitId": "PBB-S022",
+        "sourceExpression": "getAppSessionId:()=>O.codexAppSessionId",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "getBuildFlavor",
+        "sourceUnitId": "PBB-S023",
+        "sourceExpression": "getBuildFlavor:()=>k",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "isDeviceCheckSupported",
+        "sourceUnitId": "PBB-S024",
+        "sourceExpression": "isDeviceCheckSupported:()=>process.platform===`darwin`&&process.arch===`arm64`",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      },
+      {
+        "name": "isIntelMacBuild",
+        "sourceUnitId": "PBB-S025",
+        "sourceExpression": "isIntelMacBuild:()=>process.platform===`darwin`&&process.arch===`x64`",
+        "qualification": "Source expression; external IPC handler effects are not established by this property."
+      }
+    ],
+    "startupSyncReads": [
+      {
+        "channel": "codex_desktop:get-sentry-init-options",
+        "localBinding": "O",
+        "consumer": "used for app version/session metadata",
+        "sourceUnitId": "PBB-S029",
+        "runtimeHandlerVerified": false
+      },
+      {
+        "channel": "codex_desktop:get-build-flavor",
+        "localBinding": "k",
+        "consumer": "retained build flavor value",
+        "sourceUnitId": "PBB-S030",
+        "runtimeHandlerVerified": false
+      },
+      {
+        "channel": "codex_desktop:get-shared-object-snapshot",
+        "localBinding": "A",
+        "consumer": "nullish value becomes an empty object",
+        "sourceUnitId": "PBB-S031",
+        "runtimeHandlerVerified": false
+      },
+      {
+        "channel": "codex_desktop:get-system-theme-variant",
+        "localBinding": "j",
+        "consumer": "initial theme value and DOM initialization",
+        "sourceUnitId": "PBB-S032",
+        "runtimeHandlerVerified": false
+      }
+    ],
+    "lazySidebarChannel": "codex_desktop:get-initial-sidebar-bootstrap",
+    "separateWindowMessagePath": "connect-app-host and inbound transferred MCP/PIP messages"
+  },
+  "mcpPortContract": {
+    "required": [
+      "navigate",
+      "notifyMcpAppsHostContext",
+      "notifyMcpAppsToolCancelled",
+      "notifyMcpAppsToolInput",
+      "notifyMcpAppsToolResult",
+      "requestMcpAppsResourceTeardown",
+      "runWidgetCode",
+      "setAdditionalGlobals",
+      "setSafeArea",
+      "setTheme",
+      "setWidgetData",
+      "setWidgetView"
+    ],
+    "optional": [
+      "applyAutofillCandidate",
+      "getCurrentPath",
+      "notifyMcpAppsMcpNotification",
+      "prepareEnvironment",
+      "runUserCode",
+      "screenshot",
+      "stop"
+    ],
+    "sourceUnitId": "PBB-S073",
+    "shapeCheck": "object with postMessage and start functions; does not itself prove MessagePort identity",
+    "onceFlagSetBeforePostMessage": true
+  },
+  "buildDecisions": [
+    {
+      "id": "PBB-B01",
+      "decision": "Create three independent preload build entry targets with stable emitted names. Keep app-host-bridge.ts, browser-preload/annotation/* and existing desktop-transport ownership paths; do not split each controller into a package or duplicate broad source witnesses.",
+      "evidenceIds": [
+        "PBB-E002",
+        "PBB-E007",
+        "PBB-E010",
+        "PBB-E011"
+      ],
+      "qualification": "maintenance design; no client files generated"
+    },
+    {
+      "id": "PBB-B02",
+      "decision": "Produce one CommonJS-compatible bundle per entry, with dynamic first-party imports resolved within that entry build and no unqualified runtime chunk require. Keep electron external because the runtime supplies it. Bundle reachable pure-JS packages from the new exact lock; do not write vendor implementation into maintained source.",
+      "evidenceIds": [
+        "PBB-E001",
+        "PBB-E009",
+        "PBB-E013",
+        "PBB-E014"
+      ],
+      "qualification": "build policy; actual target bundler/configuration and package compatibility remain unbuilt"
+    },
+    {
+      "id": "PBB-B03",
+      "decision": "Treat preload outputs as named resources resolved from the independent packaged application. Recreate all three path consumers and individual load/error attribution. Keep SDK session injection distinct from application webPreferences injection.",
+      "evidenceIds": [
+        "PBB-E002",
+        "PBB-E007",
+        "PBB-E008",
+        "PBB-E011",
+        "PBB-E012",
+        "PBB-E013"
+      ],
+      "qualification": "required build/packaging behavior, not a validated clean build"
+    },
+    {
+      "id": "PBB-B04",
+      "decision": "Keep the 22-property app bridge separate from browser page main-world execution and MCP port initialization. Restore startup handler ordering, worker/theme subscriptions, snapshot semantics and transferred-port lifecycles without exposing ipcRenderer or _linkedBinding as a general escape.",
+      "evidenceIds": [
+        "PBB-E003",
+        "PBB-E004",
+        "PBB-E005",
+        "PBB-E006",
+        "PBB-E009",
+        "PBB-E010"
+      ],
+      "qualification": "source-derived interface responsibilities; external effects still unverified"
+    },
+    {
+      "id": "PBB-B05",
+      "decision": "Qualify package imports against saved emitted contracts, then lock the newly selected versions/integrities independently of the baseline version evidence. React/ReactDOM self-report, Sentry names and mixed browser bundle ranges do not permit whole-file first-party code generation.",
+      "evidenceIds": [
+        "PBB-E012",
+        "PBB-E014"
+      ],
+      "qualification": "dependency adoption decision; package substitution qualification remains open"
+    },
+    {
+      "id": "PBB-B06",
+      "decision": "Use the selected provider Chromium/Node/bridge contract to set compile targets and types. Preserve explicit guest preferences and determine app-window sandbox defaults; require real executeInMainWorld/port delivery/ABI behavior before integration acceptance. Reuse named native gaps rather than restarting provider tracing from these entries.",
+      "evidenceIds": [
+        "PBB-E002",
+        "PBB-E007",
+        "PBB-E009",
+        "PBB-E011",
+        "PBB-E013"
+      ],
+      "qualification": "provider and product integration gates remain open"
+    }
+  ],
+  "acceptanceGates": [
+    {
+      "id": "PBB-G01",
+      "scope": "independent build output",
+      "expected": "Three declared single-entry bundles and required assets are emitted into the new application; no target-source evaluation is needed for source preparation.",
+      "status": "not executed"
+    },
+    {
+      "id": "PBB-G02",
+      "scope": "dependency and load closure",
+      "expected": "Inspect generated imports/requires against the selected sandbox loader map; electron is provider-supplied, JS packages come from the new integrity lock, native/Node capabilities remain explicit boundaries.",
+      "status": "not executed"
+    },
+    {
+      "id": "PBB-G03",
+      "scope": "app bridge integration",
+      "expected": "Verify four startup synchronous handlers and lazy sidebar handler exist before load, exact bridge types, shared snapshot updates, worker/theme unsubscribe and existing app-host transfer behavior.",
+      "status": "requires implementation and authorized runtime"
+    },
+    {
+      "id": "PBB-G04",
+      "scope": "browser integration",
+      "expected": "Verify admitted attach preferences, window.open preload forwarding object chain, all three executeInMainWorld functions under the selected provider, annotation/webMCP policy gates and pagehide cleanup.",
+      "status": "source object-chain gap and runtime gates remain"
+    },
+    {
+      "id": "PBB-G05",
+      "scope": "MCP guest integration",
+      "expected": "Verify URL/partition/init/view admission, explicit preferences, twelve required and seven optional port selection, one-shot flag and real main receiver/transfer delivery.",
+      "status": "requires implementation and authorized runtime"
+    },
+    {
+      "id": "PBB-G06",
+      "scope": "clean packaged installation",
+      "expected": "Launch the independent identifier/data roots without reading the original install path; attribute each preload read/execute failure and preserve SDK behavior via a qualified dependency.",
+      "status": "requires independent provider, packaging and authorized runtime"
+    }
+  ],
+  "reusedContracts": {
+    "runtimePreload": [
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/facts/5",
+        "valueSha256": "cad06fae7373daa30215cbf1d0a9790dea890ca9257a4fcc98ffa983bd2725ef"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/facts/6",
+        "valueSha256": "d30da159400ec45d83398b68d545f4227ec9d0383d7d188a3404a9777aa00def"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/facts/7",
+        "valueSha256": "ecce3642833f1f4567c08fb6181088b236f30943880befe4282e64e598b2b866"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/facts/8",
+        "valueSha256": "47acbd29d40b3c25d66e07b61c009cb74d958a260177931ef6733781d3a15849"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/facts/9",
+        "valueSha256": "f2bd5acdfda902fa18d7b2c65291bfeb60c8bde61c7653f2b612a0c5545ebabd"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/facts/12",
+        "valueSha256": "ccd007c0269034ccb2a5b338dc473e8ddba007f414cdb7a415164e9b461436b1"
+      }
+    ],
+    "runtimeSourceUnits": [
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/17",
+        "valueSha256": "5abaa06ac55e4627b452bd1a03c1f5644265ebac9b490cd6490d5976ad24231f"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/18",
+        "valueSha256": "8504e7879784b7ca7cd8c63f13f7e2e7ad1ffae899a37dce77caa28ae6a05949"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/19",
+        "valueSha256": "6510a6b288a63b4be9b7997ff296cd28af297df17574212313049cfcb916bdbf"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/20",
+        "valueSha256": "ae8f3e1ad7573890c58db72d25a27c438d77d8cd75e52abb8cf5eb56df1e2aed"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/21",
+        "valueSha256": "8cd78163c8126d5a0918cdab97db0cfc0c45e2ca86d8f72e5da3cb51b59853cd"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/22",
+        "valueSha256": "3a1187b857937d11b8bf83f2f6adf2d7cc7913608c75feac96c7944ebc16d96b"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/23",
+        "valueSha256": "3490171f54b123b4757ed266d9ef23d15a2ad91fca8e404c08a0df49bdf15acc"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime-embedded-sources-v1.json",
+          "bytes": 177162,
+          "sha256": "41c4255fb98f3a35faa1fb2883efacb316b092b32fcc154ddf9869d91ce0c4b4"
+        },
+        "jsonPointer": "/sourceUnits/24",
+        "valueSha256": "470e2b4c6e27a68e8ce067c4bea4808df46055549f89bac3e5183cbf6408198d"
+      }
+    ],
+    "appHost": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/preload-app-host.json",
+      "bytes": 115244,
+      "sha256": "36dd5008715b488bfb739ca65cd29b05a75175ae5c250549a59270ea235e1dcc"
+    },
+    "mcpEntry": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/mcp-app-entry-paths-v1.json",
+      "bytes": 850087,
+      "sha256": "cbb4405c442845e39e01e16a8592e5a5aa56fe1d55117647e06f615c063f402a"
+    },
+    "thirdPartyContracts": [
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+          "bytes": 54499,
+          "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+        },
+        "jsonPointer": "/contracts/6",
+        "valueSha256": "d47943b29b04505ec786b62fec648b4e5f3cb69039be57fc97835ed4830b2a57"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+          "bytes": 54499,
+          "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+        },
+        "jsonPointer": "/contracts/7",
+        "valueSha256": "01c08a702db1040c1a63f5b8bccf8b71fbd408a405e5e70f42c34221020c862b"
+      }
+    ],
+    "browserAdapters": [
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+          "bytes": 54499,
+          "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+        },
+        "jsonPointer": "/firstPartyWrappers/0",
+        "valueSha256": "65c76ea861c093dee655e2c52e2f73a39c084a8ddd13f0c4230240306f578a37"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+          "bytes": 54499,
+          "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+        },
+        "jsonPointer": "/firstPartyWrappers/1",
+        "valueSha256": "b461a7be995e7e9a5558a9e5bd15d285f675b76051333321d098b7f6c1dd6c03"
+      }
+    ],
+    "existingPreloadPaths": [
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-contracts-v1.json",
+          "bytes": 646540,
+          "sha256": "463709cd4c524fdab93a997670f9f9030fa6a9aec5b3d8f7a0a0cb90147496d7"
+        },
+        "jsonPointer": "/records/7/proposedPath",
+        "valueSha256": "16fc54e587af0e08b1aa9deb6d220c27935d943d1e48fa645514e02f21ee8dbe"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-contracts-v1.json",
+          "bytes": 646540,
+          "sha256": "463709cd4c524fdab93a997670f9f9030fa6a9aec5b3d8f7a0a0cb90147496d7"
+        },
+        "jsonPointer": "/records/8/proposedPath",
+        "valueSha256": "741cf6868aa81d8bb9450918afe80e4a84244b2ab5d10b9493965bfce71d62cc"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-contracts-v1.json",
+          "bytes": 646540,
+          "sha256": "463709cd4c524fdab93a997670f9f9030fa6a9aec5b3d8f7a0a0cb90147496d7"
+        },
+        "jsonPointer": "/records/9/proposedPath",
+        "valueSha256": "6e7b6365e75b1a0bfe3432d5da9b2c2334fcea29efd7282154e3476bcc237529"
+      },
+      {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-contracts-v1.json",
+          "bytes": 646540,
+          "sha256": "463709cd4c524fdab93a997670f9f9030fa6a9aec5b3d8f7a0a0cb90147496d7"
+        },
+        "jsonPointer": "/records/10/proposedPath",
+        "valueSha256": "e7cc7a4fb8b49913fb1231f49a131849cb7ad4f7d5b1cf8a266a4cc43c202765"
+      }
+    ]
+  },
+  "canonicalPinsUnchanged": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v52.json",
+      "bytes": 2853644,
+      "sha256": "b9c4a2b2f75a45c3e4d48f96a594b5b24c8757dbaa0826da7e44f57c633ab647"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v49-scenarios.json",
+      "bytes": 2694848,
+      "sha256": "7b11da6e403f58ce07697245c75398b7abda13476eef48ad31a92dd80d97ea9a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v43.json",
+      "bytes": 1556177,
+      "sha256": "6a89977a41a466b13fe07479e3a82a35c872328d54fba757d25f623ada10cd5e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-current-ordering-v26.json",
+      "bytes": 49708,
+      "sha256": "7c9859baa26645b0731b9ae8537e43ba1e9f267c92224474c2cad9a7c9b7c349"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v18.json",
+      "bytes": 8560856,
+      "sha256": "6b000f0c8a5e50596906f1cb40b557b8d5b8e3bf6f30f56151d0be6c7e483600"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v7.json",
+      "bytes": 3201,
+      "sha256": "b00869d63ed752da4befda79aa7747c5640b9ccd5f585e7f8dc8b4afb88c5266"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v7.csv",
+      "bytes": 44312,
+      "sha256": "67bfaa2fdc76f2c2750a3c9a437367527ecb9efec2c3e7a03ec2c3e045d2f031"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v35.json",
+      "bytes": 1610595,
+      "sha256": "46d5bb085042de28b087ebd35a22686e09b8cbdea66362d1132da22eed7736fc"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v19.json",
+      "bytes": 509048,
+      "sha256": "4bea84cb0be9cd04342a33cca4a51e763ed1ab080827cf1925ef9588297a2fc7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-plan-v11.md",
+      "bytes": 21504,
+      "sha256": "84fa4d10ac9a1d57a4fc1e563f935572b1bee9d3ec85e6cde94444b68b3753a7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/dependency-investigation-actions-v1.json",
+      "bytes": 392136,
+      "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+    }
+  ],
+  "counts": {
+    "preloadEntries": 3,
+    "appBridgeProperties": 22,
+    "startupSyncReads": 4,
+    "browserExecuteInMainWorldCalls": 3,
+    "mcpRequiredPorts": 12,
+    "mcpOptionalPorts": 7,
+    "ordinaryElectronCallExpressionsInEntries": 48,
+    "distinctCompleteProgramsParsed": 5,
+    "wholeProgramParsePasses": 7,
+    "distinctProgramBytes": 4822563,
+    "parsedNodesInInitialFivePrograms": 1253728,
+    "sourceUnits": 74,
+    "evidenceRecords": 14,
+    "buildDecisions": 6,
+    "newReaRuns": 0,
+    "newTargetEvaluations": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newBuildAttempts": 0,
+    "newClientImplementation": 0,
+    "newRuntimeQualifications": 0,
+    "newCanonicalDependencies": 0,
+    "newFeatureDefinitions": 0,
+    "newProductPasses": 0
+  },
+  "limitations": [
+    "The source parser and binding collector are supplemental tools under plan 4.6, not a new REA semantic run. The saved initial REA run remains the discovery basis.",
+    "Lexical joins establish the selected declaration/call relationships, not the runtime object returned by require, later mutations, native receiver identity or actual bridge delivery.",
+    "The ordinary Electron call census excludes optional calls, constructors, aliases and dynamically computed API shapes. AST counts include File wrappers and are not directly comparable to older collectors.",
+    "The local window.open override consumer is confirmed, but the entire getPageLifecycleHelpers object flow into its e parameter is not qualified by this batch.",
+    "The Sentry PreloadInjection branch is source-present and conditional. This analysis neither resolves the original installed SDK implementation version nor proves the branch ran.",
+    "Exact upstream React/ReactDOM distribution, modification status, all other embedded-library boundaries and the new dependency lock are still unqualified.",
+    "No native provider source/SDK/headers/ABI, actual process defaults, product-mode completion or clean build is established. Full analysis and independent runtime qualification remain incomplete."
+  ],
+  "selectedSourceBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "independentClientBuildProven": false,
+  "clientImplementationStarted": false
+}

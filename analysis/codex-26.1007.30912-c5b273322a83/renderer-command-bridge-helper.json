@@ -1,0 +1,1283 @@
+{
+  "schema": "ccodex.renderer-command-bridge-helper/v1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "verification": "Exact source spans/hashes and selected AST syntax confirmed. Cross-file initial/shared/actions candidate definitions require original enclosing-scope binding proof.",
+  "scopeLimitations": [
+    "No UI or application operations. No auth files, Keychain, account state or private thread IDs read.",
+    "No full initial/shared AST parsed. Parser inputs were selected function fragments plus 6.9 KB preload source.",
+    "Main-process domain message switch and every app-action implementation remain outside this helper scope.",
+    "Recent-thread supplement parsed only the 54.9 KB command-menu chunk and selected initial/shared function fragments.",
+    "Small-fragment AST parsing does not establish a candidate initial/shared definition’s original lexical scope or that every free identifier resolves to the textually matched export/import. These original-source binding links remain unknown until scope analysis."
+  ],
+  "bindings": [
+    {
+      "rendererName": "xs",
+      "definition": "shared hre",
+      "role": "React hook subscribing to typed renderer message event; effect cleanup unsubscribes",
+      "evidenceIds": [
+        "RCB-001",
+        "RCB-004",
+        "RCB-007",
+        "RCB-008"
+      ],
+      "noteId": "renderer-binding-1",
+      "definitionBindingVerification": "unknown: unique text match and fragment AST; original enclosing-source binding not proven"
+    },
+    {
+      "rendererName": "Ho",
+      "definition": "shared Hf = Vf.getInstance()",
+      "role": "Singleton renderer message dispatcher",
+      "evidenceIds": [
+        "RCB-002",
+        "RCB-005",
+        "RCB-008"
+      ],
+      "noteId": "renderer-binding-2",
+      "definitionBindingVerification": "unknown: unique text match and fragment AST; original enclosing-source binding not proven"
+    },
+    {
+      "rendererName": "rDe",
+      "definition": "shared eKt",
+      "role": "Validate app-action envelope; lazy import registry; lookup action.type and execute handler",
+      "evidenceIds": [
+        "RCB-003",
+        "RCB-006",
+        "RCB-011",
+        "RCB-012",
+        "RCB-013",
+        "RCB-016",
+        "RCB-017"
+      ],
+      "noteId": "renderer-binding-3",
+      "definitionBindingVerification": "unknown: unique text match and fragment AST; original enclosing-source binding not proven"
+    },
+    {
+      "rendererName": "appActionRegistry descriptor/factory",
+      "definition": "register-app-actions ar = initial dya($); each descriptor initial uya(schema/run)",
+      "role": "Map from registered type to schema-parsing run function",
+      "evidenceIds": [
+        "RCB-014",
+        "RCB-015",
+        "RCB-016",
+        "RCB-017"
+      ],
+      "noteId": "renderer-binding-4",
+      "definitionBindingVerification": "unknown: unique text match and fragment AST; original enclosing-source binding not proven"
+    }
+  ],
+  "boundaries": [
+    {
+      "name": "Ho.dispatchHostMessage",
+      "direction": "renderer-local delivery",
+      "behavior": "Calls deliverOrBufferMessage; delivers matching handler Sets or buffers selected message types. This method does not invoke the preload bridge.",
+      "evidenceIds": [
+        "RCB-008"
+      ],
+      "noteId": "renderer-boundary-1",
+      "scopeVerification": "candidate definition expression semantics confirmed; cross-file binding unknown"
+    },
+    {
+      "name": "Ho.dispatchMessage",
+      "direction": "renderer -> preload -> main",
+      "behavior": "Forms {...payload, type}; ire.postMessage forwards to electronBridge.sendMessageFromView when present and also dispatches codex-message-from-view CustomEvent with forwarded marker. Preload invokes codex_desktop:message-from-view with object payload.",
+      "evidenceIds": [
+        "RCB-008",
+        "RCB-009",
+        "RCB-019",
+        "RCB-018",
+        "RCB-021"
+      ],
+      "unknowns": [
+        "Exact main-process domain handler depends on payload type and is outside this helper.",
+        "CustomEvent fallback consumer not traced in this helper."
+      ],
+      "noteId": "renderer-boundary-2",
+      "scopeVerification": "candidate definition expression semantics confirmed; cross-file binding unknown"
+    },
+    {
+      "name": "codex_desktop:message-for-view",
+      "direction": "main -> preload -> renderer typed subscriptions",
+      "behavior": "Preload listens to IPC, updates select caches, then dispatches window MessageEvent. Vf handles window message through ore/sre: origin/source check, chunk reassembly, type shape validation, delivery/buffering.",
+      "evidenceIds": [
+        "RCB-022",
+        "RCB-020",
+        "RCB-010",
+        "RCB-008",
+        "RCB-007"
+      ],
+      "noteId": "renderer-boundary-3",
+      "scopeVerification": "candidate definition expression semantics confirmed; cross-file binding unknown"
+    },
+    {
+      "name": "rDe / eKt",
+      "direction": "renderer-local app-action registry dispatch",
+      "behavior": "Lazy import register-app-actions chunk then Map.get(type) and run(parsed envelope, options). It is not itself an IPC call; individual registry handlers can send renderer messages or perform navigation.",
+      "evidenceIds": [
+        "RCB-011",
+        "RCB-012",
+        "RCB-013",
+        "RCB-014",
+        "RCB-015",
+        "RCB-016"
+      ],
+      "unknowns": [
+        "Each registered handler cross-process behavior must be traced individually."
+      ],
+      "noteId": "renderer-boundary-4",
+      "scopeVerification": "candidate definition expression semantics confirmed; cross-file binding unknown"
+    }
+  ],
+  "proposedAstRanges": [
+    {
+      "evidenceId": "RCB-007",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295513,
+        "end": 295919,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-008",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295941,
+        "end": 297979,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-009",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 294145,
+        "end": 294602,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-010",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 294735,
+        "end": 295161,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-011",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2331733,
+        "end": 2332063,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-012",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2332063,
+        "end": 2332228,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-013",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2332236,
+        "end": 2332317,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-014",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5593558,
+        "end": 5593667,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-015",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5593667,
+        "end": 5593741,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-016",
+      "sourcePath": "webview/assets/register-app-actions-4b8b92c62fa1.js",
+      "sourceSha256": "ece788ffac1f1468e3e4c5f211f8c4125c7e61091098cd228dae4a6ec7a153b9",
+      "byteRange": {
+        "start": 18709,
+        "end": 19004,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-018",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 2734,
+        "end": 2769,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "evidenceId": "RCB-019",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 3430,
+        "end": 3539,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "ObjectProperty"
+    },
+    {
+      "evidenceId": "RCB-020",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 4768,
+        "end": 5123,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "CallExpression"
+    },
+    {
+      "evidenceId": "RCB-021",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 6638,
+        "end": 6691,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "CallExpression"
+    },
+    {
+      "evidenceId": "RCB-022",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 2770,
+        "end": 2804,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "evidenceId": "RCB-023",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 3224,
+        "end": 3233,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "ImportSpecifier"
+    },
+    {
+      "evidenceId": "RCB-024",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 3481,
+        "end": 3490,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "ImportSpecifier"
+    },
+    {
+      "evidenceId": "RCB-025",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 16089,
+        "end": 16095,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "evidenceId": "RCB-026",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 20359,
+        "end": 20468,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "CallExpression"
+    },
+    {
+      "evidenceId": "RCB-027",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 38510,
+        "end": 40010,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-028",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 42311,
+        "end": 45934,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-029",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 46860,
+        "end": 47110,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-030",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 47110,
+        "end": 49914,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-033",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2829700,
+        "end": 2830325,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-034",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5461266,
+        "end": 5461786,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-035",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5461156,
+        "end": 5461266,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-042",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5623785,
+        "end": 5623854,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-043",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5623558,
+        "end": 5623785,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-044",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5624182,
+        "end": 5624252,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-045",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1847613,
+        "end": 1847636,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "evidenceId": "RCB-046",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1865926,
+        "end": 1865962,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "nodeType": "FunctionDeclaration"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RCB-001",
+      "label": "Initial import xs from shared",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 108805,
+        "end": 108814,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "f3fec4a79f06479313b9c959980e0c5888dcb7e3807760aafc48d093bb825500",
+      "nodeType": "ImportSpecifier",
+      "snippet": "Pvn as xs",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-002",
+      "label": "Initial import Ho from shared",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 107197,
+        "end": 107206,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "e161717acc5efc77108f2547146bce9a4b03d2f2056048c8098a7c3015651b87",
+      "nodeType": "ImportSpecifier",
+      "snippet": "Nvn as Ho",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-003",
+      "label": "Initial import rDe from shared",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 116772,
+        "end": 116782,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "fbb0a3f1476693b7b7fd8317a4457ced97178468e06579909a4c9a92c74679dc",
+      "nodeType": "ImportSpecifier",
+      "snippet": "_Qt as rDe",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-004",
+      "label": "Shared export hre as Pvn",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8117067,
+        "end": 8117077,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "fda0fac4c3504c12024238f2cef7b258a4386366719bf4d2432294dbe79dc8fb",
+      "nodeType": "ExportSpecifier",
+      "snippet": "hre as Pvn",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-005",
+      "label": "Shared export Hf as Nvn",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8113918,
+        "end": 8113927,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "d0f05cd59f3bf60c86a0777245ec733b240750916d2683e185ef5a73373cb581",
+      "nodeType": "ExportSpecifier",
+      "snippet": "Hf as Nvn",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-006",
+      "label": "Shared export eKt as _Qt",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8133492,
+        "end": 8133502,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "7acc1a6f73d2c916c3c0545d99324c18b5accfbfd74a0c57711f2fb7bd90d0ee",
+      "nodeType": "ExportSpecifier",
+      "snippet": "eKt as _Qt",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-007",
+      "label": "Renderer typed-message subscription hook",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295513,
+        "end": 295919,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function hre(e,t,n){let r=(0,gre.c)(9),i;r[0]===n?i=r[1]:(i=n===void 0?[]:n,r[0]=n,r[1]=i);let a=i,o;r[2]===Symbol.for(`react.memo_cache_sentinel`)?(o=Vf.getInstance(),r[2]=o):o=r[2];let s=o,c=(0,_re.useEffectEvent)(t),l;r[3]!==c||r[4]!==e?(l=()=>{let t=s.subscribe(e,c);return()=>t()},r[3]=c,r[4]=e,r[5]=l):l=r[5];let u;r[6]!==a||r[7]!==e?(u=[s,e,...a],r[6]=a,r[7]=e,r[8]=u):u=r[8],(0,_re.useEffect)(l,u)}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-008",
+      "label": "Renderer message singleton initialization and class",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295941,
+        "end": 297979,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "5052be413dc783cd15b38c63423549faf2796e737c021059773945cde59eaf8b",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function Uf(){return(Uf=t((()=>{gre=c(),_re=o(),mre(),tre(),are(),vre=new Set([`mcp-request-delivery`,`mcp-response`,`personal-workspace-access-blocked`]),Vf=class e{static instance=null;static getInstance(){return this.instance??=new e,this.instance}handlers=new Map;bufferedMessages=new Map;handledBufferedMessages=new WeakSet;isListeningToWindow=!1;windowMessageListener=e=>{this.handleMessage(e)};constructor(){this.dispatchMessage=this.dispatchMessage.bind(this),this.startWindowMessageListener()}dispatchMessage(e,t){if(ire==null)throw Error(`VS Code API is unavailable`);ire.postMessage({...t,type:e})}deliverMessage(e,t){let n=this.handlers.get(e);if(!n)return;let r=(e,t)=>{this.dispatchMessage(e,t)};for(let e of n)e(t,r)}dispatchHostMessage(e){this.deliverOrBufferMessage(e)}hasHandledBufferedMessage(e){return this.handledBufferedMessages.has(e)}startTestWindowMessageListener(){throw Error(`Test message listeners are only available in tests`)}deliverOrBufferMessage(e){if(vre.has(e.type)&&this.handledBufferedMessages.add(e),vre.has(e.type)&&!this.handlers.has(e.type)){let t=e.type===`personal-workspace-access-blocked`?[]:this.bufferedMessages.get(e.type)??[];t.push(e),this.bufferedMessages.set(e.type,t);return}this.deliverMessage(e.type,e)}handleMessage(e){let t=ore(e);t!=null&&this.deliverOrBufferMessage(t)}startWindowMessageListener(){this.isListeningToWindow||=(window.addEventListener(`message`,this.windowMessageListener),!0)}stopWindowMessageListener(){this.isListeningToWindow&&=(window.removeEventListener(`message`,this.windowMessageListener),!1)}reset(){this.handlers.clear(),this.bufferedMessages.clear(),this.handledBufferedMessages=new WeakSet}subscribe(e,t){let n=this.handlers.get(e)??new Set;n.add(t),this.handlers.set(e,n);let r=this.bufferedMessages.get(e);if(r!=null){this.bufferedMessages.delete(e);for(let t of r)this.deliverMessage(e,t)}return()=>{let n=this.handlers.get(e);n&&(n.delete(t),n.size===0&&this.handlers.delete(e))}}},Hf=Vf.getInstance(),Qne((e,t)=>{Hf.dispatchMessage(e,t)})})))()}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-009",
+      "label": "Renderer outgoing bridge adapter",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 294145,
+        "end": 294602,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "4a793b08c03673ed6d8b62341968113a06fd0d23737ff22330c21bd38f5d74e4",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function are(){return(are=t((()=>{Bf(),ire={postMessage:e=>{let t=!1,n=window.electronBridge;if(n?.sendMessageFromView){let r=e;n.sendMessageFromView(r).catch(t=>{r.type!==`log-message`&&zf.warning(`Failed to send message from view`,{safe:{type:r.type},sensitive:{message:e,error:t}})}),t=!0}let r=new CustomEvent(`codex-message-from-view`,{detail:e});t&&(r.__codexForwardedViaBridge=!0),window.dispatchEvent(r)},getState:()=>rre,setState:e=>{rre=e}}})))()}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-010",
+      "label": "Window host-message origin, shape and chunk validation",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 294735,
+        "end": 295161,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "3000125b5b86e1f37ac31b8a4b700bb8717295ede10b69c0fdbb5762d9ac5a4b",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function sre(e,t){let n=e.source,r=n===t?t.location.origin:void 0;if(n!=null&&n!==t||n===t&&r!==``&&r!==dre&&e.origin!==r)return null;let i=e.data;if(ure(i)){let e=cre(t).receive(i);if(e.type!==`passthrough`&&e.acknowledgement!=null&&t.electronBridge?.acknowledgeChunkedMessage?.(e.acknowledgement.transferId,e.acknowledgement.sequence),e.type===`pending`)return null;i=e.message}return typeof i!=`object`||!i||!lre(i)?null:i}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-011",
+      "label": "App-action entry: lazy registry type lookup and execution",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2331733,
+        "end": 2332063,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "886b9e892d82a530d92d74bbfcbbffe168e6b7d7fda56178e605685ff98f6be9",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "async function eKt(e,t={}){let n=tKt(e),{appActionRegistry:r}=await Wf(async()=>{let{appActionRegistry:e}=await import(`./register-app-actions-4b8b92c62fa1.js`);return{appActionRegistry:e}},__vite__mapDeps([6,1,7,8,9,10]),import.meta.url),{type:i}=n,a=r.get(i);if(a==null)throw Error(`Unsupported app action: ${i}`);return a(n,t)}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-012",
+      "label": "App-action envelope parser",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2332063,
+        "end": 2332228,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "ab9e3966d4c017fdc2632df928fa67e4ba1081a7f9fbd456f6302b5355c6880f",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function tKt(e){try{return nKt.parse(e)}catch(t){throw Error(`Invalid app action envelope: ${JSON.stringify(e,null,2)}\\n${t instanceof Error?t.message:String(t)}`)}}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-013",
+      "label": "App-action envelope schema initialization",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2332236,
+        "end": 2332317,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "e789810918688871b220109bc27ce927e68d0327ef1e4b733b150d7c4302674e",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function rKt(){return(rKt=t((()=>{G(),$Gt(),Gf(),nKt=H({type:z()}).loose()})))()}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-014",
+      "label": "Schema-backed app-action descriptor factory",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5593558,
+        "end": 5593667,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "5f0cd0f9cbb2b92e4185e28934b0964bfd7657d54987c8ab7a632a0cd835d2ed",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function uya(e){return{type:e.schema.shape.type.value,schema:e.schema,run:(t,n)=>e.run(e.schema.parse(t),n)}}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-015",
+      "label": "App-action registry Map factory",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5593667,
+        "end": 5593741,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "8be776f44197f33ef440b51d8db40d20027bb437b7daf02d391b2c911fc984f4",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function dya(e){let t=new Map;for(let n of e)t.set(n.type,n.run);return t}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-016",
+      "label": "App-action handler registration and registry creation",
+      "sourcePath": "webview/assets/register-app-actions-4b8b92c62fa1.js",
+      "sourceSha256": "ece788ffac1f1468e3e4c5f211f8c4125c7e61091098cd228dae4a6ec7a153b9",
+      "byteRange": {
+        "start": 18709,
+        "end": 19004,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "b52434912b7ff804e849bf7228c92f3aa424398a15edae05a1b3f11384325256",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function or(){return(or=e((()=>{K(),ft(),ht(),wt(),Rt(),Ut(),Gt(),Jt(),Zt(),en(),rn(),sn(),un(),mn(),_n(),bn(),Cn(),En(),An(),Nn(),In(),zn(),Q(),Wn(),qn(),Oe(),Xn(),$n(),nr(),ir=[Lt,G,dt,mt,Ct,Wt,qt,Xt,$t,nn,on,ln,pn,gn,yn,Sn,Tn,kn,Mn,Fn,Rn,Vn,Un,Kn,Yn,st,Qn,tr],$=[zt(rr),...ir],ar=Ye($)})))()}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-017",
+      "label": "App-action registry export",
+      "sourcePath": "webview/assets/register-app-actions-4b8b92c62fa1.js",
+      "sourceSha256": "ece788ffac1f1468e3e4c5f211f8c4125c7e61091098cd228dae4a6ec7a153b9",
+      "byteRange": {
+        "start": 19016,
+        "end": 19039,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "c7d5ef38180f7056e43eaf9f245389c04b2dafb63c1d525e9e1d6f89a090d855",
+      "nodeType": "ExportSpecifier",
+      "snippet": "ar as appActionRegistry",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-018",
+      "label": "Preload outgoing IPC channel binding",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 2734,
+        "end": 2769,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "147ad7180563d9e4b9f0f672be770c7e3d2327f67b624064623a3e8ce68b09a2",
+      "nodeType": "VariableDeclarator",
+      "snippet": "E=`codex_desktop:message-from-view`",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Full 6.9 KB preload Program parsed"
+    },
+    {
+      "id": "RCB-019",
+      "label": "Preload sendMessageFromView invokes main-process channel",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 3430,
+        "end": 3539,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "42f42bb760d6c7194a7c1c8491d01a80a57e419d639229f9874b567e9c8694dc",
+      "nodeType": "ObjectProperty",
+      "snippet": "sendMessageFromView:async t=>{t.type===`shared-object-set`&&I(t.key,t.value),await e.ipcRenderer.invoke(E,t)}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Full 6.9 KB preload Program parsed"
+    },
+    {
+      "id": "RCB-020",
+      "label": "Preload incoming IPC message becomes renderer MessageEvent",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 4768,
+        "end": 5123,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "8550e1b83e6a2280be69c03cbd436d6859b87cfd26035640cd0df5a7cc9c990b",
+      "nodeType": "CallExpression",
+      "snippet": "e.ipcRenderer.on(D,(e,t)=>{if(!i(t)){let e=t;if(e.type===`shared-object-updated`)I(e.key,e.value);else if(e.type===`remote-hosted-pip-content-layout-state-changed`)for(let[t,n]of B)n.threadID===e.state.activeThreadID&&!e.state.orderedPresentationIDs.includes(t)&&(n.decoder.close(),B.delete(t))}window.dispatchEvent(new MessageEvent(`message`,{data:t}))})",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Full 6.9 KB preload Program parsed"
+    },
+    {
+      "id": "RCB-021",
+      "label": "Preload exposes electronBridge in main world",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 6638,
+        "end": 6691,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "b1d6f055f4e1e7e53d458ad18da60fc1863bf224effcb0fe25368638ecd5b298",
+      "nodeType": "CallExpression",
+      "snippet": "e.contextBridge.exposeInMainWorld(`electronBridge`,z)",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Full 6.9 KB preload Program parsed"
+    },
+    {
+      "id": "RCB-022",
+      "label": "Preload incoming IPC channel binding",
+      "sourcePath": ".vite/build/preload.js",
+      "sourceSha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 2770,
+        "end": 2804,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "3c34abba13a8afa3981d2c21bbcdb693e26dcc855d184ff35a9a27ed637bd837",
+      "nodeType": "VariableDeclarator",
+      "snippet": "D=`codex_desktop:message-for-view`",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Full 6.9 KB preload Program parsed"
+    },
+    {
+      "id": "RCB-023",
+      "label": "Command menu import hr from initial",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 3224,
+        "end": 3233,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "da60823ea30b1a5857ba88ff4ccb0db7a686edabbdec1d396a6c4771a6911bda",
+      "nodeType": "ImportSpecifier",
+      "snippet": "_dn as hr",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-024",
+      "label": "Command menu import Hr from initial",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 3481,
+        "end": 3490,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "6136d09e5a013d7641eb7808b2936c1781bfee9300298f71084fbf4522fcebd0",
+      "nodeType": "ImportSpecifier",
+      "snippet": "imt as Hr",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-025",
+      "label": "Command menu binds local navigation hook v = Hr()",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 16089,
+        "end": 16095,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "2e5ff446d16d3aaa3f7533db433bf695d0f3d15963b13f32de0c02dbceee55bb",
+      "nodeType": "VariableDeclarator",
+      "snippet": "v=Hr()",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-026",
+      "label": "Command menu passes local navigation to recent-thread group ro",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 20359,
+        "end": 20468,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "152c64dfaa7b7a3f143d566f1b217e648e85cdfecc76bf72318a285783db17fe",
+      "nodeType": "CallExpression",
+      "snippet": "(0,Q.jsx)(ro,{close:n,navigateToLocalConversation:v,onSelectResult:l?.onSelectResult},`group-recent-threads`)",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-027",
+      "label": "Command menu ro recent-thread navigation consumer",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 38510,
+        "end": 40010,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "9df2cc1ff4c46965e5fe98e41afd10fd777898bd4458c7ad3d8a769fa5715c94",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function ro(e){let t=(0,Z.c)(24),{close:n,navigateToLocalConversation:r,onSelectResult:i}=e,a=p(pr),{data:o}=dr(),s=o===void 0?[]:o,c=p(hn),l=fi(),u;t[0]===c?u=t[1]:(u=Ii(c),t[0]=c,t[1]=u);let d=p(u),{remoteConnections:f}=ji(),m=pi(f)??[],{data:g}=p(We),_=p(Gn),v=p(de),y=p(cn),b=p(an),x=[fe,...m.map(so).sort(oo)],S=p(v?ki({cloudTasks:[...g??[],...d.flatMap(ao)],conversationsMeta:[...s,...d.flatMap(io)],hostIds:new Set([...x,h]),projectLabelByThreadKey:_}):[]),C=p(Ao),w;if(t[2]!==a||t[3]!==S||t[4]!==i||t[5]!==b||t[6]!==C||t[7]!==y||t[8]!==l){let e=new Set(l);C!=null&&e.add(C),w=Zr({currentThreadKey:a,loadedChatSearchResults:S,limit:i==null?Do:gr.length,recentThreadKeys:b,unreadThreadKeys:y,visibleThreadKeys:e}),t[2]=a,t[3]=S,t[4]=i,t[5]=b,t[6]=C,t[7]=y,t[8]=l,t[9]=w}else w=t[9];let T=w;if(T.length===0)return null;let E;t[10]!==i||t[11]!==T?(E=i!=null&&(0,Q.jsx)(tn,{targets:T,onSelect:i}),t[10]=i,t[11]=T,t[12]=E):E=t[12];let D=i==null?`nextRecentThread`:void 0,O=i!=null,k;t[13]!==n||t[14]!==s||t[15]!==r||t[16]!==i||t[17]!==T||t[18]!==D||t[19]!==O?(k=(0,Q.jsx)(bo,{close:n,conversationsMeta:s,firstShortcutIndex:0,groupLabel:$.recentThreadsGroupLabel,groupShortcutCommandId:D,showChatGptSourceLabel:!1,navigateToLocalConversation:r,results:T,onSelectResult:i,showShortcutAccessory:O,trimmedSearch:``}),t[13]=n,t[14]=s,t[15]=r,t[16]=i,t[17]=T,t[18]=D,t[19]=O,t[20]=k):k=t[20];let A;return t[21]!==E||t[22]!==k?(A=(0,Q.jsxs)(Q.Fragment,{children:[E,k]}),t[21]=E,t[22]=k,t[23]=A):A=t[23],A}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-028",
+      "label": "Command menu ho recent-thread navigation consumer",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 42311,
+        "end": 45934,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "85b1a13a2c6abeda2386c0c4720d36de35558c476f3eec9dfe20edd84e4e44d2",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function ho(e){\"use forget\";let t=(0,Z.c)(58),{close:n,forceMount:r,index:i,navigateToLocalConversation:a,onResultOpen:o,onSelectResult:s,result:c,showShortcutAccessory:l,showChatGptSourceLabel:u,title:d,trimmedSearch:f,workspaceKind:p}=e,m=ee(P),h=ye(),g=Ke(),{mutate:_}=li(),v=c.kind===`local`&&c.isAeonThread,y;t[0]!==c||t[1]!==f?(y=xn(c,f),t[0]=c,t[1]=f,t[2]=y):y=t[2];let b=y,x,S;bb0:switch(c.kind){case`local`:if(x=c.projectLabel,x==null&&!v){let e;t[3]!==c.cwd||t[4]!==p?(e=_n({cwd:c.cwd,workspaceKind:p}),t[3]=c.cwd,t[4]=p,t[5]=e):e=t[5],x=e}S=c.threadId;break bb0;case`remote`:x=c.projectLabel??c.environmentLabel,S=c.taskId;break bb0;case`chatgpt`:{let e;t[6]!==g||t[7]!==u?(e=u?g.formatMessage({id:`codex.commandMenu.chatGptResultDescription`,defaultMessage:`ChatGPT`,description:`Description shown for ChatGPT conversation results in the command menu`}):void 0,t[6]=g,t[7]=u,t[8]=e):e=t[8],x=e,S=c.conversationId;break bb0}case`dot`:S=c.item.id}let C;t[9]===Symbol.for(`react.memo_cache_sentinel`)?(C=(0,Q.jsx)(`span`,{className:`h-5 w-5 shrink-0`}),t[9]=C):C=t[9];let w=C;if(c.kind===`local`&&c.hostId===`local`){let e;t[10]!==c.conversationId||t[11]!==c.hasUnreadTurn?(e=(0,Q.jsx)(nr,{conversationId:c.conversationId,unread:c.hasUnreadTurn}),t[10]=c.conversationId,t[11]=c.hasUnreadTurn,t[12]=e):e=t[12],w=e}else if((c.kind===`local`||c.kind===`remote`)&&c.hasUnreadTurn){let e;t[13]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,Q.jsx)(Qn,{statusState:{type:`idle`,unread:!0}}),t[13]=e):e=t[13],w=e}else if(c.kind===`dot`){let e;t[14]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,Q.jsx)(Fe,{}),t[14]=e):e=t[14],w=e}else if(c.kind===`chatgpt`){let e;t[15]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,Q.jsxs)(Q.Fragment,{children:[null,(0,Q.jsx)(Q.Fragment,{children:w})]}),t[15]=e):e=t[15],w=e}let T;t[16]!==r||t[17]!==i||t[18]!==c||t[19]!==S||t[20]!==d||t[21]!==f?(T=r?vr(tr(c)):i===0?sr:[d.slice(0,60),S,f].join(` `),t[16]=r,t[17]=i,t[18]=c,t[19]=S,t[20]=d,t[21]=f,t[22]=T):T=t[22];let E;t[23]!==v||t[24]!==c.conversationId||t[25]!==c.kind||t[26]!==S?(E=v&&c.kind===`local`?(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(Pi,{className:`icon-xs align-middle`,conversationId:c.conversationId,animated:!1}),` `]}):(0,Q.jsx)(zi,{threadId:S}),t[23]=v,t[24]=c.conversationId,t[25]=c.kind,t[26]=S,t[27]=E):E=t[27];let D;t[28]!==b||t[29]!==c.kind||t[30]!==f?(D=b==null?void 0:(0,Q.jsx)(go,{preview:b,search:f,shouldAdjustStart:c.kind===`dot`}),t[28]=b,t[29]=c.kind,t[30]=f,t[31]=D):D=t[31];let O;t[32]!==n||t[33]!==i||t[34]!==_||t[35]!==h||t[36]!==a||t[37]!==o||t[38]!==s||t[39]!==c||t[40]!==m?(O=()=>{if(o?.(c,i)!==!1){if(c.kind===`local`&&c.hasUnreadTurn?Kt(m,c.hostId).markConversationAsRead(c.conversationId):c.kind===`remote`&&c.hasUnreadTurn&&_(c.taskId),s!=null){s(c);return}yo(m,c,a,h),n()}},t[32]=n,t[33]=i,t[34]=_,t[35]=h,t[36]=a,t[37]=o,t[38]=s,t[39]=c,t[40]=m,t[41]=O):O=t[41];let k;t[42]!==w||t[43]!==l?(k=l?w:(0,Q.jsx)(`span`,{className:`icon-xs flex shrink-0 items-center justify-center`,children:w}),t[42]=w,t[43]=l,t[44]=k):k=t[44];let A;t[45]!==i||t[46]!==l?(A=l?(0,Q.jsx)(qa,{index:i}):void 0,t[45]=i,t[46]=l,t[47]=A):A=t[47];let j;return t[48]!==x||t[49]!==r||t[50]!==T||t[51]!==E||t[52]!==D||t[53]!==O||t[54]!==k||t[55]!==A||t[56]!==d?(j=(0,Q.jsx)(Ci,{forceMount:r,value:T,title:d,titlePrefix:E,description:x,highlightMode:`substring`,titleTooltipContent:d,descriptionTooltipContent:x,descriptionClassName:ko,secondaryContent:D,tooltipDelayDuration:Oo,onSelect:O,leftAccessory:k,rightAccessory:A}),t[48]=x,t[49]=r,t[50]=T,t[51]=E,t[52]=D,t[53]=O,t[54]=k,t[55]=A,t[56]=d,t[57]=j):j=t[57],j}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-029",
+      "label": "Command menu yo recent-thread navigation consumer",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 46860,
+        "end": 47110,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "9be3268f45b0a7ceb1a403c5b199680c477ca8c0271b967b03a690970fcde730",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function yo(e,t,n,r){switch(t.kind){case`local`:case`remote`:hr(e,t.threadKey,n,r,t.kind===`local`&&t.hostId!==`local`?t.hostId:void 0);return;case`chatgpt`:r(Je(t.conversationId));return;case`dot`:e.get(be,`703400933`)&&e.get(je)&&r(t.href);return}}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-030",
+      "label": "Command menu bo recent-thread navigation consumer",
+      "sourcePath": "webview/assets/command-menu-dialog-16e35c7f9f05.js",
+      "sourceSha256": "da0d000218ef2b31943d8a4e0f49b2930168cb32bb3ef43c3b769e8ee02150c6",
+      "byteRange": {
+        "start": 47110,
+        "end": 49914,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "78bfcc3fba7f224c11df6dc5778c523a1e4491d9d87898b8e32caca4c27cfc6b",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function bo(e){let t=(0,Z.c)(48),{close:n,conversationsMeta:r,firstShortcutIndex:i,forceMount:a,groupLabel:o,groupShortcutCommandId:s,isLoading:c,navigateToLocalConversation:l,onResultOpen:u,onSelectResult:d,results:f,showShortcutAccessory:p,showChatGptSourceLabel:m,trimmedSearch:h}=e,g=c!==void 0&&c,_=p===void 0||p,v=Ke(),[y,b]=(0,xo.useState)(null),x;t[0]===v?x=t[1]:(x=v.formatMessage({id:`codex.commandMenu.untitledThread`,defaultMessage:`Untitled chat`,description:`Fallback title for a task without a title in the command menu`}),t[0]=v,t[1]=x);let C=x,w=y?.search===h?y.results:f;if(w.length===0&&!g)return null;let T=a||g,E=w.length>0||void 0,D=g||void 0,O;t[2]!==w.length||t[3]!==o||t[4]!==s||t[5]!==g?(O=o==null||w.length===0?void 0:(0,Q.jsxs)(`span`,{className:`flex items-center justify-between px-2 pt-2 text-sm text-codex-description`,children:[(0,Q.jsxs)(`span`,{className:`flex items-center gap-2`,children:[(0,Q.jsx)(kt,{...o}),g?(0,Q.jsx)(S,{as:`span`,className:`icon-xxs`}):null]}),s==null?null:(0,Q.jsx)(Ka,{commandId:s})]}),t[2]=w.length,t[3]=o,t[4]=s,t[5]=g,t[6]=O):O=t[6];let k,A;t[7]===Symbol.for(`react.memo_cache_sentinel`)?(k=()=>b(null),A=()=>b(null),t[7]=k,t[8]=A):(k=t[7],A=t[8]);let j;t[9]!==f||t[10]!==h?(j=()=>b({results:f,search:h}),t[9]=f,t[10]=h,t[11]=j):j=t[11];let ee,M;t[12]===Symbol.for(`react.memo_cache_sentinel`)?(ee=()=>b(null),M={gap:`var(--spacing)`},t[12]=ee,t[13]=M):(ee=t[12],M=t[13]);let N;if(t[14]!==n||t[15]!==r||t[16]!==w||t[17]!==i||t[18]!==a||t[19]!==v||t[20]!==l||t[21]!==u||t[22]!==d||t[23]!==m||t[24]!==_||t[25]!==h||t[26]!==C){let e;t[28]!==n||t[29]!==r||t[30]!==i||t[31]!==a||t[32]!==v||t[33]!==l||t[34]!==u||t[35]!==d||t[36]!==m||t[37]!==_||t[38]!==h||t[39]!==C?(e=(e,t)=>{let o=e.kind===`local`?r.find(t=>t.conversationId===e.threadId&&(t.hostId??`local`)===e.hostId):void 0,s=e.kind===`chatgpt`?_i(e.title)??v.formatMessage(wi.newChat):e.title??C;return(0,Q.jsx)(ho,{close:n,forceMount:a,index:i+t,navigateToLocalConversation:l,onResultOpen:u,onSelectResult:d,result:e,showShortcutAccessory:_,showChatGptSourceLabel:m,title:s,trimmedSearch:h,workspaceKind:o?.workspaceKind},tr(e))},t[28]=n,t[29]=r,t[30]=i,t[31]=a,t[32]=v,t[33]=l,t[34]=u,t[35]=d,t[36]=m,t[37]=_,t[38]=h,t[39]=C,t[40]=e):e=t[40],N=w.map(e),t[14]=n,t[15]=r,t[16]=w,t[17]=i,t[18]=a,t[19]=v,t[20]=l,t[21]=u,t[22]=d,t[23]=m,t[24]=_,t[25]=h,t[26]=C,t[27]=N}else N=t[27];let P;return t[41]!==j||t[42]!==N||t[43]!==T||t[44]!==E||t[45]!==D||t[46]!==O?(P=(0,Q.jsx)(Lr.Group,{forceMount:T,\"data-command-menu-has-results\":E,\"data-command-menu-loading\":D,\"data-command-menu-search-section\":`chats`,heading:O,className:`flex flex-col`,onClick:k,onPointerCancel:A,onPointerEnter:j,onPointerLeave:ee,style:M,children:N}),t[41]=j,t[42]=N,t[43]=T,t[44]=E,t[45]=D,t[46]=O,t[47]=P):P=t[47],P}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "Program AST or named Fa function within parsed 54.9 KB Program"
+    },
+    {
+      "id": "RCB-031",
+      "label": "Initial export DF as command-menu hr",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11388213,
+        "end": 11388222,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "3da9664217c26a82eeeca5cee78f1d79c4f3eb779a517f08535c07a29808ebde",
+      "nodeType": "ExportSpecifier",
+      "snippet": "DF as _dn",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-032",
+      "label": "Initial export iJ as command-menu Hr",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11406221,
+        "end": 11406230,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "a726cfbb0bb9e93d888106b9ae3af15c6809abce54ae226bdd8db82fe7b699e7",
+      "nodeType": "ExportSpecifier",
+      "snippet": "iJ as imt",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-033",
+      "label": "Shared sidebar thread navigation orchestration",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2829700,
+        "end": 2830325,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "93a4a3378bbc49c9e494b6310cdfb19cda7f2636fddea5a2f1f2720cdb36f4f8",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function DF(e,t,n,r,i,a,o){Nm();let s=Pa(t),c=s==null?null:e.get(mm,s);if(s!=null&&e.get(Ec)&&(a?.sidebarThreadLocationId===`orbit`||c!=null&&e.get(Bf,{hostId:i??e.get(Gl,c),threadId:c}))){let t=e.get(K7n,void 0).start(e,s);r(oi(s),{state:{orbitPrewarmId:t}});return}e.get(Vqe,{locationId:null,threadKey:t})&&e.set(enr,e.get(enr)+1),$tr(e,t,i);let l=Qtr(e,t,a);if(s!=null){let r=e.get(mm,s);if(o===`sidebar`){let n=r==null?e.get(wF,t):null;l=B7n(e,{hostId:i??(n?.kind===`local`?n.hostId:null)??e.get(Gl,r),threadId:s},l)}if(l!=null){n(s,i,{state:l});return}n(s,...i==null?[]:[i]);return}l==null?r(rce(t)):r(rce(t),{state:l})}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-034",
+      "label": "Local conversation navigation hook",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5461266,
+        "end": 5461786,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "8a3122399f69e094e4eacd9f686bc8f7c8c2b90773ed1695ecdeb6aadafbe3c0",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function iJ(){let e=(0,Vda.c)(6),{pathname:t,search:n,hash:r,state:i}=Pr(),a=Cc(),o;return e[0]!==r||e[1]!==a||e[2]!==t||e[3]!==n||e[4]!==i?.sidebarSelection?(o=(e,o,s)=>{let c=Rm(e),l=$u(c),u=o==null?l:Bda(l,o,s?.threadAccess);if(`${t}${n}${r}`===u){(s?.state!=null||i?.sidebarSelection!=null)&&a(u,{replace:!0,state:s?.state});return}if(zp.start(c,`cold`),s?.state==null&&s?.replace==null){a(u);return}a(u,{state:s?.state,replace:s?.replace})},e[0]=r,e[1]=a,e[2]=t,e[3]=n,e[4]=i?.sidebarSelection,e[5]=o):o=e[5],Dd(o)}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-035",
+      "label": "HostId/threadAccess query addition",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5461156,
+        "end": 5461266,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "e8bf67f6a6dfe5f88a1ccc3b8dfc5256cdb699eac6bb33cfb901c833983a996a",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function Bda(e,t,n){let r=new URLSearchParams({hostId:t});return n!=null&&r.set(`threadAccess`,n),`${e}?${r}`}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-036",
+      "label": "Initial import local sidebar-thread decoder Pa",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 104247,
+        "end": 104255,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "6f34b280960a6e7d579eee9d79e45a471b25e2f92d4b94be75e1a13fcd562b15",
+      "nodeType": "ImportSpecifier",
+      "snippet": "KB as Pa",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-037",
+      "label": "Initial import Rm ID adapter",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 129695,
+        "end": 129704,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "b4afeee0c5e1f2198cd6b20bf46535d751e79401c6ebf6397c367eb557599628",
+      "nodeType": "ImportSpecifier",
+      "snippet": "qin as Rm",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-038",
+      "label": "Initial import local route generator $u",
+      "sourcePath": "webview/assets/app-initial-6350d04672d0.js",
+      "sourceSha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 119321,
+        "end": 119330,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "d3316d82a09f6f59b50a8f98d9ca06a20041fae079dabb933c9ba291b7102314",
+      "nodeType": "ImportSpecifier",
+      "snippet": "crn as $u",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-039",
+      "label": "Shared export local sidebar-thread decoder",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8108015,
+        "end": 8108024,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "e7437322621c1c636bad06616f224ec74e7a48112cc123988227c30f804e6e1b",
+      "nodeType": "ExportSpecifier",
+      "snippet": "N7r as KB",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-040",
+      "label": "Shared export identity ID adapter",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8160809,
+        "end": 8160817,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "f23552b4bd1100aa44d9eb9d1898b521db64903ba3fb9eff55e13e9e42046e66",
+      "nodeType": "ExportSpecifier",
+      "snippet": "Y as qin",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-041",
+      "label": "Shared export local route generator",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8138956,
+        "end": 8138966,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "9ec5261b2a3c064251fef792ed4130ac32aafe29629f7fa0af2023cf6e82e4ed",
+      "nodeType": "ExportSpecifier",
+      "snippet": "Hht as crn",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-042",
+      "label": "Read local threadId from sidebar key",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5623785,
+        "end": 5623854,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "47126ab490beae9a52acbed8587d2ac3323aa4a42b2b216ea1fc9aaed9629bba",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function N7r(e){let t=N4(e);return t?.kind===`local`?t.threadId:null}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-043",
+      "label": "Decode sidebar local/remote thread key",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5623558,
+        "end": 5623785,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "35437d7382f0dfec31ee7d461bc253da043313871911e4bf34d4d8a36df06b3b",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function N4(e){if(e==null)return null;if(e.startsWith(I7r)){let t=e.slice(6),n=Jj(t)?t:Y(t);return{kind:`local`,key:M4(n),threadId:n}}if(e.startsWith(L7r)){let t=e.slice(7);return{kind:`remote`,key:M7r(t),taskId:t}}return null}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-044",
+      "label": "Sidebar thread key local/remote prefixes",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5624182,
+        "end": 5624252,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "c9829412603565f7776351ef48b21d252beeedebce963de480ea87e6fe64cee4",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function P4(){return(P4=t((()=>{IP(),I7r=`local:`,L7r=`remote:`})))()}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-045",
+      "label": "Frozen ID adapter is identity function",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1847613,
+        "end": 1847636,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "03d2f6be9596798fc9c74e66b1ef1c5c5b9992568adbe05ab2e2d939e8630a75",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function Y(e){return e}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-046",
+      "label": "Local route string generator",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1865926,
+        "end": 1865962,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "346fa14ed7910d303591e01bccfa9e7843f73ab46a59df37184178278e2040d5",
+      "nodeType": "FunctionDeclaration",
+      "snippet": "function Hht(e){return`${Jgt}/${e}`}",
+      "fragmentAstVerified": true,
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    },
+    {
+      "id": "RCB-047",
+      "label": "Local route prefix binding",
+      "sourcePath": "webview/assets/app-shared-8bd9d0399038.js",
+      "sourceSha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1871933,
+        "end": 1871945,
+        "convention": "UTF-8 bytes; zero-based; end-exclusive"
+      },
+      "spanSha256": "60fb8ce6b0405af822a774dbd2716b02daf924a321e75ea934367eebc7187cfc",
+      "nodeType": "AssignmentExpression",
+      "snippet": "Jgt=`/local`",
+      "originalScopeVerification": "unknown; source-exact token or selected fragment only"
+    }
+  ],
+  "recentThreadNavigation": {
+    "verification": "Menu Program import/local consumers confirmed; route expressions confirmed in matched candidate definitions; initial/shared original binding links unknown; runtime pending",
+    "entry": "Command menu recent-thread item selection",
+    "chain": [
+      {
+        "step": "Fa sets v = Hr(); passes v to recent-thread ro",
+        "evidenceIds": [
+          "RCB-025",
+          "RCB-026",
+          "RCB-024",
+          "RCB-032"
+        ]
+      },
+      {
+        "step": "ro -> bo -> ho item receives navigateToLocalConversation; ho onSelect invokes yo unless supplied onSelectResult callback handles selection",
+        "evidenceIds": [
+          "RCB-027",
+          "RCB-030",
+          "RCB-028"
+        ]
+      },
+      {
+        "step": "yo local/remote branches pass threadKey and optional nonlocal hostId into DF",
+        "evidenceIds": [
+          "RCB-029",
+          "RCB-023",
+          "RCB-031",
+          "RCB-033"
+        ]
+      },
+      {
+        "step": "DF reads local threadId via Pa=N7r -> N4. Sidebar key local: prefix is removed. Y returns the extracted value unchanged in this frozen build.",
+        "evidenceIds": [
+          "RCB-033",
+          "RCB-036",
+          "RCB-039",
+          "RCB-042",
+          "RCB-043",
+          "RCB-044",
+          "RCB-045"
+        ]
+      },
+      {
+        "step": "DF normal local branch calls local navigation hook iJ. iJ Rm=Y retains ID, $u=Hht renders /local/{ID}; optional hostId/threadAccess are URLSearchParams.",
+        "evidenceIds": [
+          "RCB-033",
+          "RCB-034",
+          "RCB-035",
+          "RCB-037",
+          "RCB-040",
+          "RCB-045",
+          "RCB-038",
+          "RCB-041",
+          "RCB-046",
+          "RCB-047"
+        ]
+      }
+    ],
+    "conditions": [
+      "The default selection chain applies only when onSelectResult is absent; standalone command-menu windows may supply an override.",
+      "DF has an earlier feature/state-conditioned orbit path and prewarm branch; some local threads can route there instead of the normal local branch.",
+      "The thread ID is obtained from the selected static result model/key, not guessed from a UUID. No real private thread IDs were read."
+    ],
+    "unknowns": [
+      "Runtime feature flags, result data availability, loaded-thread state and successful route render remain untested.",
+      "How caller-provided onSelectResult behaves in standalone windows is outside this helper scope.",
+      "DF orbit route generator oi and prewarm consumer are outside the normal local navigation chain scope.",
+      "The initial/shared functions are unique text matches plus fragment AST, but their original enclosing-source lexical bindings and cross-file export-to-definition links remain unknown without full-source scope proof."
+    ],
+    "crossProcess": "The default navigation branch calls React Router navigation through a supplied hook. Optional unread-marking side effects may use host services; this helper does not claim route navigation itself is an Electron IPC message.",
+    "noteId": "recent-thread-default-navigation"
+  }
+}

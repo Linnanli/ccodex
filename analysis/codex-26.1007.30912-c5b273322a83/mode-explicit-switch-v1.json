@@ -1,0 +1,1704 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "Close FSC-0481 explicit switch arguments and direct local effects",
+  "counts": {
+    "sourceFacts": 13,
+    "sourceUnits": 34,
+    "sourceFiles": 2,
+    "exactEsmJoins": 4,
+    "wholeProgramParsePasses": 1,
+    "wholeProgramParsedNodes": 1795145,
+    "boundedFunctionParsePasses": 14,
+    "unexecutedChildCases": 8,
+    "newCanonicalIds": 0,
+    "newRuntimeObservations": 0,
+    "newModelSubmissions": 0,
+    "newClientLaunches": 0
+  },
+  "facts": [
+    {
+      "id": "MES-F01",
+      "claim": "a1s 为 switchToMode1/2/3 分别注册 h(chat/work/codex)，全部 priority=fallback；enabled 分别为 chatgpt-capable&&!Qoe&&p、Dc.allowed&&p、ep.status!=error。p 为 currentMode!=work 或非根路径。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-I014",
+        "RP-S0001"
+      ],
+      "qualification": "仅证明注册参数；优先级仲裁、挂载实例和实际快捷键派发未验证。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F02",
+      "claim": "a1s 的 currentMode 来自 ij；ij 由缺少 detail preference 时的 non_coding 角色分支，或 vPe===STEPS_PROSE 选择 work，否则 codex。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-I010",
+        "MES-I011"
+      ],
+      "qualification": "这是 currentMode 的源码计算，不是 home-composer-mode-v1 的 chat/work 值；角色、偏好和订阅的实际值未知。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F03",
+      "claim": "h 对所有非 codex 请求首先执行 iPt(store,request)，iPt 直接委托 gS；该动作早于 codex-access 路由和 currentMode 分支。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-I001",
+        "MES-S003"
+      ],
+      "qualification": "gS 的 chat/Qoe 短路和同步异常可影响后续动作；不能把调用当作已成功持久化。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F04",
+      "claim": "当前路由为 /codex-access 时，非 codex 请求按 returnLocation 返回，缺少位置则 replace 到根路径；codex 请求直接返回。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-I020"
+      ],
+      "qualification": "此分支先于 kti；returnLocation 的真实生产、xm 和 router 后效未在本批执行。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F05",
+      "claim": "非 codex 请求且 currentMode===work 时，h 依序执行 wH(store)、gS(store,request)，随后返回；它并不调用 kti。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-I003",
+        "MES-S003"
+      ],
+      "qualification": "加上入口 iPt，这条路径可能触发两次 gS 委托。wH 内还有条件性的模式/草稿处理；完整迁移与导航未观察。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F06",
+      "claim": "其余路径调用 kti，nextMode 只传 codex 或 work：chat 和 work 请求均归一为 work；同时传 ep.status、ij 当前模式、navigate 和 startNewConversation:()=>wH(store)。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-S002",
+        "MES-I003"
+      ],
+      "qualification": "kti 未调用 gS；home 产品选择和 detail-mode/navigation 转换是不同协调动作。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F07",
+      "claim": "kti 的 codex 分支允许 loading/allowed 继续，denied 导航 /codex-access 并保存当前 Jg 为 returnLocation，error 返回；随后同模式且 openHome=false 提前返回。",
+      "sourceUnitIds": [
+        "MES-S002",
+        "MES-I020"
+      ],
+      "qualification": "未枚举状态的输入在源码中没有默认拒绝；同模式返回发生在 gei、快照写入和 bFe 之前。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F08",
+      "claim": "kti 调用 gei 后读取目标模式 zti 快照；当前位置非 library 时，以 currentMode 为键保存清理后的 location 和 selectedProject。gei 调用当前 coordinator.stop、删除引用并写 nj=null、pse=new Map。",
+      "sourceUnitIds": [
+        "MES-S002",
+        "MES-I002",
+        "MES-I013",
+        "MES-I005",
+        "MES-I004"
+      ],
+      "qualification": "store/host 实例、coordinator 停止结果及 Af 存储的耐久性未证明；不把这段清理称为真正任务取消。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F09",
+      "claim": "kti 调用 bFe(store,nextMode===work?Pu:q$e)。精确 ESM 连接为 Pu=bAt/xq=STEPS_PROSE，q$e=yAt/Sq=STEPS_COMMANDS，bFe=hAt/ljn。",
+      "sourceUnitIds": [
+        "MES-S002",
+        "MES-I007",
+        "MES-I008",
+        "MES-I009",
+        "RP-S0004",
+        "RP-S0005",
+        "RP-S0006"
+      ],
+      "qualification": "不是将 nextMode 字符串写入 home-composer-mode-v1；本批没有决定所有 detail-level 消费者的整体模式归属。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F10",
+      "claim": "ljn 保存旧 Cq，以对象 i={detailLevel:target} 写 Cq，再调用 rAn(...,{optimistic:false}) 并记录产品事件；拒绝时只在当前 Cq===i 的条件下回滚旧对象并调用 fjn。返回原 Promise，kti 没有 await。",
+      "sourceUnitIds": [
+        "RP-S0004",
+        "MES-S002"
+      ],
+      "qualification": "导航可在异步结果前继续；服务实现、事件失败、同步抛错、后到请求竞争和真实回滚均未验证。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F11",
+      "claim": "kti 的 openHome 分支导航根路径并带 sidebarProductMode；restoreNavigation=false 在前述状态变更后返回。现有会话、library、无快照和已有快照分别有独立恢复路径。",
+      "sourceUnitIds": [
+        "MES-S002",
+        "MES-I006"
+      ],
+      "qualification": "恢复条件/效果逐分支见 navigationBranches；Ec、Jg、bo、Pa、ye 保留为已具名依赖边界，不递归展开全部提供方。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F12",
+      "claim": "fti 会清理 home 查询参数及若干 prefill/project 状态，删除 orbitPrewarmId/orbitPrewarmThreadId；存在 aeonDraft 时保留 prefillAeonStartTarget。wH 还负责准备导航、草稿/项目初始化及条件性模式委托。",
+      "sourceUnitIds": [
+        "MES-I005",
+        "MES-I003"
+      ],
+      "qualification": "不得为剥离 ChatGPT 名称而整体删除 wH 或导航快照协调器；此处没有证明完整草稿内容与 UI 恢复正确。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "MES-F13",
+      "claim": "a1s 的 enabled 条件位于 Pw 注册选项，h 内没有重复检查全部能力/工作访问条件；kti 只对 codex 转换显式检查本地访问状态。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-S002",
+        "MES-S003"
+      ],
+      "qualification": "不能把 UI 注册资格当成所有内部调用方的守卫，也不能据此声称任意外部输入均获准。",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    }
+  ],
+  "commandArguments": [
+    {
+      "commandId": "switchToMode1",
+      "request": "chat",
+      "enabled": "chatgpt.isCapable && !Qoe && (ij!=work || pathname!=/)",
+      "initialProductWrite": "gS(chat)",
+      "ktiNextModeIfReached": "work"
+    },
+    {
+      "commandId": "switchToMode2",
+      "request": "work",
+      "enabled": "Dc.status===allowed && (ij!=work || pathname!=/)",
+      "initialProductWrite": "gS(work)",
+      "ktiNextModeIfReached": "work"
+    },
+    {
+      "commandId": "switchToMode3",
+      "request": "codex",
+      "enabled": "ep.status!==error",
+      "initialProductWrite": "none",
+      "ktiNextModeIfReached": "codex"
+    }
+  ],
+  "navigationBranches": [
+    {
+      "condition": "openHome",
+      "effect": "navigate(/, {state:{sidebarProductMode:nextMode}}); return"
+    },
+    {
+      "condition": "!restoreNavigation",
+      "effect": "return after gei/snapshot/detail-level call"
+    },
+    {
+      "condition": "bo!=null && currentLocation!=null && (nextMode===work || Pa(bo)!=null)",
+      "effect": "conditionally navigate current location using Ec/sidebarThreadLocationId; always return"
+    },
+    {
+      "condition": "currentLocation is library",
+      "effect": "restore saved project via YI; Ec optionally updates sidebarProductMode in same location; return"
+    },
+    {
+      "condition": "no saved snapshot; current root has null state/project",
+      "effect": "Ec optionally adds sidebarProductMode to root; return"
+    },
+    {
+      "condition": "no saved snapshot; previous root shortcut condition false",
+      "effect": "YI(null); startNewConversation(); return"
+    },
+    {
+      "condition": "saved snapshot exists",
+      "effect": "restore its selected project via YI and navigate its location/state"
+    }
+  ],
+  "branchDecisions": [
+    {
+      "id": "MES-D01",
+      "status": "source-supported-retention",
+      "decision": "保留 Codex 切换中的访问引导、detail-level 写入和导航/项目恢复职责；不按含 chat 字符串的函数整体剥离。",
+      "evidenceIds": [
+        "MES-F06",
+        "MES-F07",
+        "MES-F09",
+        "MES-F11",
+        "MES-F12"
+      ]
+    },
+    {
+      "id": "MES-D02",
+      "status": "implementation-design-inference",
+      "decision": "未来工程将主页产品选择与 detail-level/navigation 转换分为独立接口，明确传入 store/host；此处是维护方案，不是原作者源码目录。",
+      "evidenceIds": [
+        "MES-F02",
+        "MES-F03",
+        "MES-F06",
+        "MES-F09"
+      ]
+    },
+    {
+      "id": "MES-D03",
+      "status": "branch-exclusion-not-yet-authorized-by-evidence",
+      "decision": "chat 请求入口是 ChatGPT 剥离候选；整体 FSC-0481/RCGA-M05 和 wH 不满足专用功能删除条件。Ezt composer 变体仍需与此结果作逐入口取舍。",
+      "evidenceIds": [
+        "MES-F01",
+        "MES-F05",
+        "MES-F12"
+      ]
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MES-S001",
+      "name": "a1s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9282807,
+        "endExclusive": 9284253
+      },
+      "spanHash": "ddb360dcd80c869772b3a397c707fb1fed6a70f415339e56ad7c360d1c66e382",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/30423/declarations/0/declaration",
+      "code": "function a1s(){let e=(0,o1s.c)(24),t=Di(q),n=Cc(),{pathname:r,state:i}=Pr(),a=G(ij),o;e[0]===Symbol.for(`react.memo_cache_sentinel`)?(o={name:`chatgpt`},e[0]=o):o=e[0];let s=Zs(Bo,o),c=G(ep).status,l;e[1]===Symbol.for(`react.memo_cache_sentinel`)?(l={name:`codex.browser`},e[1]=l):l=e[1],Zs(Bo,l);let u=G(Qoe),d=G(Dc).status,f;e[2]!==r||e[3]!==a?(f=a!==`work`||!id(r),e[2]=r,e[3]=a,e[4]=f):f=e[4];let p=f,m;e[5]!==c||e[6]!==n||e[7]!==r||e[8]!==a||e[9]!==t||e[10]!==i?.returnLocation?(m=e=>{if(e!==`codex`&&iPt(t,e),r===`/codex-access`){if(e!==`codex`){let e=i?.returnLocation;e==null?n(`/`,{replace:!0}):n(xm(e),{replace:!0,state:e.state})}return}if(e!==`codex`&&a===`work`){wH(t),gS(t,e);return}kti(t,{codexLocalAccessStatus:c,currentMode:a,navigate:n,nextMode:e===`codex`?`codex`:`work`,startNewConversation:()=>{wH(t)}})},e[5]=c,e[6]=n,e[7]=r,e[8]=a,e[9]=t,e[10]=i?.returnLocation,e[11]=m):m=e[11];let h=m,g;e[12]===h?g=e[13]:(g=()=>h(`chat`),e[12]=h,e[13]=g);let _=s.isCapable&&!u&&p,v;e[14]===_?v=e[15]:(v={enabled:_,priority:`fallback`},e[14]=_,e[15]=v),Pw(`switchToMode1`,g,v);let y;e[16]===h?y=e[17]:(y=()=>h(`work`),e[16]=h,e[17]=y);let b=d===`allowed`&&p,x;e[18]===b?x=e[19]:(x={enabled:b,priority:`fallback`},e[18]=b,e[19]=x),Pw(`switchToMode2`,y,x);let S;e[20]===h?S=e[21]:(S=()=>h(`codex`),e[20]=h,e[21]=S);let C=c!==`error`,w;return e[22]===C?w=e[23]:(w={enabled:C,priority:`fallback`},e[22]=C,e[23]=w),Pw(`switchToMode3`,S,w),null}",
+      "programBinding": {
+        "name": "a1s",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 9282807,
+                "endExclusive": 9284253
+              },
+              "spanSha256": "ddb360dcd80c869772b3a397c707fb1fed6a70f415339e56ad7c360d1c66e382",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-S002",
+      "name": "kti",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4061657,
+        "endExclusive": 4062953
+      },
+      "spanHash": "095ec9fba000ffb8925dd77ff5a2295bede016c5da64c78e2272515ad4a447d5",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/16264/declarations/0/declaration",
+      "code": "function kti(e,{codexLocalAccessStatus:t,currentMode:n,navigate:r,nextMode:i,openHome:a=!1,restoreNavigation:o=!0,startNewConversation:s}){let c=e.get(Ec);if(i===`codex`)switch(t){case`loading`:case`allowed`:break;case`denied`:{let t=e.get(Jg);r(ORt,{state:{returnLocation:t}});return}case`error`:return}if(i===n&&!a)return;gei(e);let l=e.get(zti,i),u=e.get(Jg),d=e.get(ye),f=u?.pathname===`/library`||u?.pathname.startsWith(`/library/`);if(u!=null&&!f&&e.set(zti,n,{location:fti(u,Fti(e,u)),selectedProject:d}),bFe(e,i===`work`?Pu:q$e),a){r(`/`,{state:{sidebarProductMode:i}});return}if(!o)return;let p=e.get(bo);if(p!=null&&u!=null&&(i===`work`||Pa(p)!=null)){(c||u.state?.sidebarThreadLocationId!=null)&&r(xm(u),{replace:!c,state:c?{...u.state,sidebarProductMode:i}:{...u.state,sidebarThreadLocationId:null}});return}if(f){YI(e,l?.selectedProject==null?null:{projectId:l.selectedProject.projectId,projectKind:l.selectedProject.type}),c&&u!=null&&r(xm(u),{state:{...u.state,sidebarProductMode:i}});return}if(l==null){if(u!=null&&id(u.pathname)&&u.state==null&&d==null){c&&r(xm(u),{state:{sidebarProductMode:i}});return}YI(e,null),s();return}YI(e,l.selectedProject==null?null:{projectId:l.selectedProject.projectId,projectKind:l.selectedProject.type}),r(xm(l.location),{state:l.location.state})}",
+      "programBinding": {
+        "name": "kti",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4061657,
+                "endExclusive": 4062953
+              },
+              "spanSha256": "095ec9fba000ffb8925dd77ff5a2295bede016c5da64c78e2272515ad4a447d5",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-S003",
+      "name": "gS",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310108,
+        "endExclusive": 1310195
+      },
+      "spanHash": "7abb47bc3e652dd1aa48557f232380767a7f01afcc41b3248e49d4842469dba8",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/6550/declarations/0/declaration",
+      "code": "function gS(e,t){t===`chat`&&e.get(Qoe)||(e.get(dPt)!=null&&e.set(dPt,t),e.set(pPt,t))}",
+      "programBinding": {
+        "name": "gS",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 1310108,
+                "endExclusive": 1310195
+              },
+              "spanSha256": "7abb47bc3e652dd1aa48557f232380767a7f01afcc41b3248e49d4842469dba8",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I001",
+      "name": "iPt",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310195,
+        "endExclusive": 1310221
+      },
+      "spanHash": "81139424a52441d7413e7c373af5c01847ff6fbff4ed290cefb55062dde5fccc",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/6551/declarations/0/declaration",
+      "code": "function iPt(e,t){gS(e,t)}",
+      "programBinding": {
+        "name": "iPt",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 1310195,
+                "endExclusive": 1310221
+              },
+              "spanSha256": "81139424a52441d7413e7c373af5c01847ff6fbff4ed290cefb55062dde5fccc",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I002",
+      "name": "gei",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4037921,
+        "endExclusive": 4038014
+      },
+      "spanHash": "a03fe5dcd22dc66ae19dd11de4ea7d896cfdd9b02521dbec4d742ed6c83a6fe7",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/16191/declarations/0/declaration",
+      "code": "function gei(e){Jei.get(e.node)?.stop(),Jei.delete(e.node),e.set(nj,null),e.set(pse,new Map)}",
+      "programBinding": {
+        "name": "gei",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4037921,
+                "endExclusive": 4038014
+              },
+              "spanSha256": "a03fe5dcd22dc66ae19dd11de4ea7d896cfdd9b02521dbec4d742ed6c83a6fe7",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I003",
+      "name": "wH",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4012680,
+        "endExclusive": 4013878
+      },
+      "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/16071/declarations/0/declaration",
+      "code": "function wH(e,t){let{activeProject:n,prefillAeonStartTarget:r=null,prefillComposerMode:i=null,startInSidebar:a,replace:o,onNavigate:s,selectChat:c,freshDraft:l,...u}=t??{},d=Date.now(),f={...u,...n===void 0?{}:{project:Smr(n)},focusComposerNonce:d,...r==null?{}:{prefillAeonStartTarget:r}},p=gm(),m={replace:o,state:f},h=f.aeonDraft?.isOrbit===!0,g=h&&e.get(Ec),_=h&&f.aeonDraftOnboardingStep===`composer`?co():null,v=`/`;_==null?g&&(v=wr):v=g?oi(_):$u(_);let y=p?null:e.get(Nf).prepareNavigation(v,m);if(!p&&y==null||(s?.(),t?.codexAppMode==null?(t?.prefillChatGptSystemHints?.length??0)>0?sPt(e,`chat`):m7r(e)&&gS(e,`work`):sPt(e,t.codexAppMode),k5r(e),bfr(e,d,i),p))return;e.get(gi).refetch({cancelRefetch:!1}),n!==void 0&&id(e.get(Nf).pathname)&&(YI(e,n),delete f.project),omr(e,e.get(ye));let b=Qe({entrypoint:`home`}),x=e.get(Da,b);if(_==null&&(l||e.get(mh,x)!=null||f.aeonDraft!=null||e.get(L5r,x)!=null)&&oje(e,{clientNewThreadId:x,draftThreadLocationId:b}),(l||f.prefillChatGptSystemHints!=null)&&(f.initialChatGptConversationId=b5r(e,f.prefillChatGptSystemHints??[])),f.aeonDraft?.isOrbit===!0){let t=_??e.get(Da,b);d7r(e,t,f.aeonDraft,r),Cmr(e,t,f)}c?h7r(e,f,e=>(m.state=e,y?.())):y?.()}",
+      "programBinding": {
+        "name": "wH",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4012680,
+                "endExclusive": 4013878
+              },
+              "spanSha256": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I004",
+      "name": "Fti",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4064391,
+        "endExclusive": 4064474
+      },
+      "spanHash": "de8b99350393ceb0ed49feb58990916ff2396e19cb5dc94b0ef0b14007542503",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/16270/declarations/0/declaration",
+      "code": "function Fti(e,t){return e.get(Ec)?JA(t,e.get):e.get(oj)&&BFr(e.get,t)?null:Iti(t)}",
+      "programBinding": {
+        "name": "Fti",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4064391,
+                "endExclusive": 4064474
+              },
+              "spanSha256": "de8b99350393ceb0ed49feb58990916ff2396e19cb5dc94b0ef0b14007542503",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I005",
+      "name": "fti",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4056453,
+        "endExclusive": 4057243
+      },
+      "spanHash": "eec92b99d89750c5dfaac58a0b58da456c744fd098f437a107734e3d20a916d9",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/16247/declarations/0/declaration",
+      "code": "function fti(e,t){let n=new URLSearchParams(e.search);if(t===`home`)for(let e of[`prompt`,`promptSource`,`q`,`m`,`hints`,`system_hints`,`github_onboarding`])n.delete(e);let r={...e,search:n.size===0?``:`?${n}`,hash:pti(e)};if(e.state==null||typeof e.state!=`object`)return r;let{keepBrowserSidebarOpenFromLocationKey:i,showSpaceIntroduction:a,focusComposerNonce:o,prefillAddedFiles:s,prefillAeonStartTarget:c,prefillArtifactPreviewFiles:l,prefillCommentAttachments:u,prefillComposerDraft:d,prefillComposerMode:f,prefillLocalExecution:p,prefillRemoteExecutionHostId:m,prefillCloudThreadPrototype:h,prefillPriorConversation:g,prefillPrompt:_,project:v,...y}=e.state;return delete y.orbitPrewarmId,delete y.orbitPrewarmThreadId,{...r,state:y.aeonDraft==null?y:{...y,prefillAeonStartTarget:c}}}",
+      "programBinding": {
+        "name": "fti",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4056453,
+                "endExclusive": 4057243
+              },
+              "spanSha256": "eec92b99d89750c5dfaac58a0b58da456c744fd098f437a107734e3d20a916d9",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I006",
+      "name": "YI",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3071673,
+        "endExclusive": 3071863
+      },
+      "spanHash": "d3eab59d4ed7493e2845d3260f72fa9d1b28e0fd0bd887c786a148e9f2f0b326",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/13188/declarations/0/declaration",
+      "code": "function YI(e,t){(t!=null||e.get(ymr,e.get(ye))!=null)&&amr(e,e.get(ye));let n=Smr(t);ZGe(e,n?.projectId??null),e.query.setData(pi,na.SELECTED_PROJECT,{value:n}),rp(e,na.SELECTED_PROJECT,n)}",
+      "programBinding": {
+        "name": "YI",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 3071673,
+                "endExclusive": 3071863
+              },
+              "spanSha256": "d3eab59d4ed7493e2845d3260f72fa9d1b28e0fd0bd887c786a148e9f2f0b326",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I007",
+      "name": "bFe",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 122566,
+        "endExclusive": 122576
+      },
+      "spanHash": "e462ef68d3b95f773c4a69e2aefff21ea1774104377af912eca22ddea422888f",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/2613/declarations/0/declaration",
+      "code": "hAt as bFe",
+      "programBinding": {
+        "name": "bFe",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 122566,
+                "endExclusive": 122576
+              },
+              "spanSha256": "e462ef68d3b95f773c4a69e2aefff21ea1774104377af912eca22ddea422888f",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I008",
+      "name": "Pu",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 118113,
+        "endExclusive": 118122
+      },
+      "spanHash": "48a6d29ba871e372e1fa88868d00f43b3c58d669d2aeb4d3fe420a3709d1aec6",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/2185/declarations/0/declaration",
+      "code": "bAt as Pu",
+      "programBinding": {
+        "name": "Pu",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 118113,
+                "endExclusive": 118122
+              },
+              "spanSha256": "48a6d29ba871e372e1fa88868d00f43b3c58d669d2aeb4d3fe420a3709d1aec6",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I009",
+      "name": "q$e",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 135527,
+        "endExclusive": 135537
+      },
+      "spanHash": "b99c4f7b7a8da575dc25d1bb532af8c21b4296836c2535eefbd886ae0c5fbde2",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/3861/declarations/0/declaration",
+      "code": "yAt as q$e",
+      "programBinding": {
+        "name": "q$e",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 135527,
+                "endExclusive": 135537
+              },
+              "spanSha256": "b99c4f7b7a8da575dc25d1bb532af8c21b4296836c2535eefbd886ae0c5fbde2",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I010",
+      "name": "ij",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2416231,
+        "endExclusive": 2416233
+      },
+      "spanHash": "c9df9c3f2963b19b9b95f58c4d33b053fa9f8586dd6ee04126e52a868f882108",
+      "nodeType": "VariableDeclarator",
+      "metadataPointer": "/programBindings/10623/declarations/0/declaration",
+      "code": "ij",
+      "programBinding": {
+        "name": "ij",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 2416231,
+                "endExclusive": 2416233
+              },
+              "spanSha256": "c9df9c3f2963b19b9b95f58c4d33b053fa9f8586dd6ee04126e52a868f882108",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I011",
+      "name": "ij-assignment-owner",
+      "assignedName": "ij",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2416261,
+        "endExclusive": 2416537
+      },
+      "spanHash": "1c43ffacb23141dafcc22bdf0d00cbdeb7e4b9c75374f5a2f47846e1a3707a29",
+      "nodeType": "ArrowFunctionExpression",
+      "metadataPointer": "/allCompleteFunctionLocators/12469",
+      "code": "()=>{Y(),_g(),YFn(),RIn(),rj(),Z(),Eg(),dm(),ij=Tu(q,({get:e})=>{let t=fZe(e,gye.conversationDetailMode),n=e(xIn)?.roles;return t==null&&n!=null&&TIn({backendRole:n.length===0?e(JFn).data?.role??null:null,localRoles:n})===`non_coding`||e(vPe)===`STEPS_PROSE`?`work`:`codex`})}",
+      "candidateAssignmentByte": 2416306
+    },
+    {
+      "id": "MES-I012",
+      "name": "zti",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4064902,
+        "endExclusive": 4064905
+      },
+      "spanHash": "3f02576a80b32c525fe38bc1a2240c42e3f979b9114c2915d57119f2a36b9958",
+      "nodeType": "VariableDeclarator",
+      "metadataPointer": "/programBindings/16274/declarations/0/declaration",
+      "code": "zti",
+      "programBinding": {
+        "name": "zti",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4064902,
+                "endExclusive": 4064905
+              },
+              "spanSha256": "3f02576a80b32c525fe38bc1a2240c42e3f979b9114c2915d57119f2a36b9958",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I013",
+      "name": "zti-assignment-owner",
+      "assignedName": "zti",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4064945,
+        "endExclusive": 4065269
+      },
+      "spanHash": "f990366f185e33c072fc0b67405bddf84a8a4c0d4765346c3dc5eb8dd3d70c3b",
+      "nodeType": "ArrowFunctionExpression",
+      "metadataPointer": "/allCompleteFunctionLocators/21995",
+      "code": "()=>{Ns(),Ip(),Y(),tf(),oC(),ys(),Do(),sMe(),dg(),Vzt(),l$e(),$h(),cZr(),UI(),No(),Wh(),vZr(),CZr(),TZr(),al(),fB(),Wr(),fp(),DZr(),sCr(),Rd(),XI(),H0r(),o2r(),u6r(),p6r(),Z(),fu(),Hi(),Jm(),dm(),Vr(),sj(),XA(),H7r(),W7r(),BH(),aj(),mti(),eo(),Ml(),Rti=48e4,zti=Af(q,e=>null),Bti=Af(q,e=>({})),Vti=fd(q,null),Hti=fd(q,null)}",
+      "candidateAssignmentByte": 4065203
+    },
+    {
+      "id": "MES-I014",
+      "name": "id",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 119716,
+        "endExclusive": 119725
+      },
+      "spanHash": "161519f7d8cf58bf2001b72aa5dc505e491689604f7b0aa714574a5e7a28b6e9",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/2339/declarations/0/declaration",
+      "code": "dMt as id",
+      "programBinding": {
+        "name": "id",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 119716,
+                "endExclusive": 119725
+              },
+              "spanSha256": "161519f7d8cf58bf2001b72aa5dc505e491689604f7b0aa714574a5e7a28b6e9",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I015",
+      "name": "Ec",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 111904,
+        "endExclusive": 111912
+      },
+      "spanHash": "7c2f9e463b8d627c34ab0f5a6c8a60821f11e6f68d6a21b1b8d00b315909ec03",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/1588/declarations/0/declaration",
+      "code": "Tz as Ec",
+      "programBinding": {
+        "name": "Ec",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 111904,
+                "endExclusive": 111912
+              },
+              "spanSha256": "7c2f9e463b8d627c34ab0f5a6c8a60821f11e6f68d6a21b1b8d00b315909ec03",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I016",
+      "name": "Jg",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 136174,
+        "endExclusive": 136183
+      },
+      "spanHash": "cca67fc2f4cedd57d1bfa8aa44b669b435550ea627463c205290f215ce7dc3fe",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/3923/declarations/0/declaration",
+      "code": "z1t as Jg",
+      "programBinding": {
+        "name": "Jg",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 136174,
+                "endExclusive": 136183
+              },
+              "spanSha256": "cca67fc2f4cedd57d1bfa8aa44b669b435550ea627463c205290f215ce7dc3fe",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I017",
+      "name": "bo",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 106029,
+        "endExclusive": 106037
+      },
+      "spanHash": "556d8c3f723e172b1310a7ad651e6c1b3bd73aac24a294e6f7eeb610d7cd7657",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/1023/declarations/0/declaration",
+      "code": "MR as bo",
+      "programBinding": {
+        "name": "bo",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 106029,
+                "endExclusive": 106037
+              },
+              "spanSha256": "556d8c3f723e172b1310a7ad651e6c1b3bd73aac24a294e6f7eeb610d7cd7657",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I018",
+      "name": "Pa",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 104247,
+        "endExclusive": 104255
+      },
+      "spanHash": "6f34b280960a6e7d579eee9d79e45a471b25e2f92d4b94be75e1a13fcd562b15",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/851/declarations/0/declaration",
+      "code": "KB as Pa",
+      "programBinding": {
+        "name": "Pa",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 104247,
+                "endExclusive": 104255
+              },
+              "spanSha256": "6f34b280960a6e7d579eee9d79e45a471b25e2f92d4b94be75e1a13fcd562b15",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I019",
+      "name": "ORt",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1368999,
+        "endExclusive": 1369002
+      },
+      "spanHash": "25b4e379ccc188d7546f9518b07587006180520cb753f09e3f76d04114926d10",
+      "nodeType": "VariableDeclarator",
+      "metadataPointer": "/programBindings/6834/declarations/0/declaration",
+      "code": "ORt",
+      "programBinding": {
+        "name": "ORt",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "variable-var",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 1368999,
+                "endExclusive": 1369002
+              },
+              "spanSha256": "25b4e379ccc188d7546f9518b07587006180520cb753f09e3f76d04114926d10",
+              "nodeType": "VariableDeclarator",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-I020",
+      "name": "ORt-assignment-owner",
+      "assignedName": "ORt",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1369030,
+        "endExclusive": 1369055
+      },
+      "spanHash": "8957083d3c6cb1f0c042802726b515098653bb7f57e79361d2e2ec207e152c45",
+      "nodeType": "ArrowFunctionExpression",
+      "metadataPointer": "/allCompleteFunctionLocators/6851",
+      "code": "()=>{ORt=`/codex-access`}",
+      "candidateAssignmentByte": 1369035
+    },
+    {
+      "id": "MES-I021",
+      "name": "ye",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 96195,
+        "endExclusive": 96204
+      },
+      "spanHash": "04e8a727d4ac047d572de19493ff1c7716d7635a3716d690fab2691fdb5d278c",
+      "nodeType": "ImportSpecifier",
+      "metadataPointer": "/programBindings/64/declarations/0/declaration",
+      "code": "$kt as ye",
+      "programBinding": {
+        "name": "ye",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "import",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 96195,
+                "endExclusive": 96204
+              },
+              "spanSha256": "04e8a727d4ac047d572de19493ff1c7716d7635a3716d690fab2691fdb5d278c",
+              "nodeType": "ImportSpecifier",
+              "locatorScope": "complete-AST-node"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "RP-S0001",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3519329,
+        "endExclusive": 3519363
+      },
+      "spanHash": "1ae2b72eb0ac9a585224aa900d73eec0201c5dada779236cf8168456a8c0f534",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:lK"
+      ],
+      "code": "function lK(e){return e===`/`||!1}"
+    },
+    {
+      "id": "RP-S0002",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593390,
+        "endExclusive": 3593392
+      },
+      "spanHash": "85a2c8a99e5998afaea4d8c7a3aa32d5962dbd7433bcc712fb1ff315286706fc",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "declaration:xq"
+      ],
+      "code": "xq"
+    },
+    {
+      "id": "RP-S0003",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593393,
+        "endExclusive": 3593395
+      },
+      "spanHash": "8e722204bea51d33fe89446aed931ba151cfffc7cdb1c9411bcbf6f825f59900",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "declaration:Sq"
+      ],
+      "code": "Sq"
+    },
+    {
+      "id": "RP-S0004",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593930,
+        "endExclusive": 3594322
+      },
+      "spanHash": "95a6ad88859983fa8a99a03f0c00a23828d68f1d371b0301a6345e12954a3256",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:ljn"
+      ],
+      "code": "function ljn(e,t){let n=e.get(Tq),r=e.get(Cq),i={detailLevel:t};e.set(Cq,i);let a=rAn(e,mP.conversationDetailMode,t,{optimistic:!1});return e.get(BR).logProductEvent(qYt,{previousWorkMode:n===`STEPS_PROSE`?`everyday`:`coding`,selectedWorkMode:t===`STEPS_PROSE`?`everyday`:`coding`,previousThreadDetailLevel:n,selectedThreadDetailLevel:t}),a.catch(()=>{e.get(Cq)===i&&(e.set(Cq,r),fjn(e))}),a}"
+    },
+    {
+      "id": "RP-S0005",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593469,
+        "endExclusive": 3593485
+      },
+      "spanHash": "8653667316de0a0a1d1a0bc1104d135b63e0ca354d871f60717bb6d9c85bc3d1",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:xq"
+      ],
+      "code": "xq=`STEPS_PROSE`"
+    },
+    {
+      "id": "RP-S0006",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3593486,
+        "endExclusive": 3593505
+      },
+      "spanHash": "9f0b447f13a2e1a71e94513879016df5a0cf3566e6ef4c33fc08ac18ceef754b",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:Sq"
+      ],
+      "code": "Sq=`STEPS_COMMANDS`"
+    },
+    {
+      "id": "RP-S0007",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8136310,
+        "endExclusive": 8136319
+      },
+      "spanHash": "89ac1878630a28ecc18f466bfe472c63ce5e1524bf1a0e59b59f803b0064bcfa",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:bAt"
+      ],
+      "code": "xq as bAt"
+    },
+    {
+      "id": "RP-S0008",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8139713,
+        "endExclusive": 8139722
+      },
+      "spanHash": "ed4026431cd5f8fba7de3510366832154833026645229e726decf22d82adb6c0",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:dMt"
+      ],
+      "code": "lK as dMt"
+    },
+    {
+      "id": "RP-S0009",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8145769,
+        "endExclusive": 8145779
+      },
+      "spanHash": "6b3cf3856e96d1d5c8c9368a04e7a182ef3d3734ff551b8581a3cc6d03a59987",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:hAt"
+      ],
+      "code": "ljn as hAt"
+    },
+    {
+      "id": "RP-S0010",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8172622,
+        "endExclusive": 8172631
+      },
+      "spanHash": "24dbc95853a2540fd376a3eebf0d69a71e8a14ad1a8aa7be3020f6b84d181af2",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:yAt"
+      ],
+      "code": "Sq as yAt"
+    }
+  ],
+  "esmJoins": [
+    {
+      "local": "bFe",
+      "module": "./app-shared-8bd9d0399038.js",
+      "imported": "hAt",
+      "targetLocal": "ljn",
+      "sourceUnitIds": [
+        "MES-I007",
+        "RP-S0009"
+      ]
+    },
+    {
+      "local": "Pu",
+      "module": "./app-shared-8bd9d0399038.js",
+      "imported": "bAt",
+      "targetLocal": "xq",
+      "sourceUnitIds": [
+        "MES-I008",
+        "RP-S0007"
+      ]
+    },
+    {
+      "local": "q$e",
+      "module": "./app-shared-8bd9d0399038.js",
+      "imported": "yAt",
+      "targetLocal": "Sq",
+      "sourceUnitIds": [
+        "MES-I009",
+        "RP-S0010"
+      ]
+    },
+    {
+      "local": "id",
+      "module": "./app-shared-8bd9d0399038.js",
+      "imported": "dMt",
+      "targetLocal": "lK",
+      "sourceUnitIds": [
+        "MES-I014",
+        "RP-S0008"
+      ]
+    }
+  ],
+  "boundedSourceChecks": {
+    "boundedFunctionParsePasses": 14,
+    "units": [
+      {
+        "sourceId": "MES-S001",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [
+          {
+            "callee": "id",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 9283169,
+              "endExclusive": 9283174
+            },
+            "code": "id(r)"
+          },
+          {
+            "callee": "iPt",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 9283313,
+              "endExclusive": 9283321
+            },
+            "code": "iPt(t,e)"
+          },
+          {
+            "callee": "wH",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 9283482,
+              "endExclusive": 9283487
+            },
+            "code": "wH(t)"
+          },
+          {
+            "callee": "gS",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 9283488,
+              "endExclusive": 9283495
+            },
+            "code": "gS(t,e)"
+          },
+          {
+            "callee": "kti",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 9283503,
+              "endExclusive": 9283630
+            },
+            "code": "kti(t,{codexLocalAccessStatus:c,currentMode:a,navigate:n,nextMode:e===`codex`?`codex`:`work`,startNewConversation:()=>{wH(t)}})"
+          },
+          {
+            "callee": "wH",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 9283622,
+              "endExclusive": 9283627
+            },
+            "code": "wH(t)"
+          }
+        ],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-S002",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [
+          {
+            "callee": "gei",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4061981,
+              "endExclusive": 4061987
+            },
+            "code": "gei(e)"
+          },
+          {
+            "callee": "fti",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4062133,
+              "endExclusive": 4062148
+            },
+            "code": "fti(u,Fti(e,u))"
+          },
+          {
+            "callee": "Fti",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4062139,
+              "endExclusive": 4062147
+            },
+            "code": "Fti(e,u)"
+          },
+          {
+            "callee": "bFe",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4062169,
+              "endExclusive": 4062193
+            },
+            "code": "bFe(e,i===`work`?Pu:q$e)"
+          },
+          {
+            "callee": "id",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4062688,
+              "endExclusive": 4062702
+            },
+            "code": "id(u.pathname)"
+          }
+        ],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-S003",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-I001",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [
+          {
+            "callee": "gS",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 1310213,
+              "endExclusive": 1310220
+            },
+            "code": "gS(e,t)"
+          }
+        ],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-I002",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-I003",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [
+          {
+            "callee": "gS",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4013293,
+              "endExclusive": 4013305
+            },
+            "code": "gS(e,`work`)"
+          },
+          {
+            "callee": "id",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4013406,
+              "endExclusive": 4013428
+            },
+            "code": "id(e.get(Nf).pathname)"
+          }
+        ],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-I004",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-I005",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-I006",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": []
+      },
+      {
+        "sourceId": "MES-I011",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": [
+          {
+            "name": "ij",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 2416306,
+              "endExclusive": 2416536
+            },
+            "code": "ij=Tu(q,({get:e})=>{let t=fZe(e,gye.conversationDetailMode),n=e(xIn)?.roles;return t==null&&n!=null&&TIn({backendRole:n.length===0?e(JFn).data?.role??null:null,localRoles:n})===`non_coding`||e(vPe)===`STEPS_PROSE`?`work`:`codex`})"
+          }
+        ]
+      },
+      {
+        "sourceId": "MES-I013",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": [
+          {
+            "name": "zti",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 4065203,
+              "endExclusive": 4065220
+            },
+            "code": "zti=Af(q,e=>null)"
+          }
+        ]
+      },
+      {
+        "sourceId": "MES-I020",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "calls": [],
+        "assignments": [
+          {
+            "name": "ORt",
+            "freeInSelectedFunction": true,
+            "byteRange": {
+              "start": 1369035,
+              "endExclusive": 1369054
+            },
+            "code": "ORt=`/codex-access`"
+          }
+        ]
+      },
+      {
+        "sourceId": "RP-S0001",
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "calls": [],
+        "assignments": []
+      },
+      {
+        "sourceId": "RP-S0004",
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "calls": [],
+        "assignments": []
+      }
+    ],
+    "scopeQualification": "Free identifier call within exact saved Program-level declaration; join with saved Program binding/import. No whole-program caller census implied.",
+    "targetEvaluated": false
+  },
+  "sourceMetadataPin": {
+    "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+    "bytes": 98261941,
+    "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189"
+  },
+  "canonicalLedgersUnchanged": {
+    "scope": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v48.json",
+      "bytes": 2810067,
+      "sha256": "f29f5fdd7ef4a7339fbf3d644237f6b311ed38f870d37612f7142279a3aa564f"
+    },
+    "scenario": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v45-scenarios.json",
+      "bytes": 2651102,
+      "sha256": "5d9537c3c383b4fc7ce171a564b5d976a0c524985bc512d34e659a3b2e4a4334"
+    },
+    "coverage": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v39.json",
+      "bytes": 1532754,
+      "sha256": "a507f84f4586fa9639c1a0636b78f2bac51b5fd105b4e8239c1338a446cf6e4a"
+    },
+    "order": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-current-ordering-v22.json",
+      "bytes": 49711,
+      "sha256": "e6187aa690dd426548fccf4b2369a5de6716672ec68b92dc1947140e1d8d60cf"
+    },
+    "fmo": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v14.json",
+      "bytes": 8152320,
+      "sha256": "cd8e375b3236bdd5ca0572f24857353010144c7060ac1fa963d31722bf5531e0"
+    },
+    "legacy": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v27.json",
+      "bytes": 1558197,
+      "sha256": "2f1bdcfa693344a3afad35b51c3021d050ccddae53269ddafb04a06ab2552e18"
+    },
+    "backlog": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v11.json",
+      "bytes": 486224,
+      "sha256": "d5989505dc155ef40982175b3293eb242212cc2907445986ae80fa0f4008cbc6"
+    }
+  },
+  "canonicalCountsUnchanged": {
+    "finiteFeatureDefinitions": 504,
+    "userOperations": 571,
+    "supportOperations": 125,
+    "productScenarioSpecifications": 1786,
+    "owningTaskGroupsWithFiniteDefinitions": 51,
+    "additionalSourceContractTaskGroups": 0,
+    "pendingSettingsPages": 0,
+    "featuresImplemented": 0,
+    "newProductScenarioPasses": 0,
+    "confirmedChatGptExclusions": 0,
+    "modeCounts": {
+      "unknown": 503,
+      "shared": 1
+    },
+    "qualifiedResponsibilityRecords": 106,
+    "coarseWorkflowFacades": 48,
+    "sourceWitnesses": 2479,
+    "sharedWitnessDispositions": 34,
+    "runtimeCapabilityGroups": 15,
+    "storageDomains": 11,
+    "selectedStorageBoundaries": 16,
+    "dependencyRecords": 202,
+    "buildInputOccurrences": 30,
+    "fullRuntimeRoutesQualified": 0,
+    "modelSubmissionsRemaining": 0,
+    "savedLegacyEntriesWithoutFeatureMapping": 715,
+    "remainingCommandGoalAssociations": 20
+  },
+  "existingGoalRef": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/remaining-command-adoption-v1.json",
+    "bytes": 305101,
+    "sha256": "32c6c6a89c704c15bbf64a1398f21ea6727bc894a7a0125973d34ef77bf0fd3b",
+    "jsonPointer": "/newGoals/15"
+  },
+  "existingModuleRef": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/remaining-command-adoption-v1.json",
+    "bytes": 305101,
+    "sha256": "32c6c6a89c704c15bbf64a1398f21ea6727bc894a7a0125973d34ef77bf0fd3b",
+    "jsonPointer": "/maintenanceProposals/4"
+  },
+  "bootstrapSupplement": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-bootstrap-consumer-v1.json",
+    "bytes": 86770,
+    "sha256": "53f53d9befc56475093ab4350def25f397b9f0da2ffaa99996efbb3589c3c234"
+  },
+  "behaviorComparison": {
+    "savedRecord": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-behavior-observations.json",
+      "bytes": 4754,
+      "sha256": "aadeac8a21bc3541df6e3333a6ddb0906c608f307c167d6ba4718d1a676bca72"
+    },
+    "gSExactSourceMatchesSavedFixture": true,
+    "agreement": "Historical memory-provider observations support gS guard/write order only. No saved a1s/kti/ljn observation is claimed.",
+    "newObservationCommands": 0,
+    "originalClientTransitionsVerified": false
+  },
+  "childCaseSpecifications": [
+    {
+      "caseId": "MES-C01",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "chat/work/codex 注册资格及 fallback 仲裁；work 根路径与非根路径对照",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "MES-C02",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "codex-access 上 chat/work 的 returnLocation 或根路径返回；codex 直接返回",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "MES-C03",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "currentMode=work 时非 codex 的 iPt、wH、gS 顺序与同步失败",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "MES-C04",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "codex 访问 loading/allowed/denied/error 和同模式提前返回",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "MES-C05",
+      "parentSpecId": "RCGA-FSC-0481:integration-boundary",
+      "trigger": "detail-level 更新失败回滚，以及更新后又发生另一写入时跳过旧回滚",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "MES-C06",
+      "parentSpecId": "RCGA-FSC-0481:integration-boundary",
+      "trigger": "openHome/restoreNavigation=false 的状态更新与导航顺序",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "MES-C07",
+      "parentSpecId": "RCGA-FSC-0481:integration-boundary",
+      "trigger": "existing conversation/library/no snapshot/saved snapshot 的七分支导航表",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "MES-C08",
+      "parentSpecId": "RCGA-FSC-0481:integration-boundary",
+      "trigger": "同一实际 host/store 内切换和重启后的草稿、项目、路由与持久值恢复",
+      "status": "unexecuted-source-derived-child-case"
+    }
+  ],
+  "selectedBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "fullProductModeBoundaryClosed": false,
+  "clientImplementationStarted": false,
+  "stopBoundary": "No recursive expansion of rAn, permission/role providers, router/store transport or native effects. Ezt is a distinct saved consumer variant.",
+  "nextAction": "Finish the already identified Ezt composer variant for FSC-0481 and make explicit retain/exclude/conditional decisions against these two mode axes; do not reopen a1s/kti/bootstrap providers."
+}

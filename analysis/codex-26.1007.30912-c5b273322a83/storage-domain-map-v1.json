@@ -1,0 +1,2143 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T18:29:23.187652+00:00",
+  "scope": "Eleven bounded storage responsibility domains from saved contracts plus selected source. Not a complete product storage census or verified effective-root inventory.",
+  "sourceFacts": [
+    {
+      "id": "SDMF-01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "同步home解析器xr默认preferWsl为false；回退表达式为process.env.CODEX_HOME ?? path.join(os.homedir(),`.codex`)。该表达式不trim或resolve环境值，空字符串和相对值并未在此被拒绝。",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "start": 64579,
+        "endExclusive": 64853
+      },
+      "spanHash": "4cf3864df7ff375618270b5b7e23380ef25d10c958b743844e3b536d68054be3",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "异步执行home解析器Sr在win32且preferWsl为true时先await er()，无结果回退到同一CODEX_HOME/用户home表达式；WSL helper和实际返回值未执行。",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "start": 64853,
+        "endExclusive": 65139
+      },
+      "spanHash": "0d061f28b20fad127112f71a376d7129e05cb518340639986d115a7cb98ef3f0",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "gT先以无参数o.ot()确定桌面home，再以该值构造globalState与config.toml settingsStore；runCodexInWsl和可用性确定后，另以o.st({preferWsl})求executionCodexHome。后者没有替换前两个构造路径。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "start": 393007,
+        "endExclusive": 393906
+      },
+      "spanHash": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "userData路径候选先trim CODEX_ELECTRON_USER_DATA_PATH并resolve；无覆盖时以appData、build flavor标签和可选agent run ID构造。该规则与CODEX_HOME解析规则不同。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "start": 420114,
+        "endExclusive": 420398
+      },
+      "spanHash": "25513d69e52d41edc9d8022df24ac2343361a426002297d254f3d1e3dc3321c0",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "bootstrap的所选Program顶层调用将oD结果传入app.setPath(`userData`,...)；实际appData、flavor、环境和运行有效路径未读取。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "start": 457406,
+        "endExclusive": 457505
+      },
+      "spanHash": "6b8b32fd8ee818ad99e6ab752edebbe37b99d9a071e57bc66970786fef4584ab",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "settingsStore的ki构造器保存filePath/globalState、读取ji(filePath)、规范化状态并准备旧设置迁移。set先更新内存与pendingWrites，再尝试persistPendingSettings；configClient为null时不提交后台写入。",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "locator": {
+        "start": 93907,
+        "endExclusive": 96823
+      },
+      "spanHash": "aa856f960314b0d2c9dd062931e6e3a2f08c05dfd27eed999c82b8d26e4de226",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "ji仅在文件存在时读取UTF8并解析TOML的desktop部分；错误日志后返回空对象。该选定reader没有文件写入。",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "locator": {
+        "start": 97122,
+        "endExclusive": 97354
+      },
+      "spanHash": "ce6843913b69ed961e78f467f44b4a12d33656c695b1718e56f0acb99cecdfe7",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "所选settingsStore.initialize输入包含config及batchWriteConfigValues回调，回调调用捕获的pt.sendAppServerRequest(`config/batchWrite`,edits)。此调用结构不证明实际pt实例、配置层或最终文件路径。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 3819054,
+        "endExclusive": 3819165
+      },
+      "spanHash": "2d24f0e8b0e4cf11ba6dc1c7e543e16ca63116ff6a92e859e3f81fd0f28d67df",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "ki将pending迁移与写入快照转为desktop.<key>、mergeStrategy:replace的batch edits；确认成功后仅移除仍等于快照的pending值并调用Fi清理旧键，失败被记录且pending保留。initialize中配置已存在的项也可直接清理对应pending迁移并调用Fi，不要求一次新增写入。",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "locator": {
+        "start": 93907,
+        "endExclusive": 96823
+      },
+      "spanHash": "aa856f960314b0d2c9dd062931e6e3a2f08c05dfd27eed999c82b8d26e4de226",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Fi按descriptor.hostStorage.kind清理configuration/global-state旧键或electron persisted-atom对象成员；composerEnterBehavior另有旧项清理。具体descriptor/schema与Pi迁移取值未在本轮展开，不能按键名推定模式。",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "locator": {
+        "start": 98347,
+        "endExclusive": 98848
+      },
+      "spanHash": "bbecefcf929ce70673c9b148cd43ca00c20d1845b2ac820cc4c8150a305b0e82",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "AJe为基类提供的read/write适配使用globalState的thread assignments、projectless IDs及路径hint键；另可通过writeMembership回调写后台并更新host ID。这个本地副本没有在所选类中创建独立数据库。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 3211589,
+        "endExclusive": 3213511
+      },
+      "spanHash": "798831bd1a8f39fc7121ec16e5012275e1939d7e7f85bd40c89636a09d79ae0f",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "AJe使用的i.r导出对应U0；U0.flush先等待pendingThreadWrites和pendingCatalogWrite结算，再await pendingWrite。这个方法不调用globalState.flush，等待队列和文件提交必须分开表述。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "start": 1564441,
+        "endExclusive": 1567520
+      },
+      "spanHash": "caf667f3a3a1fc73be8be95f9d56c1489435a0faaa4502d5762cc6891e757e0e",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-13",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "gT在桌面home/sqlite下构造prod或带flavor后缀的codex-history-snapshots数据库名，await allSettled清理主文件、-wal、-shm、-journal。该清理不证明所有会话数据库位置或原生恢复机制。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "start": 393007,
+        "endExclusive": 393906
+      },
+      "spanHash": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-14",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "af按persist:codex-browser-前缀和encodeURIComponent(name)构造逻辑partition名；已保存app session合同使用app名称。实际磁盘session根仍由runtime/session provider决定。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 246454,
+        "endExclusive": 246507
+      },
+      "spanHash": "e323c1eda488aa2f72d0d63fe287858674a9b1f972f22d042ab29ca17339603b",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    },
+    {
+      "id": "SDMF-15",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "at按persist:codex-browser-app-route:前缀编码由两个输入以NUL连接的身份元组；该命名规则不能证明实际磁盘根、账号隔离或完整调用方集合。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 6860,
+        "endExclusive": 6926
+      },
+      "spanHash": "52b6f78d283b0643cfa5bd40bf60dda344113928a2235076c3185c85f961b9c8",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-frozen-source-confirmed; effective-runtime-instance-and-root-unobserved"
+    }
+  ],
+  "sourceJoins": [
+    {
+      "id": "SDMJ-01",
+      "relationship": "gT o.ot -> application-network export ot -> xr",
+      "units": [
+        {
+          "label": "binding-gT",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 393007,
+            "endExclusive": 393906
+          },
+          "spanHash": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf",
+          "nodeType": "FunctionDeclaration",
+          "bytes": 899,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/bootstrap-CooIJpZm.js--binding-gT.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/bootstrap-CooIJpZm.js--binding-gT.txt",
+            "bytes": 899,
+            "sha256": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf"
+          }
+        },
+        {
+          "label": "binding-o",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 244,
+            "endExclusive": 298
+          },
+          "spanHash": "b925ba2a13b0dc690eac930c79fced50b29f557b75d1d7cef49f53742c0a207f",
+          "bytes": 54,
+          "nodeType": "VariableDeclarator",
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--bootstrap-CooIJpZm.js--binding-o.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--bootstrap-CooIJpZm.js--binding-o.txt",
+            "bytes": 54,
+            "sha256": "b925ba2a13b0dc690eac930c79fced50b29f557b75d1d7cef49f53742c0a207f"
+          }
+        },
+        {
+          "label": "export-ot",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "byteRange": {
+            "start": 288408,
+            "endExclusive": 288485
+          },
+          "spanHash": "217e158d15ea2f337ff380ea9857447a74c71dbbe04ee13d5e4bc8553143fb60",
+          "nodeType": "CallExpression",
+          "bytes": 77,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--export-ot.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--export-ot.txt",
+            "bytes": 77,
+            "sha256": "217e158d15ea2f337ff380ea9857447a74c71dbbe04ee13d5e4bc8553143fb60"
+          }
+        },
+        {
+          "label": "definition-ot-xr",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "byteRange": {
+            "start": 64579,
+            "endExclusive": 64853
+          },
+          "spanHash": "4cf3864df7ff375618270b5b7e23380ef25d10c958b743844e3b536d68054be3",
+          "nodeType": "FunctionDeclaration",
+          "bytes": 274,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--definition-ot-xr.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--definition-ot-xr.txt",
+            "bytes": 274,
+            "sha256": "4cf3864df7ff375618270b5b7e23380ef25d10c958b743844e3b536d68054be3"
+          }
+        }
+      ],
+      "qualification": "Selected Program declaration/export and call structure; no complete caller census or actual provider instance claim."
+    },
+    {
+      "id": "SDMJ-02",
+      "relationship": "gT s.l -> startup-requirements export l -> ki",
+      "units": [
+        {
+          "label": "binding-gT",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 393007,
+            "endExclusive": 393906
+          },
+          "spanHash": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf",
+          "nodeType": "FunctionDeclaration",
+          "bytes": 899,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/bootstrap-CooIJpZm.js--binding-gT.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/bootstrap-CooIJpZm.js--binding-gT.txt",
+            "bytes": 899,
+            "sha256": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf"
+          }
+        },
+        {
+          "label": "binding-s",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 299,
+            "endExclusive": 346
+          },
+          "spanHash": "2d6ae8877d54aaa16588d82612f5ba9f6ee241eb846eaf98dc0d70e3cd7922f0",
+          "bytes": 47,
+          "nodeType": "VariableDeclarator",
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--bootstrap-CooIJpZm.js--binding-s.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--bootstrap-CooIJpZm.js--binding-s.txt",
+            "bytes": 47,
+            "sha256": "2d6ae8877d54aaa16588d82612f5ba9f6ee241eb846eaf98dc0d70e3cd7922f0"
+          }
+        },
+        {
+          "label": "export-l",
+          "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+          "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+          "byteRange": {
+            "start": 113348,
+            "endExclusive": 113424
+          },
+          "spanHash": "c1b329c9806e9a9a1afb4e41f274b186c27c8dab6ca43e3b5737984effe992cf",
+          "nodeType": "CallExpression",
+          "bytes": 76,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/startup-requirements-C6B1x9gL.js--export-l.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/startup-requirements-C6B1x9gL.js--export-l.txt",
+            "bytes": 76,
+            "sha256": "c1b329c9806e9a9a1afb4e41f274b186c27c8dab6ca43e3b5737984effe992cf"
+          }
+        },
+        {
+          "label": "definition-l-ki",
+          "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+          "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+          "byteRange": {
+            "start": 93907,
+            "endExclusive": 96823
+          },
+          "spanHash": "aa856f960314b0d2c9dd062931e6e3a2f08c05dfd27eed999c82b8d26e4de226",
+          "nodeType": "VariableDeclarator",
+          "bytes": 2916,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/startup-requirements-C6B1x9gL.js--definition-l-ki.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/startup-requirements-C6B1x9gL.js--definition-l-ki.txt",
+            "bytes": 2916,
+            "sha256": "aa856f960314b0d2c9dd062931e6e3a2f08c05dfd27eed999c82b8d26e4de226"
+          }
+        }
+      ],
+      "qualification": "Selected Program declaration/export and call structure; no complete caller census or actual provider instance claim."
+    },
+    {
+      "id": "SDMJ-03",
+      "relationship": "main AJe extends i.r -> src export r -> U0",
+      "units": [
+        {
+          "label": "binding-AJe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3211589,
+            "endExclusive": 3213511
+          },
+          "spanHash": "798831bd1a8f39fc7121ec16e5012275e1939d7e7f85bd40c89636a09d79ae0f",
+          "nodeType": "VariableDeclarator",
+          "bytes": 1922,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-AJe.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-AJe.txt",
+            "bytes": 1922,
+            "sha256": "798831bd1a8f39fc7121ec16e5012275e1939d7e7f85bd40c89636a09d79ae0f"
+          }
+        },
+        {
+          "label": "binding-i",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 167,
+            "endExclusive": 197
+          },
+          "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb",
+          "bytes": 30,
+          "nodeType": "VariableDeclarator",
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--main-CqEoQDOU.js--binding-i.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--main-CqEoQDOU.js--binding-i.txt",
+            "bytes": 30,
+            "sha256": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb"
+          }
+        },
+        {
+          "label": "export-r",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1587898,
+            "endExclusive": 1587974
+          },
+          "spanHash": "cc8246f5f1053136e84eeee653bd01425d059e0ee2cf4ed4928f5ea0ab60f93f",
+          "bytes": 76,
+          "nodeType": "CallExpression",
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--src-BJv5Mk7n.js--export-r.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--src-BJv5Mk7n.js--export-r.txt",
+            "bytes": 76,
+            "sha256": "cc8246f5f1053136e84eeee653bd01425d059e0ee2cf4ed4928f5ea0ab60f93f"
+          }
+        },
+        {
+          "label": "export-binding-U0",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1564441,
+            "endExclusive": 1567520
+          },
+          "spanHash": "caf667f3a3a1fc73be8be95f9d56c1489435a0faaa4502d5762cc6891e757e0e",
+          "bytes": 3079,
+          "nodeType": "VariableDeclarator",
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--src-BJv5Mk7n.js--export-binding-U0.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--src-BJv5Mk7n.js--export-binding-U0.txt",
+            "bytes": 3079,
+            "sha256": "caf667f3a3a1fc73be8be95f9d56c1489435a0faaa4502d5762cc6891e757e0e"
+          }
+        }
+      ],
+      "qualification": "Selected Program declaration/export and call structure; no complete caller census or actual provider instance claim."
+    },
+    {
+      "id": "SDMJ-04",
+      "relationship": "partition constructors use same Program rf/$e prefixes",
+      "units": [
+        {
+          "label": "binding-af",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 246454,
+            "endExclusive": 246507
+          },
+          "spanHash": "e323c1eda488aa2f72d0d63fe287858674a9b1f972f22d042ab29ca17339603b",
+          "nodeType": "FunctionDeclaration",
+          "bytes": 53,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-af.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-af.txt",
+            "bytes": 53,
+            "sha256": "e323c1eda488aa2f72d0d63fe287858674a9b1f972f22d042ab29ca17339603b"
+          }
+        },
+        {
+          "label": "binding-rf",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 246121,
+            "endExclusive": 246148
+          },
+          "spanHash": "6fde3e429e74c4411fe96113c4393522f745b2f46551647533ec6217b876c578",
+          "nodeType": "VariableDeclarator",
+          "bytes": 27,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-rf.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-rf.txt",
+            "bytes": 27,
+            "sha256": "6fde3e429e74c4411fe96113c4393522f745b2f46551647533ec6217b876c578"
+          }
+        },
+        {
+          "label": "binding-at",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 6860,
+            "endExclusive": 6926
+          },
+          "spanHash": "52b6f78d283b0643cfa5bd40bf60dda344113928a2235076c3185c85f961b9c8",
+          "nodeType": "FunctionDeclaration",
+          "bytes": 66,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-at.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-at.txt",
+            "bytes": 66,
+            "sha256": "52b6f78d283b0643cfa5bd40bf60dda344113928a2235076c3185c85f961b9c8"
+          }
+        },
+        {
+          "label": "binding-$e",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 6665,
+            "endExclusive": 6702
+          },
+          "spanHash": "f4028445ee38524a66884363091b6c300c0a264102d887b2ed8faac40665749f",
+          "nodeType": "VariableDeclarator",
+          "bytes": 37,
+          "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-dollare.txt",
+          "publishedSelection": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-dollare.txt",
+            "bytes": 37,
+            "sha256": "f4028445ee38524a66884363091b6c300c0a264102d887b2ed8faac40665749f"
+          }
+        }
+      ],
+      "qualification": "Selected Program declaration/export and call structure; no complete caller census or actual provider instance claim."
+    }
+  ],
+  "domains": [
+    {
+      "id": "SDMD-01",
+      "name": "Electron profile",
+      "sourceAuthority": "bootstrap path policy -> runtime profile provider",
+      "pathRule": "oD(env override or appData/build flavor/agent run ID); app.setPath(userData,...)",
+      "writeBoundary": "runtime owns profile/session writes; source setter alone is not a write inventory",
+      "recoveryOrMigrationBoundary": "profile migration and original-platform defaults unverified",
+      "maintenanceDecision": "独立应用标识、显式profile根和runtime配置分别管理；不依靠改目录名称证明全部隔离。",
+      "exactRemainingPrerequisite": "选定runtime的有效userData/session路径、helper配置和迁移规则；不读取个人profile。",
+      "newSourceFactIds": [
+        "SDMF-04",
+        "SDMF-05"
+      ],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/8"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/9"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/10"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-02",
+      "name": "主进程globalState",
+      "sourceAuthority": "gT/uT -> startup Vr -> receiver scopedState",
+      "pathRule": "desktopCodexHome/.codex-global-state.json; .bak and same-directory temp",
+      "writeBoundary": "set/update/delete memory-first queues; updateAndPersist main-write-before-memory; flush versus flushOrThrow differ",
+      "recoveryOrMigrationBoundary": "missing main skips backup; corrupt main may load backup; no selected fsync or main/backup transaction",
+      "maintenanceDecision": "状态接口、调度队列和JSON后端分离；广播、内存完成和文件完成使用不同合同。",
+      "exactRemainingPrerequisite": "实际有效home、schema/defaults与目标runtime/平台耐久性；旧9个隔离文件场景不证明整个客户端。",
+      "newSourceFactIds": [
+        "SDMF-01",
+        "SDMF-03"
+      ],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/5"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/6"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/11"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/13"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/15"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/16"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/23"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/27"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/29"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e",
+          "jsonPointer": "/records/30"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-03",
+      "name": "桌面设置与旧键迁移",
+      "sourceAuthority": "ki local read -> initialized configClient -> app-server config/batchWrite",
+      "pathRule": "startup reads desktopCodexHome/config.toml desktop section; effective backend configuration layer/path unresolved",
+      "writeBoundary": "memory/pending maps -> batch desktop.<key> replace edits; failure logs and retains pending; backend acknowledgement is not disk-durability proof",
+      "recoveryOrMigrationBoundary": "existing authoritative config can retire legacy keys; otherwise acknowledged migration retires still-matching pending values; Fi clears former global-state/atom fields",
+      "maintenanceDecision": "保留本地启动读取器、设置状态/迁移协调器和后台配置gateway三个边界；不生成直接覆盖TOML的替代写入器。",
+      "exactRemainingPrerequisite": "pt/config provider实际实例与配置层、descriptor/schema/Pi迁移规则、backend写入/失败/恢复语义。",
+      "newSourceFactIds": [
+        "SDMF-03",
+        "SDMF-06",
+        "SDMF-07",
+        "SDMF-08",
+        "SDMF-09",
+        "SDMF-10"
+      ],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/6"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/7"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-04",
+      "name": "thread memberships与projectless路径提示",
+      "sourceAuthority": "AJe local globalState adapter + U0 queue + optional backend membership callback",
+      "pathRule": "globalState key families; backend callback may own additional state, whose effective storage is unresolved",
+      "writeBoundary": "local assignments/projectless/hints through globalState.set/update; membership callback has a separate queue and completion contract",
+      "recoveryOrMigrationBoundary": "U0.flush waits pending catalog/thread/local writes; does not flush the globalState file; shutdown calls its distinct interface",
+      "maintenanceDecision": "维护membership队列/后台桥和本地状态适配两个职责；不为flush名称凭空新增数据库，也不省略全局状态文件排空。",
+      "exactRemainingPrerequisite": "writeThreadAssignment/getThreadStartProjectId实际provider、跨后台/本地失败原子性、调用完成与磁盘完成的集成时序。",
+      "newSourceFactIds": [
+        "SDMF-11",
+        "SDMF-12"
+      ],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/18"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/19"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-05",
+      "name": "history-snapshot启动清理",
+      "sourceAuthority": "gT cleanup -> filesystem",
+      "pathRule": "desktopCodexHome/sqlite/codex-history-snapshots[[-flavor]].db and three SQLite sidecars",
+      "writeBoundary": "startup awaits allSettled rm(force:true) for the four selected names; no cleanup executed in this analysis",
+      "recoveryOrMigrationBoundary": "snapshot producer and relation to other thread databases not established",
+      "maintenanceDecision": "将启动清理作为显式迁移/维护步骤，保留精确文件族；禁止把它扩大到所有SQLite或会话记录。",
+      "exactRemainingPrerequisite": "snapshot生产者、用途、flavor输入和清理后果；迁移测试只可用自有合成文件。",
+      "newSourceFactIds": [
+        "SDMF-03",
+        "SDMF-13"
+      ],
+      "savedContractRefs": [],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-06",
+      "name": "app-server任务与执行状态",
+      "sourceAuthority": "selected host transport/CLI/daemon/websocket -> native/backend storage",
+      "pathRule": "executionCodexHome is separately resolved; inherited env, WSL, remote websocket or daemon can select another effective authority",
+      "writeBoundary": "backend owns thread/turn state; desktop globalState is not proof of backend file ownership",
+      "recoveryOrMigrationBoundary": "saved real restart restored an interrupted turn; automatic continuation and internal commit/recovery mechanism unproven",
+      "maintenanceDecision": "backend运行配置必须携带host/transport/executable/home身份；本地桌面home和后端有效home分别验收。",
+      "exactRemainingPrerequisite": "实际transport/executable、服务有效根/数据库、WSL helper、SIGTERM恢复与任务状态提交规则。",
+      "newSourceFactIds": [
+        "SDMF-01",
+        "SDMF-02",
+        "SDMF-03"
+      ],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/5"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/6"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/7"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957",
+          "jsonPointer": "/outcome"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-07",
+      "name": "认证与secret storage",
+      "sourceAuthority": "desktop auth request -> app-server/native file/keyring/secret provider",
+      "pathRule": "auth.json/keyring and keychain access group are frozen capability/metadata clues; active provider and namespace unresolved",
+      "writeBoundary": "getAuthStatus RPC does not reveal credential storage selection; shell import/child env/secret gate can affect backend identity",
+      "recoveryOrMigrationBoundary": "credential migration and secret/file/keyring precedence unverified; distinct CODEX_HOME/userData does not establish anonymous isolation",
+      "maintenanceDecision": "认证仓库、平台密钥命名空间和后台身份作为独立依赖合同；不得将文件目录覆盖当作凭据隔离开关。",
+      "exactRemainingPrerequisite": "可控自有认证环境、明确provider/namespace和迁移选择规则；未读取auth文件、keychain或凭据。",
+      "newSourceFactIds": [],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/11"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/14"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/15"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/16"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/17"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/18"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+          "bytes": 30145,
+          "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9",
+          "jsonPointer": "/evidence/19"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-08",
+      "name": "浏览器持久partition",
+      "sourceAuthority": "main partition constructors -> runtime session provider",
+      "pathRule": "persist:codex-browser- + encoded name; persist:codex-browser-app-route: + encoded two-input NUL tuple",
+      "writeBoundary": "session/browser services own backing data; logical partition names are not filesystem paths",
+      "recoveryOrMigrationBoundary": "browser profile migration, cookies/IndexedDB/service state and credential linkage not proven by view ownership probes",
+      "maintenanceDecision": "独立runtime profile和partition身份一起管理；保留app/route身份及permission处理，不复制原浏览器profile。",
+      "exactRemainingPrerequisite": "实际session storage根、所有partition调用方、账号/host绑定与底层服务迁移；privileged settings仍需runtime provider。",
+      "newSourceFactIds": [
+        "SDMF-14",
+        "SDMF-15"
+      ],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/15"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b",
+          "jsonPointer": "/implementationDecision"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-09",
+      "name": "renderer persisted atoms与窗口标签页",
+      "sourceAuthority": "renderer bridge -> main atom policy -> globalState object",
+      "pathRule": "electron-persisted-atom-state with thread-browser-tabs-v1:/thread-tab-routes-v1: subkeys; not automatically renderer localStorage",
+      "writeBoundary": "owner/filter/cache acceptance and record merging precede main memory set; broadcast can precede file completion",
+      "recoveryOrMigrationBoundary": "reset/delete/snapshot rules and migration differ; window-local delivery filters are not credential or filesystem isolation",
+      "maintenanceDecision": "renderer镜像、IPC策略和main状态后端分开；保留primary owner、删除编码和窗口过滤。",
+      "exactRemainingPrerequisite": "实际store/provider实例、MODE初始化/送达和schema比较器；不以键名决定ChatGPT剥离。",
+      "newSourceFactIds": [],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/main-persistence-policy.json",
+          "bytes": 26906,
+          "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31",
+          "jsonPointer": "/records/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/main-persistence-policy.json",
+          "bytes": 26906,
+          "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31",
+          "jsonPointer": "/records/16"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/main-persistence-policy.json",
+          "bytes": 26906,
+          "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31",
+          "jsonPointer": "/records/17"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/main-persistence-policy.json",
+          "bytes": 26906,
+          "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31",
+          "jsonPointer": "/records/18"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/main-persistence-policy.json",
+          "bytes": 26906,
+          "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31",
+          "jsonPointer": "/records/19"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/main-persistence-policy.json",
+          "bytes": 26906,
+          "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31",
+          "jsonPointer": "/records/20"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-persistence-receiver.json",
+          "bytes": 12553,
+          "sha256": "ea1636f999e24e659f6b7112ba855e8252f67eba4598085ace6ecd76a25c0938",
+          "jsonPointer": "/records/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-persistence-receiver.json",
+          "bytes": 12553,
+          "sha256": "ea1636f999e24e659f6b7112ba855e8252f67eba4598085ace6ecd76a25c0938",
+          "jsonPointer": "/records/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-persistence-receiver.json",
+          "bytes": 12553,
+          "sha256": "ea1636f999e24e659f6b7112ba855e8252f67eba4598085ace6ecd76a25c0938",
+          "jsonPointer": "/records/2"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-persistence-receiver.json",
+          "bytes": 12553,
+          "sha256": "ea1636f999e24e659f6b7112ba855e8252f67eba4598085ace6ecd76a25c0938",
+          "jsonPointer": "/records/3"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-10",
+      "name": "共享host对象镜像",
+      "sourceAuthority": "hXe sharedObjectRepository -> wee object/Set subscribers",
+      "pathRule": "selected main in-memory object and shallow snapshots; no disk path established",
+      "writeBoundary": "set undefined deletes; other values assign then synchronously notify",
+      "recoveryOrMigrationBoundary": "reconstruction/bootstrap from real providers required; no durable-write contract follows from shared-object snapshot",
+      "maintenanceDecision": "将此域保留为内存发布仓库；持久化由各真实owner另行承担，不重复保存整个镜像。",
+      "exactRemainingPrerequisite": "完整对象owner/重建顺序和实际provider；不得由一次快照声称可重启恢复。",
+      "newSourceFactIds": [],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/host-state-provider-contracts.json",
+          "bytes": 700494,
+          "sha256": "ccbae2fa54f53febce4a2ebaaea8dae6c3f53a508caba4d4738c76b2f0556ad7",
+          "jsonPointer": "/facts/19"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/host-state-provider-contracts.json",
+          "bytes": 700494,
+          "sha256": "ccbae2fa54f53febce4a2ebaaea8dae6c3f53a508caba4d4738c76b2f0556ad7",
+          "jsonPointer": "/facts/20"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/host-state-di-contracts.json",
+          "bytes": 2366935,
+          "sha256": "45c11d334e24913b5edd5623309b2dfb9428cf3e235c7c47f581bc0c3014cb3a",
+          "jsonPointer": "/facts/0"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    },
+    {
+      "id": "SDMD-11",
+      "name": "退出、日志与tracing排空",
+      "sourceAuthority": "quit coordinator -> independent state/settings/backend/log providers",
+      "pathRule": "globalState, settingsStore, membership queue, tracing and logger each retain own authority; log paths unresolved here",
+      "writeBoundary": "first allSettled group precedes limited context cleanup; logger finally-flush is not globalState.flush",
+      "recoveryOrMigrationBoundary": "skip-drain omits settingsStore.flush; synchronous errors can truncate cleanup; neither 5s context timeout nor SIGTERM proves full durable drain",
+      "maintenanceDecision": "退出协调器按provider记录等待/超时/失败，区分正常退出、强停和断电；不以一个flush标签代表全部域。",
+      "exactRemainingPrerequisite": "真实Electron事件、目标平台helper/native、各provider提交与异常退出行为；既有17个替身场景不作产品通过。",
+      "newSourceFactIds": [],
+      "savedContractRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/6"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/7"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/8"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/9"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/11"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/16"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/17"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/18"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/records/19"
+        }
+      ],
+      "proposedFoundationTasks": [
+        "W03",
+        "W05",
+        "W06"
+      ],
+      "taskJoinQualification": "Shared implementation responsibility proposal; not a full per-feature consumer assignment.",
+      "effectiveRootObserved": false,
+      "fullIsolationProven": false,
+      "mode": "unknown; retained",
+      "confidence": "inferred"
+    }
+  ],
+  "sourceSelections": [
+    {
+      "label": "export-_t",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 285621,
+        "endExclusive": 285698
+      },
+      "spanHash": "425e55def62770e9aebd12c17fb9b6e004d11dedfacb5da50831c3a248d0752d",
+      "nodeType": "CallExpression",
+      "bytes": 77,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--export-_t.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--export-_t.txt",
+        "bytes": 77,
+        "sha256": "425e55def62770e9aebd12c17fb9b6e004d11dedfacb5da50831c3a248d0752d"
+      }
+    },
+    {
+      "label": "export-ft",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 286705,
+        "endExclusive": 286782
+      },
+      "spanHash": "b7fc72ba7ece459578f9495ea91f7eabb68b8a7434319cf52a0b4d805a3d5894",
+      "nodeType": "CallExpression",
+      "bytes": 77,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--export-ft.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--export-ft.txt",
+        "bytes": 77,
+        "sha256": "b7fc72ba7ece459578f9495ea91f7eabb68b8a7434319cf52a0b4d805a3d5894"
+      }
+    },
+    {
+      "label": "export-ot",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 288408,
+        "endExclusive": 288485
+      },
+      "spanHash": "217e158d15ea2f337ff380ea9857447a74c71dbbe04ee13d5e4bc8553143fb60",
+      "nodeType": "CallExpression",
+      "bytes": 77,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--export-ot.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--export-ot.txt",
+        "bytes": 77,
+        "sha256": "217e158d15ea2f337ff380ea9857447a74c71dbbe04ee13d5e4bc8553143fb60"
+      }
+    },
+    {
+      "label": "export-st",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 289183,
+        "endExclusive": 289260
+      },
+      "spanHash": "b6afc1be612a0d301c37054f7b6b00bf326eeb311fb4a30feddb88d5317df121",
+      "nodeType": "CallExpression",
+      "bytes": 77,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--export-st.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--export-st.txt",
+        "bytes": 77,
+        "sha256": "b6afc1be612a0d301c37054f7b6b00bf326eeb311fb4a30feddb88d5317df121"
+      }
+    },
+    {
+      "label": "definition-_t-Rn",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 55245,
+        "endExclusive": 55319
+      },
+      "spanHash": "d9a5d2777a662da4eb644da7512307d614ee4abfc27b34290b54205b472c630c",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 74,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--definition-_t-Rn.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--definition-_t-Rn.txt",
+        "bytes": 74,
+        "sha256": "d9a5d2777a662da4eb644da7512307d614ee4abfc27b34290b54205b472c630c"
+      }
+    },
+    {
+      "label": "definition-ft-Hn",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 55773,
+        "endExclusive": 55822
+      },
+      "spanHash": "b6f3cf02b9fde6eb521f0574f168bd945e51dc6546db68e33e0bd24dde874cba",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 49,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--definition-ft-Hn.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--definition-ft-Hn.txt",
+        "bytes": 49,
+        "sha256": "b6f3cf02b9fde6eb521f0574f168bd945e51dc6546db68e33e0bd24dde874cba"
+      }
+    },
+    {
+      "label": "definition-ot-xr",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 64579,
+        "endExclusive": 64853
+      },
+      "spanHash": "4cf3864df7ff375618270b5b7e23380ef25d10c958b743844e3b536d68054be3",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 274,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--definition-ot-xr.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--definition-ot-xr.txt",
+        "bytes": 274,
+        "sha256": "4cf3864df7ff375618270b5b7e23380ef25d10c958b743844e3b536d68054be3"
+      }
+    },
+    {
+      "label": "definition-st-Sr",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 64853,
+        "endExclusive": 65139
+      },
+      "spanHash": "0d061f28b20fad127112f71a376d7129e05cb518340639986d115a7cb98ef3f0",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 286,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/application-network-startup-CfAQmSYg.js--definition-st-Sr.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/application-network-startup-CfAQmSYg.js--definition-st-Sr.txt",
+        "bytes": 286,
+        "sha256": "0d061f28b20fad127112f71a376d7129e05cb518340639986d115a7cb98ef3f0"
+      }
+    },
+    {
+      "label": "export-l",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "byteRange": {
+        "start": 113348,
+        "endExclusive": 113424
+      },
+      "spanHash": "c1b329c9806e9a9a1afb4e41f274b186c27c8dab6ca43e3b5737984effe992cf",
+      "nodeType": "CallExpression",
+      "bytes": 76,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/startup-requirements-C6B1x9gL.js--export-l.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/startup-requirements-C6B1x9gL.js--export-l.txt",
+        "bytes": 76,
+        "sha256": "c1b329c9806e9a9a1afb4e41f274b186c27c8dab6ca43e3b5737984effe992cf"
+      }
+    },
+    {
+      "label": "definition-l-ki",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "byteRange": {
+        "start": 93907,
+        "endExclusive": 96823
+      },
+      "spanHash": "aa856f960314b0d2c9dd062931e6e3a2f08c05dfd27eed999c82b8d26e4de226",
+      "nodeType": "VariableDeclarator",
+      "bytes": 2916,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/startup-requirements-C6B1x9gL.js--definition-l-ki.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/startup-requirements-C6B1x9gL.js--definition-l-ki.txt",
+        "bytes": 2916,
+        "sha256": "aa856f960314b0d2c9dd062931e6e3a2f08c05dfd27eed999c82b8d26e4de226"
+      }
+    },
+    {
+      "label": "set-user-data",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 457406,
+        "endExclusive": 457505
+      },
+      "spanHash": "6b8b32fd8ee818ad99e6ab752edebbe37b99d9a071e57bc66970786fef4584ab",
+      "nodeType": "CallExpression",
+      "bytes": 99,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/bootstrap-CooIJpZm.js--set-user-data.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/bootstrap-CooIJpZm.js--set-user-data.txt",
+        "bytes": 99,
+        "sha256": "6b8b32fd8ee818ad99e6ab752edebbe37b99d9a071e57bc66970786fef4584ab"
+      }
+    },
+    {
+      "label": "binding-oD",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 420114,
+        "endExclusive": 420398
+      },
+      "spanHash": "25513d69e52d41edc9d8022df24ac2343361a426002297d254f3d1e3dc3321c0",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 284,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/bootstrap-CooIJpZm.js--binding-oD.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/bootstrap-CooIJpZm.js--binding-oD.txt",
+        "bytes": 284,
+        "sha256": "25513d69e52d41edc9d8022df24ac2343361a426002297d254f3d1e3dc3321c0"
+      }
+    },
+    {
+      "label": "binding-gT",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 393007,
+        "endExclusive": 393906
+      },
+      "spanHash": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 899,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/bootstrap-CooIJpZm.js--binding-gT.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/bootstrap-CooIJpZm.js--binding-gT.txt",
+        "bytes": 899,
+        "sha256": "2649e6911bed7580df13a2928dc9285fb956f380a7802eb5753cbdba6540cecf"
+      }
+    },
+    {
+      "label": "binding-uT",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 392448,
+        "endExclusive": 392496
+      },
+      "spanHash": "4ea3b31a775144d6e8a113b7b2b8ae6a5ca793875b4872371452dfafd7f11329",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 48,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/bootstrap-CooIJpZm.js--binding-uT.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/bootstrap-CooIJpZm.js--binding-uT.txt",
+        "bytes": 48,
+        "sha256": "4ea3b31a775144d6e8a113b7b2b8ae6a5ca793875b4872371452dfafd7f11329"
+      }
+    },
+    {
+      "label": "binding-lT",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 392431,
+        "endExclusive": 392447
+      },
+      "spanHash": "43672d38595488bd1c8685fda79b9234c72cc63ea175beb733341df506e39550",
+      "nodeType": "VariableDeclarator",
+      "bytes": 16,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/bootstrap-CooIJpZm.js--binding-lT.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/bootstrap-CooIJpZm.js--binding-lT.txt",
+        "bytes": 16,
+        "sha256": "43672d38595488bd1c8685fda79b9234c72cc63ea175beb733341df506e39550"
+      }
+    },
+    {
+      "label": "binding-AJe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3211589,
+        "endExclusive": 3213511
+      },
+      "spanHash": "798831bd1a8f39fc7121ec16e5012275e1939d7e7f85bd40c89636a09d79ae0f",
+      "nodeType": "VariableDeclarator",
+      "bytes": 1922,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-AJe.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-AJe.txt",
+        "bytes": 1922,
+        "sha256": "798831bd1a8f39fc7121ec16e5012275e1939d7e7f85bd40c89636a09d79ae0f"
+      }
+    },
+    {
+      "label": "binding-af",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 246454,
+        "endExclusive": 246507
+      },
+      "spanHash": "e323c1eda488aa2f72d0d63fe287858674a9b1f972f22d042ab29ca17339603b",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 53,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-af.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-af.txt",
+        "bytes": 53,
+        "sha256": "e323c1eda488aa2f72d0d63fe287858674a9b1f972f22d042ab29ca17339603b"
+      }
+    },
+    {
+      "label": "binding-at",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 6860,
+        "endExclusive": 6926
+      },
+      "spanHash": "52b6f78d283b0643cfa5bd40bf60dda344113928a2235076c3185c85f961b9c8",
+      "nodeType": "FunctionDeclaration",
+      "bytes": 66,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-at.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-at.txt",
+        "bytes": 66,
+        "sha256": "52b6f78d283b0643cfa5bd40bf60dda344113928a2235076c3185c85f961b9c8"
+      }
+    },
+    {
+      "label": "binding-rf",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 246121,
+        "endExclusive": 246148
+      },
+      "spanHash": "6fde3e429e74c4411fe96113c4393522f745b2f46551647533ec6217b876c578",
+      "nodeType": "VariableDeclarator",
+      "bytes": 27,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-rf.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-rf.txt",
+        "bytes": 27,
+        "sha256": "6fde3e429e74c4411fe96113c4393522f745b2f46551647533ec6217b876c578"
+      }
+    },
+    {
+      "label": "binding-$e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 6665,
+        "endExclusive": 6702
+      },
+      "spanHash": "f4028445ee38524a66884363091b6c300c0a264102d887b2ed8faac40665749f",
+      "nodeType": "VariableDeclarator",
+      "bytes": 37,
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/main-CqEoQDOU.js--binding-dollare.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/main-CqEoQDOU.js--binding-dollare.txt",
+        "bytes": 37,
+        "sha256": "f4028445ee38524a66884363091b6c300c0a264102d887b2ed8faac40665749f"
+      }
+    },
+    {
+      "label": "binding-ji",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "byteRange": {
+        "start": 97122,
+        "endExclusive": 97354
+      },
+      "spanHash": "ce6843913b69ed961e78f467f44b4a12d33656c695b1718e56f0acb99cecdfe7",
+      "bytes": 232,
+      "nodeType": "FunctionDeclaration",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--startup-requirements-C6B1x9gL.js--binding-ji.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--startup-requirements-C6B1x9gL.js--binding-ji.txt",
+        "bytes": 232,
+        "sha256": "ce6843913b69ed961e78f467f44b4a12d33656c695b1718e56f0acb99cecdfe7"
+      }
+    },
+    {
+      "label": "binding-Ni",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "byteRange": {
+        "start": 97564,
+        "endExclusive": 97834
+      },
+      "spanHash": "ad6c55c2b91c7c16a83e09ee25eaac534ea602d691ac97b935819a001e541f9f",
+      "bytes": 270,
+      "nodeType": "FunctionDeclaration",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--startup-requirements-C6B1x9gL.js--binding-Ni.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--startup-requirements-C6B1x9gL.js--binding-Ni.txt",
+        "bytes": 270,
+        "sha256": "ad6c55c2b91c7c16a83e09ee25eaac534ea602d691ac97b935819a001e541f9f"
+      }
+    },
+    {
+      "label": "binding-Ai",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "byteRange": {
+        "start": 96824,
+        "endExclusive": 97122
+      },
+      "spanHash": "0c6955ff1b93fd389388a73989de164649c536860ba2e28e0373a9ee1d2d1199",
+      "bytes": 298,
+      "nodeType": "FunctionDeclaration",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--startup-requirements-C6B1x9gL.js--binding-Ai.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--startup-requirements-C6B1x9gL.js--binding-Ai.txt",
+        "bytes": 298,
+        "sha256": "0c6955ff1b93fd389388a73989de164649c536860ba2e28e0373a9ee1d2d1199"
+      }
+    },
+    {
+      "label": "binding-Fi",
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "byteRange": {
+        "start": 98347,
+        "endExclusive": 98848
+      },
+      "spanHash": "bbecefcf929ce70673c9b148cd43ca00c20d1845b2ac820cc4c8150a305b0e82",
+      "bytes": 501,
+      "nodeType": "FunctionDeclaration",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--startup-requirements-C6B1x9gL.js--binding-Fi.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--startup-requirements-C6B1x9gL.js--binding-Fi.txt",
+        "bytes": 501,
+        "sha256": "bbecefcf929ce70673c9b148cd43ca00c20d1845b2ac820cc4c8150a305b0e82"
+      }
+    },
+    {
+      "label": "export-r",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1587898,
+        "endExclusive": 1587974
+      },
+      "spanHash": "cc8246f5f1053136e84eeee653bd01425d059e0ee2cf4ed4928f5ea0ab60f93f",
+      "bytes": 76,
+      "nodeType": "CallExpression",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--src-BJv5Mk7n.js--export-r.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--src-BJv5Mk7n.js--export-r.txt",
+        "bytes": 76,
+        "sha256": "cc8246f5f1053136e84eeee653bd01425d059e0ee2cf4ed4928f5ea0ab60f93f"
+      }
+    },
+    {
+      "label": "export-binding-U0",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1564441,
+        "endExclusive": 1567520
+      },
+      "spanHash": "caf667f3a3a1fc73be8be95f9d56c1489435a0faaa4502d5762cc6891e757e0e",
+      "bytes": 3079,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--src-BJv5Mk7n.js--export-binding-U0.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--src-BJv5Mk7n.js--export-binding-U0.txt",
+        "bytes": 3079,
+        "sha256": "caf667f3a3a1fc73be8be95f9d56c1489435a0faaa4502d5762cc6891e757e0e"
+      }
+    },
+    {
+      "label": "settings-config-client-initialization",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3819054,
+        "endExclusive": 3819165
+      },
+      "spanHash": "2d24f0e8b0e4cf11ba6dc1c7e543e16ca63116ff6a92e859e3f81fd0f28d67df",
+      "bytes": 111,
+      "nodeType": "CallExpression",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--main-CqEoQDOU.js--settings-config-client-initialization.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--main-CqEoQDOU.js--settings-config-client-initialization.txt",
+        "bytes": 111,
+        "sha256": "2d24f0e8b0e4cf11ba6dc1c7e543e16ca63116ff6a92e859e3f81fd0f28d67df"
+      }
+    },
+    {
+      "label": "settings-config-initialization-callback",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3819016,
+        "endExclusive": 3819166
+      },
+      "spanHash": "23a1a40fb1f01d841c7a564752e8e07c94e2885b1554318ecc845c1ecee6d010",
+      "bytes": 150,
+      "nodeType": "ArrowFunctionExpression",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--main-CqEoQDOU.js--settings-config-initialization-callback.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--main-CqEoQDOU.js--settings-config-initialization-callback.txt",
+        "bytes": 150,
+        "sha256": "23a1a40fb1f01d841c7a564752e8e07c94e2885b1554318ecc845c1ecee6d010"
+      }
+    },
+    {
+      "label": "binding-i",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 167,
+        "endExclusive": 197
+      },
+      "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb",
+      "bytes": 30,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--main-CqEoQDOU.js--binding-i.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--main-CqEoQDOU.js--binding-i.txt",
+        "bytes": 30,
+        "sha256": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb"
+      }
+    },
+    {
+      "label": "binding-r",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 136,
+        "endExclusive": 166
+      },
+      "spanHash": "1f943f2a0aa26c81cc49da3d0f43f146ce1b5bee58eab44ce1d916ff38486565",
+      "bytes": 30,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--main-CqEoQDOU.js--binding-r.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--main-CqEoQDOU.js--binding-r.txt",
+        "bytes": 30,
+        "sha256": "1f943f2a0aa26c81cc49da3d0f43f146ce1b5bee58eab44ce1d916ff38486565"
+      }
+    },
+    {
+      "label": "binding-c",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 337,
+        "endExclusive": 391
+      },
+      "spanHash": "88fb53ba6b366628f8826c48f42b97de731aa02cc621bccb886ce5f3dbc03ef8",
+      "bytes": 54,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--main-CqEoQDOU.js--binding-c.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--main-CqEoQDOU.js--binding-c.txt",
+        "bytes": 54,
+        "sha256": "88fb53ba6b366628f8826c48f42b97de731aa02cc621bccb886ce5f3dbc03ef8"
+      }
+    },
+    {
+      "label": "binding-_",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 719,
+        "endExclusive": 740
+      },
+      "spanHash": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa",
+      "bytes": 21,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--main-CqEoQDOU.js--binding-_.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--main-CqEoQDOU.js--binding-_.txt",
+        "bytes": 21,
+        "sha256": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa"
+      }
+    },
+    {
+      "label": "binding-o",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 244,
+        "endExclusive": 298
+      },
+      "spanHash": "b925ba2a13b0dc690eac930c79fced50b29f557b75d1d7cef49f53742c0a207f",
+      "bytes": 54,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--bootstrap-CooIJpZm.js--binding-o.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--bootstrap-CooIJpZm.js--binding-o.txt",
+        "bytes": 54,
+        "sha256": "b925ba2a13b0dc690eac930c79fced50b29f557b75d1d7cef49f53742c0a207f"
+      }
+    },
+    {
+      "label": "binding-s",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 299,
+        "endExclusive": 346
+      },
+      "spanHash": "2d6ae8877d54aaa16588d82612f5ba9f6ee241eb846eaf98dc0d70e3cd7922f0",
+      "bytes": 47,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--bootstrap-CooIJpZm.js--binding-s.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--bootstrap-CooIJpZm.js--binding-s.txt",
+        "bytes": 47,
+        "sha256": "2d6ae8877d54aaa16588d82612f5ba9f6ee241eb846eaf98dc0d70e3cd7922f0"
+      }
+    },
+    {
+      "label": "binding-h",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 619,
+        "endExclusive": 641
+      },
+      "spanHash": "696cd6e50117e5a80468ebd3bc751232dda32bd04f83863b35f7898c6e2582fb",
+      "bytes": 22,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--bootstrap-CooIJpZm.js--binding-h.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--bootstrap-CooIJpZm.js--binding-h.txt",
+        "bytes": 22,
+        "sha256": "696cd6e50117e5a80468ebd3bc751232dda32bd04f83863b35f7898c6e2582fb"
+      }
+    },
+    {
+      "label": "binding-s",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 258,
+        "endExclusive": 280
+      },
+      "spanHash": "29e7bc38f05715395ec12fe7050f0a6b6907b739fdddf1f58d0e891d224cba63",
+      "bytes": 22,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--application-network-startup-CfAQmSYg.js--binding-s.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--application-network-startup-CfAQmSYg.js--binding-s.txt",
+        "bytes": 22,
+        "sha256": "29e7bc38f05715395ec12fe7050f0a6b6907b739fdddf1f58d0e891d224cba63"
+      }
+    },
+    {
+      "label": "binding-p",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "byteRange": {
+        "start": 414,
+        "endExclusive": 434
+      },
+      "spanHash": "060b5b305e27b44c07460be48c5e928e24aa842edcac3e4b74612bd1f7b4f878",
+      "bytes": 20,
+      "nodeType": "VariableDeclarator",
+      "savedPath": ".analysis-local/storage-domain-map-work/source-units/02--application-network-startup-CfAQmSYg.js--binding-p.txt",
+      "publishedSelection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/storage-domain-map/02--application-network-startup-CfAQmSYg.js--binding-p.txt",
+        "bytes": 20,
+        "sha256": "060b5b305e27b44c07460be48c5e928e24aa842edcac3e4b74612bd1f7b4f878"
+      }
+    }
+  ],
+  "analysisPasses": [
+    {
+      "file": "application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "bytes": 290566,
+      "startedAtUtc": "2026-10-24T18:21:45.298Z",
+      "completedAtUtc": "2026-10-24T18:21:45.568Z",
+      "parserErrors": 0,
+      "programBindings": 536,
+      "relations": [
+        {
+          "export": "_t",
+          "programBinding": "Rn"
+        },
+        {
+          "export": "ft",
+          "programBinding": "Hn"
+        },
+        {
+          "export": "ot",
+          "programBinding": "xr"
+        },
+        {
+          "export": "st",
+          "programBinding": "Sr"
+        }
+      ]
+    },
+    {
+      "file": "startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "bytes": 115575,
+      "startedAtUtc": "2026-10-24T18:21:45.568Z",
+      "completedAtUtc": "2026-10-24T18:21:45.636Z",
+      "parserErrors": 0,
+      "programBindings": 336,
+      "relations": [
+        {
+          "export": "l",
+          "programBinding": "ki"
+        }
+      ]
+    },
+    {
+      "file": "bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "bytes": 461537,
+      "startedAtUtc": "2026-10-24T18:21:45.638Z",
+      "completedAtUtc": "2026-10-24T18:21:45.864Z",
+      "parserErrors": 0,
+      "programBindings": 1661,
+      "relations": []
+    },
+    {
+      "file": "main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "bytes": 3824411,
+      "startedAtUtc": "2026-10-24T18:21:45.875Z",
+      "completedAtUtc": "2026-10-24T18:21:47.469Z",
+      "parserErrors": 0,
+      "programBindings": 6479,
+      "relations": []
+    },
+    {
+      "file": "startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "startedAtUtc": "2026-10-24T18:23:26.232Z",
+      "completedAtUtc": "2026-10-24T18:23:26.377Z",
+      "parserErrors": 0,
+      "relations": []
+    },
+    {
+      "file": "src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "startedAtUtc": "2026-10-24T18:23:26.382Z",
+      "completedAtUtc": "2026-10-24T18:23:27.144Z",
+      "parserErrors": 0,
+      "relations": [
+        {
+          "export": "r",
+          "programBinding": "U0"
+        }
+      ]
+    },
+    {
+      "file": "main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "startedAtUtc": "2026-10-24T18:23:27.155Z",
+      "completedAtUtc": "2026-10-24T18:23:28.608Z",
+      "parserErrors": 0,
+      "relations": []
+    },
+    {
+      "file": "bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "startedAtUtc": "2026-10-24T18:23:28.609Z",
+      "completedAtUtc": "2026-10-24T18:23:28.971Z",
+      "parserErrors": 0,
+      "relations": []
+    },
+    {
+      "file": "application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "startedAtUtc": "2026-10-24T18:23:28.972Z",
+      "completedAtUtc": "2026-10-24T18:23:29.086Z",
+      "parserErrors": 0,
+      "relations": []
+    }
+  ],
+  "newEngineeringDecisions": [
+    "Separate desktop home, execution home and Electron profile inputs; do not collapse them into one appData option.",
+    "Separate initial TOML read from app-server configuration mutation and acknowledgement-driven migration cleanup.",
+    "Membership local state is layered on globalState while backend/queue completion remains distinct from file flush.",
+    "Retain exact startup history-snapshot cleanup family; no blanket SQLite or thread-data migration.",
+    "Treat browser partition identity, native credential authority and runtime profile as separate isolation gates."
+  ],
+  "existingBehaviorEvidence": [
+    {
+      "ref": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-observations.json",
+        "bytes": 26219,
+        "sha256": "69745ee4266d06f457060d5a714c8b28ae1fc26262e041675540bce09594134c",
+        "jsonPointer": ""
+      },
+      "scope": "9 isolated real-file cases under Node22; schemas/defaults/comparator substituted or unused; no original store/runtime parity."
+    },
+    {
+      "ref": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence-observations.json",
+        "bytes": 12549,
+        "sha256": "44235ebc27fc596efe41a80ee9f5cdd1d5a0a344b232891d200bd065a188e78a",
+        "jsonPointer": ""
+      },
+      "scope": "17 substituted event/timer cases; no native, real IO or original app shutdown."
+    },
+    {
+      "ref": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+        "bytes": 4289,
+        "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957",
+        "jsonPointer": "/outcome"
+      },
+      "scope": "Saved authorized real stop/restart outcome; interrupted turn restored; not automatic continued execution or proof of an internal storage path."
+    }
+  ],
+  "remainingCoverage": [
+    "Effective appData/userData/desktop home/execution home and provider identity require an owned runtime observation; no live personal directories were inspected.",
+    "WSL home helper, settings descriptor/schema migration, backend native storage and credential selection remain explicit source/provider boundaries.",
+    "Plugin/cache/download/update-resume/automation/workspace and remote account-service storage have not received a complete per-store ownership census in this map. Do not count their feature definitions as resolved storage.",
+    "No product-wide storage denominator or complete isolation, migration, failure recovery or durability proof is claimed."
+  ],
+  "proposedImplementationPaths": [
+    "packages/storage-contracts/src/roots.ts",
+    "apps/desktop/src/main/persistence/global-state.ts",
+    "apps/desktop/src/main/settings/desktop-settings-store.ts",
+    "packages/backend-adapter/src/configuration.ts",
+    "apps/desktop/src/main/projects/thread-memberships.ts",
+    "packages/runtime-adapter/src/profile-and-sessions.ts",
+    "packages/backend-adapter/src/auth-storage.ts",
+    "apps/desktop/src/main/lifecycle/quit-coordinator.ts"
+  ],
+  "pathQualification": "Inferred maintenance boundaries, not recovered original paths, added logical-owner records or generated implementation.",
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-origin.json",
+      "bytes": 99552,
+      "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/global-state-storage-observations.json",
+      "bytes": 26219,
+      "sha256": "69745ee4266d06f457060d5a714c8b28ae1fc26262e041675540bce09594134c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/main-persistence-policy.json",
+      "bytes": 26906,
+      "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-persistence-receiver.json",
+      "bytes": 12553,
+      "sha256": "ea1636f999e24e659f6b7112ba855e8252f67eba4598085ace6ecd76a25c0938"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+      "bytes": 54306,
+      "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence-observations.json",
+      "bytes": 12549,
+      "sha256": "44235ebc27fc596efe41a80ee9f5cdd1d5a0a344b232891d200bd065a188e78a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/auth-boundary.json",
+      "bytes": 30145,
+      "sha256": "e94d89f7f597f7b8d73eaa43d1777f46d0c357897763d9370a6ad184e8c75de9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-state-provider-contracts.json",
+      "bytes": 700494,
+      "sha256": "ccbae2fa54f53febce4a2ebaaea8dae6c3f53a508caba4d4738c76b2f0556ad7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-state-di-contracts.json",
+      "bytes": 2366935,
+      "sha256": "45c11d334e24913b5edd5623309b2dfb9428cf3e235c7c47f581bc0c3014cb3a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+      "bytes": 4289,
+      "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+      "bytes": 62319,
+      "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/browser-ownership-contracts.json",
+      "bytes": 17166,
+      "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+      "bytes": 279783,
+      "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+      "bytes": 2065758,
+      "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+      "bytes": 1171222,
+      "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v24-scenarios.json",
+      "bytes": 1944258,
+      "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+    },
+    {
+      "path": "scripts/analysis/publish_storage_domain_map.py",
+      "bytes": 28660,
+      "sha256": "b27cb83d57b4ea069754cc88e4e6c337f2e0ee08af45720198805a98ab6c0f8f"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "analysisTools": [
+    {
+      "path": ".analysis-local/storage-domain-map-work/inspect_storage_boundaries.cjs",
+      "bytes": 5181,
+      "sha256": "e326d1c8d4697110970054fd561f2b1506c5619f594ff845a53bf53ee1a67b95"
+    },
+    {
+      "path": ".analysis-local/storage-domain-map-work/inspect_storage_detail.cjs",
+      "bytes": 3994,
+      "sha256": "6e3ee008e2dd22244ac87a0c0fbbb947ada57a7711e76ea823602f644242e20f"
+    }
+  ],
+  "sourceReceiptPins": [
+    {
+      "path": ".analysis-local/storage-domain-map-work/source-selection.json",
+      "bytes": 14205,
+      "sha256": "a62c71763f798f117616bb67b007bafcad5e53e4ed20b716a26bc6d8ffe13d89"
+    },
+    {
+      "path": ".analysis-local/storage-domain-map-work/source-detail.json",
+      "bytes": 12084,
+      "sha256": "012baeb5935b95c66c30c9ae89734d411fcaad000ee2d2c265438fc5823a9b4b"
+    }
+  ],
+  "counts": {
+    "boundedResponsibilityDomains": 11,
+    "newStaticSourceFacts": 15,
+    "selectedSourceUnits": 37,
+    "selectedSourceBytes": 12451,
+    "sourceBindingJoins": 4,
+    "fullProgramParsePasses": 9,
+    "distinctProgramsParsed": 5,
+    "newReaRuns": 0,
+    "newRuntimeObservations": 0,
+    "newModelSubmissions": 0,
+    "newClientLaunches": 0,
+    "personalFilesOrCredentialsRead": 0,
+    "newProductScenarioPasses": 0,
+    "newClientImplementation": 0
+  },
+  "currentProductScope": {
+    "features": 373,
+    "taskGroups": 48,
+    "unexecutedSpecifications": 1216
+  },
+  "nextInternalAction": {
+    "issueId": "SD-06",
+    "question": "将现有37个逻辑owner的责任、环境、模式、来源、接口、共享状态、副作用、依赖与拟议路径对照原计划，补齐明确字段与未决边界。",
+    "closure": "以37个既有owner为固定范围；共享来源与历史438发布文件分开，引用现有合同，不新造原工程模块或功能通过项。",
+    "authorization": "保存/冻结证据与自有分析脚本；无新增模型/客户端或个人数据操作。"
+  },
+  "completeStorageDenominatorEstablished": false,
+  "fullStorageIsolationProven": false,
+  "fullAnalysisCompleted": false
+}

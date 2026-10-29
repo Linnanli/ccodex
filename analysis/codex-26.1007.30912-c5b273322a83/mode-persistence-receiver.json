@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "ownerClass": "MMe",
+  "existingMetadata": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/mode-persistence-receiver-work/existing-metadata-selection.json",
+    "bytes": 13879,
+    "sha256": "6837de747aeb619ba4bec008ac556b9d61173bd9dc96c19ebc5f15842d1d904e"
+  },
+  "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+  "selectedUnits": [
+    {
+      "name": "syncCase",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081992,
+        "endExclusive": 2082082
+      },
+      "bytes": 90,
+      "sha256": "3e1e3904a1f54a24da26466ad76226a3350d94af82f9841df14c2db7ab2397b5"
+    },
+    {
+      "name": "updateCase",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2082082,
+        "endExclusive": 2082195
+      },
+      "bytes": 113,
+      "sha256": "3032698fdac044648a15573331e7b7db43b0909845a23a0aeb4aaf1ce9d594fe"
+    },
+    {
+      "name": "sendPersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2109847,
+        "endExclusive": 2110281
+      },
+      "bytes": 434,
+      "sha256": "876f7b21de602d4485fd236bc9918cea2ec12c0ab13728608289f4c6487a9394"
+    },
+    {
+      "name": "updatePersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110281,
+        "endExclusive": 2110879
+      },
+      "bytes": 598,
+      "sha256": "43a448bfc0ebe5b33bb78c0c2eec484f65b5350436a0f84e5a6dbb3ed202e569"
+    }
+  ],
+  "selectedSourceBytes": 1235,
+  "records": [
+    {
+      "id": "MODE-NATIVE-20261023-001",
+      "confidence": "confirmed",
+      "claim": "Selected sync-request case calls this.sendPersistedAtomState(e,t.responsePriority), then breaks. No await in this case.",
+      "unit": "syncCase",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081992,
+        "endExclusive": 2082082
+      },
+      "spanSha256": "3e1e3904a1f54a24da26466ad76226a3350d94af82f9841df14c2db7ab2397b5",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-002",
+      "confidence": "confirmed",
+      "claim": "Selected update case passes e, key, deleted ? undefined : value, recordUpdate in that order, then breaks. A recordUpdate may still be used by the callee when deleted is truthy.",
+      "unit": "updateCase",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2082082,
+        "endExclusive": 2082195
+      },
+      "spanSha256": "3032698fdac044648a15573331e7b7db43b0909845a23a0aeb4aaf1ce9d594fe",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-003",
+      "confidence": "confirmed",
+      "claim": "Snapshot reads injected globalState electron-persisted-atom-state, using {} for a nullish result.",
+      "unit": "sendPersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2109881,
+        "endExclusive": 2109938
+      },
+      "spanSha256": "6cf6e87ba4df17a7d03d83d69a2ff8ffbec1b8d76ef6304ab029a13540dadfd6",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-004",
+      "confidence": "confirmed",
+      "claim": "Snapshot filters own enumerable string entries with (primary owner OR not TY(key)) AND shouldSyncPersistedAtom(e,key). Primary owners short-circuit TY, not shouldSync.",
+      "unit": "sendPersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110036,
+        "endExclusive": 2110149
+      },
+      "spanSha256": "d57671fad1b440ddb72e94882095e618299ae85e8fb772e1f315235f798fa259",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-005",
+      "confidence": "confirmed",
+      "claim": "Snapshot includes canWritePrimaryWindowTabPersistence; priority exactly critical selects chunked sendCritical(e,g.bt,payload), otherwise sendMessageToView. Channel binding g.bt and actual delivery remain unresolved.",
+      "unit": "sendPersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110189,
+        "endExclusive": 2110280
+      },
+      "spanSha256": "3d4ffbec9e198fc06793fdf34f8a29167126817ef9640b6a1bf8efba6dc70ca4",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-006",
+      "confidence": "confirmed",
+      "claim": "unread-thread-ids-by-host-v1 always returns; TY(key) or page-sidebar-expansion-v1 returns only for a non-primary owner. This is not a Codex/ChatGPT mode test.",
+      "unit": "updatePersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110315,
+        "endExclusive": 2110463
+      },
+      "spanSha256": "7b457b18591948028495a5401390e15e280f694c9468323b632309b2c013b75d",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-007",
+      "confidence": "confirmed",
+      "claim": "Update rereads injected globalState with a nullish {} fallback; this alone proves neither disk storage nor current instance.",
+      "unit": "updatePersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110463,
+        "endExclusive": 2110527
+      },
+      "spanSha256": "28378da50bea01cef431e2345dcaf73e3c22f90cc5884a91f4cbc33e5141c842",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-008",
+      "confidence": "confirmed",
+      "claim": "When pR(key,previous,incoming) is false, broadcast previous and return without calling globalState.set; pR semantics have not been opened.",
+      "unit": "updatePersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110527,
+        "endExclusive": 2110596
+      },
+      "spanSha256": "77eec44bb7b9d9d4e6e0889fd1f57d691900e374d8ce52446f3fba4be2a87621",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-009",
+      "confidence": "confirmed",
+      "claim": "Without recordUpdate use incoming value; otherwise hR receives current value, or a nullish fallback at legacyStorageKey, plus the record. hR semantics remain unknown.",
+      "unit": "updatePersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110596,
+        "endExclusive": 2110680
+      },
+      "spanSha256": "ffbc9c6b29c46095a909c397ec7d396955a6ced02a67f00e5d1b759d72cc5d56",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-010",
+      "confidence": "confirmed",
+      "claim": "An undefined computed value deletes the key; other results use an own configurable/enumerable/writable data property.",
+      "unit": "updatePersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110680,
+        "endExclusive": 2110781
+      },
+      "spanSha256": "035c6720f14049e25036e9c93930cb1aafda8c200afa02f89c5b2b55c7adfe53",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-011",
+      "confidence": "confirmed",
+      "claim": "Calls globalState.set before broadcast of the computed result. A synchronous throw prevents the later broadcast within this selected method; no await or catch exists here. Durability or behavior of returned Promises is not established.",
+      "unit": "updatePersistedAtomState",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2110782,
+        "endExclusive": 2110878
+      },
+      "spanSha256": "3fc856263db67643e65778bc8ea618698d4b6048d76d00f4c5a841533297a25c",
+      "runtimeStatus": "not-executed"
+    },
+    {
+      "id": "MODE-NATIVE-20261023-012",
+      "confidence": "inferred",
+      "claim": "Matching discriminator and saved same-class method metadata identify a main receiver candidate for the renderer publisher; live bridge dispatch and actual object instance are not observed.",
+      "unit": "updateCase",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceSha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2082082,
+        "endExclusive": 2082195
+      },
+      "spanSha256": "3032698fdac044648a15573331e7b7db43b0909845a23a0aeb4aaf1ce9d594fe",
+      "runtimeStatus": "not-executed"
+    }
+  ],
+  "confidenceCounts": {
+    "confirmed": 11,
+    "inferred": 1
+  },
+  "syntaxReceipt": {
+    "command": [
+      "/Users/nallylin/.nvm/versions/node/v22.23.2/bin/node",
+      "--check",
+      "/Users/nallylin/Documents/code/ccodex/.analysis-local/mode-persistence-receiver-work/selected-source-20261023/syntax-only.mjs"
+    ],
+    "startedAtUtc": "2026-10-23T14:40:50.646014+00:00",
+    "completedAtUtc": "2026-10-23T14:40:50.750837+00:00",
+    "wallTimeSeconds": 0.104608685,
+    "exitCode": 0,
+    "input": {
+      "bytes": 1293,
+      "sha256": "d0220c6bf01ebb09669a59ac48bb3030d93892e58572fa7dc0f6f9fba09cbcd0"
+    },
+    "stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "targetCodeExecuted": false,
+    "scope": "Node syntax check of two complete switch cases and two complete class methods in synthetic wrappers; not original Program parsing or independent lexical binding analysis."
+  },
+  "lexicalBindingBoundary": "Owner and same-class method association inherited from pinned earlier REA/AST metadata; no new whole-Program or independent binding analysis.",
+  "unknown": [
+    "TY, pR, hR, g.bt definitions",
+    "broadcastPersistedAtomUpdate implementation",
+    "actual MMe/globalState/provider instance",
+    "Rkc bootstrap caller and gS provider/store",
+    "real renderer-to-main delivery",
+    "globalState durable backend and writes",
+    "complete mode domain/exclusions"
+  ],
+  "maintenanceProposal": {
+    "confidence": "inferred",
+    "path": "apps/desktop/src/main/persistence/persisted-atoms.ts",
+    "scope": "Maintain first-party message/state adaptation and preserve injected storage, window ownership, filtering and sender interfaces. Original directory and complete client structure are not recovered.",
+    "sourceUnitMappings": [
+      "syncCase",
+      "updateCase",
+      "sendPersistedAtomState",
+      "updatePersistedAtomState"
+    ],
+    "thirdPartyImplementationRecovered": false
+  },
+  "targetRunsAdded": 0,
+  "modelSubmissionsAdded": 0,
+  "globalRecordsAdded": 0,
+  "fullAnalysisCompleted": false,
+  "historyQualification": "Initial exploratory Python hash check failed because system Python lacked hashlib.file_digest; no source units were displayed by that failed command. Corrected streamed hashing and this recorded extraction succeeded."
+}

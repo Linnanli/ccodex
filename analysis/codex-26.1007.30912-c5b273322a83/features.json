@@ -1,0 +1,1057 @@
+[
+  {
+    "id": "thread-lifecycle",
+    "name": "本地会话创建、恢复、分叉与归档",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "本地会话创建、恢复、分叉与归档",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "webview/assets/local-conversation-page-c1365d9af374.js",
+      "webview/assets/threads-fork-a0b678d41a80.js",
+      "webview/assets/use-resume-conversation-if-needed-cd15159177f0.js"
+    ],
+    "backendMethods": [
+      "thread/archive",
+      "thread/fork",
+      "thread/resume",
+      "thread/start"
+    ],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04778",
+      "FEATURE-E04779",
+      "FEATURE-E04780",
+      "FEATURE-E04781",
+      "FEATURE-E00530",
+      "FEATURE-E00548",
+      "FEATURE-E00572",
+      "FEATURE-E00574",
+      "FEATURE-E00597",
+      "FEATURE-E02040",
+      "FEATURE-E02352",
+      "FEATURE-E02370",
+      "FEATURE-E02394",
+      "FEATURE-E02396",
+      "FEATURE-E04782",
+      "FEATURE-E04783",
+      "FEATURE-E04784",
+      "FEATURE-E04785",
+      "FEATURE-E04786",
+      "FEATURE-E04787",
+      "FEATURE-E04788",
+      "FEATURE-E04789",
+      "FEATURE-E04790",
+      "FEATURE-E04791",
+      "FEATURE-E04792",
+      "FEATURE-E04793",
+      "FEATURE-E04794"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "会话和状态在重启后恢复；分叉有独立身份"
+  },
+  {
+    "id": "thread-turn-stream",
+    "name": "消息、流式事件与任务取消",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "消息、流式事件与任务取消",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/local-conversation-thread-810738f6424a.js",
+      "webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "webview/assets/local-conversation-thread-turn-entries-289ca6f16609.js",
+      "webview/assets/local-conversation-turn-632904a8790c.js",
+      "webview/assets/pending-local-conversation-thread-3398c807ea7f.js"
+    ],
+    "backendMethods": [
+      "turn/interrupt",
+      "turn/start",
+      "turn/steer"
+    ],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04795",
+      "FEATURE-E04796",
+      "FEATURE-E04797",
+      "FEATURE-E04798",
+      "FEATURE-E04799",
+      "FEATURE-E00392",
+      "FEATURE-E00557",
+      "FEATURE-E00558",
+      "FEATURE-E00559",
+      "FEATURE-E00578",
+      "FEATURE-E00579",
+      "FEATURE-E02379",
+      "FEATURE-E02380",
+      "FEATURE-E02381",
+      "FEATURE-E02400",
+      "FEATURE-E02401",
+      "FEATURE-E04800",
+      "FEATURE-E04801",
+      "FEATURE-E04802",
+      "FEATURE-E04803",
+      "FEATURE-E04804",
+      "FEATURE-E04805",
+      "FEATURE-E04806",
+      "FEATURE-E04807",
+      "FEATURE-E04808",
+      "FEATURE-E04809"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "流式事件排序、终态和取消后状态与基线一致"
+  },
+  {
+    "id": "approval",
+    "name": "命令、文件与工具审批",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "命令、文件与工具审批",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/computer-use-app-approval-request-card-89cbdba76563.js",
+      "webview/assets/local-conversation-thread-turn-entries-289ca6f16609.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04810",
+      "FEATURE-E04797",
+      "FEATURE-E04811",
+      "FEATURE-E04812",
+      "FEATURE-E04813",
+      "FEATURE-E04814",
+      "FEATURE-E04815",
+      "FEATURE-E04816",
+      "FEATURE-E04817",
+      "FEATURE-E04818",
+      "FEATURE-E04819",
+      "FEATURE-E04820",
+      "FEATURE-E04821"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "接收请求、显示参数、反馈选择及取消符合契约"
+  },
+  {
+    "id": "subagents",
+    "name": "子代理状态与侧栏",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "子代理状态与侧栏",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/local-conversation-subagents-panel-tab-2ab06de7bd1d.js",
+      "webview/assets/open-local-conversation-subagents-panel-5abfac9190b9.js",
+      "webview/assets/open-local-conversation-subagents-panel-f7fdb27404d4.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04822",
+      "FEATURE-E04823",
+      "FEATURE-E04824"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "可显示子代理进度、打开目标会话和完整消息"
+  },
+  {
+    "id": "task-goals",
+    "name": "持续目标与计划展示",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "持续目标与计划展示",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/local-conversation-plan-model-e16d5e8f82d2.js",
+      "webview/assets/thread-goal-side-panel-content-6beb0f5bb238.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04825",
+      "FEATURE-E04826"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "目标状态、预算及计划项变化符合事件状态"
+  },
+  {
+    "id": "projects",
+    "name": "项目、目录与来源管理",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "项目、目录与来源管理",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/create-project-dialog-1b5add5efff1.js",
+      "webview/assets/create-project-dialog-411efc88945b.js",
+      "webview/assets/project-folder-consent-dialog-e4a55972370b.js",
+      "webview/assets/project-import-prompt-host-13e8db734f83.js",
+      "webview/assets/projects-index-page-87af327ab397.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04827",
+      "FEATURE-E04828",
+      "FEATURE-E04829",
+      "FEATURE-E04830",
+      "FEATURE-E04831"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "目录选择、同意、创建、重命名和会话归属验证"
+  },
+  {
+    "id": "worktrees",
+    "name": "工作树创建、归档、恢复和清理",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "工作树创建、归档、恢复和清理",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/use-codex-worktrees-a139dac686ab.js",
+      "webview/assets/worktree-creation-row-5776c1a4f55c.js",
+      "webview/assets/worktree-environment-dropdown-357fc7584aec.js",
+      "webview/assets/worktrees-settings-page-ad5cbb37d745.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04832",
+      "FEATURE-E04833",
+      "FEATURE-E04834",
+      "FEATURE-E04835"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "实际隔离仓库完成生命周期和冲突处理"
+  },
+  {
+    "id": "handoff",
+    "name": "本地、工作树与主机交接",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "本地、工作树与主机交接",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/thread-executor-target-139bf7784446.js",
+      "webview/assets/thread-handoff-modal-ca9798aa0a67.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04836",
+      "FEATURE-E04837"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "跨环境交接保留文件、Git 状态和会话历史"
+  },
+  {
+    "id": "remote-hosts",
+    "name": "SSH 与远程主机连接",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "SSH 与远程主机连接",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/project-device-picker-82aa2fc685af.js",
+      "webview/assets/remote-connections-settings-5fcec56d1e17.js",
+      "webview/assets/remote-conversation-page-d5c77768f912.js"
+    ],
+    "backendMethods": [
+      "remoteControl/enable"
+    ],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04838",
+      "FEATURE-E04839",
+      "FEATURE-E04840",
+      "FEATURE-E00358",
+      "FEATURE-E04841",
+      "FEATURE-E04842",
+      "FEATURE-E04843"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "连接、失败、断线恢复和目标主机执行验证"
+  },
+  {
+    "id": "cloud-execution",
+    "name": "云端任务与环境",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "云端任务与环境",
+    "mode": "unknown",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/cloud-entry-route-59576ee292ef.js",
+      "webview/assets/cloud-environments-settings-page-2f8899d93d38.js",
+      "webview/assets/cloud-preferences-settings-1ac29add9fd9.js",
+      "webview/assets/cloud-preferences-settings-41546184a793.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04844",
+      "FEATURE-E04845",
+      "FEATURE-E04846",
+      "FEATURE-E04847"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "确认 Codex 模式入口、账户条件和服务能力"
+  },
+  {
+    "id": "terminal",
+    "name": "终端与后台命令面板",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "终端与后台命令面板",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/local-conversation-background-terminal-tab-f87ad9d5555c.js",
+      "webview/assets/terminal-panel-c0ca9a862516.js",
+      "webview/assets/terminal-panel-f6cd76125647.js",
+      "webview/assets/terminal-tab-1947951ef320.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04848",
+      "FEATURE-E04849",
+      "FEATURE-E04850",
+      "FEATURE-E04851"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "PTY 输入输出、resize、退出、取消、tab 恢复验证"
+  },
+  {
+    "id": "diff-review",
+    "name": "文件差异、代码评审与行内批注",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "文件差异、代码评审与行内批注",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/code-review-settings-6984d6476bbd.js",
+      "webview/assets/local-conversation-git-actions-80bec7c8c45b.js",
+      "webview/assets/use-conversation-diff-comments-c0ce4aa00e4c.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04852",
+      "FEATURE-E04853",
+      "FEATURE-E04854"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "修改、暂存和评审视图及批注定位验证"
+  },
+  {
+    "id": "pull-requests",
+    "name": "PR 列表、代码面板与修复任务",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "PR 列表、代码面板与修复任务",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/open-thread-pull-request-code-tab-5afe4c6a4ac5.js",
+      "webview/assets/open-thread-pull-request-code-tab-8fc414243f58.js",
+      "webview/assets/pull-request-fix-automation-1473b35ad8d0.js",
+      "webview/assets/pull-request-route-b0c1b0c301a4.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04855",
+      "FEATURE-E04856",
+      "FEATURE-E04857",
+      "FEATURE-E04858"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "仓库身份、PR 差异、动作及错误状态验证"
+  },
+  {
+    "id": "git-settings",
+    "name": "Git 与本地环境设置",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "Git 与本地环境设置",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/git-settings-cc686a50f040.js",
+      "webview/assets/local-environments-settings-content-399f96d641e1.js",
+      "webview/assets/local-environments-settings-content-b3e5cf1727ab.js",
+      "webview/assets/local-environments-settings-page-dd4c4cddd941.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04859",
+      "FEATURE-E04860",
+      "FEATURE-E04861",
+      "FEATURE-E04862"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "设置读写与新任务/工作树应用一致"
+  },
+  {
+    "id": "automations",
+    "name": "定时任务、心跳与通知策略",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "定时任务、心跳与通知策略",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/automation-frequency-section-92c333d79c0a.js",
+      "webview/assets/automation-notification-policy-dropdown-b64aee6fb057.js",
+      "webview/assets/automations-page-58e351b49373.js",
+      "webview/assets/automations-page-aa8b83be2225.js",
+      "webview/assets/local-conversation-heartbeat-automation-eb50da46f57b.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04863",
+      "FEATURE-E04864",
+      "FEATURE-E04865",
+      "FEATURE-E04866",
+      "FEATURE-E04867"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "计划持久化、触发、暂停、通知和失败状态验证"
+  },
+  {
+    "id": "plugins",
+    "name": "插件安装、市场、启停与配置",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "插件安装、市场、启停与配置",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/plugin-detail-settings-enabled-f310414c3b63.js",
+      "webview/assets/plugin-marketplace-context-1122e5ca6d5e.js",
+      "webview/assets/plugins-settings-39f4509a79cc.js",
+      "webview/assets/plugins-settings-577ebe3677a7.js",
+      "webview/assets/plugins-settings-row-c4c97128cef3.js"
+    ],
+    "backendMethods": [
+      "marketplace/add",
+      "marketplace/remove"
+    ],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04868",
+      "FEATURE-E04869",
+      "FEATURE-E04870",
+      "FEATURE-E04871",
+      "FEATURE-E04872",
+      "FEATURE-E00322",
+      "FEATURE-E02046",
+      "FEATURE-E02047",
+      "FEATURE-E04873",
+      "FEATURE-E04874",
+      "FEATURE-E04875",
+      "FEATURE-E04876"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "来源、启停和配置作用域及失败处理验证"
+  },
+  {
+    "id": "skills-mcp",
+    "name": "技能与 MCP 配置及工具",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "技能与 MCP 配置及工具",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/mcp-settings-83d0520492d3.js",
+      "webview/assets/mcp-tool-activity-label-fb47c28e3f97.js",
+      "webview/assets/skills-settings-92f7be984f1d.js"
+    ],
+    "backendMethods": [
+      "mcpServer/oauth/login",
+      "mcpServerStatus/list",
+      "skills/list"
+    ],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04877",
+      "FEATURE-E04878",
+      "FEATURE-E04879",
+      "FEATURE-E00321",
+      "FEATURE-E00371",
+      "FEATURE-E00536",
+      "FEATURE-E00550",
+      "FEATURE-E02043",
+      "FEATURE-E02085",
+      "FEATURE-E02101",
+      "FEATURE-E02102",
+      "FEATURE-E02358",
+      "FEATURE-E02372",
+      "FEATURE-E04009",
+      "FEATURE-E04880",
+      "FEATURE-E04881",
+      "FEATURE-E04882",
+      "FEATURE-E04883",
+      "FEATURE-E04884",
+      "FEATURE-E04885",
+      "FEATURE-E04886",
+      "FEATURE-E04887",
+      "FEATURE-E04888"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "技能发现、工具调用、状态和 OAuth 条件验证"
+  },
+  {
+    "id": "app-tools",
+    "name": "桌面工具与 Node REPL 集成",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "桌面工具与 Node REPL 集成",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/open-in-codex-506e4947b2f6.js",
+      "webview/assets/register-app-actions-4b8b92c62fa1.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04889",
+      "FEATURE-E04890"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "Codex app MCP、独立工具进程和授权链路验证"
+  },
+  {
+    "id": "browser",
+    "name": "内置浏览器、标签页与上下文操作",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "内置浏览器、标签页与上下文操作",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/browser-extension-settings-33e5503db7da.js",
+      "webview/assets/browser-route-4735484dc4a8.js",
+      "webview/assets/browser-use-settings-dd15aad57b40.js",
+      "webview/assets/browser-use-settings-visibility-58da96854437.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04891",
+      "FEATURE-E04892",
+      "FEATURE-E04893",
+      "FEATURE-E04894"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "导航、标签、恢复、注释、外部浏览器与桥接验证"
+  },
+  {
+    "id": "computer-use",
+    "name": "电脑操作权限、应用审批与截图",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "电脑操作权限、应用审批与截图",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/appshots-settings-3f31c623b72d.js",
+      "webview/assets/computer-use-app-approvals-query-9907ea92c222.js",
+      "webview/assets/computer-use-settings-672bfa843f15.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04895",
+      "FEATURE-E04896",
+      "FEATURE-E04897"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "平台权限和审批的正常、拒绝、撤销状态验证"
+  },
+  {
+    "id": "artifact-panels",
+    "name": "文件、文档与可视化面板",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "文件、文档与可视化面板",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/local-conversation-summary-panel-artifacts-section-68c829a65fb1.js",
+      "webview/assets/thread-side-panel-tab-content-e9ce64182d53.js",
+      "webview/assets/thread-summary-panel-components-f242525193ce.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04898",
+      "FEATURE-E04899",
+      "FEATURE-E04900"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "文件打开、预览、编辑契约与资源定位验证"
+  },
+  {
+    "id": "sidebar",
+    "name": "侧栏排序、置顶、分区与搜索",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "侧栏排序、置顶、分区与搜索",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/sidebar-actions-f7c7a060314b.js",
+      "webview/assets/sidebar-rename-dialog-8b9e03e97b1b.js",
+      "webview/assets/thread-pin-shortcut-bridge-5eb0aeacf77b.js",
+      "webview/assets/use-conversation-search-highlights-3cf3b8b9fbd5.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04901",
+      "FEATURE-E04902",
+      "FEATURE-E04903",
+      "FEATURE-E04904"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "排序、搜索、读取状态、归档和重启恢复验证"
+  },
+  {
+    "id": "shortcuts",
+    "name": "快捷键、菜单与快速窗口",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "快捷键、菜单与快速窗口",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/hotkey-window-new-thread-page-5f3c242085cb.js",
+      "webview/assets/keyboard-shortcuts-settings-bae6922f5c0c.js",
+      "webview/assets/keyboard-shortcuts-settings-e5d452e7d34c.js",
+      "webview/assets/page-codex-quick-chat-window-58edc97dc0c4.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04905",
+      "FEATURE-E04906",
+      "FEATURE-E04907",
+      "FEATURE-E04908"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "快捷键冲突、窗口切换、命令启用条件验证"
+  },
+  {
+    "id": "window-lifecycle",
+    "name": "窗口、托盘、主题与系统集成",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "窗口、托盘、主题与系统集成",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "webview/assets/thread-side-panel-tabs-6b9bc0f06c05.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04909",
+      "FEATURE-E04910"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "多窗口、关闭恢复、托盘、焦点、缩放和主题验证"
+  },
+  {
+    "id": "appearance-notification",
+    "name": "外观、语言与通知",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "外观、语言与通知",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/appearance-settings-bf899ed18bb8.js",
+      "webview/assets/general-settings-65e65871cdcd.js",
+      "webview/assets/general-settings-861f7f5f7042.js",
+      "webview/assets/notifications-settings-632d328fca3d.js",
+      "webview/assets/notifications-settings-fe71f8366460.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04911",
+      "FEATURE-E04912",
+      "FEATURE-E04913",
+      "FEATURE-E04914",
+      "FEATURE-E04915"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "设置保存、系统主题和通知行为验证"
+  },
+  {
+    "id": "hooks",
+    "name": "Hooks 设置",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "Hooks 设置",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/hooks-settings-cb5541ab4198.js",
+      "webview/assets/hooks-settings-copy-dcb36ed5dbec.js",
+      "webview/assets/hooks-settings-model-f200bbc1bcb6.js",
+      "webview/assets/hooks-settings-navigation-29e801d48278.js",
+      "webview/assets/hooks-settings-route-8191acda142e.js",
+      "webview/assets/hooks-settings-source-label-2de24551bbbb.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04916",
+      "FEATURE-E04917",
+      "FEATURE-E04918",
+      "FEATURE-E04919",
+      "FEATURE-E04920",
+      "FEATURE-E04921"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "作用域、脚本、执行条件和来源显示验证"
+  },
+  {
+    "id": "safety-policy",
+    "name": "权限、沙箱与执行策略",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "权限、沙箱与执行策略",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/computer-use-settings-672bfa843f15.js",
+      "webview/assets/local-conversation-thread-810738f6424a.js",
+      "webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "webview/assets/local-conversation-thread-turn-entries-289ca6f16609.js",
+      "webview/assets/safety-settings-87cd943070f2.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04897",
+      "FEATURE-E04795",
+      "FEATURE-E04796",
+      "FEATURE-E04797",
+      "FEATURE-E04922"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "策略变更应用于真实任务和审批路径"
+  },
+  {
+    "id": "authentication",
+    "name": "身份、账户切换与授权",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "身份、账户切换与授权",
+    "mode": "shared",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/account-settings-b6b8255e8212.js",
+      "webview/assets/app-connect-oauth-callback-page-d27b30bcdccb.js",
+      "webview/assets/login-route-27ff39de87da.js"
+    ],
+    "backendMethods": [
+      "account/login/start",
+      "account/logout",
+      "account/read"
+    ],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04923",
+      "FEATURE-E04924",
+      "FEATURE-E04925",
+      "FEATURE-E00395",
+      "FEATURE-E00493",
+      "FEATURE-E00494",
+      "FEATURE-E00495",
+      "FEATURE-E00534",
+      "FEATURE-E00583",
+      "FEATURE-E00584",
+      "FEATURE-E02315",
+      "FEATURE-E02316",
+      "FEATURE-E02317",
+      "FEATURE-E02356",
+      "FEATURE-E02405",
+      "FEATURE-E02406",
+      "FEATURE-E03525",
+      "FEATURE-E03526",
+      "FEATURE-E04926",
+      "FEATURE-E04927",
+      "FEATURE-E04928",
+      "FEATURE-E04929",
+      "FEATURE-E04930",
+      "FEATURE-E04931",
+      "FEATURE-E04932",
+      "FEATURE-E04933",
+      "FEATURE-E04934",
+      "FEATURE-E04935"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "保留 Codex 身份；登录、登出、切换和失效验证"
+  },
+  {
+    "id": "usage-model",
+    "name": "模型、推理强度与使用量",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "模型、推理强度与使用量",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/composer-controls-7c1d04d21325.js",
+      "webview/assets/thread-usage-breakdown-4805b36f6ce4.js"
+    ],
+    "backendMethods": [
+      "model/list"
+    ],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04936",
+      "FEATURE-E04937",
+      "FEATURE-E00343",
+      "FEATURE-E00542",
+      "FEATURE-E00552",
+      "FEATURE-E02057",
+      "FEATURE-E02077",
+      "FEATURE-E02099",
+      "FEATURE-E02265",
+      "FEATURE-E02364",
+      "FEATURE-E02374",
+      "FEATURE-E02442",
+      "FEATURE-E03612",
+      "FEATURE-E04938",
+      "FEATURE-E04939",
+      "FEATURE-E04940",
+      "FEATURE-E04941",
+      "FEATURE-E04942",
+      "FEATURE-E04943",
+      "FEATURE-E04944"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "模型能力、用量与设定向任务的传递验证"
+  },
+  {
+    "id": "sharing",
+    "name": "会话分享与快照",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "会话分享与快照",
+    "mode": "unknown",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/share-thread-857fe1d9dce4.js",
+      "webview/assets/shared-codex-snapshot-cb66cedef07d.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04945",
+      "FEATURE-E04946"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "确认 Codex 入口、远端服务与分享契约"
+  },
+  {
+    "id": "mobile",
+    "name": "移动端连接与设置",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "移动端连接与设置",
+    "mode": "codex",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/codex-mobile-page-aa98000e29a7.js",
+      "webview/assets/codex-mobile-setup-dialog-b2025d279701.js",
+      "webview/assets/codex-mobile-setup-flow-964d39beb2ad.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04947",
+      "FEATURE-E04948",
+      "FEATURE-E04949"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "账户、平台和远程控制条件验证"
+  },
+  {
+    "id": "chronicle",
+    "name": "Chronicle 记录与设置",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "Chronicle 记录与设置",
+    "mode": "unknown",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/chronicle-settings-page-585519c1acbc.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04950"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "需确认 Codex/Work/ChatGPT 模式归属和权限条件"
+  },
+  {
+    "id": "codex-micro",
+    "name": "Codex Micro 功能与设置",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "Codex Micro 功能与设置",
+    "mode": "unknown",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/codex-micro-bridge-578d55322af5.js",
+      "webview/assets/codex-micro-onboarding-host-6d75260fb49c.js",
+      "webview/assets/codex-micro-settings-a81b033f873e.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04951",
+      "FEATURE-E04952",
+      "FEATURE-E04953"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "需核实功能开关、模式归属和原生界面"
+  },
+  {
+    "id": "chatgpt-conversation",
+    "name": "ChatGPT 对话、重生成与分享",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "ChatGPT 对话、重生成与分享",
+    "mode": "chatgpt",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "webview/assets/chatgpt-conversation-page-387f07c72a6d.js",
+      "webview/assets/chatgpt-conversation-runtime-184f29f1b276.js",
+      "webview/assets/chatgpt-conversation-share-dialog-5d0caac55bcd.js",
+      "webview/assets/chatgpt-conversation-share-dialog-f9af515a7eaf.js",
+      "webview/assets/chatgpt-conversation-turn-content-fb0cd9e95f87.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04954",
+      "FEATURE-E04955",
+      "FEATURE-E04956",
+      "FEATURE-E04957",
+      "FEATURE-E04958",
+      "FEATURE-E04959"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "候选排除；拆分前核对共享渲染器及 Codex 调用方"
+  },
+  {
+    "id": "chatgpt-project",
+    "name": "ChatGPT 项目设置与来源",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "ChatGPT 项目设置与来源",
+    "mode": "chatgpt",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/chatgpt-project-fetch-652f0ab6af18.js",
+      "webview/assets/chatgpt-project-settings-dialog-8af3e5dc9374.js",
+      "webview/assets/chatgpt-project-sources-35a06ad8e3bc.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04960",
+      "FEATURE-E04961",
+      "FEATURE-E04962"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "候选排除；Codex/Work 项目桥接 provisioning 需要单独保留"
+  },
+  {
+    "id": "work-pages-sites",
+    "name": "Work Pages、Sites 与云端文档",
+    "trigger": "see candidate published entrypoints; UI trigger requires observation",
+    "behavior": "Work Pages、Sites 与云端文档",
+    "mode": "unknown",
+    "modeConfidence": "inferred",
+    "classificationStatus": "candidate; no-exclusion-authorized-by-name-alone",
+    "conditions": "platform/account/feature/service conditions need per-consumer trace",
+    "publishedEntrypoints": [
+      "webview/assets/appgen-settings-page-1341c0530c61.js",
+      "webview/assets/appgen-settings-page-15cd02ae6d0b.js",
+      "webview/assets/appgen-site-detail-route-daa31ae2e498.js",
+      "webview/assets/space-route-6aad6e5649b3.js"
+    ],
+    "backendMethods": [],
+    "codeChain": "entrypoints → app-host/electronBridge or typed app-server RPC; per-feature path not yet exhaustive",
+    "evidenceIds": [
+      "FEATURE-E04963",
+      "FEATURE-E04964",
+      "FEATURE-E04965",
+      "FEATURE-E04966"
+    ],
+    "verificationStatus": "static-candidate; runtime-pending",
+    "recoveryVerification": "Work 不自动等同 ChatGPT 专属；需追踪 Codex 可达性"
+  }
+]

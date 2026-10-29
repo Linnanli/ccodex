@@ -1,0 +1,409 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "facts": [
+    {
+      "id": "BA-01",
+      "claim": "renderer setter与main参数解析使用相同的两个Owl属性名；以完整Program内的词法绑定及静态赋值核对，未观察初始化时序。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "constant-aU",
+          "sourceFilename": "018-constant-aU.txt",
+          "name": "aU",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1517254,
+            "endExclusive": 1517289
+          },
+          "spanHash": "c16bfa7474e947ee4c6360a0b3d2527a7a20b81c5f5bf69b0952b312a105b220",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "selection": "constant-PCe",
+          "sourceFilename": "020-constant-PCe.txt",
+          "name": "PCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1517290,
+            "endExclusive": 1517335
+          },
+          "spanHash": "d58fb905ed84bc0c56873c2984f04a804dfb475251e973adb12932483874489b",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "selection": "constant-xBi",
+          "sourceFilename": "009-constant-xBi.txt",
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 6849157,
+            "endExclusive": 6849193
+          },
+          "spanHash": "2608d61d6634886b4c7612180f8f40c0bca8b5260fdd0d34625d144ab9a8318f",
+          "nodeType": "AssignmentExpression"
+        },
+        {
+          "selection": "constant-SBi",
+          "sourceFilename": "010-constant-SBi.txt",
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 6849194,
+            "endExclusive": 6849239
+          },
+          "spanHash": "b30279c4eae3b6344449dd5365103b1cf3c69c4d45b3e297ddab9dde09dcbbb8",
+          "nodeType": "AssignmentExpression"
+        }
+      ]
+    },
+    {
+      "id": "BA-02",
+      "claim": "lease或WebContents ID任一为空时，renderer同时移除两个属性；齐备时写入lease和字符串ID。不能只传ID。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "host-setAdoptionAttributes",
+          "sourceFilename": "003-host-setAdoptionAttributes.txt",
+          "name": "setAdoptionAttributes",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 6859593,
+            "endExclusive": 6859817
+          },
+          "spanHash": "a7832362549222c3f8bb435ccae21bf07127200c73fd81a98d984d61a5e0bc8b",
+          "nodeType": "ClassMethod"
+        }
+      ]
+    },
+    {
+      "id": "BA-03",
+      "claim": "普通renderer host先设置路由partition、adoption属性和about:blank；windowTransferReceiver分支跳过这组初始化，并非普通新建webview的同一路径。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "host-constructor",
+          "sourceFilename": "001-host-constructor.txt",
+          "name": "constructor",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 6850023,
+            "endExclusive": 6851086
+          },
+          "spanHash": "9b02b25867fbc930e7e36f30afc3101bd3cbcd4d49094c75bac4413ab012497e",
+          "nodeType": "ClassMethod"
+        }
+      ]
+    },
+    {
+      "id": "BA-04",
+      "claim": "will-attach-webview对非空lease查pending adopted记录，要求lease匹配且尚无acceptedHostIdentity；非法/重复接收会preventDefault。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "function-ICe",
+          "sourceFilename": "004-function-ICe.txt",
+          "name": "ICe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1517908,
+            "endExclusive": 1528135
+          },
+          "spanHash": "63a253c9c656e6b6066855c1aec291f7fa0f16cc020f6def1d213ae88de8b4dd",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "selection": "function-qCe",
+          "sourceFilename": "010-function-qCe.txt",
+          "name": "qCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1532061,
+            "endExclusive": 1532127
+          },
+          "spanHash": "c029cda52ad9f8d35dd4dc44155f588fc787590c83dce2656b9ddaa541905e67",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "selection": "function-JCe",
+          "sourceFilename": "011-function-JCe.txt",
+          "name": "JCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1532127,
+            "endExclusive": 1532203
+          },
+          "spanHash": "50f9227c8fd3f4d4666862714be3a7c29da43624a28f2af35fcbe2858d2c11b7",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "BA-05",
+      "claim": "接收还核对路由、存储意图/所有权、pending teardown、rendererInstanceId及hostGeneration；通过后才登记acceptedHostIdentity。lease不是无条件接管令牌。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "function-ICe",
+          "sourceFilename": "004-function-ICe.txt",
+          "name": "ICe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1517908,
+            "endExclusive": 1528135
+          },
+          "spanHash": "63a253c9c656e6b6066855c1aec291f7fa0f16cc020f6def1d213ae88de8b4dd",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "selection": "function-MCe",
+          "sourceFilename": "002-function-MCe.txt",
+          "name": "MCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1516234,
+            "endExclusive": 1516735
+          },
+          "spanHash": "3dbe850384c45ff4a74bce17da3fec62b37ac8c893176e9598ff70ab51cf097a",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "selection": "function-NCe",
+          "sourceFilename": "003-function-NCe.txt",
+          "name": "NCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1516735,
+            "endExclusive": 1517054
+          },
+          "spanHash": "6e96680cbff5c92765b012ab50500e4afc1b4bb67913d6a7a0002acdc1e64fcb",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "BA-06",
+      "claim": "adoption失败后的微任务只有在事件被拒绝、renderer与host generation仍匹配且pending记录仍为同一对象时，才stopTracking并销毁尚存guest。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "function-ICe",
+          "sourceFilename": "004-function-ICe.txt",
+          "name": "ICe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1517908,
+            "endExclusive": 1528135
+          },
+          "spanHash": "63a253c9c656e6b6066855c1aec291f7fa0f16cc020f6def1d213ae88de8b4dd",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "BA-07",
+      "claim": "附着路径固定浏览session/preload，并覆写sandbox、contextIsolation、webSecurity和Node集成等偏好；迁移视图时必须保留这层策略。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "function-LCe",
+          "sourceFilename": "005-function-LCe.txt",
+          "name": "LCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1528135,
+            "endExclusive": 1528303
+          },
+          "spanHash": "9a495500b1712c615a8202a40f5ba4ddcb2e27017cc5564c4312f07695fcf9c7",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "selection": "function-cU",
+          "sourceFilename": "006-function-cU.txt",
+          "name": "cU",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1528474,
+            "endExclusive": 1528810
+          },
+          "spanHash": "affde0789d7b47f7364244a033d6670931d95628e22384839bdc387a25f2346a",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "BA-08",
+      "claim": "did-attach-webview先尝试普通instance记录，再以WebContents ID查已接受adoption；XCe传递route/host身份和initialNavigationOwner（owl或history-clone），callback正常返回后stopTracking，再按已有请求执行back/forward/reload。此顺序不是实际native执行证明。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "function-ICe",
+          "sourceFilename": "004-function-ICe.txt",
+          "name": "ICe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1517908,
+            "endExclusive": 1528135
+          },
+          "spanHash": "63a253c9c656e6b6066855c1aec291f7fa0f16cc020f6def1d213ae88de8b4dd",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "selection": "function-XCe",
+          "sourceFilename": "013-function-XCe.txt",
+          "name": "XCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1532364,
+            "endExclusive": 1532923
+          },
+          "spanHash": "90d82d378dcb93709c580af35278bc9609f37b539ed624eaba86b23626913e28",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "selection": "function-YCe",
+          "sourceFilename": "012-function-YCe.txt",
+          "name": "YCe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1532203,
+            "endExclusive": 1532364
+          },
+          "spanHash": "dcbf2f63ebde48b187dca86c4f0589650bb866415fccecb97a44e2c017c28790",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "BA-09",
+      "claim": "跨窗口receiver等待prepared后要求webview.adoptWebContents方法；缺失即抛错。这是另一个Owl元素能力，公共主进程view移动不能直接替换其renderer调用。",
+      "method": "full-original-Program-AST-and-bounded-source-review",
+      "confidence": "confirmed-with-stated-static-scope",
+      "sources": [
+        {
+          "selection": "host-adoptForWindowTransfer",
+          "sourceFilename": "002-host-adoptForWindowTransfer.txt",
+          "name": "adoptForWindowTransfer",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 6851160,
+            "endExclusive": 6851406
+          },
+          "spanHash": "a880fb5364b1facf82eb0243fb3ba62e5457f21723390cfa8e3b7748696c784d",
+          "nodeType": "ClassMethod"
+        }
+      ]
+    }
+  ],
+  "actualPublicPrimitiveObservations": {
+    "kind": "owned-public-browser-ownership-probe",
+    "startedAtUtc": "2026-10-24T05:12:13.331Z",
+    "versions": {
+      "electron": "42.3.0",
+      "node": "24.15.0",
+      "chrome": "148.0.7778.180"
+    },
+    "originalClientRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "observations": [
+      {
+        "id": "move-existing-view-between-owned-windows",
+        "status": "completed",
+        "sameWebContentsId": true,
+        "before": {
+          "input": "edited-form",
+          "heap": "edited-live-heap"
+        },
+        "after": {
+          "input": "edited-form",
+          "heap": "edited-live-heap"
+        }
+      },
+      {
+        "id": "construct-view-adopting-existing-contents",
+        "status": "rejected",
+        "message": "options.webContents is already attached to a window"
+      }
+    ],
+    "errors": [],
+    "limitation": "Same owned live WebContents only; no duplication, renderer webview lease, original Owl transfer, route admission or account state tested.",
+    "exitCode": 0,
+    "completedAtUtc": "2026-10-24T05:12:13.998Z"
+  },
+  "originalCreationRequirements": {
+    "path": "runtime-capability-decisions.json",
+    "bytes": 18241,
+    "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7"
+  },
+  "publicComparison": {
+    "path": "public-runtime-comparison.json",
+    "bytes": 7231,
+    "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+  },
+  "implementationDecision": {
+    "candidate": "First-party main-process browser-view ownership manager using one retained WebContentsView per live page.",
+    "nowSupported": "One synthetic live view can move between owned windows while keeping WebContents ID, edited form and edited JS heap.",
+    "rejectedAssumption": "Constructing a replacement view from still-attached WebContents was rejected; removing the view from a contentView did not make this construction succeed.",
+    "mustPreserve": [
+      "route admission",
+      "renderer/host generation",
+      "paired lease/ID lifecycle or an explicitly validated ownership protocol",
+      "session/preload/security preferences",
+      "destroy/reject/cleanup",
+      "initial navigation ownership"
+    ],
+    "stillUnproven": [
+      "Owl renderer webview lease equivalence",
+      "view cloning and its history/process state",
+      "cross-process end-to-end delivery",
+      "all target-browser features",
+      "network/IPC permission enforcement"
+    ],
+    "fullRuntimeRouteSelected": false
+  },
+  "counts": {
+    "sourcePrograms": 2,
+    "sourceFacts": 9,
+    "currentSourceUnits": 30,
+    "sourceSpansChecked": 30,
+    "publicRuntimeProbeProcesses": 1,
+    "publicPrimitiveObservations": 2,
+    "originalClientRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "newConfirmedModeClassifications": 0,
+    "newProductBehaviorAcceptances": 0
+  },
+  "producerLimit": "The saved AST recipe includes a literal-assignment extension added after main-02. shared-03 used that extension; main-02 output and source spans are preserved, without claiming an independently pinned historical producer revision.",
+  "failedAttempts": {
+    "path": "raw/stage-consolidation/first-attempt-failures.json",
+    "bytes": 546,
+    "sha256": "ce09c8000026f4c3ee7c9aa741f84bd899b483080d5f592d185aa4294e939ffe"
+  },
+  "fullAnalysisCompleted": false
+}

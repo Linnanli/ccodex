@@ -1,0 +1,173 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-13T13:22:30.048712+00:00",
+  "status": "static-observed; runtime-enforcement-unverified",
+  "scope": {
+    "selectedBinaries": 2,
+    "completeBinaryBytes": 296579104,
+    "fuseWires": 1,
+    "sourceEvidenceRecords": 10,
+    "targetApplicationLaunched": false,
+    "targetBinaryModified": false,
+    "nodeDiagnosticAttempted": false,
+    "modelTasksSubmitted": 0
+  },
+  "sourceInputs": [
+    {
+      "path": ".analysis-local/current-baseline.json",
+      "bytes": 1162,
+      "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/files.json",
+      "bytes": 9406196,
+      "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "scripts/analysis/read_runtime_fuses.py",
+      "bytes": 9540,
+      "sha256": "ecbb1d998d2ad0aaffb2a715662e749f9a598142eb7c6295ac5c3796f23eee0c"
+    }
+  ],
+  "observations": [
+    {
+      "sourcePath": "Contents/MacOS/ChatGPT",
+      "runtimeCopyPath": ".analysis-local/runtime/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/MacOS/ChatGPT",
+      "sourceHash": "4f64e68bffc10a0ef3a6465fb7948708d36fb82c76e142b8522a6b29a30d0b8e",
+      "bytes": 45408,
+      "frozenInventoryHashMatch": true,
+      "sentinelMatches": 0,
+      "wireCandidates": [],
+      "scope": "Complete selected binary scanned for the exact sentinel; other binaries not scanned."
+    },
+    {
+      "sourcePath": "Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "runtimeCopyPath": ".analysis-local/runtime/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+      "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+      "bytes": 296533696,
+      "frozenInventoryHashMatch": true,
+      "sentinelMatches": 1,
+      "wireCandidates": [
+        {
+          "byteStart": 246224784,
+          "byteEndExclusive": 246224827,
+          "version": 1,
+          "wireLength": 9,
+          "wireHex": "303130303131303031",
+          "wireAscii": "010011001",
+          "evidenceId": "RUNTIME-FUSE-E001",
+          "states": [
+            {
+              "ordinal": 0,
+              "officialSchemaName": "run_as_node",
+              "rawByte": 48,
+              "asciiValue": "0",
+              "schemaInterpretation": "disabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E002"
+            },
+            {
+              "ordinal": 1,
+              "officialSchemaName": "cookie_encryption",
+              "rawByte": 49,
+              "asciiValue": "1",
+              "schemaInterpretation": "enabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E003"
+            },
+            {
+              "ordinal": 2,
+              "officialSchemaName": "node_options",
+              "rawByte": 48,
+              "asciiValue": "0",
+              "schemaInterpretation": "disabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E004"
+            },
+            {
+              "ordinal": 3,
+              "officialSchemaName": "node_cli_inspect",
+              "rawByte": 48,
+              "asciiValue": "0",
+              "schemaInterpretation": "disabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E005"
+            },
+            {
+              "ordinal": 4,
+              "officialSchemaName": "embedded_asar_integrity_validation",
+              "rawByte": 49,
+              "asciiValue": "1",
+              "schemaInterpretation": "enabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E006"
+            },
+            {
+              "ordinal": 5,
+              "officialSchemaName": "only_load_app_from_asar",
+              "rawByte": 49,
+              "asciiValue": "1",
+              "schemaInterpretation": "enabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E007"
+            },
+            {
+              "ordinal": 6,
+              "officialSchemaName": "load_browser_process_specific_v8_snapshot",
+              "rawByte": 48,
+              "asciiValue": "0",
+              "schemaInterpretation": "disabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E008"
+            },
+            {
+              "ordinal": 7,
+              "officialSchemaName": "grant_file_protocol_extra_privileges",
+              "rawByte": 48,
+              "asciiValue": "0",
+              "schemaInterpretation": "disabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E009"
+            },
+            {
+              "ordinal": 8,
+              "officialSchemaName": "wasm_trap_handlers",
+              "rawByte": 49,
+              "asciiValue": "1",
+              "schemaInterpretation": "enabled",
+              "targetNativeConsumerVerified": false,
+              "evidenceId": "RUNTIME-FUSE-E010"
+            }
+          ]
+        }
+      ],
+      "scope": "Complete selected binary scanned for the exact sentinel; other binaries not scanned."
+    }
+  ],
+  "schemaReferences": [
+    {
+      "url": "https://www.electronjs.org/docs/latest/tutorial/fuses",
+      "role": "Sentinel/version/length/state wire format and RunAsNode/NodeOptions/NodeCliInspect semantics; checked 2026-10-13."
+    },
+    {
+      "url": "https://github.com/electron/electron/blob/v44.7.0/build/fuses/fuses.json5",
+      "role": "External v1 schema ordinal mapping; this is not a claim that Owl is Electron v44.7.0."
+    }
+  ],
+  "conclusions": {
+    "observedWire": "010011001",
+    "nodeDiagnosticDecision": "Do not launch RunAsNode, NODE_OPTIONS, or inspect diagnostics using a disabled-valued wire as an enabled precondition.",
+    "actualNodeVersion": "unknown",
+    "actualElectronCompatibilityVersion": "unknown",
+    "nativeModulesAbi": "unknown",
+    "runtimeNativeFuseConsumption": "unknown"
+  },
+  "limitations": [
+    "A standard-format wire and official schema support decoding the bytes; the custom Owl native consumers were not executed or disassembled.",
+    "No fuse editing, code-signature changes, application startup, network request, account access, or model request occurred.",
+    "Two selected binaries are the scan denominator, not all runtime files.",
+    "Embedded ASAR integrity fuse bytes do not resolve the seven historical archive/unpacked declaration mismatches."
+  ]
+}

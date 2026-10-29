@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "status": "20-isolated-function-scenarios-passed",
+  "observations": {
+    "path": "raw/mode-behavior-observations/author/mode-behavior-observations.json",
+    "bytes": 74803,
+    "sha256": "c9dd1cc24566981c2f2ccd9eb2aafb68df68d4eff894d3c6601c80bda5ef9a51"
+  },
+  "actualReceipt": {
+    "path": "raw/mode-behavior-observations/author/observe-receipt.json",
+    "bytes": 2311,
+    "sha256": "240847ba9bba61ec5f7f421ac1e2c51d3b78bfc67a2ac39990867ed3f207da2e"
+  },
+  "sourceInputPins": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/mode-transition-origin-work/local-source-units/transition-gS.js",
+      "bytes": 87,
+      "sha256": "7abb47bc3e652dd1aa48557f232380767a7f01afcc41b3248e49d4842469dba8"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/mode-transition-origin-work/local-source-units/mode-resolver-lPt.js",
+      "bytes": 328,
+      "sha256": "7d1096822a1103fd9d308139e2ac5960bb8821e684cb94dd4ae40588837e7eff"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/mode-preference-storage-origin-work/local-source-units/keyed-factory-FJ.js",
+      "bytes": 486,
+      "sha256": "d2dd724484771110b77f42e4771f87241d5bfbd6a3e6b91fe177fbe44b16e71b",
+      "localOnly": true
+    }
+  ],
+  "isolation": {
+    "freshContextPerScenario": true,
+    "vmTimeoutMilliseconds": 50,
+    "codeGenerationStringsDisabled": true,
+    "codeGenerationWasmDisabled": true,
+    "hostFunctionsInjected": false,
+    "hostObjectsInjectedAsDependencyValues": false,
+    "processRequireExternalResourcesProvided": false,
+    "dependencyPromisesHandledByObserverAtCreation": true,
+    "providerCallerDidNotAwaitPromises": true
+  },
+  "nodeRuntime": {
+    "version": "v22.23.2",
+    "vmMicrotaskMode": "afterEvaluate"
+  },
+  "isolatedObservationCommands": 1,
+  "isolatedScenarioCount": 20,
+  "savedFunctionsExecuted": 3,
+  "scope": "Saved gS/lPt/FJ functions in separate timeboxed VM contexts with synthetic memory providers; original client, storage and transport not exercised.",
+  "conclusions": [
+    "gS blocks the chat write path for a truthy guard; otherwise a nonnull temporary value is written before the persisted target. An arbitrary supplied mode object is passed to both setter substitutes without enum validation.",
+    "lPt computes capability before its extension/work-only decision. Both persisted-mode branches preserve an arbitrary object in these fixtures. Synchronous access getter failure can prevent a normal extension result.",
+    "Generic FJ undefined getter fallback skips coercion. Functional updates may coerce the old stored value and delay=0 selects the delayed publisher; direct values bypass coercion. Equal NaN skips publication while still writing the atom.",
+    "Synchronous first-write/publisher throw prevents the later operation in the selected functions. Returned rejected Promises are distinct: these functions do not await them, and the later operation still runs in the fixture. The observer handles rejection independently to protect the runner."
+  ],
+  "limits": [
+    "This explicitly authorized run executes only three saved complete tiny functions with memory substitutes, not an original client, UI, real provider, localStorage, filesystem persistence, native bridge or model task.",
+    "FJ optional coerce/delay fixtures describe the generic saved factory only. The actual MODE Fu two-argument use is inherited and these fixtures do not establish those options for it.",
+    "Memory publishers intentionally leave the persisted Map unchanged. Calls to publisher/atom substitutes prove only context-local control flow, not the real hI/ARt persistence chain, source dispatch, delivery, backend or durability.",
+    "Capability service behavior, function/property getters beyond these fixtures, real scheduling, cancellation, every dependency exception, all resolver inputs and end-to-end mode transitions are not covered.",
+    "The runner catches Promise rejection through an independent immediate observer; that handling is not attributed to the selected source functions.",
+    "The three source texts and runner/source snapshots remain ignored local-only; formal candidates contain pins and finite observation metadata, not source implementation text.",
+    "Old MODE26, Storage46, global journal, runtime ledger and public products were not edited. Simulation does not establish Codex ownership, real persistence or full analysis completion."
+  ],
+  "originalClientRunsAdded": 0,
+  "originalStorageRunsAdded": 0,
+  "additionalModelTasks": 0,
+  "globalRecordsAdded": 0,
+  "fullAnalysisCompleted": false,
+  "thirdPartyImplementationsPublished": false
+}

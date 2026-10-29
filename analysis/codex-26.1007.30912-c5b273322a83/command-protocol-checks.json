@@ -1,0 +1,80 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "observedAtUtc": "2026-10-13T08:12:02.534198+00:00",
+  "method": "actual-shipped-app-server-stdio-owned-command-fixture",
+  "command": [
+    "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+    "-c",
+    "cli_auth_credentials_store=\"file\"",
+    "-c",
+    "features.secret_auth_storage=false",
+    "app-server",
+    "--listen",
+    "stdio://"
+  ],
+  "cliSha256": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8",
+  "codexHome": "/private/tmp/ccodex-behavior/command-protocol-home",
+  "serverPid": 56300,
+  "serverExitCode": 0,
+  "checks": [
+    {
+      "id": "initialize",
+      "passed": true
+    },
+    {
+      "id": "command-completion",
+      "passed": false,
+      "observed": {
+        "exitCode": 71,
+        "stdout": "",
+        "stderr": "sandbox-exec: sandbox_apply: Operation not permitted\n"
+      },
+      "responseHasError": false
+    },
+    {
+      "id": "command-nonzero-exit",
+      "passed": false,
+      "observed": {
+        "exitCode": 71,
+        "stdout": "",
+        "stderr": "sandbox-exec: sandbox_apply: Operation not permitted\n"
+      },
+      "responseHasError": false
+    },
+    {
+      "id": "command-input-validation",
+      "passed": true,
+      "observedErrorCode": -32600
+    },
+    {
+      "id": "command-stream-and-terminate",
+      "passed": false,
+      "elapsedSeconds": 0.022531195000000004,
+      "terminationResponse": {
+        "error": {
+          "code": -32600,
+          "message": "no active command/exec for process id \"ccodex-cancel-fixture\""
+        },
+        "id": 6
+      },
+      "finalResponse": {
+        "id": 5,
+        "result": {
+          "exitCode": 71,
+          "stdout": "",
+          "stderr": ""
+        }
+      }
+    }
+  ],
+  "error": null,
+  "rawObservations": {
+    "path": "raw/command-protocol/observations.jsonl",
+    "sha256": "43f3ec3a42202cfecb9f7a867d8cd9404cac4f1141e673d4a947b37926f278c6"
+  },
+  "limitations": [
+    "No desktop UI, terminal PTY, model turn, approval, thread recovery or public CLI was tested.",
+    "File credential configuration was supplied; prevention of native credential migration was not established.",
+    "Only owned printf/false/sleep command fixtures were requested."
+  ]
+}

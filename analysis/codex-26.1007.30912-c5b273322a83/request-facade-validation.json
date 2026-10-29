@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "observedAtUtc": "2026-10-13T13:42:22.552270+00:00",
+  "status": "passed; dynamic-provider-runtime-mode-unverified",
+  "method": "independent Python data/hash/reference validation without target evaluation or new AST",
+  "scope": {
+    "mainJson": ".analysis-local/mode-facade-work/request-facade-contract.json",
+    "mainJsonSha256": "266efcb50bb74f6a2fb5cee49c383cd4308e5338a354e86863d71ac3a1426e68",
+    "journal": ".analysis-local/mode-facade-work/evidence.jsonl",
+    "journalSha256": "af854ae19a07fc68d5788077d4f2915a2c037da3aa15cc99708981d381fca4e0",
+    "reusedJournal": ".analysis-local/mode-facade-work/referenced-existing-evidence.jsonl",
+    "reusedJournalSha256": "52b571354080489accb27277f7229e03b91e4fb5f274ec9dbc2645b3eded7b8e",
+    "targetJavascriptExecuted": false,
+    "newAstParsing": false
+  },
+  "scripts": [
+    {
+      "path": ".analysis-local/mode-facade-work/validate_facade.py",
+      "bytes": 9743,
+      "sha256": "4aaa86108fb2fa53f454cd25561b8ae5fbf326b9bb19aebca1bcd31778f82e5b"
+    }
+  ],
+  "checkCounts": {
+    "directInputPins": 6,
+    "producerScriptPins": 2,
+    "parserPin": 1,
+    "selectedSourcePins": 2,
+    "uniqueJournalIds": 1,
+    "newAndReusedIdSeparation": 1,
+    "newSpanBounds": 54,
+    "newSpanSourcePins": 54,
+    "newSpanPins": 54,
+    "newEvidenceRequiredFields": 54,
+    "reusedJournalPins": 120,
+    "reusedRecordBytePins": 120,
+    "reusedRecordLinePins": 120,
+    "reusedRecordIdentity": 120,
+    "reusedSubsetExactBytes": 1,
+    "evidenceReferenceResolution": 1,
+    "exactReferencedOldIdSubset": 1,
+    "jsonPointerPins": 27,
+    "sharedExportIdentity": 1,
+    "initialExportDistinctIdentity": 1,
+    "distinctModuleIdentity": 1,
+    "scopedConsumerImportIdentity": 3,
+    "scopedConsumerCallIdentity": 18,
+    "scopedConsumerMethod": 18,
+    "consumerUnknownsRetained": 18,
+    "candidateCorpusDenominator": 1,
+    "importDenominator": 1,
+    "callDenominator": 1,
+    "consumerMethodCounts": 1,
+    "selectedSourceDenominator": 1,
+    "completeRangeDenominator": 1,
+    "newEvidenceDenominator": 1,
+    "completeRangeEvidenceMapping": 20,
+    "completeRangeByteDenominator": 1,
+    "scopeFlags": 1,
+    "claimUnknownsRetained": 1
+  },
+  "referencedEvidenceIds": 159,
+  "referencedExistingEvidenceIds": 120,
+  "errorCount": 0,
+  "errors": [],
+  "observations": [
+    {
+      "kind": "symbol-identity",
+      "shared": "shared.BY exported as $wt, Gxn request facade",
+      "initial": "initial.vko exported as BY, separate initializer",
+      "sameModuleOrService": false
+    },
+    {
+      "kind": "inherited-scope",
+      "status": "Current direct input bytes/pointers and reused journal record bytes matched. This check does not resolve historical indirect input hash mismatches or independently re-read the three consumer source files.",
+      "freshFrozenSourceFiles": 2
+    }
+  ],
+  "limitations": [
+    "This is artifact consistency, not a second full semantic/AST analysis or runtime test.",
+    "Only two selected frozen source files were freshly hashed and their 54 new spans checked; old consumer spans are retained from pinned prior journals.",
+    "Concrete e6.httpFetch/Vf implementations, helpers/computed keys, initialization order, actual requests and mode remain unknown."
+  ]
+}

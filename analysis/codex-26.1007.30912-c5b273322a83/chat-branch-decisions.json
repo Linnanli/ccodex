@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T14:25:42.252103+00:00",
+  "scope": "Existing home/composer branch decisions and FSC-0048 retention; no new page, feature, task or product scenario.",
+  "inputPins": [
+    {
+      "path": "feature-scope-v24.json",
+      "bytes": 2062342,
+      "sha256": "77d09e56fffa1c793cc2d0dd8786fb515d005c86952580f7715ed6f984f58124"
+    },
+    {
+      "path": "restoration-coverage-v15.json",
+      "bytes": 1108937,
+      "sha256": "c0b7c3825f59a9d7eaed14ade35577a1435a9a420ee0e5c1776451ef5b97a409"
+    },
+    {
+      "path": "product-flow-ownership.json",
+      "bytes": 21987,
+      "sha256": "3732839cdbd9b2080f74d023146ad36a4751cfc6b0e80713b6ec8ab540561906"
+    },
+    {
+      "path": "thread-start-entry-contracts.json",
+      "bytes": 40523,
+      "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+    }
+  ],
+  "sourceContract": {
+    "path": "raw/chat-branch-decisions/branch-source.json",
+    "bytes": 15475,
+    "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282"
+  },
+  "decisions": [
+    {
+      "id": "CBX-01",
+      "scope": "render-branch",
+      "responsibility": "临时Chat页脚",
+      "mode": "chatgpt",
+      "decision": "exclude-this-branch-from-restored-client",
+      "condition": "homeComposerMode === chat && chatHomeState.isTemporaryChat",
+      "sourceRefs": [
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/10"
+        }
+      ],
+      "retainedDependencies": [
+        "jRt shared layout and NRt rendering",
+        "VIt state provider and other consumers",
+        "CFt module remains unclassified outside this callsite"
+      ],
+      "implementationInstruction": "Omit this conditional footer callsite. Preserve the shared jRt wrapper, state computation and NRt subtree; do not delete CFt or its imports based on this single use.",
+      "limitation": "Source-confirmed branch responsibility. Four synthetic derived-omission comparisons cover selected Codex/Work output trees, not complete-client removal safety.",
+      "method": "static-code-with-isolated-observations",
+      "confidence": "confirmed-for-listed-source-sites",
+      "sourceBranchDecision": true,
+      "wholeFeatureExcluded": false,
+      "wholeModuleExcluded": false,
+      "removalImplemented": false
+    },
+    {
+      "id": "CBX-02",
+      "scope": "conditional-configuration-family",
+      "responsibility": "Chat专用输入提示配置",
+      "mode": "chatgpt",
+      "decision": "exclude-chat-alternatives-retain-neutral-policy",
+      "condition": "wzt effective mode W === chat; Ezt mode o === chat",
+      "sourceRefs": [
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/0"
+        },
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/1"
+        },
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/4"
+        },
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/2"
+        }
+      ],
+      "retainedDependencies": [
+        "Q9 neutral/Codex suggestion triggers",
+        "controller suggestion setup and effect lifetime",
+        "Work draft restoration in the same Ezt effect",
+        "kzt and suggestion modules remain unclassified outside these choices"
+      ],
+      "implementationInstruction": "At these choices omit the Chat trigger/options alternatives; preserve Q9 with inline hints disabled and variant undefined, as the Codex Tzt consumer already does. Keep unrelated Work draft restoration in the same effect.",
+      "limitation": "A branch family spans several source sites; it is one decision, not several new user features. General prompt parsing and all suggestion implementations remain retained until separately classified.",
+      "method": "static-code-with-isolated-observations",
+      "confidence": "confirmed-for-listed-source-sites",
+      "sourceBranchDecision": true,
+      "wholeFeatureExcluded": false,
+      "wholeModuleExcluded": false,
+      "removalImplemented": false
+    },
+    {
+      "id": "CBX-03",
+      "scope": "command-registration-callsite",
+      "responsibility": "切换到Chat的快捷键入口",
+      "mode": "chatgpt",
+      "decision": "exclude-this-registration-callsite",
+      "condition": "Ezt registers switchToMode1 -> callback me(chat); enabled is canSwitchMode",
+      "sourceRefs": [
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/5"
+        },
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/6"
+        },
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/7"
+        }
+      ],
+      "retainedDependencies": [
+        "shared mode-transition callback me and its Work branch",
+        "switchToMode2 and newTask registrations",
+        "py command framework and other registrations"
+      ],
+      "implementationInstruction": "Omit only this Chat-target registration. Audit other Chat-target controls separately; keep the shared transition handler and unrelated command registrations.",
+      "limitation": "The command targets Chat even when invoked from Work. This does not establish that every same-named command implementation is Chat-only or that all Chat entrypoints have been covered.",
+      "method": "static-code-with-isolated-observations",
+      "confidence": "confirmed-for-listed-source-sites",
+      "sourceBranchDecision": true,
+      "wholeFeatureExcluded": false,
+      "wholeModuleExcluded": false,
+      "removalImplemented": false
+    }
+  ],
+  "positiveRetentionDecisions": [
+    {
+      "id": "CBR-01",
+      "featureId": "FSC-0048",
+      "taskId": "T03",
+      "decision": "retain-positive-codex-consumer-integration-pending",
+      "reason": "The source Codex-specific Tzt entry supplies isCodexHome:true to M9. Saved qualified sources connect M9 to jRt/NRt and the Codex destination to $X/rpt, which is the already-registered ordinary create/first-turn operation.",
+      "sourceRefs": [
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/3"
+        },
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/9"
+        },
+        {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+          "jsonPointer": "/fragments/11"
+        }
+      ],
+      "existingChainEvidence": [
+        {
+          "path": "product-flow-ownership.json",
+          "bytes": 21987,
+          "sha256": "3732839cdbd9b2080f74d023146ad36a4751cfc6b0e80713b6ec8ab540561906",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "path": "product-flow-ownership.json",
+          "bytes": 21987,
+          "sha256": "3732839cdbd9b2080f74d023146ad36a4751cfc6b0e80713b6ec8ab540561906",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "path": "thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+          "jsonPointer": "/facts/0"
+        }
+      ],
+      "productMode": "unknown",
+      "qualification": "Positive Codex usage establishes retention. It does not prove exclusive Codex ownership, the complete consumer set, actual mount/host/account conditions, backend effects or durable recovery."
+    }
+  ],
+  "isolatedObservation": {
+    "path": "raw/chat-branch-decisions/probe-attempt-02.json",
+    "bytes": 4433,
+    "sha256": "5ba65e1910c4ecdc6a8fc8f3581f5f62e52b9e4cb38cf4c429d628ee407754f0"
+  },
+  "failedFixtureAttempt": {
+    "observation": {
+      "path": "raw/chat-branch-decisions/probe-attempt-01.json",
+      "bytes": 11417,
+      "sha256": "e3ca5a0abbbd7ce1b4ee621a5f6963890f4254ca41917104d50bfb12383f2f28"
+    },
+    "script": {
+      "path": "raw/chat-branch-decisions/probe-attempt-01.cjs",
+      "bytes": 9984,
+      "sha256": "ced2f4c48312f28df2f2de5f33cca96c746ab9273b87eec5df8c51e8dac39f61"
+    },
+    "reason": "Eight Ezt cases failed because the synthetic environment omitted the external Wg predicate. The fixture was corrected; no original target source was changed."
+  },
+  "counts": {
+    "confirmedChatOnlyBranchDecisionGroups": 3,
+    "positiveCodexFeatureRetentionDecisions": 1,
+    "featureModesChanged": 0,
+    "newFullProgramParses": 0,
+    "selectedFunctionParses": 5,
+    "sourceFragments": 12,
+    "savedSharedLexicalJoins": 2,
+    "isolatedCasesPassed": 25,
+    "derivedFooterOmissionCasesIncluded": 4,
+    "newFeatures": 0,
+    "newProductSpecifications": 0,
+    "confirmedWholeFeatureExclusions": 0,
+    "confirmedWholeModuleExclusions": 0,
+    "productScenarioPassesAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "originalClientRunsAdded": 0
+  },
+  "remainingModeWork": [
+    "Other Chat entrypoints, custom assistants and temporary-chat query consumers need their own exact-site decisions; no global query/transport deletion is approved by this result.",
+    "Retained Work-cloud and account archive consumers continue to prevent deleting CIt or account/conversation providers by name.",
+    "Other feature modes, complete discovered-entry disposition and account/runtime conditions remain as previously registered."
+  ],
+  "implementationBoundary": "The future restored project retains shared first-party home/composer/task modules and applies the listed branch policies at their recorded source sites. Third-party implementation remains external dependencies; no client code is generated here.",
+  "upgradeAcceptance": [
+    "Rebind the listed source sites and enclosing functions against each new baseline; do not reuse minified local names as stable API.",
+    "Compare Codex/local first-turn and retained Work-cloud destinations before applying any Chat exclusion.",
+    "Re-run source branch probes and separately validate actual client entrypoints and retained behavior."
+  ],
+  "limits": [
+    "Original selected functions and two exact local declarators use synthetic dependency values; no actual React mount or provider/service effects.",
+    "Four explicitly labeled derived-footer cases replace only that conditional with null in VM memory and compare synthetic retained output trees; they do not establish complete-client deletion safety.",
+    "No original module bootstrap, account data, setting write, model submission or product scenario pass."
+  ],
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false
+}

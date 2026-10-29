@@ -1,0 +1,1484 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T23:24:39.193212+00:00",
+  "scope": "固定records97..121区间尚无功能关联的16条CZe描述/生成选项：侧栏/工作区快捷键、Browser/Zoom/Help容器、复制网页URL、DevTools、缩放与末尾原生角色。跳过该区间9条已交付来源。",
+  "goals": [
+    {
+      "id": "MVR-GOAL-01",
+      "featureId": "FSC-0400",
+      "name": "显示或隐藏应用侧边栏",
+      "newDefinition": false,
+      "disposition": "additional-source-alias",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-generator-options:ea2375c922ab030836f8cb0f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3417510,
+            "endExclusive": 3417614
+          },
+          "spanHash": "864c83e0205ffe378cf9c606d8130e86b307277aa2e399967b1bd1bdbcd6099d",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/97"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/64"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-generator-options:ea2375c922ab030836f8cb0f"
+      ],
+      "operations": [],
+      "reusedOperationIds": [
+        "operation:menu-panel:toggle-sidebar"
+      ],
+      "behavior": [
+        "I receives j(toggleSidebar).slice(1), the same label as U, and _e(toggleSidebar). The entire branch requires u.sidebarCollapsible. I emits hidden accelerator aliases with acceleratorWorksWhenHidden:true.",
+        "_e uses the already-published command dispatch path. Existing Qni registers toggleSidebar and toggle-sidebar to the same gated callback, so this is another source for the existing toggle operation."
+      ],
+      "conditions": [
+        "sidebarCollapsible, filtered additional keybindings, valid dispatch context and mounted/enabled Qni."
+      ],
+      "failureAndCancellation": [
+        "Zero extra keybindings gives zero alias items; actual command winner, scope and animation remain unobserved."
+      ],
+      "knownGaps": [
+        "Existing Qni mount, transition/provider and focus/persistence gaps remain."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0400:MVR:1",
+          "featureId": "FSC-0400",
+          "operationId": "operation:menu-panel:toggle-sidebar",
+          "kind": "alias",
+          "preconditions": "sidebarCollapsible and zero/multiple extra bindings varied",
+          "trigger": "construct generator",
+          "expectedEffect": "omit disabled branch; emit one hidden alias per binding after first, without new operation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0400:MVR:2",
+          "featureId": "FSC-0400",
+          "operationId": "operation:menu-panel:toggle-sidebar",
+          "kind": "dispatch",
+          "preconditions": "mounted eligible Qni and controlled native/command routes",
+          "trigger": "invoke alias and ordinary entry",
+          "expectedEffect": "both target existing sidebar toggle callback; do not double-count",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        }
+      ],
+      "deduplication": [
+        "Reuse FSC-0400 operation:menu-panel:toggle-sidebar; alias label and accelerator multiplicity are not distinct goals."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform/build/capability/command labels do not establish full mode ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "priorGoalRef": {
+        "path": "menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/goals/1"
+      },
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MVR-E022"
+      ],
+      "deduplicationEvidenceId": "MVR-E023"
+    },
+    {
+      "id": "MVR-GOAL-02",
+      "featureId": "FSC-0405",
+      "name": "切换工作区布局或浏览器面板",
+      "newDefinition": false,
+      "disposition": "additional-operation",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-generator-options:12c671747500b3e96fac4c24",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3417655,
+            "endExclusive": 3417831
+          },
+          "spanHash": "852523509b77c9428deebb01c4b863a731d5f05d7d92bba28f66cccb31f6ef0c",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/98"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/65"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-generator-options:12c671747500b3e96fac4c24"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-view-remainder:show-workspace-full-view",
+          "operationType": "menu-user-goal",
+          "trigger": "show-workspace-full-view"
+        }
+      ],
+      "reusedOperationIds": [],
+      "behavior": [
+        "CZe includes I(showWorkspaceTabView) only under u.unifiedTabStrip, with _e command dispatch and label Full view. The existing complete workspace J registers this command through C=Pw with callback B.",
+        "B delegates H(scope,layout_command,()=>E(scope,full)). J enables it from captured d and isActive U requires a workspace; optional originBrowserTab additionally checks conversation id, panel eligibility and active browser tab id.",
+        "This is an explicit operation of the existing workspace layout goal, distinct from stepWorkspaceLayout. Actual E transition and effective state/provider are still delegated; descriptive toggle text alone does not prove its state machine."
+      ],
+      "conditions": [
+        "unifiedTabStrip; mounted J; d capability; workspace presence and optional origin browser/panel identity."
+      ],
+      "failureAndCancellation": [
+        "No workspace or mismatched origin is inactive; actual registry winner and E failure/transition remain unobserved."
+      ],
+      "knownGaps": [
+        "E full-layout transition, state ownership, actual browser-origin context, focus and durable layout preference."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0405:MVR:1",
+          "featureId": "FSC-0405",
+          "operationId": "operation:menu-view-remainder:show-workspace-full-view",
+          "kind": "registration",
+          "preconditions": "unifiedTabStrip and d varied",
+          "trigger": "construct/invoke Full view",
+          "expectedEffect": "preserve main generation gate and J enabled gate; dispatch exact showWorkspaceTabView",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0405:MVR:2",
+          "featureId": "FSC-0405",
+          "operationId": "operation:menu-view-remainder:show-workspace-full-view",
+          "kind": "context",
+          "preconditions": "workspace/origin conversation/panel/active browser varied",
+          "trigger": "evaluate saved U predicate",
+          "expectedEffect": "require workspace and matching eligible browser origin when supplied",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0405:MVR:3",
+          "featureId": "FSC-0405",
+          "operationId": "operation:menu-view-remainder:show-workspace-full-view",
+          "kind": "transition",
+          "preconditions": "active eligible scope",
+          "trigger": "invoke callback B",
+          "expectedEffect": "delegate E(scope,full) within H marker scope; do not infer complete toggle state machine",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        }
+      ],
+      "deduplication": [
+        "Existing FSC-0405 owns layout stepping; add full-view operation within that responsibility instead of a second layout feature."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform/build/capability/command labels do not establish full mode ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "priorGoalRef": {
+        "path": "menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/goals/6"
+      },
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MVR-E024"
+      ],
+      "deduplicationEvidenceId": "MVR-E025"
+    },
+    {
+      "id": "MVR-GOAL-03",
+      "featureId": "FSC-0422",
+      "name": "请求复制当前浏览器页面地址",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-generator-options:5cfcceeafe9f4079dc7565b7",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3418039,
+            "endExclusive": 3418119
+          },
+          "spanHash": "c65d55723e35f69da3f076da41ac1426d8a572bec1ca9ef542b0b842001f758b",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/100"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/67"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-generator-options:5cfcceeafe9f4079dc7565b7"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-view-remainder:copy-browser-url",
+          "operationType": "menu-user-goal",
+          "trigger": "copy-browser-url"
+        }
+      ],
+      "reusedOperationIds": [],
+      "behavior": [
+        "Under u.browserPane, I receives F([CmdOrCtrl+Shift+C]) and invokes Ve({type:copy-url}). The protected-key filter can remove the binding; output remains hidden accelerator items.",
+        "The already-published Ve/G focused-webContents/window/manager selection applies. The callback discards its boolean and has no clipboard.writeText or renderer fallback; native manager delivery does not prove that URL copying succeeded."
+      ],
+      "conditions": [
+        "browserPane, retained keybinding, focused webContents/window and browserHostManager."
+      ],
+      "failureAndCancellation": [
+        "No focused page or manager may leave request unhandled; manager exceptions have no local catch."
+      ],
+      "knownGaps": [
+        "Actual selected URL, clipboard/native page command implementation, permissions and copy outcome."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0422:MVR:1",
+          "featureId": "FSC-0422",
+          "operationId": "operation:menu-view-remainder:copy-browser-url",
+          "kind": "generation",
+          "preconditions": "browserPane and protected binding varied",
+          "trigger": "construct Copy Browser URL",
+          "expectedEffect": "omit unavailable branch or filtered binding; otherwise one hidden copy-url command",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0422:MVR:2",
+          "featureId": "FSC-0422",
+          "operationId": "operation:menu-view-remainder:copy-browser-url",
+          "kind": "dispatch",
+          "preconditions": "controlled focused page/window managers",
+          "trigger": "invoke binding",
+          "expectedEffect": "reuse exact Ve/G selection and pass copy-url; no local clipboard write",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0422:MVR:3",
+          "featureId": "FSC-0422",
+          "operationId": "operation:menu-view-remainder:copy-browser-url",
+          "kind": "failure",
+          "preconditions": "absent target/non-true result/throwing manager",
+          "trigger": "invoke once in future controlled test",
+          "expectedEffect": "preserve delegation/exception boundary and no app-router or clipboard fallback",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        }
+      ],
+      "deduplication": [
+        "FSC-0398 copies a thread link, FSC-0413 consumes a clipboard deeplink; browser page URL copying is distinct."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform/build/capability/command labels do not establish full mode ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "consumerModules": [],
+      "evidenceIds": [
+        "MVR-E026"
+      ],
+      "deduplicationEvidenceId": "MVR-E027"
+    },
+    {
+      "id": "MVR-GOAL-04",
+      "featureId": "FSC-0423",
+      "name": "请求切换原生开发者工具",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:98ac547bd22af07f3c659d3f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3418244,
+            "endExclusive": 3418267
+          },
+          "spanHash": "9531b8da7254e09e6fbef67ae1fbfcb3a597230debb22056d4de242e87a38407",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/101"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/68"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:98ac547bd22af07f3c659d3f"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-view-remainder:toggle-native-devtools",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-native-devtools"
+        }
+      ],
+      "reusedOperationIds": [],
+      "behavior": [
+        "Lt includes role:toggleDevTools only when supplied allowDevtools a is truthy. Developer container is added only when Lt.length>0; other diagnostics can make the container present without this role.",
+        "The descriptor has no first-party click callback. Runtime targeting, open/close and native DevTools behavior are dependency contracts, separate from the first-party Debug Panel, Query Devtools and React Scan requests."
+      ],
+      "conditions": [
+        "Injected allowDevtools and successful native menu/role support."
+      ],
+      "failureAndCancellation": [
+        "Unsupported role, target focus and developer-tool errors remain unobserved."
+      ],
+      "knownGaps": [
+        "Native role implementation, target process/webContents, actual tool lifecycle and standalone runtime qualification."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0423:MVR:1",
+          "featureId": "FSC-0423",
+          "operationId": "operation:menu-view-remainder:toggle-native-devtools",
+          "kind": "gate",
+          "preconditions": "allowDevtools false/true with other Lt entries varied",
+          "trigger": "construct Developer",
+          "expectedEffect": "include toggleDevTools only for allowDevtools; container existence alone does not grant it",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0423:MVR:2",
+          "featureId": "FSC-0423",
+          "operationId": "operation:menu-view-remainder:toggle-native-devtools",
+          "kind": "native-boundary",
+          "preconditions": "eligible owned runtime and controlled webContents",
+          "trigger": "invoke role in future test",
+          "expectedEffect": "observe actual native tool target/open/close separately; no guessed first-party implementation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        }
+      ],
+      "deduplication": [
+        "Retain native tool toggle separately from FSC-0412 debug panel, FSC-0416 query tools and FSC-0417 React Scan."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform/build/capability/command labels do not establish full mode ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "consumerModules": [],
+      "evidenceIds": [
+        "MVR-E028"
+      ],
+      "deduplicationEvidenceId": "MVR-E029"
+    },
+    {
+      "id": "MVR-GOAL-05",
+      "featureId": "FSC-0424",
+      "name": "调整当前页面或应用窗口的缩放",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:8de5f8fc57c3cec630b53ee3",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3418363,
+            "endExclusive": 3418471
+          },
+          "spanHash": "6af3e5b8a73820439d6f06434535e46f56233d1237ad10de83c17529d64d8794",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/102"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/69"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:a8d5fff0438d019b15f01cfe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3418477,
+            "endExclusive": 3418631
+          },
+          "spanHash": "6fc217f7cbce8dc4c110b383eb041ea3638e4485cc8082432ad808f1a012c8cb",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/103"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/70"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:f0b5e939bcc642173f703030",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3418638,
+            "endExclusive": 3418792
+          },
+          "spanHash": "8375bbaca68cd4b0cff9abf75a525b7fca9b90ce38e16d1c6c3ed06e7dea4c6a",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/104"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/71"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:a86a6bb2f57f74556bd08ab8",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3418793,
+            "endExclusive": 3418947
+          },
+          "spanHash": "6ff4d7d53a1a25cd0c57c4cc86036d981c5b654adc936a6e6ac62bd653b67f0f",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/105"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/72"
+          }
+        },
+        {
+          "entryId": "native-menu-generator-options:9bc5bf0ebab8223bb0286ae8",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3418953,
+            "endExclusive": 3419050
+          },
+          "spanHash": "ded5e89d5586efec7821dbe231093e8dddffbed8f9d15a6cc59cbe867ddce77b",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/106"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/73"
+          }
+        },
+        {
+          "entryId": "native-menu-generator-options:c88724cdc5be39b8785a05cf",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3419057,
+            "endExclusive": 3419156
+          },
+          "spanHash": "01518a6d55836488d8b828a7bf0b2408832d6e86e92d4c09c34721ce06ab2b1b",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/107"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/74"
+          }
+        },
+        {
+          "entryId": "native-menu-generator-options:75a23a709bb3921974e1521e",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3419163,
+            "endExclusive": 3419255
+          },
+          "spanHash": "e969c8c1e2ffe092f44ff9d70c4f6054920a6f391a50881a8d7dfa4e853d0bfe",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/108"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/75"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:8de5f8fc57c3cec630b53ee3",
+        "native-menu-schema:a8d5fff0438d019b15f01cfe",
+        "native-menu-schema:f0b5e939bcc642173f703030",
+        "native-menu-schema:a86a6bb2f57f74556bd08ab8",
+        "native-menu-generator-options:9bc5bf0ebab8223bb0286ae8",
+        "native-menu-generator-options:c88724cdc5be39b8785a05cf",
+        "native-menu-generator-options:75a23a709bb3921974e1521e"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-view-remainder:zoom-in",
+          "operationType": "menu-user-goal",
+          "trigger": "zoom-in"
+        },
+        {
+          "operationId": "operation:menu-view-remainder:zoom-out",
+          "operationType": "menu-user-goal",
+          "trigger": "zoom-out"
+        },
+        {
+          "operationId": "operation:menu-view-remainder:reset-zoom",
+          "operationType": "menu-user-goal",
+          "trigger": "reset-zoom"
+        }
+      ],
+      "reusedOperationIds": [],
+      "behavior": [
+        "Ordinary Zoom In uses wt(1), Zoom Out wt(-1), Actual Size Tt(). Non-Mac Rt adds hidden Ctrl+= with wt(1). wt/Tt first call Ve step-zoom/reset-zoom; only when Ve is falsy do they await M and send step-window-zoom/reset-window-zoom.",
+        "Numeric-key generator options call Ve directly with +1/-1/reset and discard its result. They have no window fallback. F filters numeric accelerators; I emits hidden items. These are branch variants of the same three zoom operations, not seven features.",
+        "Selected cVs registers xs step-window-zoom/reset-window-zoom before its hidden/document render return. Step passes received delta to injected onStepZoom, reset calls injected onResetZoom, then both request banner display. A thrown provider prevents the following display request.",
+        "cVs displays Math.round(windowZoom*100), disables its Reset button only at windowZoom===1, renders a document.body portal and clears both timers on effect cleanup. Auto-hide uses supplied module constant pVs and pointer-hover ref; exit hides after150ms. Actual zoom values, increments/clamps and persistence belong to injected providers."
+      ],
+      "conditions": [
+        "Platform/key filter; browser manager handling; valid focused/fallback window; mounted cVs, injected callbacks/windowZoom and document."
+      ],
+      "failureAndCancellation": [
+        "A thrown Ve rejects wt/Tt before fallback; no target window means no send. Numeric aliases cannot fall back. Provider errors, native zoom and actual rendering remain unobserved."
+      ],
+      "knownGaps": [
+        "Native page zoom implementation; effective onStepZoom/onResetZoom and windowZoom source/range/persistence; cVs mount, pVs/lVs initialization and actual focus/OS shortcut behavior."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0424:MVR:1",
+          "featureId": "FSC-0424",
+          "operationId": "operation:menu-view-remainder:zoom-in",
+          "kind": "browser-or-window",
+          "preconditions": "controlled manager true/false and M window",
+          "trigger": "invoke ordinary Zoom In",
+          "expectedEffect": "send page step-zoom(+1) first; only unhandled branch sends step-window-zoom(+1)",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0424:MVR:2",
+          "featureId": "FSC-0424",
+          "operationId": "operation:menu-view-remainder:zoom-out",
+          "kind": "direction",
+          "preconditions": "controlled manager false and mounted cVs",
+          "trigger": "invoke ordinary Zoom Out",
+          "expectedEffect": "send delta -1 to injected onStepZoom and request banner after callback returns",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0424:MVR:3",
+          "featureId": "FSC-0424",
+          "operationId": "operation:menu-view-remainder:reset-zoom",
+          "kind": "reset",
+          "preconditions": "page handling varied; cVs windowZoom varied",
+          "trigger": "invoke Actual Size",
+          "expectedEffect": "preserve page-first/window fallback; injected reset then banner; Reset button disabled only when windowZoom===1",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0424:MVR:4",
+          "featureId": "FSC-0424",
+          "operationId": "operation:menu-view-remainder:zoom-in",
+          "kind": "numeric-alias",
+          "preconditions": "numeric key accepted but page command unhandled; platform varied",
+          "trigger": "invoke numeric add versus ordinary Ctrl+=",
+          "expectedEffect": "numeric remains page-only; non-Mac Ctrl+= invokes wt and can fall back; do not merge their dispatch branches",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0424:MVR:5",
+          "featureId": "FSC-0424",
+          "operationId": "operation:menu-view-remainder:zoom-in",
+          "kind": "lifecycle-or-error",
+          "preconditions": "controlled provider throws or component unmounts/hidden",
+          "trigger": "deliver step/reset or unmount",
+          "expectedEffect": "provider throw prevents subsequent banner show; hidden component still installs subscriptions; effect cleanup clears both timers",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        }
+      ],
+      "deduplication": [
+        "Group zoom-in/out/reset with alias-specific routing. Native window maximize role:zoom is a different operation and is not implied by this page/window content zoom."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform/build/capability/command labels do not establish full mode ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MVR-M01"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/window/window-zoom-banner.tsx"
+      ],
+      "evidenceIds": [
+        "MVR-E030",
+        "MVR-E031",
+        "MVR-E032",
+        "MVR-E033",
+        "MVR-E034",
+        "MVR-E035",
+        "MVR-E036"
+      ],
+      "deduplicationEvidenceId": "MVR-E037"
+    },
+    {
+      "id": "MVR-GOAL-06",
+      "featureId": "FSC-0425",
+      "name": "显示或关闭键盘快捷键对话框",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:c8d5b58a9a108df4a843daa1",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3420223,
+            "endExclusive": 3420305
+          },
+          "spanHash": "6fb0e59ef236d8e113be6f426de4186187998f781c6d1334ffa40fb160d5d5b1",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/114"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/81"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:c8d5b58a9a108df4a843daa1"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-view-remainder:toggle-keyboard-shortcuts-dialog",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-keyboard-shortcuts-dialog"
+        }
+      ],
+      "reusedOperationIds": [],
+      "behavior": [
+        "Help entry awaits _e(showKeyboardShortcuts). Selected q9s registers Pw(showKeyboardShortcuts) with local boolean state updater J9s, which negates the current value.",
+        "q9s renders lazy Q9s only while open and passes state setter as onOpenChange. Its initializer $9s binds Q9s through nf to dynamic KeyboardShortcutsDialog export in keyboard-shortcuts-dialog-a55e88bf0464.js, with propagateLoadError:true.",
+        "This identifies command-controlled dialog state and lazy load target. Dialog contents, complete mount tree and load/error UI are outside the selected controller contract."
+      ],
+      "conditions": [
+        "Valid _e target, mounted/enabled command registry and q9s; lazy module available."
+      ],
+      "failureAndCancellation": [
+        "Dynamic import failure propagation is requested; actual error boundary/UI and close interactions remain unobserved."
+      ],
+      "knownGaps": [
+        "Full dialog implementation/shortcut content, effective q9s mount, lazy loader/error boundary and actual focus/close behavior."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0425:MVR:1",
+          "featureId": "FSC-0425",
+          "operationId": "operation:menu-view-remainder:toggle-keyboard-shortcuts-dialog",
+          "kind": "toggle",
+          "preconditions": "mounted q9s with known local open state",
+          "trigger": "invoke command twice",
+          "expectedEffect": "J9s negates state; render Q9s only while open",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0425:MVR:2",
+          "featureId": "FSC-0425",
+          "operationId": "operation:menu-view-remainder:toggle-keyboard-shortcuts-dialog",
+          "kind": "dialog-lifecycle",
+          "preconditions": "controlled lazy export resolves/fails",
+          "trigger": "open or pass onOpenChange(false)",
+          "expectedEffect": "pass close setter; preserve propagateLoadError flag without invented fallback UI",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0425:MVR:3",
+          "featureId": "FSC-0425",
+          "operationId": "operation:menu-view-remainder:toggle-keyboard-shortcuts-dialog",
+          "kind": "scope",
+          "preconditions": "settings keyboard editor and dialog both available",
+          "trigger": "classify/invoke entries",
+          "expectedEffect": "keep settings search/edit functions separate from this command dialog controller",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        }
+      ],
+      "deduplication": [
+        "FSC-0067/0068/0069 configure keybindings in settings; this command opens a separate dialog and does not itself edit bindings."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform/build/capability/command labels do not establish full mode ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MVR-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/commands/keyboard-shortcuts-dialog-controller.tsx"
+      ],
+      "evidenceIds": [
+        "MVR-E038"
+      ],
+      "deduplicationEvidenceId": "MVR-E039"
+    },
+    {
+      "id": "MVR-GOAL-07",
+      "featureId": "FSC-0426",
+      "name": "请求粘贴并匹配目标样式",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:a7c1b77154d6d45bb85c2c79",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3421711,
+            "endExclusive": 3421885
+          },
+          "spanHash": "abff463c9a203af30148f2da66759713340d284e4e9b6713fce013ebaba2b96b",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/121"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/88"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:a7c1b77154d6d45bb85c2c79"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-view-remainder:paste-and-match-style",
+          "operationType": "menu-user-goal",
+          "trigger": "paste-and-match-style"
+        }
+      ],
+      "reusedOperationIds": [],
+      "behavior": [
+        "After buildFromTemplate, the Mac branch looks for an Edit menu item whose optional role lowercases to pasteandmatchstyle. Only when Gt and that existing item both exist does CZe hide the old item and insert a new localized descriptor at its index.",
+        "The replacement retains role:pasteAndMatchStyle and assigns Command+Shift+V. It has no click callback, so clipboard read, editable target, style conversion and undo integration remain native dependencies."
+      ],
+      "conditions": [
+        "Supplied isMacOS; successful Edit submenu lookup and existing matching role item."
+      ],
+      "failureAndCancellation": [
+        "No match yields no replacement; actual text/clipboard mutation and unsupported role behavior are unobserved."
+      ],
+      "knownGaps": [
+        "Native paste semantics, editable focus, clipboard/style conversion, undo and runtime compatibility."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0426:MVR:1",
+          "featureId": "FSC-0426",
+          "operationId": "operation:menu-view-remainder:paste-and-match-style",
+          "kind": "replacement",
+          "preconditions": "isMacOS and Edit/matching role varied",
+          "trigger": "build and adapt menu",
+          "expectedEffect": "only matched Mac branch hides old item and inserts replacement with Command+Shift+V at saved index",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        },
+        {
+          "scenarioId": "FSC-0426:MVR:2",
+          "featureId": "FSC-0426",
+          "operationId": "operation:menu-view-remainder:paste-and-match-style",
+          "kind": "native-effect",
+          "preconditions": "controlled clipboard and owned editable fixture in future runtime test",
+          "trigger": "invoke replacement",
+          "expectedEffect": "observe actual paste/style/undo through native dependency; descriptor alone is not acceptance",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Bounded static contract; no actual menu/native/clipboard/UI/provider/storage observation."
+        }
+      ],
+      "deduplication": [
+        "Treat replacement as one native editing intent; neither formatting settings nor clipboard URL actions establish paste semantics."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform/build/capability/command labels do not establish full mode ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "consumerModules": [],
+      "evidenceIds": [
+        "MVR-E040"
+      ],
+      "deduplicationEvidenceId": "MVR-E041"
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "MVR-MECHANISM-01",
+      "name": "Browser",
+      "kind": "composition-container",
+      "menuEntry": {
+        "entryId": "native-menu-schema:a924ae6955ed927535f249dc",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3417919,
+          "endExclusive": 3418128
+        },
+        "spanHash": "7c58fd90f830a1a636e53cf85e0c9ab6df19e84578602936bc0becbb645f40d9",
+        "roleRef": {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+          "jsonPointer": "/records/99"
+        },
+        "contractRef": {
+          "path": "menu-command-contracts.json",
+          "bytes": 10630684,
+          "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/nativeMenuItems/66"
+        }
+      },
+      "entryId": "native-menu-schema:a924ae6955ed927535f249dc",
+      "disposition": "native-menu-mechanism",
+      "condition": "u.browserPane",
+      "behavior": "Contains browser open/address/reload/copy/history children under browserPane; no own click.",
+      "knownGap": "Actual runtime menu placement and child behaviors remain under separate contracts; no independent container action.",
+      "featureIds": [],
+      "operations": [],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "nonUserGoalInSelectedDescriptor": true,
+      "actualRuntimeVerified": false,
+      "evidenceId": "MVR-E042"
+    },
+    {
+      "id": "MVR-MECHANISM-02",
+      "name": "Developer",
+      "kind": "composition-container",
+      "menuEntry": {
+        "entryId": "native-menu-schema:4212df3dc853c35d1717ae4d",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3419332,
+          "endExclusive": 3419445
+        },
+        "spanHash": "5f9d5c3004f1e25fe4e866275ab69393da9f02dab01103759c8c81adc2217031",
+        "roleRef": {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+          "jsonPointer": "/records/109"
+        },
+        "contractRef": {
+          "path": "menu-command-contracts.json",
+          "bytes": 10630684,
+          "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/nativeMenuItems/76"
+        }
+      },
+      "entryId": "native-menu-schema:4212df3dc853c35d1717ae4d",
+      "disposition": "native-menu-mechanism",
+      "condition": "Lt.length>0",
+      "behavior": "Groups diagnostic entries after their individual gates; container presence does not enable each tool.",
+      "knownGap": "Actual runtime menu placement and child behaviors remain under separate contracts; no independent container action.",
+      "featureIds": [],
+      "operations": [],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "nonUserGoalInSelectedDescriptor": true,
+      "actualRuntimeVerified": false,
+      "evidenceId": "MVR-E043"
+    },
+    {
+      "id": "MVR-MECHANISM-03",
+      "name": "Help",
+      "kind": "composition-container",
+      "menuEntry": {
+        "entryId": "native-menu-schema:137de74b39dff83f681e74bb",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3419935,
+          "endExclusive": 3421495
+        },
+        "spanHash": "047d083e0a68014577e9c4a23b0b1fa4f4e2e928e4c4fcad4ddd1f850e6a4785",
+        "roleRef": {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+          "jsonPointer": "/records/112"
+        },
+        "contractRef": {
+          "path": "menu-command-contracts.json",
+          "bytes": 10630684,
+          "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/nativeMenuItems/79"
+        }
+      },
+      "entryId": "native-menu-schema:137de74b39dff83f681e74bb",
+      "disposition": "native-menu-mechanism",
+      "condition": "Ut construction",
+      "behavior": "role:help/id:st.help groups external links, shortcuts, feedback/Task Manager and conditional entries; role placement is native integration, not another user goal.",
+      "knownGap": "Actual runtime menu placement and child behaviors remain under separate contracts; no independent container action.",
+      "featureIds": [],
+      "operations": [],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "nonUserGoalInSelectedDescriptor": true,
+      "actualRuntimeVerified": false,
+      "evidenceId": "MVR-E044"
+    }
+  ],
+  "additionalMaintenanceProposals": [
+    {
+      "id": "MVR-M01",
+      "responsibility": "窗口缩放请求订阅、注入回调和缩放提示条生命周期",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MVR-SOURCE-001",
+          "name": "cVs",
+          "reason": "reset-window-zoom",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9044148,
+            "endExclusive": 9048633
+          },
+          "spanHash": "a1f9da1ce1cf3745ab70d95d70cde9bd63411f2a926a78cb73f29c192792443c",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MVR-SOURCE-001-cVs.txt",
+          "completeOriginalDeclaration": true
+        }
+      ],
+      "imports": [
+        "injected onStepZoom/onResetZoom/windowZoom",
+        "message subscription xs",
+        "timer cleanup helper lVs and duration pVs"
+      ],
+      "exports": [
+        "renderer controller/component and context subscriptions"
+      ],
+      "sharedState": [
+        "windowZoom prop; visibility state; two timer refs; hover ref"
+      ],
+      "sideEffects": [
+        "subscribe to step/reset messages; callbacks; timers; document portal"
+      ],
+      "thirdPartyDependencies": [
+        "React, portal/state/subscription/lazy-loading dependencies via package/adapters; no implementation copies"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/window/window-zoom-banner.tsx",
+      "assignment": "Inferred maintenance boundary; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MVR-E045"
+    },
+    {
+      "id": "MVR-M02",
+      "responsibility": "键盘快捷键对话框的命令与惰性加载控制",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MVR-SOURCE-002",
+          "name": "q9s",
+          "reason": "showKeyboardShortcuts",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9490057,
+            "endExclusive": 9490318
+          },
+          "spanHash": "48e0a7782e2b31872c485c6d513704e39860f9b7ddfa8c71d07f5fb2dec16fc5",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MVR-SOURCE-002-q9s.txt",
+          "completeOriginalDeclaration": true
+        },
+        {
+          "id": "MVR-SOURCE-003",
+          "name": "J9s",
+          "reason": "local shortcut modal state/initializer",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9490318,
+            "endExclusive": 9490343
+          },
+          "spanHash": "86a11dc9153e19e6d38272129b1e2641eca71cd9670b5be7e2af6f750cf3a7ea",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MVR-SOURCE-003-J9s.txt",
+          "completeOriginalDeclaration": true
+        },
+        {
+          "id": "MVR-SOURCE-004",
+          "name": "$9s",
+          "reason": "local shortcut modal state/initializer",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9490363,
+            "endExclusive": 9490725
+          },
+          "spanHash": "56ce721119c6464c5b874103dd83d544fa924c7eb9fc3e04bb03bc6c9b313753",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MVR-SOURCE-004-_9s.txt",
+          "completeOriginalDeclaration": true
+        }
+      ],
+      "imports": [
+        "Pw command registration",
+        "React state/lazy helper",
+        "KeyboardShortcutsDialog export"
+      ],
+      "exports": [
+        "renderer controller/component and context subscriptions"
+      ],
+      "sharedState": [
+        "local boolean open state"
+      ],
+      "sideEffects": [
+        "command registration; lazy import; controlled modal open/close"
+      ],
+      "thirdPartyDependencies": [
+        "React, portal/state/subscription/lazy-loading dependencies via package/adapters; no implementation copies"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/commands/keyboard-shortcuts-dialog-controller.tsx",
+      "assignment": "Inferred maintenance boundary; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MVR-E046"
+    }
+  ],
+  "reusedMaintenanceUnits": [
+    {
+      "id": "MENU-UNIT-application-menu",
+      "ref": {
+        "path": "native-menu-roles-v1.json",
+        "bytes": 866774,
+        "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+        "jsonPointer": "/maintenanceUnits/0"
+      }
+    },
+    {
+      "id": "MPA-M02",
+      "ref": {
+        "path": "menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/additionalMaintenanceProposals/1"
+      }
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MVR-SOURCE-001",
+      "name": "cVs",
+      "reason": "reset-window-zoom",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9044148,
+        "endExclusive": 9048633
+      },
+      "spanHash": "a1f9da1ce1cf3745ab70d95d70cde9bd63411f2a926a78cb73f29c192792443c",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MVR-SOURCE-001-cVs.txt",
+      "completeOriginalDeclaration": true,
+      "evidenceId": "MVR-E001"
+    },
+    {
+      "id": "MVR-SOURCE-002",
+      "name": "q9s",
+      "reason": "showKeyboardShortcuts",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9490057,
+        "endExclusive": 9490318
+      },
+      "spanHash": "48e0a7782e2b31872c485c6d513704e39860f9b7ddfa8c71d07f5fb2dec16fc5",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MVR-SOURCE-002-q9s.txt",
+      "completeOriginalDeclaration": true,
+      "evidenceId": "MVR-E002"
+    },
+    {
+      "id": "MVR-SOURCE-003",
+      "name": "J9s",
+      "reason": "local shortcut modal state/initializer",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9490318,
+        "endExclusive": 9490343
+      },
+      "spanHash": "86a11dc9153e19e6d38272129b1e2641eca71cd9670b5be7e2af6f750cf3a7ea",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MVR-SOURCE-003-J9s.txt",
+      "completeOriginalDeclaration": true,
+      "evidenceId": "MVR-E003"
+    },
+    {
+      "id": "MVR-SOURCE-004",
+      "name": "$9s",
+      "reason": "local shortcut modal state/initializer",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9490363,
+        "endExclusive": 9490725
+      },
+      "spanHash": "56ce721119c6464c5b874103dd83d544fa924c7eb9fc3e04bb03bc6c9b313753",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MVR-SOURCE-004-_9s.txt",
+      "completeOriginalDeclaration": true,
+      "evidenceId": "MVR-E004"
+    }
+  ],
+  "reusedSourceUnits": [
+    {
+      "ref": {
+        "path": "menu-navigation-actions-v1.json",
+        "bytes": 83830,
+        "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937",
+        "jsonPointer": "/sourceUnits/1"
+      },
+      "sourceUnit": {
+        "id": "MNA-SOURCE-002",
+        "name": "CZe",
+        "role": "complete original top-level function",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3401957,
+          "endExclusive": 3422782
+        },
+        "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MNA-SOURCE-002-CZe.txt",
+        "evidenceId": "MNA-E002"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/51"
+      },
+      "sourceUnit": {
+        "id": "MPA-SOURCE-052",
+        "name": "J",
+        "role": "complete enclosing FunctionDeclaration",
+        "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+        "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+        "byteRange": {
+          "start": 734,
+          "endExclusive": 5050
+        },
+        "spanHash": "68dccec98d2e2ea16d34bddc0fffd81a6adc0bcf49a3bfbe1e7c81c67c0d44db",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MPA-SOURCE-052-J.txt",
+        "evidenceId": "MPA-E052"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/21"
+      },
+      "sourceUnit": {
+        "id": "MPA-SOURCE-022",
+        "name": "Qni",
+        "role": "complete enclosing FunctionDeclaration",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "byteRange": {
+          "start": 4084486,
+          "endExclusive": 4084896
+        },
+        "spanHash": "608869f45cba43d4cb34413182d6c5aff3460f0d9916354a2099bce5f90b9930",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MPA-SOURCE-022-Qni.txt",
+        "evidenceId": "MPA-E022"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/67"
+      },
+      "sourceUnit": {
+        "id": "MPA-SOURCE-068",
+        "name": "Pw",
+        "role": "complete exported original declaration",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "byteRange": {
+          "start": 1501107,
+          "endExclusive": 1501954
+        },
+        "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MPA-SOURCE-068-Pw.txt",
+        "evidenceId": "MPA-E068"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-navigation-debug-v1.json",
+        "bytes": 114471,
+        "sha256": "389d4d0b197f85edd15e0f7657287b04150b2b6594bcf9196a962f367b6d2175",
+        "jsonPointer": "/sourceUnits/4"
+      },
+      "sourceUnit": {
+        "id": "MND-SOURCE-005",
+        "name": "Fsc",
+        "role": "complete enclosing FunctionDeclaration",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "byteRange": {
+          "start": 9626640,
+          "endExclusive": 9651792
+        },
+        "spanHash": "41c172f42fc053658827635051d20cb866ff48be1dbee8cbf19fc95b4da6cbcb",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MND-SOURCE-005-Fsc.txt",
+        "evidenceId": "MND-E005"
+      }
+    }
+  ],
+  "sourceQuery": {
+    "path": "raw/menu-view-remainder-v1/source-query.json",
+    "bytes": 2762,
+    "sha256": "731794071a484b4837a35f323ef49630c2870dedbc1cb37c4a7759ac400a188c"
+  },
+  "inputPins": [
+    {
+      "path": "feature-scope-v34.json",
+      "bytes": 2303486,
+      "sha256": "bc45518d5d84d961cd6014c1d7a518a8f84a892cb0c5f2d4bca28ebe13618026"
+    },
+    {
+      "path": "feature-scope-v31-scenarios.json",
+      "bytes": 2086999,
+      "sha256": "459b386c9eb0d0a8eae105413074a4f4d6776ef6daf68d976c74e38176577a30"
+    },
+    {
+      "path": "restoration-coverage-v25.json",
+      "bytes": 1285154,
+      "sha256": "8eab405b318be2612282af0d3b8c01e95095e242d18900024e9fb6fa168fbeb3"
+    },
+    {
+      "path": "legacy-entry-dispositions-v12.json",
+      "bytes": 1427039,
+      "sha256": "a66c1989dc33ef62b9ecc27ada3e55d316fda0ea3284c8bf1bb13e8c2f449742"
+    },
+    {
+      "path": "native-menu-roles-v1.json",
+      "bytes": 866774,
+      "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+    },
+    {
+      "path": "menu-command-contracts.json",
+      "bytes": 10630684,
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf"
+    },
+    {
+      "path": "menu-panel-actions-v1.json",
+      "bytes": 148002,
+      "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9"
+    },
+    {
+      "path": "menu-native-history-v1.json",
+      "bytes": 50563,
+      "sha256": "a3a967ea668b7eedba38c0e9727ff65c0555c54f42a2993b49afb28f26872211"
+    },
+    {
+      "path": "command-consumer-contracts.json",
+      "bytes": 397516,
+      "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba"
+    },
+    {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    }
+  ],
+  "counts": {
+    "selectedSourceRecords": 16,
+    "selectedMenuSchemas": 10,
+    "selectedGeneratorOptions": 6,
+    "distinctUserGoals": 7,
+    "newFiniteDefinitions": 5,
+    "reusedFiniteDefinitions": 2,
+    "newUserOperations": 8,
+    "newScenarioSpecifications": 20,
+    "newPartialSourceAssociations": 13,
+    "newMechanismDispositions": 3,
+    "alreadyPublishedSourceAssociations": 0,
+    "additionalMaintenanceProposals": 2,
+    "existingUnifiedResponsibilityOwnersUnchanged": 37,
+    "newFullOriginalProgramParses": 1,
+    "savedSourceSelections": 4,
+    "newReaRuns": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0,
+    "newProductScenarioPasses": 0
+  },
+  "dependencyPolicy": {
+    "catalog": {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    "implementationCopiesGenerated": 0,
+    "qualification": "Native DevTools/paste/page zoom/clipboard remain runtime dependencies. First-party menu branches and selected React controllers are separate maintenance proposals; no third-party/native implementation is regenerated."
+  },
+  "completedBatch": "SQ-02-menu-view-remainder-07",
+  "questionCompleted": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limits": [
+    "Browser-only numeric zoom aliases differ from ordinary page-first/window-fallback actions.",
+    "Workspace full-view operation retains E transition boundary; descriptions alone do not establish its complete state machine.",
+    "Selected zoom callbacks and shortcut lazy import do not establish real provider, mount, native effects, persistence or load/error UI.",
+    "Three containers have mechanism dispositions without invented operations.",
+    "All mode ownership remains qualified; no whole-feature exclusions or product/build acceptance."
+  ]
+}

@@ -1,0 +1,15 @@
+# 正常退出、保存与清理顺序
+
+本批在冻结main Program中接上eZe的真实注册调用：globalState与settingsStore来自同一个V启动结果；上下文清理来自vXe facade，stop helper使用ZXe包装G.stopCodexMicro。共19个保存范围、20条源码事实。见[静态契约](shutdown-persistence.json)、[隔离观察](shutdown-persistence-observations.json)与[来源索引](shutdown-persistence-provenance.json)。这些是作用域核对和候选控制流结果，没有运行桌面应用的退出流程。
+
+普通will-quit先preventDefault并设置重入标志，再依次调用两个生命周期管理器的dispose，构造globalState.flush、settingsStore.flush、stopCodexMicro、tracing的Promise.allSettled组。shouldSkipDrainBeforeQuit分支仍调用全局状态、stop和tracing，只省略settingsStore.flush。Promise rejection不会阻止该组继续；同步throw发生在数组求值或管理器清理时，则会跳过后续调用，而重入标志已经设置。再次触发will-quit会直接返回，不重复排空。
+
+首组没有在eZe中套用整体超时。它结算后才调用u7(contextCleanup,5000)，随后dispose外层资源并app.quit。stop helper另有12000ms等待上限。u7先设计时器再调用回调，把回调返回Promise的成功和失败都转为完成；到期结束等待但不取消清理。回调同步抛错或返回非thenable会令外层Promise拒绝，并留下已安排的计时器；eZe后面的成功回调因此不会运行。不能把5000ms描述为整个退出过程的预算。
+
+vXe facade先调用网络观察器的unsubscribe（ve），再在try中依次等待host.dispose及可选artifactSessionHostLifecycle.dispose，finally等待datadogLogger.flush。该x对象是日志参数，不是globalState；ve在try外，抛错会跳过finally。hXe.dispose则先停止远程连接／archives／host managers，等待threadProjectAssignments.flush，随后进入tab、message、terminal、registry、window和IPC清理；方法内部没有try/finally，中途失败会截断后续步骤。这个thread assignments接口也不能等同于全局状态文件保存。
+
+实际执行1条本机Node22命令，在17个场景中加载8个保存的第一方单位3408字节。Electron事件由测试直接调用，app/dialog、native返回值、存储／backend／tracing／logger全部替换，时间由显式fake scheduler推进。观察到首组等待超过合成5000ms仍未开始上下文清理、skip省略设置、重入不重复排空、同步／异步错误的不同结果、5s/12s限时及超时后仍能完成的回调；另覆盖确认／取消／privacy替身、待建worktree条件、facade日志finally和host清理截断。没有真实计时、文件I/O、native加载、CLI、原存储实例或模型提交。
+
+macOS关机observer及privacy查询保留为静态边界，objc-js与平台插件不执行。原应用的Electron事件送达、Windows helper、真实settings/backend清理、SIGTERM是否走这些hook，以及任务变为interrupted的完整机制仍未知。[已授权停止／重启](behavior-stop-restart-summary.md)是独立的真实UI观察，不能由本批替身结果补写其未观察过程。全部模式归属仍未知，未增加ChatGPT专属排除项或完整功能分母。
+
+维护建议把退出协调、限时等待和上下文清理拆为三个第一方职责；Electron、运行时计时器／Promise和objc-js通过依赖与adapter边界接入，不生成第三方实现。该目录是inferred建议，不是恢复出的原源码目录。首次范围文件命名发生大小写冲突，字节检查失败后改为带序号且禁止覆盖的文件名；同时补齐host实际构造赋值。失败检查和两次分析记录均保留，只有后一次19范围用于执行与本批发布。

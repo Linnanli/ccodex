@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "kind": "local-source-context-candidate-observation-reader",
+  "status": "passed",
+  "authorResult": {
+    "bytes": 35251,
+    "sha256": "b85e9b44cf406e495c4481e126a922560707928f78fa065ffd32358448b78a0c",
+    "path": "raw/source-context-behavior-observations/author/source-context-behavior-observations.json"
+  },
+  "authorReceipt": {
+    "bytes": 2073,
+    "sha256": "2913c1528f9aa0213970867bdc8664c4059aa9f788fbbc430d4b94abf2a2c200",
+    "path": "raw/source-context-behavior-observations/author/observe-receipt.json"
+  },
+  "authorHandoff": {
+    "bytes": 10731,
+    "sha256": "fd3394987017c5726338fe227e4a3a2310aa44a1d1c9d2e3d39e76028a350754",
+    "path": "raw/source-context-behavior-observations/author/handoff.json"
+  },
+  "isolatedObservationCommands": 1,
+  "isolatedScenarioCount": 8,
+  "scenarioExpectationChecks": 8,
+  "errors": [],
+  "scope": "One actual Node22.23.2/x64 command: saved 36-byte lX wrapper and fresh local built-in AsyncLocalStorage per scenario, with own in-memory inputs/callbacks/Promise observers. Not target Node24 or actual rX.",
+  "executedSavedSourcePin": {
+    "unitId": "SOURCE-CONTEXT-UNIT-001",
+    "bytes": 36,
+    "sha256": "0809d464cd73b806151d13de2ce769496b77411624a528060862187f3125654e",
+    "sourceLocator": {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1458498,
+        "endExclusive": 1458534
+      },
+      "utf16Range": {
+        "start": 1454369,
+        "endExclusive": 1454405
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanSha256": "0809d464cd73b806151d13de2ce769496b77411624a528060862187f3125654e"
+    },
+    "savedEnvelope": {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/settings-source-context-origin-work/selected-complete-units-local.json",
+      "bytes": 3332,
+      "sha256": "ceb9cf2a4f1fe3902ed0e138e28fe8c974e1aad9bf97fbcf9fd129cc318a9392"
+    }
+  },
+  "candidate": {
+    "builtinModule": "node:async_hooks",
+    "class": "AsyncLocalStorage",
+    "nodeExecutable": "/Users/nallylin/.nvm/versions/node/v22.23.2/bin/node",
+    "nodeVersion": "v22.23.2",
+    "v8Version": "12.4.254.21-node.56",
+    "platform": "darwin",
+    "architecture": "x64",
+    "freshInstancePerScenario": true,
+    "defaultConstructor": true,
+    "localBuiltinActuallyInvoked": true
+  },
+  "versionBoundary": {
+    "inheritedDocumentationCandidateVersion": "24.19.0",
+    "localObserverIsDocumentationCandidate": false,
+    "targetEmbeddedNodeVersion": "unknown; not inspected or executed",
+    "localCandidateIsActualTargetRX": false,
+    "targetNode24CompatibilityProven": false
+  },
+  "scenarios": [
+    {
+      "id": "SOURCE-CONTEXT-VM-01",
+      "name": "synchronous callback object return and store identity",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/0"
+    },
+    {
+      "id": "SOURCE-CONTEXT-VM-02",
+      "name": "synchronous throw preserves error identity and outer context",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/1"
+    },
+    {
+      "id": "SOURCE-CONTEXT-VM-03",
+      "name": "already fulfilled Promise return preserves identity and fulfillment",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/2"
+    },
+    {
+      "id": "SOURCE-CONTEXT-VM-04",
+      "name": "pending Promise returns before settlement and synchronous scope exits",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/3"
+    },
+    {
+      "id": "SOURCE-CONTEXT-VM-05",
+      "name": "returned Promise rejection remains asynchronous and preserves reason",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/4"
+    },
+    {
+      "id": "SOURCE-CONTEXT-VM-06",
+      "name": "Promise work created inside run inherits context after synchronous exit",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/5"
+    },
+    {
+      "id": "SOURCE-CONTEXT-VM-07",
+      "name": "nested run restores outer store and forwards inner object",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/6"
+    },
+    {
+      "id": "SOURCE-CONTEXT-VM-08",
+      "name": "nested asynchronous work retains separate outer and inner contexts",
+      "expectationMatched": true,
+      "reportPointer": "/scenarios/7"
+    }
+  ],
+  "conclusions": [
+    "The local Node22 candidate invokes the callback synchronously within the input store and forwards object/Promise identities through the saved lX wrapper.",
+    "A synchronous callback throw propagates as the same Error while restoring the caller outer store; nested normal runs also restore the outer store.",
+    "run returns a pending callback Promise immediately, restoring synchronous scope before fulfillment/rejection. Promise settlement and source-local await/catch are separate facts.",
+    "Promise continuations created inside local run retain their creation store after run synchronously exits; nested inner/outer-created work keeps its respective store."
+  ],
+  "limits": [
+    "This is one explicitly authorized local Node22 candidate integration experiment, not an actual target client/native rX instance or Node24 reproduction.",
+    "Only saved lX is evaluated. The other three saved small source units are metadata inputs and were not executed; the actual require binding/namespace/current receiver remains untested.",
+    "Own stores, callback bodies, Promise work and observers use memory only; no original large module, installation, credentials, provider, network, persistence, UI, model or source implementation recovery was accessed.",
+    "Observed callback/return/throw/Promise behavior applies only to the built-in implementation and fresh candidate instances used here. It does not prove full fetch/projectWrite transparency, scheduling/cancellation behavior, target mutation closure or unseen rX consumers.",
+    "Each row refers to the one common actual capture receipt for command/exit/stdout/stderr; this does not claim eight independent subprocess runs.",
+    "Old nine static source records, di16, receiver25 and global products remain unchanged. Candidate observations do not rewrite their original unknowns.",
+    "Saved source text, runner and implementation-bearing inspection stdout remain local-only; formal candidates contain finite metadata, source pins, coordinates, results and receipts only."
+  ],
+  "oldNineStaticSourceRecordsModified": false,
+  "oldDi16Modified": false,
+  "oldReceiver25Modified": false,
+  "originalClientRunsAdded": 0,
+  "originalStorageRunsAdded": 0,
+  "deliveryRuntimeRunsAdded": 0,
+  "additionalModelTasks": 0,
+  "globalRecordsAdded": 0,
+  "fullAnalysisCompleted": false,
+  "thirdPartyImplementationsPublished": false,
+  "deliveryScope": "Pure metadata delivery; no fixture/candidate/source/native/client rerun or additional model execution."
+}

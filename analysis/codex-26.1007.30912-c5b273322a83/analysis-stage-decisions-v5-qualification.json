@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "appliesTo": {
+    "path": "analysis-stage-decisions-v5.json",
+    "sha256": "500dff50da716247c562d3e1c8c1d1fcfe0c47443919ff38f3aeef0ce6559826"
+  },
+  "corrections": [
+    {
+      "jsonPointer": "/stages/3/requirements/6/finding",
+      "oldValue": "既有公开CLI比较保留；11个差异变体现已全部有决定：10个可选子代理字段及1个预测fork。公开候选对预测fork仍未取得资格；无普通fork或新建线程降级。真实decoder/存储/成功语义、npm到源码提交绑定未证明。",
+      "correctedValue": "既有公开CLI比较保留；11个差异变体现已全部有决定：10个带可选子代理字段的通知变体及1个预测fork。公开候选对预测fork仍未取得资格；无普通fork或新建线程降级。真实decoder/存储/成功语义、npm到源码提交绑定未证明。",
+      "reason": "10是差异通知变体数，不是独立字段数；字段包括model和reasoningEffort。11个变体的采用决定及其限制不变。"
+    }
+  ],
+  "evidence": {
+    "path": "protocol-delta-adoption-v1.json",
+    "sha256": "95b28c89373abbff9a61f7dacb9a5c83f5dc44a09621884f71e90ac428b77028",
+    "jsonPointers": [
+      "/counts/optionalNotificationVariants",
+      "/variants/0/fieldDifferences",
+      "/decisions/0"
+    ]
+  },
+  "criterionStatusesChanged": false,
+  "fullAnalysisCompleted": false
+}

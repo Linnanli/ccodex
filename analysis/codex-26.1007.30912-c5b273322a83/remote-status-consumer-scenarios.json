@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scenarios": [
+    {
+      "id": "RSC-S001",
+      "name": "状态读取与请求次数",
+      "requiredConditions": "独立客户端及自有未连接/已连接host",
+      "action": "观察主机选择器重渲染和bootstrap运行",
+      "expected": "状态读取不自行变成轮询，bootstrap请求次数/条件另验",
+      "sourceEvidenceIds": [
+        "RSC-E003",
+        "RSC-E006",
+        "RSC-E007"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RSC-S002",
+      "name": "迟到响应与新状态",
+      "requiredConditions": "独立客户端可延迟状态响应并发送更新",
+      "action": "请求后改变state/error/progress任一项",
+      "expected": "原快照不再匹配时忽略返回，身份比较保持",
+      "sourceEvidenceIds": [
+        "RSC-E008",
+        "RSC-E010"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RSC-S003",
+      "name": "manager替换与删除",
+      "requiredConditions": "自有host、真实manager生命周期",
+      "action": "请求中替换manager或删除host",
+      "expected": "旧manager响应不覆盖新状态；初始null接纳条件单独验",
+      "sourceEvidenceIds": [
+        "RSC-E009"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RSC-S004",
+      "name": "effect卸载",
+      "requiredConditions": "真实React provider和独立传输",
+      "action": "pending时卸载effect",
+      "expected": "watch注销/返回忽略和真实transport是否取消分别观察",
+      "sourceEvidenceIds": [
+        "RSC-E012"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RSC-S005",
+      "name": "请求失败",
+      "requiredConditions": "独立传输可制造失败",
+      "action": "在active与stale两个状态返回错误",
+      "expected": "active只写CF标志；状态保留；stale仅日志，UI含义另查",
+      "sourceEvidenceIds": [
+        "RSC-E011"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RSC-S006",
+      "name": "progress与部分更新",
+      "requiredConditions": "可控状态writer/query副作用",
+      "action": "分别返回connecting/connected并在后续写入注入错误",
+      "expected": "progress顺序、清空条件与catch标志不被合并成原子提交",
+      "sourceEvidenceIds": [
+        "RSC-E010",
+        "RSC-E013"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RSC-S007",
+      "name": "真实bridge端点",
+      "requiredConditions": "独立客户端与自有host",
+      "action": "核对AW URI/JSON、$L实例及registry返回",
+      "expected": "请求/响应身份可追踪；合成endpoint不替代实际IPC",
+      "sourceEvidenceIds": [
+        "RSC-E014",
+        "RSC-E015",
+        "RSC-E016"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RSC-S008",
+      "name": "共享状态后续来源",
+      "requiredConditions": "独立客户端、平台/账户条件满足",
+      "action": "观察启动之后连接/断开/失败通知",
+      "expected": "补齐真实写入生产者、provider订阅和主机列表变化",
+      "sourceEvidenceIds": [
+        "RSC-E018"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    }
+  ],
+  "executed": 0,
+  "featureScenarioLedgerUpdated": false
+}

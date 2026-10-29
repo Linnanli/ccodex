@@ -1,0 +1,937 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-13T10:59:49.902712+00:00",
+  "status": "verified-negative-contract-difference",
+  "method": "read-only comparison of saved runtime responses and immutable schema/manifests",
+  "inputs": [
+    {
+      "backend": "frozen",
+      "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+      "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+      "bytes": 43188
+    },
+    {
+      "backend": "public-npm",
+      "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+      "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+      "bytes": 43307
+    }
+  ],
+  "priorFailuresPreserved": [
+    {
+      "path": "fork-negative-protocol-frozen-os-sandbox-1.json",
+      "sha256": "98be88e66eaddaafe1882603615f8fe33ad4de195f31ec0d9f1dfcc2cd8854c0",
+      "status": "incomplete-see-session-errors"
+    },
+    {
+      "path": "fork-negative-protocol-public-npm-os-normal-host-1.json",
+      "sha256": "e4e72be169fda318eac5b5cb0b5f317c894babb978602a0af41ef872eb9e9eec",
+      "status": "failed-preflight-schema-manifest-path-prefix"
+    }
+  ],
+  "verification": {
+    "cliHashesVerified": true,
+    "generationSnapshotsVerified": true,
+    "runnerSnapshotsVerified": true,
+    "schemaHashesVerified": true,
+    "profilesAndRawHashesVerified": true,
+    "caseResponsesMatchRaw": true,
+    "protectedArtifactsUnchanged": true,
+    "actualCliSessions": 4,
+    "forkRequests": 32,
+    "forkSuccesses": 0,
+    "rawRecords": 80,
+    "methodAllowlist": [
+      "initialize",
+      "initialized",
+      "thread/fork"
+    ],
+    "targetModelTurnRequests": 0,
+    "allSessionsFreshHome": true,
+    "osNetworkDeniedByAppliedSandboxExecProfile": true
+  },
+  "fieldTreatment": {
+    "frozen": {
+      "experimentalSchemaDeclared": true,
+      "schemaType": "boolean",
+      "observedWrongStringTypeRejected": true,
+      "observedTrueNeedsExperimentalApi": true,
+      "falseWithoutExperimentalApiReachesLookup": true,
+      "conclusion": "Field is recognized, boolean-decoded, and true is capability-gated on this negative path."
+    },
+    "publicNpm": {
+      "stableSchemaDeclared": false,
+      "experimentalSchemaDeclared": false,
+      "observedWrongStringTypeRejected": false,
+      "observedTrueNeedsExperimentalApi": false,
+      "allSuppliedValuesMatchUnknownFieldAndLookupControls": true,
+      "conclusion": "Supplied field is not rejected or type-enforced and behaves like the unknown-field control on this negative path; this is consistent with an unrecognized/ignored field, not proof of prediction support."
+    }
+  },
+  "comparison": {
+    "pairedCaseDenominator": 16,
+    "sameErrorContracts": 13,
+    "differentErrorContracts": 3,
+    "matrix": [
+      {
+        "experimentalApi": true,
+        "case": "without-prediction-field",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 2
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/1/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 6
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 2
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/1/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 6
+          }
+        }
+      },
+      {
+        "experimentalApi": true,
+        "case": "prediction-false",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "experimentalPredictionMode": false
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 3
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/2/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 8
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 3
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/2/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 8
+          }
+        }
+      },
+      {
+        "experimentalApi": true,
+        "case": "prediction-true",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "experimentalPredictionMode": true
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 4
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/3/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 10
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 4
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/3/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 10
+          }
+        }
+      },
+      {
+        "experimentalApi": true,
+        "case": "prediction-invalid-string",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "experimentalPredictionMode": "ccodex-not-a-boolean"
+        },
+        "errorContractExactlySame": false,
+        "frozen": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 5
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/4/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 12
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 5
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/4/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 12
+          }
+        }
+      },
+      {
+        "experimentalApi": true,
+        "case": "unknown-field-control",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "ccodexNegativeControlField": "ccodex-not-a-boolean"
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 6
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/5/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 14
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 6
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/5/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 14
+          }
+        }
+      },
+      {
+        "experimentalApi": true,
+        "case": "known-ephemeral-invalid-string",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": "ccodex-not-a-boolean",
+          "excludeTurns": true
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 7
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/6/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 16
+          }
+        },
+        "publicNpm": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 7
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/6/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 16
+          }
+        }
+      },
+      {
+        "experimentalApi": true,
+        "case": "known-experimental-before-turn-id",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "beforeTurnId": "00000000-0000-4000-8000-000000000005"
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 8
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/7/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 18
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 8
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/7/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 18
+          }
+        }
+      },
+      {
+        "experimentalApi": true,
+        "case": "known-experimental-before-turn-invalid-bool",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "beforeTurnId": true
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: boolean `true`, expected a string"
+            },
+            "id": 9
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/0/checks/8/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d",
+            "line": 20
+          }
+        },
+        "publicNpm": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: boolean `true`, expected a string"
+            },
+            "id": 9
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/0/checks/8/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+            "bytes": 4345,
+            "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a",
+            "line": 20
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "without-prediction-field",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 2
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/1/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 6
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 2
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/1/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 6
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "prediction-false",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "experimentalPredictionMode": false
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 3
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/2/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 8
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 3
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/2/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 8
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "prediction-true",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "experimentalPredictionMode": true
+        },
+        "errorContractExactlySame": false,
+        "frozen": {
+          "classification": "experimental-capability-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "thread/fork.experimentalPredictionMode requires experimentalApi capability"
+            },
+            "id": 4
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/3/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 10
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 4
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/3/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 10
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "prediction-invalid-string",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "experimentalPredictionMode": "ccodex-not-a-boolean"
+        },
+        "errorContractExactlySame": false,
+        "frozen": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 5
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/4/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 12
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 5
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/4/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 12
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "unknown-field-control",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "ccodexNegativeControlField": "ccodex-not-a-boolean"
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 6
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/5/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 14
+          }
+        },
+        "publicNpm": {
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 6
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/5/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 14
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "known-ephemeral-invalid-string",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": "ccodex-not-a-boolean",
+          "excludeTurns": true
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 7
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/6/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 16
+          }
+        },
+        "publicNpm": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 7
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/6/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 16
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "known-experimental-before-turn-id",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "beforeTurnId": "00000000-0000-4000-8000-000000000005"
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "experimental-capability-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "thread/fork.beforeTurnId requires experimentalApi capability"
+            },
+            "id": 8
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/7/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 18
+          }
+        },
+        "publicNpm": {
+          "classification": "experimental-capability-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "thread/fork.beforeTurnId requires experimentalApi capability"
+            },
+            "id": 8
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/7/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 18
+          }
+        }
+      },
+      {
+        "experimentalApi": false,
+        "case": "known-experimental-before-turn-invalid-bool",
+        "requestParams": {
+          "threadId": "00000000-0000-4000-8000-000000000004",
+          "ephemeral": true,
+          "excludeTurns": true,
+          "beforeTurnId": true
+        },
+        "errorContractExactlySame": true,
+        "frozen": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: boolean `true`, expected a string"
+            },
+            "id": 9
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-frozen-os-normal-host-1.json",
+            "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f",
+            "pointer": "/sessions/1/checks/8/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+            "bytes": 4357,
+            "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428",
+            "line": 20
+          }
+        },
+        "publicNpm": {
+          "classification": "parameter-decoding-rejection",
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: boolean `true`, expected a string"
+            },
+            "id": 9
+          },
+          "summaryEvidence": {
+            "path": "fork-negative-protocol-public-npm-os-normal-host-2.json",
+            "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef",
+            "pointer": "/sessions/1/checks/8/response"
+          },
+          "rawEvidence": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+            "bytes": 4338,
+            "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497",
+            "line": 20
+          }
+        }
+      }
+    ]
+  },
+  "positiveControls": {
+    "bothBackendsKnownEphemeralWrongTypeRejected": true,
+    "bothBackendsBeforeTurnIdTrueRequiresExperimentalApi": true,
+    "bothBackendsBeforeTurnIdWrongBoolRejected": true
+  },
+  "limitations": [
+    "All valid requests stop at missing-rollout lookup; no successful fork or prediction semantics were observed.",
+    "Same lookup errors or unknown-field behavior do not prove complete backend compatibility.",
+    "This fixture does not resolve the desktop dynamic sender or actual appServerVersion.",
+    "Public npm binary-to-source-commit binding remains unknown."
+  ],
+  "comparisonScript": {
+    "path": "scripts/analysis/compare_fork_negative_protocol.py",
+    "sha256": "9ad120f84c39bf17c3aefbad144b098cc25e91c560f1afc319064516f552af54"
+  }
+}

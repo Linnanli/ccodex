@@ -1,0 +1,2223 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T22:22:39.041118+00:00",
+  "scope": "SQ-02-menu-commands-01 fixed ten schemas only; bounded callback/delegate contracts, no recursive closure.",
+  "goals": [
+    {
+      "id": "MCG-GOAL-01",
+      "featureId": "FSC-0385",
+      "name": "打开应用设置",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:f47d390844bb1d2d6b10333a",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3403744,
+            "endExclusive": 3404077
+          },
+          "spanHash": "240665854563854d327480ba5d4a0a467a6a74329d68cd8e8631da702b18c4b2",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/34"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/1"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:f47d390844bb1d2d6b10333a"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-command:settings",
+          "operationType": "menu-user-goal",
+          "trigger": "Settings menu or accelerator"
+        }
+      ],
+      "behavior": [
+        "CZe settings awaits injected ensurePrimaryWindowVisible directly, rather than M focused-window selection.",
+        "For triggeredByAccelerator=true it sends run-command settings with normalized modifier booleans, final accelerator key and repeat=false; otherwise PZe navigation sends navigate-to-route /settings/general-settings."
+      ],
+      "conditions": [
+        "N(settings) command availability and accelerator metadata apply; no send/navigation when ensured window is absent."
+      ],
+      "failureAndCancellation": [
+        "No local recovery for rejected ensure/send/navigation; keyboard receiver and its choice of settings action are delegated."
+      ],
+      "knownGaps": [
+        "Effective ensure provider and actual message delivery; keyboard receiver/mount and settings route rendering."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MCG-SOURCE-021",
+          "name": "SZe",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401924,
+            "endExclusive": 3401956
+          },
+          "spanHash": "c9b393d2aa406acd1e5180e639ade271fa88ecb84a1375cab5085d3bdd75e972",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MCG-SOURCE-021-SZe.txt"
+        }
+      ],
+      "deduplication": [
+        "Existing settings definitions change preferences or inspect specific pages. Opening settings is a separate navigation goal; no preference change is inferred."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "No complete mode/shared-consumer closure; command labels and chatgpt identifiers are insufficient for whole-goal exclusion.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0385:MCG:1",
+          "featureId": "FSC-0385",
+          "operationId": "operation:menu-command:settings",
+          "kind": "route",
+          "preconditions": "owned ensured window exists",
+          "trigger": "click Settings without accelerator flag",
+          "expectedEffect": "send /settings/general-settings through injected route delegate",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0385:MCG:2",
+          "featureId": "FSC-0385",
+          "operationId": "operation:menu-command:settings",
+          "kind": "keyboard",
+          "preconditions": "owned ensured window and accelerator event",
+          "trigger": "invoke Settings accelerator",
+          "expectedEffect": "send settings plus modifiers/key/repeat=false; do not force direct route branch",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0385:MCG:3",
+          "featureId": "FSC-0385",
+          "operationId": "operation:menu-command:settings",
+          "kind": "absent-or-failure",
+          "preconditions": "ensure returns absent or rejects",
+          "trigger": "invoke once",
+          "expectedEffect": "absent returns; rejection has no callback-local catch; observe delegated handling separately",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "settings/routes",
+        "desktop-transport"
+      ],
+      "evidenceIds": [
+        "MCG-E028"
+      ],
+      "decisionEvidenceId": "MCG-E029"
+    },
+    {
+      "id": "MCG-GOAL-02",
+      "featureId": "FSC-0386",
+      "name": "准备新任务草稿并选择项目上下文",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:1550396790cd34ad3e01468f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3404080,
+            "endExclusive": 3404496
+          },
+          "spanHash": "9e571a119b200123a4f02e0a0540cb3a467ce514fdcb52921784d9ae5d934b8d",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/35"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/2"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:6e052e560fa72926e8c3c5ed",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3404499,
+            "endExclusive": 3404573
+          },
+          "spanHash": "5315369e81d8941ab223ddd1a1923ff87b75e33c87a6929de954a2e869ba2052",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/36"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/3"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:c1a874de4ac7f9a87e545b02",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3404864,
+            "endExclusive": 3405039
+          },
+          "spanHash": "06eccfa85c6a6b0af95b11f7c9f941d1f6b095441d3baee7a41605b5cc9238b1",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/38"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/5"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:1550396790cd34ad3e01468f",
+        "native-menu-schema:6e052e560fa72926e8c3c5ed",
+        "native-menu-schema:c1a874de4ac7f9a87e545b02"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-command:new-task",
+          "operationType": "menu-user-goal",
+          "trigger": "New task menu, primary or hidden accelerator"
+        },
+        {
+          "operationId": "operation:menu-command:new-projectless-task",
+          "operationType": "menu-user-goal",
+          "trigger": "Hidden newProjectlessTask command"
+        }
+      ],
+      "behavior": [
+        "newTask uses M (valid focused window or ensure fallback); hotkey thread collapses to home and returns; ordinary window focuses webContents and sends run-command newTask.",
+        "Hidden newTask schema reuses the exact primary click callback; it is an accelerator alias, not another goal.",
+        "newProjectlessTask always awaits ensurePrimaryWindowVisible then sends run-command newProjectlessTask; it is not assumed identical to the new-projectless-task message handler.",
+        "Selected newTask registrations: les chooses target through Ati/U7r then starts selected/group/projectless navigation; Dcc fallback uses CH/wH with selectChat=true.",
+        "Ezt imports py=Pw and Qx=wH through explicit IBn/VXt exports. Its newTask keyboardHandler can switch mode instead of executing normal draft navigation under its source conditions.",
+        "wH prepares navigation/draft identity and optional activeProject. When !gm and preparation is null it returns before onNavigate; effective gm and helper state effects remain delegated.",
+        "Dcc sibling new-projectless-task message clears activeProject and has file/install/mode/access branches. This is a candidate downstream contract, not a proven delivery edge from the selected run-command. No thread-start/first-turn RPC is proven by these draft callbacks."
+      ],
+      "conditions": [
+        "N command access/shortcut policy and selected window state apply.",
+        "Registration mount/enabled/priority and keyboardHandler affect selected execution; Dcc priority fallback must remain distinct from normal registrations.",
+        "Ati/U7r preserve explicit target, current host/project/thread and projectless eligibility branches."
+      ],
+      "failureAndCancellation": [
+        "No invented model submission on opening a draft; hotkey collapse and navigation guard may return without creating a new draft.",
+        "Failed ensure/navigation/provider work and draft persistence remain delegated; run-command to new-projectless-task bridge is unresolved."
+      ],
+      "knownGaps": [
+        "Runtime winning command handler, complete transport-to-receiver mapping, helper identities and active mode/access/host values.",
+        "Actual draft focus/navigation/reuse/durability and keyboard mode-switch behavior."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MCG-SOURCE-001",
+          "name": "Ezt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+          "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+          "byteRange": {
+            "start": 2366380,
+            "endExclusive": 2373356
+          },
+          "spanHash": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-001-Ezt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-002",
+          "name": "import-py",
+          "role": "complete ESM import declaration",
+          "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+          "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+          "byteRange": {
+            "start": 44658,
+            "endExclusive": 68701
+          },
+          "spanHash": "2c1f7aa8e1842257941f82e1ea0b17dade71d3377ce193b47dfb475f36a8b633",
+          "nodeType": "ImportDeclaration",
+          "savedPath": "source/MCG-SOURCE-002-import-py.txt"
+        },
+        {
+          "id": "MCG-SOURCE-017",
+          "name": "export-IBn",
+          "role": "ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11351840,
+            "endExclusive": 11351849
+          },
+          "spanHash": "4a13d72f2e261f17dd5c104af934aa976372914b6eb6d545cb87cd81c3fbceeb",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MCG-SOURCE-017-export-IBn.txt"
+        },
+        {
+          "id": "MCG-SOURCE-018",
+          "name": "export-VXt",
+          "role": "ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11378158,
+            "endExclusive": 11378167
+          },
+          "spanHash": "9e4a9699ad92e8fb12a5c538130f577eead33d97652ac33a0d39e46a1fe3fe6f",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MCG-SOURCE-018-export-VXt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-005",
+          "name": "les",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 8008662,
+            "endExclusive": 8010435
+          },
+          "spanHash": "d16034cfc9e1efa76352eb9d2552ffe26ad03bd3e46e3ac6d971eb1932df4227",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-005-les.txt"
+        },
+        {
+          "id": "MCG-SOURCE-006",
+          "name": "Dcc",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9666657,
+            "endExclusive": 9668635
+          },
+          "spanHash": "5fc718702f1c3c92b56585fa137e92005fbc7d5382717c92de12e9c0ebd2066f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-006-Dcc.txt"
+        },
+        {
+          "id": "MCG-SOURCE-007",
+          "name": "CH",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4012374,
+            "endExclusive": 4012558
+          },
+          "spanHash": "e23ffb6cef218f0f401e7ea3cee4b7f69eb4532b8303b8421fb5edaf7b654232",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-007-CH.txt"
+        },
+        {
+          "id": "MCG-SOURCE-008",
+          "name": "wH",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4012680,
+            "endExclusive": 4013878
+          },
+          "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-008-wH.txt"
+        },
+        {
+          "id": "MCG-SOURCE-009",
+          "name": "Ati",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4062953,
+            "endExclusive": 4063388
+          },
+          "spanHash": "618f046ec846ba758faea4c9d0f78ff70aac69cd00b717f39da34a6075170520",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-009-Ati.txt"
+        },
+        {
+          "id": "MCG-SOURCE-010",
+          "name": "U7r",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4021517,
+            "endExclusive": 4022021
+          },
+          "spanHash": "6f6524bc3b253ba159b081be54ec9bf869adb9fb7705c3fb37fc7052c4e966ef",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-010-U7r.txt"
+        },
+        {
+          "id": "MCG-SOURCE-012",
+          "name": "Pw",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-012-Pw.txt"
+        },
+        {
+          "id": "MCG-SOURCE-013",
+          "name": "fJt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501954,
+            "endExclusive": 1502007
+          },
+          "spanHash": "e08db9b74130aabe12ad048418c2d4a35765da36c3c071309874a544b1982ede",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-013-fJt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-014",
+          "name": "pJt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1502007,
+            "endExclusive": 1502198
+          },
+          "spanHash": "85a46904a232b237743601bf7118f54c102021d9f3a3c6958fb22a808b03eaa5",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-014-pJt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-015",
+          "name": "Pqt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1497826,
+            "endExclusive": 1498075
+          },
+          "spanHash": "a32bb4c11f4e06717cde64b471bbd735635390a2aef4899397ee71527295b0c6",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-015-Pqt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-016",
+          "name": "import-QEe",
+          "role": "complete ESM import declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 95660,
+            "endExclusive": 136889
+          },
+          "spanHash": "1be551b2878597d55352877c0f2caeeb354161f8b815eccd831da6daff82db62",
+          "nodeType": "ImportDeclaration",
+          "savedPath": "source/MCG-SOURCE-016-import-QEe.txt"
+        }
+      ],
+      "deduplication": [
+        "Draft preparation precedes FSC-0048 creation/first-turn submission and is a distinct user goal.",
+        "New task and explicit projectless task are two context-selection operations under one draft goal; hidden newTask is an alias.",
+        "Reuse CBX-03 exclusion only for its proven switchToMode1 registration; shared newTask/wH machinery is retained."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "No complete mode/shared-consumer closure; command labels and chatgpt identifiers are insufficient for whole-goal exclusion.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0386:MCG:1",
+          "featureId": "FSC-0386",
+          "operationId": "operation:menu-command:new-task",
+          "kind": "normal",
+          "preconditions": "ordinary window; mounted enabled registration",
+          "trigger": "invoke New task",
+          "expectedEffect": "focus/send then choose source target and prepare/navigate draft; no first message submission",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0386:MCG:2",
+          "featureId": "FSC-0386",
+          "operationId": "operation:menu-command:new-task",
+          "kind": "alias",
+          "preconditions": "primary and hidden accelerator can be inspected",
+          "trigger": "compare both newTask schemas",
+          "expectedEffect": "same click callback; one operation with two entry aliases",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0386:MCG:3",
+          "featureId": "FSC-0386",
+          "operationId": "operation:menu-command:new-task",
+          "kind": "hotkey",
+          "preconditions": "focused hotkey thread",
+          "trigger": "invoke New task",
+          "expectedEffect": "await optional collapseHotkeyWindowToHome then return",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0386:MCG:4",
+          "featureId": "FSC-0386",
+          "operationId": "operation:menu-command:new-projectless-task",
+          "kind": "projectless",
+          "preconditions": "owned window and known receiver",
+          "trigger": "invoke hidden newProjectlessTask",
+          "expectedEffect": "send exact command; independently verify bridge before using candidate activeProject=null message contract",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0386:MCG:5",
+          "featureId": "FSC-0386",
+          "operationId": "operation:menu-command:new-task",
+          "kind": "context-or-guard",
+          "preconditions": "target/host/access and Ezt keyboard conditions controlled",
+          "trigger": "invoke normal/keyboard variants and refuse navigation preparation",
+          "expectedEffect": "preserve U7r target selection, fallback priority, possible mode switch and guarded no-op",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MCG-M01"
+      ],
+      "consumerModules": [
+        "tasks/drafts",
+        "project-context",
+        "command-registry",
+        "desktop-transport"
+      ],
+      "evidenceIds": [
+        "MCG-E030",
+        "MCG-E031",
+        "MCG-E032"
+      ],
+      "decisionEvidenceId": "MCG-E033"
+    },
+    {
+      "id": "MCG-GOAL-03",
+      "featureId": "FSC-0387",
+      "name": "发起临时聊天导航",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:d6cefd7a3402ef190f8f118e",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3404638,
+            "endExclusive": 3404860
+          },
+          "spanHash": "35f2eef8e8b4b6c8abd01a06a17804d3a98264b1084f74c6957632b56b85a358",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/37"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/4"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:d6cefd7a3402ef190f8f118e"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-command:temporary-chat",
+          "operationType": "menu-user-goal",
+          "trigger": "Temporary Chat menu"
+        }
+      ],
+      "behavior": [
+        "Menu captures primary window or focused window; enabled requires temporaryChatEnabled=true. Click uses this captured window if still valid and sends run-command temporaryChat.",
+        "Selected rMi registers temporaryChat through Pw with enabled=n&&!gm(); callback calls Bji.",
+        "Bji checks !scope.get(zre), clears project selection through YI(scope,null), then navigates / with QEe(empty,true) and state.chatGptProjectId=null.",
+        "gm and QEe are imported pIt/_Mt from app-shared; their definitions and complete caller/mode closure are outside this bounded selection."
+      ],
+      "conditions": [
+        "Menu snapshot enabled condition and valid captured window are separate from renderer enabled guard.",
+        "No M/ensure fallback in the selected click; actual rMi mount and winning receiver unobserved."
+      ],
+      "failureAndCancellation": [
+        "Captured window can be destroyed; no send then. zre or disabled renderer can prevent callback effect.",
+        "Delegated query/navigation semantics and transient storage policy are not inferred from the command name."
+      ],
+      "knownGaps": [
+        "Complete rMi consumer/mode closure, pIt/_Mt definitions, transport and real temporary-history behavior."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MCG-SOURCE-003",
+          "name": "rMi",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4641621,
+            "endExclusive": 4641888
+          },
+          "spanHash": "e64d9092925a116bc4da2f3747ad44355da2461482db6ca0110d1c72721ed75a",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-003-rMi.txt"
+        },
+        {
+          "id": "MCG-SOURCE-004",
+          "name": "Bji",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4629840,
+            "endExclusive": 4629951
+          },
+          "spanHash": "a0197ca3df75964e4353a5d5216a3b79d381fadd79ee3e9f52aebe462fabbeec",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-004-Bji.txt"
+        },
+        {
+          "id": "MCG-SOURCE-012",
+          "name": "Pw",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-012-Pw.txt"
+        },
+        {
+          "id": "MCG-SOURCE-016",
+          "name": "import-QEe",
+          "role": "complete ESM import declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 95660,
+            "endExclusive": 136889
+          },
+          "spanHash": "1be551b2878597d55352877c0f2caeeb354161f8b815eccd831da6daff82db62",
+          "nodeType": "ImportDeclaration",
+          "savedPath": "source/MCG-SOURCE-016-import-QEe.txt"
+        }
+      ],
+      "deduplication": [
+        "No existing finite goal expresses this temporary navigation.",
+        "CBX-01 excludes a conditional Chat footer only; it does not establish whole-command ChatGPT-only ownership. Retain unknown."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "No complete mode/shared-consumer closure; command labels and chatgpt identifiers are insufficient for whole-goal exclusion.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0387:MCG:1",
+          "featureId": "FSC-0387",
+          "operationId": "operation:menu-command:temporary-chat",
+          "kind": "availability",
+          "preconditions": "vary captured window, shortcut flag and rMi guard",
+          "trigger": "refresh/invoke menu",
+          "expectedEffect": "preserve separate menu and renderer conditions",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0387:MCG:2",
+          "featureId": "FSC-0387",
+          "operationId": "operation:menu-command:temporary-chat",
+          "kind": "navigate",
+          "preconditions": "mounted callback with zre false",
+          "trigger": "invoke temporaryChat",
+          "expectedEffect": "YI null then qualified / navigation; helper-generated search remains delegated",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0387:MCG:3",
+          "featureId": "FSC-0387",
+          "operationId": "operation:menu-command:temporary-chat",
+          "kind": "retain-boundary",
+          "preconditions": "review CBX-01 footer and this command",
+          "trigger": "apply Codex-only scope",
+          "expectedEffect": "do not broaden footer-only exclusion to this whole command without consumer/mode proof",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MCG-M01"
+      ],
+      "consumerModules": [
+        "tasks/temporary-navigation",
+        "command-registry"
+      ],
+      "evidenceIds": [
+        "MCG-E034"
+      ],
+      "decisionEvidenceId": "MCG-E035"
+    },
+    {
+      "id": "MCG-GOAL-04",
+      "featureId": "FSC-0388",
+      "name": "打开新的应用窗口",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:b87ccfdd2735402215e6556a",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3405043,
+            "endExclusive": 3405151
+          },
+          "spanHash": "531f99d44a52ad3a4e18ebc6c8b39624f5ebebec3da3aa9dd20254eecf1947e0",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/39"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/6"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:b87ccfdd2735402215e6556a"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-command:new-window",
+          "operationType": "menu-user-goal",
+          "trigger": "New window command"
+        }
+      ],
+      "behavior": [
+        "Included only when desktopFeatureAvailability.multiWindow; click awaits injected createFreshWindow(xZe), with xZe=/.",
+        "If returned window exists, restore it when minimized, then show and focus."
+      ],
+      "conditions": [
+        "N(newWindow) access/keymap metadata applies; effective multiWindow capability and factory identity remain external."
+      ],
+      "failureAndCancellation": [
+        "Absent returned window yields no restore/show/focus; factory rejection has no local catch.",
+        "No assumption that opening a window starts a thread or model task."
+      ],
+      "knownGaps": [
+        "Actual fresh window factory/bootstrap/partition/profile and cross-window state ownership."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MCG-SOURCE-022",
+          "name": "xZe",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401916,
+            "endExclusive": 3401923
+          },
+          "spanHash": "c5de7572313e65335ceab12390eb0ce91b0be6bc7414692b358debe66100acdb",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MCG-SOURCE-022-xZe.txt"
+        }
+      ],
+      "deduplication": [
+        "Separate from FSC-0375 reload and FSC-0377 fullscreen; no full equivalent among 384 current goals."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "No complete mode/shared-consumer closure; command labels and chatgpt identifiers are insufficient for whole-goal exclusion.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0388:MCG:1",
+          "featureId": "FSC-0388",
+          "operationId": "operation:menu-command:new-window",
+          "kind": "availability",
+          "preconditions": "vary multiWindow and metadata",
+          "trigger": "build menu",
+          "expectedEffect": "include only eligible schema",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0388:MCG:2",
+          "featureId": "FSC-0388",
+          "operationId": "operation:menu-command:new-window",
+          "kind": "success",
+          "preconditions": "owned factory returns minimized or normal window",
+          "trigger": "invoke New window",
+          "expectedEffect": "factory receives /; restore if needed then show/focus",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0388:MCG:3",
+          "featureId": "FSC-0388",
+          "operationId": "operation:menu-command:new-window",
+          "kind": "failure",
+          "preconditions": "factory absent result or rejection",
+          "trigger": "invoke once",
+          "expectedEffect": "no invented window; preserve delegated failure boundary",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/windows"
+      ],
+      "evidenceIds": [
+        "MCG-E036"
+      ],
+      "decisionEvidenceId": "MCG-E037"
+    },
+    {
+      "id": "MCG-GOAL-05",
+      "featureId": "FSC-0389",
+      "name": "关闭当前焦点目标或应用窗口",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:9cdeeeb737b17fb966c52bab",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3405811,
+            "endExclusive": 3405885
+          },
+          "spanHash": "1a51a54393ac651c4600c37a464034bc9d6a0ac43dc22b72d9bc84cdccab7cd3",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/40"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/7"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:b078882fd10d493c4967201a",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3405910,
+            "endExclusive": 3406023
+          },
+          "spanHash": "d80afaf9e15a1376efc708936b1ec913accb8a5f0b9af4dddfce375b2048e68c",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/41"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/8"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:9cdeeeb737b17fb966c52bab",
+        "native-menu-schema:b078882fd10d493c4967201a"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-command:close-focused-target",
+          "operationType": "menu-user-goal",
+          "trigger": "Close menu, primary or hidden accelerator"
+        }
+      ],
+      "behavior": [
+        "Both schemas delegate to the same CZe close helper with accelerator and triggeredByAccelerator boolean.",
+        "If accelerator matches closeTab, first try focused shell panel via He/FR, then browserHostManager.closeFocusedVisibleBrowserTab, then FR fallback; successful branches return.",
+        "FR may return close-active-app-shell-tab for closable main/bottom/right panel. RR delegates selected panel derivation to IR when optional overrides are absent.",
+        "Fallback rereads focused window and requests requestCloseWindow when valid. y1e forwards to windowCloseConfirmation.requestClose.",
+        "Selected uYe.requestClose records keyboardRequests during win.close() and clears it in finally. Native close events and any confirmation hooks remain delegated. The independently selected n_e.requestClose belongs to another owner and is not joined to this chain."
+      ],
+      "conditions": [
+        "closeTab match depends on configured platform accelerators; window destruction/focus changes and panel/browser state affect precedence."
+      ],
+      "failureAndCancellation": [
+        "No valid final focused window yields no native close request; panel/browser success prevents window fallback.",
+        "win.close() is not proof of closed/destroyed window; cancellation/preventDefault and confirmation handling need owner/runtime evidence."
+      ],
+      "knownGaps": [
+        "IR effective panel choice, injected browser manager and complete close confirmation hooks; actual panel/browser/window cancellation and cleanup."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MCG-SOURCE-019",
+          "name": "FR",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1449408,
+            "endExclusive": 1449804
+          },
+          "spanHash": "c1a5c96d51f68b4dc2731225e4be9d1120d0e0705c7f8a7b7e69025544136566",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-019-FR.txt"
+        },
+        {
+          "id": "MCG-SOURCE-020",
+          "name": "RR",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1450245,
+            "endExclusive": 1450356
+          },
+          "spanHash": "31e2cac2c2432b1f3291f250fb3198dd7068fc5ae1f16cb5839288ffc78abe33",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-020-RR.txt"
+        },
+        {
+          "id": "MCG-SOURCE-027",
+          "name": "y1e-requestCloseWindow",
+          "role": "selected class method",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3726552,
+            "endExclusive": 3726623
+          },
+          "spanHash": "bcaeb90a9bb2b42f4b6e36262b744da17f66422be905a2d2eabcaf0da63ede18",
+          "nodeType": "ClassMethod",
+          "savedPath": "source/MCG-SOURCE-027-y1e-requestCloseWindow.txt",
+          "ownerClass": "y1e"
+        },
+        {
+          "id": "MCG-SOURCE-026",
+          "name": "uYe-requestClose",
+          "role": "selected class method",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3240737,
+            "endExclusive": 3240864
+          },
+          "spanHash": "7df2d182e44002b0fb62f722a9277d8b95688a5754b5af3a87f4b69f98680f45",
+          "nodeType": "ClassMethod",
+          "savedPath": "source/MCG-SOURCE-026-uYe-requestClose.txt",
+          "ownerClass": "uYe"
+        }
+      ],
+      "deduplication": [
+        "Two schemas are one close operation with a hidden accelerator alias.",
+        "FSC-0003 configures close-confirmation preference; it is not the close action itself. The goal includes focused target precedence instead of claiming every invocation closes a window."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "No complete mode/shared-consumer closure; command labels and chatgpt identifiers are insufficient for whole-goal exclusion.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0389:MCG:1",
+          "featureId": "FSC-0389",
+          "operationId": "operation:menu-command:close-focused-target",
+          "kind": "panel",
+          "preconditions": "matching accelerator and closable focused shell target",
+          "trigger": "invoke Close",
+          "expectedEffect": "send close-active-app-shell-tab before browser/window fallback",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0389:MCG:2",
+          "featureId": "FSC-0389",
+          "operationId": "operation:menu-command:close-focused-target",
+          "kind": "browser",
+          "preconditions": "matching accelerator, no shell target and browser handler accepts",
+          "trigger": "invoke Close",
+          "expectedEffect": "close browser tab and return",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0389:MCG:3",
+          "featureId": "FSC-0389",
+          "operationId": "operation:menu-command:close-focused-target",
+          "kind": "window",
+          "preconditions": "no earlier branch succeeds; valid focused window",
+          "trigger": "invoke primary or alias",
+          "expectedEffect": "one requestCloseWindow with keyboard provenance; preserve close-event cancellation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0389:MCG:4",
+          "featureId": "FSC-0389",
+          "operationId": "operation:menu-command:close-focused-target",
+          "kind": "cleanup-or-absent",
+          "preconditions": "native close throws or focused window absent",
+          "trigger": "invoke owned synthetic close boundary",
+          "expectedEffect": "clear keyboardRequests in finally; absent window yields no close",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "panels",
+        "browser-host",
+        "runtime-adapter/window-close"
+      ],
+      "evidenceIds": [
+        "MCG-E038",
+        "MCG-E039"
+      ],
+      "decisionEvidenceId": "MCG-E040"
+    },
+    {
+      "id": "MCG-GOAL-06",
+      "featureId": "FSC-0105",
+      "name": "通过菜单添加或选择项目目录",
+      "newDefinition": false,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:85a8a01a5efb91fca4aca04c",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3406471,
+            "endExclusive": 3406596
+          },
+          "spanHash": "2c37c962c7438db4c0889ea55c75bea9af7679394111fff48fb9e74359e3d31e",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/43"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/10"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:85a8a01a5efb91fca4aca04c"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:settings-batch-04:OP-002",
+          "operationType": "settings-control-goal",
+          "trigger": "Use the corresponding source-defined control under its recorded host/route/eligibility conditions.",
+          "operationRef": {
+            "path": "settings-operation-batch-04.json",
+            "bytes": 54253,
+            "sha256": "0619c4a1b4913750db834d10d91647f5a6a012fa7c01c152b83eaab8313605e8",
+            "jsonPointer": "/operationContracts/1"
+          }
+        }
+      ],
+      "behavior": [
+        "CZe openFolder awaits M, gets the selected window message handler and awaits createOrSelectProject(webContents).",
+        "MMe.createOrSelectProject forwards to projectFolderPicker.createOrSelectProject; existing project-local-delegation-v1 qualifies constructor-created Mje.",
+        "Mje nonlocal host emits remote-workspace-root-requested (mode add, setActive true). Local host selects/validates root and delegates createOrSelectLocalProjects([root]).",
+        "Absent root/result emits workspace-root-option-add-canceled. Success emits new/existing project identity fields then navigate-to-route / with focusComposerNonce."
+      ],
+      "conditions": [
+        "N(openFolder) metadata and M window selection apply; injected handler and selected host determine actual delegation."
+      ],
+      "failureAndCancellation": [
+        "Missing window/handler produces no picker call. Local cancellation/result absence produces cancellation message.",
+        "Awaited picker/registration errors have no local catch in selected methods; source does not establish durable successful registration."
+      ],
+      "knownGaps": [
+        "Menu injection/delivery and actual provider instance; local/remote modal, native picker and registration/durability outcomes."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MCG-SOURCE-025",
+          "name": "MMe-createOrSelectProject",
+          "role": "selected class method",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2074664,
+            "endExclusive": 2074746
+          },
+          "spanHash": "9d04a0c1019030cf3bef4ff848c136fa24e9fca73ddf280ac1a28f8fd38b503a",
+          "nodeType": "ClassMethod",
+          "savedPath": "source/MCG-SOURCE-025-MMe-createOrSelectProject.txt",
+          "ownerClass": "MMe"
+        },
+        {
+          "id": "MCG-SOURCE-024",
+          "name": "Mje-createOrSelectProject",
+          "role": "selected class method",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2016344,
+            "endExclusive": 2017375
+          },
+          "spanHash": "6c8641f481dc3f90ffd266a53f59b77744f2176deedaaa3b08d1f4009feb21f6",
+          "nodeType": "ClassMethod",
+          "savedPath": "source/MCG-SOURCE-024-Mje-createOrSelectProject.txt",
+          "ownerClass": "Mje"
+        }
+      ],
+      "deduplication": [
+        "Associate existing FSC-0105 picker goal using matching MMe/Mje and project-local-delegation contract; add this alternate menu entry, not another finite goal or operation.",
+        "The full menu injection and environment message delivery are separately unresolved; source-level shared delegate does not prove runtime entry equivalence.",
+        "Do not merge with FSC-0374 whole newProject dispatch, which also branches to gji/L0r."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "No complete mode/shared-consumer closure; command labels and chatgpt identifiers are insufficient for whole-goal exclusion.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0105:MCG:1",
+          "featureId": "FSC-0105",
+          "operationId": "operation:settings-batch-04:OP-002",
+          "kind": "cross-entry",
+          "preconditions": "source-qualified MMe/Mje identity",
+          "trigger": "compare menu and existing environment Add project entry",
+          "expectedEffect": "associate same picker goal without adding a duplicate operation; preserve differing entry transport/guards",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0105:MCG:2",
+          "featureId": "FSC-0105",
+          "operationId": "operation:settings-batch-04:OP-002",
+          "kind": "cancel",
+          "preconditions": "owned local picker returns no root/result",
+          "trigger": "invoke Open folder",
+          "expectedEffect": "emit cancellation; do not claim project added",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0105:MCG:3",
+          "featureId": "FSC-0105",
+          "operationId": "operation:settings-batch-04:OP-002",
+          "kind": "host-and-success",
+          "preconditions": "local/remote host and controlled registration",
+          "trigger": "invoke Open folder",
+          "expectedEffect": "remote request or local new/existing identity plus home navigation; actual durability remains unverified",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "projects/folder-picker",
+        "projects/registration"
+      ],
+      "evidenceIds": [
+        "MCG-E041"
+      ],
+      "decisionEvidenceId": "MCG-E042"
+    },
+    {
+      "id": "MCG-GOAL-07",
+      "featureId": "FSC-0390",
+      "name": "确认并退出当前客户端登录",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:b42362e9cb806d6b147cea9a",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3406600,
+            "endExclusive": 3406710
+          },
+          "spanHash": "34f414cd740747f235b386ae3b40ca21db3424b92a66db59b6aacfe7433ee711",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/44"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/11"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:b42362e9cb806d6b147cea9a"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-command:log-out",
+          "operationType": "menu-user-goal",
+          "trigger": "Log out menu or registered command"
+        }
+      ],
+      "behavior": [
+        "CZe logOut awaits M then sends run-command logOut when window exists.",
+        "qgc registration enabled when authMethod=amazonBedrock or requiresAuth. Callback opens Vgc through bf with email/isChatGptAuth and onConfirm.",
+        "onConfirm awaits rp(scope,use-copilot-auth-if-available,false), then awaits selected auth provider logout(), then navigates /login.",
+        "Profile-dropdown analytics has its own auth/origin guard; the menu is not assumed to have that origin."
+      ],
+      "conditions": [
+        "Menu metadata/window state and renderer auth enabled predicate apply independently; actual provider/mount/account values unknown."
+      ],
+      "failureAndCancellation": [
+        "Dialog cancellation delegates to Vgc and must not be claimed as logout.",
+        "Preference-write rejection prevents the awaited logout; logout rejection prevents following /login navigation; upstream error/UI handling remains delegated."
+      ],
+      "knownGaps": [
+        "Vgc cancellation/confirmation UI, effective auth provider/logout service/storage invalidation and actual route handling."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MCG-SOURCE-011",
+          "name": "qgc",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9846812,
+            "endExclusive": 9847446
+          },
+          "spanHash": "ef3f454d481cec80ef94b12aea8cd2d98be2f63a4e04b5981e76cd4d85dfd995",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-011-qgc.txt"
+        },
+        {
+          "id": "MCG-SOURCE-012",
+          "name": "Pw",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-012-Pw.txt"
+        }
+      ],
+      "deduplication": [
+        "Different from FSC-0153 remote connection logout and FSC-0316..0318 management of other/all sessions. No whole equivalent current goal."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "No complete mode/shared-consumer closure; command labels and chatgpt identifiers are insufficient for whole-goal exclusion.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0390:MCG:1",
+          "featureId": "FSC-0390",
+          "operationId": "operation:menu-command:log-out",
+          "kind": "confirm",
+          "preconditions": "enabled owned auth provider and dialog",
+          "trigger": "confirm logout",
+          "expectedEffect": "await preference false then logout then /login in order",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0390:MCG:2",
+          "featureId": "FSC-0390",
+          "operationId": "operation:menu-command:log-out",
+          "kind": "cancel",
+          "preconditions": "dialog opened",
+          "trigger": "dismiss/cancel",
+          "expectedEffect": "verify no onConfirm side effects; delegated dialog behavior unobserved",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        },
+        {
+          "scenarioId": "FSC-0390:MCG:3",
+          "featureId": "FSC-0390",
+          "operationId": "operation:menu-command:log-out",
+          "kind": "failure",
+          "preconditions": "preference or logout rejects in controlled substitute",
+          "trigger": "confirm once",
+          "expectedEffect": "preserve awaited failure ordering; no automatic successful login-route claim",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; actual UI/native/service/storage result unobserved."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MCG-M02"
+      ],
+      "consumerModules": [
+        "auth/confirmation",
+        "auth/provider",
+        "preferences",
+        "routing"
+      ],
+      "evidenceIds": [
+        "MCG-E043"
+      ],
+      "decisionEvidenceId": "MCG-E044"
+    }
+  ],
+  "additionalMaintenanceProposals": [
+    {
+      "id": "MCG-M01",
+      "responsibility": "任务草稿与临时导航的命令适配；保留上下文、优先级和模式分支",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MCG-SOURCE-001",
+          "name": "Ezt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+          "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+          "byteRange": {
+            "start": 2366380,
+            "endExclusive": 2373356
+          },
+          "spanHash": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-001-Ezt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-005",
+          "name": "les",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 8008662,
+            "endExclusive": 8010435
+          },
+          "spanHash": "d16034cfc9e1efa76352eb9d2552ffe26ad03bd3e46e3ac6d971eb1932df4227",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-005-les.txt"
+        },
+        {
+          "id": "MCG-SOURCE-006",
+          "name": "Dcc",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9666657,
+            "endExclusive": 9668635
+          },
+          "spanHash": "5fc718702f1c3c92b56585fa137e92005fbc7d5382717c92de12e9c0ebd2066f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-006-Dcc.txt"
+        },
+        {
+          "id": "MCG-SOURCE-007",
+          "name": "CH",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4012374,
+            "endExclusive": 4012558
+          },
+          "spanHash": "e23ffb6cef218f0f401e7ea3cee4b7f69eb4532b8303b8421fb5edaf7b654232",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-007-CH.txt"
+        },
+        {
+          "id": "MCG-SOURCE-008",
+          "name": "wH",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4012680,
+            "endExclusive": 4013878
+          },
+          "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-008-wH.txt"
+        },
+        {
+          "id": "MCG-SOURCE-009",
+          "name": "Ati",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4062953,
+            "endExclusive": 4063388
+          },
+          "spanHash": "618f046ec846ba758faea4c9d0f78ff70aac69cd00b717f39da34a6075170520",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-009-Ati.txt"
+        },
+        {
+          "id": "MCG-SOURCE-010",
+          "name": "U7r",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4021517,
+            "endExclusive": 4022021
+          },
+          "spanHash": "6f6524bc3b253ba159b081be54ec9bf869adb9fb7705c3fb37fc7052c4e966ef",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-010-U7r.txt"
+        },
+        {
+          "id": "MCG-SOURCE-003",
+          "name": "rMi",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4641621,
+            "endExclusive": 4641888
+          },
+          "spanHash": "e64d9092925a116bc4da2f3747ad44355da2461482db6ca0110d1c72721ed75a",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-003-rMi.txt"
+        },
+        {
+          "id": "MCG-SOURCE-004",
+          "name": "Bji",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4629840,
+            "endExclusive": 4629951
+          },
+          "spanHash": "a0197ca3df75964e4353a5d5216a3b79d381fadd79ee3e9f52aebe462fabbeec",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-004-Bji.txt"
+        },
+        {
+          "id": "MCG-SOURCE-012",
+          "name": "Pw",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-012-Pw.txt"
+        },
+        {
+          "id": "MCG-SOURCE-013",
+          "name": "fJt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501954,
+            "endExclusive": 1502007
+          },
+          "spanHash": "e08db9b74130aabe12ad048418c2d4a35765da36c3c071309874a544b1982ede",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-013-fJt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-014",
+          "name": "pJt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1502007,
+            "endExclusive": 1502198
+          },
+          "spanHash": "85a46904a232b237743601bf7118f54c102021d9f3a3c6958fb22a808b03eaa5",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-014-pJt.txt"
+        },
+        {
+          "id": "MCG-SOURCE-015",
+          "name": "Pqt",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1497826,
+            "endExclusive": 1498075
+          },
+          "spanHash": "a32bb4c11f4e06717cde64b471bbd735635390a2aef4899397ee71527295b0c6",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-015-Pqt.txt"
+        }
+      ],
+      "imports": [
+        "command registry, route/scope/state providers",
+        "gm/QEe import adapters; exact definitions unresolved"
+      ],
+      "exports": [
+        "context-qualified newTask/temporaryChat registrations; candidate projectless message handler"
+      ],
+      "sharedState": [
+        "scope atoms, active project/host/thread, draft identity, preview state and command registry"
+      ],
+      "sideEffects": [
+        "register/cleanup callbacks; conditional selection/draft preparation/navigation or mode switch"
+      ],
+      "thirdPartyDependencies": [
+        "renderer hooks/JSX/state dependencies via existing dependency catalog; no vendored implementations"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/tasks/draft-command-adapter.tsx",
+      "assignment": "Inferred maintenance proposal; not recovered original files; pending SQ-03 unification.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MCG-E045"
+    },
+    {
+      "id": "MCG-M02",
+      "responsibility": "登出确认及账户适配器调用顺序",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MCG-SOURCE-011",
+          "name": "qgc",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9846812,
+            "endExclusive": 9847446
+          },
+          "spanHash": "ef3f454d481cec80ef94b12aea8cd2d98be2f63a4e04b5981e76cd4d85dfd995",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-011-qgc.txt"
+        },
+        {
+          "id": "MCG-SOURCE-012",
+          "name": "Pw",
+          "role": "selected Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MCG-SOURCE-012-Pw.txt"
+        }
+      ],
+      "imports": [
+        "auth state/provider, Vgc confirmation UI, preference and route adapters"
+      ],
+      "exports": [
+        "logOut registration and confirmation callback"
+      ],
+      "sharedState": [
+        "auth method, requiresAuth, email and preference state"
+      ],
+      "sideEffects": [
+        "open confirmation; await preference write/logout then navigate"
+      ],
+      "thirdPartyDependencies": [
+        "renderer hook/state dependencies imported; selected auth provider/backend external"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/auth/logout-command.tsx",
+      "assignment": "Inferred maintenance proposal; not recovered original files; pending SQ-03 unification.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MCG-E046"
+    }
+  ],
+  "reusedMaintenanceUnits": [
+    {
+      "id": "MENU-UNIT-application-menu",
+      "ref": {
+        "path": "native-menu-roles-v1.json",
+        "bytes": 866774,
+        "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+        "jsonPointer": "/maintenanceUnits/0"
+      }
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MCG-SOURCE-001",
+      "name": "Ezt",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2366380,
+        "endExclusive": 2373356
+      },
+      "spanHash": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-001-Ezt.txt",
+      "evidenceId": "MCG-E001"
+    },
+    {
+      "id": "MCG-SOURCE-002",
+      "name": "import-py",
+      "role": "complete ESM import declaration",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 44658,
+        "endExclusive": 68701
+      },
+      "spanHash": "2c1f7aa8e1842257941f82e1ea0b17dade71d3377ce193b47dfb475f36a8b633",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MCG-SOURCE-002-import-py.txt",
+      "evidenceId": "MCG-E002"
+    },
+    {
+      "id": "MCG-SOURCE-003",
+      "name": "rMi",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4641621,
+        "endExclusive": 4641888
+      },
+      "spanHash": "e64d9092925a116bc4da2f3747ad44355da2461482db6ca0110d1c72721ed75a",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-003-rMi.txt",
+      "evidenceId": "MCG-E003"
+    },
+    {
+      "id": "MCG-SOURCE-004",
+      "name": "Bji",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4629840,
+        "endExclusive": 4629951
+      },
+      "spanHash": "a0197ca3df75964e4353a5d5216a3b79d381fadd79ee3e9f52aebe462fabbeec",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-004-Bji.txt",
+      "evidenceId": "MCG-E004"
+    },
+    {
+      "id": "MCG-SOURCE-005",
+      "name": "les",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 8008662,
+        "endExclusive": 8010435
+      },
+      "spanHash": "d16034cfc9e1efa76352eb9d2552ffe26ad03bd3e46e3ac6d971eb1932df4227",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-005-les.txt",
+      "evidenceId": "MCG-E005"
+    },
+    {
+      "id": "MCG-SOURCE-006",
+      "name": "Dcc",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9666657,
+        "endExclusive": 9668635
+      },
+      "spanHash": "5fc718702f1c3c92b56585fa137e92005fbc7d5382717c92de12e9c0ebd2066f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-006-Dcc.txt",
+      "evidenceId": "MCG-E006"
+    },
+    {
+      "id": "MCG-SOURCE-007",
+      "name": "CH",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4012374,
+        "endExclusive": 4012558
+      },
+      "spanHash": "e23ffb6cef218f0f401e7ea3cee4b7f69eb4532b8303b8421fb5edaf7b654232",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-007-CH.txt",
+      "evidenceId": "MCG-E007"
+    },
+    {
+      "id": "MCG-SOURCE-008",
+      "name": "wH",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4012680,
+        "endExclusive": 4013878
+      },
+      "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-008-wH.txt",
+      "evidenceId": "MCG-E008"
+    },
+    {
+      "id": "MCG-SOURCE-009",
+      "name": "Ati",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4062953,
+        "endExclusive": 4063388
+      },
+      "spanHash": "618f046ec846ba758faea4c9d0f78ff70aac69cd00b717f39da34a6075170520",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-009-Ati.txt",
+      "evidenceId": "MCG-E009"
+    },
+    {
+      "id": "MCG-SOURCE-010",
+      "name": "U7r",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4021517,
+        "endExclusive": 4022021
+      },
+      "spanHash": "6f6524bc3b253ba159b081be54ec9bf869adb9fb7705c3fb37fc7052c4e966ef",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-010-U7r.txt",
+      "evidenceId": "MCG-E010"
+    },
+    {
+      "id": "MCG-SOURCE-011",
+      "name": "qgc",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9846812,
+        "endExclusive": 9847446
+      },
+      "spanHash": "ef3f454d481cec80ef94b12aea8cd2d98be2f63a4e04b5981e76cd4d85dfd995",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-011-qgc.txt",
+      "evidenceId": "MCG-E011"
+    },
+    {
+      "id": "MCG-SOURCE-012",
+      "name": "Pw",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1501107,
+        "endExclusive": 1501954
+      },
+      "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-012-Pw.txt",
+      "evidenceId": "MCG-E012"
+    },
+    {
+      "id": "MCG-SOURCE-013",
+      "name": "fJt",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1501954,
+        "endExclusive": 1502007
+      },
+      "spanHash": "e08db9b74130aabe12ad048418c2d4a35765da36c3c071309874a544b1982ede",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-013-fJt.txt",
+      "evidenceId": "MCG-E013"
+    },
+    {
+      "id": "MCG-SOURCE-014",
+      "name": "pJt",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1502007,
+        "endExclusive": 1502198
+      },
+      "spanHash": "85a46904a232b237743601bf7118f54c102021d9f3a3c6958fb22a808b03eaa5",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-014-pJt.txt",
+      "evidenceId": "MCG-E014"
+    },
+    {
+      "id": "MCG-SOURCE-015",
+      "name": "Pqt",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1497826,
+        "endExclusive": 1498075
+      },
+      "spanHash": "a32bb4c11f4e06717cde64b471bbd735635390a2aef4899397ee71527295b0c6",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-015-Pqt.txt",
+      "evidenceId": "MCG-E015"
+    },
+    {
+      "id": "MCG-SOURCE-016",
+      "name": "import-QEe",
+      "role": "complete ESM import declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 95660,
+        "endExclusive": 136889
+      },
+      "spanHash": "1be551b2878597d55352877c0f2caeeb354161f8b815eccd831da6daff82db62",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MCG-SOURCE-016-import-QEe.txt",
+      "evidenceId": "MCG-E016"
+    },
+    {
+      "id": "MCG-SOURCE-017",
+      "name": "export-IBn",
+      "role": "ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11351840,
+        "endExclusive": 11351849
+      },
+      "spanHash": "4a13d72f2e261f17dd5c104af934aa976372914b6eb6d545cb87cd81c3fbceeb",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MCG-SOURCE-017-export-IBn.txt",
+      "evidenceId": "MCG-E017"
+    },
+    {
+      "id": "MCG-SOURCE-018",
+      "name": "export-VXt",
+      "role": "ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11378158,
+        "endExclusive": 11378167
+      },
+      "spanHash": "9e4a9699ad92e8fb12a5c538130f577eead33d97652ac33a0d39e46a1fe3fe6f",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MCG-SOURCE-018-export-VXt.txt",
+      "evidenceId": "MCG-E018"
+    },
+    {
+      "id": "MCG-SOURCE-019",
+      "name": "FR",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1449408,
+        "endExclusive": 1449804
+      },
+      "spanHash": "c1a5c96d51f68b4dc2731225e4be9d1120d0e0705c7f8a7b7e69025544136566",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-019-FR.txt",
+      "evidenceId": "MCG-E019"
+    },
+    {
+      "id": "MCG-SOURCE-020",
+      "name": "RR",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1450245,
+        "endExclusive": 1450356
+      },
+      "spanHash": "31e2cac2c2432b1f3291f250fb3198dd7068fc5ae1f16cb5839288ffc78abe33",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MCG-SOURCE-020-RR.txt",
+      "evidenceId": "MCG-E020"
+    },
+    {
+      "id": "MCG-SOURCE-021",
+      "name": "SZe",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3401924,
+        "endExclusive": 3401956
+      },
+      "spanHash": "c9b393d2aa406acd1e5180e639ade271fa88ecb84a1375cab5085d3bdd75e972",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MCG-SOURCE-021-SZe.txt",
+      "evidenceId": "MCG-E021"
+    },
+    {
+      "id": "MCG-SOURCE-022",
+      "name": "xZe",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3401916,
+        "endExclusive": 3401923
+      },
+      "spanHash": "c5de7572313e65335ceab12390eb0ce91b0be6bc7414692b358debe66100acdb",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MCG-SOURCE-022-xZe.txt",
+      "evidenceId": "MCG-E022"
+    },
+    {
+      "id": "MCG-SOURCE-023",
+      "name": "n_e-requestClose",
+      "role": "selected class method",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1092191,
+        "endExclusive": 1092283
+      },
+      "spanHash": "f8c56ba984f1e9ce6b377fd4e963a3c7018cef99a77dcbb25cae5347ce599137",
+      "nodeType": "ClassMethod",
+      "savedPath": "source/MCG-SOURCE-023-n_e-requestClose.txt",
+      "ownerClass": "n_e",
+      "evidenceId": "MCG-E023"
+    },
+    {
+      "id": "MCG-SOURCE-024",
+      "name": "Mje-createOrSelectProject",
+      "role": "selected class method",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2016344,
+        "endExclusive": 2017375
+      },
+      "spanHash": "6c8641f481dc3f90ffd266a53f59b77744f2176deedaaa3b08d1f4009feb21f6",
+      "nodeType": "ClassMethod",
+      "savedPath": "source/MCG-SOURCE-024-Mje-createOrSelectProject.txt",
+      "ownerClass": "Mje",
+      "evidenceId": "MCG-E024"
+    },
+    {
+      "id": "MCG-SOURCE-025",
+      "name": "MMe-createOrSelectProject",
+      "role": "selected class method",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2074664,
+        "endExclusive": 2074746
+      },
+      "spanHash": "9d04a0c1019030cf3bef4ff848c136fa24e9fca73ddf280ac1a28f8fd38b503a",
+      "nodeType": "ClassMethod",
+      "savedPath": "source/MCG-SOURCE-025-MMe-createOrSelectProject.txt",
+      "ownerClass": "MMe",
+      "evidenceId": "MCG-E025"
+    },
+    {
+      "id": "MCG-SOURCE-026",
+      "name": "uYe-requestClose",
+      "role": "selected class method",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3240737,
+        "endExclusive": 3240864
+      },
+      "spanHash": "7df2d182e44002b0fb62f722a9277d8b95688a5754b5af3a87f4b69f98680f45",
+      "nodeType": "ClassMethod",
+      "savedPath": "source/MCG-SOURCE-026-uYe-requestClose.txt",
+      "ownerClass": "uYe",
+      "evidenceId": "MCG-E026"
+    },
+    {
+      "id": "MCG-SOURCE-027",
+      "name": "y1e-requestCloseWindow",
+      "role": "selected class method",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3726552,
+        "endExclusive": 3726623
+      },
+      "spanHash": "bcaeb90a9bb2b42f4b6e36262b744da17f66422be905a2d2eabcaf0da63ede18",
+      "nodeType": "ClassMethod",
+      "savedPath": "source/MCG-SOURCE-027-y1e-requestCloseWindow.txt",
+      "ownerClass": "y1e",
+      "evidenceId": "MCG-E027"
+    }
+  ],
+  "explicitEsmJoins": [
+    {
+      "local": "py",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MCG-SOURCE-002",
+      "exportUnit": "MCG-SOURCE-017",
+      "originalLocal": "Pw",
+      "definitionUnit": "MCG-SOURCE-012"
+    },
+    {
+      "local": "Qx",
+      "imported": "VXt",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MCG-SOURCE-002",
+      "exportUnit": "MCG-SOURCE-018",
+      "originalLocal": "wH",
+      "definitionUnit": "MCG-SOURCE-008"
+    },
+    {
+      "local": "QEe",
+      "imported": "_Mt",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MCG-SOURCE-016"
+    },
+    {
+      "local": "gm",
+      "imported": "pIt",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MCG-SOURCE-016"
+    }
+  ],
+  "menuAssemblySourceRanges": [
+    {
+      "name": "CZe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3401957,
+        "endExclusive": 3422782
+      },
+      "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+      "nodeType": "FunctionDeclaration",
+      "parseWrapper": "complete FunctionDeclaration"
+    },
+    {
+      "name": "PZe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3430079,
+        "endExclusive": 3432577
+      },
+      "spanHash": "5ea16fd586bca964d1ea451661ab33853e1569d14e7e50c546e4bb67749c23ba",
+      "nodeType": "FunctionDeclaration",
+      "parseWrapper": "complete FunctionDeclaration"
+    },
+    {
+      "name": "bZe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3399181,
+        "endExclusive": 3401894
+      },
+      "spanHash": "f8d4654923c524d75c294c62a22373a2581f6e1b404479f8d366576cff52925e",
+      "nodeType": "FunctionDeclaration",
+      "parseWrapper": "complete FunctionDeclaration"
+    }
+  ],
+  "inputPins": [
+    {
+      "path": "feature-scope-v28.json",
+      "bytes": 2112927,
+      "sha256": "8a7ea84bfb3a2290fb4fb9669f2f8d17dda6cebd5e3f665e509009df813fe3e5"
+    },
+    {
+      "path": "feature-scope-v25-scenarios.json",
+      "bytes": 1977391,
+      "sha256": "d693bae30e68f875a0e0a8b99469a81c3757978c1024a4c2fb00311bd47d9a8b"
+    },
+    {
+      "path": "restoration-coverage-v19.json",
+      "bytes": 1196805,
+      "sha256": "3103b5c737e874d112667584cc4c743a1c5e407fe038b0306e17b9bd800e0c88"
+    },
+    {
+      "path": "legacy-entry-dispositions-v6.json",
+      "bytes": 1409660,
+      "sha256": "5c42dfd6837879043f2fd3150c64b9169f617285d48a6d266ac8376e15925c55"
+    },
+    {
+      "path": "native-menu-roles-v1.json",
+      "bytes": 866774,
+      "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+    },
+    {
+      "path": "menu-command-contracts.json",
+      "bytes": 10630684,
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf"
+    },
+    {
+      "path": "command-registration-contracts.json",
+      "bytes": 292164,
+      "sha256": "6a59f0a2287e186396b70c2aa54a22a9b12a0fee578b730ee7247ba0900a7193"
+    },
+    {
+      "path": "command-consumer-contracts.json",
+      "bytes": 397516,
+      "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba"
+    },
+    {
+      "path": "project-local-delegation-v1.json",
+      "bytes": 22687,
+      "sha256": "ce2e0cdc6dc982ea665107c45da9fdc91453b6156f20510872971e7e35c35151"
+    },
+    {
+      "path": "chat-branch-decisions.json",
+      "bytes": 12041,
+      "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+    },
+    {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    }
+  ],
+  "sourceQuery": {
+    "path": "raw/menu-command-goals-v1/source-query.json",
+    "bytes": 20537,
+    "sha256": "f410281c31ef6c64ea55b9865e4668eea6dfd37578ca48ad6ca06533c1ee2a94"
+  },
+  "dependencyPolicy": {
+    "implementationCopiesGenerated": 0,
+    "catalog": {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    "runtime": "Owl/electron native interfaces and Node built-ins remain dependencies; no unqualified runtime replacement.",
+    "renderer": "Keep third-party hooks/state/router implementations as dependency imports; preserve first-party adapters. Selected alias/version closure not newly claimed."
+  },
+  "counts": {
+    "selectedMenuSchemas": 10,
+    "normalizedUserGoals": 7,
+    "newFiniteDefinitions": 6,
+    "reusedFiniteDefinitions": 1,
+    "hiddenAliasesFolded": 2,
+    "newUserOperations": 7,
+    "newScenarioSpecifications": 24,
+    "savedSourceSelections": 27,
+    "fullOriginalProgramsParsed": 3,
+    "explicitEsmJoinsClosed": 2,
+    "importBoundariesUnresolved": 2,
+    "additionalMaintenanceProposals": 2,
+    "existingUnifiedResponsibilityOwnersUnchanged": 37,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0,
+    "newProductScenarioPasses": 0
+  },
+  "completedBatch": "SQ-02-menu-commands-01",
+  "questionCompleted": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limits": [
+    "SQ-02 has further menu/command entries; this fixed batch alone is closed.",
+    "Shared handlers/providers and actual UI/native/auth/durable outcomes remain bounded delegates.",
+    "No new whole-feature or branch exclusion; prior CBX-01..03 retain their exact proven scope.",
+    "The unrelated n_e.requestClose source selection is explicitly not a receiver join.",
+    "27 byte/syntax/source selections and 24 unexecuted scenarios are not product, build or runtime acceptance."
+  ]
+}

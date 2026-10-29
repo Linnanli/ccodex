@@ -1,0 +1,1163 @@
+{
+  "schemaVersion": "1.0",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T01:13:13.950743+00:00",
+  "scope": "Only the three selected finite parameterized command paths; static analysis.",
+  "inputPins": [
+    {
+      "path": "command-registry-destinations-v1.json",
+      "bytes": 957345,
+      "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd"
+    },
+    {
+      "path": "command-consumer-contracts.json",
+      "bytes": 397516,
+      "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba"
+    },
+    {
+      "path": "command-registration-contracts.json",
+      "bytes": 292164,
+      "sha256": "6a59f0a2287e186396b70c2aa54a22a9b12a0fee578b730ee7247ba0900a7193"
+    },
+    {
+      "path": "feature-scope-v36.json",
+      "bytes": 2407891,
+      "sha256": "c9dc65ccb0e389029ffab603494095861e4a74a01a0addc3da316d4f9224d1d9"
+    },
+    {
+      "path": "legacy-entry-dispositions-v15.json",
+      "bytes": 1522556,
+      "sha256": "72a5544cba88e2d6680c294302f781c7c37139c81b23c300f9ee441346f17f11"
+    },
+    {
+      "path": "retained-entry-backlog-v2.json",
+      "bytes": 585865,
+      "sha256": "0098b27c217f271a2ab9ad7b6a0e7f76521a58a40ab687b29e97b754a8796e61"
+    }
+  ],
+  "counts": {
+    "finiteFamilies": 3,
+    "selectedMetadataDeclarations": 21,
+    "dynamicSitesLinked": 3,
+    "originalDirectCallSites": 105,
+    "originalDistinctLiteralIds": 80,
+    "originalDynamicSites": 7,
+    "newDirectCallSites": 0,
+    "remainingDynamicSitesOutsideBatch": 4,
+    "newFeatureDefinitions": 0,
+    "currentFeatureDefinitions": 435,
+    "publishedUnassociatedSourceRecords": 825,
+    "currentCommandGoalIntegrationGaps": 131,
+    "selectedSourceConsumerChainsLocated": 21,
+    "otherCommandRecordsOutsideBatch": 110,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newProductPasses": 0,
+    "newClientImplementation": 0,
+    "evidenceRecords": 17
+  },
+  "families": [
+    {
+      "familyId": "PCP-TABS",
+      "commandIds": [
+        "focusTab1",
+        "focusTab2",
+        "focusTab3",
+        "focusTab4",
+        "focusTab5",
+        "focusTab6",
+        "focusTab7",
+        "focusTab8",
+        "focusTab9"
+      ],
+      "owner": "Lc",
+      "callback": "CPt/Hji via imported _n; optional dc notice",
+      "producerBindings": [
+        {
+          "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+          "bytes": 4894282,
+          "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+          "jsonPointer": "/selectedBindings/0"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+          "bytes": 4894282,
+          "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+          "jsonPointer": "/selectedBindings/2"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/producer/source-contracts.json",
+          "bytes": 4875219,
+          "sha256": "d19891aff376da00d30e038c40377c9d6655a7893b171cfdc77439560f16a387",
+          "jsonPointer": "/selectedBindings/0"
+        }
+      ],
+      "parameterBindings": [
+        {
+          "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+          "bytes": 27864,
+          "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+          "jsonPointer": "/selectedBindings/0"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+          "bytes": 27864,
+          "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+          "jsonPointer": "/selectedBindings/1"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+          "bytes": 27864,
+          "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+          "jsonPointer": "/selectedBindings/2"
+        }
+      ],
+      "finiteOrdering": "Filter merged bP by webview and /^focusTab[1-9]$/, preserving producer order; Ti.map passes the zero-based position, not a number parsed from the ID.",
+      "sourceEffects": [
+        "jc maps Ti into Lc(commandId, index, mainTabPanelId); Lc registers Ln(commandId, callback).",
+        "Hji chooses the eligible tab list from split/layout state; a numeric index reverses in RTL. An absent target returns false.",
+        "Hji calls VW(store,target), optionally schedules focus with requestAnimationFrame, and returns true. VW/state providers and actual DOM outcomes remain delegated.",
+        "Lc calls dc only after Hji returns true. dc is a one-time shortcut migration notice with its own trigger, preference and custom-binding guards; the notice is not the tab-switch operation."
+      ],
+      "deduplication": {
+        "decision": "distinct-source-goal-candidate; no feature ID allocated",
+        "comparedFeatureIds": [
+          "FSC-0070",
+          "FSC-0394",
+          "FSC-0411"
+        ],
+        "reason": "Workspace tab selection by ordinal is distinct from editing the shortcut preference, selecting a sidebar thread by ordinal, and adjacent-thread navigation."
+      },
+      "remaining": [
+        "Mount eligibility and full Codex/Chat mode closure.",
+        "Actual VW receiver/state and focus outcomes, multiple-window behavior and restoration."
+      ],
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "mode": "unknown",
+      "runtimeStatus": "not-observed",
+      "sourceDecision": "finite-producer-to-parameter-registration-chain-located"
+    },
+    {
+      "familyId": "PCP-ENV",
+      "commandIds": [
+        "environmentAction1",
+        "environmentAction2",
+        "environmentAction3",
+        "environmentAction4",
+        "environmentAction5",
+        "environmentAction6",
+        "environmentAction7",
+        "environmentAction8",
+        "environmentAction9"
+      ],
+      "owner": "YS",
+      "callback": "onRunAction supplied by HS through JS",
+      "producerBindings": [
+        {
+          "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+          "bytes": 4894282,
+          "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+          "jsonPointer": "/selectedBindings/0"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+          "bytes": 4894282,
+          "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+          "jsonPointer": "/selectedBindings/2"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/producer/source-contracts.json",
+          "bytes": 4875219,
+          "sha256": "d19891aff376da00d30e038c40377c9d6655a7893b171cfdc77439560f16a387",
+          "jsonPointer": "/selectedBindings/1"
+        }
+      ],
+      "parameterBindings": [
+        {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedBindings/0"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedBindings/3"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedBindings/1"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedBindings/2"
+        }
+      ],
+      "finiteOrdering": "HS filters environment.actions with tC(action,platform), maps US, then passes the original filtered order to JS. Display ranking ce is separate. JS maps the finite bf array and passes actionItem=actions[index].",
+      "sourceEffects": [
+        "The selected HS branch mounts JS only with conversation, environment and config, and when registerCommands is truthy.",
+        "YS enables its registered command only when actionItem and conversationId exist; its callback invokes the supplied onRunAction(actionItem).",
+        "HS resolves cwd with ZS; missing cwd or conversation logs and returns. It updates the selected action preference, derives the terminal ID, shows the terminal, then delegates et.runAction with command/cwd/title.",
+        "YS also supplies a workspace command-menu item labelled codex. Its selected callback runs onRunAction before closing that menu. This label does not establish whole-feature mode ownership.",
+        "US can create runId=environmentAction10 and later for extra action items, with commandId=null. Nine command IDs do not cap the number of configured actions."
+      ],
+      "deduplication": {
+        "decision": "distinct-source-goal-candidate; no feature ID allocated",
+        "comparedFeatureIds": [
+          "FSC-0104",
+          "FSC-0105",
+          "FSC-0106",
+          "FSC-0107"
+        ],
+        "reason": "Running an action for the current thread is distinct from choosing, editing or saving the environment configuration."
+      },
+      "remaining": [
+        "tC platform eligibility and ZS resolution are delegated boundaries.",
+        "Actual et.runAction backend, execution outcome, failure/cancel/restart and durable preference effects.",
+        "Full mount and Codex/Chat mode closure."
+      ],
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "mode": "unknown",
+      "runtimeStatus": "not-observed",
+      "sourceDecision": "finite-producer-to-parameter-registration-chain-located"
+    },
+    {
+      "familyId": "PCP-LISTS",
+      "commandIds": [
+        "page.formatNumberedList",
+        "page.formatBulletedList",
+        "page.formatChecklist"
+      ],
+      "owner": "Wr",
+      "callback": "zr(editorView, command.style)",
+      "producerBindings": [
+        {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedBindings/0"
+        }
+      ],
+      "parameterBindings": [
+        {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedBindings/1"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedBindings/2"
+        },
+        {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedBindings/3"
+        }
+      ],
+      "finiteOrdering": "Local Vr explicitly pairs the three IDs with orderedList, unorderedList and checklist. Ur maps each command record into Wr.",
+      "sourceEffects": [
+        "Jr supplies canWrite only when access.can_write===true, together with editorView and isPageActive.",
+        "Wr registers _t(command.id, callback, options): enabled=canWrite; isActive rejects destroyed, noneditable or composing editors and delegates the active-page predicate.",
+        "keyboardHandler returns false when editorView lacks focus and undefined when focused, allowing the existing Pw fallback behavior.",
+        "zr returns without selection on destroyed editors; otherwise it delegates Rr(editorView,ar(editorView)).select(style,\"toggle\",\"preserve\")."
+      ],
+      "deduplication": {
+        "decision": "one-source-goal-candidate-with-three-style-operations; no feature ID allocated",
+        "comparedFeatureIds": [],
+        "reason": "No existing finite goal names this editor list-style toggle. File open/search/review and page navigation do not establish the same operation; no merge is inferred."
+      },
+      "remaining": [
+        "Page mount, access and full Codex/Chat mode closure; unknown remains retained.",
+        "Rr/ar editor implementation, transaction/history/persistence effects and actual focus behavior."
+      ],
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/7/directCalls/0"
+      },
+      "mode": "unknown",
+      "runtimeStatus": "not-observed",
+      "sourceDecision": "finite-producer-to-parameter-registration-chain-located"
+    }
+  ],
+  "commandLinks": [
+    {
+      "commandId": "focusTab1",
+      "entryId": "command-metadata-instance:595a2771b08c861746289b4c",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/85"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab2",
+      "entryId": "command-metadata-instance:cd4c1a70bf881fdfde605947",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/86"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab3",
+      "entryId": "command-metadata-instance:00ea071a006838f7ac910e8d",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/87"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab4",
+      "entryId": "command-metadata-instance:a0cdb922182c8261b1e7721c",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/88"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab5",
+      "entryId": "command-metadata-instance:9df1059524047bfc5c4ab6e9",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/89"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab6",
+      "entryId": "command-metadata-instance:a3a11e493753c2256c493bf7",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/90"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab7",
+      "entryId": "command-metadata-instance:23ea0a08efde06770330c052",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/91"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab8",
+      "entryId": "command-metadata-instance:aca8b71be4b0d3fe306c7fa0",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/92"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "focusTab9",
+      "entryId": "command-metadata-instance:2cde62eba052a14a36fba003",
+      "familyId": "PCP-TABS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/93"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/10/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction1",
+      "entryId": "command-metadata-instance:66424f6f247e51bd2a0ab387",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/134"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction2",
+      "entryId": "command-metadata-instance:186abefa78528d3a064ff6e9",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/135"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction3",
+      "entryId": "command-metadata-instance:8ea3f72b31879865e60506e6",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/136"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction4",
+      "entryId": "command-metadata-instance:8fc83fcf762841c5acfdf5a6",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/137"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction5",
+      "entryId": "command-metadata-instance:6a396b010c9d3d7d3be356bc",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/138"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction6",
+      "entryId": "command-metadata-instance:15317ceb394c6b46abb204dd",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/139"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction7",
+      "entryId": "command-metadata-instance:f79854615709b16bc1942955",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/140"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction8",
+      "entryId": "command-metadata-instance:ff35dc0f6fd6c403808756d9",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/141"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "environmentAction9",
+      "entryId": "command-metadata-instance:9a6806922dc22c8b120c0dcf",
+      "familyId": "PCP-ENV",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/142"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/16/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "page.formatNumberedList",
+      "entryId": "command-metadata-instance:1f0e7e220327439912ee74c5",
+      "familyId": "PCP-LISTS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/68"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/7/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "page.formatBulletedList",
+      "entryId": "command-metadata-instance:ecf98b5e7957a07eeae7a543",
+      "familyId": "PCP-LISTS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/69"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/7/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    },
+    {
+      "commandId": "page.formatChecklist",
+      "entryId": "command-metadata-instance:89db8c949b0822c8c1f468d8",
+      "familyId": "PCP-LISTS",
+      "previousRecordRef": {
+        "path": "command-registry-destinations-v1.json",
+        "bytes": 957345,
+        "sha256": "f48baa3a22d9b6c5632a60b108805c0d4330869daf10a9047b4fa0a20750d7bd",
+        "jsonPointer": "/records/70"
+      },
+      "registrationRef": {
+        "path": "command-consumer-contracts.json",
+        "bytes": 397516,
+        "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba",
+        "jsonPointer": "/consumers/7/directCalls/0"
+      },
+      "sourceChainLocated": true,
+      "featureIds": [],
+      "goalLedgerIntegrationPending": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PCP-E0001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "xP and R6n are filtered command-ID arrays derived from the initialized bP registry, with anchored finite ID patterns and stable filter/map ordering.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 2749730,
+          "endExclusive": 2750679
+        },
+        "spanHash": "440b824421dadec2b65465ea54a611c56cb8977441841eefac6ea481252c97ff",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/producer/source-contracts.json",
+          "bytes": 4875219,
+          "sha256": "d19891aff376da00d30e038c40377c9d6655a7893b171cfdc77439560f16a387",
+          "jsonPointer": "/selectedSourceUnits/2"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "jc supplies commandId, ordinal index and mainTabPanelId from Ti.map to Lc.",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "locator": {
+        "byteRange": {
+          "start": 60451,
+          "endExclusive": 68695
+        },
+        "spanHash": "b653e83390a678498b6b70589204d95a1a296a91ee354289226bacbe15540924",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+          "bytes": 27864,
+          "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+          "jsonPointer": "/selectedSourceUnits/2"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Lc registers the supplied command ID; its callback calls imported CPt/Hji before the optional shortcut notice.",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "locator": {
+        "byteRange": {
+          "start": 69238,
+          "endExclusive": 69453
+        },
+        "spanHash": "288e00e5ca0825d797d2b6a607f47d7a42308fbcab62ae7363e0dc3639f2c6cc",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+          "bytes": 27864,
+          "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+          "jsonPointer": "/selectedSourceUnits/3"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "CPt/Hji computes the candidate tab list and RTL-aware index, returns false on missing targets, delegates selection and may schedule focus.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4630006,
+          "endExclusive": 4631113
+        },
+        "spanHash": "b3e7dbcf9aa7a9fb5a470711087e706ff4a710f77eae33d273ff80cca872e6ab",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/producer/source-contracts.json",
+          "bytes": 4875219,
+          "sha256": "d19891aff376da00d30e038c40377c9d6655a7893b171cfdc77439560f16a387",
+          "jsonPointer": "/selectedSourceUnits/15"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "dc applies its own trigger, preference, override and one-time notice guards after successful tab selection.",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "locator": {
+        "byteRange": {
+          "start": 48825,
+          "endExclusive": 50021
+        },
+        "spanHash": "e6c1926a283b538536ab95203fd0ed5ed9fa634c3c5e70312b1b4c343a8cc693",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+          "bytes": 27864,
+          "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+          "jsonPointer": "/selectedSourceUnits/11"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "HS filters actions, preserves that order for command slots, guards JS mounting, and supplies the callback through JS.",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "locator": {
+        "byteRange": {
+          "start": 78759,
+          "endExclusive": 87867
+        },
+        "spanHash": "65435e3c44af84b621c590e17c9fa5666d1b5e1d73d9418783acbddebf1faaf3",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedSourceUnits/2"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "US preserves the supplied action and maps the ordinal into bf, with a fallback run ID beyond the finite shortcut set.",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "locator": {
+        "byteRange": {
+          "start": 87867,
+          "endExclusive": 87966
+        },
+        "spanHash": "6efc1184ecbb00db143d497418b4d4f292a5e78e88d69a440b507856082972bd",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedSourceUnits/3"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "JS maps bf IDs to YS with actionItem=actions[index], commandId, conversationId, index and onRunAction.",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "locator": {
+        "byteRange": {
+          "start": 91009,
+          "endExclusive": 91344
+        },
+        "spanHash": "b1092db0fedc922cebb5358796b24176136a8a554d36b38399192936257d3113",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedSourceUnits/5"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "YS enables only existing action/conversation slots and supplies both the dynamic registered callback and the workspace command-menu item.",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "locator": {
+        "byteRange": {
+          "start": 91344,
+          "endExclusive": 92656
+        },
+        "spanHash": "b602e0d059b82ab69b01341a1f26572d385dd88cdfa93b4f666cd48071eb10b4",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+          "bytes": 29238,
+          "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+          "jsonPointer": "/selectedSourceUnits/7"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Vr explicitly pairs three list command IDs and editor styles.",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "locator": {
+        "byteRange": {
+          "start": 22170,
+          "endExclusive": 22324
+        },
+        "spanHash": "afb4849d49f38755797b7d507a4881eabede214295edd729ac0f796ffb868acf",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedSourceUnits/1"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Ur maps the finite command records to Wr without replacing their style or ID.",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "locator": {
+        "byteRange": {
+          "start": 22331,
+          "endExclusive": 22645
+        },
+        "spanHash": "74474268e6de6cc766fe4bbed6601291d2037b04bf668984b0764ebfa855f652",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedSourceUnits/7"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Wr preserves write, active-editor and keyboard-focus options on the dynamic registration.",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "locator": {
+        "byteRange": {
+          "start": 22645,
+          "endExclusive": 23133
+        },
+        "spanHash": "86eb071f3d534419898f897e9f77483f9c8f1e39c92e6aa0a8f1534f67ce5bfa",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedSourceUnits/10"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0013",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "zr guards destroyed editors and delegates the style toggle with preserve selection semantics requested.",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "locator": {
+        "byteRange": {
+          "start": 21782,
+          "endExclusive": 21856
+        },
+        "spanHash": "a54ed5a2267e482b2c1d944bc0d3373bddddb128dedab0a4a677e54547983a0d",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedSourceUnits/13"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0014",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Jr passes strict access.can_write===true, editor view and active-page predicate into Ur.",
+      "sourcePath": "app.asar/webview/assets/companion-tab-ed5494c78760.js",
+      "sourceHash": "0e03ff44bfa7875f291d18872ebdf1a931cc8c22dc5d9d1421ef82344ad60b09",
+      "locator": {
+        "byteRange": {
+          "start": 23205,
+          "endExclusive": 30356
+        },
+        "spanHash": "fda8bbdd9a72d51df8579c3bb28a895ed518d5053db29db11d06d65558fab17c",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+          "bytes": 44845,
+          "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+          "jsonPointer": "/selectedSourceUnits/9"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0015",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "a6n contains the explicit ascending 1..9 focusTab generator, nine environmentAction slots and the three page.format descriptors. The page descriptor command-menu label alone is not whole-feature mode ownership.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 2704426,
+          "endExclusive": 2744298
+        },
+        "spanHash": "88ee05cd2e92e168b616d0ec15dd3837d6972ee42bc3ba4c8d7373086d8a0061",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+          "bytes": 4894282,
+          "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+          "jsonPointer": "/selectedSourceUnits/16"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0016",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "bP merges a6n as webview metadata and other registries under separate kinds before the anchored finite ID filters.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 2744415,
+          "endExclusive": 2744495
+        },
+        "spanHash": "0ed940a7cff09c6c0f1dde74664663fbc9fff556ba26ace0439820cd6b485c70",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+          "bytes": 4894282,
+          "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+          "jsonPointer": "/selectedSourceUnits/1"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    },
+    {
+      "id": "PCP-E0017",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "s6n maps descriptor records and supplies their registry kind.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 2744305,
+          "endExclusive": 2744356
+        },
+        "spanHash": "5fd3e072e9067a65e03c0571c83e92456f5c72d4370764b93e2a0bf0b15b42e1",
+        "contractRef": {
+          "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+          "bytes": 4894282,
+          "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+          "jsonPointer": "/selectedSourceUnits/11"
+        }
+      },
+      "method": "full-program AST scope extraction and source review; target code not executed",
+      "confidence": "high within the selected static source boundary",
+      "verificationStatus": "source-bytes-and-saved-contract-verified; runtime-unobserved"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "raw/parameterized-command-paths-v1/producer/source-contracts.json",
+      "bytes": 4875219,
+      "sha256": "d19891aff376da00d30e038c40377c9d6655a7893b171cfdc77439560f16a387",
+      "jsonPointer": ""
+    },
+    {
+      "path": "raw/parameterized-command-paths-v1/registry-producer/source-contracts.json",
+      "bytes": 4894282,
+      "sha256": "9b65ef8533846f8d4741d2e79243a59a5b0d26f571ab6986184a317d5308e504",
+      "jsonPointer": ""
+    },
+    {
+      "path": "raw/parameterized-command-paths-v1/chrome/source-contracts.json",
+      "bytes": 27864,
+      "sha256": "3afdedd737d109088d3b9a8027099acd1b1a4b4efadb8cffde24b65adb6ec617",
+      "jsonPointer": ""
+    },
+    {
+      "path": "raw/parameterized-command-paths-v1/environment/source-contracts.json",
+      "bytes": 29238,
+      "sha256": "283c069b02aef1dae9b300a594f8c122ea53cc32de8d8939244775533ea7e24f",
+      "jsonPointer": ""
+    },
+    {
+      "path": "raw/parameterized-command-paths-v1/format/source-contracts.json",
+      "bytes": 44845,
+      "sha256": "3fcf52537e452c14db70f1d5be98b7bbf7c9245e8526e31466c9627af7a14bb0",
+      "jsonPointer": ""
+    }
+  ],
+  "sourceSubstepCompleted": true,
+  "goalLedgerIntegrationCompleted": false,
+  "fullAnalysisCompleted": false,
+  "qualifications": [
+    "A parameterized call site may carry many IDs. These are not 21 new direct call sites or 21 new user features.",
+    "The registry metadata and all 968 legacy records remain unchanged. This source overlay does not yet allocate three proposed goals or reduce the published 825 unassociated records.",
+    "The original 131 command goal/behavior gaps remain qualified: 21 now have located source chains, while 110 are outside this batch.",
+    "No frozen target code was evaluated. AST/source assertions are not UI, native, product, build or mode-ownership acceptance.",
+    "Keep unknown page/editor mode ownership; do not infer a Chat-only exclusion from its page.* command names.",
+    "Reuse established registration/runtime/storage contracts. Missing runtime acceptance alone does not reopen their source investigation."
+  ],
+  "nextAction": "Review and integrate the three explicit user-goal candidates with existing scope and task ownership, retaining all external behavior and mode gaps; do not re-extract these source chains."
+}

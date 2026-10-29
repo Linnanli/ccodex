@@ -1,0 +1,23 @@
+id,name,precondition,expected,status
+RP-SPEC01,未解析根目录,gitRoot=null,Apply、Revert、Reapply 禁用；不会提交补丁,unexecuted; future product acceptance specification
+RP-SPEC02,首仓库选择,环境含多个 repos,只用 repos[0] 的 clone_url 查找；不自动遍历其他 repos,unexecuted; future product acceptance specification
+RP-SPEC03,匹配 origin,git-origins 存在多个匹配项,采用首个匹配项的 root,unexecuted; future product acceptance specification
+RP-SPEC04,origin 不匹配,选中的 local 项目有多个 rootPaths,回退首个 rootPath，并保留可能选错仓库的事实,unexecuted; future product acceptance specification
+RP-SPEC05,晚到目录查询,URL 改变或 effect 清理,旧结果不覆盖当前 lookupKey；不声称底层查询被取消,unexecuted; future product acceptance specification
+RP-SPEC06,Apply 参数,未应用且 root 已解析,提交 diff/cwd/source/revert=false，hostConfig 由 XKn 合并,unexecuted; future product acceptance specification
+RP-SPEC07,Revert 参数,已应用且 root 已解析,提交 revert=true；不宣称事务回滚,unexecuted; future product acceptance specification
+RP-SPEC08,Reapply 参数,已应用且 root 已解析,调用与 Apply 相同的 revert=false 路径,unexecuted; future product acceptance specification
+RP-SPEC09,pending 重入,mutation pending,控件禁用，Qi 的回调 guard 也不再次 mutate,unexecuted; future product acceptance specification
+RP-SPEC10,缺少 Git 仓库,两次 getWorktreeRepository 均无结果,返回 not-git-repo 和三组空路径，显示特定错误,unexecuted; future product acceptance specification
+RP-SPEC11,默认命令,页面未传 atomic/target/allowBinary,unstaged、非 atomic，命令加 --3way，Revert 另加 -R,unexecuted; future product acceptance specification
+RP-SPEC12,应用成功,status=success 且 revert=false,逐 turn 标记变 true；不自动创建新 turn,unexecuted; future product acceptance specification
+RP-SPEC13,撤销成功,status=success 且 revert=true,逐 turn 标记变 false,unexecuted; future product acceptance specification
+RP-SPEC14,部分成功,code=1 且非 atomic,保留原已应用标记，警告并打开结果；不重试或回滚,unexecuted; future product acceptance specification
+RP-SPEC15,结构化失败,status=error,错误 toast 和结果视图；标记不变,unexecuted; future product acceptance specification
+RP-SPEC16,请求 rejection,worker error 包、发送失败或执行异常,仅 error toast，不凭空生成结果详情；标记不变,unexecuted; future product acceptance specification
+RP-SPEC17,关闭结果,已有 result 对话框,只关闭 open，保留 result，不执行撤销或取消,unexecuted; future product acceptance specification
+RP-SPEC18,写临时文件失败,writeFile 在 try 之前失败,允许 rejection 和遗留临时目录，不能推断无副作用,unexecuted; future product acceptance specification
+RP-SPEC19,清理失败,补丁后 remove 或首项 cache invalidation 失败,可能已写入而没有正常结果；禁止根据超时自动重发,unexecuted; future product acceptance specification
+RP-SPEC20,路径结果解析,Git 文本含重复、冲突和 skipped 路径,排序去重，conflicted 优先，再 applied，再 skipped；不作为磁盘核验,unexecuted; future product acceptance specification
+RP-SPEC21,取消边界,窗口销毁发取消或底层 signal abort,可能不再返回 response，取消不保证回滚；本页没有主动取消动作,unexecuted; future product acceptance specification
+RP-SPEC22,环境提示,authMethod、workspace environments 或环境 label 不同,提示按原条件变化；不据 authMethod 删除整个产品功能,unexecuted; future product acceptance specification

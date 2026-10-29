@@ -1,0 +1,1133 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T22:54:56.979604+00:00",
+  "commit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+  "facts": [
+    {
+      "id": "BES-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "原定4地址取得两份版本/锁正文200和两份旧源码路径404。之后仅沿同一740e5af3…提交的目录和已确认ThreadFork调用定位真实文件。15次脚本HTTP请求含12个200、2个404、1个匿名Git tree API限流403；无凭据、redirect、截断、其他源码版本或目标执行。404只指旧路径，403只指访问限流。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-receipts.json",
+      "sourceHash": "3fb04f494e97b92f8bfe9fce65d3a7f59a903c0a754e27543e09de6f5ba2b209",
+      "locator": {
+        "jsonPointer": ""
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified"
+    },
+    {
+      "id": "BES-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "精确提交的Cargo workspace声明version=0.162.0-alpha.17.2、edition=2024、workspace license=Apache-2.0；app-server、app-server-protocol、core及protocol按workspace相对路径引用。workspace许可证不能代替所有第三方包的许可证调查。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+      "sourceHash": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab",
+      "locator": {
+        "byteRange": {
+          "start": 3407,
+          "endExclusive": 3722
+        },
+        "spanHash": "4e701d98ccf00c711c80033fe4be2ab240ec243e6e32478e8ddabb34a9f7796b"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-analysis.json",
+            "bytes": 9709,
+            "sha256": "b939c4bbe25e1490eee0f248793b15c9687d47dbc3a2140730e268ffa25fa32c"
+          },
+          "pointer": "/selectedWorkspaceDependencyPaths"
+        }
+      ]
+    },
+    {
+      "id": "BES-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Cargo.lock为格式4，共1473个package记录：1294个registry记录均有64位checksum、18个Git记录对应8个不同source、161个没有source字段；103个包名有多个记录。这些是候选Rust后台的锁记录，不能直接等同于客户端202条依赖或把所有无source记录判为第一方。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-analysis.json",
+      "sourceHash": "b939c4bbe25e1490eee0f248793b15c9687d47dbc3a2140730e268ffa25fa32c",
+      "locator": {
+        "jsonPointer": "/lockCounts"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+          "bytes": 407989,
+          "sha256": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65"
+        }
+      ]
+    },
+    {
+      "id": "BES-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定codex-app-server、app-server-protocol、cli、core、protocol五个锁记录均为0.0.0，与workspace的alpha.17.2版本不同。上一批commit patch仅显示Cargo.toml版本变更；本批没有运行Cargo，不能宣称原锁可直接用于--locked发布构建，也不擅自改写锁版本。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-analysis.json",
+      "sourceHash": "b939c4bbe25e1490eee0f248793b15c9687d47dbc3a2140730e268ffa25fa32c",
+      "locator": {
+        "jsonPointer": "/selectedLockPackages"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+          "bytes": 407989,
+          "sha256": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+          "bytes": 21066,
+          "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+        }
+      ]
+    },
+    {
+      "id": "BES-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "三处crates-io补丁crossterm、tokio-tungstenite、tungstenite均指向openai-oss-forks的精确Git rev，锁中的来源与修订相符；另有ssh来源tungstenite别名补丁。维护方案需把补丁作为外部依赖约束保存，不能仅按同名版本换普通上游。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+      "sourceHash": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab",
+      "locator": {
+        "byteRange": {
+          "start": 20309,
+          "endExclusive": 21066
+        },
+        "spanHash": "8e7875d34383683e99d7ba9f00bd15d7869759191f617320d0e713e292861630"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-analysis.json",
+            "bytes": 9709,
+            "sha256": "b939c4bbe25e1490eee0f248793b15c9687d47dbc3a2140730e268ffa25fa32c"
+          },
+          "pointer": "/patches"
+        }
+      ]
+    },
+    {
+      "id": "BES-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "该版本的v2是拆分目录，thread.rs及mod.rs可取得；线程请求入口为message_processor.rs，经request_processors导出的ThreadRequestProcessor到thread_processor.rs。已取得7份源码/清单（含版本和锁），另保留5份同提交目录页面。旧路径404不能推成接收实现缺失。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-receipts.json",
+      "sourceHash": "3fb04f494e97b92f8bfe9fce65d3a7f59a903c0a754e27543e09de6f5ba2b209",
+      "locator": {
+        "jsonPointer": ""
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/protocol-v2-module.response",
+          "bytes": 1577,
+          "sha256": "295bb0b5e8145382bca2b4b31ab209311085613f4094dad8e4fa23a938be6e53"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/request-processors-current.response",
+          "bytes": 35045,
+          "sha256": "3a3fd9d80b2ffc0e7c5d6ce595216f248dcceec2559e2e598d7e70584adbbf9e"
+        }
+      ]
+    },
+    {
+      "id": "BES-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "ThreadForkParams声明camelCase序列化，experimental_prediction_mode为带serde default及false省略属性的bool；完整21个Rust字段名与冻结experimental schema的21字段一致。公开0.162.0候选仅有20字段，差异恰为experimentalPredictionMode。这里只核对选定类型/字段声明，不声称宏生成解码或原生二进制行为已运行验证。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-types.response",
+      "sourceHash": "3130630890ce389a83065653f31ca1f052ee2606951f64b23fc1cc6ca622e44a",
+      "locator": {
+        "byteRange": {
+          "start": 22617,
+          "endExclusive": 27387
+        },
+        "spanHash": "ecbec72ea17fb625b48bbc868478fa1849ea4aba47b209b108f845ab69016114"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-analysis.json",
+            "bytes": 9709,
+            "sha256": "b939c4bbe25e1490eee0f248793b15c9687d47dbc3a2140730e268ffa25fa32c"
+          },
+          "pointer": "/schemas"
+        }
+      ]
+    },
+    {
+      "id": "BES-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "后台JSON入口调用ClientRequest::try_from；已初始化请求检查session初始化状态和experimental_reason/experimental_api_enabled。ThreadFork分派到ThreadRequestProcessor.thread_fork，再包装调用thread_fork_inner；具体TryFrom及ExperimentalApi生成实现没有在本批展开。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor-current.response",
+      "sourceHash": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed",
+      "locator": {
+        "byteRange": {
+          "start": 38708,
+          "endExclusive": 39326
+        },
+        "spanHash": "adf80cd0ca4abe39688b29baa3d56a79f38cebdabb3b129e58e6225edcb3328d"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-units.json",
+            "bytes": 9533,
+            "sha256": "f51fb63e5425b93321eeca276dc43bde8b595977b5731a9486846eb8d8d1e957"
+          },
+          "pointer": "/deserialize-entry"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-units.json",
+            "bytes": 9533,
+            "sha256": "f51fb63e5425b93321eeca276dc43bde8b595977b5731a9486846eb8d8d1e957"
+          },
+          "pointer": "/fork-dispatch"
+        },
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-units.json",
+            "bytes": 9533,
+            "sha256": "f51fb63e5425b93321eeca276dc43bde8b595977b5731a9486846eb8d8d1e957"
+          },
+          "pointer": "/fork-wrapper"
+        }
+      ]
+    },
+    {
+      "id": "BES-F09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "预测fork接收分支拒绝配置覆盖、ephemeral:false、path/lastTurnId/beforeTurnId，并在读取源线程后调用fork_options_from_parent；ThreadNotFound映射为requires a loaded parent。分支设置ephemeral并启用ReasoningEffortOverride。父线程有效工具/环境/设置实际继承与cache reuse仍属于被调用核心实现及行为边界。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+      "sourceHash": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417",
+      "locator": {
+        "byteRange": {
+          "start": 195354,
+          "endExclusive": 198961
+        },
+        "spanHash": "50ba00beca9b4bf96ee2ee0ca45ebb272bf3dec7ca0d7076e16f46b1601c283e"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified"
+    },
+    {
+      "id": "BES-F10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "完整fork handler还保留paginated源与excludeTurns约束、prepared/history两种创建路径，以及创建后restore_thread_settings。创建错误分支移除pending metadata；创建后的设置恢复/客户端信息等操作仍可能返回错误，选定handler不足以证明所有后效原子回滚或取消清理。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+      "sourceHash": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417",
+      "locator": {
+        "byteRange": {
+          "start": 195040,
+          "endExclusive": 221693
+        },
+        "spanHash": "a03d524d8290dedd25acb610ba7822977c6ee4a2b95b9134845c542d9bfc4dac"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified",
+      "relatedEvidence": [
+        {
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-units.json",
+            "bytes": 9533,
+            "sha256": "f51fb63e5425b93321eeca276dc43bde8b595977b5731a9486846eb8d8d1e957"
+          },
+          "pointer": "/fork-creation-and-restore"
+        }
+      ]
+    },
+    {
+      "id": "BES-F11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "源码先await发送ThreadForkResponse，随后按条件重放token usage，再调用发送ThreadStarted。此处是handler中的调用顺序，不是客户端实际收件顺序或持久化/恢复保证；发送器、连接队列和运行结果仍需分别验证。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+      "sourceHash": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417",
+      "locator": {
+        "byteRange": {
+          "start": 220486,
+          "endExclusive": 221671
+        },
+        "spanHash": "042a29e14abdf3d29ecd2493e7c5ba10a05ac896c3e35beaefa99c17e8b7a1c6"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified"
+    },
+    {
+      "id": "BES-F12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "独立的ThreadPredictionRequest分支明确返回method_not_found(\"thread/prediction/request is not implemented yet\")。这不否定ThreadForkParams.experimentalPredictionMode对应的已存在fork分支，也不能用二者名称相近来替代语义。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor-current.response",
+      "sourceHash": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed",
+      "locator": {
+        "byteRange": {
+          "start": 60707,
+          "endExclusive": 60874
+        },
+        "spanHash": "bde5ee6e7fd4d5cff01fd684819f46925aba66aa0fb99c54b5146b417e24937a"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified"
+    },
+    {
+      "id": "BES-F13",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "后台选型依据更新：桌面声明提交已有可公开取得且字段对应的预测fork类型和接收源码，可作为精确版本外部后台候选继续评估。公开0.162.0候选缺flag的决定保持；不能删flag或改成普通fork。未取得完整源树、未编译、未证明native由此源码构建，也未证明成功预测。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-analysis.json",
+      "sourceHash": "b939c4bbe25e1490eee0f248793b15c9687d47dbc3a2140730e268ffa25fa32c",
+      "locator": {
+        "jsonPointer": "/receiverBoundary"
+      },
+      "method": "Read-only public exact-commit acquisition; TOML parsing, full selected Rust declaration/receiver inspection and frozen-schema field comparison; no target execution.",
+      "confidence": "inferred",
+      "verificationStatus": "static-source-contract-confirmed; actual matching binary build, inheritance, notification delivery and prediction success unverified"
+    }
+  ],
+  "sourceUnits": {
+    "workspace-package": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+        "bytes": 21066,
+        "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+      },
+      "byteRange": {
+        "start": 3407,
+        "endExclusive": 3722
+      },
+      "spanHash": "4e701d98ccf00c711c80033fe4be2ab240ec243e6e32478e8ddabb34a9f7796b",
+      "startLine": 162,
+      "endLine": 171,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/fetch-20261025T224508652492Z/workspace-manifest.response",
+        "bytes": 21066,
+        "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+      }
+    },
+    "workspace-patches": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+        "bytes": 21066,
+        "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+      },
+      "byteRange": {
+        "start": 20309,
+        "endExclusive": 21066
+      },
+      "spanHash": "8e7875d34383683e99d7ba9f00bd15d7869759191f617320d0e713e292861630",
+      "startLine": 643,
+      "endLine": 655,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/fetch-20261025T224508652492Z/workspace-manifest.response",
+        "bytes": 21066,
+        "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+      }
+    },
+    "fork-params": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-types.response",
+        "bytes": 79537,
+        "sha256": "3130630890ce389a83065653f31ca1f052ee2606951f64b23fc1cc6ca622e44a"
+      },
+      "byteRange": {
+        "start": 22617,
+        "endExclusive": 27387
+      },
+      "spanHash": "ecbec72ea17fb625b48bbc868478fa1849ea4aba47b209b108f845ab69016114",
+      "startLine": 531,
+      "endLine": 637,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224917688160Z/thread-types.response",
+        "bytes": 79537,
+        "sha256": "3130630890ce389a83065653f31ca1f052ee2606951f64b23fc1cc6ca622e44a"
+      }
+    },
+    "v2-module": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/protocol-v2-module.response",
+        "bytes": 1577,
+        "sha256": "295bb0b5e8145382bca2b4b31ab209311085613f4094dad8e4fa23a938be6e53"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 1577
+      },
+      "spanHash": "295bb0b5e8145382bca2b4b31ab209311085613f4094dad8e4fa23a938be6e53",
+      "startLine": 1,
+      "endLine": 86,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224917688160Z/protocol-v2-module.response",
+        "bytes": 1577,
+        "sha256": "295bb0b5e8145382bca2b4b31ab209311085613f4094dad8e4fa23a938be6e53"
+      }
+    },
+    "deserialize-entry": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      },
+      "byteRange": {
+        "start": 4982,
+        "endExclusive": 5245
+      },
+      "spanHash": "b22400a8aaebc199146fe1e4be187dcc7983bb03b5ff0387ea287880a9052556",
+      "startLine": 111,
+      "endLine": 117,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224810008745Z/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      }
+    },
+    "experimental-gate": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      },
+      "byteRange": {
+        "start": 38708,
+        "endExclusive": 39326
+      },
+      "spanHash": "adf80cd0ca4abe39688b29baa3d56a79f38cebdabb3b129e58e6225edcb3328d",
+      "startLine": 968,
+      "endLine": 984,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224810008745Z/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      }
+    },
+    "fork-dispatch": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      },
+      "byteRange": {
+        "start": 54724,
+        "endExclusive": 55152
+      },
+      "spanHash": "10e026ea6450146e8e890acb1142abe5496ce0327e40bf8e6095a29b960c76e5",
+      "startLine": 1319,
+      "endLine": 1330,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224810008745Z/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      }
+    },
+    "prediction-request-unimplemented": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      },
+      "byteRange": {
+        "start": 60707,
+        "endExclusive": 60874
+      },
+      "spanHash": "bde5ee6e7fd4d5cff01fd684819f46925aba66aa0fb99c54b5146b417e24937a",
+      "startLine": 1452,
+      "endLine": 1455,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224810008745Z/message-processor-current.response",
+        "bytes": 81225,
+        "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+      }
+    },
+    "fork-wrapper": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 22325,
+        "endExclusive": 23013
+      },
+      "spanHash": "3fe4d9ea6d3a967f56508f551fac349cffaa58cd34cc208b718f0228cb477982",
+      "startLine": 581,
+      "endLine": 601,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    },
+    "fork-receiver": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 195040,
+        "endExclusive": 221693
+      },
+      "spanHash": "a03d524d8290dedd25acb610ba7822977c6ee4a2b95b9134845c542d9bfc4dac",
+      "startLine": 4868,
+      "endLine": 5499,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    },
+    "fork-guards-and-inheritance": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 195354,
+        "endExclusive": 198961
+      },
+      "spanHash": "50ba00beca9b4bf96ee2ee0ca45ebb272bf3dec7ca0d7076e16f46b1601c283e",
+      "startLine": 4876,
+      "endLine": 4969,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    },
+    "fork-creation-and-restore": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 211693,
+        "endExclusive": 213742
+      },
+      "spanHash": "6f92df022e49a084b120c7ed16e5b379e91dae33fd15f59bfcfc573bc5e18a1f",
+      "startLine": 5255,
+      "endLine": 5306,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    },
+    "fork-response-and-notification": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 220486,
+        "endExclusive": 221671
+      },
+      "spanHash": "042a29e14abdf3d29ecd2493e7c5ba10a05ac896c3e35beaefa99c17e8b7a1c6",
+      "startLine": 5468,
+      "endLine": 5496,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    }
+  },
+  "sourceAnalysis": {
+    "baselineId": "codex-26.1007.30912-c5b273322a83",
+    "commit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+    "workspacePackage": {
+      "version": "0.162.0-alpha.17.2",
+      "edition": "2024",
+      "license": "Apache-2.0"
+    },
+    "selectedWorkspaceDependencyPaths": {
+      "codex-app-server": {
+        "path": "app-server"
+      },
+      "codex-app-server-protocol": {
+        "path": "app-server-protocol"
+      },
+      "codex-core": {
+        "path": "core"
+      },
+      "codex-protocol": {
+        "path": "protocol"
+      }
+    },
+    "lockFormat": 4,
+    "lockCounts": {
+      "entries": 1473,
+      "registry": 1294,
+      "git": 18,
+      "noSource": 161,
+      "distinctGitSources": 8,
+      "multipleVersionNames": 103
+    },
+    "selectedLockPackages": [
+      {
+        "name": "codex-app-server",
+        "version": "0.0.0"
+      },
+      {
+        "name": "codex-app-server-protocol",
+        "version": "0.0.0"
+      },
+      {
+        "name": "codex-cli",
+        "version": "0.0.0"
+      },
+      {
+        "name": "codex-core",
+        "version": "0.0.0"
+      },
+      {
+        "name": "codex-protocol",
+        "version": "0.0.0"
+      }
+    ],
+    "gitDependencies": [
+      {
+        "name": "appcontainer_common",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      },
+      {
+        "name": "crossterm",
+        "version": "0.29.0",
+        "source": "git+https://github.com/openai-oss-forks/crossterm?rev=ed1cdab335221515706178d68495bba2aed1924f#ed1cdab335221515706178d68495bba2aed1924f"
+      },
+      {
+        "name": "h3",
+        "version": "0.0.8",
+        "source": "git+https://github.com/hyperium/h3?rev=e07e69412876f7e26f026bd75a48b2704d8c8283#e07e69412876f7e26f026bd75a48b2704d8c8283"
+      },
+      {
+        "name": "h3-quinn",
+        "version": "0.0.10",
+        "source": "git+https://github.com/hyperium/h3?rev=e07e69412876f7e26f026bd75a48b2704d8c8283#e07e69412876f7e26f026bd75a48b2704d8c8283"
+      },
+      {
+        "name": "learning_mode_core",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      },
+      {
+        "name": "learning_mode_windows",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      },
+      {
+        "name": "mxc_config_contract",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      },
+      {
+        "name": "mxc_telemetry",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      },
+      {
+        "name": "nucleo",
+        "version": "0.5.0",
+        "source": "git+https://github.com/helix-editor/nucleo.git?rev=4253de9faabb4e5c6d81d946a5e35a90f87347ee#4253de9faabb4e5c6d81d946a5e35a90f87347ee"
+      },
+      {
+        "name": "nucleo-matcher",
+        "version": "0.3.1",
+        "source": "git+https://github.com/helix-editor/nucleo.git?rev=4253de9faabb4e5c6d81d946a5e35a90f87347ee#4253de9faabb4e5c6d81d946a5e35a90f87347ee"
+      },
+      {
+        "name": "process_security_environment_spec",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      },
+      {
+        "name": "rmcp",
+        "version": "3.3.0",
+        "source": "git+https://github.com/modelcontextprotocol/rust-sdk?rev=3e636cab26c013eca5131103c03d20237f12c4df#3e636cab26c013eca5131103c03d20237f12c4df"
+      },
+      {
+        "name": "rmcp-macros",
+        "version": "3.3.0",
+        "source": "git+https://github.com/modelcontextprotocol/rust-sdk?rev=3e636cab26c013eca5131103c03d20237f12c4df#3e636cab26c013eca5131103c03d20237f12c4df"
+      },
+      {
+        "name": "runfiles",
+        "version": "0.1.0",
+        "source": "git+https://github.com/dzbarsky/rules_rust?rev=b56cbaa8465e74127f1ea216f813cd377295ad81#b56cbaa8465e74127f1ea216f813cd377295ad81"
+      },
+      {
+        "name": "sandbox_spec",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      },
+      {
+        "name": "tokio-tungstenite",
+        "version": "0.28.0",
+        "source": "git+https://github.com/openai-oss-forks/tokio-tungstenite?rev=0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186#0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186"
+      },
+      {
+        "name": "tungstenite",
+        "version": "0.27.0",
+        "source": "git+https://github.com/openai-oss-forks/tungstenite-rs?rev=4fffad30fe373adbdcffab9545e9e9bf4f2fc19f#4fffad30fe373adbdcffab9545e9e9bf4f2fc19f"
+      },
+      {
+        "name": "wxc_common",
+        "version": "0.8.0",
+        "source": "git+https://github.com/microsoft/mxc?rev=6cd3d58f05d3447e67109cfb75e042803b843ca4#6cd3d58f05d3447e67109cfb75e042803b843ca4"
+      }
+    ],
+    "registryChecksumsPresent": 1294,
+    "patches": [
+      {
+        "name": "crossterm",
+        "declared": {
+          "git": "https://github.com/openai-oss-forks/crossterm",
+          "rev": "ed1cdab335221515706178d68495bba2aed1924f"
+        },
+        "lockedSource": "git+https://github.com/openai-oss-forks/crossterm?rev=ed1cdab335221515706178d68495bba2aed1924f#ed1cdab335221515706178d68495bba2aed1924f"
+      },
+      {
+        "name": "tokio-tungstenite",
+        "declared": {
+          "git": "https://github.com/openai-oss-forks/tokio-tungstenite",
+          "rev": "0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186"
+        },
+        "lockedSource": "git+https://github.com/openai-oss-forks/tokio-tungstenite?rev=0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186#0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186"
+      },
+      {
+        "name": "tungstenite",
+        "declared": {
+          "git": "https://github.com/openai-oss-forks/tungstenite-rs",
+          "rev": "4fffad30fe373adbdcffab9545e9e9bf4f2fc19f"
+        },
+        "lockedSource": "git+https://github.com/openai-oss-forks/tungstenite-rs?rev=4fffad30fe373adbdcffab9545e9e9bf4f2fc19f#4fffad30fe373adbdcffab9545e9e9bf4f2fc19f"
+      }
+    ],
+    "rustFieldNames": [
+      "threadId",
+      "experimentalPredictionMode",
+      "lastTurnId",
+      "beforeTurnId",
+      "path",
+      "model",
+      "modelProvider",
+      "serviceTier",
+      "cwd",
+      "runtimeWorkspaceRoots",
+      "approvalPolicy",
+      "approvalsReviewer",
+      "sandbox",
+      "permissions",
+      "config",
+      "baseInstructions",
+      "developerInstructions",
+      "ephemeral",
+      "threadSource",
+      "excludeTurns",
+      "deferGoalContinuation"
+    ],
+    "schemas": {
+      "frozen": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+          "bytes": 300474,
+          "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe"
+        },
+        "pointer": "/definitions/ThreadForkParams",
+        "fieldNames": [
+          "approvalPolicy",
+          "approvalsReviewer",
+          "baseInstructions",
+          "beforeTurnId",
+          "config",
+          "cwd",
+          "deferGoalContinuation",
+          "developerInstructions",
+          "ephemeral",
+          "excludeTurns",
+          "experimentalPredictionMode",
+          "lastTurnId",
+          "model",
+          "modelProvider",
+          "path",
+          "permissions",
+          "runtimeWorkspaceRoots",
+          "sandbox",
+          "serviceTier",
+          "threadId",
+          "threadSource"
+        ],
+        "required": [
+          "threadId"
+        ],
+        "predictionField": {
+          "description": "Start from the loaded parent's effective config, tools, environments, and persisted history to maximize prompt-cache reuse. Requires a loaded, persisted parent and `ephemeral: true`. Enables `features.reasoning_effort_override` on the fork. Cannot be combined with configuration overrides, `path`, `lastTurnId`, or `beforeTurnId`.",
+          "type": "boolean"
+        }
+      },
+      "publicCandidate": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/ClientRequest.json",
+          "bytes": 300036,
+          "sha256": "f1425525dae2903cb5b658ee412530ff7a8fcaf78887f182c169b299e7f6b09b"
+        },
+        "pointer": "/definitions/ThreadForkParams",
+        "fieldNames": [
+          "approvalPolicy",
+          "approvalsReviewer",
+          "baseInstructions",
+          "beforeTurnId",
+          "config",
+          "cwd",
+          "deferGoalContinuation",
+          "developerInstructions",
+          "ephemeral",
+          "excludeTurns",
+          "lastTurnId",
+          "model",
+          "modelProvider",
+          "path",
+          "permissions",
+          "runtimeWorkspaceRoots",
+          "sandbox",
+          "serviceTier",
+          "threadId",
+          "threadSource"
+        ],
+        "required": [
+          "threadId"
+        ],
+        "predictionField": null
+      }
+    },
+    "receiverErrorMessages": [
+      "`experimentalPredictionMode` cannot be combined with configuration overrides",
+      "`experimentalPredictionMode` requires `ephemeral: true`",
+      "`experimentalPredictionMode` requires a thread id without a path or turn cutoff",
+      "`experimentalPredictionMode` requires a loaded parent"
+    ],
+    "receiverBoundary": {
+      "parentInheritance": "ThreadManager.fork_options_from_parent",
+      "creation": [
+        "ThreadManager.fork_prepared_thread",
+        "ThreadManager.fork_thread_from_history"
+      ],
+      "settingsRestore": "CodexThread.restore_thread_settings",
+      "inspectedImplementations": false
+    },
+    "qualification": "Static source and field-name correspondence only; no Rust compilation, actual decoding, parent inheritance success, cache reuse, notification delivery or model execution."
+  },
+  "rawEvidence": {
+    "workspace-manifest.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+      "bytes": 21066,
+      "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+    },
+    "workspace-lock.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+      "bytes": 407989,
+      "sha256": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65"
+    },
+    "protocol-v2.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/protocol-v2.response",
+      "bytes": 14,
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+    },
+    "message-processor.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor.response",
+      "bytes": 14,
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+    },
+    "git-tree.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/git-tree.response",
+      "bytes": 278,
+      "sha256": "051c8b4ff0d414a114289c7474fe6ffd23a1266758c56945d7d4051030d520d1"
+    },
+    "protocol-src.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/protocol-src.response",
+      "bytes": 250398,
+      "sha256": "9b54de114bb4428eb70cd204255af42eb57c774874b83aab78496c1329886377"
+    },
+    "app-server-src.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/app-server-src.response",
+      "bytes": 462269,
+      "sha256": "4b77edb82dde41db2c8b8fc236ccff85206a2860946c88c522d27b93aa8fa24e"
+    },
+    "protocol-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/protocol-directory.response",
+      "bytes": 260799,
+      "sha256": "52eeb8af3e80a098f46cba9e2cd02a0d29c40dc0517cc1592c594f7aea57275e"
+    },
+    "request-processors-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/request-processors-directory.response",
+      "bytes": 393321,
+      "sha256": "468d0ebd918d71fbc5ba9f95ac854a6d4c375f8d2e753cfb642f861df7e700c5"
+    },
+    "message-processor-current.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/message-processor-current.response",
+      "bytes": 81225,
+      "sha256": "5e17343f7c7129dc09a77300771dcd93119192c5cb39a3f4d1e29a547fec34ed"
+    },
+    "request-processors-current.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/request-processors-current.response",
+      "bytes": 35045,
+      "sha256": "3a3fd9d80b2ffc0e7c5d6ce595216f248dcceec2559e2e598d7e70584adbbf9e"
+    },
+    "protocol-v2-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/protocol-v2-directory.response",
+      "bytes": 348078,
+      "sha256": "15e36eeb08986d505fb1338fd96bd7846176d20d3879272901feeb38558c84b4"
+    },
+    "thread-processor.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+      "bytes": 255556,
+      "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+    },
+    "thread-types.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-types.response",
+      "bytes": 79537,
+      "sha256": "3130630890ce389a83065653f31ca1f052ee2606951f64b23fc1cc6ca622e44a"
+    },
+    "protocol-v2-module.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/protocol-v2-module.response",
+      "bytes": 1577,
+      "sha256": "295bb0b5e8145382bca2b4b31ab209311085613f4094dad8e4fa23a938be6e53"
+    },
+    "http-group-1.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-group-1.json",
+      "bytes": 3585,
+      "sha256": "0a8a7931c8b41ef84a28c83bcf1d4a98ba9b72170cd20dcf2a040852e1c032ab"
+    },
+    "http-group-2.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-group-2.json",
+      "bytes": 561,
+      "sha256": "4f209fe9a55fea5a4de8361681455a926e949cc6b4ad14d287e2e6a5adf43e7f"
+    },
+    "http-group-3.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-group-3.json",
+      "bytes": 1476,
+      "sha256": "ee57f4223d3b1c3ab5f4e4ed99805cdd36d50d6b7e853735f429b660acd3a5a5"
+    },
+    "http-group-4.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-group-4.json",
+      "bytes": 3666,
+      "sha256": "22fbf87ae796289b5e0cca416aba3fa48375ab3a138fd42bf71078313d0b0136"
+    },
+    "http-group-5.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-group-5.json",
+      "bytes": 1925,
+      "sha256": "36b1fa792bd0ba1258b2acbd7fc7638a98788584ca25f4a5ddfca33b8e24f382"
+    },
+    "http-group-6.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-group-6.json",
+      "bytes": 1837,
+      "sha256": "7264e7635a76c988f7435c3e9ab8c929383163e42810dbe0d7d164fb1fa574a2"
+    },
+    "http-receipts.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/http-receipts.json",
+      "bytes": 20314,
+      "sha256": "3fb04f494e97b92f8bfe9fce65d3a7f59a903c0a754e27543e09de6f5ba2b209"
+    },
+    "source-units.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-units.json",
+      "bytes": 9533,
+      "sha256": "f51fb63e5425b93321eeca276dc43bde8b595977b5731a9486846eb8d8d1e957"
+    },
+    "source-analysis.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/source-analysis.json",
+      "bytes": 9709,
+      "sha256": "b939c4bbe25e1490eee0f248793b15c9687d47dbc3a2140730e268ffa25fa32c"
+    },
+    "verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/verification.json",
+      "bytes": 926,
+      "sha256": "e70789f53dc77743d608ed61885821a1a79e89b562c1205aee6f934b42b69951"
+    },
+    "fetch_public.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/fetch_public.py",
+      "bytes": 2856,
+      "sha256": "d86f68ef230e543860c40ad0f2a572ecd6a30ca00558cf94f9e104e791c99284"
+    },
+    "fetch_tree.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/fetch_tree.py",
+      "bytes": 1965,
+      "sha256": "48cee463ef50c66b7531f0a1aa95b0323c3ebb0313b3753cf3a072a2c1fa2042"
+    },
+    "fetch_directories.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/fetch_directories.py",
+      "bytes": 2354,
+      "sha256": "f598e4e745e48d16d344d438382db0c0e703429265e5776b66aceb0f96cd5201"
+    },
+    "fetch_selected.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/fetch_selected.py",
+      "bytes": 2440,
+      "sha256": "2c62bf3ef01b81dfa2f39025302a9bc29cf5e7efd790efc6785636be0e4157af"
+    },
+    "extract_directories.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/extract_directories.py",
+      "bytes": 1463,
+      "sha256": "82cf13f18a803a75d2d4bc68558b3d80b401a66694f21115af3fe8008c38b6e4"
+    },
+    "analyze.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/analyze.py",
+      "bytes": 10988,
+      "sha256": "2ecab317e26062df133b3f90743cc8781393e3b5627c7a0b2f6d0eea228d8d97"
+    },
+    "publish.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/publish.py",
+      "bytes": 20159,
+      "sha256": "969539f79ad35dea9abbb258eb7912aca802fd140d447411fd7d2a5029bfddfb"
+    },
+    "path-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/path-plan.json",
+      "bytes": 1465,
+      "sha256": "c98ffb9cd79e1338889b6b96f54b808380c2f2aa5cafe44f187653225f63fa7f"
+    },
+    "fork-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/fork-plan.json",
+      "bytes": 965,
+      "sha256": "cbe4d86aa68e7b6fe6766aca7875b70793df40e6513262a49df14e3e73f5c8f4"
+    },
+    "type-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/type-plan.json",
+      "bytes": 818,
+      "sha256": "1994847ed445d08c3cc3afb253a126d3fab32977b8836dfa6e0a597209ab61a4"
+    }
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-source-provenance-v1.json",
+      "bytes": 31022,
+      "sha256": "e8e3398255976215a512e84670e639b2acf2553987b4807c4d41d992449f5c4d"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-build-identity-v1.json",
+      "bytes": 24624,
+      "sha256": "1421b0d468129a4147436fe2d15d0363c177c2fada28fa4064c5a486c8568de4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/protocol-delta-adoption-v1.json",
+      "bytes": 50808,
+      "sha256": "95b28c89373abbff9a61f7dacb9a5c83f5dc44a09621884f71e90ac428b77028"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/independent-build-feasibility-v1.json",
+      "bytes": 228841,
+      "sha256": "84166ba8bdf713204ab708663ef7767018dff524c47742d432fadfa21a168aa5"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "selectionDecision": {
+    "status": "matching-desktop-source-candidate-available; build-and-runtime-unqualified",
+    "predictionFlagAndReceiverSourceFound": true,
+    "frozenParameterFieldCorrespondence": true,
+    "replaceWithOrdinaryFork": false,
+    "removePredictionFlag": false,
+    "clientIntegration": "Maintain a versioned external backend dependency and explicit prediction capability; do not generate backend or third-party implementations into restored client source."
+  },
+  "sourceQualification": {
+    "fullSourceCheckoutAcquired": false,
+    "gitTreeApiVerified": false,
+    "exactRevisionUrlsAndDirectoryRefChecked": true,
+    "sourceBuildVerified": false,
+    "sourceToNativeBuildIdentityProven": false,
+    "actualBackendSemanticsVerified": false
+  },
+  "remaining": [
+    "Two named core inheritance/restore definitions and their failure/cleanup contracts.",
+    "Exact revision complete source/build inputs, workspace/lock version treatment and clean build.",
+    "Desktop binary provenance and manifest/native digest difference.",
+    "Actual decoder/notification delivery and successful prediction semantics.",
+    "Native/Owl runtime routes and full original analysis requirements."
+  ],
+  "counts": {
+    "facts": 13,
+    "sourceUnits": 13,
+    "scriptHttpRequests": 15,
+    "http200": 12,
+    "http404": 2,
+    "http403": 1,
+    "sourceAndManifestBodies": 7,
+    "directoryBodies": 5,
+    "originalFixedTargets": 4,
+    "frozenForkFields": 21,
+    "publicCandidateForkFields": 20,
+    "canonicalCountChanges": 0
+  },
+  "newExecution": {
+    "reaRuns": 0,
+    "targetExecutions": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "privateServiceCalls": 0,
+    "sourceBuilds": 0,
+    "clientImplementation": 0,
+    "publicHttpRequests": 15
+  },
+  "verification": {
+    "status": "passed",
+    "receiptCount": 15,
+    "checks": [
+      "all HTTP response bytes and hashes",
+      "no application authentication or redirects/truncation",
+      "initial statuses retained",
+      "tree API rate-limit receipt retained",
+      "workspace TOML identity",
+      "Cargo lock parsed with exact entry counts",
+      "all registry lock checksums present",
+      "selected lock versions differ from workspace release version",
+      "three Git patch revisions match lock",
+      "fork parameters have camelCase and default boolean declaration",
+      "all 21 Rust field names equal frozen schema",
+      "public candidate differs by prediction flag",
+      "named receiver guards retained",
+      "parent inheritance precedes creation",
+      "settings restore follows creation",
+      "source response precedes source ThreadStarted call"
+    ],
+    "staticOnly": true,
+    "targetExecutions": 0,
+    "modelSubmissions": 0,
+    "sourceBuilds": 0
+  },
+  "nextBoundedStep": {
+    "scope": "Resolve only the parent state inheritance and settings-restore core boundary called by the matching prediction-fork handler.",
+    "symbols": [
+      "ThreadManager::fork_options_from_parent",
+      "CodexThread::restore_thread_settings"
+    ],
+    "deliverable": "Exact-commit core definitions and available focused source tests, with config/tools/environment/history inheritance and post-creation failure/cleanup decisions.",
+    "stopCondition": "Stay at the same source revision and these two named boundaries. Preserve downstream providers and unrun behavior explicitly; no full-provider rediscovery or unrelated release.",
+    "newModelRequired": false,
+    "requiresReadOnlyPublicAcquisition": true,
+    "globalCompletionCriteriaChanged": false
+  },
+  "selectedExactSourceBatchClosed": true,
+  "fullBackendQualified": false,
+  "fullAnalysisCompleted": false
+}

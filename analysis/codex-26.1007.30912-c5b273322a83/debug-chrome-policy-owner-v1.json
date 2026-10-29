@@ -1,0 +1,2196 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T19:26:58.115882+00:00",
+  "scope": "RAM-04 selected JS owner, build conditions and write/navigation contracts; native privileged pages unaccepted.",
+  "facts": [
+    {
+      "id": "DCP-01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "debugChromePagesEnabled默认false、agentAccess为hidden，key复用DEBUG_CHROME_PAGES_ENABLED（debug-chrome-pages-enabled）；声明描述Browser Use的可信chrome诊断页，不证明native允许列表。",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "locator": {
+        "start": 146155,
+        "endExclusive": 146339
+      },
+      "spanHash": "92f92407ad49f1cd738b6fc053c1565ebe1ac5014ddb1e9233b0ba0c4a792df5",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "allowDebugMenu委托isInternal；Hi仅含dev、agent、nightly、internal-alpha，public-beta和prod不允许。构建类型不是Codex/ChatGPT模式归属。",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "locator": {
+        "start": 46627,
+        "endExclusive": 46900
+      },
+      "spanHash": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "resolve优先接受去空白且有效的BUILD_FLAVOR，再读codexBuildFlavor包元数据，最后按NODE_ENV===production选择prod，否则dev。主进程设置副作用重新调用resolve，不仅依赖启动缓存。",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "locator": {
+        "start": 1340,
+        "endExclusive": 3650
+      },
+      "spanHash": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "元数据读取依次检查候选文件、解析JSON并选择首个经parse接受的非空字段。JSON.parse没有本地catch；损坏候选会抛出，不静默进入下一候选或默认构建类型。",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "locator": {
+        "start": 406,
+        "endExclusive": 651
+      },
+      "spanHash": "57607316b84b06bb70dd54b3d780718248be7835bfe8f2c0d1f91e3db161440c",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "bootstrap上下文factory oE在aE存在时直接返回缓存；首次buildFlavor为传入e或l.t.resolve()。启动路径以oE($)供给已解析构建类型，exports.I=oE供main的g.I()读取。完整factory有其它副作用，本次不执行。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "locator": {
+        "start": 400708,
+        "endExclusive": 404785
+      },
+      "spanHash": "e1a8be402f3ef7288e73ca9ac46dca9d15294674d32b1b9a66a6435e7b9be961",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "runMainAppStartup即u0e，从g.I()解构buildFlavor:o并计算allowDebugMenu(o)。在app.whenReady、加载g.U、Moe迁移、captureInitialFollowUpQueueMode和joe后，以j&&settingsStore.getEffective(key)===true得到le，先调用native再uf(le)。u0e整段仅作为生命周期上下文，不据此认领全部业务职责。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 3794132,
+        "endExclusive": 3823806
+      },
+      "spanHash": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "旧setGlobalStateValue的调试页分支将输入严格true与重新resolve后的allowDebugMenu合取；依次native、uf和globalState.set，存入的是门控后的值。native抛错时后两步不执行，store抛错时native与本地flag已经更新。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 1436651,
+        "endExclusive": 1437799
+      },
+      "spanHash": "83d10ec2faa92718faedef81c24e44f3cc24dfe0184b14ab7db40f7c4d481a0d",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "setGlobalStateValue在分支完成后向所有窗口广播global-state-updated并携带原key；native/store抛错会跳过该广播。此处是发送代码证据，不证明实际窗口接收。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 1436651,
+        "endExclusive": 1437799
+      },
+      "spanHash": "83d10ec2faa92718faedef81c24e44f3cc24dfe0184b14ab7db40f7c4d481a0d",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "setConfigurationValue先把原输入写入globalState，再执行applySettingSideEffects；调试页native失败不会在此回滚已经完成的set。实际store落盘不由这一方法证明。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 1437855,
+        "endExclusive": 1437942
+      },
+      "spanHash": "826c765a3ddd483e83a4b49a846733b3f03e6da4ffa8e839a5748ff325f9815e",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "AL.write是async，先store.set，再用store.get的读回值调用afterWrite。选定注入把afterWrite接到applySettingSideEffects；setSettingValue先经r.F再await settings.write。副作用失败可使写入调用拒绝，但此前set已发生；真实校验/持久化语义仍取决于store/provider。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 1388248,
+        "endExclusive": 1388322
+      },
+      "spanHash": "af0733390a4f03a2ae6f8c3642b07f2068389128014f14ae1fc17964e38d78f8",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "调试页设置副作用以value===true与allowDebugMenu(resolve())合取，然后native和uf；它不把归一化值重写store。因而stored、effective/native请求和本地flag是不同状态层。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 1438485,
+        "endExclusive": 1439009
+      },
+      "spanHash": "ddd546a8d093588f97cf6e1d652c55e7c29d3795de30335133e129c6972947ed",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "完整main AST只找到三个_.app.setDebugChromePagesEnabled调用：启动、旧global setter和设置副作用；三个均无本地try祖先或方法存在性检查，且结果未await。bootstrap加载并await main startup的外层catch另处理启动失败，不能把它理解为这些方法各自吞掉native错误。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 3796454,
+        "endExclusive": 3796490
+      },
+      "spanHash": "653b3f4c4a96ebe6eec246377c85e3c0fb7de2646d6d1f0f59915534367466e9",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-13",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "r.ii导出ka，Oa把chrome downloads/history映射到对应/settings/browser-use路由。ka规范chrome斜线、拒绝非chrome协议及凭据/端口，按解码后小写host匹配并保留search；未匹配返回null。这里不是version/histograms或全部chrome页面的native允许列表。",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "locator": {
+        "start": 51097,
+        "endExclusive": 51374
+      },
+      "spanHash": "0068b1bdd4b321932d5214d28eaecd93cfeaf88bdb5af8ba86e86d275e66deee",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-14",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Ake在r.ii映射存在且df()为false时先调用截获回调；未截获则给owner发送navigate-to-route，返回true。映射不存在或flag=true返回false，不等于完整导航政策允许。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 1837276,
+        "endExclusive": 1837448
+      },
+      "spanHash": "b37d1423c23eb3359727441a5507a5801fd37a702e876935b11bb49194f0c058",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-15",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定请求回调在没有rewrite结果时，将mainFrame的r.ii映射且!df条件与HCe、isRestrictedBrowserNavigation等策略组合。另有rewrite结果时返回redirectURL；仅检查本地flag不能证明最终URL可访问。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 1533660,
+        "endExclusive": 1534093
+      },
+      "spanHash": "f27dd52472cfa1344dea9b84a87185ebbf6056b68307cfffc0045242a4b6bf95",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-16",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "debug-settings从app-shared导入aen为d；aen导出FM，IM初始化FM的allowDebugMenu与main的内部构建规则一致。P固定调用d.allowDebugMenu(prod)，所以该冻结render函数的Chrome设置行条件为false；真实窗口挂载/其它入口未验证。",
+      "sourcePath": "app.asar/webview/assets/debug-settings-299be7300ee9.js",
+      "sourceHash": "21fc0ae7ff7f0bedb86a22580d92cc5a2ff3eade4d8f42bff0885505607394e9",
+      "locator": {
+        "start": 421,
+        "endExclusive": 733
+      },
+      "spanHash": "71814f430d7be1edb6d7c8a21a2c391a1c059b7a1e0900f528f5541a038430ed",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    },
+    {
+      "id": "DCP-17",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "F控件读debugChromePagesEnabled并在onChange调用设置helper；帮助文案列version/histograms且声明chrome-untrusted仍阻止。文案只记录产品意图，不充当native执行证据，亦不能因prod行隐藏推断为ChatGPT专属而删除。",
+      "sourcePath": "app.asar/webview/assets/debug-settings-299be7300ee9.js",
+      "sourceHash": "21fc0ae7ff7f0bedb86a22580d92cc5a2ff3eade4d8f42bff0885505607394e9",
+      "locator": {
+        "start": 733,
+        "endExclusive": 2115
+      },
+      "spanHash": "72197ff8e6cdb9508fecb64a29a632a4e9f8c59ef19b3e920f03f78794de86a4",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; native-and-product-effects-unverified"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 136,
+        "endExclusive": 166
+      },
+      "spanHash": "1f943f2a0aa26c81cc49da3d0f43f146ce1b5bee58eab44ce1d916ff38486565",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-r"
+      ],
+      "id": "DCP-SOURCE-01",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/01.js.txt",
+        "bytes": 30,
+        "sha256": "1f943f2a0aa26c81cc49da3d0f43f146ce1b5bee58eab44ce1d916ff38486565"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 556,
+        "endExclusive": 595
+      },
+      "spanHash": "f950e1232c77a26a2124da1f341fe702e89958a60b21bb27d4a3ebf17fd877b5",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-p"
+      ],
+      "id": "DCP-SOURCE-02",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/02.js.txt",
+        "bytes": 39,
+        "sha256": "f950e1232c77a26a2124da1f341fe702e89958a60b21bb27d4a3ebf17fd877b5"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 678,
+        "endExclusive": 714
+      },
+      "spanHash": "3322e6f3e0f6aa5dfaaf1c559925ee1f81f47e4502f60e2c8595b12d44765933",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-g"
+      ],
+      "id": "DCP-SOURCE-03",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/03.js.txt",
+        "bytes": 36,
+        "sha256": "3322e6f3e0f6aa5dfaaf1c559925ee1f81f47e4502f60e2c8595b12d44765933"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 247541,
+        "endExclusive": 247546
+      },
+      "spanHash": "3ff32f073590af4f96ddafa4f0f3bb787b442f64c987b777e116aca46349d112",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-lf"
+      ],
+      "id": "DCP-SOURCE-04",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/04.js.txt",
+        "bytes": 5,
+        "sha256": "3ff32f073590af4f96ddafa4f0f3bb787b442f64c987b777e116aca46349d112"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 247547,
+        "endExclusive": 247567
+      },
+      "spanHash": "0004036c42f1165af8e276ae318f01c6d5af92ba2ee79b573172cab16c22fa89",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-uf"
+      ],
+      "id": "DCP-SOURCE-05",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/05.js.txt",
+        "bytes": 20,
+        "sha256": "0004036c42f1165af8e276ae318f01c6d5af92ba2ee79b573172cab16c22fa89"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 247567,
+        "endExclusive": 247591
+      },
+      "spanHash": "cd5e14dba1fab8753d25657e05781dbaa677b782ce77415d25f9bb7b0a050b77",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-df"
+      ],
+      "id": "DCP-SOURCE-06",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/06.js.txt",
+        "bytes": 24,
+        "sha256": "cd5e14dba1fab8753d25657e05781dbaa677b782ce77415d25f9bb7b0a050b77"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1387538,
+        "endExclusive": 1387611
+      },
+      "spanHash": "fdbdde94898c7a062e6092392728a0b5de2664b2bb6005a117e327315243e3f3",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "settings-adapter-constructor"
+      ],
+      "id": "DCP-SOURCE-07",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/07.js.txt",
+        "bytes": 73,
+        "sha256": "fdbdde94898c7a062e6092392728a0b5de2664b2bb6005a117e327315243e3f3"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1388248,
+        "endExclusive": 1388322
+      },
+      "spanHash": "af0733390a4f03a2ae6f8c3642b07f2068389128014f14ae1fc17964e38d78f8",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "settings-adapter-write"
+      ],
+      "id": "DCP-SOURCE-08",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/08.js.txt",
+        "bytes": 74,
+        "sha256": "af0733390a4f03a2ae6f8c3642b07f2068389128014f14ae1fc17964e38d78f8"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1396934,
+        "endExclusive": 1397040
+      },
+      "spanHash": "13698f0e7deeda5708b2d65da67aee3af469de761a9e5b08357029ec4d0f3181",
+      "nodeType": "NewExpression",
+      "labels": [
+        "settings-adapter-injection"
+      ],
+      "id": "DCP-SOURCE-09",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/09.js.txt",
+        "bytes": 106,
+        "sha256": "13698f0e7deeda5708b2d65da67aee3af469de761a9e5b08357029ec4d0f3181"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1436651,
+        "endExclusive": 1437799
+      },
+      "spanHash": "83d10ec2faa92718faedef81c24e44f3cc24dfe0184b14ab7db40f7c4d481a0d",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "method-setGlobalStateValue"
+      ],
+      "id": "DCP-SOURCE-10",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/10.js.txt",
+        "bytes": 1148,
+        "sha256": "83d10ec2faa92718faedef81c24e44f3cc24dfe0184b14ab7db40f7c4d481a0d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1436764,
+        "endExclusive": 1436799
+      },
+      "spanHash": "5b8becdfbf4d0aa8f53936e6088179dd94fd7579ea3e3cd59b27d6e94d9f3f4d",
+      "nodeType": "CallExpression",
+      "labels": [
+        "native-call-setGlobalStateValue"
+      ],
+      "id": "DCP-SOURCE-11",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/11.js.txt",
+        "bytes": 35,
+        "sha256": "5b8becdfbf4d0aa8f53936e6088179dd94fd7579ea3e3cd59b27d6e94d9f3f4d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1437855,
+        "endExclusive": 1437942
+      },
+      "spanHash": "826c765a3ddd483e83a4b49a846733b3f03e6da4ffa8e839a5748ff325f9815e",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "method-setConfigurationValue"
+      ],
+      "id": "DCP-SOURCE-12",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/12.js.txt",
+        "bytes": 87,
+        "sha256": "826c765a3ddd483e83a4b49a846733b3f03e6da4ffa8e839a5748ff325f9815e"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1438355,
+        "endExclusive": 1438485
+      },
+      "spanHash": "085c368f66ffefa7077f69af33207e5b28864436ef7a6fc907f53b474ad30ca5",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "method-setSettingValue"
+      ],
+      "id": "DCP-SOURCE-13",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/13.js.txt",
+        "bytes": 130,
+        "sha256": "085c368f66ffefa7077f69af33207e5b28864436ef7a6fc907f53b474ad30ca5"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1438485,
+        "endExclusive": 1439009
+      },
+      "spanHash": "ddd546a8d093588f97cf6e1d652c55e7c29d3795de30335133e129c6972947ed",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "method-applySettingSideEffects"
+      ],
+      "id": "DCP-SOURCE-14",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/14.js.txt",
+        "bytes": 524,
+        "sha256": "ddd546a8d093588f97cf6e1d652c55e7c29d3795de30335133e129c6972947ed"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1438748,
+        "endExclusive": 1438783
+      },
+      "spanHash": "5b8becdfbf4d0aa8f53936e6088179dd94fd7579ea3e3cd59b27d6e94d9f3f4d",
+      "nodeType": "CallExpression",
+      "labels": [
+        "native-call-applySettingSideEffects"
+      ],
+      "id": "DCP-SOURCE-15",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/15.js.txt",
+        "bytes": 35,
+        "sha256": "5b8becdfbf4d0aa8f53936e6088179dd94fd7579ea3e3cd59b27d6e94d9f3f4d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1533885,
+        "endExclusive": 1533889
+      },
+      "spanHash": "9e05379b60f02deb35ed16429adb3991d4c73ed487521f4ddaad38f69079b7aa",
+      "nodeType": "CallExpression",
+      "labels": [
+        "flag-read-1533856"
+      ],
+      "id": "DCP-SOURCE-16",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/16.js.txt",
+        "bytes": 4,
+        "sha256": "9e05379b60f02deb35ed16429adb3991d4c73ed487521f4ddaad38f69079b7aa"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1533660,
+        "endExclusive": 1534093
+      },
+      "spanHash": "f27dd52472cfa1344dea9b84a87185ebbf6056b68307cfffc0045242a4b6bf95",
+      "nodeType": "ArrowFunctionExpression",
+      "labels": [
+        "flag-consumer-1533856"
+      ],
+      "id": "DCP-SOURCE-17",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/17.js.txt",
+        "bytes": 433,
+        "sha256": "f27dd52472cfa1344dea9b84a87185ebbf6056b68307cfffc0045242a4b6bf95"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1837276,
+        "endExclusive": 1837448
+      },
+      "spanHash": "b37d1423c23eb3359727441a5507a5801fd37a702e876935b11bb49194f0c058",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-Ake",
+        "flag-consumer-1837301"
+      ],
+      "id": "DCP-SOURCE-18",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/18.js.txt",
+        "bytes": 172,
+        "sha256": "b37d1423c23eb3359727441a5507a5801fd37a702e876935b11bb49194f0c058"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1837330,
+        "endExclusive": 1837334
+      },
+      "spanHash": "9e05379b60f02deb35ed16429adb3991d4c73ed487521f4ddaad38f69079b7aa",
+      "nodeType": "CallExpression",
+      "labels": [
+        "flag-read-1837301"
+      ],
+      "id": "DCP-SOURCE-19",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/19.js.txt",
+        "bytes": 4,
+        "sha256": "9e05379b60f02deb35ed16429adb3991d4c73ed487521f4ddaad38f69079b7aa"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3794132,
+        "endExclusive": 3823806
+      },
+      "spanHash": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-u0e"
+      ],
+      "id": "DCP-SOURCE-20",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/20.js.txt",
+        "bytes": 29674,
+        "sha256": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3794171,
+        "endExclusive": 3794178
+      },
+      "spanHash": "2e7fa5615f45f9c3ae44c133232f5608454685ec3585f9b0690ff2a14977d4b9",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "startup-e"
+      ],
+      "id": "DCP-SOURCE-21",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/21.js.txt",
+        "bytes": 7,
+        "sha256": "2e7fa5615f45f9c3ae44c133232f5608454685ec3585f9b0690ff2a14977d4b9"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3794179,
+        "endExclusive": 3794444
+      },
+      "spanHash": "060aafe21bb31a8fe8aadc3482a4547e95253e31e42cf43cda948a16f7b772bd",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "startup-context-fields"
+      ],
+      "id": "DCP-SOURCE-22",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/22.js.txt",
+        "bytes": 265,
+        "sha256": "060aafe21bb31a8fe8aadc3482a4547e95253e31e42cf43cda948a16f7b772bd"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3794651,
+        "endExclusive": 3794674
+      },
+      "spanHash": "8a643008b4817396eb888a9fc2cc761bcf26d32aabadffd388e833f75bc2ef7b",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "startup-j"
+      ],
+      "id": "DCP-SOURCE-23",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/23.js.txt",
+        "bytes": 23,
+        "sha256": "8a643008b4817396eb888a9fc2cc761bcf26d32aabadffd388e833f75bc2ef7b"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3796140,
+        "endExclusive": 3796174
+      },
+      "spanHash": "0f3723a48f861d54ba24a15117c4b3fb007109a0c21d3acc80e81dc8cd550803",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "startup-V"
+      ],
+      "id": "DCP-SOURCE-24",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/24.js.txt",
+        "bytes": 34,
+        "sha256": "0f3723a48f861d54ba24a15117c4b3fb007109a0c21d3acc80e81dc8cd550803"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3796381,
+        "endExclusive": 3796453
+      },
+      "spanHash": "a87fcfc7892fa7ae54872455f7415d3b6853026f9feb98711607e6f2df6e1458",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "startup-le"
+      ],
+      "id": "DCP-SOURCE-25",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/25.js.txt",
+        "bytes": 72,
+        "sha256": "a87fcfc7892fa7ae54872455f7415d3b6853026f9feb98711607e6f2df6e1458"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3796454,
+        "endExclusive": 3796490
+      },
+      "spanHash": "653b3f4c4a96ebe6eec246377c85e3c0fb7de2646d6d1f0f59915534367466e9",
+      "nodeType": "CallExpression",
+      "labels": [
+        "native-call-startup"
+      ],
+      "id": "DCP-SOURCE-26",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/26.js.txt",
+        "bytes": 36,
+        "sha256": "653b3f4c4a96ebe6eec246377c85e3c0fb7de2646d6d1f0f59915534367466e9"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3824326,
+        "endExclusive": 3824355
+      },
+      "spanHash": "c082a3cdc258be4121f509b2218de01a55af92055d44a3a2dc941942cfd2de65",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "export-runMainAppStartup"
+      ],
+      "id": "DCP-SOURCE-27",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/27.js.txt",
+        "bytes": 29,
+        "sha256": "c082a3cdc258be4121f509b2218de01a55af92055d44a3a2dc941942cfd2de65"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 2363,
+        "endExclusive": 2418
+      },
+      "spanHash": "3bcf60597793e450c3727c010c2b567ee2cfba6d03427b72fd11d15b5c735fe2",
+      "nodeType": "ObjectProperty",
+      "labels": [
+        "preference-DEBUG_CHROME_PAGES_ENABLED"
+      ],
+      "id": "DCP-SOURCE-28",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/28.js.txt",
+        "bytes": 55,
+        "sha256": "3bcf60597793e450c3727c010c2b567ee2cfba6d03427b72fd11d15b5c735fe2"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 46448,
+        "endExclusive": 46561
+      },
+      "spanHash": "c29ee4d1925fdf9464785ddbde48a32f4a2532b3c7ab34deb06284ceeca02a2f",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-L"
+      ],
+      "id": "DCP-SOURCE-29",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/29.js.txt",
+        "bytes": 113,
+        "sha256": "c29ee4d1925fdf9464785ddbde48a32f4a2532b3c7ab34deb06284ceeca02a2f"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 46562,
+        "endExclusive": 46581
+      },
+      "spanHash": "5ee1758381e1a225f633d87ee880dc578e26214cf62fc0d20e40192efdb35bec",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-Vi"
+      ],
+      "id": "DCP-SOURCE-30",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/30.js.txt",
+        "bytes": 19,
+        "sha256": "5ee1758381e1a225f633d87ee880dc578e26214cf62fc0d20e40192efdb35bec"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 46582,
+        "endExclusive": 46626
+      },
+      "spanHash": "258db61dd9d0a79bc4dac7d55daf9511d3de9affd46745e8e6884b04419c23af",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-Hi"
+      ],
+      "id": "DCP-SOURCE-31",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/31.js.txt",
+        "bytes": 44,
+        "sha256": "258db61dd9d0a79bc4dac7d55daf9511d3de9affd46745e8e6884b04419c23af"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 46627,
+        "endExclusive": 46900
+      },
+      "spanHash": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-R"
+      ],
+      "id": "DCP-SOURCE-32",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/32.js.txt",
+        "bytes": 273,
+        "sha256": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 51051,
+        "endExclusive": 51096
+      },
+      "spanHash": "b8af73059b1411097af35f03ec2e34c917db6b9966133230993d3303869e2f38",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-Oa"
+      ],
+      "id": "DCP-SOURCE-33",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/33.js.txt",
+        "bytes": 45,
+        "sha256": "b8af73059b1411097af35f03ec2e34c917db6b9966133230993d3303869e2f38"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 51097,
+        "endExclusive": 51374
+      },
+      "spanHash": "0068b1bdd4b321932d5214d28eaecd93cfeaf88bdb5af8ba86e86d275e66deee",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-ka"
+      ],
+      "id": "DCP-SOURCE-34",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/34.js.txt",
+        "bytes": 277,
+        "sha256": "0068b1bdd4b321932d5214d28eaecd93cfeaf88bdb5af8ba86e86d275e66deee"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 146155,
+        "endExclusive": 146339
+      },
+      "spanHash": "92f92407ad49f1cd738b6fc053c1565ebe1ac5014ddb1e9233b0ba0c4a792df5",
+      "nodeType": "ObjectProperty",
+      "labels": [
+        "preference-debugChromePagesEnabled"
+      ],
+      "id": "DCP-SOURCE-35",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/35.js.txt",
+        "bytes": 184,
+        "sha256": "92f92407ad49f1cd738b6fc053c1565ebe1ac5014ddb1e9233b0ba0c4a792df5"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 193090,
+        "endExclusive": 193167
+      },
+      "spanHash": "4bd1643c775a8959b58df6989d0986a0f718fcadf6243b782b44ac3f42f600da",
+      "nodeType": "CallExpression",
+      "labels": [
+        "export-ii"
+      ],
+      "id": "DCP-SOURCE-36",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/36.js.txt",
+        "bytes": 77,
+        "sha256": "4bd1643c775a8959b58df6989d0986a0f718fcadf6243b782b44ac3f42f600da"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 201564,
+        "endExclusive": 201640
+      },
+      "spanHash": "7f36c706a0e943284054f9662d743b95f0bd6b61b469d3e80257880457071104",
+      "nodeType": "CallExpression",
+      "labels": [
+        "export-wi"
+      ],
+      "id": "DCP-SOURCE-37",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/37.js.txt",
+        "bytes": 76,
+        "sha256": "7f36c706a0e943284054f9662d743b95f0bd6b61b469d3e80257880457071104"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 50514,
+        "endExclusive": 50550
+      },
+      "spanHash": "d6e1ca4aa94f76c4e95f56668106aaecccd4b38b6018dec72dafba1d4946c38b",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "route-ma"
+      ],
+      "id": "DCP-SOURCE-38",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/38.js.txt",
+        "bytes": 36,
+        "sha256": "d6e1ca4aa94f76c4e95f56668106aaecccd4b38b6018dec72dafba1d4946c38b"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 50614,
+        "endExclusive": 50648
+      },
+      "spanHash": "01defd1d60e60efed37bc8a9a35b0fc93809223521357db9731074139dcb3371",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "route-va"
+      ],
+      "id": "DCP-SOURCE-39",
+      "kind": "shared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/39.js.txt",
+        "bytes": 34,
+        "sha256": "01defd1d60e60efed37bc8a9a35b0fc93809223521357db9731074139dcb3371"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 176,
+        "endExclusive": 405
+      },
+      "spanHash": "769fbce03f227adaa829e7e3f52bca1f83c914bde0cb00fc17ad3f92fe1e58ff",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-a"
+      ],
+      "id": "DCP-SOURCE-40",
+      "kind": "flavor",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/40.js.txt",
+        "bytes": 229,
+        "sha256": "769fbce03f227adaa829e7e3f52bca1f83c914bde0cb00fc17ad3f92fe1e58ff"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 406,
+        "endExclusive": 651
+      },
+      "spanHash": "57607316b84b06bb70dd54b3d780718248be7835bfe8f2c0d1f91e3db161440c",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-o"
+      ],
+      "id": "DCP-SOURCE-41",
+      "kind": "flavor",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/41.js.txt",
+        "bytes": 245,
+        "sha256": "57607316b84b06bb70dd54b3d780718248be7835bfe8f2c0d1f91e3db161440c"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 1340,
+        "endExclusive": 3650
+      },
+      "spanHash": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-m"
+      ],
+      "id": "DCP-SOURCE-42",
+      "kind": "flavor",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/42.js.txt",
+        "bytes": 2310,
+        "sha256": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 3727,
+        "endExclusive": 3802
+      },
+      "spanHash": "28635a96255c2e5973157af520945b091dbfb4a409f74a285a124b123605c788",
+      "nodeType": "CallExpression",
+      "labels": [
+        "export-t"
+      ],
+      "id": "DCP-SOURCE-43",
+      "kind": "flavor",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/43.js.txt",
+        "bytes": 75,
+        "sha256": "28635a96255c2e5973157af520945b091dbfb4a409f74a285a124b123605c788"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 381,
+        "endExclusive": 420
+      },
+      "spanHash": "bc631dd01976a5dca0f599449cdd47ef3f14f9c5d5baa0b5de6bcc0de5f0343a",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-l"
+      ],
+      "id": "DCP-SOURCE-44",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/44.js.txt",
+        "bytes": 39,
+        "sha256": "bc631dd01976a5dca0f599449cdd47ef3f14f9c5d5baa0b5de6bcc0de5f0343a"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 400700,
+        "endExclusive": 400707
+      },
+      "spanHash": "d41f03b88cf4aae0f7363cd820601c5b3627b481d72c186fbdb21a3b00f4b22e",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-aE"
+      ],
+      "id": "DCP-SOURCE-45",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/45.js.txt",
+        "bytes": 7,
+        "sha256": "d41f03b88cf4aae0f7363cd820601c5b3627b481d72c186fbdb21a3b00f4b22e"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 400708,
+        "endExclusive": 404785
+      },
+      "spanHash": "e1a8be402f3ef7288e73ca9ac46dca9d15294674d32b1b9a66a6435e7b9be961",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-oE"
+      ],
+      "id": "DCP-SOURCE-46",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/46.js.txt",
+        "bytes": 4077,
+        "sha256": "e1a8be402f3ef7288e73ca9ac46dca9d15294674d32b1b9a66a6435e7b9be961"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 456526,
+        "endExclusive": 456530
+      },
+      "spanHash": "7f80b9d1a565f4afeedf278832c9083439a7b62b2edd71717cd20f87b393605a",
+      "nodeType": "CallExpression",
+      "labels": [
+        "context-factory-call-456522"
+      ],
+      "id": "DCP-SOURCE-47",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/47.js.txt",
+        "bytes": 4,
+        "sha256": "7f80b9d1a565f4afeedf278832c9083439a7b62b2edd71717cd20f87b393605a"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 457128,
+        "endExclusive": 457143
+      },
+      "spanHash": "64a1ebc2af06dc75bb1af1a56068085069f13951e4cc04173b32884d6bf7729d",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-$"
+      ],
+      "id": "DCP-SOURCE-48",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/48.js.txt",
+        "bytes": 15,
+        "sha256": "64a1ebc2af06dc75bb1af1a56068085069f13951e4cc04173b32884d6bf7729d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 458125,
+        "endExclusive": 458130
+      },
+      "spanHash": "2f56a9bd02cae9279a6056144148c61075a4e8cc3843a4fe20964d8255505807",
+      "nodeType": "CallExpression",
+      "labels": [
+        "context-factory-call-458121"
+      ],
+      "id": "DCP-SOURCE-49",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/49.js.txt",
+        "bytes": 5,
+        "sha256": "2f56a9bd02cae9279a6056144148c61075a4e8cc3843a4fe20964d8255505807"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 459771,
+        "endExclusive": 459856
+      },
+      "spanHash": "8bb741a68e5e2c2623dcf03eec13f3ae5429e12e35bc95540b17109a6ac3e177",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "main-startup-import"
+      ],
+      "id": "DCP-SOURCE-50",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/50.js.txt",
+        "bytes": 85,
+        "sha256": "8bb741a68e5e2c2623dcf03eec13f3ae5429e12e35bc95540b17109a6ac3e177"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 458313,
+        "endExclusive": 460143
+      },
+      "spanHash": "b59a7122d6f2090d038cca1a211a0437b9cf83297646bc6525b1511576516e4c",
+      "nodeType": "ArrowFunctionExpression",
+      "labels": [
+        "ready-startup-callback"
+      ],
+      "id": "DCP-SOURCE-51",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/51.js.txt",
+        "bytes": 1830,
+        "sha256": "b59a7122d6f2090d038cca1a211a0437b9cf83297646bc6525b1511576516e4c"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 460373,
+        "endExclusive": 460385
+      },
+      "spanHash": "d7b383dc688f65b332b8b70ead0477194e0c7d2bb5180a7258f814c5a2b5f6f4",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "export-I"
+      ],
+      "id": "DCP-SOURCE-52",
+      "kind": "bootstrap",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/52.js.txt",
+        "bytes": 12,
+        "sha256": "d7b383dc688f65b332b8b70ead0477194e0c7d2bb5180a7258f814c5a2b5f6f4"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/debug-settings-299be7300ee9.js",
+      "sourceHash": "21fc0ae7ff7f0bedb86a22580d92cc5a2ff3eade4d8f42bff0885505607394e9",
+      "byteRange": {
+        "start": 150,
+        "endExclusive": 158
+      },
+      "spanHash": "e31dbe0d5850125ec23badd8fba71b0da7bcb0389d0d567fa4bf30931f384bab",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "flavor-import"
+      ],
+      "id": "DCP-SOURCE-53",
+      "kind": "renderer",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/53.js.txt",
+        "bytes": 8,
+        "sha256": "e31dbe0d5850125ec23badd8fba71b0da7bcb0389d0d567fa4bf30931f384bab"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/debug-settings-299be7300ee9.js",
+      "sourceHash": "21fc0ae7ff7f0bedb86a22580d92cc5a2ff3eade4d8f42bff0885505607394e9",
+      "byteRange": {
+        "start": 275,
+        "endExclusive": 305
+      },
+      "spanHash": "c3a4035e463dc7f60dce7a71f6086506de3b0ef56c27dc19350b8e5217441f5b",
+      "nodeType": "StringLiteral",
+      "labels": [
+        "flavor-import-source"
+      ],
+      "id": "DCP-SOURCE-54",
+      "kind": "renderer",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/54.js.txt",
+        "bytes": 30,
+        "sha256": "c3a4035e463dc7f60dce7a71f6086506de3b0ef56c27dc19350b8e5217441f5b"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/debug-settings-299be7300ee9.js",
+      "sourceHash": "21fc0ae7ff7f0bedb86a22580d92cc5a2ff3eade4d8f42bff0885505607394e9",
+      "byteRange": {
+        "start": 421,
+        "endExclusive": 733
+      },
+      "spanHash": "71814f430d7be1edb6d7c8a21a2c391a1c059b7a1e0900f528f5541a038430ed",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-P"
+      ],
+      "id": "DCP-SOURCE-55",
+      "kind": "renderer",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/55.js.txt",
+        "bytes": 312,
+        "sha256": "71814f430d7be1edb6d7c8a21a2c391a1c059b7a1e0900f528f5541a038430ed"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/debug-settings-299be7300ee9.js",
+      "sourceHash": "21fc0ae7ff7f0bedb86a22580d92cc5a2ff3eade4d8f42bff0885505607394e9",
+      "byteRange": {
+        "start": 733,
+        "endExclusive": 2115
+      },
+      "spanHash": "72197ff8e6cdb9508fecb64a29a632a4e9f8c59ef19b3e920f03f78794de86a4",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-F"
+      ],
+      "id": "DCP-SOURCE-56",
+      "kind": "renderer",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/56.js.txt",
+        "bytes": 1382,
+        "sha256": "72197ff8e6cdb9508fecb64a29a632a4e9f8c59ef19b3e920f03f78794de86a4"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1904839,
+        "endExclusive": 1904841
+      },
+      "spanHash": "6b987654a41163849bd70f7354ec7a205cea30d282c0e84be1cfe8a0e3927c78",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-PM"
+      ],
+      "id": "DCP-SOURCE-57",
+      "kind": "rendererShared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/57.js.txt",
+        "bytes": 2,
+        "sha256": "6b987654a41163849bd70f7354ec7a205cea30d282c0e84be1cfe8a0e3927c78"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1904842,
+        "endExclusive": 1904845
+      },
+      "spanHash": "6b5269d06663e954573415155bdaee7acafc91a778a62c7019206146b01af246",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-dxt"
+      ],
+      "id": "DCP-SOURCE-58",
+      "kind": "rendererShared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/58.js.txt",
+        "bytes": 3,
+        "sha256": "6b5269d06663e954573415155bdaee7acafc91a778a62c7019206146b01af246"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1904846,
+        "endExclusive": 1904849
+      },
+      "spanHash": "d18d35a579d511d133ee59ff76795990ca5300d66d407bbad26334fcd6e00643",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-fxt"
+      ],
+      "id": "DCP-SOURCE-59",
+      "kind": "rendererShared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/59.js.txt",
+        "bytes": 3,
+        "sha256": "d18d35a579d511d133ee59ff76795990ca5300d66d407bbad26334fcd6e00643"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1904850,
+        "endExclusive": 1904852
+      },
+      "spanHash": "dc72daa266582fba62836575af00ade547932927416128dbb80734e9fb39395a",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-FM"
+      ],
+      "id": "DCP-SOURCE-60",
+      "kind": "rendererShared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/60.js.txt",
+        "bytes": 2,
+        "sha256": "dc72daa266582fba62836575af00ade547932927416128dbb80734e9fb39395a"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1904853,
+        "endExclusive": 1905363
+      },
+      "spanHash": "5f56a1574fc1e729eb14ecfd0988962e736b780a3493626c85ab702a5c1d4060",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-IM"
+      ],
+      "id": "DCP-SOURCE-61",
+      "kind": "rendererShared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/61.js.txt",
+        "bytes": 510,
+        "sha256": "5f56a1574fc1e729eb14ecfd0988962e736b780a3493626c85ab702a5c1d4060"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8135436,
+        "endExclusive": 8135445
+      },
+      "spanHash": "9151324f46eb4f0d090f19f332317831166d5cfbaa63f6cded2ea31d4f025512",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export-aen"
+      ],
+      "id": "DCP-SOURCE-62",
+      "kind": "rendererShared",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/62.js.txt",
+        "bytes": 9,
+        "sha256": "9151324f46eb4f0d090f19f332317831166d5cfbaa63f6cded2ea31d4f025512"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 719,
+        "endExclusive": 740
+      },
+      "spanHash": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-_"
+      ],
+      "id": "DCP-SOURCE-63",
+      "kind": "main",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/63.js.txt",
+        "bytes": 21,
+        "sha256": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa"
+      }
+    }
+  ],
+  "sourceJoins": [
+    {
+      "id": "DCP-J01",
+      "claim": "Build policy -> bootstrap cached context -> main startup gate/effective preference -> native/local flag",
+      "unitIds": [
+        "DCP-SOURCE-32",
+        "DCP-SOURCE-31",
+        "DCP-SOURCE-37",
+        "DCP-SOURCE-42",
+        "DCP-SOURCE-43",
+        "DCP-SOURCE-44",
+        "DCP-SOURCE-48",
+        "DCP-SOURCE-49",
+        "DCP-SOURCE-46",
+        "DCP-SOURCE-52",
+        "DCP-SOURCE-03",
+        "DCP-SOURCE-21",
+        "DCP-SOURCE-22",
+        "DCP-SOURCE-23",
+        "DCP-SOURCE-24",
+        "DCP-SOURCE-25",
+        "DCP-SOURCE-26",
+        "DCP-SOURCE-63",
+        "DCP-SOURCE-05",
+        "DCP-SOURCE-27",
+        "DCP-SOURCE-50",
+        "DCP-SOURCE-51"
+      ],
+      "qualification": "Selected static lexical/import/assembly relationship; actual native/window/provider effects unverified."
+    },
+    {
+      "id": "DCP-J02",
+      "claim": "One preference key -> three write routes with distinct ordering -> side effect -> local flag",
+      "unitIds": [
+        "DCP-SOURCE-28",
+        "DCP-SOURCE-35",
+        "DCP-SOURCE-01",
+        "DCP-SOURCE-02",
+        "DCP-SOURCE-10",
+        "DCP-SOURCE-12",
+        "DCP-SOURCE-13",
+        "DCP-SOURCE-07",
+        "DCP-SOURCE-08",
+        "DCP-SOURCE-09",
+        "DCP-SOURCE-14",
+        "DCP-SOURCE-05"
+      ],
+      "qualification": "Selected static lexical/import/assembly relationship; actual native/window/provider effects unverified."
+    },
+    {
+      "id": "DCP-J03",
+      "claim": "Process local flag -> mapped-page route/request consumers; separate native policy",
+      "unitIds": [
+        "DCP-SOURCE-04",
+        "DCP-SOURCE-05",
+        "DCP-SOURCE-06",
+        "DCP-SOURCE-18",
+        "DCP-SOURCE-17",
+        "DCP-SOURCE-36",
+        "DCP-SOURCE-34",
+        "DCP-SOURCE-33",
+        "DCP-SOURCE-38",
+        "DCP-SOURCE-39"
+      ],
+      "qualification": "Selected static lexical/import/assembly relationship; actual native/window/provider effects unverified."
+    },
+    {
+      "id": "DCP-J04",
+      "claim": "Renderer actual import/export -> initialized build policy -> constant prod UI condition",
+      "unitIds": [
+        "DCP-SOURCE-54",
+        "DCP-SOURCE-53",
+        "DCP-SOURCE-62",
+        "DCP-SOURCE-60",
+        "DCP-SOURCE-61",
+        "DCP-SOURCE-55",
+        "DCP-SOURCE-56"
+      ],
+      "qualification": "Selected static lexical/import/assembly relationship; actual native/window/provider effects unverified."
+    }
+  ],
+  "lexicalWitnesses": {
+    "main": {
+      "programDeclarations": [
+        {
+          "name": "r",
+          "byteRange": {
+            "start": 136,
+            "endExclusive": 166
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "p",
+          "byteRange": {
+            "start": 556,
+            "endExclusive": 595
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "g",
+          "byteRange": {
+            "start": 678,
+            "endExclusive": 714
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "lf",
+          "byteRange": {
+            "start": 247541,
+            "endExclusive": 247546
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "uf",
+          "byteRange": {
+            "start": 247547,
+            "endExclusive": 247567
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "df",
+          "byteRange": {
+            "start": 247567,
+            "endExclusive": 247591
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Ake",
+          "byteRange": {
+            "start": 1837276,
+            "endExclusive": 1837448
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "u0e",
+          "byteRange": {
+            "start": 3794132,
+            "endExclusive": 3823806
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedNativeCalls": [
+        {
+          "callee": "_.app.setDebugChromePagesEnabled",
+          "byteRange": {
+            "start": 1436764,
+            "endExclusive": 1436799
+          },
+          "scopes": [
+            {
+              "type": "ClassMethod",
+              "name": "setGlobalStateValue",
+              "byteRange": {
+                "start": 1436651,
+                "endExclusive": 1437799
+              },
+              "params": [
+                "e",
+                "t"
+              ]
+            }
+          ],
+          "tryAncestors": []
+        },
+        {
+          "callee": "_.app.setDebugChromePagesEnabled",
+          "byteRange": {
+            "start": 1438748,
+            "endExclusive": 1438783
+          },
+          "scopes": [
+            {
+              "type": "ClassMethod",
+              "name": "applySettingSideEffects",
+              "byteRange": {
+                "start": 1438485,
+                "endExclusive": 1439009
+              },
+              "params": [
+                "e",
+                "t"
+              ]
+            }
+          ],
+          "tryAncestors": []
+        },
+        {
+          "callee": "_.app.setDebugChromePagesEnabled",
+          "byteRange": {
+            "start": 3796454,
+            "endExclusive": 3796490
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "u0e",
+              "byteRange": {
+                "start": 3794132,
+                "endExclusive": 3823806
+              },
+              "params": []
+            }
+          ],
+          "tryAncestors": []
+        }
+      ],
+      "exports": [
+        {
+          "exported": "runMainAppStartup",
+          "local": "u0e",
+          "byteRange": {
+            "start": 3824326,
+            "endExclusive": 3824355
+          }
+        }
+      ]
+    },
+    "shared": {
+      "programDeclarations": [
+        {
+          "name": "L",
+          "byteRange": {
+            "start": 46448,
+            "endExclusive": 46561
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Vi",
+          "byteRange": {
+            "start": 46562,
+            "endExclusive": 46581
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Hi",
+          "byteRange": {
+            "start": 46582,
+            "endExclusive": 46626
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "R",
+          "byteRange": {
+            "start": 46627,
+            "endExclusive": 46900
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Oa",
+          "byteRange": {
+            "start": 51051,
+            "endExclusive": 51096
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "ka",
+          "byteRange": {
+            "start": 51097,
+            "endExclusive": 51374
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedNativeCalls": [],
+      "exports": [
+        {
+          "exported": "ii",
+          "local": "ka",
+          "byteRange": {
+            "start": 193090,
+            "endExclusive": 193167
+          }
+        },
+        {
+          "exported": "wi",
+          "local": "R",
+          "byteRange": {
+            "start": 201564,
+            "endExclusive": 201640
+          }
+        }
+      ]
+    },
+    "flavor": {
+      "programDeclarations": [
+        {
+          "name": "a",
+          "byteRange": {
+            "start": 176,
+            "endExclusive": 405
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "o",
+          "byteRange": {
+            "start": 406,
+            "endExclusive": 651
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "m",
+          "byteRange": {
+            "start": 1340,
+            "endExclusive": 3650
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedNativeCalls": [],
+      "exports": [
+        {
+          "exported": "t",
+          "local": "m",
+          "byteRange": {
+            "start": 3727,
+            "endExclusive": 3802
+          }
+        }
+      ]
+    },
+    "bootstrap": {
+      "programDeclarations": [
+        {
+          "name": "l",
+          "byteRange": {
+            "start": 381,
+            "endExclusive": 420
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "aE",
+          "byteRange": {
+            "start": 400700,
+            "endExclusive": 400707
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "oE",
+          "byteRange": {
+            "start": 400708,
+            "endExclusive": 404785
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "$",
+          "byteRange": {
+            "start": 457128,
+            "endExclusive": 457143
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedNativeCalls": [],
+      "exports": [
+        {
+          "exported": "I",
+          "local": "oE",
+          "byteRange": {
+            "start": 460373,
+            "endExclusive": 460385
+          }
+        }
+      ]
+    },
+    "renderer": {
+      "programDeclarations": [
+        {
+          "name": "P",
+          "byteRange": {
+            "start": 421,
+            "endExclusive": 733
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "F",
+          "byteRange": {
+            "start": 733,
+            "endExclusive": 2115
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedNativeCalls": [],
+      "exports": []
+    },
+    "rendererShared": {
+      "programDeclarations": [
+        {
+          "name": "PM",
+          "byteRange": {
+            "start": 1904839,
+            "endExclusive": 1904841
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "dxt",
+          "byteRange": {
+            "start": 1904842,
+            "endExclusive": 1904845
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "fxt",
+          "byteRange": {
+            "start": 1904846,
+            "endExclusive": 1904849
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "FM",
+          "byteRange": {
+            "start": 1904850,
+            "endExclusive": 1904852
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "IM",
+          "byteRange": {
+            "start": 1904853,
+            "endExclusive": 1905363
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedNativeCalls": [],
+      "exports": [
+        {
+          "exported": "aen",
+          "local": "FM",
+          "byteRange": {
+            "start": 8135436,
+            "endExclusive": 8135445
+          }
+        }
+      ]
+    }
+  },
+  "decision": {
+    "runtimeGroup": "RAM-04",
+    "status": "selected-JS-startup-write-and-consumer-contract-resolved; native-privileged-page-provider-open",
+    "firstPartyUnits": [
+      {
+        "responsibility": "Build-flavor parse and explicit debug policy",
+        "proposedPath": "apps/desktop/src/shared/build-flavor.ts"
+      },
+      {
+        "responsibility": "Startup preference application and mapped page behavior",
+        "proposedPath": "apps/desktop/src/main/browser/chrome-page-policy.ts"
+      },
+      {
+        "responsibility": "Legacy and settings write side effects with distinct order",
+        "proposedPath": "apps/desktop/src/main/settings/browser-diagnostics-effects.ts"
+      },
+      {
+        "responsibility": "Debug setting presentation and constant build gate",
+        "proposedPath": "apps/desktop/src/renderer/settings/debug-settings.tsx"
+      }
+    ],
+    "providerBoundary": "packages/runtime-adapter/src/chrome-page-policy",
+    "contractPath": "packages/contracts/src/runtime/chrome-page-policy.ts",
+    "contractDecisions": [
+      "Keep strict boolean and build-flavor conditions; startup captures context, writes resolve again.",
+      "Keep store, effective preference, native request and local flag distinct; no invented transaction or rollback.",
+      "Preserve the legacy post-success global-state broadcast and skipped broadcast on exceptions.",
+      "Keep native trusted-page enforcement separate from downloads/history application routes and other request policies.",
+      "Treat Electron/Owl and schema/RPC/React helpers as dependency contracts, not generated third-party implementations.",
+      "A hidden prod control is a build condition, not a proven ChatGPT-only exclusion."
+    ],
+    "consumerOwnership": {
+      "foundationTasks": [
+        "W02",
+        "W03"
+      ],
+      "confirmedFeatureIdsAdded": [],
+      "completeConsumerCensus": false,
+      "qualification": "No new T26/T31 feature identity follows merely from Browser Use/debug naming."
+    },
+    "mode": "unknown; retained",
+    "resolutionBuckets": {
+      "analysisResolvedHere": [
+        "Six build-flavor gates, resolver precedence and malformed metadata behavior.",
+        "Bootstrap owner/cache and selected startup ordering.",
+        "Three write routes, store readback, exception propagation and window broadcast position.",
+        "Local flag mapped-URL consumers and separate constant-prod renderer gate."
+      ],
+      "implementationVerification": [
+        "Exact trusted diagnostic page policy, chrome-untrusted restrictions and profile/guest boundaries.",
+        "Native failure/return semantics, startup error handling and actual settings/RPC delivery.",
+        "Stored/effective/native/local state behavior across writes, changes and restart."
+      ],
+      "externalInputOrProviderDevelopment": [
+        "Independent Owl policy source/build inputs, or an independently implemented provider with parity evidence."
+      ],
+      "notReopenedByMissingRuntime": "Missing native acceptance does not reopen the selected JS owner/condition findings."
+    },
+    "fullRuntimeRouteAccepted": false
+  },
+  "counts": {
+    "sourceFacts": 17,
+    "sourceUnits": 63,
+    "sourceBytesIncludingOverlappingContext": 45567,
+    "sourceJoins": 4,
+    "distinctCompletePrograms": 6,
+    "reusedSourceSelections": 1,
+    "isolatedSourceCasesPassed": 15,
+    "newReaRuns": 0,
+    "modelSubmissions": 0,
+    "clientLaunches": 0,
+    "realNativeCalls": 0,
+    "productScenariosExecuted": 0,
+    "featureDefinitionsAdded": 0,
+    "featureModeChanges": 0,
+    "clientImplementationAdded": 0
+  },
+  "evidence": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/debug-chrome-policy-owner-v1-evidence.jsonl",
+    "bytes": 12816,
+    "sha256": "5d02f0d423b74ade29dbc689f48180813f68b6a439764fcfcc8f18df1d568edc"
+  },
+  "replay": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/debug-chrome-policy-owner-v1-replay.json",
+    "bytes": 21317,
+    "sha256": "5231b8b8a2ad31fa2804d0188c4e1a4d9f8884fc36377ac4dd973bcc5f58a756"
+  },
+  "query": {
+    "path": ".analysis-local/debug-chrome-policy-owner-work/literal-query.json",
+    "bytes": 3057,
+    "sha256": "1acc8ff1b25c4cc23f842a57ff8b6899b9f8499d6e9f12e05fd956174b230f3b"
+  },
+  "fixtureCorrection": "Initial replay lacked a windowManager broadcast double and failed. Corrected fixture records successful global-state broadcasts and verifies skipped broadcasts on exceptions; target source was unchanged.",
+  "inputPins": [
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/inspect.cjs",
+      "bytes": 8050,
+      "sha256": "744c34d1c028520aea106b48871fb17ca34dba0c46b40038c919af51a14f60d2"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/replay.cjs",
+      "bytes": 13846,
+      "sha256": "950320433500c44b1de5044a73568226dd8cc1d3af0dba176cc563e47df7fd65"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/replay.json",
+      "bytes": 21317,
+      "sha256": "5231b8b8a2ad31fa2804d0188c4e1a4d9f8884fc36377ac4dd973bcc5f58a756"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/main-inspection.json",
+      "bytes": 1288683,
+      "sha256": "0dfb0e64db53d70e81827c80b5313fbfa4a116fdea7b0c7b1e10f1e9ae19181b"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/shared-inspection.json",
+      "bytes": 7933,
+      "sha256": "28554ba8a0f268fbde6c4754cc981dd055a9b0426d3cffb759c1511e6fa57db4"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/flavor-inspection.json",
+      "bytes": 3957,
+      "sha256": "459cdd0e2b6348cb5bcb484f7f9f99702b9a4af8d1ed2ed0e2edd331b3cdf87d"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/bootstrap-inspection.json",
+      "bytes": 31396,
+      "sha256": "71f87debe72944c4d78e88c0ebfbc88626445c3dcd5fbda944818714cea40a81"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/renderer-inspection.json",
+      "bytes": 2851,
+      "sha256": "94708b0a1ef3b70f16cbc14561ce05bcce07c3ccbb5b16566959f2a4bde22989"
+    },
+    {
+      "path": ".analysis-local/debug-chrome-policy-owner-work/rendererShared-inspection.json",
+      "bytes": 4654,
+      "sha256": "8cbf821645c06d9592a1125a01756adf9dd4fb4c82d30139b1ba3572ab526363"
+    },
+    {
+      "path": "scripts/analysis/publish_debug_chrome_policy_owner_v1.py",
+      "bytes": 22061,
+      "sha256": "6316bd0981e4a3cbfbb388f02b32f969b1f1976cfc121070476b9b09a2200cb9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/audio-measurement-owner-v1.json",
+      "bytes": 71316,
+      "sha256": "65b21ba22f32c3fabf54076b7dbd80211843db467f29c95680d7a792a6d985ab"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-adoption-matrix-v1.json",
+      "bytes": 54887,
+      "sha256": "a52d4b415dbef9ae6bdd0c084a64bfd2c4f5589a4be2ecd3d4149ec939d323bd"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+      "bytes": 62319,
+      "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+      "bytes": 1171222,
+      "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+      "bytes": 2065758,
+      "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v24-scenarios.json",
+      "bytes": 1944258,
+      "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+      "bytes": 1393221,
+      "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+    }
+  ],
+  "fullAnalysisCompleted": false,
+  "fullRuntimeRouteSelected": false
+}

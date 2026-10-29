@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scenarios": [
+    {
+      "id": "RCS-S001",
+      "name": "SSH并发成功",
+      "requiredConditions": "自有SSH样例配置和可控发现延迟；独立客户端",
+      "action": "连续刷新并令旧发现先返回",
+      "expected": "旧成功等待最新刷新；仅当前结果进入列表/catalog",
+      "sourceEvidenceIds": [
+        "RCS-E004",
+        "RCS-E005"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S002",
+      "name": "SSH旧请求失败",
+      "requiredConditions": "自有SSH发现适配可控失败，已有更新一轮",
+      "action": "令旧发现失败且新发现成功",
+      "expected": "旧调用仍失败，新列表保留；错误展示与调用绑定另验",
+      "sourceEvidenceIds": [
+        "RCS-E004"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S003",
+      "name": "WSL失败与空结果",
+      "requiredConditions": "Windows/WSL自有测试环境，可分别制造discovery failed与无distro",
+      "action": "分别触发两类结果",
+      "expected": "失败保留旧值；成功空结果发布空数组，不能混淆",
+      "sourceEvidenceIds": [
+        "RCS-E009",
+        "RCS-E010"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S004",
+      "name": "WSL重试与销毁",
+      "requiredConditions": "可控发现失败、虚拟时间的集成层及真实客户端清理入口",
+      "action": "失败后等待30000ms重试，再销毁或改变generation",
+      "expected": "同轮至多一次重试；销毁后旧结果不发布，真实计时/清理需观察",
+      "sourceEvidenceIds": [
+        "RCS-E008",
+        "RCS-E009"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S005",
+      "name": "WSL并发异常",
+      "requiredConditions": "Windows/WSL自有环境，两轮发现可控",
+      "action": "旧轮失败、新轮成功",
+      "expected": "旧异常被抑制，等待者得到最新列表；实际UI不闪回旧值",
+      "sourceEvidenceIds": [
+        "RCS-E008",
+        "RCS-E009"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S006",
+      "name": "remote-control授权矩阵",
+      "requiredConditions": "独立服务fixture可触发I3/R3/L3及未知异常；真实账户服务另需授权",
+      "action": "逐种错误刷新",
+      "expected": "标志、clientId清理与rethrow按四分支核对，不合并错误",
+      "sourceEvidenceIds": [
+        "RCS-E014",
+        "RCS-E015"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S007",
+      "name": "remote-control授权丢失",
+      "requiredConditions": "自有远程环境和连接，初态clientAuthorized=true",
+      "action": "刷新转为未授权并观察断开",
+      "expected": "旧连接的断开Promise完成后刷新返回；真实连接资源回收另验",
+      "sourceEvidenceIds": [
+        "RCS-E013"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S008",
+      "name": "配置列表与连接状态",
+      "requiredConditions": "独立客户端中自有已保存但未连接的host",
+      "action": "读取目录、连接状态及主机选择UI",
+      "expected": "目录存在不代表connected；查询/selector/展示三者对齐",
+      "sourceEvidenceIds": [
+        "RCS-E002",
+        "RCS-E003",
+        "RCS-E019"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S009",
+      "name": "reconcile部分失败",
+      "requiredConditions": "独立连接registry可控create/dispose错误",
+      "action": "重复host配置、owningHost、自动连接开关及创建失败",
+      "expected": "最后重复项生效、owningHost排除、失败配置仍保留；处置异常中断边界一致",
+      "sourceEvidenceIds": [
+        "RCS-E016",
+        "RCS-E017"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    },
+    {
+      "id": "RCS-S010",
+      "name": "偏好与重启",
+      "requiredConditions": "独立数据目录、自有SSH/WSL配置和自动连接偏好",
+      "action": "保存显式false后重启并刷新",
+      "expected": "偏好false保留，实际appState存储/迁移和启动来源需独立证据",
+      "sourceEvidenceIds": [
+        "RCS-E007",
+        "RCS-E018",
+        "RCS-E020"
+      ],
+      "status": "not-executed",
+      "featureId": null,
+      "addedToExisting160FeatureScenarios": false
+    }
+  ],
+  "executed": 0,
+  "featureScenarioLedgerUpdated": false
+}

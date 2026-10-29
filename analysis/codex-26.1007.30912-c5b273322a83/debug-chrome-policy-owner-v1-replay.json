@@ -1,0 +1,782 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "casesPassed": 15,
+  "cases": [
+    {
+      "id": "DPR-01",
+      "claim": "Exact six build flavors have the expected internal/public debug policy.",
+      "status": "passed",
+      "observed": [
+        {
+          "value": "dev",
+          "allowed": true
+        },
+        {
+          "value": "agent",
+          "allowed": true
+        },
+        {
+          "value": "nightly",
+          "allowed": true
+        },
+        {
+          "value": "internal-alpha",
+          "allowed": true
+        },
+        {
+          "value": "public-beta",
+          "allowed": false
+        },
+        {
+          "value": "prod",
+          "allowed": false
+        }
+      ]
+    },
+    {
+      "id": "DPR-02",
+      "claim": "Valid trimmed environment value wins over package metadata.",
+      "status": "passed",
+      "observed": {
+        "resolved": "nightly",
+        "packageReads": 0
+      }
+    },
+    {
+      "id": "DPR-03",
+      "claim": "Invalid environment falls back through package candidates; runtime defaults depend on NODE_ENV.",
+      "status": "passed",
+      "observed": {
+        "packageResolved": "internal-alpha",
+        "prodDefault": "prod",
+        "nonProductionDefault": "dev"
+      }
+    },
+    {
+      "id": "DPR-04",
+      "claim": "Malformed package JSON propagates instead of silently choosing a default.",
+      "status": "passed",
+      "observed": {
+        "throws": true
+      }
+    },
+    {
+      "id": "DPR-05",
+      "claim": "Global setter normalizes strict true and build permission before native, local flag and state write.",
+      "status": "passed",
+      "observed": {
+        "matrixRows": 30,
+        "rows": [
+          {
+            "build": "dev",
+            "input": true,
+            "effective": true
+          },
+          {
+            "build": "dev",
+            "input": false,
+            "effective": false
+          },
+          {
+            "build": "dev",
+            "input": "true",
+            "effective": false
+          },
+          {
+            "build": "dev",
+            "input": 1,
+            "effective": false
+          },
+          {
+            "build": "dev",
+            "input": null,
+            "effective": false
+          },
+          {
+            "build": "agent",
+            "input": true,
+            "effective": true
+          },
+          {
+            "build": "agent",
+            "input": false,
+            "effective": false
+          },
+          {
+            "build": "agent",
+            "input": "true",
+            "effective": false
+          },
+          {
+            "build": "agent",
+            "input": 1,
+            "effective": false
+          },
+          {
+            "build": "agent",
+            "input": null,
+            "effective": false
+          },
+          {
+            "build": "nightly",
+            "input": true,
+            "effective": true
+          },
+          {
+            "build": "nightly",
+            "input": false,
+            "effective": false
+          },
+          {
+            "build": "nightly",
+            "input": "true",
+            "effective": false
+          },
+          {
+            "build": "nightly",
+            "input": 1,
+            "effective": false
+          },
+          {
+            "build": "nightly",
+            "input": null,
+            "effective": false
+          },
+          {
+            "build": "internal-alpha",
+            "input": true,
+            "effective": true
+          },
+          {
+            "build": "internal-alpha",
+            "input": false,
+            "effective": false
+          },
+          {
+            "build": "internal-alpha",
+            "input": "true",
+            "effective": false
+          },
+          {
+            "build": "internal-alpha",
+            "input": 1,
+            "effective": false
+          },
+          {
+            "build": "internal-alpha",
+            "input": null,
+            "effective": false
+          },
+          {
+            "build": "public-beta",
+            "input": true,
+            "effective": false
+          },
+          {
+            "build": "public-beta",
+            "input": false,
+            "effective": false
+          },
+          {
+            "build": "public-beta",
+            "input": "true",
+            "effective": false
+          },
+          {
+            "build": "public-beta",
+            "input": 1,
+            "effective": false
+          },
+          {
+            "build": "public-beta",
+            "input": null,
+            "effective": false
+          },
+          {
+            "build": "prod",
+            "input": true,
+            "effective": false
+          },
+          {
+            "build": "prod",
+            "input": false,
+            "effective": false
+          },
+          {
+            "build": "prod",
+            "input": "true",
+            "effective": false
+          },
+          {
+            "build": "prod",
+            "input": 1,
+            "effective": false
+          },
+          {
+            "build": "prod",
+            "input": null,
+            "effective": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "DPR-06",
+      "claim": "Native error in global setter prevents local flag and global-state update.",
+      "status": "passed",
+      "observed": {
+        "events": [
+          [
+            "native",
+            true
+          ]
+        ],
+        "flag": false,
+        "stored": false,
+        "broadcasts": []
+      }
+    },
+    {
+      "id": "DPR-07",
+      "claim": "Global-state failure after successful native call leaves the local flag updated.",
+      "status": "passed",
+      "observed": {
+        "events": [
+          [
+            "native",
+            true
+          ],
+          [
+            "global-set",
+            "debug-chrome-pages-enabled",
+            true
+          ]
+        ],
+        "flag": true,
+        "stored": false,
+        "broadcasts": []
+      }
+    },
+    {
+      "id": "DPR-08",
+      "claim": "Legacy configuration setter writes raw state before its side effect, without rollback.",
+      "status": "passed",
+      "observed": {
+        "events": [
+          [
+            "global-set",
+            "debug-chrome-pages-enabled",
+            true
+          ],
+          [
+            "native",
+            true
+          ]
+        ],
+        "stored": true,
+        "flag": false
+      }
+    },
+    {
+      "id": "DPR-09",
+      "claim": "Settings adapter writes the store before afterWrite; native failure rejects after that write.",
+      "status": "passed",
+      "observed": {
+        "events": [
+          [
+            "settings-set",
+            "debug-chrome-pages-enabled",
+            true
+          ],
+          [
+            "native",
+            true
+          ]
+        ],
+        "stored": true,
+        "flag": false
+      }
+    },
+    {
+      "id": "DPR-10",
+      "claim": "afterWrite uses the value read back from the store.",
+      "status": "passed",
+      "observed": {
+        "events": [
+          [
+            "settings-set",
+            "debug-chrome-pages-enabled",
+            true
+          ],
+          [
+            "native",
+            false
+          ]
+        ],
+        "flag": false
+      }
+    },
+    {
+      "id": "DPR-11",
+      "claim": "Startup boolean uses its captured flavor gate and skips effective preference reads when denied.",
+      "status": "passed",
+      "observed": {
+        "rows": [
+          {
+            "build": "nightly",
+            "value": true,
+            "effective": true,
+            "reads": 1
+          },
+          {
+            "build": "nightly",
+            "value": false,
+            "effective": false,
+            "reads": 1
+          },
+          {
+            "build": "nightly",
+            "value": "true",
+            "effective": false,
+            "reads": 1
+          },
+          {
+            "build": "prod",
+            "value": true,
+            "effective": false,
+            "reads": 0
+          },
+          {
+            "build": "prod",
+            "value": false,
+            "effective": false,
+            "reads": 0
+          },
+          {
+            "build": "prod",
+            "value": "true",
+            "effective": false,
+            "reads": 0
+          }
+        ],
+        "qualification": "Only exact startup j/le declarators execute; complete asynchronous startup was not run."
+      }
+    },
+    {
+      "id": "DPR-12",
+      "claim": "URL mapping covers downloads/history and preserves search, without becoming a trusted-page allowlist.",
+      "status": "passed",
+      "observed": [
+        {
+          "url": "chrome://history/?q=one#two",
+          "result": "/settings/browser-use/history?q=one"
+        },
+        {
+          "url": "chrome:/downloads",
+          "result": "/settings/browser-use/downloads"
+        },
+        {
+          "url": "chrome://version",
+          "result": null
+        },
+        {
+          "url": "chrome-untrusted://history",
+          "result": null
+        },
+        {
+          "url": "https://history/",
+          "result": null
+        },
+        {
+          "url": "chrome://user@history",
+          "result": null
+        },
+        {
+          "url": "chrome://history:80",
+          "result": null
+        }
+      ]
+    },
+    {
+      "id": "DPR-13",
+      "claim": "Disabled debug routes mapped chrome pages to application settings; enabled debug bypasses that route.",
+      "status": "passed",
+      "observed": {
+        "settingsMessages": [
+          [
+            17,
+            {
+              "type": "navigate-to-route",
+              "path": "/settings/browser-use/history"
+            }
+          ]
+        ],
+        "intercepts": 1
+      }
+    },
+    {
+      "id": "DPR-14",
+      "claim": "Selected request callback gates mapped main-frame URLs; other policies remain independent.",
+      "status": "passed",
+      "observed": {
+        "disabledMainFrameCancel": true,
+        "enabledMainFrameCancel": false,
+        "otherPolicies": "synthetic false; not full request admission"
+      }
+    },
+    {
+      "id": "DPR-15",
+      "claim": "Renderer uses its own imported build policy with constant prod at the Chrome preference gate.",
+      "status": "passed",
+      "observed": {
+        "chromePreferenceRow": false,
+        "gpuGroup": true,
+        "qualification": "Synthetic JSX/memo and initializer helper; no actual renderer/window run."
+      }
+    }
+  ],
+  "sourceInputs": [
+    {
+      "kind": "shared",
+      "label": "preference-DEBUG_CHROME_PAGES_ENABLED",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 2363,
+        "endExclusive": 2418
+      },
+      "spanHash": "3bcf60597793e450c3727c010c2b567ee2cfba6d03427b72fd11d15b5c735fe2"
+    },
+    {
+      "kind": "shared",
+      "label": "preference-debugChromePagesEnabled",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 146155,
+        "endExclusive": 146339
+      },
+      "spanHash": "92f92407ad49f1cd738b6fc053c1565ebe1ac5014ddb1e9233b0ba0c4a792df5"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-L",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 46448,
+        "endExclusive": 46561
+      },
+      "spanHash": "c29ee4d1925fdf9464785ddbde48a32f4a2532b3c7ab34deb06284ceeca02a2f"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-Vi",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 46562,
+        "endExclusive": 46581
+      },
+      "spanHash": "5ee1758381e1a225f633d87ee880dc578e26214cf62fc0d20e40192efdb35bec"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-Hi",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 46582,
+        "endExclusive": 46626
+      },
+      "spanHash": "258db61dd9d0a79bc4dac7d55daf9511d3de9affd46745e8e6884b04419c23af"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-R",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 46627,
+        "endExclusive": 46900
+      },
+      "spanHash": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9"
+    },
+    {
+      "kind": "flavor",
+      "label": "binding-a",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "byteRange": {
+        "start": 176,
+        "endExclusive": 405
+      },
+      "spanHash": "769fbce03f227adaa829e7e3f52bca1f83c914bde0cb00fc17ad3f92fe1e58ff"
+    },
+    {
+      "kind": "flavor",
+      "label": "binding-o",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "byteRange": {
+        "start": 406,
+        "endExclusive": 651
+      },
+      "spanHash": "57607316b84b06bb70dd54b3d780718248be7835bfe8f2c0d1f91e3db161440c"
+    },
+    {
+      "kind": "flavor",
+      "label": "binding-m",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "byteRange": {
+        "start": 1340,
+        "endExclusive": 3650
+      },
+      "spanHash": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c"
+    },
+    {
+      "kind": "shared",
+      "label": "route-ma",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 50514,
+        "endExclusive": 50550
+      },
+      "spanHash": "d6e1ca4aa94f76c4e95f56668106aaecccd4b38b6018dec72dafba1d4946c38b"
+    },
+    {
+      "kind": "shared",
+      "label": "route-va",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 50614,
+        "endExclusive": 50648
+      },
+      "spanHash": "01defd1d60e60efed37bc8a9a35b0fc93809223521357db9731074139dcb3371"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-Oa",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 51051,
+        "endExclusive": 51096
+      },
+      "spanHash": "b8af73059b1411097af35f03ec2e34c917db6b9966133230993d3303869e2f38"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-ka",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "byteRange": {
+        "start": 51097,
+        "endExclusive": 51374
+      },
+      "spanHash": "0068b1bdd4b321932d5214d28eaecd93cfeaf88bdb5af8ba86e86d275e66deee"
+    },
+    {
+      "kind": "main",
+      "label": "binding-lf",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 247541,
+        "endExclusive": 247546
+      },
+      "spanHash": "3ff32f073590af4f96ddafa4f0f3bb787b442f64c987b777e116aca46349d112"
+    },
+    {
+      "kind": "main",
+      "label": "binding-uf",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 247547,
+        "endExclusive": 247567
+      },
+      "spanHash": "0004036c42f1165af8e276ae318f01c6d5af92ba2ee79b573172cab16c22fa89"
+    },
+    {
+      "kind": "main",
+      "label": "binding-df",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 247567,
+        "endExclusive": 247591
+      },
+      "spanHash": "cd5e14dba1fab8753d25657e05781dbaa677b782ce77415d25f9bb7b0a050b77"
+    },
+    {
+      "kind": "main",
+      "label": "binding-Ake",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1837276,
+        "endExclusive": 1837448
+      },
+      "spanHash": "b37d1423c23eb3359727441a5507a5801fd37a702e876935b11bb49194f0c058"
+    },
+    {
+      "kind": "main",
+      "label": "method-setGlobalStateValue",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1436651,
+        "endExclusive": 1437799
+      },
+      "spanHash": "83d10ec2faa92718faedef81c24e44f3cc24dfe0184b14ab7db40f7c4d481a0d"
+    },
+    {
+      "kind": "main",
+      "label": "method-setConfigurationValue",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1437855,
+        "endExclusive": 1437942
+      },
+      "spanHash": "826c765a3ddd483e83a4b49a846733b3f03e6da4ffa8e839a5748ff325f9815e"
+    },
+    {
+      "kind": "main",
+      "label": "method-applySettingSideEffects",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1438485,
+        "endExclusive": 1439009
+      },
+      "spanHash": "ddd546a8d093588f97cf6e1d652c55e7c29d3795de30335133e129c6972947ed"
+    },
+    {
+      "kind": "main",
+      "label": "method-setSettingValue",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1438355,
+        "endExclusive": 1438485
+      },
+      "spanHash": "085c368f66ffefa7077f69af33207e5b28864436ef7a6fc907f53b474ad30ca5"
+    },
+    {
+      "kind": "main",
+      "label": "settings-adapter-constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1387538,
+        "endExclusive": 1387611
+      },
+      "spanHash": "fdbdde94898c7a062e6092392728a0b5de2664b2bb6005a117e327315243e3f3"
+    },
+    {
+      "kind": "main",
+      "label": "settings-adapter-write",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1388248,
+        "endExclusive": 1388322
+      },
+      "spanHash": "af0733390a4f03a2ae6f8c3642b07f2068389128014f14ae1fc17964e38d78f8"
+    },
+    {
+      "kind": "main",
+      "label": "settings-adapter-injection",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1396934,
+        "endExclusive": 1397040
+      },
+      "spanHash": "13698f0e7deeda5708b2d65da67aee3af469de761a9e5b08357029ec4d0f3181"
+    },
+    {
+      "kind": "main",
+      "label": "startup-j",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 3794651,
+        "endExclusive": 3794674
+      },
+      "spanHash": "8a643008b4817396eb888a9fc2cc761bcf26d32aabadffd388e833f75bc2ef7b"
+    },
+    {
+      "kind": "main",
+      "label": "startup-le",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 3796381,
+        "endExclusive": 3796453
+      },
+      "spanHash": "a87fcfc7892fa7ae54872455f7415d3b6853026f9feb98711607e6f2df6e1458"
+    },
+    {
+      "kind": "main",
+      "label": "flag-consumer-1533856",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 1533660,
+        "endExclusive": 1534093
+      },
+      "spanHash": "f27dd52472cfa1344dea9b84a87185ebbf6056b68307cfffc0045242a4b6bf95"
+    },
+    {
+      "kind": "rendererShared",
+      "label": "binding-PM",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 1904839,
+        "endExclusive": 1904841
+      },
+      "spanHash": "6b987654a41163849bd70f7354ec7a205cea30d282c0e84be1cfe8a0e3927c78"
+    },
+    {
+      "kind": "rendererShared",
+      "label": "binding-dxt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 1904842,
+        "endExclusive": 1904845
+      },
+      "spanHash": "6b5269d06663e954573415155bdaee7acafc91a778a62c7019206146b01af246"
+    },
+    {
+      "kind": "rendererShared",
+      "label": "binding-fxt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 1904846,
+        "endExclusive": 1904849
+      },
+      "spanHash": "d18d35a579d511d133ee59ff76795990ca5300d66d407bbad26334fcd6e00643"
+    },
+    {
+      "kind": "rendererShared",
+      "label": "binding-FM",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 1904850,
+        "endExclusive": 1904852
+      },
+      "spanHash": "dc72daa266582fba62836575af00ade547932927416128dbb80734e9fb39395a"
+    },
+    {
+      "kind": "rendererShared",
+      "label": "binding-IM",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 1904853,
+        "endExclusive": 1905363
+      },
+      "spanHash": "5f56a1574fc1e729eb14ecfd0988962e736b780a3493626c85ab702a5c1d4060"
+    },
+    {
+      "kind": "renderer",
+      "label": "binding-P",
+      "sourcePath": "app.asar/webview/assets/debug-settings-299be7300ee9.js",
+      "byteRange": {
+        "start": 421,
+        "endExclusive": 733
+      },
+      "spanHash": "71814f430d7be1edb6d7c8a21a2c391a1c059b7a1e0900f528f5541a038430ed"
+    }
+  ],
+  "scope": "Selected frozen source with synthetic environment/package/store/runtime/route/JSX fixtures; not original-client behavior.",
+  "substitutions": [
+    "Filesystem metadata reads are synthetic maps; no environment or personal files read.",
+    "Native app method and inherited RPC base.",
+    "Schema/parser and unrelated settings effects are synthetic; actual validation/durability remains unverified.",
+    "AL fixture class contains exact selected constructor/write only.",
+    "Other request policy/rewrite callbacks and JSX/memo/lazy-initializer helper."
+  ],
+  "originalClientRuns": 0,
+  "modelSubmissions": 0,
+  "realNativeCalls": 0,
+  "productScenariosExecuted": 0
+}

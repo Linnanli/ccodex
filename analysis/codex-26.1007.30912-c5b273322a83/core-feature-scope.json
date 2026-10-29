@@ -1,0 +1,3552 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "Author review of core operation granularity using saved REA/AST supplements and qualified behavior context.",
+  "inputPins": [
+    {
+      "path": "feature-scope-ledger.json",
+      "bytes": 825192,
+      "sha256": "e36ea1843f6fde0e5d0f5a66cd8cbecd25e3ffc18d1379b41a17cf32f1022be6"
+    },
+    {
+      "path": "feature-scope-scenarios.json",
+      "bytes": 231625,
+      "sha256": "1f76f4dc7b671bcc686febc611ca47b298b2638be1ff190ef45f7d7059bf545b"
+    },
+    {
+      "path": "functional-operation-reconciliation.json",
+      "bytes": 1229922,
+      "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989"
+    },
+    {
+      "path": "task-composer-entry-contracts.json",
+      "bytes": 446181,
+      "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb"
+    },
+    {
+      "path": "submission-host-instance.json",
+      "bytes": 449270,
+      "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e"
+    },
+    {
+      "path": "approval-entry-contracts.json",
+      "bytes": 40148,
+      "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258"
+    },
+    {
+      "path": "approval-entry-contracts-evidence.jsonl",
+      "bytes": 36295,
+      "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567"
+    },
+    {
+      "path": "interrupt-control-flow.json",
+      "bytes": 38511,
+      "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214"
+    },
+    {
+      "path": "interrupt-control-flow-findings.json",
+      "bytes": 30625,
+      "sha256": "d5d45cabdf0caa89cd57728555f83315383980354cf34a1de5711b605455129d"
+    },
+    {
+      "path": "interrupt-control-flow-observations.json",
+      "bytes": 34385,
+      "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7"
+    },
+    {
+      "path": "behavior-stop-restart.json",
+      "bytes": 4289,
+      "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+    },
+    {
+      "path": "thread-turn-feature-contracts.json",
+      "bytes": 680075,
+      "sha256": "52ed521c73e41d8f07e57b595123ae2a6b6c3cc4568cb79c51cf5e049ff3f969"
+    },
+    {
+      "path": "turn-notification-state.json",
+      "bytes": 1595020,
+      "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db"
+    }
+  ],
+  "newFeatures": [
+    {
+      "featureId": "FSC-0035",
+      "name": "向已有本地对话提交消息",
+      "trigger": "X7e submit action or guarded rut submit/steer/queue intent, through Qft and the selected existing-local branch.",
+      "parametersAndState": {
+        "inputs": [
+          "scope",
+          "conversationId",
+          "hostId",
+          "editor text / persisted text",
+          "mentions",
+          "attachments",
+          "cwd",
+          "execution and permission options",
+          "service tier",
+          "client message ID",
+          "restore message",
+          "queue options",
+          "onMessageAdded / onSubmitted callbacks"
+        ],
+        "owners": [
+          "renderer draft, retained-message and submission UI ownership",
+          "coordinator accepted and queued message bookkeeping",
+          "manager active/pending turn state",
+          "injected request/notification/persistence boundaries"
+        ],
+        "concreteValuesObserved": false
+      },
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/2"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/4"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/5"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/6"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/7"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/10"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/11"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/12"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/13"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/14"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/15"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/16"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/17"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/19"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/20"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/21"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/22"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/23"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/24"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/25"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/26"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/27"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/28"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/29"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/30"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/36"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/38"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "submission-host-instance.json",
+          "bytes": 449270,
+          "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+          "jsonPointer": "/contracts/27"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "submission-host-instance.json",
+          "bytes": 449270,
+          "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+          "jsonPointer": "/contracts/28"
+        }
+      ],
+      "chain": [
+        "X7e/rut → Qft.Xl → Zut/Put → Cdt local target",
+        "rpt/_9e existing-local → Tta → KI.getTurnCoordinator().sendMessage",
+        "Only under internal-provider/same-scope-host Dfn predicates: vMc/X2t/W2t → cfn/ifn → manager start/steer",
+        "Injected app-server transport, notification reduction and durable storage remain separate boundaries"
+      ],
+      "boundaries": [
+        "Actual UI event, selected target/scope/host and provider branch",
+        "Primary provider/client/deferred RPC can differ",
+        "Queue acceptance and optimistic display do not prove turn completion",
+        "New thread/cloud/worktree and durable admission alternatives are outside this definition"
+      ],
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "已有本地对话中的用户提交有独立回调／键盘入口及draft、admission、queue和错误契约；新建对话、cloud、worktree另有目标与调用路径，不能合并为同一已分析流程。",
+      "mode": "unknown",
+      "modeEvidence": "Source paths/labels and current feature candidates do not close actual mode or shared dependency reachability.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-bounded-source-contracts; selected bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "operationMembers": [
+        {
+          "operationId": "operation:composer:renderer-existing-local-submit",
+          "originalContractId": "renderer-existing-local-submit",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/7"
+          },
+          "trigger": "X7e submit action or guarded rut submit/steer/queue intent, through Qft and the selected existing-local branch.",
+          "operationType": "React-callback/source-submit",
+          "parametersAndStateRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/7/parametersAndState"
+          },
+          "selectedSourceChainRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/7/selectedSourceChain"
+          },
+          "boundaryRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/7/externalBoundaries"
+          }
+        }
+      ],
+      "conditions": [
+        {
+          "operationId": "operation:composer:renderer-existing-local-submit",
+          "sourceConditions": {
+            "sourceStatus": "confirmed-static-callback-parameter-and-import-chain; host-selected receiver unknown",
+            "retainedGuards": [
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0003",
+                "claim": "X7e creates the submit action using Jx and onClick closure ()=>void B(), where B is handleSubmit. Disabled/interactions, voice state and submitButtonMode guard the action. Qft supplies handleSubmit as options=>Xl({...options,focusComposerAfterSubmit:true}). This is a React factory callback property, not evidence of a rendered click or DOM dispatch."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0005",
+                "claim": "rpt selects rZ for scope.kind local, otherwise Qft. The complete original initializer assigns rZ=wp(async loader) whose returned function emits Qft({...props,queuedMessageList}); load error propagation is configured. Successful lazy load/render and selected scope remain runtime unknown."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0006",
+                "claim": "rut registers composer.submit through actual QS and a body Enter handler. It rejects prevented/composing/key229/modifier/repeat paths and applies editor focus/code-block and configured Cmd/Enter behavior. Static handler registration does not prove an event was received."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0007",
+                "claim": "rut ordinary submit callback checks interactions and resumePending, handles dictation stop separately, respects submitDisabled, optionally consumes queued steer, and only submit mode invokes submit({focusComposerAfterSubmit:true,onSubmitted:context?.onComposerSubmitted}); stop mode breaks."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0010",
+                "claim": "Qft Xl calls Mc directly or adds navigation background, and the Mc local is destructured as submitComposer from the exact Zut call. Qft gives Xl to rut and X7e; this joins actual local declarations and callback properties rather than spelling."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0011",
+                "claim": "Qft Cdt receives local.submit:F and worktree.submit:V from onSubmitLocal/onSubmitWorktree props. Cdt builds distinct local/worktree/cloud targets and wraps local context and policy validation before forwarding local.submit(context,...remainingArgs)."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0012",
+                "claim": "rpt takes handleSubmitLocal:xn, handleNewWorktreeConversation:bn and queuedFollowUpSubmission:Sn from _9e result, then supplies onSubmitLocal:xn/onSubmitWorktree:bn/onStop:Gn/isStopping:Kn to its Qft or rZ view. Compiler memoization preserves local assignment shape; actual cache branch execution is unobserved."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0013",
+                "claim": "Put collects editor text/persistedText, mentions and attachments; it rejects empty or blocked/stale submission paths, prepares context and references, and switches targets by kind. Its local.submit argument positions carry context,cwd,execution options,restore message,client message ID,queue overrides and onMessageAdded."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0014",
+                "claim": "Put uses onMessageAdded locallyAccepted/requestDispatched to release UI submission state and clear or retain draft/history; submitted/queued results have their own callbacks. It does not treat these UI callbacks as turn/completed notifications."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0015",
+                "claim": "Put distinguishes queued/sent, first-turn creation-outcome-unknown/rejected/not-started and delivery-not-sent/outcome-unknown. AbortError bypasses ordinary reporting; finally and restore/retain callbacks follow ownership/current-submission checks. No persisted turn result is inferred from editor clearing."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0018",
+                "claim": "_9e existing-local branch vAe is source-qualified initial.jvt=Tta. It passes scope,targetConversationId,managerHostId/hostId,context,cwd,mode/permission/service tier,restore/client message,callbacks and prepareContext; durable scoped admission can instead take dRe branch. The actual selected branch is unknown."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0020",
+                "claim": "Tta jg imports shared.y$t whose exported local is KI; primary zg imports the same source-qualified export. Initial zg and generic shared.x$t/GI are distinct and are not manager accessor evidence."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0021",
+                "claim": "Tta verifies submission current/abort, loads conversation state, builds restored user message and execution/permission/context options, obtains getTurnCoordinator(), and calls sendMessage with queueOptions,acceptLocally,preparation,onMessageAdded,preflight/assertAdmission. Actual injected scope/client data are unobserved."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0022",
+                "claim": "Tta installs a local message-added observer and unavailable/error watcher only when conditions require it, awaits the displayed acceptance promise and removes watchers in finally. This is acceptance/display coordination, not proof of completed-turn persistence."
+              }
+            ]
+          },
+          "conditionRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/7/conditions"
+          },
+          "actualValuesObserved": false
+        }
+      ],
+      "scenarioIds": [
+        "FSC-0035:renderer-existing-local-submit:success",
+        "FSC-0035:renderer-existing-local-submit:failure",
+        "FSC-0035:renderer-existing-local-submit:cancel",
+        "FSC-0035:renderer-existing-local-submit:restore"
+      ],
+      "knownGaps": [
+        "Actual UI event, selected target/scope/host and provider branch",
+        "Primary provider/client/deferred RPC can differ",
+        "Queue acceptance and optimistic display do not prove turn completion",
+        "New thread/cloud/worktree and durable admission alternatives are outside this definition"
+      ],
+      "page": "conditional composer/pending-request surfaces; actual mount unknown",
+      "implementationAcceptance": "Actual existing-local UI submit, precise conversation/message/turn binding, delivery classification and durable restore are required; no existing model receipt identifies this selected callback/receiver."
+    },
+    {
+      "featureId": "FSC-0036",
+      "name": "停止已有本地对话的当前执行",
+      "trigger": "X7e ordinary stop action → xQe confirmation → rpt.Cn/Gn → _Oe/yda; inherited ordinary callback does not pass expectedTurnId.",
+      "parametersAndState": {
+        "inputs": [
+          "conversationId",
+          "hostId",
+          "initiatedBy:user",
+          "current stop confirmation ID",
+          "isStopping / dedup Set"
+        ],
+        "ordinaryExpectedTurnId": "not passed by the saved composer callback",
+        "downstream": [
+          "follower role/owner",
+          "goal state",
+          "last identified turn snapshot",
+          "request outcome and attached interruptedTurnId",
+          "node_repl cleanup / descendants"
+        ],
+        "concreteValuesObserved": false
+      },
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/31"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/32"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/33"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/34"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/35"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/36"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/37"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "task-composer-entry-contracts.json",
+          "bytes": 446181,
+          "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+          "jsonPointer": "/contracts/38"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "submission-host-instance.json",
+          "bytes": 449270,
+          "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+          "jsonPointer": "/contracts/20"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "interrupt-control-flow-findings.json",
+          "bytes": 30625,
+          "sha256": "d5d45cabdf0caa89cd57728555f83315383980354cf34a1de5711b605455129d",
+          "jsonPointer": "/findings"
+        }
+      ],
+      "chain": [
+        "X7e/xQe → rpt.Cn/Gn → yda → KI-selected interruptConversation",
+        "Conditional captured manager facade → Dfn wrapper/self → Program-bound Ien",
+        "Follower, goal pause, turn/interrupt and local state write each preserve their predicates",
+        "zen cleanup and descendant finally are separate completion/error boundaries"
+      ],
+      "boundaries": [
+        "Actual stop control and same-turn UI binding remain unobserved",
+        "A user-stop goal-pause error may follow successful local interruption",
+        "Error text retry adaptation and explicit expected-ID behavior differ",
+        "Background cleanup does not prove descendants/native executors stopped",
+        "Process SIGTERM/restart does not identify this callback"
+      ],
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "普通composer有独立stop callback、确认及dedup状态，目标是中断当前执行；它与submit、resume、voice-stop和单独stopThread能力有不同契约。",
+      "mode": "unknown",
+      "modeEvidence": "Source paths/labels and current feature candidates do not close actual mode or shared dependency reachability.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-bounded-source-contracts; selected bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "operationMembers": [
+        {
+          "operationId": "operation:composer:ordinary-local-cancel",
+          "originalContractId": "ordinary-local-cancel",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/9"
+          },
+          "trigger": "X7e ordinary stop action → xQe confirmation → rpt.Cn/Gn → _Oe/yda; inherited ordinary callback does not pass expectedTurnId.",
+          "operationType": "React-callback/source-stop",
+          "parametersAndStateRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/9/parametersAndState"
+          },
+          "selectedSourceChainRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/9/selectedSourceChain"
+          },
+          "boundaryRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/9/externalBoundaries"
+          }
+        }
+      ],
+      "conditions": [
+        {
+          "operationId": "operation:composer:ordinary-local-cancel",
+          "sourceConditions": {
+            "sourceStatus": "static callback/import chain with same receiver boundary; follower/goal/descendant conditions remain distinct",
+            "retainedGuards": [
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0004",
+                "claim": "X7e uses a distinct stop action when buttonMode is stop and Aeon conditions allow it; its callback calls onStop I and its disabled/loading fields use isStopping/interactions. Resume and voice-stop actions use separate callbacks and are not ordinary turn interruption."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0032",
+                "claim": "xQe maintains confirmation for current turnId; handleStop clears the confirmation store then calls its onStop. Qft wires that callback to parent H(Yo??undefined) and supplies handleStop to X7e. This is confirmation state, not RPC success or cancellation receipt."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0033",
+                "claim": "rpt Cn chooses local override/follow-up conversation, deduplicates IDs in a Set, sets stopping UI state, awaits _Oe with conversationId/hostId/initiatedBy:user then removes state in finally; cloud uses another mutation/state. This ordinary composer callback does not pass expectedTurnId; Qft confirmation turnId does not bind wire expectedTurnId. Gn catches local stop failures for interruptThreadError toast, with its distinct cloud rethrow path."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0034",
+                "claim": "primary _Oe imports initial.gmt=yda. yda uses provided client or KI(scope,host/thread host) then interruptConversation(thread,user-stop/system,expectedTurnId); only for initiatedBy user, a non-null result or error.interruptedTurnId updates local interruption result before error rethrow. System initiation does not perform that local update. It does not call stopThread on the ordinary path."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0035",
+                "claim": "Dfn interruptConversationSelf first requests follower owner interruption; only follower timeout/version-mismatch/no-client-found marks resume and falls back local. Local Ien receives runtime cleanup, state update and sendInterruptRequest turn/interrupt callback; explicit expectedTurnId bypasses goal pause. System/user/descendant modes have distinct goal pause order and user 500ms critical timeout; goal pause failure can attach interruptedTurnId after interruption."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0036",
+                "claim": "Dfn interruptConversation finally conditionally interrupts descendants unless descendant-cleanup/follower; user-stop uses background cleanup, other modes await it. Completion of the parent UI promise is not a claim that all descendants or notification reducers have completed."
+              },
+              {
+                "contractId": "TASK-COMPOSER-ENTRY-0037",
+                "claim": "Dfn.sendRequest asserts manager active and awaits injected requestClient.sendRequest(method,params,options); it is a static transport delegation. Actual preload/main/native receiver and persisted effects for this UI invocation remain unjoined."
+              }
+            ]
+          },
+          "conditionRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/9/conditions"
+          },
+          "actualValuesObserved": false
+        }
+      ],
+      "scenarioIds": [
+        "FSC-0036:ordinary-local-cancel:success",
+        "FSC-0036:ordinary-local-cancel:failure",
+        "FSC-0036:ordinary-local-cancel:cancel",
+        "FSC-0036:ordinary-local-cancel:restore"
+      ],
+      "knownGaps": [
+        "Actual stop control and same-turn UI binding remain unobserved",
+        "A user-stop goal-pause error may follow successful local interruption",
+        "Error text retry adaptation and explicit expected-ID behavior differ",
+        "Background cleanup does not prove descendants/native executors stopped",
+        "Process SIGTERM/restart does not identify this callback"
+      ],
+      "page": "conditional composer/pending-request surfaces; actual mount unknown",
+      "implementationAcceptance": "An authorized actual stop click with exact conversation/turn binding and downstream outcome is required; the 34 VM scenarios only support selected function conditions."
+    },
+    {
+      "featureId": "FSC-0037",
+      "name": "决定MCP电脑应用使用请求",
+      "trigger": "PendingRequestItemPanel mcpServerElicitation → MCP panel (browser branch first) → non-null app candidate → card primary/leading/deny action or guarded shared hotkey.",
+      "parametersAndState": {
+        "inputs": [
+          "hostId",
+          "conversationId",
+          "requestId",
+          "appDisplayName",
+          "connectorName",
+          "persistModes",
+          "riskLevel",
+          "subtitle",
+          "onRequestSettled"
+        ],
+        "state": [
+          "JSON.stringify([hostId,conversationId,requestId]) duplicate/ref/loading key",
+          "accept writes has-approved-computer-use-app atom before reply",
+          "matching-key rejection resets ref/loading; selected branch has no accept-atom rollback"
+        ],
+        "response": [
+          "primary accept: session if supported, otherwise null",
+          "always accept only when persistModes includes always",
+          "decline: content null, no persistence argument"
+        ],
+        "concreteValuesObserved": false
+      },
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "approval-entry-contracts.json",
+          "bytes": 40148,
+          "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+          "jsonPointer": "/selectedUnits"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "approval-entry-contracts.json",
+          "bytes": 40148,
+          "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+          "jsonPointer": "/unknowns"
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 1
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 2
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 3
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 5
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 9
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 10
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 11
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 12
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 13
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 14
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 16
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 17
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 21
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 22
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 25
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 29
+        },
+        {
+          "kind": "frozen-metadata-jsonl-record",
+          "path": "approval-entry-contracts-evidence.jsonl",
+          "bytes": 36295,
+          "sha256": "316764f2b76131e85f0cdf46ee0bbeaeeb63933f2446f006d2572fd30a7b1567",
+          "line": 30
+        }
+      ],
+      "chain": [
+        "PendingRequestItemPanel.Ur → vt → lt → E",
+        "E request-key guard / local atom → KI-selected reply facade + Hz action response",
+        "Two selected reply member candidates and L7t are conditional continuations, not an actual receiver join",
+        "Role forwarding, injected sender, safety helpers and conversation updates remain qualified boundaries"
+      ],
+      "boundaries": [
+        "mcpToolCall, normalized computer-use connector, nonempty persist modes and app name are candidate conditions, not mode/provider identity",
+        "Browser approval, command/file approvals, permissions request and other elicitation kinds are outside this definition",
+        "Fulfilled facade Promise/onRequestSettled does not prove delivery or app execution",
+        "Safety, actual sender/role, store persistence and pending-request producer are unclosed",
+        "Literal ChatGPT labels are not an exclusion criterion"
+      ],
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "同一请求卡片的主接受、始终接受和拒绝服务于一次应用使用决定，保留三个不同响应与可用性条件；不能算整个审批组完成，也不能把三种选择称为操作等价。",
+      "mode": "unknown",
+      "modeEvidence": "Source paths/labels and current feature candidates do not close actual mode or shared dependency reachability.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-bounded-source-contracts; selected bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "operationMembers": [
+        {
+          "operationId": "operation:approval:accept-session-or-null",
+          "originalContractId": "accept-session-or-null",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/15"
+          },
+          "trigger": "PendingRequestItemPanel mcpServerElicitation → MCP panel (browser branch first) → non-null app candidate → card primary/leading/deny action or guarded shared hotkey.",
+          "operationType": "injected-approval-card-button-or-hotkey",
+          "parametersAndStateRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/15/parametersAndState"
+          },
+          "selectedSourceChainRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/15/selectedSourceChain"
+          },
+          "boundaryRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/15/externalBoundaries"
+          }
+        },
+        {
+          "operationId": "operation:approval:accept-always",
+          "originalContractId": "accept-always",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/16"
+          },
+          "trigger": "PendingRequestItemPanel mcpServerElicitation → MCP panel (browser branch first) → non-null app candidate → card primary/leading/deny action or guarded shared hotkey.",
+          "operationType": "injected-approval-card-button-or-hotkey",
+          "parametersAndStateRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/16/parametersAndState"
+          },
+          "selectedSourceChainRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/16/selectedSourceChain"
+          },
+          "boundaryRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/16/externalBoundaries"
+          }
+        },
+        {
+          "operationId": "operation:approval:decline",
+          "originalContractId": "decline",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/17"
+          },
+          "trigger": "PendingRequestItemPanel mcpServerElicitation → MCP panel (browser branch first) → non-null app candidate → card primary/leading/deny action or guarded shared hotkey.",
+          "operationType": "injected-approval-card-button-or-hotkey",
+          "parametersAndStateRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/17/parametersAndState"
+          },
+          "selectedSourceChainRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/17/selectedSourceChain"
+          },
+          "boundaryRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/17/externalBoundaries"
+          }
+        }
+      ],
+      "conditions": [
+        {
+          "operationId": "operation:approval:accept-session-or-null",
+          "sourceConditions": {
+            "requestKey": "JSON.stringify([hostId,conversationId,requestId])",
+            "responseGuard": "ref differs from key; set ref/loading before reply",
+            "actionCondition": "primary action; session only if persistModes includes session",
+            "loadingDisabledHotkeyGuardsEvidence": "APPROVAL-ENTRY-AST-00029"
+          },
+          "conditionRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/15/conditions"
+          },
+          "actualValuesObserved": false
+        },
+        {
+          "operationId": "operation:approval:accept-always",
+          "sourceConditions": {
+            "requestKey": "JSON.stringify([hostId,conversationId,requestId])",
+            "responseGuard": "ref differs from key; set ref/loading before reply",
+            "actionCondition": "persistModes includes always",
+            "loadingDisabledHotkeyGuardsEvidence": "APPROVAL-ENTRY-AST-00029"
+          },
+          "conditionRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/16/conditions"
+          },
+          "actualValuesObserved": false
+        },
+        {
+          "operationId": "operation:approval:decline",
+          "sourceConditions": {
+            "requestKey": "JSON.stringify([hostId,conversationId,requestId])",
+            "responseGuard": "ref differs from key; set ref/loading before reply",
+            "actionCondition": "deny action",
+            "loadingDisabledHotkeyGuardsEvidence": "APPROVAL-ENTRY-AST-00029"
+          },
+          "conditionRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/17/conditions"
+          },
+          "actualValuesObserved": false
+        }
+      ],
+      "scenarioIds": [
+        "FSC-0037:accept-session-or-null:success",
+        "FSC-0037:accept-session-or-null:failure",
+        "FSC-0037:accept-session-or-null:cancel",
+        "FSC-0037:accept-session-or-null:restore",
+        "FSC-0037:accept-always:success",
+        "FSC-0037:accept-always:failure",
+        "FSC-0037:accept-always:cancel",
+        "FSC-0037:accept-always:restore",
+        "FSC-0037:decline:success",
+        "FSC-0037:decline:failure",
+        "FSC-0037:decline:cancel",
+        "FSC-0037:decline:restore"
+      ],
+      "knownGaps": [
+        "mcpToolCall, normalized computer-use connector, nonempty persist modes and app name are candidate conditions, not mode/provider identity",
+        "Browser approval, command/file approvals, permissions request and other elicitation kinds are outside this definition",
+        "Fulfilled facade Promise/onRequestSettled does not prove delivery or app execution",
+        "Safety, actual sender/role, store persistence and pending-request producer are unclosed",
+        "Literal ChatGPT labels are not an exclusion criterion"
+      ],
+      "page": "conditional composer/pending-request surfaces; actual mount unknown",
+      "implementationAcceptance": "Authorized actual pending-request production and action with precise request/host identity, response and durable permission semantics are required; no actual approval decision was observed."
+    }
+  ],
+  "operationDecisions": [
+    {
+      "operationId": "operation:ttc:TTC-OP-thread-start",
+      "originalId": "TTC-OP-thread-start",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/0"
+      },
+      "catalogNamespace": "ttc",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "protocol-consumer-pending",
+      "reason": "Protocol and selected caller variants do not yet supply a complete user entry-to-goal definition.",
+      "nextDecisionChangingEvidence": "Trace each concrete create/resume/fork/archive UI or background caller and its identity, target conditions and state outcome; do not classify from method name."
+    },
+    {
+      "operationId": "operation:ttc:TTC-OP-thread-resume",
+      "originalId": "TTC-OP-thread-resume",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/1"
+      },
+      "catalogNamespace": "ttc",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "protocol-consumer-pending",
+      "reason": "Protocol and selected caller variants do not yet supply a complete user entry-to-goal definition.",
+      "nextDecisionChangingEvidence": "Trace each concrete create/resume/fork/archive UI or background caller and its identity, target conditions and state outcome; do not classify from method name."
+    },
+    {
+      "operationId": "operation:ttc:TTC-OP-thread-fork",
+      "originalId": "TTC-OP-thread-fork",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/2"
+      },
+      "catalogNamespace": "ttc",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "protocol-consumer-pending",
+      "reason": "Protocol and selected caller variants do not yet supply a complete user entry-to-goal definition.",
+      "nextDecisionChangingEvidence": "Trace each concrete create/resume/fork/archive UI or background caller and its identity, target conditions and state outcome; do not classify from method name."
+    },
+    {
+      "operationId": "operation:ttc:TTC-OP-thread-archive",
+      "originalId": "TTC-OP-thread-archive",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/3"
+      },
+      "catalogNamespace": "ttc",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "protocol-consumer-pending",
+      "reason": "Protocol and selected caller variants do not yet supply a complete user entry-to-goal definition.",
+      "nextDecisionChangingEvidence": "Trace each concrete create/resume/fork/archive UI or background caller and its identity, target conditions and state outcome; do not classify from method name."
+    },
+    {
+      "operationId": "operation:ttc:TTC-OP-turn-start",
+      "originalId": "TTC-OP-turn-start",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/4"
+      },
+      "catalogNamespace": "ttc",
+      "featureIds": [
+        "FSC-0035"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "supportKind": "conditional-wire-mechanism",
+      "reason": "The source submit capability may choose start only under retained queue/admission/runtime predicates; method existence is not UI equivalence.",
+      "supportDoesNotExhaustConsumers": true
+    },
+    {
+      "operationId": "operation:ttc:TTC-OP-turn-steer",
+      "originalId": "TTC-OP-turn-steer",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/5"
+      },
+      "catalogNamespace": "ttc",
+      "featureIds": [
+        "FSC-0035"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "supportKind": "conditional-wire-mechanism",
+      "reason": "Selected steer intent/active-turn handling can use steer or a start/tool-output variant; this protocol operation is support, not a separate UI goal.",
+      "supportDoesNotExhaustConsumers": true
+    },
+    {
+      "operationId": "operation:ttc:TTC-OP-turn-interrupt",
+      "originalId": "TTC-OP-turn-interrupt",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/6"
+      },
+      "catalogNamespace": "ttc",
+      "featureIds": [
+        "FSC-0036"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "supportKind": "conditional-wire-mechanism",
+      "reason": "The source Ien callback sends turn/interrupt under the selected manager branch; an actual stop UI receipt is absent.",
+      "supportDoesNotExhaustConsumers": true
+    },
+    {
+      "operationId": "operation:composer:renderer-existing-local-submit",
+      "originalId": "renderer-existing-local-submit",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/7"
+      },
+      "catalogNamespace": "composer",
+      "featureIds": [
+        "FSC-0035"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "已有本地对话中的用户提交有独立回调／键盘入口及draft、admission、queue和错误契约；新建对话、cloud、worktree另有目标与调用路径，不能合并为同一已分析流程。"
+    },
+    {
+      "operationId": "operation:composer:conditional-Dfn-capability",
+      "originalId": "conditional-Dfn-capability",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/8"
+      },
+      "catalogNamespace": "composer",
+      "featureIds": [
+        "FSC-0035",
+        "FSC-0036"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "supportKind": "conditional-manager-capability",
+      "reason": "The Dfn capability and the later internal-provider composition are conditional mechanisms for submit/interrupt, not another user-facing operation.",
+      "supportDoesNotExhaustConsumers": true
+    },
+    {
+      "operationId": "operation:composer:ordinary-local-cancel",
+      "originalId": "ordinary-local-cancel",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/9"
+      },
+      "catalogNamespace": "composer",
+      "featureIds": [
+        "FSC-0036"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "普通composer有独立stop callback、确认及dedup状态，目标是中断当前执行；它与submit、resume、voice-stop和单独stopThread能力有不同契约。"
+    },
+    {
+      "operationId": "operation:notification:1",
+      "originalId": "thread/started",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/10"
+      },
+      "catalogNamespace": "notification-state",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "state-facet-parent-pending",
+      "reason": "A selected notification reducer is a state facet; actual renderer consumer and the enclosing user goal remain unjoined.",
+      "nextDecisionChangingEvidence": "Join actual event ingress, state owner and rendered consumer with guarded notification order before assigning a display/lifecycle feature."
+    },
+    {
+      "operationId": "operation:notification:2",
+      "originalId": "turn/started",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/11"
+      },
+      "catalogNamespace": "notification-state",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "state-facet-parent-pending",
+      "reason": "A selected notification reducer is a state facet; actual renderer consumer and the enclosing user goal remain unjoined.",
+      "nextDecisionChangingEvidence": "Join actual event ingress, state owner and rendered consumer with guarded notification order before assigning a display/lifecycle feature."
+    },
+    {
+      "operationId": "operation:notification:3",
+      "originalId": "turn/completed",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/12"
+      },
+      "catalogNamespace": "notification-state",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "state-facet-parent-pending",
+      "reason": "A selected notification reducer is a state facet; actual renderer consumer and the enclosing user goal remain unjoined.",
+      "nextDecisionChangingEvidence": "Join actual event ingress, state owner and rendered consumer with guarded notification order before assigning a display/lifecycle feature."
+    },
+    {
+      "operationId": "operation:notification:4",
+      "originalId": "error",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/13"
+      },
+      "catalogNamespace": "notification-state",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "state-facet-parent-pending",
+      "reason": "A selected notification reducer is a state facet; actual renderer consumer and the enclosing user goal remain unjoined.",
+      "nextDecisionChangingEvidence": "Join actual event ingress, state owner and rendered consumer with guarded notification order before assigning a display/lifecycle feature."
+    },
+    {
+      "operationId": "operation:notification:5",
+      "originalId": "turn/interrupt",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/14"
+      },
+      "catalogNamespace": "notification-state",
+      "featureIds": [
+        "FSC-0036"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "supportKind": "overlapping-source-state-facet",
+      "reason": "This catalog record describes source interrupt-state behavior rather than an observed notification event; the newer Program joins and isolated function results are separate supporting evidence.",
+      "supportDoesNotExhaustConsumers": true
+    },
+    {
+      "operationId": "operation:approval:accept-session-or-null",
+      "originalId": "accept-session-or-null",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/15"
+      },
+      "catalogNamespace": "approval",
+      "featureIds": [
+        "FSC-0037"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "同一请求卡片的主接受、始终接受和拒绝服务于一次应用使用决定，保留三个不同响应与可用性条件；不能算整个审批组完成，也不能把三种选择称为操作等价。"
+    },
+    {
+      "operationId": "operation:approval:accept-always",
+      "originalId": "accept-always",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/16"
+      },
+      "catalogNamespace": "approval",
+      "featureIds": [
+        "FSC-0037"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "同一请求卡片的主接受、始终接受和拒绝服务于一次应用使用决定，保留三个不同响应与可用性条件；不能算整个审批组完成，也不能把三种选择称为操作等价。"
+    },
+    {
+      "operationId": "operation:approval:decline",
+      "originalId": "decline",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/17"
+      },
+      "catalogNamespace": "approval",
+      "featureIds": [
+        "FSC-0037"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "同一请求卡片的主接受、始终接受和拒绝服务于一次应用使用决定，保留三个不同响应与可用性条件；不能算整个审批组完成，也不能把三种选择称为操作等价。"
+    },
+    {
+      "operationId": "operation:cua:removeAppApproval",
+      "originalId": "removeAppApproval",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/18"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:searchMessagesChats",
+      "originalId": "searchMessagesChats",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/19"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:setMessagesReadAccessPolicy",
+      "originalId": "setMessagesReadAccessPolicy",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/20"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:setMessagesReadDecision",
+      "originalId": "setMessagesReadDecision",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/21"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:removeMessagesReadDecision",
+      "originalId": "removeMessagesReadDecision",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/22"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:setMessagesSendAllowAllChats",
+      "originalId": "setMessagesSendAllowAllChats",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/23"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:removeMessagesSendApproval",
+      "originalId": "removeMessagesSendApproval",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/24"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:setSoundMode",
+      "originalId": "setSoundMode",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/25"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:setLockedUseEnabled",
+      "originalId": "setLockedUseEnabled",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/26"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:getAppApprovals",
+      "originalId": "getAppApprovals",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/27"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:getMessagesReadDecisions",
+      "originalId": "getMessagesReadDecisions",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/28"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:getMessagesSendApprovals",
+      "originalId": "getMessagesSendApprovals",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/29"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:getSoundMode",
+      "originalId": "getSoundMode",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/30"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:cua:getLockedUseState",
+      "originalId": "getLockedUseState",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/31"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "service-consumer-and-mode-pending",
+      "reason": "This service/query/mutation wrapper supplies a bounded contract but not the actual settings control or its mode gates.",
+      "nextDecisionChangingEvidence": "Trace the exported wrapper to actual control/handler and platform/account/mode gates; keep native/file-path dependencies and modify/query actions separate."
+    },
+    {
+      "operationId": "operation:project-condition:local-project-capability",
+      "originalId": "PROJECT-FEATURE-CONDITION-remaining-s",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/32"
+      },
+      "catalogNamespace": "project-condition",
+      "featureIds": [],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "condition-parent-pending",
+      "reason": "A derived local-project capability condition is not an independently established user feature.",
+      "nextDecisionChangingEvidence": "Trace the condition to actual enabled/disabled project UI actions, keeping the capability predicate separate from those actions."
+    }
+  ],
+  "inheritedPendingSettingsOperations": [
+    {
+      "originalId": "GENERAL-OP-017",
+      "operationId": "operation:general:GENERAL-OP-017",
+      "status": "information-facet-awaiting-parent",
+      "reason": "只读Managed更新策略展示，缺少独立动作；保留为更新管理功能的待关联信息facet。没有从产品范围删除。",
+      "excludedFromProductScope": false,
+      "cardRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-feature-operation-mapping.json",
+        "bytes": 1081459,
+        "sha256": "606f04537f11b3e105945356d28b3ede0028614ed0f75677a9dba12bd99f00dc",
+        "jsonPointer": "/cards/16"
+      },
+      "sourceContractRef": {
+        "kind": "saved-json-pointer",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+        "bytes": 316778,
+        "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+        "jsonPointer": "/operationContracts/16"
+      },
+      "conditions": {
+        "dispatch": "p(Se) selects Vs/Hs; imported value not evaluated",
+        "rowExactSavedCondition": "Both Vs/Hs construct it; p(wr) must be truthy.",
+        "valuesEvaluated": false
+      }
+    },
+    {
+      "originalId": "GENERAL-OP-031",
+      "operationId": "operation:general:GENERAL-OP-031",
+      "status": "information-facet-awaiting-parent",
+      "reason": "只读访问摘要与tooltip，缺少独立变更动作；保留为账户／能力信息的待关联facet。没有判为ChatGPT专属。",
+      "excludedFromProductScope": false,
+      "cardRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-feature-operation-mapping.json",
+        "bytes": 1081459,
+        "sha256": "606f04537f11b3e105945356d28b3ede0028614ed0f75677a9dba12bd99f00dc",
+        "jsonPointer": "/cards/30"
+      },
+      "sourceContractRef": {
+        "kind": "saved-json-pointer",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+        "bytes": 316778,
+        "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+        "jsonPointer": "/operationContracts/30"
+      },
+      "conditions": {
+        "dispatch": "p(Se) selects Vs/Hs; imported value not evaluated",
+        "rowExactSavedCondition": "Vs requires p(Ft); Co requires Ie(Ke,2334492480), chooses wo/To from Ie(nn,Te). wo/To must produce non-null access from imported model/account helpers.",
+        "valuesEvaluated": false
+      }
+    },
+    {
+      "originalId": "GENERAL-OP-032",
+      "operationId": "operation:general:GENERAL-OP-032",
+      "status": "split-required",
+      "reason": "同一卡含已连接host的Add project与未连接／无host的链接动作；应按各自实际消费者拆分，不能直接算一个已定义功能。",
+      "excludedFromProductScope": false,
+      "cardRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-feature-operation-mapping.json",
+        "bytes": 1081459,
+        "sha256": "606f04537f11b3e105945356d28b3ede0028614ed0f75677a9dba12bd99f00dc",
+        "jsonPointer": "/cards/31"
+      },
+      "sourceContractRef": {
+        "kind": "saved-json-pointer",
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+        "bytes": 316778,
+        "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+        "jsonPointer": "/operationContracts/31"
+      },
+      "conditions": {
+        "dispatch": "p(Se) selects Vs/Hs; imported value not evaluated",
+        "rowExactSavedCondition": "ac constructs when remote connection conditions x&&g!=null; fs distinguishes connected, not-connected and absent hostId.",
+        "valuesEvaluated": false
+      }
+    }
+  ],
+  "counts": {
+    "newScopedFeatureDefinitions": 3,
+    "newAssignedUserOperations": 5,
+    "reviewedNonsettingsCandidates": 33,
+    "newSupportingMechanisms": 5,
+    "nonsettingsStillQueued": 23,
+    "allQueuedOperations": 26,
+    "currentScopedFeatureDefinitions": 37,
+    "currentAssignedUserOperations": 40,
+    "newUnexecutedScenarioSpecifications": 20,
+    "currentUnexecutedScenarioSpecifications": 160
+  },
+  "sourceByteVerification": {
+    "programs": [
+      {
+        "localPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "bytes": 2385396,
+        "sha256": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321"
+      },
+      {
+        "localPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "bytes": 11440241,
+        "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+      },
+      {
+        "localPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "bytes": 8175575,
+        "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+      },
+      {
+        "localPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/computer-use-app-approval-request-card-89cbdba76563.js",
+        "sourcePath": "app.asar/webview/assets/computer-use-app-approval-request-card-89cbdba76563.js",
+        "bytes": 4237,
+        "sha256": "6404db4603cfe7556dc2dc8641474234fe9941fb8700a4f928fb5bd75bf6764e"
+      },
+      {
+        "localPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/mcp-server-elicitation-request-panel-84797e1aadc9.js",
+        "sourcePath": "app.asar/webview/assets/mcp-server-elicitation-request-panel-84797e1aadc9.js",
+        "bytes": 14878,
+        "sha256": "6e1270ce02720e411ef90eb7c74c4d9928a198b005cf1790043f1a2ae9809963"
+      },
+      {
+        "localPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/pending-request-item-panel-770855267df2.js",
+        "sourcePath": "app.asar/webview/assets/pending-request-item-panel-770855267df2.js",
+        "bytes": 86157,
+        "sha256": "65c883ee4c9b507b6fe86e9edd73ac0eb2e085730dfbb1f72d0761ccde22be69"
+      }
+    ],
+    "uniqueSpans": [
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1258478,
+          "endExclusive": 1260838
+        },
+        "spanHash": "8d19e9e5e8364520e504f0913440e02907717d8c8cca0c179175917a254328e6",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1364925,
+          "endExclusive": 1409470
+        },
+        "spanHash": "6217c252d30c4a7170251b1ce545f786390b37a135b09daa229e5ebc839fed53",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/1"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1297529,
+          "endExclusive": 1306488
+        },
+        "spanHash": "1ab2304cf4c1bfd4aeac8020ad97a02988d685cee4bd894735f70206882d02fb",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/2"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1278317,
+          "endExclusive": 1293054
+        },
+        "spanHash": "4314987fcbf4a44ae97ba251ead873d4f57567e3f754002d57e0bbc32ebbf0b5",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/3"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1319251,
+          "endExclusive": 1323132
+        },
+        "spanHash": "e60581e24debb88455dd0369b5346179d46460aa56c7c71f6db357b313aee849",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/4"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1411340,
+          "endExclusive": 1427712
+        },
+        "spanHash": "e102992306a31fe7bf34d4c3a4c826ac0e2295848daff092bd7a9f67d1a971e1",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/5"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 891559,
+          "endExclusive": 912481
+        },
+        "spanHash": "717f4702a88eb5fac846e80f1a3894d562052d92096f210ac94d21a05961cddf",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/6"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 861747,
+          "endExclusive": 878852
+        },
+        "spanHash": "2fd4fbd511ad748012781b75d85f9d4afbb868b566f2f77e9827749bd8d4bda9",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/7"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 481363,
+          "endExclusive": 481884
+        },
+        "spanHash": "8a91eb9dc9c704a18211cc175420b5cc8b09bbf06a68e0ca2ec4b03032d6d41e",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/8"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5272845,
+          "endExclusive": 5276221
+        },
+        "spanHash": "a2578570946d07b20a325e5e9c9689dadbd574728b8f851e933bd95c8a5f12d4",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/9"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5453540,
+          "endExclusive": 5453904
+        },
+        "spanHash": "e8d6b280c909821f7f482ca03a66c224848f9a998acbb9b0e0b53a680e86b130",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/10"
+          },
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/11"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 10227056,
+          "endExclusive": 10227304
+        },
+        "spanHash": "3d60587d940fc52b93981aec2576fc1b5abb7b49fd2a55768e663b5cd83f7d47",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/11"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 4947309,
+          "endExclusive": 4947507
+        },
+        "spanHash": "4759f488ddf0363e30f4636a9ebd5da2723037447f0bacf1c11f0b9447f7b9fc",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/12"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2181016,
+          "endExclusive": 2181910
+        },
+        "spanHash": "baadd5ff6f231813788c0be4bf0a0aa001565597223c2982dc63e7d04ddec9da",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/13"
+          },
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/5/sourceRanges/0"
+          },
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/7"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5695409,
+          "endExclusive": 5699751
+        },
+        "spanHash": "9b99a8c7ec9a8d06b6b288e201c4930eb820c9a36c781977ba0c59738a4083a6",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/14"
+          },
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/6/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3182216,
+          "endExclusive": 3185791
+        },
+        "spanHash": "0e7e4d1de0449e9a22a474430c4c5739ee8ad960c49fa13512d87a340bd1f079",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/15"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3151939,
+          "endExclusive": 3155038
+        },
+        "spanHash": "99a3a09857617648ea671f2c3722b3e319e0b165770e715dd596ddcb777b035c",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/16"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1427878,
+          "endExclusive": 1429054
+        },
+        "spanHash": "d24275474253b140bb6f953286c49180b5a770ea9d064a7f0384cfefbad5dc24",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/17"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3093920,
+          "endExclusive": 3097368
+        },
+        "spanHash": "ff4b67dd53a109656e9dfaf4aa47d1b688e63c34aeecbaee24f6b2d256318035",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/18"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1398144,
+          "endExclusive": 1398224
+        },
+        "spanHash": "42edc468b1c39a385dcc103589d67f63a61dfecb5f572b785ab83a6ca555e909",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/19"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1392270,
+          "endExclusive": 1392534
+        },
+        "spanHash": "4749c728bdc5c1ba0b8f1b13242cbf7c0336577bf028c5c9ece27f63381c2059",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/20"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1420469,
+          "endExclusive": 1420918
+        },
+        "spanHash": "a97b99220ab9ef7c5967b0dcb9d2221fe9261f41298bd1e1f95877e9ba69575e",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/21"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+        "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1423527,
+          "endExclusive": 1423742
+        },
+        "spanHash": "3f60b0c1a5febd2605517e92928a29d575daa13ae0a4658005888577427367be",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/22"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3202551,
+          "endExclusive": 3213517
+        },
+        "spanHash": "4484d0b39570cccdb711fc2a391ec06b5c270026bc9cf999c8e4b3c6df3f64b1",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/23"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3220710,
+          "endExclusive": 3220859
+        },
+        "spanHash": "c643bff76a3d63d87807fc2ccc8f2ef863159a2f511f62a77ef43cd712084390",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/24"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3221215,
+          "endExclusive": 3221602
+        },
+        "spanHash": "3a82ffc13f807766eadac058aeab778b74d30f0101366711858428d3833e8fc2",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/25"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3220967,
+          "endExclusive": 3221016
+        },
+        "spanHash": "ed034e4cd8ac72337eca5affa679738c5cbfc45c7ac879602e6e9e4169c57c9f",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/26"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3239876,
+          "endExclusive": 3240197
+        },
+        "spanHash": "f8d63a1408c64ac8bbd30e0e9481fed0c4ab169a934ec8614d627bfd9fb344f4",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/27"
+          },
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/7"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3241475,
+          "endExclusive": 3243540
+        },
+        "spanHash": "18db819b261b3d4a4fb19583bacac108b9828da2cc3dca749c34e6e35428001f",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/28"
+          },
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/8"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3250788,
+          "endExclusive": 3250978
+        },
+        "spanHash": "454f5f1c758ae09e714b37a24a8e20c0a5ef9d5741e5128857b175e19305bacc",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/29"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3238773,
+          "endExclusive": 3238964
+        },
+        "spanHash": "62caaad9d3abc9e612ac1c69fdb94669a08d277a0f07882f7da672972eabd207",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/30"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3155735,
+          "endExclusive": 3156571
+        },
+        "spanHash": "367c9d34b0442a05d7203751151a5082c50b374402969a5e0a77401e06ad72a5",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/31"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3159072,
+          "endExclusive": 3160861
+        },
+        "spanHash": "b491d920ff81d47e01c4e1fd5f66ee1bf8d47c757db7b47ae57e5eb9776dfb81",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "task-composer-entry-contracts.json",
+            "bytes": 446181,
+            "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+            "jsonPointer": "/completeUnits/32"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 10172288,
+          "endExclusive": 10172576
+        },
+        "spanHash": "13b061bf7fc454ac6b558fea90575c8c9275e4026d41c1ea48030b57d22938cb",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/0/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 10166330,
+          "endExclusive": 10168916
+        },
+        "spanHash": "d9a99cecf53c06166eee2e213b00c99c2dbd9461a6143a48da86eff667495753",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/1/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 10169036,
+          "endExclusive": 10171488
+        },
+        "spanHash": "002a031e1830d9c777baba3cf5bd202588be4dfa533b69a05503d512184c4935",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/2/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 10166209,
+          "endExclusive": 10166330
+        },
+        "spanHash": "777c7ac24e36adde468c7777534114d52c8ddcd5af0c55587878dc11ebe8fd87",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/3/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 8988976,
+          "endExclusive": 8989295
+        },
+        "spanHash": "ba4c8d0470a58dac9ab10dfd3a930bb22d03c68b2c83760ed5425c9dba441af4",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/4/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5719770,
+          "endExclusive": 5719890
+        },
+        "spanHash": "6407e934e2ffd57f6f38aeedf2a191ba0d0f4cdcf2d2b0047ff4da11714c7b1f",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/7/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5743687,
+          "endExclusive": 5745636
+        },
+        "spanHash": "47c5c8eb1631b97da9b71a6ed7f7622192c5ebbd2243b549033072a0d2ab2b78",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/8/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3258772,
+          "endExclusive": 3258847
+        },
+        "spanHash": "5c1fe0c2bff00448ec61c522410cfa611e95e8e80c017c602b92f4fbffd55639",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/9/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3258847,
+          "endExclusive": 3258902
+        },
+        "spanHash": "79ce07bb7e6ecdc785a9bdc2c9a0c3bf070ffbd76f9c4233935c21fa4b93c507",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/10/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2532636,
+          "endExclusive": 2547538
+        },
+        "spanHash": "c640a9e668fe42a2daacd794116249c4cbb5bac1a5a6aca73c44b7a008068f7e",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/11/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2530225,
+          "endExclusive": 2530953
+        },
+        "spanHash": "ec66804fef9d27d3254b79db1bb813ceb4be986838b1a67968f41fd111d86fee",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/12/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 10184110,
+          "endExclusive": 10184951
+        },
+        "spanHash": "a1ce8ac0e74ea06511489f09111e9257c546f23d8daf9ad8c7837ae1660a4320",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/13/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 8989350,
+          "endExclusive": 8989879
+        },
+        "spanHash": "6b7156f0239ff9ed622118d8fab864a4c8f3f3449c8a72bf93394837ad32a1f1",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/14/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 8989977,
+          "endExclusive": 8991523
+        },
+        "spanHash": "fded6e93b7b6390f72fe48c898a6edaf928e1482fd790155ed2d42df6d0ed1a3",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/15/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 8991908,
+          "endExclusive": 8995586
+        },
+        "spanHash": "c5e8d58d800505630fa2460f7131b299709ea83fb252d275f7a491e9af449a49",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/16/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 9527876,
+          "endExclusive": 9533063
+        },
+        "spanHash": "6b0c87a0a3b2f1ce91f8f0cfc342f4c6f888fb81398dd6c8d52706800d8b3fa1",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/17/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 9626640,
+          "endExclusive": 9651792
+        },
+        "spanHash": "41c172f42fc053658827635051d20cb866ff48be1dbee8cbf19fc95b4da6cbcb",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "submission-host-instance.json",
+            "bytes": 449270,
+            "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+            "jsonPointer": "/completeUnits/18/sourceRanges/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/computer-use-app-approval-request-card-89cbdba76563.js",
+        "sourceHash": "6404db4603cfe7556dc2dc8641474234fe9941fb8700a4f928fb5bd75bf6764e",
+        "locator": {
+          "kind": "byte-range",
+          "start": 421,
+          "endExclusive": 4017
+        },
+        "spanHash": "2a5cfefcfa1c71ca81b955a5519c0e6f714ca712aacd370dec2f111a1de72a72",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/computer-use-app-approval-request-card-89cbdba76563.js",
+        "sourceHash": "6404db4603cfe7556dc2dc8641474234fe9941fb8700a4f928fb5bd75bf6764e",
+        "locator": {
+          "kind": "byte-range",
+          "start": 4027,
+          "endExclusive": 4121
+        },
+        "spanHash": "cdd55353ec220f4cc0c9f1178dec66b14ccb23b07d0749685b936ad938bc1fde",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/1"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/mcp-server-elicitation-request-panel-84797e1aadc9.js",
+        "sourceHash": "6e1270ce02720e411ef90eb7c74c4d9928a198b005cf1790043f1a2ae9809963",
+        "locator": {
+          "kind": "byte-range",
+          "start": 12933,
+          "endExclusive": 14682
+        },
+        "spanHash": "8b6c4c1063271b6121860e7cf082206d23fa6a161b6db3bae542b2a2bdb460cd",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/2"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/mcp-server-elicitation-request-panel-84797e1aadc9.js",
+        "sourceHash": "6e1270ce02720e411ef90eb7c74c4d9928a198b005cf1790043f1a2ae9809963",
+        "locator": {
+          "kind": "byte-range",
+          "start": 11433,
+          "endExclusive": 11714
+        },
+        "spanHash": "03478ba09fec921798d87ce4ed9cc4bd9f2b889edd2f50d4e3b60008022c2b3b",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/3"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/mcp-server-elicitation-request-panel-84797e1aadc9.js",
+        "sourceHash": "6e1270ce02720e411ef90eb7c74c4d9928a198b005cf1790043f1a2ae9809963",
+        "locator": {
+          "kind": "byte-range",
+          "start": 11724,
+          "endExclusive": 11789
+        },
+        "spanHash": "84be6af1c8d8410cf480e7533f3d5ad3340aad422a5cb505e73060636a2a11bc",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/4"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/mcp-server-elicitation-request-panel-84797e1aadc9.js",
+        "sourceHash": "6e1270ce02720e411ef90eb7c74c4d9928a198b005cf1790043f1a2ae9809963",
+        "locator": {
+          "kind": "byte-range",
+          "start": 11789,
+          "endExclusive": 12374
+        },
+        "spanHash": "f7c39bb356863007d42789a46f63923de2b6f4408eca09ad0096714d7c67d0ce",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/5"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5075379,
+          "endExclusive": 5075675
+        },
+        "spanHash": "f054a1be102aa3cf8adb8566a2c7ef8c7f23af93d33737cf162ef1429bf5516e",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/6"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2548927,
+          "endExclusive": 2549078
+        },
+        "spanHash": "18520dea8bc5e0ca6139a108f1af9bbfd59ce7e8c8269835afbba462be10f17b",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/8"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2543702,
+          "endExclusive": 2543814
+        },
+        "spanHash": "3f89d2bdc83e3575245bc14901172f853237a4f86c94c2f3b98cfa1b1a515673",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/9"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3250700,
+          "endExclusive": 3250788
+        },
+        "spanHash": "d1093cd5fbc61b8317097bf23eaf91086a77f774f46364980b05c084cc8c1962",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/10"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2769390,
+          "endExclusive": 2769477
+        },
+        "spanHash": "28cfa77c51c969a4d0ebecfa494d80691112782d56a5e0ca1e140b09138568e0",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/11"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "locator": {
+          "kind": "byte-range",
+          "start": 11179221,
+          "endExclusive": 11184817
+        },
+        "spanHash": "10abca34b6b6a911d140ad8ab6745240aff5c05026d78ec74ad60f3130c6705f",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/12"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/pending-request-item-panel-770855267df2.js",
+        "sourceHash": "65c883ee4c9b507b6fe86e9edd73ac0eb2e085730dfbb1f72d0761ccde22be69",
+        "locator": {
+          "kind": "byte-range",
+          "start": 63960,
+          "endExclusive": 66126
+        },
+        "spanHash": "80bd2d0a05589a837a6eac8135420ee06652c1815ba0bc351c55db49d79d7913",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/13"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5075260,
+          "endExclusive": 5075338
+        },
+        "spanHash": "9a1a7b4f52142ed4527120a4a729dcb5d99f0c91a43eb14cb38dffcfe8f46d41",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/14"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5075675,
+          "endExclusive": 5075883
+        },
+        "spanHash": "9fc86f8219240fbcf25f3f2c10ab5cd0c6ab622d32aa16bc9b61902b081b5221",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/15"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5075883,
+          "endExclusive": 5076038
+        },
+        "spanHash": "161ea4394cde430cba38b36451dd14b2c3a44a112212d5fb2655fc9a4e69b5e9",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/16"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5076091,
+          "endExclusive": 5076187
+        },
+        "spanHash": "0edc7d6259d85dbe3ffe98b6b2b2999487649cb00c093bd03f2f0e1b9917dfac",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/17"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2770379,
+          "endExclusive": 2771470
+        },
+        "spanHash": "0969f855a699c4237da07c835b090e25ed536cde73e69c646534c891a6f2d392",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/18"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 5076445,
+          "endExclusive": 5077356
+        },
+        "spanHash": "8ddc93bd6a5035dae6b8c268787d27098343629cd5586d86a24010146f6feae6",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/19"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3249195,
+          "endExclusive": 3249633
+        },
+        "spanHash": "ba8bbdbf98f86c26afcfa9b55a8b28a8b9838618c791a0e79ff7b6ebe007a538",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/20"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2774042,
+          "endExclusive": 2777161
+        },
+        "spanHash": "c897dd0d31e697c76e79d0acb25c07650c3618ecd08803d185431ded8075483b",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/21"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2768051,
+          "endExclusive": 2768142
+        },
+        "spanHash": "b6b72e112c076d07e459b61c1edc76115244b3337554be680ccb5d869fbc0c80",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/22"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2684251,
+          "endExclusive": 2684426
+        },
+        "spanHash": "c65eecddab9a7553d9a4cabecde5eed8a2341ed6e3712f1ca0712c03ba8fd33c",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/23"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2772811,
+          "endExclusive": 2773087
+        },
+        "spanHash": "f2bc3b40d693cba6be77dc8ad64146a4a576614970bd57057ee5c826ffae4556",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/24"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1847589,
+          "endExclusive": 1847613
+        },
+        "spanHash": "1d9a462d02f5d902a8666b857791fefda46bed7003c819cda528285c9498e4ef",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "approval-entry-contracts.json",
+            "bytes": 40148,
+            "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258",
+            "jsonPointer": "/selectedUnits/25"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2834333,
+          "endExclusive": 2835615
+        },
+        "spanHash": "9a17f3c202bb30a654878c4b544c3c4815eb83f8f386b8f28d9c0b3e0d321009",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/0"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2835814,
+          "endExclusive": 2836420
+        },
+        "spanHash": "37c13d1ee4016076607049c756299bc6bac3a6f3886583e32cefa015725f9cef",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/1"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2835615,
+          "endExclusive": 2835753
+        },
+        "spanHash": "cc883f86003323af928e6ae5b38c6aba29cf68189475b426cb8165c538ff1e03",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/2"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2834108,
+          "endExclusive": 2834292
+        },
+        "spanHash": "cc5b7a1ef4eccf52989fa178d7188abd7768d7781a01f8d6f5aace554fcd62e3",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/3"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2835753,
+          "endExclusive": 2835814
+        },
+        "spanHash": "a6069143c00c48d80cd04d9b4e23bf20a378e4bdd9fb77fcdcded849612ba3ce",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/4"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 1977323,
+          "endExclusive": 1977561
+        },
+        "spanHash": "253f5718f731ee21bdd4ea386033f1d7f156739776be19e2fe0fd29a7feb9d0c",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/5"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3199535,
+          "endExclusive": 3255806
+        },
+        "spanHash": "85deb29aecd10cdbbf61a9d2c6d855aa5c8ed61beb01b4ba6cfafaa9ae5714ba",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/6"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2836424,
+          "endExclusive": 2836427
+        },
+        "spanHash": "030d756286e59f22a464c36e1fbff606a795dfc70aaf0108bd86f2aa193d05f4",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/9"
+          }
+        ]
+      },
+      {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "locator": {
+          "kind": "byte-range",
+          "start": 2518461,
+          "endExclusive": 2518558
+        },
+        "spanHash": "fcf35f7290b78b9f82778ab54e0334f70f407a96453a21278f319121d531fddf",
+        "sourceRefs": [
+          {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "interrupt-control-flow.json",
+            "bytes": 38511,
+            "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+            "jsonPointer": "/selections/10"
+          }
+        ]
+      }
+    ],
+    "uniqueSpanCount": 84,
+    "scope": "Selected original ranges only. Existing semantic/lexical relations are inherited from the cited bounded producers; byte checks add no independent semantic review."
+  },
+  "previousBehaviorRelations": [
+    {
+      "featureId": "FSC-0036",
+      "kind": "bounded-function-support-only",
+      "sourceRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "interrupt-control-flow-observations.json",
+        "bytes": 34385,
+        "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+        "jsonPointer": "/cases"
+      },
+      "completedSuiteScenarioDefinitions": 34,
+      "countsAsFeatureAcceptanceExecuted": false,
+      "reason": "Synthetic state/history, provider, transport, scheduler and cleanup do not verify a real stop control."
+    },
+    {
+      "featureId": "FSC-0036",
+      "kind": "separate-process-control-context",
+      "sourceRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "behavior-stop-restart.json",
+        "bytes": 4289,
+        "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957",
+        "jsonPointer": "/outcome"
+      },
+      "value": "same-turn-interrupted-observed-after-restart",
+      "countsAsFeatureAcceptanceExecuted": false,
+      "actualStopClicks": 0,
+      "reason": "SIGTERM and observed same-turn interrupted state after restart do not identify ordinary composer cancellation."
+    }
+  ],
+  "scopeLimits": [
+    "Only the prior 71-operation selected corpus is accounted for; all discovered and dynamic feature candidates are not yet enumerated.",
+    "Three new definitions and all support/queue classifications are author inferences, not new independent source semantics or runtime proof.",
+    "37 scoped definitions and 36 legacy taxonomy groups are different granularities and must not be added.",
+    "No source module is classified as ChatGPT-only from its name or UI text; mode/exclusion closure remains pending.",
+    "No original implementation or third-party implementation is emitted as a recovery project."
+  ],
+  "authorReviewOnly": true,
+  "newReaRuns": 0,
+  "newOriginalProgramParses": 0,
+  "targetCodeExecuted": false,
+  "originalClientRunsAdded": 0,
+  "runtimeObservationsAdded": 0,
+  "modelSubmissionsAdded": 0,
+  "featureDenominatorEstablished": false,
+  "thirdPartyImplementationsPublished": false,
+  "fullAnalysisCompleted": false
+}

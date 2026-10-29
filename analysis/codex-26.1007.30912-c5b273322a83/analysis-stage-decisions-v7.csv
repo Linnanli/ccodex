@@ -1,0 +1,49 @@
+requirementId,status,requirement,finding,evidenceId
+1.1,record-or-proposal-obligation-supported-with-limits,记录版本、构建号、平台、CPU 架构、应用入口以及实际 Electron 或定制运行时信息。,固定基线、入口、平台及Owl身份记录继续有效。根Electron42.3.0是声明；实际Owl来源/ABI资格另列，不能混同。,ARD-V7-E001
+1.2,record-or-proposal-obligation-supported-with-limits,保存只读分析副本，覆盖 ASAR、unpacked 文件和必要的辅助资源；对输入生成哈希和文件清单。,冻结ASAR/unpacked/资源及历史复核保留；本次重核当前2874个引用范围、156个源码文件，并未重新扫描整个安装包。,ARD-V7-E002
+1.3,record-or-proposal-obligation-supported-with-limits,识别 JS、HTML、CSS、资源、原生模块、Wasm、可执行文件及包元数据；记录归档内外的关联关系。,文件类型及归档内外关系已有清单；后续补充7份运行时内嵌JS、preload和选定进程/HTML/Worklet资源关系。文件分类不证明可重建。,ARD-V7-E003
+1.4,record-or-proposal-obligation-supported-with-limits,查找外置及内联 source map，检查是否包含 `sourcesContent`，记录源码覆盖范围。,历史17848输入范围的source map调查及缺失目标记录保留，sourcesContent覆盖0。本次核对已保存材料，不声称新增扫描。,ARD-V7-E004
+1.5,record-or-proposal-obligation-supported-with-limits,核对构建脚本引用的文件和上级工程，列出存在、缺失及来源未明的构建输入。,30条构建输入出现、21个路径、12类职责有处置；新增preload/HTML/Worker/Worklet新构建清单决策。独立runtime/provider材料仍待取得。,ARD-V7-E005
+2.1,partial; material-analysis-work-remains,以代码中的路由、菜单、命令、快捷键、设置项、功能开关及处理函数建立功能候选清单，再对照实际界面和可触发行为核实。,当前509功能、582不同操作/583出现。968来源中706无功能关联，含181明确机制和525待决定；20项命令消费者缺口有精确名单，完整分母仍未证明。,ARD-V7-E006
+2.2,partial; material-analysis-work-remains,调查范围包括会话与项目管理、消息与流式展示、任务执行与取消、审批、文件与变更查看、终端、设置、窗口和系统集成。,设置、任务、会话、项目、文件/Git、终端、窗口等有合同；525来源用途及20命令消费者仍需判断，角色/文件清单不能替代完整用户目标范围。,ARD-V7-E007
+2.3,record-or-proposal-obligation-supported-with-limits,稳定的功能标识、用户可理解的名称,509项有限功能有稳定ID和名称；新增线索与既有目标合并，不将968来源或代码位置数量当成功能数量。,ARD-V7-E008
+2.4,record-or-proposal-obligation-supported-with-limits,页面、菜单、快捷键、命令或后台事件,当前功能有触发/操作合同和回归观察点；快捷键选定设置到存储/控制器连接新增闭合，20命令消费者未找到的事实不伪造为处理链。,ARD-V7-E009
+2.5,partial; material-analysis-work-remains,输入、输出、状态变化、失败与取消行为,正常/失败/取消/重启四路径有已保存对照，实际取消点击、真实失败及自动续跑仍未证。1844条规格全部未执行，不能称为产品通过。,ARD-V7-E010
+2.6,record-or-proposal-obligation-supported-with-limits,平台、账户、功能开关、服务或环境条件,平台、账户、开关、服务/host条件按源合同保留。voice页、Qt双门和supported进一步分列；实际值未知，布局或flag不自动等于产品模式。,ARD-V7-E011
+2.7,record-or-proposal-obligation-supported-with-limits,`codex`、`chatgpt`、`shared`、`unknown`,有效模式为503unknown/6shared，模式覆盖表v8优先于v12冻结快照；3组ChatGPT分支有边界，整功能排除0，未知继续保留。,ARD-V7-E012
+2.8,partial; material-analysis-work-remains,入口、关键模块、IPC、后台服务、数据存储,509项均有源码到提议职责/路径的映射；372粗controller、137较具体建议仍需区分。已有精确边界不递归重开，但全功能关键状态/跨进程闭包未证。,ARD-V7-E013
+2.9,record-or-proposal-obligation-supported-with-limits,来源标识；静态确认、行为确认或待验证,当前来源、功能、场景和证据引用保留静态/历史观察/未知资格；本次有限清单与2172个引用检查不声称全部历史journal语义已复审。,ARD-V7-E014
+2.10,record-or-proposal-obligation-supported-with-limits,后续能够判断该功能已复刻的具体观察点,1844规格关联509功能，共1847功能链接，全部未执行；3个额外链接来自共享关联，不按操作或功能一对一计数。,ARD-V7-E015
+3.1,record-or-proposal-obligation-supported-with-limits,已确认且未修改的公开包,202依赖记录及条件性包引入政策保留，202行均有调查动作。声明/notice/指纹/安装证据分别保留，不能推成未修改的精确安装版本。,ARD-V7-E016
+3.2,record-or-proposal-obligation-supported-with-limits,bundle 内嵌的公开库,内嵌库边界/接口及包导入建议保留；preload须按sandbox规则打包兼容依赖，rolldown helper属构建产物。维护源码不生成第三方实现副本。,ARD-V7-E017
+3.3,record-or-proposal-obligation-supported-with-limits,同时存在多个版本,多版本、声明和实际安装分开；Electron根声明42.3.0，node-pty根范围^1.1.0与冻结安装1.1.0分别有原始证据，均不等同原锁文件。,ARD-V7-E018
+3.4,partial; material-analysis-work-remains,修改过的上游库,node-pty/objc选定修改与方案已有合同；完整补丁/fork来源、其余依赖修改状态和可维护配方仍未全面确定，不默认普通上游可替换。,ARD-V7-E019
+3.5,partial; material-analysis-work-remains,私有包或未知代码,15运行时能力组、3独立路线的完整资格仍为0。7份内嵌JS与原生linkedBinding有源码边界，但不证明私有native实现或独立发行来源。,ARD-V7-E020
+3.6,partial; material-analysis-work-remains,原生模块与 Wasm,native/Wasm/helper独立记录和选定构建材料保留；选定进程/音频资源补充不能证明目标runtime/ABI、完整来源及实际效果。,ARD-V7-E021
+3.7,record-or-proposal-obligation-supported-with-limits,每个条目包含名称、版本及其依据、来源、许可证线索、使用位置、运行时或构建时用途、模式归属、修改状态、建议引入方式和未解决问题。,202记录有各字段依据或明确未知与调查动作；新23运行时包名线索不自动新增或锁定依赖。记录义务满足，不改变未知资格。,ARD-V7-E022
+4.1,partial; material-analysis-work-remains,建立 main、preload、renderer、worker 和辅助进程的入口与生命周期关系。,main/preload/renderer/worker/helper和HTML入口已有方案；已知启动语法由44补2为46，非全局闭包。选定生命周期已明，全保留能力的资源后效仍不足。,ARD-V7-E023
+4.2,partial; material-analysis-work-remains,对 IPC 记录发送方、接收方、通道、请求与响应结构、通知、异常、超时和取消方式。,请求/响应/通知/错误/超时/取消与11协议差异决策保留；快捷键CJS/store/controller联接新增，但实际decoder/provider实例与运行后效未证。,ARD-V7-E024
+4.3,partial; material-analysis-work-remains,对页面及状态记录路由、组件调用、状态所有权、订阅、持久化和恢复行为。,11存储域、16基础边界、17限定功能关联及后续标签/inbox/快捷键合同保留。有效root、原生认证、迁移与耐久性未证明，不能由拟议路径推出权威所有权。,ARD-V7-E025
+4.4,partial; material-analysis-work-remains,对后台边界记录 app-server、命令行工具、MCP、原生接口和服务端接口的实际使用关系。,app-server、CLI、MCP、HTTP/native分别有合同；15运行时能力来源及关键私有服务仍缺独立采用资格。具名接口处停止，未知内部不冒充已恢复。,ARD-V7-E026
+4.5,partial; material-analysis-work-remains,对动态导入、计算得到的通道名、循环依赖、模块副作用和共享闭包补充验证。,动态命令、路由、ESM/CJS、Worker/Worklet及共享闭包有选定补充；525来源用途与模式/副作用范围仍未闭合。完整AST和字节定位不自动证明所有动态关系。,ARD-V7-E027
+4.6,record-or-proposal-obligation-supported-with-limits,对无法直接解析的大 bundle，使用 AST 和作用域关系辅助分析，并保留原位置到格式化代码的映射。,REA语义受限处用完整Program AST、作用域与UTF-8原位置补充；本次2874范围/156文件有效，快捷键6程序/7解析另列，均未求值目标代码。,ARD-V7-E028
+4.7,partial; material-analysis-work-remains,公开 app-server 是候选集成方案，采用与否由覆盖情况决定；不能仅凭接入成功就认为桌面功能已全部恢复。,公开候选11差异均有采用决定；预测fork不降级为普通fork/新线程。成功预测、实际通知/decoder及发行二进制到源码来源绑定仍未证明。,ARD-V7-E029
+5.1,partial; material-analysis-work-remains,对主要功能链执行可重复的行为观察，将运行结果与静态推断对照。,保存的正常完成、重开和运行中停止后interrupted与源码有对照；四路径以外主要能力未覆盖，不能从3条合成样例推广全产品。,ARD-V7-E030
+5.2,partial; material-analysis-work-remains,覆盖正常完成、失败、取消、重启恢复等有实际实现依据的路径。,实际取消点击0；失败归因与自动继续执行未证。七个实际观察条件保留；SIGTERM/重开不证明flush或恢复执行，静态快捷键结果不增加行为通过。,ARD-V7-E031
+5.3,record-or-proposal-obligation-supported-with-limits,账户、平台或服务条件不满足时，保留对应功能及其静态证据，标明待验证条件。,条件不足的功能/证据继续保留。既有1+2条模型样例已用完，剩0；限制新的模型观察，不限制冻结源码分析，当前未启动客户端或服务。,ARD-V7-E032
+6.1,record-or-proposal-obligation-supported-with-limits,由模块职责、运行环境和共享关系决定的源码目录与包边界。,115限定职责/48粗facade、509功能去向具备环境/共享/来源/拟议路径；模块建议属于维护设计，不声称原作者目录或完整源码分区。,ARD-V7-E033
+6.2,record-or-proposal-obligation-supported-with-limits,从原始文件或代码范围到拟恢复模块的映射。,509功能与任务、拟议路径、2874源码范围/156文件映射本次重新核对，2172个保存引用有效。372粗建议和关键provider未知仍限制完整职责证明。,ARD-V7-E034
+6.3,partial; material-analysis-work-remains,ChatGPT 专属功能剥离清单及共享依赖保留理由。,3组ChatGPT分支与共享保留政策保留；FSC-0466新增源码共享证明，FSC-0231仍未知。503未知及传递依赖不允许按名称或未出现而整块删除。,ARD-V7-E035
+6.4,partial; material-analysis-work-remains,第三方依赖引入方案，以及原生、Wasm、定制运行时和私有组件的处理决定。,202依赖、15运行时组、30输入与preload/进程资源引入方案保留；完整独立runtime/provider路线未取得资格。源码/独立发行/替代覆盖是具名前置，不静默删除。,ARD-V7-E036
+6.5,record-or-proposal-obligation-supported-with-limits,缺失构建输入的补齐方案和公开 app-server 的适用范围。,30输入/12职责补齐与公开后台11差异适用范围有方案；headers、来源/ABI/原生配方和服务成功语义仍为具体缺口。分析不以成品先构建为完成门槛。,ARD-V7-E037
+6.6,record-or-proposal-obligation-supported-with-limits,根据依赖关系排列的功能恢复顺序、阶段验收和完整功能覆盖表。,v12及当前覆盖表把509功能、51任务、1844规格接入两张60节点无环图；M1-M7和全部功能恢复验收保留，计划存在不等于实现或完整分母已知。,ARD-V7-E038
+6.7,record-or-proposal-obligation-supported-with-limits,基于固定版本证据、协议与行为差异的后续升级方式。,v12保留固定新基线、依赖/协议/行为差异、模块/回归映射及迁移回退方案；实际升级通过留待实施，本次不另起客户端或改变七项实施验收。,ARD-V7-E039
+AC-01,record-or-proposal-obligation-supported-with-limits,输入版本和哈希已固定，分析结果未混用版本。,冻结ASAR/unpacked/资源及历史复核保留；本次重核当前2874个引用范围、156个源码文件，并未重新扫描整个安装包。,ARD-V7-E040
+AC-02,partial; material-analysis-work-remains,已登记所有发现的文件、入口和功能候选，并说明分析覆盖的范围。,当前509功能、582不同操作/583出现。968来源中706无功能关联，含181明确机制和525待决定；20项命令消费者缺口有精确名单，完整分母仍未证明。 原完整功能分母未证明；本次没有把清单引用通过计成范围完成。,ARD-V7-E041
+AC-03,partial; material-analysis-work-remains,已区分 Codex、ChatGPT 专属、共享和未知项，排除理由可追溯。,3组ChatGPT分支与共享保留政策保留；FSC-0466新增源码共享证明，FSC-0231仍未知。503未知及传递依赖不允许按名称或未出现而整块删除。 unknown是合法暂记，但完整剥离决策仍不充分。,ARD-V7-E042
+AC-04,partial; material-analysis-work-remains,每个保留功能已追踪到足以说明其职责的模块和关键跨进程或外部边界。,509项均有源码到提议职责/路径的映射；372粗controller、137较具体建议仍需区分。已有精确边界不递归重开，但全功能关键状态/跨进程闭包未证。 不能要求372条均另建模块；需要按保留消费者证明具体职责和关键边界。,ARD-V7-E043
+AC-05,record-or-proposal-obligation-supported-with-limits,第三方依赖有版本与来源依据；无法确认的条目列出调查动作。,202记录有各字段依据或明确未知与调查动作；新23运行时包名线索不自动新增或锁定依赖。记录义务满足，不改变未知资格。 原记录/调查动作义务有限支持，实际采用前仍须完成相应调查。,ARD-V7-E044
+AC-06,record-or-proposal-obligation-supported-with-limits,原生、Wasm、辅助程序、定制运行时和私有服务均有独立记录。,native/Wasm/helper独立记录和选定构建材料保留；选定进程/音频资源补充不能证明目标runtime/ABI、完整来源及实际效果。 已有独立记录的义务与完整采用路线资格分列。,ARD-V7-E045
+AC-07,record-or-proposal-obligation-supported-with-limits,Source map 覆盖、构建输入缺失、REA 解析限制和动态关系均有说明。,30条构建输入出现、21个路径、12类职责有处置；新增preload/HTML/Worker/Worklet新构建清单决策。独立runtime/provider材料仍待取得。 source map缺失与REA限制已有说明；0解析失败不等于语义全覆盖。,ARD-V7-E046
+AC-08,partial; material-analysis-work-remains,主要行为与静态结论已对照，未验证项有明确触发条件。,保存的正常完成、重开和运行中停止后interrupted与源码有对照；四路径以外主要能力未覆盖，不能从3条合成样例推广全产品。 实际取消点击0；失败归因与自动继续执行未证。七个实际观察条件保留；SIGTERM/重开不证明flush或恢复执行，静态快捷键结果不增加行为通过。,ARD-V7-E047
+AC-09,record-or-proposal-obligation-supported-with-limits,项目结构建议、恢复顺序和验收条件能够引用分析证据。,v12及当前覆盖表把509功能、51任务、1844规格接入两张60节点无环图；M1-M7和全部功能恢复验收保留，计划存在不等于实现或完整分母已知。 v12保留固定新基线、依赖/协议/行为差异、模块/回归映射及迁移回退方案；实际升级通过留待实施，本次不另起客户端或改变七项实施验收。,ARD-V7-E048

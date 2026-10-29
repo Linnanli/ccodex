@@ -1,0 +1,1020 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T18:36:57.959178+00:00",
+  "scope": "Exact two editor callers of the previously verified dynamic tool registration component; selected controls producers and conditional effects.",
+  "inputs": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+      "bytes": 63426,
+      "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v36.json",
+      "bytes": 1614797,
+      "sha256": "31f343a194d538980ca1b33914575a3db49ac0c5545106d91478ff70fc85d98f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v20.json",
+      "bytes": 512425,
+      "sha256": "8f1c8d6dd3355b74b72b938102fa89dd988ba104e286b5ec2cba031fe48f3d86"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v52.json",
+      "bytes": 2853644,
+      "sha256": "b9c4a2b2f75a45c3e4d48f96a594b5b24c8757dbaa0826da7e44f57c633ab647"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "rawEvidence": {
+    "source-extraction.json.gz": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/artifact-tool-providers-v1/source-extraction.json.gz",
+      "bytes": 129740,
+      "sha256": "67ea08d44574218e1d584236dc47609f9f19d4e4a56628893ca74d913b3f6f7e"
+    },
+    "detail-extraction.json.gz": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/artifact-tool-providers-v1/detail-extraction.json.gz",
+      "bytes": 78245,
+      "sha256": "7ef98b5112e83f43c8f4bb77ddceee94ecd4421bf34c94e6f639b3028e6f5bba"
+    },
+    "verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/artifact-tool-providers-v1/verification.json",
+      "bytes": 114370,
+      "sha256": "1e4976f0184ddc4eb2380ded4c8eb276af8f52a319eac357596d808ba91ea31d"
+    },
+    "extract.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/artifact-tool-providers-v1/extract.cjs",
+      "bytes": 9085,
+      "sha256": "eaea33239b839ec62925a19b3782fbfc6c05e4a546c445ce942bbdb538c090c1"
+    },
+    "extract-detail.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/artifact-tool-providers-v1/extract-detail.cjs",
+      "bytes": 8859,
+      "sha256": "7ea553bc7885c03b9b8281133ff7e407c441dd47a5d778f2469ad230d51c94aa"
+    },
+    "query.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/artifact-tool-providers-v1/query.cjs",
+      "bytes": 10266,
+      "sha256": "76abb9123a8fafd37f51c56a88bddf6fb161ab595f09a2ff85adda4e9a9f1735"
+    },
+    "deliver.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/artifact-tool-providers-v1/deliver.py",
+      "bytes": 22628,
+      "sha256": "647157a3013a68c0642a728d41a1a61c5dcfed2049c3f6a9100f8f192d282a8b"
+    }
+  },
+  "counts": {
+    "wholeProgramParsePasses": 8,
+    "distinctWholePrograms": 6,
+    "wholeProgramAstNodesAcrossPasses": 3749533,
+    "sourceSpanOccurrencesChecked": 416,
+    "uniqueSourceSpansChecked": 216,
+    "excerptParses": 25,
+    "excerptAstNodes": 50318,
+    "parsedProgramFailures": 0,
+    "selectedEditorProviders": 2,
+    "workbookToolKeys": 7,
+    "presentationToolKeys": 6,
+    "distinctToolIdsWithSelectedProvider": 7,
+    "toolIdsNotProvidedBySelectedEditors": 1,
+    "newRuntimeExecutions": 0,
+    "newModelSubmissions": 0,
+    "newFeatureDefinitions": 0,
+    "newGoalAssociations": 0,
+    "sourceFacts": 16,
+    "remainingDirectCommandConsumerGaps": 12,
+    "remainingCommandGoalAssociations": 20,
+    "canonicalSourceLedgerChanges": 0,
+    "sourceIdentities": 968,
+    "unassociatedSources": 706,
+    "explicitMechanisms": 181,
+    "pendingPurposeDecisions": 525
+  },
+  "facts": [
+    {
+      "id": "ATP-E001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "fls(viewOnly)只返回editing/export/collaboration/productNavigation四个!viewOnly布尔值，没有读取产品模式或账户。hL导出映射fls，两个wrapper分别导入f/ee。",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 8274786,
+          "endExclusive": 8274869
+        },
+        "spanHash": "ee48737fe766a429faed423d9962318b857a546d6dc2f5b3ff948212790ab13e",
+        "nodeType": "FunctionDeclaration"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": []
+    },
+    {
+      "id": "ATP-E002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿D和演示re仅在!viewOnly对应的collaboration为真时生成共享工具注册组件；编辑器DOM ref随controls一并传入。readonly条件不等于Codex/ChatGPT归属。",
+      "sourcePath": "app.asar/webview/assets/workbook-editor-783052fb9e53.js",
+      "sourceHash": "5e50f00e7cc1fae0eed148eeee25f84dcc7299a5d6ab41151b6f3303b2515e9e",
+      "locator": {
+        "byteRange": {
+          "start": 622,
+          "endExclusive": 2292
+        },
+        "spanHash": "b9fa0ddcf5fc863b20d77389eba256cca1d89a835c1ea70b2781398cd8c49c7d",
+        "nodeType": "FunctionDeclaration"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-editor-9d2b3a776e93.js",
+          "sourceHash": "eacbc199a3073c9b97ee6f35cc15d032db2fe97038a9a70ef29d98a3c60d73c9",
+          "byteRange": {
+            "start": 2265,
+            "endExclusive": 5494
+          },
+          "spanHash": "0ec3a99c2a4b1ddf95e6480a9a283cc33b7d399d84fa97e3395d3c9ad4c00153",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿wrapper导入panel的t/cx；cx通过rest属性传入Nv，Nv把renderDrawingToolCommands继续传Av，Av增加插件后转cv，cv再传sv。没有把发布chunk等同为业务模块。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 719455,
+          "endExclusive": 721050
+        },
+        "spanHash": "0370368286d26bb2c716816cf342685f484aee6c5df439155e6c0211426c318e",
+        "nodeType": "FunctionDeclaration"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 574778,
+            "endExclusive": 581381
+          },
+          "spanHash": "20aee3f314cc0510c3571a8a8847d78685187820b22ab4f312198c8c7d6507be",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 574511,
+            "endExclusive": 574716
+          },
+          "spanHash": "dc3a2658f422e38bc3f6f9b8471d0d2010af5a913f00c01ada6e0f100e8d5bcc",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 562619,
+            "endExclusive": 565214
+          },
+          "spanHash": "42e967d97dedd161b7c9606b8a8aa4845cc449d30ec50a72bb61fd3c07d33a84",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 550236,
+            "endExclusive": 562619
+          },
+          "spanHash": "0fe545dc75fe44de257684a41c78f107598173606d486148ec462f7e0cc8f3ae",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "演示wrapper经side-panel的t/E渲染惰性A；其初始化器动态导入panel后调用t初始化并取n命名空间。n/bb的PresentationPanel getter绑定xb，再传v_、lm；该模块r/Pc导出是另一初始化器，不能当实际组件。",
+      "sourcePath": "app.asar/webview/assets/side-panel-presentation-panel-e5986a9f6a76.js",
+      "sourceHash": "b9345f8fc3ea96dcac8c542c06df54ea073e4c4ac984de45069fec0637c59e8c",
+      "locator": {
+        "byteRange": {
+          "start": 5131,
+          "endExclusive": 5700
+        },
+        "spanHash": "798a8301bf48b7950f1b1ad99192c6febb48d90fbd50f2f5d2824898e8b3127f",
+        "nodeType": "FunctionDeclaration"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/side-panel-presentation-panel-e5986a9f6a76.js",
+          "sourceHash": "b9345f8fc3ea96dcac8c542c06df54ea073e4c4ac984de45069fec0637c59e8c",
+          "byteRange": {
+            "start": 4763,
+            "endExclusive": 5119
+          },
+          "spanHash": "b1083dfc689f97dbdd25bdb908ce0010da91202e71891464d1ccee6941e37ede",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 407152,
+            "endExclusive": 407184
+          },
+          "spanHash": "eea393e55a242d26ee0b99a7a30f584fbcbf925005ffe6bb258c1505f6fb1f65",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 407185,
+            "endExclusive": 409064
+          },
+          "spanHash": "b1b5ce20c2ff246c18fbdd715aca8457f068bad08d5b832c2fa088d0c38a9157",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 306166,
+            "endExclusive": 313975
+          },
+          "spanHash": "512884355573d278d5b7a6bc2e20ebe72ddffdadbb8056a8b471de1e29f989af",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 195496,
+            "endExclusive": 225535
+          },
+          "spanHash": "a434e28b54f18c7d212e59b5d6cb24b458e55a3cbbf54c60dc454b161b40691f",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿ri和演示ai均从artifact-source-bootstrap导入Xt。命令从各自组件所获controller接口调用；本批停止于该hook、构造器和controller方法边界，未证明运行时同一实例或该编辑器实现的包来源。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 2573,
+          "endExclusive": 3375
+        },
+        "spanHash": "5e9d74a59b4d4e8d1a3bc59ac39d5fa709a5f88466d13ab246a4e82a1cdc7a88",
+        "nodeType": "ImportDeclaration"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 2416,
+            "endExclusive": 3041
+          },
+          "spanHash": "656e26e243b97e01703c112e9ef7edcc4cc46b78fc7621256afa15caa967dda0",
+          "nodeType": "ImportDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 562619,
+            "endExclusive": 565214
+          },
+          "spanHash": "42e967d97dedd161b7c9606b8a8aa4845cc449d30ec50a72bb61fd3c07d33a84",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 195496,
+            "endExclusive": 225535
+          },
+          "spanHash": "a434e28b54f18c7d212e59b5d6cb24b458e55a3cbbf54c60dc454b161b40691f",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "sv的commands为Ye?七键对象:{}，Ye=manualEditUiEnabled&&isEditing；该表包含select/hand/text/rect/ellipse/arrow/line。外层Nv仅在controller可用且importReady时渲染，并把host isEditing&&crdtPublishingReady传给内层。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 556940,
+          "endExclusive": 557137
+        },
+        "spanHash": "8a5ee811e175d1f6c24b9e1b9e1ed1c906bbdfd1662f16bb5cbdf82a2c610392",
+        "nodeType": "ObjectProperty"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 574778,
+            "endExclusive": 581381
+          },
+          "spanHash": "20aee3f314cc0510c3571a8a8847d78685187820b22ab4f312198c8c7d6507be",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 550236,
+            "endExclusive": 562619
+          },
+          "spanHash": "0fe545dc75fe44de257684a41c78f107598173606d486148ec462f7e0cc8f3ae",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "lm的commands为isEditing?六键对象:{}，包含select/text/rect/ellipse/arrow/line；v_传入的有效编辑值为host isEditing&&crdtPublishingReady。该源码条件不能证明同步或写入已成功。",
+      "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+      "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+      "locator": {
+        "byteRange": {
+          "start": 217142,
+          "endExclusive": 217544
+        },
+        "spanHash": "d66d653c166682c80a755b47b2337dc5ea667410c908611699e4cebfd588de4e",
+        "nodeType": "ObjectProperty"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 306166,
+            "endExclusive": 313975
+          },
+          "spanHash": "512884355573d278d5b7a6bc2e20ebe72ddffdadbb8056a8b471de1e29f989af",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿keyboardEnabled还要求manual UI、有效editing、输入未聚焦、grid模式，以及浮动选择/文本工具/hand状态之一；内部匹配回调再排除annotation/drawing状态。命令表存在和键盘可触发不等价。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 553777,
+          "endExclusive": 553850
+        },
+        "spanHash": "907cb30a68a02123dac1a7e61276e1effc096239abf76dd65ef901ea14f6055d",
+        "nodeType": "VariableDeclarator"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 553851,
+            "endExclusive": 553923
+          },
+          "spanHash": "de60c833ed93caa06518fd12cb70c573585d9adf11596fef04a4546b1adb77bd",
+          "nodeType": "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿注册键盘匹配器将回调存入ref；清理时仅当ref仍等于该回调才清空，避免旧清理抹去新注册。演示的选定controls对象没有此字段；共享注册组件的可选调用保留。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 552843,
+          "endExclusive": 552926
+        },
+        "spanHash": "79153c5d7c807d668803ed09abafa48197ee7ac160cd9bb9ca1e37776f96e899",
+        "nodeType": "VariableDeclarator"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 217142,
+            "endExclusive": 217544
+          },
+          "spanHash": "d66d653c166682c80a755b47b2337dc5ea667410c908611699e4cebfd588de4e",
+          "nodeType": "ObjectProperty"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿select关闭文本激活和hand标志；hand先调用controller.textClearFloatingShapeText，再关闭文本、开启hand。它们是编辑器本地工具状态，并不证明文档发生持久修改。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 556953,
+          "endExclusive": 556979
+        },
+        "spanHash": "6c7d28216827754f51dd4fb4671a381243117cda84e9df4e3bcc9e412f9fd331",
+        "nodeType": "ObjectProperty"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 556980,
+            "endExclusive": 557035
+          },
+          "spanHash": "d822f1490843f8276e7e1d77124c044ffa23bebffe38dfce064e2658cd09087e",
+          "nodeType": "ObjectProperty"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿text清除hand、调用cancelCellEdit，再激活当前sheet/editing快照中的文本状态；sheet或editing变化会重置该状态和hand。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 555216,
+          "endExclusive": 555257
+        },
+        "spanHash": "9225f1c3c6cb8b45bac627d9f0cf5bc95996d104c1ff83bf66243dd7e385d395",
+        "nodeType": "VariableDeclarator"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 550236,
+            "endExclusive": 562619
+          },
+          "spanHash": "0fe545dc75fe44de257684a41c78f107598173606d486148ec462f7e0cc8f3ae",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "工作簿rect/ellipse/arrow/line委托lt；lt先重置hand/文本，再调用runWorksheetEdit(insertShape,{geometry,arrow,select:true})。arrow映射line+true，普通line为false；本地没有等待或捕获此调用结果。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 555258,
+          "endExclusive": 555351
+        },
+        "spanHash": "5817a5fed2839e81cf77d3d34b22988a7d99c0c8a32e490925a8eeb0f46189dd",
+        "nodeType": "VariableDeclarator"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 557044,
+            "endExclusive": 557063
+          },
+          "spanHash": "ed3679cc5983e50eaaced30f67e5207842411cc6831cc73e30e112cbc95eb05a",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 557064,
+            "endExclusive": 557089
+          },
+          "spanHash": "4fab560509bbbc49d4208d3d025a35282fcd54d2fbc663d1d94f30ab06b0464a",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 557090,
+            "endExclusive": 557113
+          },
+          "spanHash": "9dc8bbc744f2a647b420f1333ea4945ff56d19994c7a25daa6d97768b1ce2935",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+          "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+          "byteRange": {
+            "start": 557114,
+            "endExclusive": 557133
+          },
+          "spanHash": "a254da7f87b73bf1693601c03a32b9fe57146eeb588efaa06ab98f5ace029a73",
+          "nodeType": "ObjectProperty"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E013",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "演示select清除图表预览和多个待插入/批注/绘图状态，并以commit:false结束元素交互及选择框；不是提交现有未完成交互。",
+      "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+      "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+      "locator": {
+        "byteRange": {
+          "start": 217154,
+          "endExclusive": 217324
+        },
+        "spanHash": "9d68d47f4c4eb7ba0b1687087545595205bfd0520cca1ccbcbb0ebb3dece3b48",
+        "nodeType": "ObjectProperty"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": []
+    },
+    {
+      "id": "ATP-E014",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "演示text委托Vr.onInsertText，清除文本/图表预览和其他插入状态，再反转文本工具标志。它与工作簿text的单向激活不同。",
+      "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+      "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+      "locator": {
+        "byteRange": {
+          "start": 217325,
+          "endExclusive": 217345
+        },
+        "spanHash": "e63f0e3dab9b037cea6f6284c50beef47344c1e55909561b8784f563aac4c256",
+        "nodeType": "ObjectProperty"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 213638,
+            "endExclusive": 214431
+          },
+          "spanHash": "a067aa7fb3247bce661fd3671bdc8633cd2ad83ba545eafd6a3876ecd945c336",
+          "nodeType": "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E015",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "演示形状命令调用Vr.onInsertShape，最终只设置待插入geometry/arrow状态；arrow为line+arrow参数。该阶段不直接调用工作簿的runWorksheetEdit，也未证明实际形状已插入。",
+      "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+      "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+      "locator": {
+        "byteRange": {
+          "start": 213638,
+          "endExclusive": 214431
+        },
+        "spanHash": "a067aa7fb3247bce661fd3671bdc8633cd2ad83ba545eafd6a3876ecd945c336",
+        "nodeType": "VariableDeclarator"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 217346,
+            "endExclusive": 217390
+          },
+          "spanHash": "a4c8e88ba7a1b98f561a92fab9c5b96c2c6e5faa3e3150ca7b8b887c3b24aa0a",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 217391,
+            "endExclusive": 217441
+          },
+          "spanHash": "cfbbbf5b34bbfb14e7a4e4f2da87ac12b8fdafc000a632607f9318e98fe2e623",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 217442,
+            "endExclusive": 217495
+          },
+          "spanHash": "5ddb795619a700330ea5e04f35391249c2a98661db51eca4ce71abaf0cce89a1",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 217496,
+            "endExclusive": 217540
+          },
+          "spanHash": "d424ae2ecb81bf262b9059b61b2c20375b54e2d150c2b53f6078efa427612d63",
+          "nodeType": "ObjectProperty"
+        }
+      ]
+    },
+    {
+      "id": "ATP-E016",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "两张选定表并集覆盖共享表八个ID中的七个：hand仅工作簿提供，note两处均未提供。结论仅适用于这两个静态对象，不证明应用全局不存在note。",
+      "sourcePath": "app.asar/webview/assets/workbook-panel-4f197d9d8ac4.js",
+      "sourceHash": "fff4db5c2d594b7bcaec3569f6ab335d2fd0b982a891109c5a053210ef30a6e9",
+      "locator": {
+        "byteRange": {
+          "start": 556940,
+          "endExclusive": 557137
+        },
+        "spanHash": "8a5ee811e175d1f6c24b9e1b9e1ed1c906bbdfd1662f16bb5cbdf82a2c610392",
+        "nodeType": "ObjectProperty"
+      },
+      "method": "static-code; complete Program lexical bindings, exact-byte AST excerpt and finite table verification",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; no-runtime-or-product-mode-proof",
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/webview/assets/presentation-panel-43e499ff5d9a.js",
+          "sourceHash": "7c92622e8a4b8ca9827e765371fe497c7aa58680d0c90a49f1dd87735621aa44",
+          "byteRange": {
+            "start": 217142,
+            "endExclusive": 217544
+          },
+          "spanHash": "d66d653c166682c80a755b47b2337dc5ea667410c908611699e4cebfd588de4e",
+          "nodeType": "ObjectProperty"
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "recordId": "ATP-R001",
+      "entryId": "command-metadata-instance:37101e62a18b5ba83c0af3bd",
+      "commandId": "artifacts.selectTool",
+      "tool": "select",
+      "workbookProvider": true,
+      "presentationProvider": true,
+      "selectedConcreteProviderConfirmed": true,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/1"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "核实具体编辑器被Codex保留路径采用的条件，并对照已有功能决定用户目标关联；controller身份、实际挂载、交互完成及持久性仍未验证。"
+    },
+    {
+      "recordId": "ATP-R002",
+      "entryId": "command-metadata-instance:2cbed83a874f3bb5f81985c8",
+      "commandId": "artifacts.handTool",
+      "tool": "hand",
+      "workbookProvider": true,
+      "presentationProvider": false,
+      "selectedConcreteProviderConfirmed": true,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/2"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "核实具体编辑器被Codex保留路径采用的条件，并对照已有功能决定用户目标关联；controller身份、实际挂载、交互完成及持久性仍未验证。"
+    },
+    {
+      "recordId": "ATP-R003",
+      "entryId": "command-metadata-instance:f8bfffce7bc54a6190af016d",
+      "commandId": "artifacts.rectangleTool",
+      "tool": "rect",
+      "workbookProvider": true,
+      "presentationProvider": true,
+      "selectedConcreteProviderConfirmed": true,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/4"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "核实具体编辑器被Codex保留路径采用的条件，并对照已有功能决定用户目标关联；controller身份、实际挂载、交互完成及持久性仍未验证。"
+    },
+    {
+      "recordId": "ATP-R004",
+      "entryId": "command-metadata-instance:f9b93d7c75cafbd846615a5a",
+      "commandId": "artifacts.circleTool",
+      "tool": "ellipse",
+      "workbookProvider": true,
+      "presentationProvider": true,
+      "selectedConcreteProviderConfirmed": true,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/5"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "核实具体编辑器被Codex保留路径采用的条件，并对照已有功能决定用户目标关联；controller身份、实际挂载、交互完成及持久性仍未验证。"
+    },
+    {
+      "recordId": "ATP-R005",
+      "entryId": "command-metadata-instance:28da6cb89fb8fc036d57b75e",
+      "commandId": "artifacts.arrowTool",
+      "tool": "arrow",
+      "workbookProvider": true,
+      "presentationProvider": true,
+      "selectedConcreteProviderConfirmed": true,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/6"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "核实具体编辑器被Codex保留路径采用的条件，并对照已有功能决定用户目标关联；controller身份、实际挂载、交互完成及持久性仍未验证。"
+    },
+    {
+      "recordId": "ATP-R006",
+      "entryId": "command-metadata-instance:64b43a4838c4f9bb4ec63483",
+      "commandId": "artifacts.lineTool",
+      "tool": "line",
+      "workbookProvider": true,
+      "presentationProvider": true,
+      "selectedConcreteProviderConfirmed": true,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/7"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "核实具体编辑器被Codex保留路径采用的条件，并对照已有功能决定用户目标关联；controller身份、实际挂载、交互完成及持久性仍未验证。"
+    },
+    {
+      "recordId": "ATP-R007",
+      "entryId": "command-metadata-instance:f49b673ac63229fdc3068443",
+      "commandId": "artifacts.textTool",
+      "tool": "text",
+      "workbookProvider": true,
+      "presentationProvider": true,
+      "selectedConcreteProviderConfirmed": true,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/8"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "核实具体编辑器被Codex保留路径采用的条件，并对照已有功能决定用户目标关联；controller身份、实际挂载、交互完成及持久性仍未验证。"
+    },
+    {
+      "recordId": "ATP-R008",
+      "entryId": "command-metadata-instance:9422d6e420cb038f2e471743",
+      "commandId": "artifacts.noteTool",
+      "tool": "note",
+      "workbookProvider": false,
+      "presentationProvider": false,
+      "selectedConcreteProviderConfirmed": false,
+      "sourceConsumerRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/command-consumer-gaps-v1.json",
+        "bytes": 63426,
+        "sha256": "dc59420d1e8868f50e19fbe94b44ce512123bab67f8fb357df0add7c797ee7b3",
+        "jsonPointer": "/records/9"
+      },
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "ATP-E001",
+        "ATP-E002",
+        "ATP-E003",
+        "ATP-E004",
+        "ATP-E005",
+        "ATP-E006",
+        "ATP-E007",
+        "ATP-E016"
+      ],
+      "remainingWork": "note在这两张表未提供；需另找具体controls生产者或namespace/动态调用方。共享参数化消费者仍保留，不据此排除该功能。"
+    }
+  ],
+  "selectedBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "originalRequirementsChanged": false,
+  "sourceChains": {
+    "workbook": [
+      "workbook-editor:D",
+      "panel export t/cx",
+      "Nv",
+      "Av plugin adapter",
+      "cv",
+      "sv.controls callback",
+      "shared header W/G -> Pw"
+    ],
+    "presentation": [
+      "presentation-editor:re",
+      "side-panel export t/E",
+      "lazy import n/bb.PresentationPanel -> xb",
+      "v_",
+      "lm.controls callback",
+      "shared header W/G -> Pw"
+    ]
+  },
+  "retainedUserGoalCandidates": [
+    {
+      "candidateId": "ATP-C01",
+      "name": "在可编辑工作簿中选择导航/文本工具或插入几何形状",
+      "status": "source-candidate; user-goal overlap and Codex adoption pending",
+      "sourceEvidenceIds": [
+        "ATP-E002",
+        "ATP-E006",
+        "ATP-E010",
+        "ATP-E011",
+        "ATP-E012"
+      ],
+      "mode": "unknown"
+    },
+    {
+      "candidateId": "ATP-C02",
+      "name": "在可编辑演示文稿中切换选择/文本工具或配置待插入形状",
+      "status": "source-candidate; user-goal overlap and Codex adoption pending",
+      "sourceEvidenceIds": [
+        "ATP-E002",
+        "ATP-E007",
+        "ATP-E013",
+        "ATP-E014",
+        "ATP-E015"
+      ],
+      "mode": "unknown"
+    }
+  ],
+  "maintenanceProposal": {
+    "boundary": "Shared command-ID/registration adapter plus distinct workbook/presentation tool adapters. Preserve per-editor gates, transient-state ownership and immediate-versus-pending shape semantics.",
+    "thirdPartyPolicy": "Do not copy editor implementation into recovered source. Controller hook Xt, constructors, worker/CRDT interfaces and editor-package provenance remain named boundaries; a chunk filename or style token does not establish public package identity.",
+    "noNewModuleOwnershipRecordsClaimed": true
+  },
+  "behaviorObservations": "No new runtime observations; all effects above are static contracts. Existing cancellation/restart observations are unchanged.",
+  "limitations": [
+    "Availability is limited to two concrete selected producers and conditional callback rendering; not runtime mount, completed edit or global capability proof.",
+    "note absent only from these two exact command objects; do not generalize to the application.",
+    "viewOnly and editor isEditing/theme labels do not establish product-mode ownership.",
+    "Stop at controller hook Xt and constructor/controller interfaces; third-party/editor implementation provenance is not established by filenames.",
+    "Seven concrete selected producers do not establish seven complete functions or product-mode classifications.",
+    "Current legacy-v36/backlog-v20 ledgers stay immutable; this supplement refines provider fields for the exact8 entry IDs only, not goal-association counters."
+  ],
+  "nextAction": {
+    "question": "Where are the workbook/presentation wrappers mounted on retained Codex paths, and which existing/new user goals own their tool operations?",
+    "scope": "Use frozen direct import/dynamic import callers of the two wrappers; inspect route/access/mode conditions and compare saved feature definitions before any adoption.",
+    "stopCondition": "Stop at already named editor/controller/worker interfaces. Do not expand controller internals or reinterpret note absence as product exclusion."
+  }
+}

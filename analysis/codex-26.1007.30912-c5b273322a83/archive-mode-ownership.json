@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T13:13:24.490233+00:00",
+  "scope": "Existing archive feature ownership and four provider joins; no new features or product scenarios.",
+  "inputPins": [
+    {
+      "path": "settings-operation-batch-11.json",
+      "bytes": 63768,
+      "sha256": "4e8b030b0af3a9cb54f75511ea8546f3ead88109d5e326382c9b4d33ac26a652"
+    },
+    {
+      "path": "feature-scope-v21.json",
+      "bytes": 1877551,
+      "sha256": "7031dde6a388d4a542278ae57d7f2464831dad1332f3e744faf00ab55d5e6426"
+    },
+    {
+      "path": "feature-scope-v21-scenarios.json",
+      "bytes": 1802613,
+      "sha256": "df8775241abd19d9e64d66129a591afe6dedd5babd28798525478eecb80a8fdf"
+    },
+    {
+      "path": "restoration-coverage-v12.json",
+      "bytes": 1000651,
+      "sha256": "176cfc28992a3b97a9f4f0ac4da480027d491cf5fd2ae8852b40205cb71ef64d"
+    },
+    {
+      "path": "implementation-plan-v8.md",
+      "bytes": 13324,
+      "sha256": "7e1f11fb5e8ecdc4db89e01200f8f14c8602f0795523ca046f6e37774b810b42"
+    }
+  ],
+  "sourceContract": {
+    "path": "raw/mode-ownership-reconciliation/archive-provider/source-contracts.json",
+    "bytes": 454324,
+    "sha256": "b2d0205102551f15f520c9ce202e3e71ab8a8fa1a9a30fd068d99844959cbb36"
+  },
+  "reusedCallerContract": {
+    "path": "raw/settings-operation-batch-11/archived-chats/source-contracts.json",
+    "bytes": 1236733,
+    "sha256": "f731212cd5843fd76e2a95a2d3d989d1f597d93b5f8ca1d79c418a39fa343068"
+  },
+  "facts": [
+    {
+      "id": "AMO-01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "hn requests local archived thread/list and combines its result with cloud task and account conversation queries before rendering wn.",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-11/archived-chats/source-contracts.json",
+          "bytes": 1236733,
+          "sha256": "f731212cd5843fd76e2a95a2d3d989d1f597d93b5f8ca1d79c418a39fa343068",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/settings-operation-batch-11/archived-chats/source-contracts.json",
+          "bytes": 1236733,
+          "sha256": "f731212cd5843fd76e2a95a2d3d989d1f597d93b5f8ca1d79c418a39fa343068",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/settings-operation-batch-11/archived-chats/source-contracts.json",
+          "bytes": 1236733,
+          "sha256": "f731212cd5843fd76e2a95a2d3d989d1f597d93b5f8ca1d79c418a39fa343068",
+          "jsonPointer": "/units/11"
+        }
+      ]
+    },
+    {
+      "id": "AMO-02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The exact import/export join Ct→initial.ZB→O4o projects account conversations, cloud tasks and local threads into one archive collection while retaining original task/thread objects and host identity.",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-11/archived-chats/source-contracts.json",
+          "bytes": 1236733,
+          "sha256": "f731212cd5843fd76e2a95a2d3d989d1f597d93b5f8ca1d79c418a39fa343068",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/mode-ownership-reconciliation/archive-provider/source-contracts.json",
+          "bytes": 454324,
+          "sha256": "b2d0205102551f15f520c9ce202e3e71ab8a8fa1a9a30fd068d99844959cbb36",
+          "jsonPointer": "/units/0"
+        }
+      ]
+    },
+    {
+      "id": "AMO-03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The exact Tt→initial.d5t→iPr join excludes conversation_origin=tpp when includeWorkCloud is false and removes that exclusion when true. Account-conversation storage is not automatically a Chat-only boundary.",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-11/archived-chats/source-contracts.json",
+          "bytes": 1236733,
+          "sha256": "f731212cd5843fd76e2a95a2d3d989d1f597d93b5f8ca1d79c418a39fa343068",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/mode-ownership-reconciliation/archive-provider/source-contracts.json",
+          "bytes": 454324,
+          "sha256": "b2d0205102551f15f520c9ce202e3e71ab8a8fa1a9a30fd068d99844959cbb36",
+          "jsonPointer": "/units/1"
+        }
+      ]
+    },
+    {
+      "id": "AMO-04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "un distinguishes recover-cloud-task from unarchive-chatgpt-conversation using the archived field. SPr patches is_archived:false by captured ID and refreshes account collections; xPr also retires a work-companion association. These adapters cannot be deleted solely by their names.",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-11/archived-chats/source-contracts.json",
+          "bytes": 1236733,
+          "sha256": "f731212cd5843fd76e2a95a2d3d989d1f597d93b5f8ca1d79c418a39fa343068",
+          "jsonPointer": "/units/31"
+        },
+        {
+          "path": "raw/mode-ownership-reconciliation/archive-provider/source-contracts.json",
+          "bytes": 454324,
+          "sha256": "b2d0205102551f15f520c9ce202e3e71ab8a8fa1a9a30fd068d99844959cbb36",
+          "jsonPointer": "/units/2"
+        },
+        {
+          "path": "raw/mode-ownership-reconciliation/archive-provider/source-contracts.json",
+          "bytes": 454324,
+          "sha256": "b2d0205102551f15f520c9ce202e3e71ab8a8fa1a9a30fd068d99844959cbb36",
+          "jsonPointer": "/units/3"
+        }
+      ]
+    }
+  ],
+  "modeDecisions": [
+    {
+      "featureId": "FSC-0280",
+      "priorMode": "unknown",
+      "mode": "shared",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed",
+      "confirmedExclusion": false,
+      "reason": "One registered user operation consumes both Codex app-server archive rows and account conversation rows, preserving source identity and using the same browse/search/filter/sort UI. This is positive shared-consumer evidence, rather than a name or access-family classification.",
+      "evidenceIds": [
+        "AMO-01",
+        "AMO-02",
+        "AMO-03"
+      ],
+      "retentionDecision": "Retain the shared archive collection/UI and separate local, cloud-task and account-conversation adapters. Filter sources only after individual mode dependencies are proven.",
+      "qualification": "Static feature ownership only. Actual mode/account/host/gate combinations and service/UI behavior remain unverified; this decision does not classify whole modules or individual destructive operations."
+    }
+  ],
+  "deferredModeDecisions": [
+    {
+      "featureId": "FSC-0281",
+      "mode": "unknown",
+      "reason": "The selected operation targets local app-server archives; its full product-mode caller set is not established by that backend identity."
+    },
+    {
+      "featureId": "FSC-0282",
+      "mode": "unknown",
+      "reason": "The explicit cloud-task recovery branch is known, but its product-mode consumers need a separate connection."
+    },
+    {
+      "featureId": "FSC-0283",
+      "mode": "unknown",
+      "reason": "The origin-neutral account unarchive adapter can receive records from the mixed collection. A Chat-only exclusion is unsupported; per-origin product consumers remain unresolved."
+    },
+    {
+      "featureId": "FSC-0284",
+      "mode": "unknown",
+      "reason": "The selected account delete adapter also retires work-companion state. Its complete positive caller and data-origin set remains unresolved."
+    }
+  ],
+  "isolatedObservation": {
+    "path": "raw/mode-ownership-reconciliation/isolated-observations.json",
+    "bytes": 4553,
+    "sha256": "c12d83f79db8ced464c99a509b74352fd6721053fc09a40d0229a1bed1a336bc"
+  },
+  "failedHarnessAttempt": {
+    "path": "raw/mode-ownership-reconciliation/failed-attempt-01.json",
+    "bytes": 464,
+    "sha256": "9c87fc2e4c0f80fca08f73c40109402419ab099c52a618554eb07f375ce158fa"
+  },
+  "restorationDecision": "Retain the shared archive collection/UI and separate local, cloud-task and account-conversation adapters. Filter sources only after individual mode dependencies are proven.",
+  "limits": [
+    "Account access families, home chat/work, product experience, executor location and backend identity remain distinct dimensions.",
+    "The imported title/path formatting, HTTP/query/state adapters and real account data were not executed.",
+    "Provider bindings and selected helper contracts are closed only for these saved ranges; complete services and runtime assembly remain open."
+  ],
+  "counts": {
+    "featureModesChanged": 1,
+    "featuresAdded": 0,
+    "confirmedChatGptExclusionsAdded": 0,
+    "newFullProgramParses": 1,
+    "newProviderUnits": 4,
+    "helperSourceRangesFromQualifiedBindings": 2,
+    "qualifiedProviderJoins": 4,
+    "isolatedCasesPassed": 10,
+    "productScenarioPassesAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "realServiceCalls": 0,
+    "originalClientRunsAdded": 0
+  },
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false
+}

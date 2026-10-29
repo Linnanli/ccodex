@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scope": "Exactly two peer findings / two contracts / three semantic field replacements; two added errata evidence references. All original source coordinates and catalog denominators retained.",
+  "changes": [
+    {
+      "findingId": "FILE-CHANGE-PEER-FINDING-001",
+      "contractId": "FILE-CHANGE-CONTRACT-012",
+      "pointer": "/contracts/11/errorContract",
+      "oldValue": "Thrown load/catch is failure; highlight prime failure is caught and ignored; stale token cannot commit.",
+      "newValue": "Only rejection of the value returned by primeDiffHighlightCache through its .catch callback is swallowed. Synchronous callback invocation or .catch access/call errors enter Wt outer catch; with the current token that path may retry a changed generation or set fullContentLoadFailed. A stale token cannot commit status; broader callback/Promise input domain is not established.",
+      "journalChange": "Old source journal line12 claim remains historical and unchanged; this erratum adds explicit error semantics."
+    },
+    {
+      "findingId": "FILE-CHANGE-PEER-FINDING-002",
+      "contractId": "FILE-CHANGE-CONTRACT-018",
+      "pointer": "/contracts/17/claim",
+      "oldValue": "IWn.request rejects if electronBridge sender is absent or supplied signal already aborted, stores promise resolver by generated id, sends worker-request, and rejects/removes pending state on delivery failure. A supplied signal adds local reject plus worker-request-cancel; selected Yt supplies none.",
+      "newValue": "IWn.request returns a rejected Promise if electronBridge sender is absent or a supplied signal is already aborted. It inserts pending resolvers before invoking the sender. Rejection handled by the returned sender value’s .catch callback rejects and removes that pending entry. A synchronous sender invocation or .catch access/call error escapes this non-async request path without the selected rejection cleanup; the previously inserted entry is not removed there. A supplied signal adds local rejection and worker-request-cancel; selected Yt supplies none. The saved preload sender declaration is async, while actual external bridge receiver identity is unobserved.",
+      "journalChange": "Old source journal line18 claim remains original frozen historical evidence; the versioned derivative is qualified by a fresh erratum."
+    },
+    {
+      "findingId": "FILE-CHANGE-PEER-FINDING-002",
+      "contractId": "FILE-CHANGE-CONTRACT-018",
+      "pointer": "/contracts/17/errorContract",
+      "oldValue": "Absent bridge; aborted signal; delivery rejection.",
+      "newValue": "Absent sender and already-aborted signal return rejected Promises. Sender-returned Promise rejection handled by .catch disposes the signal listener, removes pending and rejects it. Synchronous sender/.catch errors propagate from non-async request without that cleanup; subsequent external cleanup or actual transport behavior is unknown."
+    }
+  ],
+  "selectedSourceSpans": [
+    {
+      "unitId": "FILE-CHANGE-UNIT-009",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/code-diff-38f339f0a601.js",
+        "bytes": 56775,
+        "sha256": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636"
+      },
+      "byteRange": {
+        "start": 10607,
+        "endExclusive": 10640
+      },
+      "spanSha256": "b60aa866844eca939187a7f74eda20669bafe876a6ec8ff4255db967eea2823b",
+      "basis": "Existing saved complete-unit bytes; no original-source read or fresh parse."
+    },
+    {
+      "unitId": "FILE-CHANGE-UNIT-009",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/code-diff-38f339f0a601.js",
+        "bytes": 56775,
+        "sha256": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636"
+      },
+      "byteRange": {
+        "start": 10932,
+        "endExclusive": 11025
+      },
+      "spanSha256": "967274e00a4aab62102610505bd794d9322860153bde376745953fa59be7bf00",
+      "basis": "Existing saved complete-unit bytes; no original-source read or fresh parse."
+    },
+    {
+      "unitId": "FILE-CHANGE-UNIT-038",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+        "bytes": 8175575,
+        "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+      },
+      "byteRange": {
+        "start": 3801406,
+        "endExclusive": 3801602
+      },
+      "spanSha256": "e201c04d51f2c789a678c376509268d526f570a10695cd18adb710152794a797",
+      "basis": "Existing saved complete-unit bytes; no original-source read or fresh parse."
+    },
+    {
+      "unitId": "FILE-CHANGE-UNIT-038",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+        "bytes": 8175575,
+        "sha256": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245"
+      },
+      "byteRange": {
+        "start": 3800866,
+        "endExclusive": 3800993
+      },
+      "spanSha256": "862dfb3838902c17201024d61b0186c866c3a5fe0916b0ab652cf51c2c67ed35",
+      "basis": "Existing saved complete-unit bytes; no original-source read or fresh parse."
+    },
+    {
+      "unitId": "FILE-CHANGE-UNIT-047",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+        "bytes": 6909,
+        "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7"
+      },
+      "byteRange": {
+        "start": 3712,
+        "endExclusive": 3760
+      },
+      "spanSha256": "b6dfe4e2d049da6e4ea442cfd4b21ff59b0e3b6aac3aba0607719c1d4440bf83",
+      "basis": "Existing saved complete-unit bytes; no original-source read or fresh parse."
+    }
+  ],
+  "originalCorePeer": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/file-change-view-contracts-peer-work/peer-review.json",
+    "bytes": 44140,
+    "sha256": "008b8445fed00d1748314382a29823a73621449950631793019920f4701b17f9"
+  },
+  "originalPeerStatus": "completed-with-two-static-wording-findings",
+  "independentDeltaReview": "recorded-separately-not-presumed",
+  "newSourceFactRecords": 0,
+  "newGlobalEvidenceRecords": 0,
+  "newUserFunctions": 0,
+  "runtimeObserved": 0,
+  "proposedObservationPoints": [
+    {
+      "contractId": "FILE-CHANGE-CONTRACT-012",
+      "proposal": "Separately observe cache-prime returned Promise rejection, synchronous callback throw, and non-callable .catch under current/stale token and generation-change conditions.",
+      "status": "proposal-not-executed"
+    },
+    {
+      "contractId": "FILE-CHANGE-CONTRACT-018",
+      "proposal": "Observe pending ownership and caller result separately for absent sender, Promise-rejecting sender, synchronous sender throw, and .catch access/call failure; check actual bridge receiver before adopting host behavior.",
+      "status": "proposal-not-executed"
+    }
+  ],
+  "limits": [
+    "Old core author validation is not a semantic peer pass. Original peer metadata checks and two semantic findings are separate.",
+    "Selected async preload declaration is source syntax; live bridge replacement, sender return type and exception outcome are not observed.",
+    "No source read, original Program parse, target/upstream execution, UI/network/model or personal-data access."
+  ]
+}

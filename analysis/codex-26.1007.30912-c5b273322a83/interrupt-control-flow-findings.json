@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "findings": [
+    {
+      "findingId": "ICF-001",
+      "claim": "Ien先取最后一个具有turnId的快照；expectedTurnId不匹配或该项非inProgress时直接返回null。无expected ID的非活动分支尝试清理后台终端，不发送turn/interrupt。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/1"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/0"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/1"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/2"
+        }
+      ],
+      "limitation": "mz、Ben.default和ah均为明确替身；canonical历史形状与真实状态选择尚未验证。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-002",
+      "claim": "无expected ID时先发起node_repl清理再发送中断；有expected ID且成功时在finally发起清理。backgroundCleanup选择是否等待清理，而不是是否发起清理。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/1"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/2"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/3"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/4"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/5"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/6"
+        }
+      ],
+      "limitation": "只验证受控Promise和假scheduler下的顺序；不证明真实进程已终止。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-003",
+      "claim": "Pen识别两种指定文本格式中的活动turn ID；Ren仅接纳完全相同的小写短语。IN的Error、字符串和message对象路径均参与分类；Pen(undefined)在所选输入下抛TypeError。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/4"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/5"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/0"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/14"
+        }
+      ],
+      "limitation": "这些是固定基线文本适配规则；新服务版本是否保持格式未知，IN的第三方来源尚未单独判定。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-004",
+      "claim": "无expected ID的活动turn不匹配可补发一次。补发成功后返回报告的新ID，但所选成功分支只标记原turn；补发返回精确no-active-turn错误时会另标记报告的新turn。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/1"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/4"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/5"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/3"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/8"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/9"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/10"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/11"
+        }
+      ],
+      "limitation": "该本地写入差异不能证明后端或后续notification中的状态；没有观察真实错序。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-005",
+      "claim": "精确no-active-turn错误在无expected ID时本地标记原turn并返回原ID；带expected ID时返回null且不清理。其他中断请求错误重抛；等待期间已completed的原turn不会被Len覆盖。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/1"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/3"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/5"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/7"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/12"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/13"
+        }
+      ],
+      "limitation": "返回turn ID、局部状态变更、wire成功和最终完成应分别表达。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-006",
+      "claim": "zen在kill handle不存在时退出；受控kill错误或结果rejection被记录并吞掉，failedCount产生warning。假scheduler到10000ms时调用cancel并允许前台等待结束，finally释放scheduler disposer。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/2"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/15"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/16"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/17"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/18"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/19"
+        }
+      ],
+      "limitation": "未验证真实计时、native cancel行为、logger抛错或原scheduler；不能称通用取消超时保障。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-007",
+      "claim": "self方法先请求follower owner；有响应时直接返回其ID。只有follower角色且错误包含timeout/request-version-mismatch/no-client-found之一才标记needsResume并回退本地。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/7"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/0"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/20"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/21"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/22"
+        }
+      ],
+      "limitation": "owner实现、传输与实际角色均由替身提供；没有做两个真实客户端之间的中断。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-008",
+      "claim": "显式expected ID绕过后续goal逻辑。system先暂停goal且失败阻止中断；user-stop的暂停请求携带critical/500ms选项，失败后仍尝试中断，再抛附带interruptedTurnId的错误；descendant-cleanup在中断后暂停并吞掉该暂停错误。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/7"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/23"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/24"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/25"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/26"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/27"
+        }
+      ],
+      "limitation": "仅观察请求选项，不证明transport实际执行500ms deadline；可能已经中断的异常不能被自动重试。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-009",
+      "claim": "外层finally可在self抛错后执行descendant清理；被等待的清理错误能替换原错误。有expected ID且返回null、follower角色和descendant-cleanup模式分别抑制后续descendant动作。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/6"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/28"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/29"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/30"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/25"
+        }
+      ],
+      "limitation": "user-stop调用单独的后台方法；其真实内部生命周期和所有子任务终止未验证。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    },
+    {
+      "findingId": "ICF-010",
+      "claim": "renderer包装yda优先使用显式client，映射user到user-stop，其余到system。user成功非null结果或Error上的字符串interruptedTurnId触发$Ve；其自身成功返回undefined，错误更新后仍重抛。",
+      "classification": "author-interpretation-of-bounded-source-and-synthetic-observations",
+      "sourceFacts": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+          "jsonPointer": "/records/7"
+        }
+      ],
+      "observationRefs": [
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/25"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/31"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/32"
+        },
+        {
+          "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+          "jsonPointer": "/cases/33"
+        }
+      ],
+      "limitation": "yda范围沿用旧完整源定位并复核字节，jg/Gl/$Ve替身不证明实际KI选支或store实例；yda不是这些self路径的唯一消费者。",
+      "actualUiClaim": false,
+      "modeClassificationClaimed": false
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+      "bytes": 38511,
+      "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/observations-02/observations.json",
+      "bytes": 34385,
+      "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/functional-operation-reconciliation.json",
+      "bytes": 1229922,
+      "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+      "bytes": 4289,
+      "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/feature-scope-ledger.json",
+      "bytes": 825192,
+      "sha256": "e36ea1843f6fde0e5d0f5a66cd8cbecd25e3ffc18d1379b41a17cf32f1022be6"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/submission-host-instance.json",
+      "bytes": 449270,
+      "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e"
+    }
+  ],
+  "sourcePlumbing": {
+    "newOriginalProgramParses": 2,
+    "successfulCanonicalProgramParses": 1,
+    "canonicalSource": {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+      "bytes": 38511,
+      "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214"
+    },
+    "historicalSource": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-01/contracts.json",
+    "joins": 17,
+    "newReaRuns": 0,
+    "scope": "Canonical shared Program closes selected lexical references; the earlier shared parse is retained as a successful pre-IN extension attempt. Initial Program was byte-checked only.",
+    "actualKiOrHostInstanceObserved": false
+  },
+  "operationSupportRelation": {
+    "operationId": "operation:composer:ordinary-local-cancel",
+    "operationRef": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/functional-operation-reconciliation.json",
+      "bytes": 1229922,
+      "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+      "jsonPointer": "/operationCandidates/9"
+    },
+    "relation": "bounded-function-level-support-for-existing-conditional-cancel-chain",
+    "confidence": "inferred",
+    "featureIdAssigned": null,
+    "equivalenceClaimed": false,
+    "actualUiChainObserved": false,
+    "sourceFacts": [
+      {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/interrupt-control-flow-work/source-02/contracts.json",
+        "bytes": 38511,
+        "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+        "jsonPointer": "/records/1"
+      }
+    ],
+    "hostContinuationRef": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/submission-host-instance.json",
+      "bytes": 449270,
+      "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e",
+      "jsonPointer": "/contracts/27"
+    }
+  },
+  "previousDesktopBehavior": {
+    "source": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+      "bytes": 4289,
+      "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+    },
+    "cancelOutcome": "not-tested/control-binding-unavailable",
+    "actualCancelClicks": 0,
+    "stopRestartOutcome": "same-turn-interrupted-observed-after-restart",
+    "relation": "separate-process-control-observation; not evidence that yda/Ien or a stop button ran",
+    "executionResumedObserved": false,
+    "groupModelConsumed": 2,
+    "groupModelRemaining": 0
+  },
+  "maintenanceProposals": [
+    {
+      "pathCandidate": "features/tasks/cancel-controller.ts",
+      "ownership": "inferred first-party responsibility",
+      "responsibility": "Preserve guarded stop intent, dedup, pending UI and error presentation separately from interruption result. Ordinary composer does not pass expectedTurnId in the saved chain."
+    },
+    {
+      "pathCandidate": "application/turns/interrupt-service.ts",
+      "ownership": "inferred first-party responsibility",
+      "responsibility": "Keep follower fallback, goal pause order, turn request, local state updates and descendant sequencing explicit. Represent interruption ID and later failure separately."
+    },
+    {
+      "pathCandidate": "infrastructure/app-server/interrupt-error-adapter.ts",
+      "ownership": "inferred adapter boundary",
+      "responsibility": "Pin the legacy Pen/Ren message rules to this baseline; avoid conflating every error with retryability. Compare later protocol changes before changing these conditions."
+    },
+    {
+      "pathCandidate": "infrastructure/runtime/turn-cleanup.ts",
+      "ownership": "inferred runtime boundary",
+      "responsibility": "Separate node_repl cleanup handle/result/cancel and scheduler disposal from UI completion. Preserve background versus awaited semantics, and test the chosen actual runtime."
+    }
+  ],
+  "dependencyPolicy": {
+    "thirdPartyImplementationCopiedToPublication": false,
+    "BenOrigin": "unresolved boundary; only a bare declarator and its actual lexical uses selected",
+    "INOrigin": "shared generic utility provenance not independently classified; do not assume it belongs in recovered first-party modules",
+    "searchSubstitute": "Standard Array.findLast boundary only for controlled arrays; original dependency and canonical history parity unproved",
+    "parser": "Babel is an analysis tool dependency, not an inferred client dependency"
+  },
+  "counts": {
+    "sourceFacts": 8,
+    "canonicalSourceSelections": 12,
+    "lexicalJoins": 17,
+    "savedSourceUnitsExecuted": 9,
+    "executedSavedSourceBytes": 5259,
+    "observationCommandAttempts": 2,
+    "completedObservationCommands": 1,
+    "failedObservationCommands": 1,
+    "successfulSuiteScenarioDefinitions": 34,
+    "interpretationFindings": 10,
+    "newFeatureDefinitions": 0,
+    "unchangedScopedFeatureDefinitions": 34,
+    "unchangedOperationReviewQueue": 36
+  },
+  "failedAttemptQualification": "observe-01 failed in M06 on a deepStrictEqual cross-VM prototype comparison after earlier calls had executed. This is an observation-harness failure; no complete result file or successful scenario count is assigned to that command. observe-02 compares the two option fields explicitly. Both full command logs and exact script versions are retained.",
+  "authorReviewOnly": true,
+  "independentSemanticPeerReviewAdded": false,
+  "originalClientRunsAdded": 0,
+  "newActualCancelClicks": 0,
+  "modelSubmissionsAdded": 0,
+  "modeAssignmentsAdded": 0,
+  "globalRecordsAdded": 0,
+  "featureDenominatorEstablished": false,
+  "thirdPartyImplementationsPublished": false,
+  "fullAnalysisCompleted": false
+}

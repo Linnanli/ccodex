@@ -1,0 +1,1715 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "Close the previously unresolved selected full-content Git worker backend and preserve its exact reader/result boundaries for the independent-client implementation basis.",
+  "previousGoalTurnClassification": "no progress: status explanation only; this batch completes a concrete selected source gap",
+  "planRequirements": [
+    "2: retained feature code chain",
+    "4.2: IPC/request/result/cancellation",
+    "4.3: state ownership",
+    "4.4: backend boundaries",
+    "4.6: full bundle AST supplement",
+    "5: sourced regression observations",
+    "6: module and dependency implementation basis"
+  ],
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/core-route-operations-v1.json",
+      "bytes": 286864,
+      "sha256": "b2bed95eaac9033bccd73e597814236ec9336a0d23b3b2893f9f59b7d79c5f2e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+      "bytes": 176607,
+      "sha256": "7599a7380f2a2d7a542b0e2c1c2a33cf2c9f63589f21afe533f1c76dfd75b9e5"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/file-change-view-contracts-v2.json",
+      "bytes": 181686,
+      "sha256": "459e1ab894c85074a7d324780b620d0346aefbd281f4bbf9a441aaf55def5cbc"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v19.json",
+      "bytes": 8612363,
+      "sha256": "79e13ecfa468a789f543b246315152f1c4b57aabed930ffe1b45f02ffc17ac4c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v53.json",
+      "bytes": 2866310,
+      "sha256": "e2fcf00bd699b32b633add8102947c5126394a3c1468e2fa766e6e0ed75f10cb"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v50-scenarios.json",
+      "bytes": 2714587,
+      "sha256": "e16a96d931d6889c3a48dc67924187fec69741c6004fcf3098a67b808492cf86"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v11.json",
+      "bytes": 7544,
+      "sha256": "44f51b67de73d50649cbf276eeab9bbf0675cb3f3c5c382a6d177a1755a3997d"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1918601,
+        "endExclusive": 1919337
+      },
+      "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2",
+      "id": "DFC-S001",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.uke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/0/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919337,
+        "endExclusive": 1919395
+      },
+      "spanHash": "43628ecd4076ebfb1c1b0019f1a056c1b5fd9f56f322386d21af0bd43cfabbee",
+      "id": "DFC-S002",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.j3",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/1/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919395,
+        "endExclusive": 1919474
+      },
+      "spanHash": "3de5d054dc4ec5f3c54befdd477a289089a95fee59c0c476df41a9b4491ed200",
+      "id": "DFC-S003",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.dke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/2/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919474,
+        "endExclusive": 1919551
+      },
+      "spanHash": "d801874abb2994494cb66eeaf00de1fc57f4e8400f655d1d21d611fb39c5e010",
+      "id": "DFC-S004",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.fke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/3/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919551,
+        "endExclusive": 1919653
+      },
+      "spanHash": "6c4240e5cc7a7f2095ca877d50c2e497aed54e19a7c6e9329e48a0b8845c09fc",
+      "id": "DFC-S005",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.pke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/4/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919653,
+        "endExclusive": 1919748
+      },
+      "spanHash": "6867e12cbea19c577de24c8448ea02192b7eaab0ce13b169329b84071fed4e0a",
+      "id": "DFC-S006",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.M3",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/5/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919748,
+        "endExclusive": 1919788
+      },
+      "spanHash": "020d9f51b1c0b04bc5d62bc8cef71543e57f6fd9adc946a526cf8726241c3f11",
+      "id": "DFC-S007",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.N3",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/6/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919788,
+        "endExclusive": 1919846
+      },
+      "spanHash": "04d9f193ed1a89417b05f6979bdbf24b98d6a0e1ce9a865d602c8e0b371f1d7e",
+      "id": "DFC-S008",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.mke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/7/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1919846,
+        "endExclusive": 1920185
+      },
+      "spanHash": "95878b5753f18e666850ece11699bf2ab7a2485504146738d2ea1906dbb21e5d",
+      "id": "DFC-S009",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.hke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/8/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1920185,
+        "endExclusive": 1920476
+      },
+      "spanHash": "e3aec5650680df6cec6943fc688812ff8820d43d2d0a00ba8f3c1bcc2c6a5cd8",
+      "id": "DFC-S010",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.gke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/9/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1920476,
+        "endExclusive": 1920567
+      },
+      "spanHash": "3e73f3cfe1fedac153271ad2e465023255c467a95b377ac583af4c479f1e044e",
+      "id": "DFC-S011",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker._ke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/10/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1920567,
+        "endExclusive": 1920992
+      },
+      "spanHash": "5ff3c01f585c96dd3aa416bac8e06f699bea2baabe4315adb53f5a5d49b3d72d",
+      "id": "DFC-S012",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.P3",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/11/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1920992,
+        "endExclusive": 1922117
+      },
+      "spanHash": "ed65a755de2e9a343615ad63137a99030a39cf8e2012a90c36e9b7c9a30bc29a",
+      "id": "DFC-S013",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.vke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/12/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1922117,
+        "endExclusive": 1922267
+      },
+      "spanHash": "527b92a4d6085c5adfe248ce7bd2c27d2e84be94e4543558c1cd48eeda2dcdc0",
+      "id": "DFC-S014",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.yke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/13/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 1760500,
+        "endExclusive": 1760511
+      },
+      "spanHash": "9155d3cad2bf7f7d34c5a7acd974147b00f7e271519943542e558b37b3a54f67",
+      "id": "DFC-S015",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.uwe",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/14/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 1918573,
+        "endExclusive": 1918600
+      },
+      "spanHash": "d9547c9e372fd0057b23d28714047ffe57ee6e126d97d9f13d9ca8fc47e16084",
+      "id": "DFC-S016",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.lke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/15/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 1918558,
+        "endExclusive": 1918565
+      },
+      "spanHash": "717ed140bf9f2ab4324db188429d7740b5655b0818a5faf4af22399b22cd4786",
+      "id": "DFC-S017",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.ske",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/16/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 1918566,
+        "endExclusive": 1918572
+      },
+      "spanHash": "42cdba5f583ced7e02b4c39c85f3d8779ccd95093f850a347e89bdc454df1442",
+      "id": "DFC-S018",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.cke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/17/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 1918533,
+        "endExclusive": 1918546
+      },
+      "spanHash": "9b9da9d19a80476324ca496820ba78057c2da110229b42fb75fd36cc99e53ea4",
+      "id": "DFC-S019",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.ake",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/18/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 1918547,
+        "endExclusive": 1918557
+      },
+      "spanHash": "8458ec92d40256a9a517af66e87ee740151b3d29341aaf8b166593ef38659328",
+      "id": "DFC-S020",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.oke",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/19/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 2008093,
+        "endExclusive": 2048489
+      },
+      "spanHash": "7f3acff463e2c3daa114339a9dcf15f3e9da320c23fb85820843a321d8701f2a",
+      "id": "DFC-S021",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.qAe",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/20/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 2048490,
+        "endExclusive": 2048619
+      },
+      "spanHash": "7c1e2d6f4aa3ccde7fc7565d69a5cbc60279ced845897476cfe6439158ca18a2",
+      "id": "DFC-S022",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.M6",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/21/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 1747923,
+        "endExclusive": 1753798
+      },
+      "spanHash": "794f877133bb32d6903372b18c379f4f0124f07b0165624ada42134631fa1d54",
+      "id": "DFC-S023",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.$",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/22/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 947157,
+        "endExclusive": 947197
+      },
+      "spanHash": "13400ddfea925f7eb0f58f6d5266329bf4517c8739b059f6832081ae81df6120",
+      "id": "DFC-S024",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.Z",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/23/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 2157303,
+        "endExclusive": 2158068
+      },
+      "spanHash": "f788704e6d83ca383bd00e55973cb7c4663410cb23ddbdb0af6b199af1b5dffe",
+      "id": "DFC-S025",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.yPe",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/24/declarations/0"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 2379783,
+        "endExclusive": 2380136
+      },
+      "spanHash": "2a2771fd9dbeb72040aaabcbe3eccc867aa110b8539727626720cadddc122b1e",
+      "id": "DFC-S026",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.$9",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/0/selectedBindings/25/declarations/0"
+      }
+    },
+    {
+      "nodeType": "SwitchCase",
+      "byteRange": {
+        "start": 2021464,
+        "endExclusive": 2021860
+      },
+      "spanHash": "cad282ec1bf3ca3c6345f026d8ecf9052de9e9f03bdeebbdeb0459df65a15f36",
+      "id": "DFC-S027",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "semanticName": "worker.cat-file-case",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "selection": "cat-file literal parent using uke"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 12447,
+        "endExclusive": 13604
+      },
+      "spanHash": "6607d26d819c5c8d93d02ad27bfda6dd15d23fbef1fc94715832c0ea07a9b0db",
+      "id": "DFC-S028",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "semanticName": "viewer.Kt",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/1/selectedBindings/0/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 13792,
+        "endExclusive": 14167
+      },
+      "spanHash": "637d984acc0fa28fff2e9665a031d8818a19fba6379c0296e098d68ed08e46df",
+      "id": "DFC-S029",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "semanticName": "viewer.Jt",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/1/selectedBindings/1/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 14167,
+        "endExclusive": 14815
+      },
+      "spanHash": "c5e28ef4285474cd4a97f3bbe04994fdaa9b108275930fdc950e5da726cc8229",
+      "id": "DFC-S030",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "semanticName": "viewer.Yt",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/1/selectedBindings/2/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 9693,
+        "endExclusive": 11060
+      },
+      "spanHash": "4b66f72264b8d637d89a52664a726c0fc6e94f0cab7e2d2dab3e522410a46d3b",
+      "id": "DFC-S031",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "semanticName": "viewer.Wt",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/1/selectedBindings/3/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 39640,
+        "endExclusive": 48481
+      },
+      "spanHash": "df802432211724d13ce535aca97348c10023f795a5769ae2025206843c55d654",
+      "id": "DFC-S032",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "semanticName": "viewer.An",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/1/selectedBindings/4/declarations/0"
+      }
+    },
+    {
+      "nodeType": "ImportSpecifier",
+      "byteRange": {
+        "start": 269,
+        "endExclusive": 278
+      },
+      "spanHash": "16fa0d42c38adabba2cf07e76399170428575703e9790c0fb228f0eb97df252d",
+      "id": "DFC-S033",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "semanticName": "viewer.te",
+      "provenance": {
+        "artifact": "raw/diff-full-content-backend-v1/extraction.json.gz",
+        "decompressedJsonPointer": "/programs/1/selectedBindings/5/declarations/0"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 3802982,
+        "endExclusive": 3803163
+      },
+      "spanHash": "51257487138d7958cad794a0c87be3f89981c9d1a6143d8f89c8510496a7dc51",
+      "id": "DFC-S034",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "semanticName": "bridge.R03:RP-S0005",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/19"
+      }
+    },
+    {
+      "nodeType": "AssignmentExpression",
+      "byteRange": {
+        "start": 3799909,
+        "endExclusive": 3802975
+      },
+      "spanHash": "64f9614accc0dc5e3d4623f11aabf5a3a8a45a098858fa34197a4da0aff122b7",
+      "id": "DFC-S035",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "semanticName": "bridge.R03:RP-S0008",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/22"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 3795967,
+        "endExclusive": 3796616
+      },
+      "spanHash": "d96ae53dc8f10c8522902b4764f5fecb33c653274c2b564e20664079ffad39f3",
+      "id": "DFC-S036",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "semanticName": "bridge.R04:RP-S0003",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/47"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 2389,
+        "endExclusive": 2447
+      },
+      "spanHash": "5815d6ec28fcf8b4242fe578098bb0cb3c0d6bda44ef198d5a2e647aa1caeb1f",
+      "id": "DFC-S037",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "semanticName": "bridge.R04:RP-S0008",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/24"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 2447,
+        "endExclusive": 2504
+      },
+      "spanHash": "c46a4a7c17483be857edca2a6912f3f3006062c0f7c90e1f457455f50d94a6a2",
+      "id": "DFC-S038",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "semanticName": "bridge.R04:RP-S0009",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/25"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 3325,
+        "endExclusive": 4767
+      },
+      "spanHash": "44261e2447529407812458ceef4dee72bf20c00a79ef4a9ad5b9c63c48c75f8a",
+      "id": "DFC-S039",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "semanticName": "bridge.R04:RP-S0010",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/26"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 678,
+        "endExclusive": 714
+      },
+      "spanHash": "3322e6f3e0f6aa5dfaaf1c559925ee1f81f47e4502f60e2c8595b12d44765933",
+      "id": "DFC-S040",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "semanticName": "bridge.R04:RP-S0011",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/27"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 3775149,
+        "endExclusive": 3778948
+      },
+      "spanHash": "7747596b026e1b3b3d7846ce61de4fbc6edd7c20867a7cb630169a88b4bbb4e7",
+      "id": "DFC-S041",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "semanticName": "bridge.R04:RP-S0013",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/28"
+      }
+    },
+    {
+      "nodeType": "VariableDeclarator",
+      "byteRange": {
+        "start": 3770768,
+        "endExclusive": 3775148
+      },
+      "spanHash": "c355a9455ba8901bab292a5e60ed14451389ddec42873dba5ff26c345a364b42",
+      "id": "DFC-S042",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "semanticName": "bridge.R04:RP-S0012",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/29"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 11351,
+        "endExclusive": 11410
+      },
+      "spanHash": "74d7609a0be780f5e5339b5dc3d7c582138c73c9e450cda2e189dbb0a9c46eda",
+      "id": "DFC-S043",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "semanticName": "bridge.R05:RP-S0008",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/30"
+      }
+    },
+    {
+      "nodeType": "FunctionDeclaration",
+      "byteRange": {
+        "start": 11410,
+        "endExclusive": 11468
+      },
+      "spanHash": "5ba36e9aeb12ab2681d9b5f41443511f1aa957bd551d1ba719e221c56cc01d8e",
+      "id": "DFC-S044",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "semanticName": "bridge.R05:RP-S0009",
+      "provenance": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/remote-patch-adoption-v1.json",
+        "jsonPointer": "/sourceUnits/31"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "id": "DFC-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Kt builds ordered old/new side requests: old content never disk-falls-back; next content allows fallback when enabled or newObjectId is absent. Missing required old object ID returns unavailable. Yt batches through imported Oxt as te, calls git worker cat-file with cwd/host/max bytes/generation and thread_diff attribution, and slices returned outcomes by each waiter request count. Yt supplies no AbortSignal.",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "locator": {
+        "byteRange": {
+          "start": 12447,
+          "endExclusive": 13604
+        },
+        "spanHash": "6607d26d819c5c8d93d02ad27bfda6dd15d23fbef1fc94715832c0ea07a9b0db",
+        "sourceUnitIds": [
+          "DFC-S028",
+          "DFC-S029",
+          "DFC-S030",
+          "DFC-S033"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S028",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 12447,
+            "endExclusive": 13604
+          },
+          "spanHash": "6607d26d819c5c8d93d02ad27bfda6dd15d23fbef1fc94715832c0ea07a9b0db"
+        },
+        {
+          "id": "DFC-S029",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 13792,
+            "endExclusive": 14167
+          },
+          "spanHash": "637d984acc0fa28fff2e9665a031d8818a19fba6379c0296e098d68ed08e46df"
+        },
+        {
+          "id": "DFC-S030",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 14167,
+            "endExclusive": 14815
+          },
+          "spanHash": "c5e28ef4285474cd4a97f3bbe04994fdaa9b108275930fdc950e5da726cc8229"
+        },
+        {
+          "id": "DFC-S033",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 269,
+            "endExclusive": 278
+          },
+          "spanHash": "16fa0d42c38adabba2cf07e76399170428575703e9790c0fb228f0eb97df252d"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Reuse the already source-qualified DZ/IWn/preload bridge. Main H1e constructs the Git H9 bus and registers the computed from-view IPC channel under its injected isTrustedIpcEvent predicate. H9 tracks origin/request identity and posts to the worker manager; responses return to the origin using the for-view channel. This proves declared conditional wiring, not trust predicate behavior or delivery.",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 3802982,
+          "endExclusive": 3803163
+        },
+        "spanHash": "51257487138d7958cad794a0c87be3f89981c9d1a6143d8f89c8510496a7dc51",
+        "sourceUnitIds": [
+          "DFC-S034",
+          "DFC-S035",
+          "DFC-S039",
+          "DFC-S041",
+          "DFC-S042"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S034",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3802982,
+            "endExclusive": 3803163
+          },
+          "spanHash": "51257487138d7958cad794a0c87be3f89981c9d1a6143d8f89c8510496a7dc51"
+        },
+        {
+          "id": "DFC-S035",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3799909,
+            "endExclusive": 3802975
+          },
+          "spanHash": "64f9614accc0dc5e3d4623f11aabf5a3a8a45a098858fa34197a4da0aff122b7"
+        },
+        {
+          "id": "DFC-S039",
+          "sourcePath": "app.asar/.vite/build/preload.js",
+          "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+          "byteRange": {
+            "start": 3325,
+            "endExclusive": 4767
+          },
+          "spanHash": "44261e2447529407812458ceef4dee72bf20c00a79ef4a9ad5b9c63c48c75f8a"
+        },
+        {
+          "id": "DFC-S041",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3775149,
+            "endExclusive": 3778948
+          },
+          "spanHash": "7747596b026e1b3b3d7846ce61de4fbc6edd7c20867a7cb630169a88b4bbb4e7"
+        },
+        {
+          "id": "DFC-S042",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3770768,
+            "endExclusive": 3775148
+          },
+          "spanHash": "c355a9455ba8901bab292a5e60ed14451389ddec42873dba5ff26c345a364b42"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The selected worker Git registry $9/yPe constructs qAe. Its request context derives the execution host from params.hostConfig or a local default. The cat-file case resolves a worktree repository using params.cwd; an explicit generation calls M6/requireReviewSnapshot. Missing repository or an explicit unavailable snapshot returns one inner unknown error per request inside an outer ok result. No generation means this case passes no snapshot wrapper.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 2379783,
+          "endExclusive": 2380136
+        },
+        "spanHash": "2a2771fd9dbeb72040aaabcbe3eccc867aa110b8539727626720cadddc122b1e",
+        "sourceUnitIds": [
+          "DFC-S026",
+          "DFC-S025",
+          "DFC-S021",
+          "DFC-S027",
+          "DFC-S022",
+          "DFC-S024"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S026",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 2379783,
+            "endExclusive": 2380136
+          },
+          "spanHash": "2a2771fd9dbeb72040aaabcbe3eccc867aa110b8539727626720cadddc122b1e"
+        },
+        {
+          "id": "DFC-S025",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 2157303,
+            "endExclusive": 2158068
+          },
+          "spanHash": "f788704e6d83ca383bd00e55973cb7c4663410cb23ddbdb0af6b199af1b5dffe"
+        },
+        {
+          "id": "DFC-S021",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 2008093,
+            "endExclusive": 2048489
+          },
+          "spanHash": "7f3acff463e2c3daa114339a9dcf15f3e9da320c23fb85820843a321d8701f2a"
+        },
+        {
+          "id": "DFC-S027",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 2021464,
+            "endExclusive": 2021860
+          },
+          "spanHash": "cad282ec1bf3ca3c6345f026d8ecf9052de9e9f03bdeebbdeb0459df65a15f36"
+        },
+        {
+          "id": "DFC-S022",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 2048490,
+            "endExclusive": 2048619
+          },
+          "spanHash": "7c1e2d6f4aa3ccde7fc7565d69a5cbc60279ced845897476cfe6439158ca18a2"
+        },
+        {
+          "id": "DFC-S024",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 947157,
+            "endExclusive": 947197
+          },
+          "spanHash": "13400ddfea925f7eb0f58f6d5266329bf4517c8739b059f6832081ae81df6120"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "uke rejects a batch with more than four requests by returning an ordered unknown error for every request. For the expected numeric maxObjectBytes input, the expression clamps it to 0..5242880, using 5242880 when nullish. It does not perform a separate numeric schema validation in this function.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 1918601,
+          "endExclusive": 1919337
+        },
+        "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2",
+        "sourceUnitIds": [
+          "DFC-S001",
+          "DFC-S015",
+          "DFC-S002"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S001",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918601,
+            "endExclusive": 1919337
+          },
+          "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2"
+        },
+        {
+          "id": "DFC-S015",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1760500,
+            "endExclusive": 1760511
+          },
+          "spanHash": "9155d3cad2bf7f7d34c5a7acd974147b00f7e271519943542e558b37b3a54f67"
+        },
+        {
+          "id": "DFC-S002",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919337,
+            "endExclusive": 1919395
+          },
+          "spanHash": "43628ecd4076ebfb1c1b0019f1a056c1b5fd9f56f322386d21af0bd43cfabbee"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "N3 treats a truthy object ID that is not all zeros as an object lookup candidate; it is not a full object ID format validator. uke deduplicates those IDs for the batch, then restores original request order via a map. A missing/zero ID yields not-found. Duplicate IDs initially reuse the same object outcome.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 1918601,
+          "endExclusive": 1919337
+        },
+        "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2",
+        "sourceUnitIds": [
+          "DFC-S001",
+          "DFC-S007",
+          "DFC-S020"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S001",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918601,
+            "endExclusive": 1919337
+          },
+          "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2"
+        },
+        {
+          "id": "DFC-S007",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919748,
+            "endExclusive": 1919788
+          },
+          "spanHash": "020d9f51b1c0b04bc5d62bc8cef71543e57f6fd9adc946a526cf8726241c3f11"
+        },
+        {
+          "id": "DFC-S020",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918547,
+            "endExclusive": 1918557
+          },
+          "spanHash": "8458ec92d40256a9a517af66e87ee740151b3d29341aaf8b166593ef38659328"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "P3 executes git cat-file --batch at the repository root on the selected host, or through the supplied reviewSnapshot.git wrapper. Options preserve raw output, collect a byte buffer, disable lazy fetch with GIT_NO_LAZY_FETCH=1, pass the worker signal, use a 30000 ms timeout, and bound combined output by per-ID byte allowance plus UTF-8 ID length and 64 bytes of framing.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 1920567,
+          "endExclusive": 1920992
+        },
+        "spanHash": "5ff3c01f585c96dd3aa416bac8e06f699bea2baabe4315adb53f5a5d49b3d72d",
+        "sourceUnitIds": [
+          "DFC-S012",
+          "DFC-S016",
+          "DFC-S017",
+          "DFC-S018",
+          "DFC-S023"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S012",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1920567,
+            "endExclusive": 1920992
+          },
+          "spanHash": "5ff3c01f585c96dd3aa416bac8e06f699bea2baabe4315adb53f5a5d49b3d72d"
+        },
+        {
+          "id": "DFC-S016",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918573,
+            "endExclusive": 1918600
+          },
+          "spanHash": "d9547c9e372fd0057b23d28714047ffe57ee6e126d97d9f13d9ca8fc47e16084"
+        },
+        {
+          "id": "DFC-S017",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918558,
+            "endExclusive": 1918565
+          },
+          "spanHash": "717ed140bf9f2ab4324db188429d7740b5655b0818a5faf4af22399b22cd4786"
+        },
+        {
+          "id": "DFC-S018",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918566,
+            "endExclusive": 1918572
+          },
+          "spanHash": "42cdba5f583ced7e02b4c39c85f3d8779ccd95093f850a347e89bdc454df1442"
+        },
+        {
+          "id": "DFC-S023",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1747923,
+            "endExclusive": 1753798
+          },
+          "spanHash": "794f877133bb32d6903372b18c379f4f0124f07b0165624ada42134631fa1d54"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "vke parses newline-delimited batch headers and exact byte-sized bodies. A missing header outcome becomes not-found; invalid/unsafe/negative sizes become unknown. Oversized content becomes too-large with limitBytes. The output-limit paths can retry the unconsumed ID suffix; P3 concatenates prior results and retry results in order. This is declared parser/retry behavior, not a Git subprocess test.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 1920567,
+          "endExclusive": 1920992
+        },
+        "spanHash": "5ff3c01f585c96dd3aa416bac8e06f699bea2baabe4315adb53f5a5d49b3d72d",
+        "sourceUnitIds": [
+          "DFC-S012",
+          "DFC-S013",
+          "DFC-S014",
+          "DFC-S008",
+          "DFC-S006"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S012",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1920567,
+            "endExclusive": 1920992
+          },
+          "spanHash": "5ff3c01f585c96dd3aa416bac8e06f699bea2baabe4315adb53f5a5d49b3d72d"
+        },
+        {
+          "id": "DFC-S013",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1920992,
+            "endExclusive": 1922117
+          },
+          "spanHash": "ed65a755de2e9a343615ad63137a99030a39cf8e2012a90c36e9b7c9a30bc29a"
+        },
+        {
+          "id": "DFC-S014",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1922117,
+            "endExclusive": 1922267
+          },
+          "spanHash": "527b92a4d6085c5adfe248ce7bd2c27d2e84be94e4543558c1cd48eeda2dcdc0"
+        },
+        {
+          "id": "DFC-S008",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919788,
+            "endExclusive": 1919846
+          },
+          "spanHash": "04d9f193ed1a89417b05f6979bdbf24b98d6a0e1ce9a865d602c8e0b371f1d7e"
+        },
+        {
+          "id": "DFC-S006",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919653,
+            "endExclusive": 1919748
+          },
+          "spanHash": "6867e12cbea19c577de24c8448ea02192b7eaab0ce13b169329b84071fed4e0a"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Only fallbackToDisk === true combined with an inner not-found result takes the disk fallback. Too-large and unknown object errors do not fall back. The path is selected host platformPath.join(repository.root, request.path); it is not the annotation workspaceRoot. fke uses reviewSnapshot.read when provided and otherwise calls the named host read adapter directly.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 1918601,
+          "endExclusive": 1919337
+        },
+        "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2",
+        "sourceUnitIds": [
+          "DFC-S001",
+          "DFC-S004"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S001",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918601,
+            "endExclusive": 1919337
+          },
+          "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2"
+        },
+        {
+          "id": "DFC-S004",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919474,
+            "endExclusive": 1919551
+          },
+          "spanHash": "d801874abb2994494cb66eeaf00de1fc57f4e8400f655d1d21d611fb39c5e010"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "hke first stats the selected host path with bypassCache:true, rejects a known size above the allowance, then reads a stream up to allowance+1 bytes. gke cancels the reader after filling that requested bound and releases its lock in finally. Excess bytes become too-large; accepted bytes are decoded as UTF-8 and split into lines. Physical host implementation and file receipt are unobserved.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 1919846,
+          "endExclusive": 1920185
+        },
+        "spanHash": "95878b5753f18e666850ece11699bf2ab7a2485504146738d2ea1906dbb21e5d",
+        "sourceUnitIds": [
+          "DFC-S009",
+          "DFC-S010",
+          "DFC-S006"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S009",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919846,
+            "endExclusive": 1920185
+          },
+          "spanHash": "95878b5753f18e666850ece11699bf2ab7a2485504146738d2ea1906dbb21e5d"
+        },
+        {
+          "id": "DFC-S010",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1920185,
+            "endExclusive": 1920476
+          },
+          "spanHash": "e3aec5650680df6cec6943fc688812ff8820d43d2d0a00ba8f3c1bcc2c6a5cd8"
+        },
+        {
+          "id": "DFC-S006",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919653,
+            "endExclusive": 1919748
+          },
+          "spanHash": "6867e12cbea19c577de24c8448ea02192b7eaab0ce13b169329b84071fed4e0a"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Disk exceptions map to not-found only for an Error with ENOENT or one of the selected missing-file message strings; otherwise they map to unknown. Any exception caught by uke returns unknown for every request, so earlier object outcomes may be replaced. These inner outcomes remain distinct from an outer worker transport error.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 1919395,
+          "endExclusive": 1919474
+        },
+        "spanHash": "3de5d054dc4ec5f3c54befdd477a289089a95fee59c0c476df41a9b4491ed200",
+        "sourceUnitIds": [
+          "DFC-S003",
+          "DFC-S011",
+          "DFC-S005",
+          "DFC-S001",
+          "DFC-S002",
+          "DFC-S024"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S003",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919395,
+            "endExclusive": 1919474
+          },
+          "spanHash": "3de5d054dc4ec5f3c54befdd477a289089a95fee59c0c476df41a9b4491ed200"
+        },
+        {
+          "id": "DFC-S011",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1920476,
+            "endExclusive": 1920567
+          },
+          "spanHash": "3e73f3cfe1fedac153271ad2e465023255c467a95b377ac583af4c479f1e044e"
+        },
+        {
+          "id": "DFC-S005",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919551,
+            "endExclusive": 1919653
+          },
+          "spanHash": "6c4240e5cc7a7f2095ca877d50c2e497aed54e19a7c6e9329e48a0b8845c09fc"
+        },
+        {
+          "id": "DFC-S001",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1918601,
+            "endExclusive": 1919337
+          },
+          "spanHash": "4eb179cd8b642f2bca5fcd7ab0060a21ab973c5b3731ba21079605991f0e8ff2"
+        },
+        {
+          "id": "DFC-S002",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919337,
+            "endExclusive": 1919395
+          },
+          "spanHash": "43628ecd4076ebfb1c1b0019f1a056c1b5fd9f56f322386d21af0bd43cfabbee"
+        },
+        {
+          "id": "DFC-S024",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 947157,
+            "endExclusive": 947197
+          },
+          "spanHash": "13400ddfea925f7eb0f58f6d5266329bf4517c8739b059f6832081ae81df6120"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "qAe supports early or in-flight cancellation and suppresses its normal worker response after the controller is aborted. P3 passes that signal to the Git process boundary, but the fke/hke disk path receives no signal here. The selected Yt caller supplies none, so closing a file section is not evidence of canceling its background read. Cleanup/response behavior remains conditional on the surrounding awaits completing.",
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+      "locator": {
+        "byteRange": {
+          "start": 2008093,
+          "endExclusive": 2048489
+        },
+        "spanHash": "7f3acff463e2c3daa114339a9dcf15f3e9da320c23fb85820843a321d8701f2a",
+        "sourceUnitIds": [
+          "DFC-S021",
+          "DFC-S012",
+          "DFC-S004",
+          "DFC-S009",
+          "DFC-S030"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S021",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 2008093,
+            "endExclusive": 2048489
+          },
+          "spanHash": "7f3acff463e2c3daa114339a9dcf15f3e9da320c23fb85820843a321d8701f2a"
+        },
+        {
+          "id": "DFC-S012",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1920567,
+            "endExclusive": 1920992
+          },
+          "spanHash": "5ff3c01f585c96dd3aa416bac8e06f699bea2baabe4315adb53f5a5d49b3d72d"
+        },
+        {
+          "id": "DFC-S004",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919474,
+            "endExclusive": 1919551
+          },
+          "spanHash": "d801874abb2994494cb66eeaf00de1fc57f4e8400f655d1d21d611fb39c5e010"
+        },
+        {
+          "id": "DFC-S009",
+          "sourcePath": "app.asar/.vite/build/worker.js",
+          "sourceHash": "df97ab945ce9850480ccdd0317b2d194febcc580c81ab25adfcfa6d265a00ae1",
+          "byteRange": {
+            "start": 1919846,
+            "endExclusive": 1920185
+          },
+          "spanHash": "95878b5753f18e666850ece11699bf2ab7a2485504146738d2ea1906dbb21e5d"
+        },
+        {
+          "id": "DFC-S030",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 14167,
+            "endExclusive": 14815
+          },
+          "spanHash": "c5e28ef4285474cd4a97f3bbe04994fdaa9b108275930fdc950e5da726cc8229"
+        }
+      ]
+    },
+    {
+      "id": "DFC-F12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "After outer worker identity/method settlement, Kt still validates the returned old/new lines through imported full-content metadata adapter Et. Inner not-found/too-large and generic failures can lead to unavailable/error; successful object/disk reads do not themselves prove metadata acceptance or a rendered full diff. Existing viewport, state-generation and render contracts remain applicable.",
+      "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+      "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+      "locator": {
+        "byteRange": {
+          "start": 12447,
+          "endExclusive": 13604
+        },
+        "spanHash": "6607d26d819c5c8d93d02ad27bfda6dd15d23fbef1fc94715832c0ea07a9b0db",
+        "sourceUnitIds": [
+          "DFC-S028",
+          "DFC-S031",
+          "DFC-S032",
+          "DFC-S036"
+        ]
+      },
+      "method": "Frozen full-Program AST, lexical declaration/call identity and saved bridge proof reuse; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "static-source-confirmed; actual-runtime-unobserved",
+      "sourceReferences": [
+        {
+          "id": "DFC-S028",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 12447,
+            "endExclusive": 13604
+          },
+          "spanHash": "6607d26d819c5c8d93d02ad27bfda6dd15d23fbef1fc94715832c0ea07a9b0db"
+        },
+        {
+          "id": "DFC-S031",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 9693,
+            "endExclusive": 11060
+          },
+          "spanHash": "4b66f72264b8d637d89a52664a726c0fc6e94f0cab7e2d2dab3e522410a46d3b"
+        },
+        {
+          "id": "DFC-S032",
+          "sourcePath": "app.asar/webview/assets/code-diff-38f339f0a601.js",
+          "sourceHash": "6b0db1d6f7b54c7fd291d60cd512aaf6d2aa540e2cae2d9240c5b824cd057636",
+          "byteRange": {
+            "start": 39640,
+            "endExclusive": 48481
+          },
+          "spanHash": "df802432211724d13ce535aca97348c10023f795a5769ae2025206843c55d654"
+        },
+        {
+          "id": "DFC-S036",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3795967,
+            "endExclusive": 3796616
+          },
+          "spanHash": "d96ae53dc8f10c8522902b4764f5fecb33c653274c2b564e20664079ffad39f3"
+        }
+      ]
+    }
+  ],
+  "featureRefinement": {
+    "featureId": "FSC-0493",
+    "featureRef": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v53.json",
+      "bytes": 2866310,
+      "sha256": "e2fcf00bd699b32b633add8102947c5126394a3c1468e2fa766e6e0ed75f10cb",
+      "jsonPointer": "/features/490"
+    },
+    "operationIds": [
+      "operation:core-route:fsc-0493:view-supplied-diff",
+      "operation:core-route:fsc-0493:toggle-file-section",
+      "operation:core-route:fsc-0493:retry-full-content"
+    ],
+    "mode": "unknown",
+    "retentionDecision": "Retain the declared standalone diff and complete-file read path; selected mode ownership remains unresolved.",
+    "noWholeFeatureDeletionAllowed": true
+  },
+  "priorGapDisposition": {
+    "priorContract": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/file-change-view-contracts-v2.json",
+      "bytes": 181686,
+      "sha256": "459e1ab894c85074a7d324780b620d0346aefbd281f4bbf9a441aaf55def5cbc",
+      "jsonPointer": "/contracts/26"
+    },
+    "previous": "main worker registry/authorization declaration and concrete cat-file object/disk backend unresolved by that selection",
+    "now": "declared conditional main/preload/renderer Git bus reused; exact cat-file dispatcher, per-side outcomes, object reader, snapshot gate and disk fallback source-qualified",
+    "evidenceIds": [
+      "DFC-F01",
+      "DFC-F02",
+      "DFC-F03",
+      "DFC-F04",
+      "DFC-F05",
+      "DFC-F06",
+      "DFC-F07",
+      "DFC-F08",
+      "DFC-F09",
+      "DFC-F10",
+      "DFC-F11",
+      "DFC-F12"
+    ],
+    "stillUnproven": [
+      "actual isTrustedIpcEvent provider and its results",
+      "actual worker/host/repository/snapshot instances and initialization order",
+      "physical process and host filesystem implementation/effects",
+      "runtime response receipt/rendering equivalence",
+      "product-mode ownership",
+      "route.state unifiedDiff producer"
+    ]
+  },
+  "maintenanceBoundary": {
+    "status": "inferred refinement of the existing T09/CROP-M02 file-viewer controller and shared Git worker boundary; no new global owner or path count claimed",
+    "renderer": {
+      "ownerId": "CROP-M02",
+      "taskId": "T09",
+      "existingProposedPath": "apps/desktop/src/renderer/features/file-viewers/standalone-diff-controller.tsx",
+      "responsibility": "Route input, viewport/per-file state, ordered side requests, cache generation, metadata acceptance and partial/full render decisions.",
+      "externalPort": "git worker cat-file request and ordered inner outcome array"
+    },
+    "worker": {
+      "sourcePath": "app.asar/.vite/build/worker.js",
+      "responsibility": "Host/repository/snapshot selection, bounded Git object batches, conditional host file fallback, typed outcomes and cancellation boundary.",
+      "preserveSeparatelyFrom": "The existing remote patch mutation adapter; a full-content read is not an apply/revert operation."
+    },
+    "externalDependencies": [
+      "Reuse the existing source-qualified worker bridge and trust adapter.",
+      "Declare Git process, host filesystem/snapshot and renderer/highlight dependencies explicitly; do not generate their third-party implementations.",
+      "Metadata consistency validation remains a separate first-party adapter around imported parsing/rendering packages."
+    ],
+    "implementationOrder": [
+      "Existing worker transport and selected host/repository ports",
+      "Bounded full-content reader and inner result schema",
+      "Renderer batch/metadata/partial-full state adapter",
+      "Authorized fixtures for object, disk, byte-limit, stale snapshot and retry behavior"
+    ]
+  },
+  "scenarioRefinements": [
+    {
+      "scenarioRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v50-scenarios.json",
+        "bytes": 2714587,
+        "sha256": "e16a96d931d6889c3a48dc67924187fec69741c6004fcf3098a67b808492cf86",
+        "jsonPointer": "/scenarios/1664",
+        "scenarioId": "CROP-FSC-0493:full-read-retry-and-metadata"
+      },
+      "executionStatus": "not-executed",
+      "additionalObservations": [
+        "At most four requests; duplicate/missing object IDs preserve per-request order.",
+        "Old side never disk-falls-back; next side falls back only from not-found when permitted.",
+        "Default/maximum 5 MiB, over-limit outcomes, missing objects, snapshot mismatch and metadata mismatch stay distinct.",
+        "Git output partial framing/retry and inner error array differ from outer transport rejection."
+      ]
+    },
+    {
+      "scenarioRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v50-scenarios.json",
+        "bytes": 2714587,
+        "sha256": "e16a96d931d6889c3a48dc67924187fec69741c6004fcf3098a67b808492cf86",
+        "jsonPointer": "/scenarios/1663",
+        "scenarioId": "CROP-FSC-0493:single-and-alt-toggle"
+      },
+      "executionStatus": "not-executed",
+      "additionalObservations": [
+        "Closing/Alt toggling a file does not imply cancellation by Yt.",
+        "If an independently supplied cancellation occurs, distinguish Git process abort, un-signaled disk work and worker response suppression."
+      ]
+    }
+  ],
+  "sourceBatchClosed": true,
+  "actualRuntimeVerified": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "canonicalCountsUnchanged": true,
+  "counts": {
+    "sourceFacts": 12,
+    "selectedSourceUnits": 44,
+    "declaredBackendGapsRefined": 1,
+    "existingFeatureContractsRefined": 1,
+    "existingScenarioSpecificationsRefined": 2,
+    "newFeatureDefinitions": 0,
+    "newOperations": 0,
+    "newScenarioIds": 0,
+    "newModeDecisions": 0,
+    "newWholeFeatureExclusions": 0,
+    "newRuntimePasses": 0,
+    "newModelSubmissions": 0,
+    "newClientImplementation": 0,
+    "independentCompleteProgramParses": 2,
+    "parsedNodes": 655117,
+    "spanOccurrences": 886,
+    "distinctAstSpans": 834,
+    "reusedBoundedParses": 11,
+    "selectedCallerJoins": 7,
+    "parseFailures": 0,
+    "targetEvaluations": 0
+  },
+  "stopBoundary": "The selected backend question is closed at declared first-party source contracts. Do not recursively reopen generic host/native/Git/process providers because runtime proof is absent; reopen only for contradictory source or a concrete unmatched retained caller.",
+  "nextAction": "Follow the existing high-use file/review and task workflow callers; reuse this reader contract rather than treating the whole Git backend as unresolved. Actual behavioral validation requires its stated fixtures and authorization."
+}

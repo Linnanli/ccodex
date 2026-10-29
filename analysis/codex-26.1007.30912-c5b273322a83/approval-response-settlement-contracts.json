@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T08:05:33.265583+00:00",
+  "status": "bounded-source-contracts-closed; runtime-and-complete-approval-coverage-open",
+  "purpose": "将审批调用返回、转发、发送与内存状态规则落实到恢复模块；不把异步调用完成提升为后台确认。",
+  "sourceSelection": {
+    "path": "raw/approval-response-settlement/probe/observations.json",
+    "bytes": 24112,
+    "sha256": "b9fdaccf213a90a421b2772465356792eddc6ba86c25431027095ebe95ec6f26"
+  },
+  "priorContracts": {
+    "path": "approval-entry-contracts.json",
+    "bytes": 40148,
+    "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258"
+  },
+  "contracts": [
+    {
+      "id": "AR-C01",
+      "owner": "packages/backend-adapter/src/approvals",
+      "contract": "回复入口先查找请求、核对方法；找不到或方法不符时不发送。userVerification 的 accept 在此路径直接返回。accept 安全检查失败同步抛错。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/14"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/23"
+        }
+      ],
+      "probeIds": [
+        "AR-01",
+        "AR-02",
+        "AR-03",
+        "AR-04",
+        "AR-05"
+      ],
+      "acceptance": "真实卡片与实际 manager 关联后，分别观察失效请求、方法不符、userVerification、accept 与 decline；不能把无操作返回当作审批完成。"
+    },
+    {
+      "id": "AR-C02",
+      "owner": "packages/desktop-transport/src/coordination",
+      "contract": "uV 返回 truthy ownerClientId 时，入口调用异步转发并注册失败日志后立即返回；不等待所属窗口确认，也不在本窗口发送或清理。Z7t 的转发函数自身等待 IPC，并把 error envelope 转为拒绝。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/14"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/16"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/15"
+        }
+      ],
+      "probeIds": [
+        "AR-06",
+        "AR-15",
+        "AR-16"
+      ],
+      "wire": {
+        "method": "thread-follower-submit-mcp-server-elicitation-response",
+        "params": [
+          "conversationId",
+          "requestId",
+          "response"
+        ],
+        "options": [
+          "targetClientId"
+        ]
+      },
+      "acceptance": "在自有双窗口夹具中分别观察转发未决、所属窗口拒绝和成功；单独记录发起窗口返回与所属窗口实际处理，不将前者提升为确认。"
+    },
+    {
+      "id": "AR-C03",
+      "owner": "packages/backend-adapter/src/approvals",
+      "contract": "等价请求列表先整体执行 accept 安全检查，再顺序发送。选中请求 apply，其余 discard；后一次同步发送失败不会回滚此前已经发生的状态变化。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/14"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/18"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/19"
+        }
+      ],
+      "probeIds": [
+        "AR-07",
+        "AR-08",
+        "AR-09"
+      ],
+      "acceptance": "通过实际所属 manager 验证等价列表与发送顺序；注入第二项同步失败，核对第一项状态及剩余待处理项，保留部分失败语义。"
+    },
+    {
+      "id": "AR-C04",
+      "owner": "packages/backend-adapter/src/approvals",
+      "contract": "已保存的 Sii 工厂把 sendAppServerResponse 回调传给 Dfn；构造器保存同一注入值，getApprovalActionContext 再把它传给 Z7t。此工厂回调对普通响应调用 Pvn 后没有 return/await；L7t 同样不等待 sender 返回值。因此这一源码分支不提供后台接收确认。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/20"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/24"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/21"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/22"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/14"
+        }
+      ],
+      "probeIds": [
+        "AR-10",
+        "AR-11",
+        "AR-12",
+        "AR-13",
+        "AR-14"
+      ],
+      "condition": "仅适用于使用该 Sii/Dfn 条件实例链的分支；其他注入 manager、实际 UI scope 和 Pvn 的序列化/宿主接收均未由本批证明。",
+      "acceptance": "将实际 RPC manager、发送消息和后台请求 ID 关联；分别观察同步 throw、异步发送失败、后台拒绝和审批通知。调用返回只能记录该调用边界已结束。"
+    },
+    {
+      "id": "AR-C05",
+      "owner": "packages/state-storage/src/conversations",
+      "contract": "apply 通过注入 updater 更新会话：尝试投影 completed/action 的 elicitation item，随后从 requests 删除选中 ID。turnId 为空或 lookup 返回无 turn 时仍执行请求删除；传给 lookup 的选项是 synthesizeMissingTurn:false。item 以 mcp-server-elicitation-请求ID 定位，已存在则替换。userVerification 投影清空 challenge。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/15"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/1"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/6"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/10"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/11"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/13"
+        }
+      ],
+      "probeIds": [
+        "AR-17",
+        "AR-18",
+        "AR-19",
+        "AR-20"
+      ],
+      "condition": "探针的 turn lookup、draft-array 识别和 updater 是合成边界；真实 updater 的持久化、重放、Z4t 内部行为及实际会话实例仍待验证。",
+      "acceptance": "以真实请求记录关联投影与请求队列；覆盖有/无 turn、空 turnId、已有 item。单独检查持久化与重启，不能把内存删除当作审批已被后台接受。"
+    },
+    {
+      "id": "AR-C06",
+      "owner": "packages/state-storage/src/conversations",
+      "contract": "discard 只移除指定 turn 中 type=mcpServerElicitation 且含匹配 requestId 的 item，再删除同 ID 待请求；其他类型、ID 或无 requestId 的 item 保留。单请求查询拒绝 follower；列表查询过滤 z7t 指定的方法。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/15"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/2"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/6"
+        }
+      ],
+      "probeIds": [
+        "AR-21",
+        "AR-22"
+      ],
+      "acceptance": "通过真实会话快照验证类型/ID 保留规则和 follower 查询限制；z7t 的生产常量初始化不由合成过滤常量探针证明。"
+    },
+    {
+      "id": "AR-C07",
+      "owner": "packages/backend-adapter/src/approvals",
+      "contract": "n5t 以严格相等比较 connector_id、link_id、auth_reason；任一 connection_consent 非 nullish 则不等价；requested_scopes 按 Set 比较，忽略顺序和重复，缺省等同空集合。G7t 仅在 QB 识别为 connectorAuth 且没有 consent 的情况下寻找其他等价请求。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/18"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/5"
+        }
+      ],
+      "probeIds": [
+        "AR-23",
+        "AR-24"
+      ],
+      "condition": "QB 的 URL/schema/来源验证依赖只做源码检查，不把 n5t 的纯比较结果当作整个连接器授权链成立。",
+      "acceptance": "用真实已验证 connectorAuth 请求核对等价列表；改变 connector/link/reason/scopes/consent 中任一关键条件时重新观察，保留 QB 分类前提。"
+    },
+    {
+      "id": "AR-C08",
+      "owner": "packages/backend-adapter/src/approvals",
+      "contract": "B8t 对识别出的 executionBound 审批要求 approveDisabled 为 false，并拒绝对象 _meta 中任何非 nullish persist 值。z8t 仅尝试 form/codex_apps 元数据；H8t 要求 tool_params 恰好只有 confirmation_summary 与非空字符串 plan_token 两键。U8t 还检查长度、解析、schema 和规范化相等。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/17"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/3"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/8"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/9"
+        },
+        {
+          "path": "raw/approval-response-settlement/probe/observations.json",
+          "jsonPointer": "/units/7"
+        }
+      ],
+      "probeIds": [
+        "AR-25",
+        "AR-26"
+      ],
+      "condition": "B8t 探针注入识别结果。完整 schema、工具常量初始化、W8t/YB 规范化及实际工具执行绑定仍未验证，不能据此宣布安全链完整。",
+      "acceptance": "验证实际 schema/工具/规范化来源后，再用有效与无效元数据检查审批禁用和 persist 策略；与后台执行绑定核对。"
+    }
+  ],
+  "unknownDisposition": [
+    {
+      "id": "APPROVAL-U03",
+      "change": "部分关闭：选定回复入口、所属窗口转发及条件工厂 sender 的返回语义已明确。",
+      "remaining": "实际 capnweb/manager 实例关联、Pvn 序列化与宿主接收、后台确认和卡片最终可见行为。"
+    },
+    {
+      "id": "APPROVAL-U04",
+      "change": "部分关闭：会话内存请求删除与 turn item 投影规则已明确。",
+      "remaining": "accepted atom、实际 updater 的存储、耐久性和重启恢复。"
+    },
+    {
+      "id": "APPROVAL-U06",
+      "change": "部分关闭：连接器等价比较、局部参数形状和 B8t 条件已明确。",
+      "remaining": "QB/z8t 全部 schema、URL 来源与规范化依赖，以及实际授权/执行绑定。"
+    },
+    {
+      "id": "APPROVAL-U01/U02/U05/U07",
+      "change": "保持开放。",
+      "remaining": "生产模式和功能条件、真实实例、其他审批类型，以及卡片异常/卸载/取消/重启。"
+    }
+  ],
+  "recoveryDecision": {
+    "existingTaskIds": [
+      "T03",
+      "T04"
+    ],
+    "taskMappingKind": "cross-cutting approvals consumer contracts; no new complete feature claim",
+    "modules": [
+      "apps/desktop/src/renderer/features/approvals",
+      "packages/backend-adapter/src/approvals",
+      "packages/desktop-transport/src/coordination",
+      "packages/state-storage/src/conversations"
+    ],
+    "rendererRule": "保留旧卡片的 pending/settled/error 与 accepted 状态行为；回复 Promise 完成不标注为后台已确认。真实卡片恢复和失败回滚按既有来源另行验收。",
+    "thirdPartyRule": "通过依赖引入既有 RPC/schema/state 库；本批只保留第一方契约和分析原片段，不生成第三方实现。",
+    "implementationStarted": false
+  },
+  "counts": {
+    "sourceContracts": 8,
+    "isolatedCasesPassed": 26,
+    "selectedSourceUnits": 25,
+    "productAcceptanceRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "originalClientRunsAdded": 0,
+    "featureDefinitionsAdded": 0,
+    "confirmedChatGptExclusionsAdded": 0
+  },
+  "existingScopeUnchanged": {
+    "feature-scope-v11.json": {
+      "path": "feature-scope-v11.json",
+      "bytes": 739359,
+      "sha256": "43c25761904d1ec87bc58208ce2edb8875b73da23d24982ae2a4fef56bb7e0fa"
+    },
+    "feature-scope-v11-scenarios.json": {
+      "path": "feature-scope-v11-scenarios.json",
+      "bytes": 915944,
+      "sha256": "bc73caa0fc97bd339080b8c2aa2a8dbbdee75bd8990e0457695112ac19e83ea0"
+    },
+    "restoration-coverage-v2.json": {
+      "path": "restoration-coverage-v2.json",
+      "bytes": 336772,
+      "sha256": "f22fa8c8aa8709af0c2a53eaf7e51ebc0152a70013f1221c1757e10b7e1c30e8"
+    },
+    "implementation-plan-v7.md": {
+      "path": "implementation-plan-v7.md",
+      "bytes": 13860,
+      "sha256": "1397b81e63000b2997a1c62392293290e8abfaf6a2737023b9e7549f0a9da1a0"
+    },
+    "approval-entry-contracts.json": {
+      "path": "approval-entry-contracts.json",
+      "bytes": 40148,
+      "sha256": "e1182e888d93cdcded4f5e173a1720068c2855fff10bcd8abd3ebd8e1faef258"
+    }
+  },
+  "fullAnalysisCompleted": false
+}

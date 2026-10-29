@@ -1,0 +1,1179 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "observedAtUtc": "2026-10-13T10:53:15.881506+00:00",
+  "runName": "frozen-os-normal-host-1",
+  "method": "actual-isolated-frozen-app-server-stdio-negative-thread-fork",
+  "cliSource": "frozen",
+  "cliSha256": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8",
+  "cliPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+  "cliHashUnchangedAfterRun": true,
+  "cliProvenance": {
+    "path": "raw/fork-negative-protocol/frozen-os-normal-host-1/cli-generation.json",
+    "bytes": 153219,
+    "sha256": "75235ff3de9231a1da1a90f2ef36caf1123a6e88ea668bade8adb3e2e191558c",
+    "originalPath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json"
+  },
+  "runner": {
+    "path": "raw/fork-negative-protocol/frozen-os-normal-host-1/runner-source.py",
+    "bytes": 18485,
+    "sha256": "b0aaa951632c071c872711f12162ba0234013c234aa4a258bb2d0026c84f545e",
+    "originalPath": "/Users/nallylin/Documents/code/ccodex/scripts/analysis/check_fork_negative_protocol.py"
+  },
+  "schemaInputs": [
+    {
+      "path": "raw/protocol/stable/v2/ThreadForkParams.json",
+      "bytes": 5385,
+      "sha256": "60540b97d453ddbc5e12bfaa007a3718f31847d18dec0da59a5e4b89be4717ad",
+      "mode": "stable",
+      "required": [
+        "threadId"
+      ],
+      "experimentalPredictionModeDeclared": false,
+      "experimentalPredictionModeSchema": null,
+      "beforeTurnIdSchema": null,
+      "ephemeralSchema": {
+        "type": "boolean"
+      },
+      "additionalPropertiesExplicit": false,
+      "additionalPropertiesValue": null,
+      "unknownPropertiesSchemaDefault": "allowed by JSON Schema when additionalProperties is absent; runtime behavior measured separately"
+    },
+    {
+      "path": "raw/protocol/experimental/v2/ThreadForkParams.json",
+      "bytes": 7006,
+      "sha256": "87fd7fba8a6c6ee6ab70f133ea788e93bfcceb1433fe078599f8f6f4d3c8182c",
+      "mode": "experimental",
+      "required": [
+        "threadId"
+      ],
+      "experimentalPredictionModeDeclared": true,
+      "experimentalPredictionModeSchema": {
+        "description": "Start from the loaded parent's effective config, tools, environments, and persisted history to maximize prompt-cache reuse. Requires a loaded, persisted parent and `ephemeral: true`. Enables `features.reasoning_effort_override` on the fork. Cannot be combined with configuration overrides, `path`, `lastTurnId`, or `beforeTurnId`.",
+        "type": "boolean"
+      },
+      "beforeTurnIdSchema": {
+        "description": "Optional turn id to fork before, excluding that turn and all later turns. Cannot be combined with `last_turn_id`.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "ephemeralSchema": {
+        "type": "boolean"
+      },
+      "additionalPropertiesExplicit": false,
+      "additionalPropertiesValue": null,
+      "unknownPropertiesSchemaDefault": "allowed by JSON Schema when additionalProperties is absent; runtime behavior measured separately"
+    }
+  ],
+  "baselineInput": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/current-baseline.json",
+    "bytes": 1162,
+    "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+  },
+  "fixture": {
+    "absentThreadId": "00000000-0000-4000-8000-000000000004",
+    "absentTurnId": "00000000-0000-4000-8000-000000000005",
+    "historyOrCredentialsCopied": false,
+    "targetTurnMethodsSent": [],
+    "methodAllowlist": [
+      "initialize",
+      "initialized",
+      "thread/fork"
+    ]
+  },
+  "sessions": [
+    {
+      "label": "experimental-client",
+      "experimentalApi": true,
+      "startedAtUtc": "2026-10-13T10:53:06.687050+00:00",
+      "endedAtUtc": "2026-10-13T10:53:15.375705+00:00",
+      "command": [
+        "/usr/bin/sandbox-exec",
+        "-f",
+        "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/sandbox.sb",
+        "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+        "-c",
+        "cli_auth_credentials_store=\"file\"",
+        "-c",
+        "features.secret_auth_storage=false",
+        "-c",
+        "sandbox_mode=\"read-only\"",
+        "-c",
+        "sandbox_workspace_write.network_access=false",
+        "-c",
+        "approval_policy=\"never\"",
+        "-c",
+        "web_search=\"disabled\"",
+        "app-server",
+        "--listen",
+        "stdio://"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "HOME": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client/user-home",
+        "CODEX_HOME": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client/codex-home",
+        "TMPDIR": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client/tmp/",
+        "LC_ALL": "C",
+        "NO_COLOR": "1"
+      },
+      "runtimeRoot": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client",
+      "initialEmptyDirectories": {
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client/codex-home": true,
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client/user-home": true,
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client/fixture": true,
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/experimental-client/tmp": true
+      },
+      "policy": {
+        "osNetwork": "deny network* through sandbox-exec for app-server and children",
+        "osFileWrites": "limited to the owned empty session root, dedicated stderr, /dev/null",
+        "modelToolSandbox": "read-only config, workspace-write network_access=false",
+        "credentialConfig": "file store plus features.secret_auth_storage=false; no credentials copied"
+      },
+      "sandboxProfile": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/sandbox.sb",
+        "bytes": 383,
+        "sha256": "760be807ec2b11c511ef1cb77585e10be287be6e7ccf14188de3175039cdcb11"
+      },
+      "serverPid": 53921,
+      "serverExitCode": 0,
+      "checks": [
+        {
+          "id": "initialize",
+          "passed": true,
+          "capabilityRequested": true,
+          "response": {
+            "id": 1,
+            "resultKeys": [
+              "codexHome",
+              "platformFamily",
+              "platformOs",
+              "userAgent"
+            ]
+          }
+        },
+        {
+          "id": "without-prediction-field",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 2
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "prediction-false",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "experimentalPredictionMode": false
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 3
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "prediction-true",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "experimentalPredictionMode": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 4
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "prediction-invalid-string",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "experimentalPredictionMode": "ccodex-not-a-boolean"
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 5
+          },
+          "classification": "parameter-decoding-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        },
+        {
+          "id": "unknown-field-control",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "ccodexNegativeControlField": "ccodex-not-a-boolean"
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 6
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "known-ephemeral-invalid-string",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": "ccodex-not-a-boolean",
+            "excludeTurns": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 7
+          },
+          "classification": "parameter-decoding-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        },
+        {
+          "id": "known-experimental-before-turn-id",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "beforeTurnId": "00000000-0000-4000-8000-000000000005"
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 8
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "known-experimental-before-turn-invalid-bool",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "beforeTurnId": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: boolean `true`, expected a string"
+            },
+            "id": 9
+          },
+          "classification": "parameter-decoding-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        }
+      ],
+      "error": null,
+      "rawObservations": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+        "bytes": 4357,
+        "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+      },
+      "stderr": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ownedRuntimeFilesAfter": [
+        {
+          "path": "codex-home/.tmp/git-Y3hoQD/HEAD",
+          "bytes": 21
+        },
+        {
+          "path": "codex-home/.tmp/plugins.sync.lock",
+          "bytes": 0
+        },
+        {
+          "path": "codex-home/goals_1.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/goals_1.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/goals_1.sqlite-wal",
+          "bytes": 74192
+        },
+        {
+          "path": "codex-home/installation_id",
+          "bytes": 36
+        },
+        {
+          "path": "codex-home/logs_2.sqlite",
+          "bytes": 49152
+        },
+        {
+          "path": "codex-home/logs_2.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/logs_2.sqlite-wal",
+          "bytes": 115392
+        },
+        {
+          "path": "codex-home/memories_1.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/memories_1.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/memories_1.sqlite-wal",
+          "bytes": 86552
+        },
+        {
+          "path": "codex-home/queue_1.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/queue_1.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/queue_1.sqlite-wal",
+          "bytes": 82432
+        },
+        {
+          "path": "codex-home/skills/.system/.codex-system-skills.marker",
+          "bytes": 17
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/LICENSE.txt",
+          "bytes": 10776
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/SKILL.md",
+          "bytes": 19201
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/agents/openai.yaml",
+          "bytes": 275
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/assets/imagegen-small.svg",
+          "bytes": 2889
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/assets/imagegen.png",
+          "bytes": 1711
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/cli.md",
+          "bytes": 9655
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/codex-network.md",
+          "bytes": 1779
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/image-api.md",
+          "bytes": 6072
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/prompting.md",
+          "bytes": 8282
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/sample-prompts.md",
+          "bytes": 17617
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/scripts/image_gen.py",
+          "bytes": 34667
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/scripts/remove_chroma_key.py",
+          "bytes": 13905
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/LICENSE.txt",
+          "bytes": 10776
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/SKILL.md",
+          "bytes": 5437
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/agents/openai.yaml",
+          "bytes": 370
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/assets/openai-small.svg",
+          "bytes": 1091
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/assets/openai.png",
+          "bytes": 1429
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/codex-self-knowledge.md",
+          "bytes": 7417
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/latest-model.md",
+          "bytes": 2147
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/mcp-diagnostics.md",
+          "bytes": 2318
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/model-migration.md",
+          "bytes": 5094
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/model-selection.md",
+          "bytes": 1344
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/official-docs.md",
+          "bytes": 3337
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/prompting-guide.md",
+          "bytes": 10166
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/upgrade-guide.md",
+          "bytes": 1027
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/upgrading-to-gpt-6-astra.md",
+          "bytes": 18993
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/scripts/fetch-codex-manual.mjs",
+          "bytes": 16085
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/scripts/resolve-latest-model-info",
+          "bytes": 1038
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/scripts/resolve-latest-model-info.cjs",
+          "bytes": 3937
+        },
+        {
+          "path": "codex-home/skills/.system/review-agent/SKILL.md",
+          "bytes": 2661
+        },
+        {
+          "path": "codex-home/skills/.system/review-agent/agents/openai.yaml",
+          "bytes": 252
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/SKILL.md",
+          "bytes": 15311
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/agents/openai.yaml",
+          "bytes": 183
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/assets/skill-creator-small.svg",
+          "bytes": 1319
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/assets/skill-creator.png",
+          "bytes": 1563
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/license.txt",
+          "bytes": 11358
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/references/openai_yaml.md",
+          "bytes": 2356
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/scripts/generate_openai_yaml.py",
+          "bytes": 6669
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/scripts/init_skill.py",
+          "bytes": 10314
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/scripts/quick_validate.py",
+          "bytes": 4249
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/LICENSE.txt",
+          "bytes": 11358
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/SKILL.md",
+          "bytes": 3367
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/agents/openai.yaml",
+          "bytes": 221
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/assets/skill-installer-small.svg",
+          "bytes": 923
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/assets/skill-installer.png",
+          "bytes": 1086
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/scripts/github_utils.py",
+          "bytes": 659
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/scripts/install-skill-from-github.py",
+          "bytes": 11917
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/scripts/list-skills.py",
+          "bytes": 2948
+        },
+        {
+          "path": "codex-home/state_5.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/state_5.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/state_5.sqlite-wal",
+          "bytes": 2031192
+        }
+      ]
+    },
+    {
+      "label": "stable-client-control",
+      "experimentalApi": false,
+      "startedAtUtc": "2026-10-13T10:53:15.379273+00:00",
+      "endedAtUtc": "2026-10-13T10:53:15.855951+00:00",
+      "command": [
+        "/usr/bin/sandbox-exec",
+        "-f",
+        "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/sandbox.sb",
+        "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+        "-c",
+        "cli_auth_credentials_store=\"file\"",
+        "-c",
+        "features.secret_auth_storage=false",
+        "-c",
+        "sandbox_mode=\"read-only\"",
+        "-c",
+        "sandbox_workspace_write.network_access=false",
+        "-c",
+        "approval_policy=\"never\"",
+        "-c",
+        "web_search=\"disabled\"",
+        "app-server",
+        "--listen",
+        "stdio://"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "HOME": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control/user-home",
+        "CODEX_HOME": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control/codex-home",
+        "TMPDIR": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control/tmp/",
+        "LC_ALL": "C",
+        "NO_COLOR": "1"
+      },
+      "runtimeRoot": "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control",
+      "initialEmptyDirectories": {
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control/codex-home": true,
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control/user-home": true,
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control/fixture": true,
+        "/private/tmp/ccodex-behavior/fork-negative-runs/frozen-os-normal-host-1/stable-client-control/tmp": true
+      },
+      "policy": {
+        "osNetwork": "deny network* through sandbox-exec for app-server and children",
+        "osFileWrites": "limited to the owned empty session root, dedicated stderr, /dev/null",
+        "modelToolSandbox": "read-only config, workspace-write network_access=false",
+        "credentialConfig": "file store plus features.secret_auth_storage=false; no credentials copied"
+      },
+      "sandboxProfile": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/sandbox.sb",
+        "bytes": 387,
+        "sha256": "ed5d11aa62904e983846756f53de2f3b53ffe9c48902511a2995c7e390908bda"
+      },
+      "serverPid": 54119,
+      "serverExitCode": 0,
+      "checks": [
+        {
+          "id": "initialize",
+          "passed": true,
+          "capabilityRequested": false,
+          "response": {
+            "id": 1,
+            "resultKeys": [
+              "codexHome",
+              "platformFamily",
+              "platformOs",
+              "userAgent"
+            ]
+          }
+        },
+        {
+          "id": "without-prediction-field",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 2
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "prediction-false",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "experimentalPredictionMode": false
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 3
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "prediction-true",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "experimentalPredictionMode": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "thread/fork.experimentalPredictionMode requires experimentalApi capability"
+            },
+            "id": 4
+          },
+          "classification": "experimental-capability-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        },
+        {
+          "id": "prediction-invalid-string",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "experimentalPredictionMode": "ccodex-not-a-boolean"
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 5
+          },
+          "classification": "parameter-decoding-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        },
+        {
+          "id": "unknown-field-control",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "ccodexNegativeControlField": "ccodex-not-a-boolean"
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "no rollout found for thread id 00000000-0000-4000-8000-000000000004"
+            },
+            "id": 6
+          },
+          "classification": "absent-thread-or-rollout-lookup-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": true
+        },
+        {
+          "id": "known-ephemeral-invalid-string",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": "ccodex-not-a-boolean",
+            "excludeTurns": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: string \"ccodex-not-a-boolean\", expected a boolean"
+            },
+            "id": 7
+          },
+          "classification": "parameter-decoding-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        },
+        {
+          "id": "known-experimental-before-turn-id",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "beforeTurnId": "00000000-0000-4000-8000-000000000005"
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "thread/fork.beforeTurnId requires experimentalApi capability"
+            },
+            "id": 8
+          },
+          "classification": "experimental-capability-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        },
+        {
+          "id": "known-experimental-before-turn-invalid-bool",
+          "requestParams": {
+            "threadId": "00000000-0000-4000-8000-000000000004",
+            "ephemeral": true,
+            "excludeTurns": true,
+            "beforeTurnId": true
+          },
+          "response": {
+            "error": {
+              "code": -32600,
+              "message": "Invalid request: invalid type: boolean `true`, expected a string"
+            },
+            "id": 9
+          },
+          "classification": "parameter-decoding-rejection",
+          "returnedError": true,
+          "classificationBasis": "Error-message inspection; exact response retained for review",
+          "errorExactlyMatchesNoPredictionField": false
+        }
+      ],
+      "error": null,
+      "rawObservations": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+        "bytes": 4357,
+        "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+      },
+      "stderr": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ownedRuntimeFilesAfter": [
+        {
+          "path": "codex-home/.tmp/git-hj0e6j/HEAD",
+          "bytes": 21
+        },
+        {
+          "path": "codex-home/.tmp/plugins.sync.lock",
+          "bytes": 0
+        },
+        {
+          "path": "codex-home/goals_1.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/goals_1.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/goals_1.sqlite-wal",
+          "bytes": 74192
+        },
+        {
+          "path": "codex-home/installation_id",
+          "bytes": 36
+        },
+        {
+          "path": "codex-home/logs_2.sqlite",
+          "bytes": 49152
+        },
+        {
+          "path": "codex-home/logs_2.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/logs_2.sqlite-wal",
+          "bytes": 115392
+        },
+        {
+          "path": "codex-home/memories_1.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/memories_1.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/memories_1.sqlite-wal",
+          "bytes": 86552
+        },
+        {
+          "path": "codex-home/queue_1.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/queue_1.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/queue_1.sqlite-wal",
+          "bytes": 82432
+        },
+        {
+          "path": "codex-home/skills/.system/.codex-system-skills.marker",
+          "bytes": 17
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/LICENSE.txt",
+          "bytes": 10776
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/SKILL.md",
+          "bytes": 19201
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/agents/openai.yaml",
+          "bytes": 275
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/assets/imagegen-small.svg",
+          "bytes": 2889
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/assets/imagegen.png",
+          "bytes": 1711
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/cli.md",
+          "bytes": 9655
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/codex-network.md",
+          "bytes": 1779
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/image-api.md",
+          "bytes": 6072
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/prompting.md",
+          "bytes": 8282
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/references/sample-prompts.md",
+          "bytes": 17617
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/scripts/image_gen.py",
+          "bytes": 34667
+        },
+        {
+          "path": "codex-home/skills/.system/imagegen/scripts/remove_chroma_key.py",
+          "bytes": 13905
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/LICENSE.txt",
+          "bytes": 10776
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/SKILL.md",
+          "bytes": 5437
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/agents/openai.yaml",
+          "bytes": 370
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/assets/openai-small.svg",
+          "bytes": 1091
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/assets/openai.png",
+          "bytes": 1429
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/codex-self-knowledge.md",
+          "bytes": 7417
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/latest-model.md",
+          "bytes": 2147
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/mcp-diagnostics.md",
+          "bytes": 2318
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/model-migration.md",
+          "bytes": 5094
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/model-selection.md",
+          "bytes": 1344
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/official-docs.md",
+          "bytes": 3337
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/prompting-guide.md",
+          "bytes": 10166
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/upgrade-guide.md",
+          "bytes": 1027
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/references/upgrading-to-gpt-6-astra.md",
+          "bytes": 18993
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/scripts/fetch-codex-manual.mjs",
+          "bytes": 16085
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/scripts/resolve-latest-model-info",
+          "bytes": 1038
+        },
+        {
+          "path": "codex-home/skills/.system/openai-docs/scripts/resolve-latest-model-info.cjs",
+          "bytes": 3937
+        },
+        {
+          "path": "codex-home/skills/.system/review-agent/SKILL.md",
+          "bytes": 2661
+        },
+        {
+          "path": "codex-home/skills/.system/review-agent/agents/openai.yaml",
+          "bytes": 252
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/SKILL.md",
+          "bytes": 15311
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/agents/openai.yaml",
+          "bytes": 183
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/assets/skill-creator-small.svg",
+          "bytes": 1319
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/assets/skill-creator.png",
+          "bytes": 1563
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/license.txt",
+          "bytes": 11358
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/references/openai_yaml.md",
+          "bytes": 2356
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/scripts/generate_openai_yaml.py",
+          "bytes": 6669
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/scripts/init_skill.py",
+          "bytes": 10314
+        },
+        {
+          "path": "codex-home/skills/.system/skill-creator/scripts/quick_validate.py",
+          "bytes": 4249
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/LICENSE.txt",
+          "bytes": 11358
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/SKILL.md",
+          "bytes": 3367
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/agents/openai.yaml",
+          "bytes": 221
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/assets/skill-installer-small.svg",
+          "bytes": 923
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/assets/skill-installer.png",
+          "bytes": 1086
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/scripts/github_utils.py",
+          "bytes": 659
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/scripts/install-skill-from-github.py",
+          "bytes": 11917
+        },
+        {
+          "path": "codex-home/skills/.system/skill-installer/scripts/list-skills.py",
+          "bytes": 2948
+        },
+        {
+          "path": "codex-home/state_5.sqlite",
+          "bytes": 4096
+        },
+        {
+          "path": "codex-home/state_5.sqlite-shm",
+          "bytes": 32768
+        },
+        {
+          "path": "codex-home/state_5.sqlite-wal",
+          "bytes": 2031192
+        }
+      ]
+    }
+  ],
+  "status": "complete-negative-matrix",
+  "protectedArtifacts": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/protocol-work/experimental-prediction-usage.json",
+      "bytes": 116059,
+      "sha256": "840e2e55135f72c519361268c07d3655ea4ea86dce6a8d7bb721af7b9b7aea31",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/protocol-work/evidence.jsonl",
+      "bytes": 125788,
+      "sha256": "d2aa7fd1832ab23cc123adad7161d60715d414fb4b7be62867b1d9ba49803a69",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/protocol-work/prediction-version-gate.json",
+      "bytes": 24357,
+      "sha256": "065e56cea765713abf706d31336aff0115f944b0a09447f65d405871987c88fe",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/protocol-work/prediction-version-gate-evidence.jsonl",
+      "bytes": 73722,
+      "sha256": "e90b6e4da65bf99c2360fbd597df2b24df1c75907d2d75726a25db9ed18ea11c",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+      "bytes": 153219,
+      "sha256": "75235ff3de9231a1da1a90f2ef36caf1123a6e88ea668bade8adb3e2e191558c",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+      "bytes": 169129,
+      "sha256": "8eb9383db2c1a4540300b69a14e33ea7557167cf4182309875082a497749ccc6",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-experimental-compatibility.json",
+      "bytes": 26205,
+      "sha256": "f1939e6ab2b644e2b1c4d21ee2c8f37c08a8a56ffc29a103d97476c8fe480eb7",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-experimental-compatibility.md",
+      "bytes": 2064,
+      "sha256": "9edccc2aa01271988c041cf6be7dd224a72f7b25526ae50bd8a96eb32063c45b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+      "bytes": 1393221,
+      "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.md",
+      "bytes": 7395,
+      "sha256": "3eb7ef0cfcbaf23575887ae3e048e084d98e1ca8ac14be214a5ad2ff40ef29ca",
+      "unchanged": true
+    }
+  ],
+  "protectedArtifactsAllUnchanged": true,
+  "limitations": [
+    "An error after decoding is not a successful thread fork or prediction execution.",
+    "The fixed UUID is absent in each fresh dedicated HOME/CODEX_HOME; no real thread or rollout is loaded.",
+    "Matching unknown-field and baseline errors only shows that the supplied unknown field was not rejected on this path; it does not establish complete compatibility.",
+    "Error classification uses message inspection; exact code/message/data are retained.",
+    "No thread/start, turn/start, model, login, account, history, command execution, or desktop app request was sent.",
+    "Npm publication-to-source-commit relation remains unknown."
+  ]
+}

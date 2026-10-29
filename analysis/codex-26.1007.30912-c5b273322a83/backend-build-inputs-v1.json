@@ -1,0 +1,800 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T23:19:13.336946+00:00",
+  "commit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+  "facts": [
+    {
+      "id": "BBI-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "固定提交的Rust工具链为1.95.0，声明clippy、rustfmt、rust-src；发布工作流也固定同工具链action提交。工具链文件没有给出本客户端所有原生SDK、构建资源或完整依赖图。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-toolchain.response",
+      "sourceHash": "570656042681cfd8795403a455baf9a33035331a07db0645e866bbcea89a3d64",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 78
+        },
+        "spanHash": "570656042681cfd8795403a455baf9a33035331a07db0645e866bbcea89a3d64"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification",
+      "relatedEvidence": [
+        "tag-validation"
+      ]
+    },
+    {
+      "id": "BBI-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "发布工作流明确注释：release tag提升Cargo.toml版本，不重写workspace锁；macOS voice job在Bazel读取Cargo图前执行cargo update --workspace。既有workspace alpha.17.2和锁中所选0.0.0差异与该策略一致，不能把原锁写成已经可用的--locked源码构建结果。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+      "sourceHash": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb",
+      "locator": {
+        "byteRange": {
+          "start": 22858,
+          "endExclusive": 25334
+        },
+        "spanHash": "d54b24dc16e2394b023f0ea790ae29b6de0f204328846859e02244a079f9cfc2"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification"
+    },
+    {
+      "id": "BBI-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "已保存的该提交API文件清单只有codex-rs/Cargo.toml，补丁为workspace 0.0.0 -> 0.162.0-alpha.17.2，与工作流说明对应。API提交元数据不是构建成功或桌面native字节来源的证明。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/desktop-commit.json",
+      "sourceHash": "651bdedfecee8e51c6a6fbea5f74a8785561a0987b939df607fce90d98f40f8c",
+      "locator": {
+        "jsonPointer": "/files/0"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification",
+      "relatedEvidence": [
+        "voice-build-and-lock-policy"
+      ]
+    },
+    {
+      "id": "BBI-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "根Cargo配置仅设置不覆盖已有值的MALLOC_CONF=thp:always；Rust子目录Cargo配置列出Windows MSVC/GNU栈及目标flag，未列Darwin专属flag。未来从codex-rs构建需保留父/子配置及环境影响，不能据此推导完整SDK或deployment target。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/root-cargo-config.response",
+      "sourceHash": "b34b20f64e30695e8629ddad8b80885764e947f51e4ce49c6378a3b5a238d25e",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 256
+        },
+        "spanHash": "b34b20f64e30695e8629ddad8b80885764e947f51e4ce49c6378a3b5a238d25e"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification",
+      "relatedEvidence": [
+        "rust-cargo-config"
+      ]
+    },
+    {
+      "id": "BBI-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "codex-cli manifest继承workspace版本/edition/license，指定build.rs及默认codex二进制，另有logs_client。该manifest无自定义[features]表，依赖条目仍有各自features；没有基于本文件的disable-chatgpt开关，也不能按codex-chatgpt依赖名直接裁掉共享认证或服务能力。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/cli-manifest.response",
+      "sourceHash": "7b08adfee7b456f52209fa994a28d58ed51f3d942507cf5072d310768d77272c",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 4723
+        },
+        "spanHash": "7b08adfee7b456f52209fa994a28d58ed51f3d942507cf5072d310768d77272c"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification"
+    },
+    {
+      "id": "BBI-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "macOS发布矩阵有x86_64及aarch64两个Darwin目标，各分primary与app-server bundle。primary构建codex、codex-code-mode-host、codex-responses-api-proxy；app-server构建codex-app-server及codex-code-mode-host。独立app-server包不能未经对照替代冻结客户端的codex入口。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+      "sourceHash": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb",
+      "locator": {
+        "byteRange": {
+          "start": 2073,
+          "endExclusive": 5392
+        },
+        "spanHash": "cbaf0d9b8d9a583465d7ad0907ad06977e457b86aa6364bb72f0524e17d05db2"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification"
+    },
+    {
+      "id": "BBI-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "所选发布Cargo命令在codex-rs运行，使用--target/--release/--timings和逐个--bin，导出STABLE_GIT_COMMIT=git rev-parse HEAD；没有额外--features、--no-default-features或--locked。不能据无显式feature参数推断所有传递feature或任意本机环境相同。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+      "sourceHash": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb",
+      "locator": {
+        "byteRange": {
+          "start": 9960,
+          "endExclusive": 10735
+        },
+        "spanHash": "bf4dd0be11289674b3921e55a7056dce176ea5979400e6232e8bc9415e7871a5"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification"
+    },
+    {
+      "id": "BBI-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "workspace release profile为thin LTO、line-tables-only调试、split-debuginfo off、strip false、codegen-units 4；macOS release job通过环境覆盖split debug为packed，随后调用符号归档/strip步骤。仅运行cargo build产物不等于最终签名打包字节。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+      "sourceHash": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab",
+      "locator": {
+        "byteRange": {
+          "start": 19831,
+          "endExclusive": 20129
+        },
+        "spanHash": "347db7852b6c08cfa60d8a0901c3d236a0657c83452dd3e01f1416971914ddb0"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification",
+      "relatedEvidence": [
+        "release-matrix-and-env",
+        "release-cargo-command"
+      ]
+    },
+    {
+      "id": "BBI-F09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "发布Cargo构建前调用本仓库setup-rusty-v8 action配置产物override并校验摘要；本批只确认该构建入口，未取得action实现、下载manifest、具体artifact摘要及构建/预编译选择，不能宣布V8资源闭合。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+      "sourceHash": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb",
+      "locator": {
+        "byteRange": {
+          "start": 8853,
+          "endExclusive": 9027
+        },
+        "spanHash": "6628158da3c016a57c848bd52327cbde644a10222cdc17aa6ab25699c8ca59e5"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification"
+    },
+    {
+      "id": "BBI-F10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "macOS语音单独用Python3.12、Bazelisk1.28.1和目标prefix构建voice-host/native_runtime，先刷新workspace锁，再检查runtime文件并打包。仅CLI Cargo命令不覆盖此原生运行时及后续签名，完整声音功能未据此变成可复建。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+      "sourceHash": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb",
+      "locator": {
+        "byteRange": {
+          "start": 22858,
+          "endExclusive": 25334
+        },
+        "spanHash": "d54b24dc16e2394b023f0ea790ae29b6de0f204328846859e02244a079f9cfc2"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification"
+    },
+    {
+      "id": "BBI-F11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "桌面使用versioned codex-provisioned manifest的入口位于同提交发布工作流，受repository变量控制；复用工作流从同tag普通包生成包含bin、codex-resources、codex-path、codex-package.json、CodexCLI.app的资源包，并要求签名/profile独立校验及sandboxed code mode包测试。布局线索对应冻结launcher包装方式，但未证明本次冻结二进制来自该workflow运行。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/provisioned-macos-workflow.response",
+      "sourceHash": "6abb0d30226fd0cc49f22666662db7217bc80bbe6eb3f7cb30de26d8819852fa",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 10322
+        },
+        "spanHash": "6abb0d30226fd0cc49f22666662db7217bc80bbe6eb3f7cb30de26d8819852fa"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification",
+      "relatedEvidence": [
+        "desktop-provisioned-entry"
+      ]
+    },
+    {
+      "id": "BBI-F12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "同提交候选Rust构建配方及锁策略已可具体记录；选择继续固定740e…后台组件和既有预测契约，不改用c138…公开稳定包或删预测flag。源树、传递依赖/native artifacts、包签名与实际功能验收仍需补证，完整独立客户端构建未证明。本批止于6份新构建源码，保留明确provider边界。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+      "sourceHash": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb",
+      "locator": {
+        "byteRange": {
+          "start": 9960,
+          "endExclusive": 10735
+        },
+        "spanHash": "bf4dd0be11289674b3921e55a7056dce176ea5979400e6232e8bc9415e7871a5"
+      },
+      "method": "Same-commit public directory/source acquisition, selected workflow inspection and TOML parsing; previous pinned lock and commit metadata reused.",
+      "confidence": "inferred",
+      "verificationStatus": "static-build-input-contract-only; no Cargo/Bazel build, dependency installation, signing or runtime qualification",
+      "relatedEvidence": [
+        "cli-manifest",
+        "v8-artifact-step",
+        "provisioned-package"
+      ]
+    }
+  ],
+  "sourceUnits": {
+    "toolchain": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-toolchain.response",
+        "bytes": 78,
+        "sha256": "570656042681cfd8795403a455baf9a33035331a07db0645e866bbcea89a3d64"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 78
+      },
+      "spanHash": "570656042681cfd8795403a455baf9a33035331a07db0645e866bbcea89a3d64",
+      "startLine": 1
+    },
+    "root-cargo-config": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/root-cargo-config.response",
+        "bytes": 256,
+        "sha256": "b34b20f64e30695e8629ddad8b80885764e947f51e4ce49c6378a3b5a238d25e"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 256
+      },
+      "spanHash": "b34b20f64e30695e8629ddad8b80885764e947f51e4ce49c6378a3b5a238d25e",
+      "startLine": 1
+    },
+    "rust-cargo-config": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-cargo-config.response",
+        "bytes": 634,
+        "sha256": "b8ae1cea341beb2d4a3c8fb81f97a96f4aee1fd53f769c57f140dfe949806a80"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 634
+      },
+      "spanHash": "b8ae1cea341beb2d4a3c8fb81f97a96f4aee1fd53f769c57f140dfe949806a80",
+      "startLine": 1
+    },
+    "cli-manifest": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/cli-manifest.response",
+        "bytes": 4723,
+        "sha256": "7b08adfee7b456f52209fa994a28d58ed51f3d942507cf5072d310768d77272c"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 4723
+      },
+      "spanHash": "7b08adfee7b456f52209fa994a28d58ed51f3d942507cf5072d310768d77272c",
+      "startLine": 1
+    },
+    "tag-validation": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+        "bytes": 84086,
+        "sha256": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb"
+      },
+      "byteRange": {
+        "start": 816,
+        "endExclusive": 2073
+      },
+      "spanHash": "31755a6da7f332461774c61ad57a1bdcde926f06063dc90997f93bf985f8259d",
+      "startLine": 29
+    },
+    "release-matrix-and-env": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+        "bytes": 84086,
+        "sha256": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb"
+      },
+      "byteRange": {
+        "start": 2073,
+        "endExclusive": 5392
+      },
+      "spanHash": "cbaf0d9b8d9a583465d7ad0907ad06977e457b86aa6364bb72f0524e17d05db2",
+      "startLine": 61
+    },
+    "v8-artifact-step": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+        "bytes": 84086,
+        "sha256": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb"
+      },
+      "byteRange": {
+        "start": 8853,
+        "endExclusive": 9027
+      },
+      "spanHash": "6628158da3c016a57c848bd52327cbde644a10222cdc17aa6ab25699c8ca59e5",
+      "startLine": 215
+    },
+    "release-cargo-command": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+        "bytes": 84086,
+        "sha256": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb"
+      },
+      "byteRange": {
+        "start": 9960,
+        "endExclusive": 10735
+      },
+      "spanHash": "bf4dd0be11289674b3921e55a7056dce176ea5979400e6232e8bc9415e7871a5",
+      "startLine": 242
+    },
+    "voice-build-and-lock-policy": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+        "bytes": 84086,
+        "sha256": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb"
+      },
+      "byteRange": {
+        "start": 22858,
+        "endExclusive": 25334
+      },
+      "spanHash": "d54b24dc16e2394b023f0ea790ae29b6de0f204328846859e02244a079f9cfc2",
+      "startLine": 546
+    },
+    "desktop-provisioned-entry": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+        "bytes": 84086,
+        "sha256": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb"
+      },
+      "byteRange": {
+        "start": 60572,
+        "endExclusive": 61072
+      },
+      "spanHash": "5b14ed4c843a086a361111c2bdfd227c9aa7ab166c17819b1d4be1fb71851d50",
+      "startLine": 1460
+    },
+    "provisioned-package": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/provisioned-macos-workflow.response",
+        "bytes": 10322,
+        "sha256": "6abb0d30226fd0cc49f22666662db7217bc80bbe6eb3f7cb30de26d8819852fa"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 10322
+      },
+      "spanHash": "6abb0d30226fd0cc49f22666662db7217bc80bbe6eb3f7cb30de26d8819852fa",
+      "startLine": 1
+    },
+    "workspace-release-profile": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+        "bytes": 21066,
+        "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+      },
+      "byteRange": {
+        "start": 19831,
+        "endExclusive": 20129
+      },
+      "spanHash": "347db7852b6c08cfa60d8a0901c3d236a0657c83452dd3e01f1416971914ddb0",
+      "startLine": 621
+    },
+    "release-commit-patch": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/desktop-commit.json",
+        "bytes": 4243,
+        "sha256": "651bdedfecee8e51c6a6fbea5f74a8785561a0987b939df607fce90d98f40f8c"
+      },
+      "jsonPointer": "/files/0"
+    }
+  },
+  "candidateBuildRecipe": {
+    "sourceCommit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+    "sourceVersion": "0.162.0-alpha.17.2",
+    "toolchain": {
+      "channel": "1.95.0",
+      "components": [
+        "clippy",
+        "rustfmt",
+        "rust-src"
+      ]
+    },
+    "workingDirectory": "codex-rs",
+    "baselineTarget": "x86_64-apple-darwin",
+    "otherMacosReleaseTarget": "aarch64-apple-darwin",
+    "gitCommitEnvironment": "STABLE_GIT_COMMIT=$(git rev-parse HEAD)",
+    "environment": {
+      "CARGO_NET_GIT_FETCH_WITH_CLI": "true",
+      "CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO": "packed"
+    },
+    "cargoConfiguration": {
+      "root": {
+        "env": {
+          "MALLOC_CONF": {
+            "value": "thp:always",
+            "force": false
+          }
+        }
+      },
+      "rustWorkspace": {
+        "target": {
+          "cfg(all(windows, target_env = \"msvc\"))": {
+            "rustflags": [
+              "-C",
+              "link-arg=/STACK:8388608",
+              "-C",
+              "target-feature=+crt-static"
+            ]
+          },
+          "aarch64-pc-windows-msvc": {
+            "rustflags": [
+              "-C",
+              "link-arg=/STACK:8388608",
+              "-C",
+              "link-arg=/arm64hazardfree"
+            ]
+          },
+          "cfg(all(windows, target_env = \"gnu\"))": {
+            "rustflags": [
+              "-C",
+              "link-arg=-Wl,--stack,8388608"
+            ]
+          }
+        }
+      }
+    },
+    "releaseProfile": {
+      "lto": "thin",
+      "debug": "line-tables-only",
+      "split-debuginfo": "off",
+      "strip": false,
+      "codegen-units": 4
+    },
+    "releaseBundles": [
+      {
+        "name": "primary",
+        "binaries": [
+          "codex",
+          "codex-code-mode-host",
+          "codex-responses-api-proxy"
+        ]
+      },
+      {
+        "name": "app-server",
+        "binaries": [
+          "codex-app-server",
+          "codex-code-mode-host"
+        ]
+      }
+    ],
+    "commandTemplates": [
+      "cargo build --target x86_64-apple-darwin --release --timings --bin codex --bin codex-code-mode-host --bin codex-responses-api-proxy",
+      "cargo build --target x86_64-apple-darwin --release --timings --bin codex-app-server --bin codex-code-mode-host"
+    ],
+    "extraFeaturesInSelectedReleaseCommand": [],
+    "cliCustomFeaturesTablePresent": false,
+    "transitiveFeatureGraphQualified": false,
+    "recipeExecuted": false,
+    "lockDecision": {
+      "originalLock": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+        "bytes": 407989,
+        "sha256": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65"
+      },
+      "workspaceVersion": "0.162.0-alpha.17.2",
+      "selectedWorkspaceLockEntries": [
+        {
+          "name": "codex-app-server",
+          "version": "0.0.0"
+        },
+        {
+          "name": "codex-app-server-protocol",
+          "version": "0.0.0"
+        },
+        {
+          "name": "codex-cli",
+          "version": "0.0.0"
+        },
+        {
+          "name": "codex-core",
+          "version": "0.0.0"
+        },
+        {
+          "name": "codex-protocol",
+          "version": "0.0.0"
+        }
+      ],
+      "sourceExplainsMismatch": true,
+      "exactLockBuildEnforcedBySelectedReleaseCommand": false,
+      "futureProcedure": "Preserve the original lock. In a later isolated source-build phase, refresh workspace records with the pinned toolchain, record and review the entire lock diff, then use the reviewed derived lock for locked rebuilds. No lock regeneration or build was executed here.",
+      "externalDependencyIdentityUnchangedByRefreshProven": false
+    },
+    "retainedBoundaries": [
+      {
+        "name": "rusty_v8",
+        "source": ".github/actions/setup-rusty-v8",
+        "status": "named-artifact-setup-boundary; selected action body and artifact identities not yet acquired"
+      },
+      {
+        "name": "voice runtime",
+        "source": "//codex-rs/voice-host:codex-voice-host and //third_party/voice:native_runtime",
+        "status": "Bazel targets and Python staging visible; full source/artifact/SDK input closure not established"
+      },
+      {
+        "name": "CLI build script and transitive Cargo manifests",
+        "source": "codex-rs/cli/build.rs and workspace dependencies",
+        "status": "entry declared; full build graph not qualified in this six-file batch"
+      },
+      {
+        "name": "desktop provisioned packaging",
+        "source": ".github/workflows/rust-release-provisioned-macos.yml",
+        "status": "public packaging entry, conditional enablement and signing/profile expectations visible; exact frozen binary provenance and independent signing/runtime acceptance unresolved"
+      }
+    ]
+  },
+  "rawEvidence": {
+    "http-group-1.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/http-group-1.json",
+      "bytes": 2492,
+      "sha256": "1fa781d47cf46019ca7e485856a31b80f3ea5f7385ef7801bddea20ad70d68d1"
+    },
+    "repo-root-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/repo-root-directory.response",
+      "bytes": 373896,
+      "sha256": "e874c401cfa0cd671105a7f3b3d8ea657a675873364028c06861188666d9e17e"
+    },
+    "rust-root-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-root-directory.response",
+      "bytes": 443851,
+      "sha256": "4c0b74408a139be6e5acf76070e060c3436db39e94b864522a98f42af80102d9"
+    },
+    "release-workflows-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/release-workflows-directory.response",
+      "bytes": 311124,
+      "sha256": "ae42d9516f326f704373af5fc6dce86c46945d716eaf42a673a8f228a333ba8b"
+    },
+    "http-group-2.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/http-group-2.json",
+      "bytes": 4311,
+      "sha256": "e2265e990b84430adc07e86dae1976753869b08836516dad77c1fb1156def4fa"
+    },
+    "rust-toolchain.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-toolchain.response",
+      "bytes": 78,
+      "sha256": "570656042681cfd8795403a455baf9a33035331a07db0645e866bbcea89a3d64"
+    },
+    "rust-release.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-release.response",
+      "bytes": 84086,
+      "sha256": "f0de64463a0d2f1473123080cc9e581436b8d06569d5b6dcd5ff5453d78daceb"
+    },
+    "root-cargo-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/root-cargo-directory.response",
+      "bytes": 210077,
+      "sha256": "4bf5e0b480756e3845676517b28532b1e5d6395e6f25159afebb52b66a38f359"
+    },
+    "rust-cargo-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-cargo-directory.response",
+      "bytes": 224130,
+      "sha256": "85861001216e8a61818ef7a21ea852c933290a98a6ba645a6f239aac36f17b11"
+    },
+    "cli-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/cli-directory.response",
+      "bytes": 219774,
+      "sha256": "9a65cb6c708668f04721b27f6d73a72b914e63b2e7d5a64ce5c19a09e3797dbb"
+    },
+    "http-group-3.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/http-group-3.json",
+      "bytes": 3625,
+      "sha256": "b31feca62fe904c0ab800c5fb951bd106fbf68be650004e1a01b8c3f0a77ad0e"
+    },
+    "root-cargo-config.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/root-cargo-config.response",
+      "bytes": 256,
+      "sha256": "b34b20f64e30695e8629ddad8b80885764e947f51e4ce49c6378a3b5a238d25e"
+    },
+    "rust-cargo-config.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/rust-cargo-config.response",
+      "bytes": 634,
+      "sha256": "b8ae1cea341beb2d4a3c8fb81f97a96f4aee1fd53f769c57f140dfe949806a80"
+    },
+    "cli-manifest.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/cli-manifest.response",
+      "bytes": 4723,
+      "sha256": "7b08adfee7b456f52209fa994a28d58ed51f3d942507cf5072d310768d77272c"
+    },
+    "provisioned-macos-workflow.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/provisioned-macos-workflow.response",
+      "bytes": 10322,
+      "sha256": "6abb0d30226fd0cc49f22666662db7217bc80bbe6eb3f7cb30de26d8819852fa"
+    },
+    "http-receipts.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/http-receipts.json",
+      "bytes": 16228,
+      "sha256": "7dfd1d07bf71873b15b4d5186e6bb2ccff3eb2885c089e178ae78582f4992b5f"
+    },
+    "dns-failure-receipts.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/dns-failure-receipts.json",
+      "bytes": 1677,
+      "sha256": "4e7770e0fda6782b6653b5f73af3f8b06ce1f506c9ccbc982aff5fdd5ed1ebe0"
+    },
+    "acquisition-limitations.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/acquisition-limitations.json",
+      "bytes": 608,
+      "sha256": "a405d772676b3bef92b3d0bdc4fd8d8967d56627602b81516e46b2667fb0c640"
+    },
+    "directory-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/directory-plan.json",
+      "bytes": 836,
+      "sha256": "a6fdc914937f70921d52e5cb12a8a9a436cf4429b8f00da4a63192278eeddec1"
+    },
+    "directory-plan-v2.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/directory-plan-v2.json",
+      "bytes": 837,
+      "sha256": "1127a7272a110cf978990079ffc87a70a19cf061404e0ada4585103ad95d30d4"
+    },
+    "inputs-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/inputs-plan.json",
+      "bytes": 1472,
+      "sha256": "89485b339b8f5f45d63c28a01d406f880a8ef968f88792dbe4e44a4793bee708"
+    },
+    "remaining-inputs-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/remaining-inputs-plan.json",
+      "bytes": 1286,
+      "sha256": "e81dcef9a6514fbe793c7b4ef77a852013e0e77fcac8c9380728ccd374c37b49"
+    },
+    "directory-routes.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/directory-routes.json",
+      "bytes": 66490,
+      "sha256": "243b44e54b6adc5f5e91b7f0140cff0c7ea7d8620ef1a274ada339921444f20f"
+    },
+    "inspect_directories.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/inspect_directories.py",
+      "bytes": 1797,
+      "sha256": "380de784643ae13710342c1e66c0c1fa440423d833abd514d72e08957a01b011"
+    },
+    "build.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/build.py",
+      "bytes": 25181,
+      "sha256": "d5d3c58d002d9a2d4314dfac17dfade5cb14a3b7cca70dd558c090b62e6e1792"
+    },
+    "source-units.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/source-units.json",
+      "bytes": 5678,
+      "sha256": "babbf6a24d8155e83cc8128f11b00962464f63de86a32d925d75c4f9237dce08"
+    },
+    "candidate-build-recipe.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/candidate-build-recipe.json",
+      "bytes": 4506,
+      "sha256": "ed83ee47cc5ae4628d9b232ab48b8ca2c0e3d3d4c15d43678fb4d2d8073dd878"
+    }
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-inheritance-v1.json",
+      "bytes": 38220,
+      "sha256": "ee2c30a65c24e930fcc7f95fd3511537be90debf9c34d5f1c755c25905bc2930"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-exact-source-v1.json",
+      "bytes": 53000,
+      "sha256": "4bb07545dbb3e0254a511148c1df581b130a2d700437df2813f7adaa042ebdf9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-source-provenance-v1.json",
+      "bytes": 31022,
+      "sha256": "e8e3398255976215a512e84670e639b2acf2553987b4807c4d41d992449f5c4d"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-build-identity-v1.json",
+      "bytes": 24624,
+      "sha256": "1421b0d468129a4147436fe2d15d0363c177c2fada28fa4064c5a486c8568de4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/independent-build-feasibility-v1.json",
+      "bytes": 228841,
+      "sha256": "84166ba8bdf713204ab708663ef7767018dff524c47742d432fadfa21a168aa5"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+      "bytes": 21066,
+      "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+      "bytes": 407989,
+      "sha256": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/desktop-commit.json",
+      "bytes": 4243,
+      "sha256": "651bdedfecee8e51c6a6fbea5f74a8785561a0987b939df607fce90d98f40f8c"
+    },
+    {
+      "path": ".analysis-local/backend-exact-source-work/fetch_selected.py",
+      "bytes": 2440,
+      "sha256": "2c62bf3ef01b81dfa2f39025302a9bc29cf5e7efd790efc6785636be0e4157af"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "decision": {
+    "backendComponent": "fixed-revision source/build dependency",
+    "releaseVersionMismatchExplained": true,
+    "candidateCargoRecipeSpecified": true,
+    "originalLockPreserved": true,
+    "reviewedDerivedLockCreated": false,
+    "disableChatgptFeatureInCliManifestFound": false,
+    "standaloneAppServerSubstitutionAccepted": false,
+    "removePredictionFlag": false,
+    "fullClientRebuildVerified": false
+  },
+  "counts": {
+    "facts": 12,
+    "sourceUnits": 13,
+    "verifiedPublicHttpResponses": 12,
+    "newBuildSourceFiles": 6,
+    "sameCommitDirectoryBodies": 6,
+    "recordedDnsFailures": 3,
+    "sourceBuilds": 0,
+    "executedPackageTests": 0,
+    "canonicalCountChanges": 0
+  },
+  "acquisitionLimitations": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-inputs-v1/acquisition-limitations.json",
+    "bytes": 608,
+    "sha256": "a405d772676b3bef92b3d0bdc4fd8d8967d56627602b81516e46b2667fb0c640"
+  },
+  "newExecution": {
+    "reaRuns": 0,
+    "targetExecutions": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "privateServiceCalls": 0,
+    "sourceBuilds": 0,
+    "dependencyInstallations": 0,
+    "signingOperations": 0,
+    "clientImplementation": 0
+  },
+  "remaining": [
+    {
+      "name": "rusty_v8",
+      "source": ".github/actions/setup-rusty-v8",
+      "status": "named-artifact-setup-boundary; selected action body and artifact identities not yet acquired"
+    },
+    {
+      "name": "voice runtime",
+      "source": "//codex-rs/voice-host:codex-voice-host and //third_party/voice:native_runtime",
+      "status": "Bazel targets and Python staging visible; full source/artifact/SDK input closure not established"
+    },
+    {
+      "name": "CLI build script and transitive Cargo manifests",
+      "source": "codex-rs/cli/build.rs and workspace dependencies",
+      "status": "entry declared; full build graph not qualified in this six-file batch"
+    },
+    {
+      "name": "desktop provisioned packaging",
+      "source": ".github/workflows/rust-release-provisioned-macos.yml",
+      "status": "public packaging entry, conditional enablement and signing/profile expectations visible; exact frozen binary provenance and independent signing/runtime acceptance unresolved"
+    }
+  ],
+  "nextBoundedStep": {
+    "scope": "Resolve only the concrete external build artifacts referenced by setup-rusty-v8 and third_party/voice at the fixed desktop source revision.",
+    "deliverable": "Directory-confirmed action/build manifests with source/prebuilt choice, exact versions/checksums where available, and explicit unavailable inputs.",
+    "stopCondition": "At most five source/build manifest files; stop at named artifact/source providers. No general Owl/15-group re-audit, source build, dependency installation or model submission.",
+    "newModelRequired": false,
+    "requiresReadOnlyPublicAcquisition": true,
+    "globalCompletionCriteriaChanged": false
+  },
+  "selectedBuildInputBatchClosed": true,
+  "fullBackendQualified": false,
+  "fullAnalysisCompleted": false,
+  "actualBackendBehaviorVerified": false
+}

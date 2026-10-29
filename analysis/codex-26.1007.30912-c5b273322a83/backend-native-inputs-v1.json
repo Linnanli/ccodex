@@ -1,0 +1,813 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T23:28:44.333294+00:00",
+  "commit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+  "facts": [
+    {
+      "id": "BNI-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "workspace精确声明v8=150.4.0，锁文件只含一个同版本registry v8 crate并固定crate checksum。crate归档摘要不是Codex-built静态库或Rust bindings摘要。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+      "sourceHash": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65",
+      "locator": {
+        "byteRange": {
+          "start": 365695,
+          "endExclusive": 366030
+        },
+        "spanHash": "e29e458ab30fc1320e3c3633f0f4f76b1e827498b984daac3b4a1e68da6fba89"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance",
+      "relatedEvidence": [
+        "workspace-v8-version"
+      ]
+    },
+    {
+      "id": "BNI-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "action调用resolved-v8-crate-version；所读函数先从Cargo.lock提取去重版本，唯一则返回，多版本报错，无v8项才从MODULE.bazel的crate URL解析唯一版本。因此当前锁静态选择150.4.0，不需要执行该脚本来取得此结论。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-version-resolver.response",
+      "sourceHash": "d76414bc5c392fc17bb8cc4f81a8a679aa04e718b0c34141ba8db31b5cc9cff9",
+      "locator": {
+        "byteRange": {
+          "start": 3829,
+          "endExclusive": 4744
+        },
+        "spanHash": "91cda63cdad930fddff3c5666361ffd2bc0c756e663e536e95032cc79105490f"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance",
+      "relatedEvidence": [
+        "resolver-main",
+        "v8-action"
+      ]
+    },
+    {
+      "id": "BNI-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "setup-rusty-v8使用rusty-v8-v150.4.0 release及ptrcomp_sandbox_release，按目标下载静态库和匹配bindings，最后导出RUSTY_V8_ARCHIVE与RUSTY_V8_SRC_BINDING_PATH。此构建路径明确使用Codex-built pair，不据crate版本相同接受默认上游产物。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-action.response",
+      "sourceHash": "868afbbbd5612b61f17d780ab073da70e7489af0b50da000e4f87fd19cbcd193",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 2908
+        },
+        "spanHash": "868afbbbd5612b61f17d780ab073da70e7489af0b50da000e4f87fd19cbcd193"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance"
+    },
+    {
+      "id": "BNI-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "仓库可信清单固定8个目标的二级checksum manifest摘要；x86_64-apple-darwin对应d85c7ae0cf437a4415376c4b5b7daba50b0dcbe30f52612d21df8ce52eb8ada0。它是manifest摘要，不是静态库摘要。action先按原始字节核对manifest，再检查两条库/bindings摘要。本批未取得该发布sidecar或二进制。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-trusted-manifests.response",
+      "sourceHash": "7036a86ed062f4edd81667e161e5e94eade669c69362b136ccba9a1508fecc4b",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 1040
+        },
+        "spanHash": "7036a86ed062f4edd81667e161e5e94eade669c69362b136ccba9a1508fecc4b"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance",
+      "relatedEvidence": [
+        "v8-action"
+      ]
+    },
+    {
+      "id": "BNI-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "V8 staging helper将库gzip为mtime=0、空filename、level6，并与bindings一起生成两条SHA256文本；该源码有从Bazel输出或上游构建目录stage pair的入口。这里只确认包装规则，不宣称源码构建或整个发行已可重复。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-version-resolver.response",
+      "sourceHash": "d76414bc5c392fc17bb8cc4f81a8a679aa04e718b0c34141ba8db31b5cc9cff9",
+      "locator": {
+        "byteRange": {
+          "start": 6152,
+          "endExclusive": 7720
+        },
+        "spanHash": "c8aa330c79dd484808f7834456ca52f09cf7082454c98c4d0fc844e4c97310be"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance"
+    },
+    {
+      "id": "BNI-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "voice sources.json声明11个上游包：2个build-tool、9个native-library，每项给出version、URL、archive/root、sha256及provenance文本。另列GLib内含gvdb revision2b42fc75f09dbe1cd1057580b5782b08f2dcb400，不单独fetch。上游URL可用性和实际归档摘要尚未独立核验。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-source-manifest.response",
+      "sourceHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 4911
+        },
+        "spanHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance"
+    },
+    {
+      "id": "BNI-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "voice BUILD.bazel显式引用全部11个源码/归档repo，native_prefix与native_runtime按平台/CPU选择；Darwin x86_64/aarch64各有目标且约束执行平台。公开源码构建路径已可指明，完整宏实现、toolchain及最终runtime产物仍未验证。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-build.response",
+      "sourceHash": "80e56372c8b9027e5afc4de644f4b923dbb3570ef445f25ec9860c80d4223c61",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 12616
+        },
+        "spanHash": "80e56372c8b9027e5afc4de644f4b923dbb3570ef445f25ec9860c80d4223c61"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance"
+    },
+    {
+      "id": "BNI-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "voice引入决定为固定上游归档的独立构建依赖，第一方Bazel/Python适配器单列；这些第三方实现不应生成到恢复客户端业务源码。sources manifest未给出完整license清单，构建转换/补丁未在本批展开，不能把所有上游都判为未经修改。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-source-manifest.response",
+      "sourceHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 4911
+        },
+        "spanHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "inferred",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance",
+      "relatedEvidence": [
+        "voice-build"
+      ]
+    },
+    {
+      "id": "BNI-F09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "当前证据只资格化后台Cargo/V8及voice构建输入。没有下载/启动冻结native、没有证明其字节对应上述发行，也没有补齐桌面Owl runtime来源；不将后台V8资料计为桌面定制运行时已替代。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-action.response",
+      "sourceHash": "868afbbbd5612b61f17d780ab073da70e7489af0b50da000e4f87fd19cbcd193",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 2908
+        },
+        "spanHash": "868afbbbd5612b61f17d780ab073da70e7489af0b50da000e4f87fd19cbcd193"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "inferred",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance",
+      "relatedEvidence": [
+        "voice-build"
+      ]
+    },
+    {
+      "id": "BNI-F10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "两条具体构建输入边界以5份新源码/manifest及4份同提交目录收口。已明确V8构建依赖pair的版本/profile/manifest信任起点，以及voice固定上游来源的构建路径；原台账和完整构建/行为资格不变，后续转回未归属第一方消费者。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-build.response",
+      "sourceHash": "80e56372c8b9027e5afc4de644f4b923dbb3570ef445f25ec9860c80d4223c61",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 12616
+        },
+        "spanHash": "80e56372c8b9027e5afc4de644f4b923dbb3570ef445f25ec9860c80d4223c61"
+      },
+      "method": "Same-commit public source/directory acquisition, selected source inspection, JSON/TOML parsing and Python AST extraction only; downloaded scripts not imported or executed.",
+      "confidence": "inferred",
+      "verificationStatus": "static-native-input-contract-only; no release sidecar/binary download, upstream archive verification, native build or runtime acceptance",
+      "relatedEvidence": [
+        "v8-action",
+        "trusted-release-manifests"
+      ]
+    }
+  ],
+  "sourceUnits": {
+    "v8-action": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-action.response",
+        "bytes": 2908,
+        "sha256": "868afbbbd5612b61f17d780ab073da70e7489af0b50da000e4f87fd19cbcd193"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 2908
+      },
+      "spanHash": "868afbbbd5612b61f17d780ab073da70e7489af0b50da000e4f87fd19cbcd193",
+      "startLine": 1
+    },
+    "trusted-release-manifests": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-trusted-manifests.response",
+        "bytes": 1040,
+        "sha256": "7036a86ed062f4edd81667e161e5e94eade669c69362b136ccba9a1508fecc4b"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 1040
+      },
+      "spanHash": "7036a86ed062f4edd81667e161e5e94eade669c69362b136ccba9a1508fecc4b",
+      "startLine": 1
+    },
+    "voice-build": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-build.response",
+        "bytes": 12616,
+        "sha256": "80e56372c8b9027e5afc4de644f4b923dbb3570ef445f25ec9860c80d4223c61"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 12616
+      },
+      "spanHash": "80e56372c8b9027e5afc4de644f4b923dbb3570ef445f25ec9860c80d4223c61",
+      "startLine": 1
+    },
+    "voice-sources": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-source-manifest.response",
+        "bytes": 4911,
+        "sha256": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 4911
+      },
+      "spanHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937",
+      "startLine": 1
+    },
+    "resolver-resolved_v8_crate_version": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-version-resolver.response",
+        "bytes": 12899,
+        "sha256": "d76414bc5c392fc17bb8cc4f81a8a679aa04e718b0c34141ba8db31b5cc9cff9"
+      },
+      "byteRange": {
+        "start": 3829,
+        "endExclusive": 4744
+      },
+      "spanHash": "91cda63cdad930fddff3c5666361ffd2bc0c756e663e536e95032cc79105490f",
+      "startLine": 142
+    },
+    "resolver-stage_artifacts": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-version-resolver.response",
+        "bytes": 12899,
+        "sha256": "d76414bc5c392fc17bb8cc4f81a8a679aa04e718b0c34141ba8db31b5cc9cff9"
+      },
+      "byteRange": {
+        "start": 6152,
+        "endExclusive": 7720
+      },
+      "spanHash": "c8aa330c79dd484808f7834456ca52f09cf7082454c98c4d0fc844e4c97310be",
+      "startLine": 215
+    },
+    "resolver-main": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-version-resolver.response",
+        "bytes": 12899,
+        "sha256": "d76414bc5c392fc17bb8cc4f81a8a679aa04e718b0c34141ba8db31b5cc9cff9"
+      },
+      "byteRange": {
+        "start": 11297,
+        "endExclusive": 12848
+      },
+      "spanHash": "fe34fc28fbfadb92f99f8dbc118f3b51b6cf9d75a60f970856cdeb8c4694dab8",
+      "startLine": 368
+    },
+    "locked-v8-crate": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+        "bytes": 407989,
+        "sha256": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65"
+      },
+      "byteRange": {
+        "start": 365695,
+        "endExclusive": 366030
+      },
+      "spanHash": "e29e458ab30fc1320e3c3633f0f4f76b1e827498b984daac3b4a1e68da6fba89",
+      "startLine": 16500
+    },
+    "workspace-v8-version": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+        "bytes": 21066,
+        "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+      },
+      "byteRange": {
+        "start": 18005,
+        "endExclusive": 18021
+      },
+      "spanHash": "986436d17a13ead40b06172b86caf713877ca81317a8259421fd941eed1efa30",
+      "startLine": 545
+    }
+  },
+  "rawEvidence": {
+    "http-group-1.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/http-group-1.json",
+      "bytes": 1666,
+      "sha256": "12b8fdaa805c74c67fa817a8467bc96ebadc98e210911dc4d6d8a6659cb533a8"
+    },
+    "v8-action-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-action-directory.response",
+      "bytes": 214321,
+      "sha256": "c3e629dd903bb11fa0c2af74dda24ce79d8cb6e423bf17d8cec290ea9a993e38"
+    },
+    "voice-runtime-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-runtime-directory.response",
+      "bytes": 386545,
+      "sha256": "001c28a5c7532e15ef2c7b23205c0d92e800e00905c5bb6d482327d1a480a33a"
+    },
+    "http-group-2.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/http-group-2.json",
+      "bytes": 2650,
+      "sha256": "25d8956e71e89f7150e47ed44f400adf071f02303f0ec5b71a9cb4b023e95582"
+    },
+    "v8-action.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-action.response",
+      "bytes": 2908,
+      "sha256": "868afbbbd5612b61f17d780ab073da70e7489af0b50da000e4f87fd19cbcd193"
+    },
+    "voice-build.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-build.response",
+      "bytes": 12616,
+      "sha256": "80e56372c8b9027e5afc4de644f4b923dbb3570ef445f25ec9860c80d4223c61"
+    },
+    "voice-source-manifest.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-source-manifest.response",
+      "bytes": 4911,
+      "sha256": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937"
+    },
+    "http-group-3.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/http-group-3.json",
+      "bytes": 1706,
+      "sha256": "5513d2a7d5982a691fdf37ebde6ae6f83036688cdd338871b874dff928361c22"
+    },
+    "v8-inputs-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-inputs-directory.response",
+      "bytes": 262105,
+      "sha256": "36868c24ea13dc227bc6ad48d87c43837f2efd04b52daf66f0e2a42f281d90e2"
+    },
+    "github-scripts-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/github-scripts-directory.response",
+      "bytes": 322465,
+      "sha256": "c75179a9e597deebadb2634246838fe133a9dbde93f7eb0b2fb963ead49d32de"
+    },
+    "http-group-4.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/http-group-4.json",
+      "bytes": 1818,
+      "sha256": "5b275343a78bf3942e1adf5897a84c0727562652baf97184e037a14809819ca2"
+    },
+    "v8-trusted-manifests.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-trusted-manifests.response",
+      "bytes": 1040,
+      "sha256": "7036a86ed062f4edd81667e161e5e94eade669c69362b136ccba9a1508fecc4b"
+    },
+    "v8-version-resolver.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-version-resolver.response",
+      "bytes": 12899,
+      "sha256": "d76414bc5c392fc17bb8cc4f81a8a679aa04e718b0c34141ba8db31b5cc9cff9"
+    },
+    "http-receipts.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/http-receipts.json",
+      "bytes": 12209,
+      "sha256": "c40d6ca57a387f04785ef39e5568bfebd67c0f5f80a6ce96ed7533c9ccc12d04"
+    },
+    "directory-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/directory-plan.json",
+      "bytes": 589,
+      "sha256": "6dffc0b79ccc856000d608230e62203b9b795c8f65fb5d0597a6330f8e857049"
+    },
+    "sources-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/sources-plan.json",
+      "bytes": 924,
+      "sha256": "b9a41a5c6cdeb185f3300dc77f138086bc3f23374224aa6997d4cd9a322484e6"
+    },
+    "v8-directory-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-directory-plan.json",
+      "bytes": 628,
+      "sha256": "8581037a4dc8c912d5edce5156e6d11cbd0121583ef80dd45a035f89657a8bbd"
+    },
+    "v8-inputs-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-inputs-plan.json",
+      "bytes": 680,
+      "sha256": "4f623ea6c8d1af3315e85e6653cbb1f673bb41ffe186c08f375a8dcb5b4ca20a"
+    },
+    "directory-routes.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/directory-routes.json",
+      "bytes": 65247,
+      "sha256": "7c29c1faba50d022059050b2be873560c7bf62ac13e0fe7b405c46472374e2b4"
+    },
+    "inspect_directories.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/inspect_directories.py",
+      "bytes": 1847,
+      "sha256": "9b20b3faeeaba75193659152552deeabab00a4743b89cb121df5e8edf842ea1a"
+    },
+    "build.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/build.py",
+      "bytes": 22250,
+      "sha256": "151bfb4b1d9251e46a1bae7d1a17d8c40f174a49937701ee7d72f8a9069f817d"
+    },
+    "source-units.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/source-units.json",
+      "bytes": 4066,
+      "sha256": "105db377e1671d01d43515e2e2b2ea579010a6707de3bf2a9eac3fb8a450954d"
+    },
+    "native-dependency-decisions.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/native-dependency-decisions.json",
+      "bytes": 12609,
+      "sha256": "8c9ef52887cdb43b6276d860afac3d9f2f4d30daae4df6d5464c6e687b753aeb"
+    }
+  },
+  "v8": {
+    "crate": {
+      "name": "v8",
+      "version": "150.4.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "checksum": "42a978ff11f15b24e5c05a7123cf2b68f41e763546699781a924ef4e2cf43a49",
+      "dependencies": [
+        "bindgen",
+        "bitflags 2.13.1",
+        "fslock",
+        "gzip-header",
+        "home",
+        "miniz_oxide",
+        "paste",
+        "temporal_capi",
+        "which 6.0.3"
+      ]
+    },
+    "profile": "ptrcomp_sandbox_release",
+    "releaseTag": "rusty-v8-v150.4.0",
+    "baselineTarget": "x86_64-apple-darwin",
+    "trustedManifestIndex": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/v8-trusted-manifests.response",
+      "bytes": 1040,
+      "sha256": "7036a86ed062f4edd81667e161e5e94eade669c69362b136ccba9a1508fecc4b"
+    },
+    "targetManifestPins": {
+      "aarch64-apple-darwin": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_aarch64-apple-darwin.sha256",
+        "declaredSha256": "4079b4b84a8b4fcf34a2a5ca7f080dffd0e1b53404b0032087b821e247febb43"
+      },
+      "aarch64-pc-windows-msvc": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_aarch64-pc-windows-msvc.sha256",
+        "declaredSha256": "9d153e6534d50961329132a64dd7f7cd18ba96501a4a43c1a6d8bfaeec454b2b"
+      },
+      "aarch64-unknown-linux-gnu": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_aarch64-unknown-linux-gnu.sha256",
+        "declaredSha256": "4ee879a8bc7b0f482cac891415e22300dff4429a28897fddac88bb296ce07920"
+      },
+      "aarch64-unknown-linux-musl": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_aarch64-unknown-linux-musl.sha256",
+        "declaredSha256": "9c40a51e4d5fcedaec527757b8660115b2a10ca3e2ddacadc3075924ad005b66"
+      },
+      "x86_64-apple-darwin": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_x86_64-apple-darwin.sha256",
+        "declaredSha256": "d85c7ae0cf437a4415376c4b5b7daba50b0dcbe30f52612d21df8ce52eb8ada0"
+      },
+      "x86_64-pc-windows-msvc": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_x86_64-pc-windows-msvc.sha256",
+        "declaredSha256": "a4d6221dddb4b5724b23411eaac47caf6095489fbf9d126f65b33cef96a0a8ef"
+      },
+      "x86_64-unknown-linux-gnu": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_x86_64-unknown-linux-gnu.sha256",
+        "declaredSha256": "6774b42c9424c098c72a805c08d4e94be17c591cf02b1dc2633060255a8a61be"
+      },
+      "x86_64-unknown-linux-musl": {
+        "file": "rusty_v8_ptrcomp_sandbox_release_x86_64-unknown-linux-musl.sha256",
+        "declaredSha256": "9bd5beb3a7bfa4f95bc887476ec3e4d564254c1815efe63296740e09bcc8665b"
+      }
+    },
+    "baselineManifest": {
+      "file": "rusty_v8_ptrcomp_sandbox_release_x86_64-apple-darwin.sha256",
+      "declaredSha256": "d85c7ae0cf437a4415376c4b5b7daba50b0dcbe30f52612d21df8ce52eb8ada0",
+      "url": "https://github.com/openai/codex/releases/download/rusty-v8-v150.4.0/rusty_v8_ptrcomp_sandbox_release_x86_64-apple-darwin.sha256",
+      "downloaded": false,
+      "digestVerifiedAgainstIndex": false
+    },
+    "baselineArtifacts": [
+      {
+        "file": "librusty_v8_ptrcomp_sandbox_release_x86_64-apple-darwin.a.gz",
+        "role": "native-static-library",
+        "declaredSha256": null,
+        "downloaded": false
+      },
+      {
+        "file": "src_binding_ptrcomp_sandbox_release_x86_64-apple-darwin.rs",
+        "role": "matching-generated-rust-bindings",
+        "declaredSha256": null,
+        "downloaded": false
+      }
+    ],
+    "environmentOutputs": [
+      "RUSTY_V8_ARCHIVE",
+      "RUSTY_V8_SRC_BINDING_PATH"
+    ],
+    "trustChain": "Pinned repository manifest-index bytes -> expected digest of per-target two-entry checksum manifest -> expected digests of compressed library and matching bindings. Only the repository index was acquired here.",
+    "integrationDecision": "Keep the same-version/profile library and bindings as explicit build dependencies. Generic crate defaults are not accepted as an equivalent artifact pair. Source-build helper entry exists, but its complete Bazel graph and resulting artifacts are unverified.",
+    "scriptExecuted": false,
+    "sourceBuildVerified": false,
+    "licenseEvidence": "V8/crate/native license and notice inventory not established by these five files."
+  },
+  "voice": {
+    "sourceManifest": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-native-inputs-v1/voice-source-manifest.response",
+      "bytes": 4911,
+      "sha256": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937"
+    },
+    "declaredSources": [
+      {
+        "name": "meson",
+        "version": "1.12.0",
+        "role": "build-tool",
+        "archive": "meson-1.12.0.tar",
+        "root": "meson-1.12.0",
+        "url": "https://github.com/mesonbuild/meson/releases/download/1.12.0/meson-1.12.0.tar.gz",
+        "sha256": "88afe0c20e52030218924ac37d0c81c59b4b5f3ae3752c8c6d7470c7d365886c",
+        "provenance": "GitHub release asset digest",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "ninja",
+        "version": "1.13.2",
+        "role": "build-tool",
+        "archive": "ninja-1.13.2.tar",
+        "root": "ninja-3441b633c2fe2c494e958780ba0f4227b1327634",
+        "url": "https://codeload.github.com/ninja-build/ninja/tar.gz/3441b633c2fe2c494e958780ba0f4227b1327634",
+        "sha256": "bccc6197cd8c3ac2a439e26d6bf41506fe49c430cf3d593269a15379f24266ee",
+        "provenance": "GitHub v1.13.2 tag -> commit3441b633c2fe2c494e958780ba0f4227b1327634; archive SHA recorded after fetch",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "libffi",
+        "version": "3.8.0",
+        "role": "native-library",
+        "archive": "libffi-3.8.0.tar",
+        "root": "libffi-3.8.0",
+        "url": "https://github.com/libffi/libffi/releases/download/v3.8.0/libffi-3.8.0.tar.gz",
+        "sha256": "7da3e2d9a171eb0a038f592ecad3ff2bb2550f3496d87b3b29ad0cf4430c0db4",
+        "provenance": "GitHub release asset digest",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "pcre2",
+        "version": "10.47",
+        "role": "native-library",
+        "archive": "pcre2-10.47.tar",
+        "root": "pcre2-10.47",
+        "url": "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.gz",
+        "sha256": "c08ae2388ef333e8403e670ad70c0a11f1eed021fd88308d7e02f596fcd9dc16",
+        "provenance": "GitHub release asset digest",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "zlib",
+        "version": "1.3.2",
+        "role": "native-library",
+        "archive": "zlib-1.3.2.tar",
+        "root": "zlib-1.3.2",
+        "url": "https://github.com/madler/zlib/releases/download/v1.3.2/zlib-1.3.2.tar.gz",
+        "sha256": "bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16",
+        "provenance": "GitHub release asset digest",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "opus",
+        "version": "1.6.1",
+        "role": "native-library",
+        "archive": "opus-1.6.1.tar",
+        "root": "opus-1.6.1",
+        "url": "https://downloads.xiph.org/releases/opus/opus-1.6.1.tar.gz",
+        "sha256": "6ffcb593207be92584df15b32466ed64bbec99109f007c82205f0194572411a1",
+        "provenance": "https://downloads.xiph.org/releases/opus/SHA256SUMS.txt",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "glib",
+        "version": "2.88.3",
+        "role": "native-library",
+        "archive": "glib-2.88.3.tar",
+        "root": "glib-2.88.3",
+        "url": "https://download.gnome.org/sources/glib/2.88/glib-2.88.3.tar.xz",
+        "sha256": "ab24d24e698dfa1e408b7bcdb508f4aafc906185a8b8ce72fdf79bbbdc9b383b",
+        "provenance": "https://download.gnome.org/sources/glib/2.88/glib-2.88.3.sha256sum",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "proxy-libintl",
+        "version": "0.5",
+        "role": "native-library",
+        "archive": "proxy-libintl-0.5.tar",
+        "root": "proxy-libintl-0.5",
+        "url": "https://github.com/frida/proxy-libintl/archive/refs/tags/0.5.tar.gz",
+        "sha256": "f7a1cbd7579baaf575c66f9d99fb6295e9b0684a28b095967cfda17857595303",
+        "provenance": "GStreamer1.28.6 upstream wrap SHA; upstream tag commit33934de09af6a6627eb44e310a8079df009abdbb",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "gstreamer",
+        "version": "1.28.6",
+        "role": "native-library",
+        "archive": "gstreamer-1.28.6.tar",
+        "root": "gstreamer-1.28.6",
+        "url": "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.6.tar.xz",
+        "sha256": "62b6b9f0ad3147a6dd6420ac64a91180b14e990695bddd353b96041611d052ca",
+        "provenance": "Official adjacent .sha256sum",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "gst-plugins-base",
+        "version": "1.28.6",
+        "role": "native-library",
+        "archive": "gst-plugins-base-1.28.6.tar",
+        "root": "gst-plugins-base-1.28.6",
+        "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.6.tar.xz",
+        "sha256": "0ba699c7c6c66f4ba640be78cb38a24715add9683f3e3a199f5369dc5a4f04ac",
+        "provenance": "Official adjacent .sha256sum",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      },
+      {
+        "name": "gst-plugins-good",
+        "version": "1.28.6",
+        "role": "native-library",
+        "archive": "gst-plugins-good-1.28.6.tar",
+        "root": "gst-plugins-good-1.28.6",
+        "url": "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.28.6.tar.xz",
+        "sha256": "b0c620a4b18b6ee931b4c43bbf1760d308666dc37f730a7e7f1ad327e59ce2df",
+        "provenance": "Official adjacent .sha256sum",
+        "archiveDownloaded": false,
+        "archiveDigestVerified": false,
+        "licenseStatus": "not-qualified-in-this-batch",
+        "upstreamUnmodifiedStatus": "not-established"
+      }
+    ],
+    "bundledSources": [
+      {
+        "name": "gvdb",
+        "included_by": "glib",
+        "revision": "2b42fc75f09dbe1cd1057580b5782b08f2dcb400",
+        "path": "subprojects/gvdb",
+        "provenance": "Included in the pinned GLib release archive; no separate fetch"
+      }
+    ],
+    "buildTarget": "//third_party/voice:native_runtime",
+    "baselineAlias": "native_runtime_macos_x86_64",
+    "introductionDecision": "Use pinned upstream source archives through the maintained backend source-build component. Keep first-party Bazel/Python adapters separate from third-party implementations; do not generate upstream implementation copies in the recovered client business-source tree.",
+    "knownRecipeBoundaries": [
+      "native.bzl/native_prefix",
+      "runtime.bzl/native_runtime",
+      "extensions.bzl source fetching",
+      "prepare_sources.py and build_native.py transformations",
+      "LLVM/pkg-config/SDK/module toolchain inputs",
+      "license and notice inventory"
+    ],
+    "sourceRecipeDeclared": true,
+    "completeToolchainQualified": false,
+    "nativeRuntimeBuilt": false,
+    "exactFrozenBinaryCorrespondence": false
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-build-inputs-v1.json",
+      "bytes": 37357,
+      "sha256": "d7303144d89601129ffcbffce837bd28aa8365381ef9e920b4fbb28ad5f0abd8"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-inheritance-v1.json",
+      "bytes": 38220,
+      "sha256": "ee2c30a65c24e930fcc7f95fd3511537be90debf9c34d5f1c755c25905bc2930"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-exact-source-v1.json",
+      "bytes": 53000,
+      "sha256": "4bb07545dbb3e0254a511148c1df581b130a2d700437df2813f7adaa042ebdf9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-build-identity-v1.json",
+      "bytes": 24624,
+      "sha256": "1421b0d468129a4147436fe2d15d0363c177c2fada28fa4064c5a486c8568de4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/independent-build-feasibility-v1.json",
+      "bytes": 228841,
+      "sha256": "84166ba8bdf713204ab708663ef7767018dff524c47742d432fadfa21a168aa5"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/entry-family-map.json",
+      "bytes": 3217503,
+      "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v26.json",
+      "bytes": 528968,
+      "sha256": "ac921b5a1e03c62e39e854406e8a1a4f9a72c7ff175cabb34d0daf11fd2e723d"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-lock.response",
+      "bytes": 407989,
+      "sha256": "1b7f27d5ec01ad9b19bfe8823557418772f851d367e8a6577544a9ab841b8d65"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/workspace-manifest.response",
+      "bytes": 21066,
+      "sha256": "80b9d6755c6c55d2f8d2520dcb89b60e9a1bd26c2723521f8c682e4713c949ab"
+    },
+    {
+      "path": ".analysis-local/backend-exact-source-work/fetch_selected.py",
+      "bytes": 2440,
+      "sha256": "2c62bf3ef01b81dfa2f39025302a9bc29cf5e7efd790efc6785636be0e4157af"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "counts": {
+    "facts": 10,
+    "sourceUnits": 9,
+    "newBuildSourceFiles": 5,
+    "sameCommitDirectoryBodies": 4,
+    "verifiedPublicHttpResponses": 9,
+    "v8TargetManifestPins": 8,
+    "declaredVoiceSources": 11,
+    "declaredVoiceBuildTools": 2,
+    "declaredVoiceNativeLibraries": 9,
+    "bundledVoiceSources": 1,
+    "releaseArtifactDigestsVerified": 0,
+    "upstreamArchiveDigestsVerified": 0,
+    "canonicalCountChanges": 0
+  },
+  "nextBoundedStep": {
+    "scope": "Resolve only frozen backend-call source entries 903 and 904: lexical Br app/installed and app/read in src-BJv5Mk7n.js.",
+    "entryIds": [
+      "app-server-direct-call-lexical-candidate:3e80fb5d49dadff1b2899242",
+      "app-server-direct-call-lexical-candidate:3a815b928889b1543924b737"
+    ],
+    "deliverable": "Exact lexical definition, import/call consumers and conditional error/lifecycle responsibilities; associate existing retained apps/settings goals or an explicit support mechanism only when sourced.",
+    "stopCondition": "The two recorded calls and their immediate retained consumer. Reuse existing transport/MCP app contracts; stop at named service/native boundaries. No keyword-only classification, provider recursion, model submission or canonical feature invented to clear counts.",
+    "newModelRequired": false,
+    "requiresReadOnlyPublicAcquisition": false,
+    "globalCompletionCriteriaChanged": false
+  },
+  "newExecution": {
+    "reaRuns": 0,
+    "targetExecutions": 0,
+    "targetScriptImports": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "privateServiceCalls": 0,
+    "sourceBuilds": 0,
+    "dependencyInstallations": 0,
+    "signingOperations": 0,
+    "clientImplementation": 0
+  },
+  "selectedNativeInputBatchClosed": true,
+  "fullNativeInputClosure": false,
+  "fullBackendQualified": false,
+  "fullAnalysisCompleted": false,
+  "actualBackendBehaviorVerified": false
+}

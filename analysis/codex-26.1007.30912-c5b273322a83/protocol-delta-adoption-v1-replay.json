@@ -1,0 +1,220 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "casesPassed": 8,
+  "cases": [
+    {
+      "id": "PDR-01",
+      "claim": "Selected display projection is unchanged by absent/null/known model and reasoning fields.",
+      "status": "passed",
+      "observed": {
+        "variants": 3,
+        "projection": [
+          {
+            "type": "subagent-activity",
+            "id": "fixture-item",
+            "agentThreadId": "fixture-child",
+            "isMessage": false,
+            "displayName": "name:/fixture/child",
+            "displayStatus": "status:started"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PDR-02",
+      "claim": "Existing visibility and agentPath filter still control that selected projection.",
+      "status": "passed",
+      "observed": {
+        "hiddenCount": 0,
+        "filteredCount": 0
+      }
+    },
+    {
+      "id": "PDR-03",
+      "claim": "Selected notification dispatcher forwards all five affected methods and payload references with synthetic gates open.",
+      "status": "passed",
+      "observed": {
+        "rows": [
+          {
+            "method": "item/started",
+            "extended": false,
+            "route": "item"
+          },
+          {
+            "method": "item/started",
+            "extended": true,
+            "route": "item"
+          },
+          {
+            "method": "item/completed",
+            "extended": false,
+            "route": "item"
+          },
+          {
+            "method": "item/completed",
+            "extended": true,
+            "route": "item"
+          },
+          {
+            "method": "thread/started",
+            "extended": false,
+            "route": "thread"
+          },
+          {
+            "method": "thread/started",
+            "extended": true,
+            "route": "thread"
+          },
+          {
+            "method": "turn/started",
+            "extended": false,
+            "route": "turn"
+          },
+          {
+            "method": "turn/started",
+            "extended": true,
+            "route": "turn"
+          },
+          {
+            "method": "turn/completed",
+            "extended": false,
+            "route": "turn"
+          },
+          {
+            "method": "turn/completed",
+            "extended": true,
+            "route": "turn"
+          }
+        ],
+        "payloadReferencePreserved": true,
+        "qualification": "Dispatch callees and all admission/buffering gates are synthetic; downstream conversion/delivery is not tested."
+      }
+    },
+    {
+      "id": "PDR-04",
+      "claim": "Exact selected prediction fork argument keeps its required prediction flag and ephemeral/exclude-turn settings.",
+      "status": "passed",
+      "observed": {
+        "threadId": "fixture-parent",
+        "experimentalPredictionMode": true,
+        "ephemeral": true,
+        "excludeTurns": true,
+        "threadSource": "composer_predictions"
+      }
+    },
+    {
+      "id": "PDR-05",
+      "claim": "Selected prediction helper retains experimental flag and disallows fallback to a fresh thread.",
+      "status": "passed",
+      "observed": {
+        "experimentalPredictionMode": true,
+        "fallbackToFreshThread": false,
+        "fixtureResult": {
+          "requestedAt": "2026-10-24T19:32:47.541Z",
+          "hostKind": "fixture",
+          "text": "fixture",
+          "predictionThreadId": "fixture-fork",
+          "predictionTurnId": "fixture-turn",
+          "model": "fixture-model",
+          "promptVersion": "fixture",
+          "totalDurationMs": 0
+        }
+      }
+    },
+    {
+      "id": "PDR-06",
+      "claim": "Failing the version gate stops before prediction helper invocation.",
+      "status": "passed",
+      "observed": {
+        "result": null,
+        "helperCalls": 0
+      }
+    },
+    {
+      "id": "PDR-07",
+      "claim": "Plan-mode eligibility also stops before prediction helper invocation.",
+      "status": "passed",
+      "observed": {
+        "result": null,
+        "helperCalls": 0
+      }
+    },
+    {
+      "id": "PDR-08",
+      "claim": "Selected protocol item conversion passes sub-agent activity through by identity, preserving both extra fields.",
+      "status": "passed",
+      "observed": {
+        "sameObject": true,
+        "model": "fixture-model",
+        "reasoningEffort": "high",
+        "qualification": "Later clone/state/storage consumers remain separate."
+      }
+    }
+  ],
+  "sourceInputs": [
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5031466,
+        "endExclusive": 5031694
+      },
+      "spanHash": "876bc1d03ba5fdfde489eba84d39125e20e38ac7b0bd944e4a7e65645c587a90"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2885852,
+        "endExclusive": 2885896
+      },
+      "spanHash": "1e5b4529467f6e8e4b168a930585bae9fe2960bd5f7e58f5f7f12f8e1e4e6a61"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2882573,
+        "endExclusive": 2885852
+      },
+      "spanHash": "1a02013cf22779ac1d343b9f8827c1ffb0a1e8ae305f805a437b712942d1b626"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1421339,
+        "endExclusive": 1421439
+      },
+      "spanHash": "885899817351dd115482f6662124e45ba9504db1cc4b10784e6849eedbb693b1"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1054334,
+        "endExclusive": 1055962
+      },
+      "spanHash": "c30c2b1afe8a78b8f461192e36525e4c446eed5a003c8d3a45bfaba03ee7d112"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2863161,
+        "endExclusive": 2863652
+      },
+      "spanHash": "eeeca6a3a0ee98d8eda5530644d323bfc3d7071262fc4421a82ab063591544cf"
+    }
+  ],
+  "scope": "Selected frozen JS and synthetic helpers; no actual backend, renderer, model or product scenario.",
+  "substitutions": [
+    "Display label/status helpers.",
+    "Dispatcher admission/buffering and downstream reducers.",
+    "Prediction resume/version/helper and clocks are synthetic; no actual temporary thread created."
+  ],
+  "realServiceCalls": 0,
+  "modelSubmissions": 0,
+  "clientLaunches": 0,
+  "productScenariosExecuted": 0
+}

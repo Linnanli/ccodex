@@ -1,0 +1,896 @@
+{
+  "schemaVersion": "git-settings-page-contracts/1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scope": "All controls rendered by the selected frozen Git settings page; shared persistence and active-watcher update boundaries are qualified separately.",
+  "method": "REA-backed frozen settings registry and named component binding, supplemented by complete original Program lexical ASTs and synthetic execution of selected original function bodies.",
+  "entry": {
+    "slug": "git-settings",
+    "surfaceId": "SETTINGS-SURFACE-024",
+    "factoryId": "SETTINGS-PAGE-FACTORY-024",
+    "factoryRef": {
+      "path": "settings-registry-contracts.json",
+      "bytes": 1474203,
+      "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+      "jsonPointer": "/pageFactoryContracts/23"
+    },
+    "routeInstanceRef": {
+      "path": "settings-registry-contracts.json",
+      "bytes": 1474203,
+      "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+      "jsonPointer": "/routeInstances/17"
+    },
+    "sectionRef": {
+      "path": "settings-registry-contracts.json",
+      "bytes": 1474203,
+      "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+      "jsonPointer": "/sectionDataflowContracts/18"
+    },
+    "visibilityRef": {
+      "path": "settings-mode-boundary-contracts.json",
+      "bytes": 477440,
+      "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+      "jsonPointer": "/settingsSectionReviews/24"
+    },
+    "outerConditionRef": {
+      "path": "settings-feature-entry-conditions.json",
+      "bytes": 200971,
+      "sha256": "2a730bce88aef7dcb04daa9cd7be45e7429bfe244cea46f48898d1f77040a807",
+      "jsonPointer": "/commonEntryCondition"
+    },
+    "priorDispositionRef": {
+      "path": "settings-section-dispositions.json",
+      "bytes": 174851,
+      "sha256": "af00cf24d11bdcbdfc24bf7eefa381aa67dcdfc64155aa0903904f57650e7f13",
+      "jsonPointer": "/entries/24"
+    },
+    "conditions": [
+      "The outer selected-host descriptor must permit this section; git-settings is absent from the reduced host list.",
+      "The codexLocal access-family result must permit navigation visibility; the local visibility switch falls through to visible:true,pending:false.",
+      "Outer loading/error/redirect and render priority remain as specified by the shared entry-condition contract; navigation visibility alone is not a universal rendering guard.",
+      "Ce additionally returns null when its imported selector h(O) is false; the actual selector value and product mode are unobserved."
+    ],
+    "actualMountObserved": false,
+    "productMode": "unknown",
+    "confirmedExclusion": false
+  },
+  "operationContracts": [
+    {
+      "operationId": "operation:git:GIT-OP-001",
+      "contractId": "GIT-OP-001",
+      "featureId": "FSC-0049",
+      "name": "设置新建分支前缀",
+      "component": "Ne",
+      "control": "branch-prefix-input",
+      "trigger": "Edit raw string; save on blur or enabled CmdOrCtrl+S.",
+      "guard": "Draft differs from saved and !mutation.isPending; onChange ignored while pending; equal-to-saved clears draft.",
+      "parameters": {
+        "property": "branchPrefix",
+        "key": "git-branch-prefix",
+        "default": "codex/",
+        "schemaExpression": "DN",
+        "agentAccess": "read-write",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Write draft without page-level trimming; success clears draft and reports success.",
+      "failureAndCancellation": "Write error reports danger and retains draft; shared optimistic rollback applies; no explicit cancel action.",
+      "chain": "Ne -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": null,
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-002",
+      "contractId": "GIT-OP-002",
+      "featureId": "FSC-0050",
+      "name": "设置始终强制推送",
+      "component": "Ne",
+      "control": "always-force-push-toggle",
+      "trigger": "Toggle boolean.",
+      "guard": "Control disabled and handler suppressed while pending; no same-value guard.",
+      "parameters": {
+        "property": "alwaysForcePush",
+        "key": "git-always-force-push",
+        "default": false,
+        "schemaExpression": "TN",
+        "agentAccess": "read-write",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Write submitted boolean, report enabled/disabled success message.",
+      "failureAndCancellation": "Write error reports danger; shared rollback applies.",
+      "chain": "Ne -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": null,
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-003",
+      "contractId": "GIT-OP-003",
+      "featureId": "FSC-0051",
+      "name": "设置默认创建草稿 PR",
+      "component": "Ne",
+      "control": "draft-pr-toggle",
+      "trigger": "Toggle boolean.",
+      "guard": "Control disabled and handler suppressed while pending; no same-value guard.",
+      "parameters": {
+        "property": "createPullRequestAsDraft",
+        "key": "git-create-pull-request-as-draft",
+        "default": true,
+        "schemaExpression": "TN",
+        "agentAccess": "read-write",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Write submitted boolean and report success.",
+      "failureAndCancellation": "Write error reports danger; shared rollback applies.",
+      "chain": "Ne -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": null,
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-004",
+      "contractId": "GIT-OP-004",
+      "featureId": "FSC-0052",
+      "name": "设置 PR 合并方式",
+      "component": "Ne",
+      "control": "merge-method-selector",
+      "trigger": "Select merge or squash.",
+      "guard": "Control disabled while pending; callback requires !pending and value !== saved.",
+      "parameters": {
+        "property": "pullRequestMergeMethod",
+        "key": "git-pull-request-merge-method",
+        "default": "merge",
+        "schemaExpression": "U([merge,squash])",
+        "agentAccess": "read-write",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Write selected enum and report success.",
+      "failureAndCancellation": "Write error reports danger; shared rollback applies.",
+      "chain": "Ne -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": null,
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-005",
+      "contractId": "GIT-OP-005",
+      "featureId": "FSC-0053",
+      "name": "设置提交指令",
+      "component": "Ne/be/me/he",
+      "control": "commit-instructions-textarea",
+      "trigger": "Edit text; autosave, Save, CmdOrCtrl+S, or unmount flush.",
+      "guard": "Shared autosave snapshot and pending rules apply.",
+      "parameters": {
+        "property": "commitInstructions",
+        "key": "git-commit-instructions",
+        "default": "",
+        "schemaExpression": "DN",
+        "agentAccess": "read-only",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Save through the common settings writer.",
+      "failureAndCancellation": "Shared autosave failure and retry rules apply; no explicit cancel action.",
+      "chain": "Ne/be/me/he -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": "/autosave",
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-006",
+      "contractId": "GIT-OP-006",
+      "featureId": "FSC-0054",
+      "name": "设置 PR 描述指令",
+      "component": "Ne/be/me/he",
+      "control": "pr-instructions-textarea",
+      "trigger": "Edit text; autosave, Save, CmdOrCtrl+S, or unmount flush.",
+      "guard": "Shared autosave snapshot and pending rules apply.",
+      "parameters": {
+        "property": "pullRequestInstructions",
+        "key": "git-pr-instructions",
+        "default": "",
+        "schemaExpression": "DN",
+        "agentAccess": "read-only",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Save through the common settings writer.",
+      "failureAndCancellation": "Shared autosave failure and retry rules apply; no explicit cancel action.",
+      "chain": "Ne/be/me/he -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": "/autosave",
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-007",
+      "contractId": "GIT-OP-007",
+      "featureId": "FSC-0055",
+      "name": "设置禁用 Git 差异面板",
+      "component": "Ce",
+      "control": "disable-git-diffs-toggle",
+      "trigger": "Toggle checkbox; true maps to last-turn-only, false to full.",
+      "guard": "Ce returns null when h(O) is false; no control-level pending or equality guard in this function.",
+      "parameters": {
+        "property": "reviewMode",
+        "key": "git-review-mode",
+        "default": "full",
+        "schemaExpression": "U([full,last-turn-only])",
+        "agentAccess": "read-write",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Direct settings writer call for the mapped value.",
+      "failureAndCancellation": "Rejected writer promise reports danger; no separate cancel or draft.",
+      "chain": "Ce -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/1"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": null,
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-008",
+      "contractId": "GIT-OP-008",
+      "featureId": "FSC-0056",
+      "name": "设置代码审查展示位置",
+      "component": "Ae",
+      "control": "review-delivery-selector",
+      "trigger": "Select inline or detached.",
+      "guard": "Displayed value falls back to inline; no control-level pending or equality guard in this function.",
+      "parameters": {
+        "property": "reviewDelivery",
+        "key": "reviewDelivery",
+        "default": "inline",
+        "schemaExpression": "U([inline,detached])",
+        "agentAccess": "read-write",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/8"
+        }
+      },
+      "success": "Direct settings writer call with selected enum.",
+      "failureAndCancellation": "Rejected writer promise reports danger; no separate cancel or draft.",
+      "chain": "Ae -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/2"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/8"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": null,
+      "supportOperationIds": [],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-009",
+      "contractId": "GIT-OP-009",
+      "featureId": "FSC-0057",
+      "name": "设置监听 PR 自动合并偏好",
+      "component": "De",
+      "control": "watcher-auto-merge-toggle",
+      "trigger": "Toggle boolean.",
+      "guard": "Control disabled while preference mutation pending; callback itself directly calls mutate without additional equality/pending guard.",
+      "parameters": {
+        "property": "pullRequestWatchAutoMerge",
+        "key": "git-pr-watch-auto-merge",
+        "default": false,
+        "schemaExpression": "TN",
+        "agentAccess": "read-only",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Save preference, schedule active-watcher update using submitted autoMerge and captured current instructions, then report preference success.",
+      "failureAndCancellation": "Preference failure prevents its success callback. Active-watcher failure is separate and does not roll back saved preference.",
+      "chain": "De -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/3"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": null,
+      "supportOperationIds": [
+        "operation:git:GIT-SUPPORT-001"
+      ],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:git:GIT-OP-010",
+      "contractId": "GIT-OP-010",
+      "featureId": "FSC-0058",
+      "name": "设置监听 PR 的自定义指令",
+      "component": "De/be/me/he",
+      "control": "watcher-instructions-textarea",
+      "trigger": "Edit text; shared autosave/manual/unmount flow.",
+      "guard": "Shared autosave snapshot and pending rules apply.",
+      "parameters": {
+        "property": "pullRequestWatchInstructions",
+        "key": "git-pr-watch-instructions",
+        "default": "",
+        "schemaExpression": "DN",
+        "agentAccess": "read-only",
+        "sourceRef": {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      },
+      "success": "Save preference; onSaved schedules active-watcher update using saved instructions and captured current autoMerge.",
+      "failureAndCancellation": "Autosave failure retains draft; separate active-watcher failure does not roll back preference. Old success can still apply an older saved snapshot to watchers.",
+      "chain": "De/be/me/he -> D/read descriptor + F/rAn -> oAn -> host settings.write or set-setting -> selected main AL/write path",
+      "sourceRefs": [
+        {
+          "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+          "bytes": 533141,
+          "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+          "jsonPointer": "/units/3"
+        },
+        {
+          "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+          "bytes": 244032,
+          "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "sharedWriterRef": "/sharedSettingsPipeline",
+      "autosaveRef": "/autosave",
+      "supportOperationIds": [
+        "operation:git:GIT-SUPPORT-001"
+      ],
+      "persistenceExpectation": "Read effective value on reopening; actual backing path, flush and restart durability require separate observation.",
+      "mode": "unknown",
+      "runtimeStatus": "not-observed-for-this-feature",
+      "completeChainProven": false
+    }
+  ],
+  "sharedSettingsPipeline": {
+    "reader": "$kn -> uAn keyed by descriptor.key -> VK data.values[key] ?? descriptor.default",
+    "query": "VK: host settings.readAll when available, otherwise get-settings; networkMode always, placeholder sAn, five-second staleTime.",
+    "writer": "rAn snapshots VK, starts cancel, captures old data, optimistically patches by default, awaits cancel, then awaits oAn; write error restores the entire old snapshot; finally awaits invalidate then calls GG.",
+    "nonOptimisticOption": "optimistic:false patches the current cache only after successful write, preserving concurrent unrelated keys in that snapshot.",
+    "conditionalProviderErrors": "cancel is awaited before try and invalidate before GG; injected cancel rejection bypasses write/rollback/finally, and injected invalidate rejection skips GG. Real provider failure behavior is not established by this probe.",
+    "hostOrFallback": "oAn: e6.settings.write(key,value) when available; otherwise generic set-setting params {key,value}. aAn reads effective directly from host, or fallback response.value ?? default.",
+    "mainFallback": "Selected get/set-setting handlers use getSettingValue/setSettingValue. The setter validates/casts through r.F then awaits this.settings.write. Initialization wraps injected T in AL and invokes afterWrite side effects.",
+    "durabilityBoundary": "AL.write calls store.set and afterWrite without explicitly awaiting store.flush. AL.writeForAgent enforces descriptor.agentAccess and explicitly flushes. Backing store instance, file path, schedule, durability and actual host-to-main identity remain unobserved.",
+    "uiVersusAgentAccess": "agentAccess read-only does not disable these UI controls; it is enforced by writeForAgent, a separate path.",
+    "sourceRefs": [
+      {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/2"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/3"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/4"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/5"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/10"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/11"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/main-01/source-contracts.json",
+        "bytes": 21089,
+        "sha256": "06cf48f8bcc60f5fa4f611dbbb2bc22c38c43eb7c97165fd708ed0f2d69e241b",
+        "jsonPointer": "/units/2"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/main-01/source-contracts.json",
+        "bytes": 21089,
+        "sha256": "06cf48f8bcc60f5fa4f611dbbb2bc22c38c43eb7c97165fd708ed0f2d69e241b",
+        "jsonPointer": "/units/3"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/main-01/source-contracts.json",
+        "bytes": 21089,
+        "sha256": "06cf48f8bcc60f5fa4f611dbbb2bc22c38c43eb7c97165fd708ed0f2d69e241b",
+        "jsonPointer": "/units/4"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/main-01/source-contracts.json",
+        "bytes": 21089,
+        "sha256": "06cf48f8bcc60f5fa4f611dbbb2bc22c38c43eb7c97165fd708ed0f2d69e241b",
+        "jsonPointer": "/units/8"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/main-01/materialized-providers.json",
+        "bytes": 998,
+        "sha256": "fbbd4e8be3964bc38b822518e099b9d3d67bf740c05b0f30b02feef7ba2cc2f3",
+        "jsonPointer": ""
+      }
+    ],
+    "scopeQualification": "Static selected source paths and synthetic provider replay; no real preferences, filesystem store, service, native host or product run."
+  },
+  "autosave": {
+    "debounceMs": 3000,
+    "savedFeedbackMs": 3000,
+    "mutationScope": "autosaving-instructions-${setting.key}",
+    "draft": "A snapshot object records each edit. Reverting to savedValue clears dirty only when no mutation is pending; editing remains allowed while pending.",
+    "automatic": "Timer and unmount flush submit only a draft snapshot distinct from last-submitted and last-failed; there is no automatic isPending check. Mutation serialization belongs to the imported provider.",
+    "explicit": "Save and CmdOrCtrl+S require draft and !isPending, clear the failed snapshot and submit. The textarea has no blur-save handler and no explicit cancel action.",
+    "success": "Clear only the submitted snapshot, preserve newer edits, show saved feedback, call onSaved with the submitted value even when a newer draft exists.",
+    "failure": "Retain draft and mark failed snapshot, show danger toast, suppress automatic/unmount retry of that snapshot; explicit save or a new edit permits another attempt.",
+    "sourceRefs": [
+      {
+        "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+        "bytes": 533141,
+        "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+        "jsonPointer": "/units/4"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+        "bytes": 533141,
+        "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+        "jsonPointer": "/units/5"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+        "bytes": 533141,
+        "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+        "jsonPointer": "/units/6"
+      }
+    ],
+    "runtimeQualification": "Hook lifecycle, timer, pending state and mutation delivery are substitutes; no React or query/mutation implementation is executed."
+  },
+  "activeWatcherUpdate": {
+    "operationId": "operation:git:GIT-SUPPORT-001",
+    "role": "support",
+    "trigger": "De schedules a separate scoped mutation after a preference save, using the submitted value plus the peer preference captured by the current callback.",
+    "scope": "pull-request-watch-preferences",
+    "selection": "v lists automations; F9n/gM require heartbeat and the exact ## Pull request fix automation: prompt line, status ACTIVE, and the heartbeat continuation marker line D. Other records are skipped.",
+    "transformation": "Preserve all prompt lines through marker D, rebuild following lines using C(prefs), trim custom instructions, skip an unchanged prompt.",
+    "payload": [
+      "id",
+      "kind=heartbeat",
+      "name",
+      "prompt",
+      "status=ACTIVE",
+      "targetThreadId",
+      "model",
+      "reasoningEffort",
+      "rrule"
+    ],
+    "effect": "b calls automation-update for existing items; response must satisfy the original heartbeat kind predicate. Promise.all updates are concurrent; the page invalidates list-automations only after the updater resolves.",
+    "failures": "Errors propagate to a separate active-watcher error toast. Preference-save success can already have been reported. No compensation of saved preferences or successful sibling watcher updates is present in this selected path.",
+    "sourceRefs": [
+      {
+        "path": "raw/git-settings-page/analysis/local-01/source-contracts.json",
+        "bytes": 533141,
+        "sha256": "a18171b307267dc320647ccfe15dd7ef0ef9fcd6a513345ddc3c1bc7506d2aea",
+        "jsonPointer": "/units/3"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/watcher-02/source-contracts.json",
+        "bytes": 33570,
+        "sha256": "9b762c136f1c37ca7b6e37c57338b685fe1df2f9611e45733a6a4c5424e54464",
+        "jsonPointer": "/units/0"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/watcher-02/source-contracts.json",
+        "bytes": 33570,
+        "sha256": "9b762c136f1c37ca7b6e37c57338b685fe1df2f9611e45733a6a4c5424e54464",
+        "jsonPointer": "/units/1"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/watcher-02/source-contracts.json",
+        "bytes": 33570,
+        "sha256": "9b762c136f1c37ca7b6e37c57338b685fe1df2f9611e45733a6a4c5424e54464",
+        "jsonPointer": "/units/2"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/watcher-02/source-contracts.json",
+        "bytes": 33570,
+        "sha256": "9b762c136f1c37ca7b6e37c57338b685fe1df2f9611e45733a6a4c5424e54464",
+        "jsonPointer": "/units/5"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/classifier-01/source-contracts.json",
+        "bytes": 307006,
+        "sha256": "94d9fad3f30d22fcbf329db5fcd5160060f0e5fd3035af5689732d7ee585b256",
+        "jsonPointer": "/units/1"
+      },
+      {
+        "path": "raw/git-settings-page/analysis/supplemental-units.json",
+        "bytes": 1748,
+        "sha256": "36865aef4d2e439ec00e61970017af5cd20493de16cca4446e354e254bc13bd4",
+        "jsonPointer": ""
+      }
+    ],
+    "actualAutomationsReadOrWritten": 0,
+    "productEffectObserved": false
+  },
+  "descriptorInventory": [
+    {
+      "property": "branchPrefix",
+      "key": "git-branch-prefix",
+      "default": "codex/",
+      "schemaExpression": "DN",
+      "agentAccess": "read-write",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "alwaysForcePush",
+      "key": "git-always-force-push",
+      "default": false,
+      "schemaExpression": "TN",
+      "agentAccess": "read-write",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "createPullRequestAsDraft",
+      "key": "git-create-pull-request-as-draft",
+      "default": true,
+      "schemaExpression": "TN",
+      "agentAccess": "read-write",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "pullRequestMergeMethod",
+      "key": "git-pull-request-merge-method",
+      "default": "merge",
+      "schemaExpression": "U([merge,squash])",
+      "agentAccess": "read-write",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "commitInstructions",
+      "key": "git-commit-instructions",
+      "default": "",
+      "schemaExpression": "DN",
+      "agentAccess": "read-only",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "pullRequestInstructions",
+      "key": "git-pr-instructions",
+      "default": "",
+      "schemaExpression": "DN",
+      "agentAccess": "read-only",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "reviewMode",
+      "key": "git-review-mode",
+      "default": "full",
+      "schemaExpression": "U([full,last-turn-only])",
+      "agentAccess": "read-write",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "reviewDelivery",
+      "key": "reviewDelivery",
+      "default": "inline",
+      "schemaExpression": "U([inline,detached])",
+      "agentAccess": "read-write",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/8"
+      }
+    },
+    {
+      "property": "pullRequestWatchAutoMerge",
+      "key": "git-pr-watch-auto-merge",
+      "default": false,
+      "schemaExpression": "TN",
+      "agentAccess": "read-only",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    },
+    {
+      "property": "pullRequestWatchInstructions",
+      "key": "git-pr-watch-instructions",
+      "default": "",
+      "schemaExpression": "DN",
+      "agentAccess": "read-only",
+      "sourceRef": {
+        "path": "raw/git-settings-page/analysis/shared-01/source-contracts.json",
+        "bytes": 244032,
+        "sha256": "7a965dd379233faa1bb8a7797675b33911c86eb6175337362648939eeb0ce284",
+        "jsonPointer": "/units/9"
+      }
+    }
+  ],
+  "descriptorPropertiesWithoutControlsInThisPage": [
+    "pullRequestPollIntervalSeconds",
+    "showSidebarPrIcons",
+    "worktreeRoot"
+  ],
+  "dependencyBoundary": {
+    "applicationResponsibilities": [
+      "Git preference controls",
+      "settings descriptors and transport adapter",
+      "autosaving instruction state",
+      "existing PR watcher prompt transformation and update adapter"
+    ],
+    "externalProviderBoundaries": [
+      "React/compiler hooks and JSX",
+      "query/mutation provider and scoped scheduling",
+      "notification/i18n controls",
+      "host settings/RPC and automation request services"
+    ],
+    "thirdPartyCodeGenerated": false,
+    "qualification": "Boundaries are architecture inputs, not claims that every imported helper is a third-party package or that exact package versions and complete dependency closure are established."
+  },
+  "isolatedObservation": {
+    "path": "raw/git-settings-page/analysis/isolated-observations-02.json",
+    "bytes": 15310,
+    "sha256": "26f47fcb5f15fe3d3e4cc5ba794b0b3cdb639d46c579f7de8a1bd0429a23e752"
+  },
+  "earlierObservation": {
+    "path": "raw/git-settings-page/analysis/isolated-observations.json",
+    "bytes": 13593,
+    "sha256": "a67424a7b410a889821f23842a5f96a034fadaf1d146a3a566ba1b0eed3729a9"
+  },
+  "observationAccounting": "The latest run contains 21 distinct cases; the earlier 18 overlap and are not added to obtain 39. None is an executed product scenario.",
+  "parseReproduction": "git_settings_ast.mjs was extended in stages: local closure, selected provider roots/assignments, then main class handlers. Saved semantic results pin original Programs; the archived final recipe supports all three modes. The watcher named-export parse used settings_page_surface_ast.mjs.",
+  "counts": {
+    "userPreferenceGoals": 10,
+    "supportOperations": 1,
+    "completeProgramParseArtifacts": 6,
+    "distinctSourceProgramsParsed": 5,
+    "isolatedSourceCasesPassed": 21,
+    "productScenariosExecuted": 0,
+    "newScopedFeatureDefinitions": 10,
+    "newRootCandidates": 11,
+    "modelSubmissionsAdded": 0,
+    "originalClientRunsAdded": 0,
+    "confirmedChatGptExclusionsAdded": 0
+  },
+  "remainingDecisions": [
+    "Actual mount, gate/selector values, host/account/platform and product-mode ownership.",
+    "Actual selected settings service and main instance, backing store/schema/defaults, side effects, write scheduling/flush and restart durability.",
+    "Behavioral consumers of these saved preferences: branch creation, push, PR creation/merge, diff filtering and review delivery.",
+    "Actual mutation serialization, competing preference updates, watcher list/update service and partial-failure reconciliation."
+  ],
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false
+}

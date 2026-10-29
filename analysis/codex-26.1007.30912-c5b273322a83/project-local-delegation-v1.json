@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T16:38:53.852838+00:00",
+  "status": "bounded-delegate-non-equivalence-established",
+  "feature": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v26.json",
+    "bytes": 2063693,
+    "sha256": "2b8b5f47041c7f92a9350ac7050992fad6ed59e99ee5a8ec12bfe107f2b81fc4",
+    "jsonPointer": "/features/104"
+  },
+  "task": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v17.json",
+    "bytes": 1170043,
+    "sha256": "501ef758ec0949c2ae0336f8a2befdef74b0e881a1cc3ab3484063323a9fa4c3",
+    "jsonPointer": "/taskGroups/13"
+  },
+  "owner": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+    "bytes": 174049,
+    "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+    "jsonPointer": "/responsibilityOwners/6"
+  },
+  "facts": [
+    {
+      "id": "PLD-01",
+      "claim": "Ke in the existing FSC-0105 local branch imports j$t; the initial Program exports z0r as j$t.",
+      "sourceIds": [
+        "local-import",
+        "local-call",
+        "initial-esm-export-j$t",
+        "initial-esm-definition-j$t"
+      ]
+    },
+    {
+      "id": "PLD-02",
+      "claim": "z0r calls tI with projectType local, then emits electron-add-new-workspace-root-option with an empty payload. It has no return/await/catch for registration. tI returns or updates an in-scope flow record and emits a lifecycle step when newly allocated; this is not a project creation result.",
+      "sourceIds": [
+        "initial-esm-definition-j$t",
+        "lifecycle-flow"
+      ]
+    },
+    {
+      "id": "PLD-03",
+      "claim": "The matching MMe handler awaits projectFolderPicker.createOrSelectProject(e,t.root). Its constructor creates the Program-bound Mje with host, windowManager and projectsManager. This closes the saved handler receiver definition at the source level, conditional on message delivery to this handler.",
+      "sourceIds": [
+        "add-root-handler-case",
+        "picker-construction",
+        "message-owner-constructor",
+        "picker-definition"
+      ]
+    },
+    {
+      "id": "PLD-04",
+      "claim": "The local picker chooses/validates a root and calls createOrSelectLocalProjects([root]); cancellation/no result emits workspace-root-option-add-canceled. Success emits workspace-root-option-added with new/existing identity fields, then navigate-to-route /. Awaited errors have no local catch/finally in this method; this does not prove upstream error behavior.",
+      "sourceIds": [
+        "picker-definition",
+        "picker-add-method",
+        "create-or-select-method"
+      ]
+    },
+    {
+      "id": "PLD-05",
+      "claim": "The reviewed picker registration path is distinct from projects.createLocal. The qHe createOrSelectLocalProjects implementation requests roots, selects the first returned project and publishes local-project/order/selection updates. createLocal separately parses appearance/name/sources/initGit/setActive, can allocate a default root and returns projectId/rootPaths. Actual injected manager identity, backend success and durable effects remain unobserved.",
+      "sourceIds": [
+        "picker-add-method",
+        "create-or-select-method",
+        "create-local-comparison"
+      ]
+    },
+    {
+      "id": "PLD-06",
+      "claim": "The sibling k$t export is B0r, which dispatches open-create-remote-project-modal. It is a separate remote entry; neither it nor WSL creation establishes local createLocal equivalence.",
+      "sourceIds": [
+        "initial-esm-export-k$t",
+        "initial-esm-definition-k$t"
+      ]
+    }
+  ],
+  "selectedSource": [
+    {
+      "id": "local-import",
+      "sourcePath": "app.asar/webview/assets/local-environments-settings-content-399f96d641e1.js",
+      "sourceHash": "01a16d0b5a619c7a5ecaa7bc1e070dfbb0bd65f0d0f01ac322bb63d9f5eb3424",
+      "byteRange": {
+        "start": 661,
+        "endExclusive": 1044
+      },
+      "spanHash": "03eb381935eb87e2d9a25307cf6a4f342add6ccda9304237c0c0a460fdfb834c",
+      "nodeType": "ImportDeclaration",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/local-import.txt",
+        "bytes": 383,
+        "sha256": "03eb381935eb87e2d9a25307cf6a4f342add6ccda9304237c0c0a460fdfb834c"
+      }
+    },
+    {
+      "id": "local-call",
+      "sourcePath": "app.asar/webview/assets/local-environments-settings-content-399f96d641e1.js",
+      "sourceHash": "01a16d0b5a619c7a5ecaa7bc1e070dfbb0bd65f0d0f01ac322bb63d9f5eb3424",
+      "byteRange": {
+        "start": 21052,
+        "endExclusive": 21057
+      },
+      "spanHash": "85a35d665452d49dcc7382d9f08e381b1c6457a46fdda9d1339c20a951229986",
+      "nodeType": "CallExpression",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/local-call.txt",
+        "bytes": 5,
+        "sha256": "85a35d665452d49dcc7382d9f08e381b1c6457a46fdda9d1339c20a951229986"
+      }
+    },
+    {
+      "id": "initial-esm-export-Mln",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11360871,
+        "endExclusive": 11360880
+      },
+      "spanHash": "efae67dd506fddf6b78c3c1491404e1dbacfeedac1cacf98969a3e803484deec",
+      "nodeType": "ExportSpecifier",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-export-Mln.txt",
+        "bytes": 9,
+        "sha256": "efae67dd506fddf6b78c3c1491404e1dbacfeedac1cacf98969a3e803484deec"
+      }
+    },
+    {
+      "id": "initial-esm-definition-Mln",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2998617,
+        "endExclusive": 2998734
+      },
+      "spanHash": "c17afb392932fea11a1a72b7eff7225fcdb4e562512e7d68226dd85c407a65a4",
+      "nodeType": "FunctionDeclaration",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-definition-Mln.txt",
+        "bytes": 117,
+        "sha256": "c17afb392932fea11a1a72b7eff7225fcdb4e562512e7d68226dd85c407a65a4"
+      }
+    },
+    {
+      "id": "initial-esm-export-j$t",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11406673,
+        "endExclusive": 11406683
+      },
+      "spanHash": "4a20c266e0a1b2b37cba6e326c9c4c1730cd6e98b59da6122330325c9fea13e2",
+      "nodeType": "ExportSpecifier",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-export-j$t.txt",
+        "bytes": 10,
+        "sha256": "4a20c266e0a1b2b37cba6e326c9c4c1730cd6e98b59da6122330325c9fea13e2"
+      }
+    },
+    {
+      "id": "initial-esm-definition-j$t",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3882431,
+        "endExclusive": 3882545
+      },
+      "spanHash": "fff8325824cc00827d47385422697c410c08afa3a87816f2ad6c2fddc8831f60",
+      "nodeType": "FunctionDeclaration",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-definition-j$t.txt",
+        "bytes": 114,
+        "sha256": "fff8325824cc00827d47385422697c410c08afa3a87816f2ad6c2fddc8831f60"
+      }
+    },
+    {
+      "id": "initial-esm-export-k$t",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11408646,
+        "endExclusive": 11408656
+      },
+      "spanHash": "fac250ab7fe44af0b8d7a8f68b378a4be5797a36dd9c19e99e34a8e1c701e67f",
+      "nodeType": "ExportSpecifier",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-export-k$t.txt",
+        "bytes": 10,
+        "sha256": "fac250ab7fe44af0b8d7a8f68b378a4be5797a36dd9c19e99e34a8e1c701e67f"
+      }
+    },
+    {
+      "id": "initial-esm-definition-k$t",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3882545,
+        "endExclusive": 3882672
+      },
+      "spanHash": "36139ea72ce2beead772f4c8e80bc82834012c5d3009da74e699f97f36c393a0",
+      "nodeType": "FunctionDeclaration",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-definition-k$t.txt",
+        "bytes": 127,
+        "sha256": "36139ea72ce2beead772f4c8e80bc82834012c5d3009da74e699f97f36c393a0"
+      }
+    },
+    {
+      "id": "lifecycle-flow",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2951907,
+        "endExclusive": 2952215
+      },
+      "spanHash": "8779ed2de51b990dfffcd9fdba68ece41a7be3f6d92e0aabc7a0802eca4c711a",
+      "nodeType": "FunctionDeclaration",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/lifecycle-flow.txt",
+        "bytes": 308,
+        "sha256": "8779ed2de51b990dfffcd9fdba68ece41a7be3f6d92e0aabc7a0802eca4c711a"
+      }
+    },
+    {
+      "id": "picker-definition",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2016188,
+        "endExclusive": 2018894
+      },
+      "spanHash": "deed0e60a2baa21c49d2ef5ec7d8c3abb6a0a00b4e0900f0817770e670feaddf",
+      "nodeType": "VariableDeclarator",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/picker-definition.txt",
+        "bytes": 2706,
+        "sha256": "deed0e60a2baa21c49d2ef5ec7d8c3abb6a0a00b4e0900f0817770e670feaddf"
+      }
+    },
+    {
+      "id": "picker-construction",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2072086,
+        "endExclusive": 2072136
+      },
+      "spanHash": "5c47159e7fae7b4e8735c49e9c514693c71c415b0e6c33fa9e5143e0d5feda74",
+      "nodeType": "NewExpression",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/picker-construction.txt",
+        "bytes": 50,
+        "sha256": "5c47159e7fae7b4e8735c49e9c514693c71c415b0e6c33fa9e5143e0d5feda74"
+      }
+    },
+    {
+      "id": "message-owner-constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2071260,
+        "endExclusive": 2074593
+      },
+      "spanHash": "e23170cd562b7b0353c19cd712ee29486d02b8144bdb78e932f79ac20beddeda",
+      "nodeType": "ClassMethod",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/message-owner-constructor.txt",
+        "bytes": 3333,
+        "sha256": "e23170cd562b7b0353c19cd712ee29486d02b8144bdb78e932f79ac20beddeda"
+      }
+    },
+    {
+      "id": "picker-add-method",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2016344,
+        "endExclusive": 2017375
+      },
+      "spanHash": "6c8641f481dc3f90ffd266a53f59b77744f2176deedaaa3b08d1f4009feb21f6",
+      "nodeType": "ClassMethod",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/picker-add-method.txt",
+        "bytes": 1031,
+        "sha256": "6c8641f481dc3f90ffd266a53f59b77744f2176deedaaa3b08d1f4009feb21f6"
+      }
+    },
+    {
+      "id": "create-or-select-method",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2637487,
+        "endExclusive": 2637754
+      },
+      "spanHash": "c7d0f89dadd058f05034fa60fa5723edbe747268294494fda9b1372adf7fce40",
+      "nodeType": "ClassMethod",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/create-or-select-method.txt",
+        "bytes": 267,
+        "sha256": "c7d0f89dadd058f05034fa60fa5723edbe747268294494fda9b1372adf7fce40"
+      }
+    },
+    {
+      "id": "add-root-handler-case",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2101354,
+        "endExclusive": 2101468
+      },
+      "spanHash": "8ac5d797e5dc5a1faf6f62d78bb2eea896c231c4ab65024b6c0af22d6db573a1",
+      "nodeType": "SwitchCase",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/add-root-handler-case.txt",
+        "bytes": 114,
+        "sha256": "8ac5d797e5dc5a1faf6f62d78bb2eea896c231c4ab65024b6c0af22d6db573a1"
+      }
+    },
+    {
+      "id": "create-local-comparison",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2639386,
+        "endExclusive": 2640132
+      },
+      "spanHash": "c628c45ac8e90ad73b4f2d2ff53e8b925a8033b1dbcfe4e6342bcb4cb8c17c05",
+      "nodeType": "ClassMethod",
+      "artifact": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/create-local-comparison.txt",
+        "bytes": 746,
+        "sha256": "c628c45ac8e90ad73b4f2d2ff53e8b925a8033b1dbcfe4e6342bcb4cb8c17c05"
+      }
+    }
+  ],
+  "sourceQueries": [
+    {
+      "path": ".analysis-local/project-delegation-work/initial-v1/source-contracts.json",
+      "bytes": 42210,
+      "sha256": "5213e5568f501cf241bab21a05e70c6f6f10976268661a8598a4f06ec1208ba2"
+    },
+    {
+      "path": ".analysis-local/project-delegation-work/main-v1/source-contracts.json",
+      "bytes": 61306,
+      "sha256": "c9f27e32302fc81acd2681172348da40e58b2d06dbd1beb3a07a2663dc81a3d4"
+    }
+  ],
+  "queryQualifications": [
+    "The dialog filename StringLiteral hit at initial byte 15575 is an asset-index array entry, not a proven dynamic import or dialog-opening call. The 95507-byte array was excluded from curated fragments.",
+    "Source query unit filenames describe local extraction outputs. Only selectedSource artifacts are the published curated source set."
+  ],
+  "decision": {
+    "ownerId": "LM-BOUNDARY-STRUCT-RWC-PROJECTS",
+    "featureId": "FSC-0105",
+    "taskId": "T14",
+    "relationship": "Maintain a picker/create-or-select entry alongside the existing project domain; do not merge its contract with createLocal.",
+    "proposedAdditionalPath": "apps/desktop/src/main/projects/project-folder-picker.ts",
+    "pathStatus": "new-maintenance-design-only",
+    "completeConsumerJoinProven": false
+  },
+  "remaining": [
+    "Actual Ho bridge delivery and selected MMe/manager instance are unobserved.",
+    "Actual filesystem picker/consent, service registration, UI completion, persistence and mode ownership remain unverified.",
+    "The remote modal and other project-add entries retain their own unresolved consumers; no cross-entry feature IDs are merged."
+  ],
+  "counts": {
+    "newFullProgramsParsed": 2,
+    "curatedSourceFragments": 16,
+    "facts": 6,
+    "currentFeaturesUnchanged": 373,
+    "currentTasksUnchanged": 48,
+    "newFeatures": 0,
+    "newScenarioSpecifications": 0,
+    "newProductScenarioPasses": 0,
+    "newModelSubmissions": 0,
+    "newClientRuns": 0,
+    "newReaRuns": 0,
+    "newClientImplementation": 0
+  },
+  "inputPins": [
+    {
+      "path": ".analysis-local/project-delegation-work/initial-v1/source-contracts.json",
+      "bytes": 42210,
+      "sha256": "5213e5568f501cf241bab21a05e70c6f6f10976268661a8598a4f06ec1208ba2"
+    },
+    {
+      "path": ".analysis-local/project-delegation-work/main-v1/source-contracts.json",
+      "bytes": 61306,
+      "sha256": "c9f27e32302fc81acd2681172348da40e58b2d06dbd1beb3a07a2663dc81a3d4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/restoration-plan-v7/local-content-01/source-contracts.json",
+      "bytes": 1015781,
+      "sha256": "53f2157d96c6d632117cc0ad4a1e5de0fd703a57dc5dd8efca26356d08716216"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/project-path-controls.json",
+      "bytes": 21976,
+      "sha256": "a83e61806b74414ed5352b99131911869e84f2e5c88ed9dd6ed7ff794643d610"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-message-contracts.json",
+      "bytes": 599124,
+      "sha256": "10493de416d59e4fa306895a40cc09d613ff7cd3d742fb4caccb3670bb12b7e2"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v26.json",
+      "bytes": 2063693,
+      "sha256": "2b8b5f47041c7f92a9350ac7050992fad6ed59e99ee5a8ec12bfe107f2b81fc4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v17.json",
+      "bytes": 1170043,
+      "sha256": "501ef758ec0949c2ae0336f8a2befdef74b0e881a1cc3ab3484063323a9fa4c3"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/local-import.txt",
+      "bytes": 383,
+      "sha256": "03eb381935eb87e2d9a25307cf6a4f342add6ccda9304237c0c0a460fdfb834c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/local-call.txt",
+      "bytes": 5,
+      "sha256": "85a35d665452d49dcc7382d9f08e381b1c6457a46fdda9d1339c20a951229986"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-export-Mln.txt",
+      "bytes": 9,
+      "sha256": "efae67dd506fddf6b78c3c1491404e1dbacfeedac1cacf98969a3e803484deec"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-definition-Mln.txt",
+      "bytes": 117,
+      "sha256": "c17afb392932fea11a1a72b7eff7225fcdb4e562512e7d68226dd85c407a65a4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-export-j$t.txt",
+      "bytes": 10,
+      "sha256": "4a20c266e0a1b2b37cba6e326c9c4c1730cd6e98b59da6122330325c9fea13e2"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-definition-j$t.txt",
+      "bytes": 114,
+      "sha256": "fff8325824cc00827d47385422697c410c08afa3a87816f2ad6c2fddc8831f60"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-export-k$t.txt",
+      "bytes": 10,
+      "sha256": "fac250ab7fe44af0b8d7a8f68b378a4be5797a36dd9c19e99e34a8e1c701e67f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/initial-esm-definition-k$t.txt",
+      "bytes": 127,
+      "sha256": "36139ea72ce2beead772f4c8e80bc82834012c5d3009da74e699f97f36c393a0"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/lifecycle-flow.txt",
+      "bytes": 308,
+      "sha256": "8779ed2de51b990dfffcd9fdba68ece41a7be3f6d92e0aabc7a0802eca4c711a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/picker-definition.txt",
+      "bytes": 2706,
+      "sha256": "deed0e60a2baa21c49d2ef5ec7d8c3abb6a0a00b4e0900f0817770e670feaddf"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/picker-construction.txt",
+      "bytes": 50,
+      "sha256": "5c47159e7fae7b4e8735c49e9c514693c71c415b0e6c33fa9e5143e0d5feda74"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/message-owner-constructor.txt",
+      "bytes": 3333,
+      "sha256": "e23170cd562b7b0353c19cd712ee29486d02b8144bdb78e932f79ac20beddeda"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/picker-add-method.txt",
+      "bytes": 1031,
+      "sha256": "6c8641f481dc3f90ffd266a53f59b77744f2176deedaaa3b08d1f4009feb21f6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/create-or-select-method.txt",
+      "bytes": 267,
+      "sha256": "c7d0f89dadd058f05034fa60fa5723edbe747268294494fda9b1372adf7fce40"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/add-root-handler-case.txt",
+      "bytes": 114,
+      "sha256": "8ac5d797e5dc5a1faf6f62d78bb2eea896c231c4ab65024b6c0af22d6db573a1"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/project-local-delegation-v1/create-local-comparison.txt",
+      "bytes": 746,
+      "sha256": "c628c45ac8e90ad73b4f2d2ff53e8b925a8033b1dbcfe4e6342bcb4cb8c17c05"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+      "bytes": 174049,
+      "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd"
+    },
+    {
+      "path": "scripts/analysis/publish_project_local_delegation.py",
+      "bytes": 13353,
+      "sha256": "33ab221e320555e039670cf6fb898744b23046522a71adf25fe3d81310d2bb24"
+    },
+    {
+      "path": "scripts/analysis/project_delegation_ast.mjs",
+      "bytes": 13948,
+      "sha256": "5f29f451d089da65fc90b807a8b3762880870ff720fa937c3862265914088a67"
+    },
+    {
+      "path": ".analysis-local/project-delegation-work/initial-query-v1.json",
+      "bytes": 127,
+      "sha256": "7db9113d55e30e99149ddea24880282369e399bc553910c2a80d9c019c5bb5b7"
+    },
+    {
+      "path": ".analysis-local/project-delegation-work/main-query-v1.json",
+      "bytes": 88,
+      "sha256": "05a3f7327097b06513767fd2cd52c029b55df2091dac0ff136a9b71f95a3e279"
+    }
+  ],
+  "fullAnalysisCompleted": false
+}

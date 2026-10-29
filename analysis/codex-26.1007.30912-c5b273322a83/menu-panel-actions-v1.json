@@ -1,0 +1,3533 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T22:47:38.407155+00:00",
+  "scope": "SQ-02-menu-panels-03 fixed ten schemas and necessary selected receiver callbacks.",
+  "goals": [
+    {
+      "id": "MPA-GOAL-01",
+      "featureId": "FSC-0399",
+      "name": "查看应用版本与构建信息",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:c26ea2e4c2eccc21874c54ee",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408931,
+            "endExclusive": 3409118
+          },
+          "spanHash": "cd85f0e91abbbf9df232d37241345ae2b891894f21358d9fa10d6e6238eb899f",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/56"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/23"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:c26ea2e4c2eccc21874c54ee"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:about",
+          "operationType": "menu-user-goal",
+          "trigger": "about"
+        }
+      ],
+      "behavior": [
+        "CZe About click passes buildFlavor and only a live BrowserWindow parent to pZe.",
+        "pZe reuses existing live _7 window, restoring minimized state then show/focus. Otherwise gathers app name/version/build labels and delegated icon/date/build information.",
+        "Creates a fixed-size BrowserWindow with contextIsolation=true,nodeIntegration=false,sandbox=true,devTools=false; valid parent is modal on non-darwin only. Denies window-open and prevents navigation.",
+        "Loads generated data:text/html, awaits readiness helper, then shows/focuses unless destroyed. Closed clears singleton; caught load/readiness errors clear singleton and destroy remaining window."
+      ],
+      "conditions": [
+        "Platform, theme, buildFlavor, live parent/singleton and icon/resource helpers affect presentation."
+      ],
+      "failureAndCancellation": [
+        "Load/readiness exceptions are caught for the newly created window; gathering/icon construction before try can still reject.",
+        "Actual close controls, generated HTML and build metadata helpers remain delegated."
+      ],
+      "knownGaps": [
+        "Actual OWL BrowserWindow compatibility, HTML/readiness/icon helpers and accessibility/close behavior."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-001",
+          "name": "pZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3392513,
+            "endExclusive": 3394238
+          },
+          "spanHash": "5882643e955bfdf6796ab313bac7c51cf742f070fed4fc6962e1dbaf2cf09b06",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-001-pZe.txt"
+        }
+      ],
+      "deduplication": [
+        "Application About information is distinct from documentation/status/task-manager goals and settings values."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M01"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0399:MPA:1",
+          "featureId": "FSC-0399",
+          "operationId": "operation:menu-panel:about",
+          "kind": "reuse",
+          "preconditions": "live minimized About window",
+          "trigger": "invoke menu",
+          "expectedEffect": "restore/show/focus existing singleton without another window",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0399:MPA:2",
+          "featureId": "FSC-0399",
+          "operationId": "operation:menu-panel:about",
+          "kind": "create",
+          "preconditions": "no singleton; platform and parent controlled",
+          "trigger": "invoke menu",
+          "expectedEffect": "preserve sandbox/window flags, parent modality and generated build data",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0399:MPA:3",
+          "featureId": "FSC-0399",
+          "operationId": "operation:menu-panel:about",
+          "kind": "failure",
+          "preconditions": "load or readiness rejects or window is destroyed",
+          "trigger": "invoke menu",
+          "expectedEffect": "clear matching singleton; destroy remaining failed window; do not report displayed success",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/windows/about-window.ts"
+      ],
+      "evidenceIds": [
+        "MPA-E086"
+      ],
+      "deduplicationEvidenceId": "MPA-E087"
+    },
+    {
+      "id": "MPA-GOAL-02",
+      "featureId": "FSC-0400",
+      "name": "显示或隐藏应用侧边栏",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:6988b0708fb0925288452b05",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3409121,
+            "endExclusive": 3409229
+          },
+          "spanHash": "dbef8888d23743bd9ee0a7af0c185bd5c977b93c94fdf7499b10cde5afcbe974",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/57"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/24"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:6988b0708fb0925288452b05"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:toggle-sidebar",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-sidebar"
+        }
+      ],
+      "behavior": [
+        "Native schema awaits M and sends toggle-sidebar.",
+        "Qni registers both toggleSidebar command and toggle-sidebar message with callback o. Enabled i gates inversion of scope.get(gC); $Rt receives animate and a special tween when opening from peek.",
+        "$Rt clears yzt then delegates ZRt; actual scope ownership and durable behavior remain separate."
+      ],
+      "conditions": [
+        "Valid focused/fallback window, mounted Qni, caller enable/animation and current peek state."
+      ],
+      "failureAndCancellation": [
+        "Missing window or disabled Qni causes no intended state change; animation/provider failures are not observed."
+      ],
+      "knownGaps": [
+        "Effective mount/scope, ZRt transition/state writes, focus and persistence."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-022",
+          "name": "Qni",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4084486,
+            "endExclusive": 4084896
+          },
+          "spanHash": "608869f45cba43d4cb34413182d6c5aff3460f0d9916354a2099bce5f90b9930",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-022-Qni.txt"
+        },
+        {
+          "id": "MPA-SOURCE-062",
+          "name": "$Rt",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1371365,
+            "endExclusive": 1371413
+          },
+          "spanHash": "5fc8e69e4f9057008fccd2499f0831c2c9177f04e45c5cc848b60f2b146f4a87",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-062-_Rt.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0079 changes sidebar translucency; it does not show/hide sidebar."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0400:MPA:1",
+          "featureId": "FSC-0400",
+          "operationId": "operation:menu-panel:toggle-sidebar",
+          "kind": "toggle",
+          "preconditions": "mounted enabled Qni and known gC",
+          "trigger": "invoke twice",
+          "expectedEffect": "invert current value each invocation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0400:MPA:2",
+          "featureId": "FSC-0400",
+          "operationId": "operation:menu-panel:toggle-sidebar",
+          "kind": "guard",
+          "preconditions": "Qni disabled or no window",
+          "trigger": "invoke menu",
+          "expectedEffect": "no callback state change or message respectively",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0400:MPA:3",
+          "featureId": "FSC-0400",
+          "operationId": "operation:menu-panel:toggle-sidebar",
+          "kind": "peek",
+          "preconditions": "opening from peek with animation requested",
+          "trigger": "invoke menu",
+          "expectedEffect": "pass recorded tween transition to $Rt; actual animation separately observed",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E088"
+      ],
+      "deduplicationEvidenceId": "MPA-E089"
+    },
+    {
+      "id": "MPA-GOAL-03",
+      "featureId": "FSC-0401",
+      "name": "显示或隐藏底部面板",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:32c69e08b1657692eb170e7e",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3409233,
+            "endExclusive": 3409350
+          },
+          "spanHash": "9d59ced4782e7cc51290010b6c86a3dee6edf2ad1837f17f0f2191fe37a2ce41",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/58"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/25"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:32c69e08b1657692eb170e7e"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:toggle-bottom-panel",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-bottom-panel"
+        }
+      ],
+      "behavior": [
+        "Native schema sends toggle-bottom-panel. qc message and toggleBottomPanel command both call local Hc(scope).",
+        "Hc acts only when zr enables the panel. If rn says visible it calls ha(bottom). With no tabs and ready terminal capability it calls Kn then Uc; another empty local-thread branch delegates Vn. Otherwise ci(bottom,{activateFallbackTab:true,allowEmpty:true}) may schedule focus through Uc.",
+        "Uc requests animation-frame focus on active tab DOM only if tab exists and its page is not inactive."
+      ],
+      "conditions": [
+        "Panel enable, visibility, existing tabs, routeKind, ready state and Fn/GNa capability."
+      ],
+      "failureAndCancellation": [
+        "Disabled panel does nothing; missing active tab/DOM does not manufacture focus. Delegate creation/hide/show failures remain unknown."
+      ],
+      "knownGaps": [
+        "Actual terminal/fallback creation, visibility atoms, native transport and restart restoration."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-034",
+          "name": "qc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 72356,
+            "endExclusive": 74532
+          },
+          "spanHash": "481254c87e5aafcaacba165cc20ceecbdc9090fabb3ec63510bcb5742b94e565",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-034-qc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-075",
+          "name": "Hc",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 69729,
+            "endExclusive": 70045
+          },
+          "spanHash": "d844773c58ca86ae430860afd1d800cfebd7a87caa9793e70dc44d95126a40eb",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-075-Hc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-076",
+          "name": "Uc",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 70045,
+            "endExclusive": 70257
+          },
+          "spanHash": "d7a8f3b09cf557be088f1977562e78502ad5a7c816c649dee84df731fef063b1",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-076-Uc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-066",
+          "name": "GNa",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5915115,
+            "endExclusive": 5915151
+          },
+          "spanHash": "5872f9dcf9fad9cfd8b4c557aecb88c67c456f730915505070944891bd2adc4d",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-066-GNa.txt"
+        }
+      ],
+      "deduplication": [
+        "Bottom container visibility is distinct from terminal selection and terminal-position preference FSC-0010."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0401:MPA:1",
+          "featureId": "FSC-0401",
+          "operationId": "operation:menu-panel:toggle-bottom-panel",
+          "kind": "hide",
+          "preconditions": "panel enabled and rn visible",
+          "trigger": "invoke menu",
+          "expectedEffect": "delegate ha(bottom), keeping tab policy in delegate",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0401:MPA:2",
+          "featureId": "FSC-0401",
+          "operationId": "operation:menu-panel:toggle-bottom-panel",
+          "kind": "empty",
+          "preconditions": "enabled with zero tabs; capability/route varied",
+          "trigger": "invoke menu",
+          "expectedEffect": "preserve ready-terminal versus local-thread fallback branches",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0401:MPA:3",
+          "featureId": "FSC-0401",
+          "operationId": "operation:menu-panel:toggle-bottom-panel",
+          "kind": "restore",
+          "preconditions": "existing hidden tabs",
+          "trigger": "invoke menu",
+          "expectedEffect": "delegate ci with activateFallbackTab/allowEmpty, then guarded focus",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E090"
+      ],
+      "deduplicationEvidenceId": "MPA-E091"
+    },
+    {
+      "id": "MPA-GOAL-04",
+      "featureId": "FSC-0402",
+      "name": "切换当前线程摘要的显示或固定状态",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:6bd1e732a6dac17dbb048c04",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3409354,
+            "endExclusive": 3409421
+          },
+          "spanHash": "2688f3706074fb6af0e18c8ebb8577ce794e3079f118c8c1a561f6b78c83cada",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/59"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/26"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:6bd1e732a6dac17dbb048c04"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:toggle-summary",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-summary"
+        }
+      ],
+      "behavior": [
+        "Native entry delegates run-command togglePinnedSummary through CZe _e; selected run-command dispatch contract is reused from prior batch.",
+        "Local conversation fc registers jn=Pw with Fo(scope,p); flow Ne registers N=Pw with K(scope). Fo and K explicitly import the same exported V from toggle-thread-summary-panel.",
+        "V computes prior state; non-overlay writes selected global/thread summary state. Overlay computes effective visibility, conditionally writes per-thread state then toggles isPopoverOpen.",
+        "Chat conversation mh also registers this command with controlled/uncontrolled behavior; source name does not justify removing the whole command or shared state."
+      ],
+      "conditions": [
+        "Mounted active command registration, current thread key p (boolean versus id), displayMode and controlled state determine action."
+      ],
+      "failureAndCancellation": [
+        "Do not equate summary-panel toggle with pinning the thread. Actual winning registration and durable visibility remain unverified."
+      ],
+      "knownGaps": [
+        "Full command mount/priority, source state atoms and persistence, Chat-only branch separation."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-055",
+          "name": "fc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+          "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+          "byteRange": {
+            "start": 37647,
+            "endExclusive": 39760
+          },
+          "spanHash": "84b1d2f297f48a123305648e86e63b4bfe988aaa36184d042609a9aace842965",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-055-fc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-049",
+          "name": "Ne",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+          "sourceHash": "d5b8a646f85b87239ca7c994d8f552c5eb750955be3ea291770343d74148fd60",
+          "byteRange": {
+            "start": 1470,
+            "endExclusive": 2542
+          },
+          "spanHash": "e27c360bf4b1e81aa8c14d7f4c6c316154c9f07e7ca5059f8c4e89de34038660",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-049-Ne.txt"
+        },
+        {
+          "id": "MPA-SOURCE-079",
+          "name": "V",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js",
+          "sourceHash": "9582fb17df85dc4affeb2107c2b79818f18f57b65add6f9909f0c7f677f5220c",
+          "byteRange": {
+            "start": 3780,
+            "endExclusive": 4042
+          },
+          "spanHash": "b91ecc535761b73dc3574b360d465b3ba1babe7c9d6f464171bb420541c4cee9",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-079-V.txt"
+        },
+        {
+          "id": "MPA-SOURCE-058",
+          "name": "mh",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+          "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+          "byteRange": {
+            "start": 55596,
+            "endExclusive": 57761
+          },
+          "spanHash": "410b7fa41a8b7cd0e9a6d20f4f8d930954a59de7c03e933186ccf84075c4de10",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-058-mh.txt"
+        },
+        {
+          "id": "MPA-SOURCE-068",
+          "name": "Pw",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-068-Pw.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0034 configures reasoning summaries; FSC-0396 pins thread; neither is this summary-panel action."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0402:MPA:1",
+          "featureId": "FSC-0402",
+          "operationId": "operation:menu-panel:toggle-summary",
+          "kind": "layout",
+          "preconditions": "non-overlay and known thread/global key",
+          "trigger": "invoke command",
+          "expectedEffect": "write inverse computed open state to matching target",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0402:MPA:2",
+          "featureId": "FSC-0402",
+          "operationId": "operation:menu-panel:toggle-summary",
+          "kind": "overlay",
+          "preconditions": "overlay with per-thread or boolean key",
+          "trigger": "invoke command",
+          "expectedEffect": "preserve per-thread update condition and toggle popover visibility",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0402:MPA:3",
+          "featureId": "FSC-0402",
+          "operationId": "operation:menu-panel:toggle-summary",
+          "kind": "ownership",
+          "preconditions": "local and chat consumers recorded",
+          "trigger": "plan retained source",
+          "expectedEffect": "retain shared command and local branch; no whole-command Chat-only exclusion",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E092"
+      ],
+      "deduplicationEvidenceId": "MPA-E093"
+    },
+    {
+      "id": "MPA-GOAL-05",
+      "featureId": "FSC-0403",
+      "name": "显示或选择当前线程终端",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:b23f22346be8d6755518a1d4",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3409425,
+            "endExclusive": 3409535
+          },
+          "spanHash": "a46c8448ba8e5866c8d4006283a48a95da7506016819f9113db20188dbff1d15",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/60"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/27"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:b23f22346be8d6755518a1d4"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:toggle-terminal",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-terminal"
+        }
+      ],
+      "behavior": [
+        "Native schema sends toggle-terminal. qc gates message handler by p=zr&&ready&&Fn(scope), then calls kr(scope,undefined,position). kr explicitly resolves UNa, which returns yPa.open(...).",
+        "The same qc registers toggleTerminal command with gi(scope,position), resolving $Na. Its Qp/_Pa/bottom/right branches differ from native-message open delegation; equivalence is not asserted.",
+        "Nw also exposes a windows.terminal.toggle action for another command path; it is contextual, not proof that native message executes that action."
+      ],
+      "conditions": [
+        "Mounted qc, terminal capability Fn/GNa, ready state, enabled panel and position context."
+      ],
+      "failureAndCancellation": [
+        "Failed capability/ready guard does nothing. Actual PTY creation/attachment, process failure and cancellation remain delegated."
+      ],
+      "knownGaps": [
+        "yPa.open implementation/provider, PTY process lifecycle, actual focus and command/native path equivalence."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-034",
+          "name": "qc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 72356,
+            "endExclusive": 74532
+          },
+          "spanHash": "481254c87e5aafcaacba165cc20ceecbdc9090fabb3ec63510bcb5742b94e565",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-034-qc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-070",
+          "name": "UNa",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5913654,
+            "endExclusive": 5913711
+          },
+          "spanHash": "69408e7f14d767c74da5ecddecb4ccd42e1d9b70bd48a6a042a1eb0e99082ff3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-070-UNa.txt"
+        },
+        {
+          "id": "MPA-SOURCE-072",
+          "name": "$Na",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5915812,
+            "endExclusive": 5915935
+          },
+          "spanHash": "3fb95d372a33efb77f81a5de9ead8625fd6f92ad938dc740fe13ad5f312a82cb",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-072-_Na.txt"
+        },
+        {
+          "id": "MPA-SOURCE-066",
+          "name": "GNa",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5915115,
+            "endExclusive": 5915151
+          },
+          "spanHash": "5872f9dcf9fad9cfd8b4c557aecb88c67c456f730915505070944891bd2adc4d",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-066-GNa.txt"
+        },
+        {
+          "id": "MPA-SOURCE-018",
+          "name": "Nw",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1498604,
+            "endExclusive": 1501107
+          },
+          "spanHash": "b9e6a2ed449e6e09276e4fc842d61d170f260123285a8dcd33797ae8f3bde888",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-018-Nw.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0005 shell setting and FSC-0010 terminal location setting are configuration goals; bottom-panel visibility is separately retained."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0403:MPA:1",
+          "featureId": "FSC-0403",
+          "operationId": "operation:menu-panel:toggle-terminal",
+          "kind": "native",
+          "preconditions": "eligible ready terminal context",
+          "trigger": "invoke native menu",
+          "expectedEffect": "delegate UNa/yPa.open with undefined second argument and selected position",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0403:MPA:2",
+          "featureId": "FSC-0403",
+          "operationId": "operation:menu-panel:toggle-terminal",
+          "kind": "guard",
+          "preconditions": "capability absent or not ready",
+          "trigger": "invoke native menu",
+          "expectedEffect": "do not open terminal",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0403:MPA:3",
+          "featureId": "FSC-0403",
+          "operationId": "operation:menu-panel:toggle-terminal",
+          "kind": "path",
+          "preconditions": "command versus native message",
+          "trigger": "compare selected callbacks",
+          "expectedEffect": "preserve open versus $Na conditional paths; verify equivalence separately",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E094"
+      ],
+      "deduplicationEvidenceId": "MPA-E095"
+    },
+    {
+      "id": "MPA-GOAL-06",
+      "featureId": "FSC-0404",
+      "name": "切换当前上下文的文件树或资源浏览器",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:2186ca15293d26e78e6db616",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3409539,
+            "endExclusive": 3409606
+          },
+          "spanHash": "812e282d15c37c7565d9af84f22c38d563effa106662e84dc3093db35ceed6df",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/61"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/28"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:2186ca15293d26e78e6db616"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:toggle-explorer",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-explorer"
+        }
+      ],
+      "behavior": [
+        "Native entry sends run-command toggleFileTreePanel. Nw fallback aJt sends toggle-file-tree-panel and returns true; Gc registers that message and, for ready nonremote context with root and feature enabled, calls xn(scope,null,{hostId,workspaceRoot}). xn resolves Zma, which hides already-active target or delegates TJ.",
+        "Separate page-layout Be registers ee=Pw with enabled/isActive context, focuses trigger when already open, and switches route/page or tab explorer atoms.",
+        "Filename menu Xt registers Me=Pw only while explorer menu is open and its trigger contains focus; callback closes that menu and marks a ref. These are context-specific consumers, not proven aliases to local filesystem opening."
+      ],
+      "conditions": [
+        "Command scope/priority and origin panel/tab visibility; Gc ready/nonremote/root guards; page/tab and focus context."
+      ],
+      "failureAndCancellation": [
+        "Missing root, remote thread, unready runtime or inactive consumer must not open the wrong explorer."
+      ],
+      "knownGaps": [
+        "Actual winning consumer, Zma/TJ filesystem provider, mode-specific page explorer eligibility and persistence."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-018",
+          "name": "Nw",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1498604,
+            "endExclusive": 1501107
+          },
+          "spanHash": "b9e6a2ed449e6e09276e4fc842d61d170f260123285a8dcd33797ae8f3bde888",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-018-Nw.txt"
+        },
+        {
+          "id": "MPA-SOURCE-031",
+          "name": "Gc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 70325,
+            "endExclusive": 72024
+          },
+          "spanHash": "9c8f9fdd63c9aa49dd272065efdc9c5783e28d788526df51d39fc5fcdadf7404",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-031-Gc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-064",
+          "name": "Zma",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5531073,
+            "endExclusive": 5531233
+          },
+          "spanHash": "cacd49bfb29164b853d06785becd2ee480ada9aca013ef235cde6758e2ca686b",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-064-Zma.txt"
+        },
+        {
+          "id": "MPA-SOURCE-043",
+          "name": "Be",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/layout-6ab09f5ca1ac.js",
+          "sourceHash": "67820c308a1697e97df42771b1048558a7384b87578f4d9985d0f3bb14bc55f5",
+          "byteRange": {
+            "start": 5565,
+            "endExclusive": 8460
+          },
+          "spanHash": "252ff859f5181bb14dfbabd3902811ffbb820e31332fd19d2ebb520749bda29c",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-043-Be.txt"
+        },
+        {
+          "id": "MPA-SOURCE-046",
+          "name": "Xt",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/filename-menu-actions-948ec7d3e413.js",
+          "sourceHash": "3755e5e68f1737368a71d26641a4ae17570e86da9f024077b9ce81fc2a46294d",
+          "byteRange": {
+            "start": 9541,
+            "endExclusive": 15046
+          },
+          "spanHash": "556c8f5a87dde7d55eab785f00838c655dc176c5a4b61172812162c3ae5f6998",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-046-Xt.txt"
+        },
+        {
+          "id": "MPA-SOURCE-068",
+          "name": "Pw",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-068-Pw.txt"
+        }
+      ],
+      "deduplication": [
+        "No existing file-search goal (FSC-0392) opens this contextual explorer; matching command labels alone do not prove all consumers equivalent."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0404:MPA:1",
+          "featureId": "FSC-0404",
+          "operationId": "operation:menu-panel:toggle-explorer",
+          "kind": "local",
+          "preconditions": "ready local thread, root and feature enabled",
+          "trigger": "invoke fallback message",
+          "expectedEffect": "delegate Zma with exact host/root and toggle active target condition",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0404:MPA:2",
+          "featureId": "FSC-0404",
+          "operationId": "operation:menu-panel:toggle-explorer",
+          "kind": "context",
+          "preconditions": "page layout or focused title explorer active",
+          "trigger": "invoke command",
+          "expectedEffect": "preserve that consumer state/focus/close policy",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0404:MPA:3",
+          "featureId": "FSC-0404",
+          "operationId": "operation:menu-panel:toggle-explorer",
+          "kind": "guard",
+          "preconditions": "remote or root missing; conflicting contexts",
+          "trigger": "invoke once",
+          "expectedEffect": "no wrong local explorer; registration winner remains separately verified",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E096"
+      ],
+      "deduplicationEvidenceId": "MPA-E097"
+    },
+    {
+      "id": "MPA-GOAL-07",
+      "featureId": "FSC-0405",
+      "name": "切换工作区布局或浏览器面板",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:2cc3605492fdc151b614314e",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3409609,
+            "endExclusive": 3409960
+          },
+          "spanHash": "57cb8fb7b752ade220986b3be19be77ac4d45f02f999ab6bea217f6a8fc54d1e",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/62"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/29"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:2cc3605492fdc151b614314e"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:step-layout",
+          "operationType": "menu-user-goal",
+          "trigger": "step-layout"
+        }
+      ],
+      "behavior": [
+        "CZe selects Cycle workspace layout versus Toggle browser panel label by unifiedTabStrip, but both invoke stepWorkspaceLayout; hidden accelerator is one entry.",
+        "Workspace handler J registers C=Pw with enabled w=(unified?Z:browser capability) and dynamic menu labels. Callback H(scope,layout_command,()=>le(scope)); H resolves $H and restores prior interaction marker in finally.",
+        "le delegates layout step D when workspace V exists; otherwise capable browser uses panel-visibility j. j selects bottom/right browser target, hides when already visible unless open requested, activates existing browser tab or delegates creation.",
+        "Descriptions describe full/split/hidden transitions; exact D state transition and persistent-workspace exceptions remain delegated, not inferred from text alone."
+      ],
+      "conditions": [
+        "unifiedTabStrip, persistent workspace, browser capability, workspace existence, tabs and active browser target."
+      ],
+      "failureAndCancellation": [
+        "Disabled command should not execute; interaction marker must restore even when delegated callback throws."
+      ],
+      "knownGaps": [
+        "D layout state machine, creation/selection delegates, actual focus/persistence and full-mode integration."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-052",
+          "name": "J",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+          "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+          "byteRange": {
+            "start": 734,
+            "endExclusive": 5050
+          },
+          "spanHash": "68dccec98d2e2ea16d34bddc0fffd81a6adc0bcf49a3bfbe1e7c81c67c0d44db",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-052-J.txt"
+        },
+        {
+          "id": "MPA-SOURCE-081",
+          "name": "le",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+          "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+          "byteRange": {
+            "start": 5050,
+            "endExclusive": 5206
+          },
+          "spanHash": "9f38de316f91527365678291e5d0ef487151fd0a66f723edd3a162184c48accd",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-081-le.txt"
+        },
+        {
+          "id": "MPA-SOURCE-082",
+          "name": "j",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/panel-visibility-b52b7c7c5b55.js",
+          "sourceHash": "ed0fc75271ba854f3a6d7747980b43abf625ac53a1f7fc12ab5c2e8e69a49002",
+          "byteRange": {
+            "start": 446,
+            "endExclusive": 1433
+          },
+          "spanHash": "6f9cd4081da33737e59fb08869f74cef7f32b00723713a224cbd765eab130de0",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-082-j.txt"
+        },
+        {
+          "id": "MPA-SOURCE-074",
+          "name": "$H",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4107261,
+            "endExclusive": 4107347
+          },
+          "spanHash": "dcae59e30f1d562f6c97c17c4444f16bc3498ad4fdec03886e3daa48d6426d72",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-074-_H.txt"
+        },
+        {
+          "id": "MPA-SOURCE-068",
+          "name": "Pw",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-068-Pw.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0008 sets default full view; this is an interactive context-dependent layout command. Label variants do not create two features."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0405:MPA:1",
+          "featureId": "FSC-0405",
+          "operationId": "operation:menu-panel:step-layout",
+          "kind": "identity",
+          "preconditions": "unifiedTabStrip on/off",
+          "trigger": "construct fixed entry",
+          "expectedEffect": "different label, same stepWorkspaceLayout command and one operation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0405:MPA:2",
+          "featureId": "FSC-0405",
+          "operationId": "operation:menu-panel:step-layout",
+          "kind": "workspace",
+          "preconditions": "workspace present",
+          "trigger": "invoke registered command",
+          "expectedEffect": "delegate D within $H marker scope and restore marker finally",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0405:MPA:3",
+          "featureId": "FSC-0405",
+          "operationId": "operation:menu-panel:step-layout",
+          "kind": "browser",
+          "preconditions": "workspace absent; capability/visible browser varied",
+          "trigger": "invoke command",
+          "expectedEffect": "no action without capability; otherwise preserve target selection/hide/show/create delegation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E098"
+      ],
+      "deduplicationEvidenceId": "MPA-E099"
+    },
+    {
+      "id": "MPA-GOAL-08",
+      "featureId": "FSC-0406",
+      "name": "在当前上下文打开内嵌浏览器标签",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:4bcd13f192d9b7fb5828761f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3409964,
+            "endExclusive": 3410112
+          },
+          "spanHash": "d784049ddb77637608da9fbbea0a19df2bc4330da5c07c1b0a1e1925ef306888",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/63"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/30"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:4bcd13f192d9b7fb5828761f"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:open-browser-tab",
+          "operationType": "menu-user-goal",
+          "trigger": "open-browser-tab"
+        }
+      ],
+      "behavior": [
+        "Native schema awaits M and sends open-browser-tab with source=manual,initiator=app_menu.",
+        "Jt registers shared-message w handler Xe. Without deferUntilPanelVisible it requires browser.in-app capability, resolves current/explicit conversation and tab id, then either queues another context/deferred open or calls local z with preserved payload.",
+        "Local z records browser tab state, delegates Rt presentation; failed presentation removes tab and sends close-tab. Active/new-window, deferred adoption and initial URL paths remain conditional. Native menu supplies no URL/adoption/defer fields."
+      ],
+      "conditions": [
+        "Browser capability, mounted context, conversation resolution and effective presentation target."
+      ],
+      "failureAndCancellation": [
+        "Unavailable capability or conversation gives no open; presentation failure closes pending native tab. Adoption/new-window failure and durable restore are not proven."
+      ],
+      "knownGaps": [
+        "Rt/native page lifecycle, successful empty-tab creation, storage isolation, transfer/adoption and errors."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-037",
+          "name": "Jt",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/open-handler-8645fceb7875.js",
+          "sourceHash": "fa18245d12e9c164cd90947cac81f81249314ea8df7b9816cbe150875926d917",
+          "byteRange": {
+            "start": 3825,
+            "endExclusive": 20034
+          },
+          "spanHash": "8d187cb17e1dbfbd2483bed61840cbcddf94651f1067018d6fbe04d807050b96",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-037-Jt.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0221 opens browser profile/extension/site settings; this goal opens a browsing tab."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M03"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0406:MPA:1",
+          "featureId": "FSC-0406",
+          "operationId": "operation:menu-panel:open-browser-tab",
+          "kind": "payload",
+          "preconditions": "valid M window",
+          "trigger": "invoke native menu",
+          "expectedEffect": "send only manual/app_menu creation intent, without invented URL",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0406:MPA:2",
+          "featureId": "FSC-0406",
+          "operationId": "operation:menu-panel:open-browser-tab",
+          "kind": "guard",
+          "preconditions": "capability unavailable or current conversation absent",
+          "trigger": "deliver once",
+          "expectedEffect": "return without claiming opened tab",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0406:MPA:3",
+          "featureId": "FSC-0406",
+          "operationId": "operation:menu-panel:open-browser-tab",
+          "kind": "presentation",
+          "preconditions": "eligible current context, presentation success/failure",
+          "trigger": "deliver menu payload",
+          "expectedEffect": "preserve creation/presentation delegation and cleanup-on-failure",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/browser/browser-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E100"
+      ],
+      "deduplicationEvidenceId": "MPA-E101"
+    },
+    {
+      "id": "MPA-GOAL-09",
+      "featureId": "FSC-0407",
+      "name": "聚焦当前浏览器地址栏",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:dd83d068909e55577fec3e57",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3410509,
+            "endExclusive": 3410612
+          },
+          "spanHash": "08ad99192af900267252d5833170bb400b738d926c18964845a8a3db35587c2d",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/64"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/31"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:dd83d068909e55577fec3e57"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:focus-address-bar",
+          "operationType": "menu-user-goal",
+          "trigger": "focus-address-bar"
+        }
+      ],
+      "behavior": [
+        "CZe entry disables its own accelerator and delegates _e(focusBrowserAddressBar). We suppresses origin for bottom-panel focus without browser id; otherwise reads focused visible browser panel then IR shortcut-state fallback. _e sends that nullable originPanel along run-command.",
+        "sl registers vn=Pw with enabled ai, priority normal for right and fallback for bottom, and isActive respecting explicit originBrowserTab/originPanel before DOM focus context.",
+        "Handler ya calls _a({shouldSelectAddress:true}) then Pe.current?.(); _a enters address edit/focus state. Actual input focus/select and state cleanup remain subject to sl guards."
+      ],
+      "conditions": [
+        "Enabled presented browser, origin context, command priority, current focus/selection and editability."
+      ],
+      "failureAndCancellation": [
+        "Do not focus another browser when explicit origin is provided; missing native window or eligible registration does not prove focus."
+      ],
+      "knownGaps": [
+        "Effective winning registration, ai/source edit guards, actual DOM focus/select and IME/cancel behavior."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        },
+        {
+          "id": "MPA-SOURCE-040",
+          "name": "sl",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/tab-content-24fe1f531bbe.js",
+          "sourceHash": "508ea1b1ef8a1cc9df9adaf19fa3648e2eab7df4691298c6e9adafe85b44649f",
+          "byteRange": {
+            "start": 66767,
+            "endExclusive": 123481
+          },
+          "spanHash": "69f9525aa5852483be32fc1915a6797fad3992e4eaa276f32c91e669a43a618b",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-040-sl.txt"
+        },
+        {
+          "id": "MPA-SOURCE-068",
+          "name": "Pw",
+          "role": "complete exported original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-068-Pw.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0213 configures full URL display; this is address-input focus/edit selection."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M03"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0407:MPA:1",
+          "featureId": "FSC-0407",
+          "operationId": "operation:menu-panel:focus-address-bar",
+          "kind": "origin",
+          "preconditions": "main manager reports right/bottom browser target",
+          "trigger": "invoke menu",
+          "expectedEffect": "send exact originPanel along run-command",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0407:MPA:2",
+          "featureId": "FSC-0407",
+          "operationId": "operation:menu-panel:focus-address-bar",
+          "kind": "selection",
+          "preconditions": "enabled matching sl registration",
+          "trigger": "invoke handler",
+          "expectedEffect": "request shouldSelectAddress and optional Pe callback",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0407:MPA:3",
+          "featureId": "FSC-0407",
+          "operationId": "operation:menu-panel:focus-address-bar",
+          "kind": "conflict",
+          "preconditions": "multiple browser tabs/panels or explicit origin mismatch",
+          "trigger": "invoke once",
+          "expectedEffect": "preserve normal/fallback priority and isActive restrictions",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/browser/browser-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E102"
+      ],
+      "deduplicationEvidenceId": "MPA-E103"
+    },
+    {
+      "id": "MPA-GOAL-10",
+      "featureId": "FSC-0408",
+      "name": "刷新当前可见浏览器页面",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:1297eeecc10b162193eb258d",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3411488,
+            "endExclusive": 3411593
+          },
+          "spanHash": "0cbcf39f12e356d7ee105ef385a9e5550a8fe23c7b064fd7e05f0b53f6c41bbd",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/65"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/32"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:1297eeecc10b162193eb258d"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-panel:reload-browser-page",
+          "operationType": "menu-user-goal",
+          "trigger": "reload-browser-page"
+        }
+      ],
+      "behavior": [
+        "CZe computes enabled Xe from live focused window, focused webContents and manager.canReloadActiveVisiblePage.",
+        "Selected click awaits Ze() default false: obtains M, manager G, current focused webContents and calls reloadActiveVisiblePage(window,webContents). Hard reload uses separate schema and Ze(true) with ignoreCache; not merged into this batch.",
+        "Reload accelerator uses te keymap/overridable-page policy; native menu may be disabled independently of renderer command registration."
+      ],
+      "conditions": [
+        "Focused window/webContents, active visible reloadable browser page, host manager and keymap/browser override context."
+      ],
+      "failureAndCancellation": [
+        "No window or manager returns without reload; delegated loading/network/cancellation results remain unknown."
+      ],
+      "knownGaps": [
+        "OWL manager implementation, actual navigation/load errors, pending request cancellation and selection timing."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MPA-SOURCE-002",
+          "name": "CZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3401957,
+            "endExclusive": 3422782
+          },
+          "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-002-CZe.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0375 reloads app window. Normal browser-page reload and later hard reload are not collapsed."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected callbacks/consumers establish retention; complete mode and dynamic mount ownership remains unproven.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MPA-M03"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0408:MPA:1",
+          "featureId": "FSC-0408",
+          "operationId": "operation:menu-panel:reload-browser-page",
+          "kind": "enabled",
+          "preconditions": "focused reloadable browser versus none",
+          "trigger": "build menu",
+          "expectedEffect": "enabled reflects manager canReload check",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0408:MPA:2",
+          "featureId": "FSC-0408",
+          "operationId": "operation:menu-panel:reload-browser-page",
+          "kind": "dispatch",
+          "preconditions": "valid live window and manager",
+          "trigger": "click normal reload",
+          "expectedEffect": "delegate normal reload with freshly obtained focused webContents",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        },
+        {
+          "scenarioId": "FSC-0408:MPA:3",
+          "featureId": "FSC-0408",
+          "operationId": "operation:menu-panel:reload-browser-page",
+          "kind": "absence",
+          "preconditions": "window or manager missing",
+          "trigger": "invoke callback",
+          "expectedEffect": "return; no fallback window reload and no hard-cache flag",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no actual UI/native/provider/persistence observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/browser/browser-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MPA-E104"
+      ],
+      "deduplicationEvidenceId": "MPA-E105"
+    }
+  ],
+  "additionalMaintenanceProposals": [
+    {
+      "id": "MPA-M01",
+      "responsibility": "关于窗口的单例、版本信息与受限展示",
+      "environment": "main",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MPA-SOURCE-001",
+          "name": "pZe",
+          "role": "complete original top-level function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3392513,
+            "endExclusive": 3394238
+          },
+          "spanHash": "5882643e955bfdf6796ab313bac7c51cf742f070fed4fc6962e1dbaf2cf09b06",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-001-pZe.txt"
+        }
+      ],
+      "imports": [
+        "build flavor/version/icon/HTML/readiness helpers",
+        "OWL runtime adapter"
+      ],
+      "exports": [
+        "showAbout(buildFlavor,parent)"
+      ],
+      "sharedState": [
+        "_7 live window singleton"
+      ],
+      "sideEffects": [
+        "create/reuse/restore/show/focus/close/destroy; navigation restrictions"
+      ],
+      "thirdPartyDependencies": [
+        "Electron-compatible OWL BrowserWindow/app/nativeTheme; no copied implementation"
+      ],
+      "proposedPath": "apps/desktop/src/main/windows/about-window.ts",
+      "assignment": "Inferred maintenance boundary; not original file recovery; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MPA-E106"
+    },
+    {
+      "id": "MPA-M02",
+      "responsibility": "上下文面板、终端、摘要与工作区布局命令适配",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MPA-SOURCE-022",
+          "name": "Qni",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4084486,
+            "endExclusive": 4084896
+          },
+          "spanHash": "608869f45cba43d4cb34413182d6c5aff3460f0d9916354a2099bce5f90b9930",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-022-Qni.txt"
+        },
+        {
+          "id": "MPA-SOURCE-034",
+          "name": "qc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 72356,
+            "endExclusive": 74532
+          },
+          "spanHash": "481254c87e5aafcaacba165cc20ceecbdc9090fabb3ec63510bcb5742b94e565",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-034-qc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-075",
+          "name": "Hc",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 69729,
+            "endExclusive": 70045
+          },
+          "spanHash": "d844773c58ca86ae430860afd1d800cfebd7a87caa9793e70dc44d95126a40eb",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-075-Hc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-031",
+          "name": "Gc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+          "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+          "byteRange": {
+            "start": 70325,
+            "endExclusive": 72024
+          },
+          "spanHash": "9c8f9fdd63c9aa49dd272065efdc9c5783e28d788526df51d39fc5fcdadf7404",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-031-Gc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-055",
+          "name": "fc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+          "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+          "byteRange": {
+            "start": 37647,
+            "endExclusive": 39760
+          },
+          "spanHash": "84b1d2f297f48a123305648e86e63b4bfe988aaa36184d042609a9aace842965",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-055-fc.txt"
+        },
+        {
+          "id": "MPA-SOURCE-079",
+          "name": "V",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js",
+          "sourceHash": "9582fb17df85dc4affeb2107c2b79818f18f57b65add6f9909f0c7f677f5220c",
+          "byteRange": {
+            "start": 3780,
+            "endExclusive": 4042
+          },
+          "spanHash": "b91ecc535761b73dc3574b360d465b3ba1babe7c9d6f464171bb420541c4cee9",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-079-V.txt"
+        },
+        {
+          "id": "MPA-SOURCE-052",
+          "name": "J",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+          "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+          "byteRange": {
+            "start": 734,
+            "endExclusive": 5050
+          },
+          "spanHash": "68dccec98d2e2ea16d34bddc0fffd81a6adc0bcf49a3bfbe1e7c81c67c0d44db",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-052-J.txt"
+        },
+        {
+          "id": "MPA-SOURCE-081",
+          "name": "le",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+          "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+          "byteRange": {
+            "start": 5050,
+            "endExclusive": 5206
+          },
+          "spanHash": "9f38de316f91527365678291e5d0ef487151fd0a66f723edd3a162184c48accd",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-081-le.txt"
+        }
+      ],
+      "imports": [
+        "command/message registration",
+        "scope/host/root/panel/terminal and layout adapters"
+      ],
+      "exports": [
+        "context-aware panel/summary/layout handlers"
+      ],
+      "sharedState": [
+        "sidebar/bottom/tab/summary visibility, active thread, transient layout marker"
+      ],
+      "sideEffects": [
+        "subscription cleanup, state writes, tab show/hide, focus and terminal delegation"
+      ],
+      "thirdPartyDependencies": [
+        "React/memo/state/router packages through dependency catalog; no implementation copies"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/workspace/workspace-command-adapter.tsx",
+      "assignment": "Inferred maintenance boundary; not original file recovery; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MPA-E107"
+    },
+    {
+      "id": "MPA-M03",
+      "responsibility": "浏览器标签打开与地址栏命令的上下文适配",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MPA-SOURCE-037",
+          "name": "Jt",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/open-handler-8645fceb7875.js",
+          "sourceHash": "fa18245d12e9c164cd90947cac81f81249314ea8df7b9816cbe150875926d917",
+          "byteRange": {
+            "start": 3825,
+            "endExclusive": 20034
+          },
+          "spanHash": "8d187cb17e1dbfbd2483bed61840cbcddf94651f1067018d6fbe04d807050b96",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-037-Jt.txt"
+        },
+        {
+          "id": "MPA-SOURCE-040",
+          "name": "sl",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/tab-content-24fe1f531bbe.js",
+          "sourceHash": "508ea1b1ef8a1cc9df9adaf19fa3648e2eab7df4691298c6e9adafe85b44649f",
+          "byteRange": {
+            "start": 66767,
+            "endExclusive": 123481
+          },
+          "spanHash": "69f9525aa5852483be32fc1915a6797fad3992e4eaa276f32c91e669a43a618b",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MPA-SOURCE-040-sl.txt"
+        }
+      ],
+      "imports": [
+        "capability/conversation/presentation/native browser providers",
+        "main run-command transport"
+      ],
+      "exports": [
+        "open-browser-tab receiver and focusBrowserAddressBar registration"
+      ],
+      "sharedState": [
+        "browser tab/pending intent/input draft/focus/origin context"
+      ],
+      "sideEffects": [
+        "create/present/close delegation, focus/select, subscription cleanup"
+      ],
+      "thirdPartyDependencies": [
+        "React/memo/state/router and OWL browser host through dependencies; reload remains main-side adapter"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/browser/browser-command-adapter.tsx",
+      "assignment": "Inferred maintenance boundary; not original file recovery; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MPA-E108"
+    }
+  ],
+  "reusedMaintenanceUnits": [
+    {
+      "id": "MENU-UNIT-application-menu",
+      "ref": {
+        "path": "native-menu-roles-v1.json",
+        "bytes": 866774,
+        "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+        "jsonPointer": "/maintenanceUnits/0"
+      }
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MPA-SOURCE-001",
+      "name": "pZe",
+      "role": "complete original top-level function",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3392513,
+        "endExclusive": 3394238
+      },
+      "spanHash": "5882643e955bfdf6796ab313bac7c51cf742f070fed4fc6962e1dbaf2cf09b06",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-001-pZe.txt",
+      "evidenceId": "MPA-E001"
+    },
+    {
+      "id": "MPA-SOURCE-002",
+      "name": "CZe",
+      "role": "complete original top-level function",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3401957,
+        "endExclusive": 3422782
+      },
+      "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-002-CZe.txt",
+      "evidenceId": "MPA-E002"
+    },
+    {
+      "id": "MPA-SOURCE-003",
+      "name": "context-focusBrowserAddressBar",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1639364,
+        "endExclusive": 1639388
+      },
+      "spanHash": "4170977c80ef8e946f0440503c8c8e8185d4d24830a66a0e114bcfb3be5884de",
+      "nodeType": "TemplateLiteral",
+      "savedPath": "source/MPA-SOURCE-003-context-focusBrowserAddressBar.txt",
+      "evidenceId": "MPA-E003"
+    },
+    {
+      "id": "MPA-SOURCE-004",
+      "name": "FW",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1641447,
+        "endExclusive": 1642386
+      },
+      "spanHash": "e542365b940d5403331d19c17e6f86fdc05fea2a1241b1625217bb82b5dad212",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-004-FW.txt",
+      "evidenceId": "MPA-E004"
+    },
+    {
+      "id": "MPA-SOURCE-005",
+      "name": "bJ",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1866399,
+        "endExclusive": 1888207
+      },
+      "spanHash": "56f1c35dbe9406a8cd0b976c67c37134ac5257cc1bdc0bde3f95382f7e7b65a8",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-005-bJ.txt",
+      "evidenceId": "MPA-E005"
+    },
+    {
+      "id": "MPA-SOURCE-006",
+      "name": "CJ",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1895306,
+        "endExclusive": 1895638
+      },
+      "spanHash": "56c8da0eb9b8f3bc47ca9652bb50abdbb8977d037993124462ff0d83533e1cb6",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-006-CJ.txt",
+      "evidenceId": "MPA-E006"
+    },
+    {
+      "id": "MPA-SOURCE-007",
+      "name": "UAe",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1903432,
+        "endExclusive": 1904770
+      },
+      "spanHash": "289be206338f70e71e98222f3709ed1bfe8f8cc8db4d3d425d60616b4b4ae5ec",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-007-UAe.txt",
+      "evidenceId": "MPA-E007"
+    },
+    {
+      "id": "MPA-SOURCE-008",
+      "name": "context-open-browser-tab",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1979003,
+        "endExclusive": 1979026
+      },
+      "spanHash": "22aab38dfc59fb9c18782993b9cab59cb1a9bd5b6a31bcb7ad13374730a00c2e",
+      "nodeType": "ObjectProperty",
+      "savedPath": "source/MPA-SOURCE-008-context-open-browser-tab.txt",
+      "evidenceId": "MPA-E008"
+    },
+    {
+      "id": "MPA-SOURCE-009",
+      "name": "context-open-browser-tab",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2084694,
+        "endExclusive": 2084751
+      },
+      "spanHash": "4c2117a545b17f533e1deda577ec5c70bc6a7b4a5862f3d06b9e0048f656cc27",
+      "nodeType": "SwitchCase",
+      "savedPath": "source/MPA-SOURCE-009-context-open-browser-tab.txt",
+      "evidenceId": "MPA-E009"
+    },
+    {
+      "id": "MPA-SOURCE-010",
+      "name": "C7",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3427422,
+        "endExclusive": 3427879
+      },
+      "spanHash": "d9d57f761291b398a1683ecf6b983666f9e174a20fcf14c1ccf63881be5bb6f6",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-010-C7.txt",
+      "evidenceId": "MPA-E010"
+    },
+    {
+      "id": "MPA-SOURCE-011",
+      "name": "context-reloadBrowserPage",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1352877,
+        "endExclusive": 1352899
+      },
+      "spanHash": "d86cc5f0906649493ac0da7a61ecc0409c8e80f3247e6fc3cbbfb8bda08e5403",
+      "nodeType": "ObjectProperty",
+      "savedPath": "source/MPA-SOURCE-011-context-reloadBrowserPage.txt",
+      "evidenceId": "MPA-E011"
+    },
+    {
+      "id": "MPA-SOURCE-012",
+      "name": "context-toggleFileTreePanel",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1384261,
+        "endExclusive": 1384285
+      },
+      "spanHash": "2a9626bcd2e11d375bb9f062d8592151cf12780a60862d3b5f234f7831c05de4",
+      "nodeType": "ObjectProperty",
+      "savedPath": "source/MPA-SOURCE-012-context-toggleFileTreePanel.txt",
+      "evidenceId": "MPA-E012"
+    },
+    {
+      "id": "MPA-SOURCE-013",
+      "name": "context-togglePinnedSummary",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1385097,
+        "endExclusive": 1385121
+      },
+      "spanHash": "f0c4d8ede1d4346952641b85d2918f38e8b7e8f23b8a90d7c5add89c6e2bc60a",
+      "nodeType": "ObjectProperty",
+      "savedPath": "source/MPA-SOURCE-013-context-togglePinnedSummary.txt",
+      "evidenceId": "MPA-E013"
+    },
+    {
+      "id": "MPA-SOURCE-014",
+      "name": "context-stepWorkspaceLayout",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1386619,
+        "endExclusive": 1386643
+      },
+      "spanHash": "4f18ef620002969d94809e8c8ca6eff81ceffe594129aac085af139aed03c9ea",
+      "nodeType": "ObjectProperty",
+      "savedPath": "source/MPA-SOURCE-014-context-stepWorkspaceLayout.txt",
+      "evidenceId": "MPA-E014"
+    },
+    {
+      "id": "MPA-SOURCE-015",
+      "name": "context-focusBrowserAddressBar",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1389584,
+        "endExclusive": 1389611
+      },
+      "spanHash": "a0f5a6fe656fe8f028f301110aa75e77ad26f1c5a5bc89c22bdf5a004a094f4b",
+      "nodeType": "ObjectProperty",
+      "savedPath": "source/MPA-SOURCE-015-context-focusBrowserAddressBar.txt",
+      "evidenceId": "MPA-E015"
+    },
+    {
+      "id": "MPA-SOURCE-016",
+      "name": "context-focusBrowserAddressBar",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1396043,
+        "endExclusive": 1396067
+      },
+      "spanHash": "4170977c80ef8e946f0440503c8c8e8185d4d24830a66a0e114bcfb3be5884de",
+      "nodeType": "TemplateLiteral",
+      "savedPath": "source/MPA-SOURCE-016-context-focusBrowserAddressBar.txt",
+      "evidenceId": "MPA-E016"
+    },
+    {
+      "id": "MPA-SOURCE-017",
+      "name": "context-stepWorkspaceLayout",
+      "role": "literal containing source context",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1400906,
+        "endExclusive": 1400946
+      },
+      "spanHash": "8e91f2efcb42dcfa9e5ec667525a4a843f7036a57642318e7b34973f801c924d",
+      "nodeType": "ObjectProperty",
+      "savedPath": "source/MPA-SOURCE-017-context-stepWorkspaceLayout.txt",
+      "evidenceId": "MPA-E017"
+    },
+    {
+      "id": "MPA-SOURCE-018",
+      "name": "Nw",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1498604,
+        "endExclusive": 1501107
+      },
+      "spanHash": "b9e6a2ed449e6e09276e4fc842d61d170f260123285a8dcd33797ae8f3bde888",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-018-Nw.txt",
+      "evidenceId": "MPA-E018"
+    },
+    {
+      "id": "MPA-SOURCE-019",
+      "name": "n6n",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2698227,
+        "endExclusive": 2703211
+      },
+      "spanHash": "f0cff3205ffa9ff3309f593d26948ef1ce38a7692da83ea2e9e6738cef965fd2",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-019-n6n.txt",
+      "evidenceId": "MPA-E019"
+    },
+    {
+      "id": "MPA-SOURCE-020",
+      "name": "o6n",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2704021,
+        "endExclusive": 2744305
+      },
+      "spanHash": "39b36fc28118c383a81a4c0a85139b4beda27f154d7fb71b76a275d2f4667072",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-020-o6n.txt",
+      "evidenceId": "MPA-E020"
+    },
+    {
+      "id": "MPA-SOURCE-021",
+      "name": "z6n",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2749701,
+        "endExclusive": 2750685
+      },
+      "spanHash": "5fca9cab0258d4a3266f2f0b27c07d66e9a46180a26516076c2e4999f9b805ef",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-021-z6n.txt",
+      "evidenceId": "MPA-E021"
+    },
+    {
+      "id": "MPA-SOURCE-022",
+      "name": "Qni",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4084486,
+        "endExclusive": 4084896
+      },
+      "spanHash": "608869f45cba43d4cb34413182d6c5aff3460f0d9916354a2099bce5f90b9930",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-022-Qni.txt",
+      "evidenceId": "MPA-E022"
+    },
+    {
+      "id": "MPA-SOURCE-023",
+      "name": "registration-toggle-sidebar",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4084871,
+        "endExclusive": 4084895
+      },
+      "spanHash": "4184bebae5943da14205589656caf8d5174aadf290a42e82b9262bca882832c9",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-023-registration-toggle-sidebar.txt",
+      "evidenceId": "MPA-E023"
+    },
+    {
+      "id": "MPA-SOURCE-024",
+      "name": "import-xs",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 95660,
+        "endExclusive": 136889
+      },
+      "spanHash": "1be551b2878597d55352877c0f2caeeb354161f8b815eccd831da6daff82db62",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-024-import-xs.txt",
+      "evidenceId": "MPA-E024"
+    },
+    {
+      "id": "MPA-SOURCE-025",
+      "name": "Gfa",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5495378,
+        "endExclusive": 5496528
+      },
+      "spanHash": "1d53c87387b075a610cdcea1c0bc162a304132576e75fe1e3d4f664019e2bdae",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-025-Gfa.txt",
+      "evidenceId": "MPA-E025"
+    },
+    {
+      "id": "MPA-SOURCE-026",
+      "name": "registration-focusBrowserAddressBar",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5496063,
+        "endExclusive": 5496137
+      },
+      "spanHash": "2385a698ae059b0ef12fa51ac89d5b01e044056c00c8e4ecb4d84c8098aaf67e",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-026-registration-focusBrowserAddressBar.txt",
+      "evidenceId": "MPA-E026"
+    },
+    {
+      "id": "MPA-SOURCE-027",
+      "name": "UQs",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9256057,
+        "endExclusive": 9256736
+      },
+      "spanHash": "abaceb04a62170d5f730caaebc6f0ff62186961b20690cc74b9fab8759d06e95",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-027-UQs.txt",
+      "evidenceId": "MPA-E027"
+    },
+    {
+      "id": "MPA-SOURCE-028",
+      "name": "Fsc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9626640,
+        "endExclusive": 9651792
+      },
+      "spanHash": "41c172f42fc053658827635051d20cb866ff48be1dbee8cbf19fc95b4da6cbcb",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-028-Fsc.txt",
+      "evidenceId": "MPA-E028"
+    },
+    {
+      "id": "MPA-SOURCE-029",
+      "name": "Ws",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 32350,
+        "endExclusive": 36858
+      },
+      "spanHash": "3b35a3899516962030ca99c8542d57e95f621e642e4c58395b138c45d5fd877d",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-029-Ws.txt",
+      "evidenceId": "MPA-E029"
+    },
+    {
+      "id": "MPA-SOURCE-030",
+      "name": "ac",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 46646,
+        "endExclusive": 48386
+      },
+      "spanHash": "f1d815ffb73eb299cf6331d8d7fa913c8fe5dba73cda93242d8ce76de655101c",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-030-ac.txt",
+      "evidenceId": "MPA-E030"
+    },
+    {
+      "id": "MPA-SOURCE-031",
+      "name": "Gc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 70325,
+        "endExclusive": 72024
+      },
+      "spanHash": "9c8f9fdd63c9aa49dd272065efdc9c5783e28d788526df51d39fc5fcdadf7404",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-031-Gc.txt",
+      "evidenceId": "MPA-E031"
+    },
+    {
+      "id": "MPA-SOURCE-032",
+      "name": "registration-toggle-file-tree-panel",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 71469,
+        "endExclusive": 71501
+      },
+      "spanHash": "3592c66632859acdfc9bb4311d2653d19d7594fcb89a28ce5ee32c1c9fa2ea99",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-032-registration-toggle-file-tree-panel.txt",
+      "evidenceId": "MPA-E032"
+    },
+    {
+      "id": "MPA-SOURCE-033",
+      "name": "import-ce",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 6009,
+        "endExclusive": 7489
+      },
+      "spanHash": "d8b9f6ce16d71d17dfe14c53aa5a92a2c5e9c405eb25ca13b2d0ddaba5f35c88",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-033-import-ce.txt",
+      "evidenceId": "MPA-E033"
+    },
+    {
+      "id": "MPA-SOURCE-034",
+      "name": "qc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 72356,
+        "endExclusive": 74532
+      },
+      "spanHash": "481254c87e5aafcaacba165cc20ceecbdc9090fabb3ec63510bcb5742b94e565",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-034-qc.txt",
+      "evidenceId": "MPA-E034"
+    },
+    {
+      "id": "MPA-SOURCE-035",
+      "name": "registration-toggle-bottom-panel",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 73064,
+        "endExclusive": 73091
+      },
+      "spanHash": "fbb00e53ff03502a1b71f493edf5ba786e133371d2bd214a4ed3656b6755ef2d",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-035-registration-toggle-bottom-panel.txt",
+      "evidenceId": "MPA-E035"
+    },
+    {
+      "id": "MPA-SOURCE-036",
+      "name": "registration-toggle-terminal",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 73198,
+        "endExclusive": 73221
+      },
+      "spanHash": "692e59e5fbc7b4117761d6be0fa6a850e9305021e957f6c67fc6fed83cc0c184",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-036-registration-toggle-terminal.txt",
+      "evidenceId": "MPA-E036"
+    },
+    {
+      "id": "MPA-SOURCE-037",
+      "name": "Jt",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/open-handler-8645fceb7875.js",
+      "sourceHash": "fa18245d12e9c164cd90947cac81f81249314ea8df7b9816cbe150875926d917",
+      "byteRange": {
+        "start": 3825,
+        "endExclusive": 20034
+      },
+      "spanHash": "8d187cb17e1dbfbd2483bed61840cbcddf94651f1067018d6fbe04d807050b96",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-037-Jt.txt",
+      "evidenceId": "MPA-E037"
+    },
+    {
+      "id": "MPA-SOURCE-038",
+      "name": "registration-open-browser-tab",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/open-handler-8645fceb7875.js",
+      "sourceHash": "fa18245d12e9c164cd90947cac81f81249314ea8df7b9816cbe150875926d917",
+      "byteRange": {
+        "start": 14951,
+        "endExclusive": 14978
+      },
+      "spanHash": "a96517b327735dc687a996c09467492ab8b30fba257f3dd5b8cab99cc16593ca",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-038-registration-open-browser-tab.txt",
+      "evidenceId": "MPA-E038"
+    },
+    {
+      "id": "MPA-SOURCE-039",
+      "name": "import-w",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/open-handler-8645fceb7875.js",
+      "sourceHash": "fa18245d12e9c164cd90947cac81f81249314ea8df7b9816cbe150875926d917",
+      "byteRange": {
+        "start": 327,
+        "endExclusive": 900
+      },
+      "spanHash": "ef1172a68726c4b7afedbe7c3b2821bb8701eb6d8c5a6f2cfebab7db6adaec81",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-039-import-w.txt",
+      "evidenceId": "MPA-E039"
+    },
+    {
+      "id": "MPA-SOURCE-040",
+      "name": "sl",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/tab-content-24fe1f531bbe.js",
+      "sourceHash": "508ea1b1ef8a1cc9df9adaf19fa3648e2eab7df4691298c6e9adafe85b44649f",
+      "byteRange": {
+        "start": 66767,
+        "endExclusive": 123481
+      },
+      "spanHash": "69f9525aa5852483be32fc1915a6797fad3992e4eaa276f32c91e669a43a618b",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-040-sl.txt",
+      "evidenceId": "MPA-E040"
+    },
+    {
+      "id": "MPA-SOURCE-041",
+      "name": "registration-focusBrowserAddressBar",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/tab-content-24fe1f531bbe.js",
+      "sourceHash": "508ea1b1ef8a1cc9df9adaf19fa3648e2eab7df4691298c6e9adafe85b44649f",
+      "byteRange": {
+        "start": 90201,
+        "endExclusive": 90235
+      },
+      "spanHash": "cda14e4f3534088606dffaace908857c144a2267f35839d7e76a55b91b323184",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-041-registration-focusBrowserAddressBar.txt",
+      "evidenceId": "MPA-E041"
+    },
+    {
+      "id": "MPA-SOURCE-042",
+      "name": "import-vn",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/tab-content-24fe1f531bbe.js",
+      "sourceHash": "508ea1b1ef8a1cc9df9adaf19fa3648e2eab7df4691298c6e9adafe85b44649f",
+      "byteRange": {
+        "start": 2472,
+        "endExclusive": 3596
+      },
+      "spanHash": "f14b73ae18230553338ab485328d333d17a9d64ab5c76acd17af6e36c19c22d2",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-042-import-vn.txt",
+      "evidenceId": "MPA-E042"
+    },
+    {
+      "id": "MPA-SOURCE-043",
+      "name": "Be",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/layout-6ab09f5ca1ac.js",
+      "sourceHash": "67820c308a1697e97df42771b1048558a7384b87578f4d9985d0f3bb14bc55f5",
+      "byteRange": {
+        "start": 5565,
+        "endExclusive": 8460
+      },
+      "spanHash": "252ff859f5181bb14dfbabd3902811ffbb820e31332fd19d2ebb520749bda29c",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-043-Be.txt",
+      "evidenceId": "MPA-E043"
+    },
+    {
+      "id": "MPA-SOURCE-044",
+      "name": "registration-toggleFileTreePanel",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/layout-6ab09f5ca1ac.js",
+      "sourceHash": "67820c308a1697e97df42771b1048558a7384b87578f4d9985d0f3bb14bc55f5",
+      "byteRange": {
+        "start": 6930,
+        "endExclusive": 6959
+      },
+      "spanHash": "c940f1841df6c37a27f8915a53deab70266360961d0fae298d9c6a4170e309a8",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-044-registration-toggleFileTreePanel.txt",
+      "evidenceId": "MPA-E044"
+    },
+    {
+      "id": "MPA-SOURCE-045",
+      "name": "import-ee",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/layout-6ab09f5ca1ac.js",
+      "sourceHash": "67820c308a1697e97df42771b1048558a7384b87578f4d9985d0f3bb14bc55f5",
+      "byteRange": {
+        "start": 383,
+        "endExclusive": 815
+      },
+      "spanHash": "c83357e13ac7692bec10dcd180f9a67257043df2682276d756a8b09ee7256f3c",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-045-import-ee.txt",
+      "evidenceId": "MPA-E045"
+    },
+    {
+      "id": "MPA-SOURCE-046",
+      "name": "Xt",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/filename-menu-actions-948ec7d3e413.js",
+      "sourceHash": "3755e5e68f1737368a71d26641a4ae17570e86da9f024077b9ce81fc2a46294d",
+      "byteRange": {
+        "start": 9541,
+        "endExclusive": 15046
+      },
+      "spanHash": "556c8f5a87dde7d55eab785f00838c655dc176c5a4b61172812162c3ae5f6998",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-046-Xt.txt",
+      "evidenceId": "MPA-E046"
+    },
+    {
+      "id": "MPA-SOURCE-047",
+      "name": "registration-toggleFileTreePanel",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/filename-menu-actions-948ec7d3e413.js",
+      "sourceHash": "3755e5e68f1737368a71d26641a4ae17570e86da9f024077b9ce81fc2a46294d",
+      "byteRange": {
+        "start": 10795,
+        "endExclusive": 10826
+      },
+      "spanHash": "5bd89b2befadfe3ab0588607481583c2d2746286c75283d2bf14ed0732708266",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-047-registration-toggleFileTreePanel.txt",
+      "evidenceId": "MPA-E047"
+    },
+    {
+      "id": "MPA-SOURCE-048",
+      "name": "import-Me",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/filename-menu-actions-948ec7d3e413.js",
+      "sourceHash": "3755e5e68f1737368a71d26641a4ae17570e86da9f024077b9ce81fc2a46294d",
+      "byteRange": {
+        "start": 733,
+        "endExclusive": 1257
+      },
+      "spanHash": "c102b0e7b42a84ae10e6ee881933edbc7209d8f819088933827c0d0209f3c1e6",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-048-import-Me.txt",
+      "evidenceId": "MPA-E048"
+    },
+    {
+      "id": "MPA-SOURCE-049",
+      "name": "Ne",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+      "sourceHash": "d5b8a646f85b87239ca7c994d8f552c5eb750955be3ea291770343d74148fd60",
+      "byteRange": {
+        "start": 1470,
+        "endExclusive": 2542
+      },
+      "spanHash": "e27c360bf4b1e81aa8c14d7f4c6c316154c9f07e7ca5059f8c4e89de34038660",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-049-Ne.txt",
+      "evidenceId": "MPA-E049"
+    },
+    {
+      "id": "MPA-SOURCE-050",
+      "name": "registration-togglePinnedSummary",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+      "sourceHash": "d5b8a646f85b87239ca7c994d8f552c5eb750955be3ea291770343d74148fd60",
+      "byteRange": {
+        "start": 1861,
+        "endExclusive": 1887
+      },
+      "spanHash": "c78dfd69b5bb180a6ea71b4b2f3ef9388c87c12483f06a9cfdd3a29befc1e198",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-050-registration-togglePinnedSummary.txt",
+      "evidenceId": "MPA-E050"
+    },
+    {
+      "id": "MPA-SOURCE-051",
+      "name": "import-N",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+      "sourceHash": "d5b8a646f85b87239ca7c994d8f552c5eb750955be3ea291770343d74148fd60",
+      "byteRange": {
+        "start": 386,
+        "endExclusive": 548
+      },
+      "spanHash": "9ec4399aa1760b5f5539d3cd78f90f1b14664b0bfa97064cb316b44b2292808c",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-051-import-N.txt",
+      "evidenceId": "MPA-E051"
+    },
+    {
+      "id": "MPA-SOURCE-052",
+      "name": "J",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+      "byteRange": {
+        "start": 734,
+        "endExclusive": 5050
+      },
+      "spanHash": "68dccec98d2e2ea16d34bddc0fffd81a6adc0bcf49a3bfbe1e7c81c67c0d44db",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-052-J.txt",
+      "evidenceId": "MPA-E052"
+    },
+    {
+      "id": "MPA-SOURCE-053",
+      "name": "registration-stepWorkspaceLayout",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+      "byteRange": {
+        "start": 2755,
+        "endExclusive": 2783
+      },
+      "spanHash": "33a5bda7b2388f5447593dedee61c5b15735b4611cbc853232b68f6f2472b2b8",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-053-registration-stepWorkspaceLayout.txt",
+      "evidenceId": "MPA-E053"
+    },
+    {
+      "id": "MPA-SOURCE-054",
+      "name": "import-C",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+      "byteRange": {
+        "start": 245,
+        "endExclusive": 598
+      },
+      "spanHash": "775c16d1e96b7abc4b577e0806de384a32f0caf2dccfe72a0d1f1331516b1bf2",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-054-import-C.txt",
+      "evidenceId": "MPA-E054"
+    },
+    {
+      "id": "MPA-SOURCE-055",
+      "name": "fc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 37647,
+        "endExclusive": 39760
+      },
+      "spanHash": "84b1d2f297f48a123305648e86e63b4bfe988aaa36184d042609a9aace842965",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-055-fc.txt",
+      "evidenceId": "MPA-E055"
+    },
+    {
+      "id": "MPA-SOURCE-056",
+      "name": "registration-togglePinnedSummary",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 38684,
+        "endExclusive": 38711
+      },
+      "spanHash": "a9660d916f72e671d9a83f1e197b94b259061cf64ffccc3d13f8ccdb1e0b0bbf",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-056-registration-togglePinnedSummary.txt",
+      "evidenceId": "MPA-E056"
+    },
+    {
+      "id": "MPA-SOURCE-057",
+      "name": "import-jn",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 1862,
+        "endExclusive": 3493
+      },
+      "spanHash": "b6ac948d07502ed5298af3382936e5bc59a17399763a4d3e6d7e16a724a2d7b2",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-057-import-jn.txt",
+      "evidenceId": "MPA-E057"
+    },
+    {
+      "id": "MPA-SOURCE-058",
+      "name": "mh",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 55596,
+        "endExclusive": 57761
+      },
+      "spanHash": "410b7fa41a8b7cd0e9a6d20f4f8d930954a59de7c03e933186ccf84075c4de10",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-058-mh.txt",
+      "evidenceId": "MPA-E058"
+    },
+    {
+      "id": "MPA-SOURCE-059",
+      "name": "registration-togglePinnedSummary",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 56102,
+        "endExclusive": 56129
+      },
+      "spanHash": "fc8a5e27d55a3a432844009438b7048c09a3efb2d06980f0d63530ecc3ec9132",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MPA-SOURCE-059-registration-togglePinnedSummary.txt",
+      "evidenceId": "MPA-E059"
+    },
+    {
+      "id": "MPA-SOURCE-060",
+      "name": "import-Vr",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 7005,
+        "endExclusive": 10393
+      },
+      "spanHash": "fdb264f70152b064d7d07f8ed183609e978b2c7a1867969a899dcecf42d51cbd",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-060-import-Vr.txt",
+      "evidenceId": "MPA-E060"
+    },
+    {
+      "id": "MPA-SOURCE-061",
+      "name": "Ah",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 63637,
+        "endExclusive": 63745
+      },
+      "spanHash": "76a31dcdf1cdbef793e7a27beb73eec2d5db26fd2120e9b9fa668f8d13dd3339",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-061-Ah.txt",
+      "evidenceId": "MPA-E061"
+    },
+    {
+      "id": "MPA-SOURCE-062",
+      "name": "$Rt",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1371365,
+        "endExclusive": 1371413
+      },
+      "spanHash": "5fc8e69e4f9057008fccd2499f0831c2c9177f04e45c5cc848b60f2b146f4a87",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-062-_Rt.txt",
+      "evidenceId": "MPA-E062"
+    },
+    {
+      "id": "MPA-SOURCE-063",
+      "name": "export-Dft",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11342948,
+        "endExclusive": 11342958
+      },
+      "spanHash": "2a8603e060a0afc59ed0c15ccc2fe49ba9a6137fe2741bd834d3b6b1f4d93a3d",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-063-export-Dft.txt",
+      "evidenceId": "MPA-E063"
+    },
+    {
+      "id": "MPA-SOURCE-064",
+      "name": "Zma",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5531073,
+        "endExclusive": 5531233
+      },
+      "spanHash": "cacd49bfb29164b853d06785becd2ee480ada9aca013ef235cde6758e2ca686b",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-064-Zma.txt",
+      "evidenceId": "MPA-E064"
+    },
+    {
+      "id": "MPA-SOURCE-065",
+      "name": "export-Hst",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11351263,
+        "endExclusive": 11351273
+      },
+      "spanHash": "fa104b3a368a9b090eaf017341c969a6bceca0b38e3897dcdc42fe813d0bd52e",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-065-export-Hst.txt",
+      "evidenceId": "MPA-E065"
+    },
+    {
+      "id": "MPA-SOURCE-066",
+      "name": "GNa",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5915115,
+        "endExclusive": 5915151
+      },
+      "spanHash": "5872f9dcf9fad9cfd8b4c557aecb88c67c456f730915505070944891bd2adc4d",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-066-GNa.txt",
+      "evidenceId": "MPA-E066"
+    },
+    {
+      "id": "MPA-SOURCE-067",
+      "name": "export-IBn",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11351840,
+        "endExclusive": 11351849
+      },
+      "spanHash": "4a13d72f2e261f17dd5c104af934aa976372914b6eb6d545cb87cd81c3fbceeb",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-067-export-IBn.txt",
+      "evidenceId": "MPA-E067"
+    },
+    {
+      "id": "MPA-SOURCE-068",
+      "name": "Pw",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1501107,
+        "endExclusive": 1501954
+      },
+      "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-068-Pw.txt",
+      "evidenceId": "MPA-E068"
+    },
+    {
+      "id": "MPA-SOURCE-069",
+      "name": "export-Wst",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11380812,
+        "endExclusive": 11380822
+      },
+      "spanHash": "efdbd9270cba6d92b1ff6320619ad5cdf1880e1c965230a3f3264e6cb43c927e",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-069-export-Wst.txt",
+      "evidenceId": "MPA-E069"
+    },
+    {
+      "id": "MPA-SOURCE-070",
+      "name": "UNa",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5913654,
+        "endExclusive": 5913711
+      },
+      "spanHash": "69408e7f14d767c74da5ecddecb4ccd42e1d9b70bd48a6a042a1eb0e99082ff3",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-070-UNa.txt",
+      "evidenceId": "MPA-E070"
+    },
+    {
+      "id": "MPA-SOURCE-071",
+      "name": "export-ect",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11398027,
+        "endExclusive": 11398037
+      },
+      "spanHash": "0e6898410a5062fe4419b34249e3806ebef6f6358119e27d5333430072493dad",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-071-export-ect.txt",
+      "evidenceId": "MPA-E071"
+    },
+    {
+      "id": "MPA-SOURCE-072",
+      "name": "$Na",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5915812,
+        "endExclusive": 5915935
+      },
+      "spanHash": "3fb95d372a33efb77f81a5de9ead8625fd6f92ad938dc740fe13ad5f312a82cb",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-072-_Na.txt",
+      "evidenceId": "MPA-E072"
+    },
+    {
+      "id": "MPA-SOURCE-073",
+      "name": "export-uYt",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11429449,
+        "endExclusive": 11429458
+      },
+      "spanHash": "3cf26058575852d6d9780981f0ff0a1008dbcffdf749e2851297e0c05c506cb0",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-073-export-uYt.txt",
+      "evidenceId": "MPA-E073"
+    },
+    {
+      "id": "MPA-SOURCE-074",
+      "name": "$H",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4107261,
+        "endExclusive": 4107347
+      },
+      "spanHash": "dcae59e30f1d562f6c97c17c4444f16bc3498ad4fdec03886e3daa48d6426d72",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-074-_H.txt",
+      "evidenceId": "MPA-E074"
+    },
+    {
+      "id": "MPA-SOURCE-075",
+      "name": "Hc",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 69729,
+        "endExclusive": 70045
+      },
+      "spanHash": "d844773c58ca86ae430860afd1d800cfebd7a87caa9793e70dc44d95126a40eb",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-075-Hc.txt",
+      "evidenceId": "MPA-E075"
+    },
+    {
+      "id": "MPA-SOURCE-076",
+      "name": "Uc",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 70045,
+        "endExclusive": 70257
+      },
+      "spanHash": "d7a8f3b09cf557be088f1977562e78502ad5a7c816c649dee84df731fef063b1",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-076-Uc.txt",
+      "evidenceId": "MPA-E076"
+    },
+    {
+      "id": "MPA-SOURCE-077",
+      "name": "support-import-xn",
+      "role": "complete supporting import declaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 7489,
+        "endExclusive": 9604
+      },
+      "spanHash": "5f7060e3e4d42bdcf9f0b46b3d1576fb651e51eaeeeab1dacdb4cb1446b87830",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-077-support-import-xn.txt",
+      "evidenceId": "MPA-E077"
+    },
+    {
+      "id": "MPA-SOURCE-078",
+      "name": "support-import-G",
+      "role": "complete supporting import declaration",
+      "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+      "byteRange": {
+        "start": 598,
+        "endExclusive": 660
+      },
+      "spanHash": "bfeb18443f6739f71994f57736d81dd70592ed8d9090d129c74f47b2e4962540",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-078-support-import-G.txt",
+      "evidenceId": "MPA-E078"
+    },
+    {
+      "id": "MPA-SOURCE-079",
+      "name": "V",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js",
+      "sourceHash": "9582fb17df85dc4affeb2107c2b79818f18f57b65add6f9909f0c7f677f5220c",
+      "byteRange": {
+        "start": 3780,
+        "endExclusive": 4042
+      },
+      "spanHash": "b91ecc535761b73dc3574b360d465b3ba1babe7c9d6f464171bb420541c4cee9",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-079-V.txt",
+      "evidenceId": "MPA-E079"
+    },
+    {
+      "id": "MPA-SOURCE-080",
+      "name": "export-n",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js",
+      "sourceHash": "9582fb17df85dc4affeb2107c2b79818f18f57b65add6f9909f0c7f677f5220c",
+      "byteRange": {
+        "start": 4100,
+        "endExclusive": 4106
+      },
+      "spanHash": "eef09cd0f9bbf6ae840c1552446743112fd1d4e8f40da98004112b3e582e73c7",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-080-export-n.txt",
+      "evidenceId": "MPA-E080"
+    },
+    {
+      "id": "MPA-SOURCE-081",
+      "name": "le",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "sourceHash": "6ab7fcc9e6cdf3b2f263deadc5263d1d7df6832d37c5d9bc77513e400ddf8fc3",
+      "byteRange": {
+        "start": 5050,
+        "endExclusive": 5206
+      },
+      "spanHash": "9f38de316f91527365678291e5d0ef487151fd0a66f723edd3a162184c48accd",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-081-le.txt",
+      "evidenceId": "MPA-E081"
+    },
+    {
+      "id": "MPA-SOURCE-082",
+      "name": "j",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/panel-visibility-b52b7c7c5b55.js",
+      "sourceHash": "ed0fc75271ba854f3a6d7747980b43abf625ac53a1f7fc12ab5c2e8e69a49002",
+      "byteRange": {
+        "start": 446,
+        "endExclusive": 1433
+      },
+      "spanHash": "6f9cd4081da33737e59fb08869f74cef7f32b00723713a224cbd765eab130de0",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-082-j.txt",
+      "evidenceId": "MPA-E082"
+    },
+    {
+      "id": "MPA-SOURCE-083",
+      "name": "export-n",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/panel-visibility-b52b7c7c5b55.js",
+      "sourceHash": "ed0fc75271ba854f3a6d7747980b43abf625ac53a1f7fc12ab5c2e8e69a49002",
+      "byteRange": {
+        "start": 1658,
+        "endExclusive": 1664
+      },
+      "spanHash": "c7576fbd8599de1ea2acfc51708be42ccf5e569d33d76c2ce2c0ecb79f864d37",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MPA-SOURCE-083-export-n.txt",
+      "evidenceId": "MPA-E083"
+    },
+    {
+      "id": "MPA-SOURCE-084",
+      "name": "support-import-K",
+      "role": "complete supporting import declaration",
+      "sourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+      "sourceHash": "d5b8a646f85b87239ca7c994d8f552c5eb750955be3ea291770343d74148fd60",
+      "byteRange": {
+        "start": 1242,
+        "endExclusive": 1332
+      },
+      "spanHash": "ccab78311c036d3b6f4a5566b3089859019506546dfa03a81082ecbb9425e01b",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-084-support-import-K.txt",
+      "evidenceId": "MPA-E084"
+    },
+    {
+      "id": "MPA-SOURCE-085",
+      "name": "support-import-Fo",
+      "role": "complete supporting import declaration",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 5340,
+        "endExclusive": 5431
+      },
+      "spanHash": "838c09fcc5125a058be912b07d0a931b905bffb95f40b5e556a9d95e44052082",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MPA-SOURCE-085-support-import-Fo.txt",
+      "evidenceId": "MPA-E085"
+    }
+  ],
+  "sourceJoins": [
+    {
+      "consumerSourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "local": "xn",
+      "imported": "Dft",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-077",
+      "exportUnit": "MPA-SOURCE-063",
+      "definitionUnit": "MPA-SOURCE-064",
+      "exportedLocal": "Zma",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "local": "Fn",
+      "imported": "Hst",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-077",
+      "exportUnit": "MPA-SOURCE-065",
+      "definitionUnit": "MPA-SOURCE-066",
+      "exportedLocal": "GNa",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "local": "Ln",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-077",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "local": "kr",
+      "imported": "Wst",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-077",
+      "exportUnit": "MPA-SOURCE-069",
+      "definitionUnit": "MPA-SOURCE-070",
+      "exportedLocal": "UNa",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "local": "gi",
+      "imported": "ect",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-077",
+      "exportUnit": "MPA-SOURCE-071",
+      "definitionUnit": "MPA-SOURCE-072",
+      "exportedLocal": "$Na",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "local": "C",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-054",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "local": "H",
+      "imported": "uYt",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-054",
+      "exportUnit": "MPA-SOURCE-073",
+      "definitionUnit": "MPA-SOURCE-074",
+      "exportedLocal": "$H",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/workspace-layout-step-handler-eaafa0c903fd.js",
+      "local": "G",
+      "imported": "n",
+      "module": "./panel-visibility-b52b7c7c5b55.js",
+      "sourceUnit": "MPA-SOURCE-078",
+      "exportUnit": "MPA-SOURCE-083",
+      "definitionUnit": "MPA-SOURCE-082",
+      "exportedLocal": "j",
+      "providerSourcePath": "app.asar/webview/assets/panel-visibility-b52b7c7c5b55.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+      "local": "N",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-051",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+      "local": "K",
+      "imported": "n",
+      "module": "./toggle-thread-summary-panel-42b8a2c077a1.js",
+      "sourceUnit": "MPA-SOURCE-084",
+      "exportUnit": "MPA-SOURCE-080",
+      "definitionUnit": "MPA-SOURCE-079",
+      "exportedLocal": "V",
+      "providerSourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "local": "jn",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-057",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "local": "Fo",
+      "imported": "n",
+      "module": "./toggle-thread-summary-panel-42b8a2c077a1.js",
+      "sourceUnit": "MPA-SOURCE-085",
+      "exportUnit": "MPA-SOURCE-080",
+      "definitionUnit": "MPA-SOURCE-079",
+      "exportedLocal": "V",
+      "providerSourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/tab-content-24fe1f531bbe.js",
+      "local": "vn",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-042",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/layout-6ab09f5ca1ac.js",
+      "local": "ee",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-045",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/filename-menu-actions-948ec7d3e413.js",
+      "local": "Me",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-048",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "local": "Vr",
+      "imported": "IBn",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MPA-SOURCE-060",
+      "exportUnit": "MPA-SOURCE-067",
+      "definitionUnit": "MPA-SOURCE-068",
+      "exportedLocal": "Pw",
+      "providerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js"
+    }
+  ],
+  "sourceQuery": {
+    "path": "raw/menu-panel-actions-v1/source-query.json",
+    "bytes": 78412,
+    "sha256": "523f7dbf5b9533e27fbffcb928cff4ca88ea36ed5a661483214366859b0e82b3"
+  },
+  "inputPins": [
+    {
+      "path": "feature-scope-v30.json",
+      "bytes": 2183718,
+      "sha256": "18c00f8ed5d0c91a158a9c178a8a9e561dffce9c11b46f9ea972b392e07a91eb"
+    },
+    {
+      "path": "feature-scope-v27-scenarios.json",
+      "bytes": 2020295,
+      "sha256": "a500406df2deb8a4feb7b654342abf54d58693fd773a54a000404675bf735e40"
+    },
+    {
+      "path": "restoration-coverage-v21.json",
+      "bytes": 1229068,
+      "sha256": "b961f38702e31535899cb7655cb4d6fa86517e928678734be683446d9e345d16"
+    },
+    {
+      "path": "legacy-entry-dispositions-v8.json",
+      "bytes": 1415490,
+      "sha256": "077ea00dcbbf7d85ac00c307d411a109371ca43e91a36fbfbb3879d2e79592a6"
+    },
+    {
+      "path": "native-menu-roles-v1.json",
+      "bytes": 866774,
+      "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+    },
+    {
+      "path": "menu-command-contracts.json",
+      "bytes": 10630684,
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf"
+    },
+    {
+      "path": "command-consumer-contracts.json",
+      "bytes": 397516,
+      "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba"
+    },
+    {
+      "path": "command-registration-contracts.json",
+      "bytes": 292164,
+      "sha256": "6a59f0a2287e186396b70c2aa54a22a9b12a0fee578b730ee7247ba0900a7193"
+    },
+    {
+      "path": "menu-thread-actions-v1.json",
+      "bytes": 117163,
+      "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7"
+    },
+    {
+      "path": "chat-branch-decisions.json",
+      "bytes": 12041,
+      "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+    },
+    {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    }
+  ],
+  "reusedDispatchContract": {
+    "path": "menu-thread-actions-v1.json",
+    "bytes": 117163,
+    "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+    "jsonPointer": "/goals/3"
+  },
+  "dependencyPolicy": {
+    "implementationCopiesGenerated": 0,
+    "catalog": {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    "runtime": "OWL/native terminal/browser adapters remain unqualified; selected JS callbacks do not prove replacement runtime compatibility.",
+    "renderer": "Third-party hook/state/router implementations are dependencies; first-party context handlers remain source to restore."
+  },
+  "counts": {
+    "selectedMenuSchemas": 10,
+    "normalizedUserGoals": 10,
+    "newFiniteDefinitions": 10,
+    "reusedFiniteDefinitions": 0,
+    "newUserOperations": 10,
+    "newScenarioSpecifications": 30,
+    "explicitEsmJoins": 16,
+    "savedSourceSelections": 85,
+    "fullOriginalProgramsParsed": 16,
+    "additionalMaintenanceProposals": 3,
+    "existingUnifiedResponsibilityOwnersUnchanged": 37,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0,
+    "newProductScenarioPasses": 0
+  },
+  "completedBatch": "SQ-02-menu-panels-03",
+  "questionCompleted": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limits": [
+    "All ten mode assignments remain unknown; local-summary consumer prevents whole-command removal by name.",
+    "Native terminal message and command callback differ; no behavioral equivalence claim.",
+    "Context-specific explorer consumers are not aliases merely because they share a command id.",
+    "Dynamic mount/priority, IPC transport, provider results and durability remain unresolved.",
+    "Hard browser reload belongs to another fixed schema; no app-window reload equivalence.",
+    "Static source/reference checks and unexecuted specs are not product/build/runtime acceptance."
+  ]
+}

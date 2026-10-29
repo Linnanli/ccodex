@@ -1,0 +1,265 @@
+{
+  "schemaVersion": "saved-dependency-import-decisions/1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "status": "candidate-integration-decisions-with-unresolved-closure",
+  "confidence": "inferred",
+  "metadataChecks": 27,
+  "errors": [],
+  "inputPins": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts-summary.md",
+      "bytes": 1692,
+      "sha256": "a862ffe4ff62e54847abaea14613cf5a0615d524af9f3b159ef7e0e63c2bed42"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+      "bytes": 52263,
+      "sha256": "ebbab02bc09ed523df2e00bc3934157fb189a4d5d627747633b2f0a48d12fc5d"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/summary.md",
+      "bytes": 3007,
+      "sha256": "bbf6e2ace38dc35681e6d90be9f3ac96e014c012084c96cb6d98af800ad8afc8"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/sentry-upstream-identity-contracts.json",
+      "bytes": 77112,
+      "sha256": "cf645052b52d3f18ee021678f28b46ddc8cab8b8805be7507aef28f90f0fb128"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/comparison.json",
+      "bytes": 67892,
+      "sha256": "a086ce502ed76e65808e2282f4bdd745ddd034f7d67a6227a18876f567bc4631"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/upstream/sentry-core-10.29.0.registry.json",
+      "bytes": 2964,
+      "sha256": "ffcd712f714f978753b9cefc74a654a4678b4ecb104deb7fbb52f3fcdbd910ca"
+    }
+  ],
+  "decisions": [
+    {
+      "area": "React core",
+      "candidate": "react@19.2.7 / react",
+      "decision": "候选入口",
+      "boundary": "有限 export/参数形状支持候选；实际安装锁、完整未修改状态未知。",
+      "sourcePointer": "/integrationProposal/entrypoints/core",
+      "sourceRefs": [
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/entrypoints/core",
+          "expectedValue": "react"
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/candidateDependencies/react",
+          "expectedValue": "19.2.7"
+        }
+      ]
+    },
+    {
+      "area": "React DOM",
+      "candidate": "react-dom@19.2.7 / react-dom",
+      "decision": "候选入口",
+      "boundary": "DOM root 入口；不得据同包名或相同形状与 client 入口互换。",
+      "sourcePointer": "/integrationProposal/entrypoints/dom",
+      "sourceRefs": [
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/entrypoints/dom",
+          "expectedValue": "react-dom"
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/candidateDependencies/react-dom",
+          "expectedValue": "19.2.7"
+        }
+      ]
+    },
+    {
+      "area": "React root mounting",
+      "candidate": "react-dom@19.2.7 / react-dom/client",
+      "decision": "createRoot 候选入口",
+      "boundary": "保留应用 wrapper；选定输出缺少 hydrateRoot/version 不证明整包裁剪或模式排除。",
+      "sourcePointer": "/integrationProposal/entrypoints/createRoot",
+      "sourceRefs": [
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/entrypoints/createRoot",
+          "expectedValue": "react-dom/client"
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/packages/1/exports/.~1client/default",
+          "expectedValue": "./client.js"
+        }
+      ]
+    },
+    {
+      "area": "Sentry public carrier",
+      "candidate": "@sentry/core@10.29.0 / root",
+      "decision": "两个已定位公开导入候选",
+      "boundary": "getMainCarrier、getGlobalSingleton；不能据此选择 browser/Node/Electron 前端 SDK。",
+      "sourcePointer": "/officialPublicCarrierContract",
+      "sourceRefs": [
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/sentry-upstream-identity-contracts.json",
+          "jsonPointer": "/officialPublicCarrierContract/esmCarrierReexport/selectedExportNames",
+          "expectedValue": [
+            "getGlobalSingleton",
+            "getMainCarrier"
+          ]
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/sentry-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/frontendSdkPackageDecision",
+          "expectedValue": "unresolved"
+        }
+      ]
+    },
+    {
+      "area": "Sentry private carrier",
+      "candidate": "getSentryCarrier; @sentry/core/carrier[.js]",
+      "decision": "不生成此导入",
+      "boundary": "root 未导出，package exports 无该子路径；先确认公共上层接口和应用调用契约，不复制私有实现。",
+      "sourcePointer": "/integrationProposal/unsupportedSelectedImports",
+      "sourceRefs": [
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/sentry-upstream-identity-contracts.json",
+          "jsonPointer": "/officialPublicCarrierContract/internalCarrierHelperNotPublic",
+          "expectedValue": "getSentryCarrier"
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/sentry-upstream-identity-contracts.json",
+          "jsonPointer": "/officialPublicCarrierContract/carrierDeepSubpathExported",
+          "expectedValue": false
+        }
+      ]
+    },
+    {
+      "area": "Additional dependency binding",
+      "candidate": "JSX/compiler/Scheduler; Sentry platform SDK",
+      "decision": "待识别",
+      "boundary": "React metadata 有 JSX/compiler exports、Scheduler 范围 ^0.27.0；实际消费绑定与精确 Scheduler 锁仍未知，Sentry 平台包未识别。",
+      "sourcePointer": "/integrationProposal",
+      "sourceRefs": [
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/schedulerDeclaredRange",
+          "expectedValue": "^0.27.0"
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/schedulerLockConfirmed",
+          "expectedValue": false
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/react-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/schedulerActualVersion",
+          "expectedValue": null
+        },
+        {
+          "sourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/sentry-upstream-identity-work/sentry-upstream-identity-contracts.json",
+          "jsonPointer": "/integrationProposal/frontendSdkPackageDecision",
+          "expectedValue": "unresolved"
+        }
+      ]
+    }
+  ],
+  "modificationDecision": {
+    "sentryDifferingFunctions": 6,
+    "jsonEncodingLeafDifferences": 27,
+    "upstreamModificationStatus": "unknown",
+    "wholeEquivalence": "unknown",
+    "reason": "literal versus imported SDK_VERSION encoding alone does not close original outer binding, constant-folding, initialization ordering or later writes; it proves neither modified nor unmodified implementation.",
+    "interpretation": "Six differing bounded function projections, not six literal occurrences; 27 JSON encoding leaves are not a count of semantic modifications."
+  },
+  "applicationWrapperResponsibilities": [
+    {
+      "area": "React",
+      "status": "inherited static interface / inferred application adapter",
+      "keep": [
+        "mountBrowserCommentRuntime",
+        "setSiteAnnotationPreview",
+        "dispose",
+        "root.render",
+        "root.unmount"
+      ],
+      "sourcePointer": "/inheritedFirstPartyAdapters",
+      "limit": "Interface preservation proposal; concrete lifecycle correctness/runtime/mode unverified."
+    },
+    {
+      "area": "Sentry",
+      "status": "proposal; caller/adapter identity unresolved",
+      "keep": [
+        "application SDK selection",
+        "initialization/configuration",
+        "host/global selection and ordering",
+        "existing truthy version behavior and singleton creation semantics"
+      ],
+      "sourcePointer": "/integrationProposal",
+      "limit": "No already identified complete adapter is claimed; selected static behavior is the future verification requirement."
+    }
+  ],
+  "closureConditions": [
+    {
+      "claim": "Rebuilt project lock",
+      "condition": "Explicit exact package versions/integrities and resolved transitive lock, including Scheduler. A newly authored lock must not be labeled the original baseline lock."
+    },
+    {
+      "claim": "Actual baseline installed lock",
+      "condition": "Saved authoritative baseline installation/lock provenance joined to these exact source identities; candidate version self-report and official archive identity are insufficient."
+    },
+    {
+      "claim": "Complete unmodified/equivalent implementation",
+      "condition": "A complete transformation/bundler correspondence or modification diff, with original binding/initialization/later-write closure and complete dependency coverage. The selected projections remain bounded evidence."
+    },
+    {
+      "claim": "Application compatibility",
+      "condition": "Identified application adapters/callers plus owned synthetic mount/state/update/unmount and Sentry initialization/version/singleton contract checks on reconstructed public imports; no such tests were run here."
+    },
+    {
+      "claim": "Application mode decision",
+      "condition": "Explicit mode/capability consumers and acceptance evidence; names, missing emitted exports or strings cannot establish exclusion."
+    }
+  ],
+  "scope": {
+    "reactHints": "4/17",
+    "sentryHints": "3/17",
+    "reactExportOccurrences": 114,
+    "reactParameterShapes": 92,
+    "reactLimitedForwarders": 38,
+    "reactRootMethodShapes": 4,
+    "sentryParameterShapes": 9,
+    "sentryEqualOperationProjections": 3,
+    "targetOrPackageInstallation": false,
+    "packageLockAuthored": false,
+    "wholeOriginalReadOrParsed": false,
+    "targetExecutionUiNetworkOrModel": false,
+    "completeEquivalenceConfirmed": false,
+    "runtimeOrModeConfirmed": false
+  },
+  "limits": [
+    "Only saved safe metadata and public entrypoint/interface projection used; no raw HTTP headers, complete target factory text or implementation copies.",
+    "No directory hash inventory repeated; six consumed input artifacts alone are pinned.",
+    "Recommendations are prospective reconstruction decisions, not target runtime observations or successful restoration claims."
+  ],
+  "wordingAndPointerDelta": {
+    "scope": "one Markdown wording replacement and explicit source refs for six existing decision rows",
+    "previousDecisionJson": {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/dependency-import-decisions-work/attempt-02/before/decisions.json",
+      "bytes": 7445,
+      "sha256": "fbf9f9d178767aa17fbbd44b57d6dd3450b0ba17e566938a2418f5bac24a1762"
+    },
+    "previousDecisionMarkdown": {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/dependency-import-decisions-work/attempt-02/before/decisions.md",
+      "bytes": 3030,
+      "sha256": "7ccfbb66689485b2dc82202a5e543252c23cfcd3ec91e788c529b42ddce01a4a"
+    },
+    "pointerChecks": 14,
+    "errors": [],
+    "newTargetOrPackageSemanticInspection": false,
+    "old": "Sentry 六处 literal/SDK_VERSION 差异不足以判定修改",
+    "new": "Sentry 六组有限操作投影中的版本键编码差异不足以判定修改"
+  }
+}

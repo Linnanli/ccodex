@@ -1,0 +1,1781 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "Seven existing local-thread goals: source-qualified retention and product-mode boundaries",
+  "plan": {
+    "path": "docs/reverse-engineering/analysis-plan.md",
+    "bytes": 16461,
+    "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+  },
+  "baseFeatureLedger": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v48.json",
+    "bytes": 2810067,
+    "sha256": "f29f5fdd7ef4a7339fbf3d644237f6b311ed38f870d37612f7142279a3aa564f"
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-thread-actions-v1.json",
+      "bytes": 117163,
+      "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+      "bytes": 148002,
+      "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+      "bytes": 347935,
+      "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+      "bytes": 343849,
+      "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507"
+    }
+  ],
+  "previousModeOverlay": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v1.json",
+    "bytes": 1642,
+    "sha256": "41582657e7c9be066d7dade125b7cc83395968f6f65c69c907a0f4db5a39b652"
+  },
+  "decisions": [
+    {
+      "featureId": "FSC-0397",
+      "name": "重命名当前线程或待建工作树",
+      "previousMode": "unknown",
+      "mode": "unknown",
+      "method": "static-code",
+      "confidence": "product-ownership-insufficient",
+      "evidenceIds": [
+        "LTM-F01"
+      ],
+      "claim": "ac 将待建 worktree 改名委派给 Cn，将已有线程改名交给 renameThread 并传 host/previousTitle；归档预览移除改名入口。hn 保留注入 override 和 pending 映射，Jda 仍有动作路径、主机 title ack 与历史回放分支。",
+      "sourceUnitIds": [
+        "LCH-S0001",
+        "MTA-SOURCE-027",
+        "MTA-SOURCE-006"
+      ],
+      "sourceReferences": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-thread-actions-v1.json",
+          "bytes": 117163,
+          "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+          "jsonPointer": "/goals/6"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+          "bytes": 343849,
+          "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507",
+          "jsonPointer": "/existingFeatureExtensions/1"
+        }
+      ],
+      "retentionDecision": "保留当前本地线程/待建工作树改名路径及确认、失败和历史适配职责。",
+      "moduleBoundary": "线程身份与改名适配器；保留 pending/existing 分流，主机提交接口与 UI 对话框分别维护。",
+      "remainingOwnershipBoundary": "onRename override、pending 映射、jda 动作与主机提供方可被其他外壳复用；所选消费者未给出产品模式判定或全部跨产品调用方，故不能判专属。",
+      "wholeFeatureDeletionAllowed": false,
+      "wholeModuleDeletionAllowed": false,
+      "actualRuntimeVerified": false
+    },
+    {
+      "featureId": "FSC-0402",
+      "name": "切换当前线程摘要的显示或固定状态",
+      "previousMode": "unknown",
+      "mode": "shared",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "evidenceIds": [
+        "LTM-F02"
+      ],
+      "claim": "fc/Ne 注册 togglePinnedSummary 并通过同一 V 切换本地摘要状态；mh 注册同一命令，使用受控 onOpenChange 或 kd。直接调用方 m_ 从 conversation_origin 派生 rn(tpp)/X(tpp或flora)，pr=!X&&!L&&!O&&!D；Tr 允许 rn 或 pr，Er 决定挂载 mh 并传 conversationId、摘要数据和受控状态。因此该用户目标包含本地线程及 ChatGPT chat/work 摘要适配。",
+      "sourceUnitIds": [
+        "MPA-SOURCE-055",
+        "MPA-SOURCE-049",
+        "MPA-SOURCE-079",
+        "MPA-SOURCE-058",
+        "LTM-S002",
+        "LTM-S003",
+        "LTM-S004",
+        "LTM-S005"
+      ],
+      "sourceReferences": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+          "bytes": 148002,
+          "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+          "jsonPointer": "/goals/3"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+          "bytes": 343849,
+          "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507",
+          "jsonPointer": "/existingFeatureExtensions/0"
+        }
+      ],
+      "retentionDecision": "保留本地摘要命令、显示/固定状态、overlay 协调；ChatGPT 路由中的 mh/vh 展示适配可从该被剥离入口省略。",
+      "moduleBoundary": "按消费者拆本地摘要与 ChatGPT 摘要适配；共享命令标识/注册机制不删除。m_、共享状态模块和整个 chunk 不满足整体删除条件。",
+      "remainingOwnershipBoundary": "静态功能职责为共享；真实挂载、注册优先级、受控状态和持久化验收仍未知。不能把这里的 work 与 detail-level codex 当作同一模式轴。",
+      "wholeFeatureDeletionAllowed": false,
+      "wholeModuleDeletionAllowed": false,
+      "actualRuntimeVerified": false
+    },
+    {
+      "featureId": "FSC-0403",
+      "name": "显示或选择当前线程终端",
+      "previousMode": "unknown",
+      "mode": "unknown",
+      "method": "static-code",
+      "confidence": "product-ownership-insufficient",
+      "evidenceIds": [
+        "LTM-F03"
+      ],
+      "claim": "qc 的 native toggle-terminal 与 toggleTerminal 命令在 ready/能力条件下分别进入 UNa/open 和 $Na/toggle；后台终端 u 使用 conversationId、terminalId 与当前 host 打开持久化标签，未创建 PTY。",
+      "sourceUnitIds": [
+        "MPA-SOURCE-034",
+        "MPA-SOURCE-070",
+        "MPA-SOURCE-072",
+        "MPA-SOURCE-066",
+        "LCH-S0424"
+      ],
+      "sourceReferences": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+          "bytes": 148002,
+          "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+          "jsonPointer": "/goals/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+          "bytes": 343849,
+          "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507",
+          "jsonPointer": "/existingFeatureExtensions/2"
+        }
+      ],
+      "retentionDecision": "保留打开、切换与按 terminalId 选择已有终端三条适配路径，分别验收。",
+      "moduleBoundary": "终端面板适配、后台终端标签和 PTY 提供方分离；不能以标签打开成功代替 PTY 生命周期恢复。",
+      "remainingOwnershipBoundary": "qc 的 zr/ready/Fn 与当前主机值是能力/挂载输入，不是已闭合的产品模式守卫；终端提供方与其他外壳消费者仍未证明。",
+      "wholeFeatureDeletionAllowed": false,
+      "wholeModuleDeletionAllowed": false,
+      "actualRuntimeVerified": false
+    },
+    {
+      "featureId": "FSC-0503",
+      "name": "准备、发布并复制线程静态分享快照",
+      "previousMode": "unknown",
+      "mode": "unknown",
+      "method": "static-code",
+      "confidence": "product-ownership-insufficient",
+      "evidenceIds": [
+        "LTM-F04"
+      ],
+      "claim": "本地页 hrt/PAe/Xqo/Zqo 到动态 shareThreadSnapshot；an 读取所选 host 的线程与 app-server 分页。准备阶段已可通过 Mt 上传，Nt 才发布；ready 后复制失败沿用已发布 URL。",
+      "sourceUnitIds": [
+        "LCH-S0002",
+        "LCH-S0118",
+        "LCH-S0247",
+        "LCH-S0334",
+        "LCH-S0352",
+        "LCH-S0367",
+        "LCH-S0368",
+        "LCH-S0372"
+      ],
+      "sourceReferences": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+          "bytes": 343849,
+          "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507",
+          "jsonPointer": "/adoptedGoals/0"
+        }
+      ],
+      "retentionDecision": "保留所选线程静态快照完整契约，包括收集/脱敏、上传准备、发布、复制与取消边界。",
+      "moduleBoundary": "快照变换、会话状态机、主机读取和发布服务适配分别维护；/wham/shared_threads 服务依赖必须显式保留，离线导出不等于恢复此目标。",
+      "remainingOwnershipBoundary": "分享输入以 conversationId/hostId 表示目标，没有闭合的产品模式参数；其他分享入口/产品消费者及有效服务许可未证明，接口名称不能证明独占。",
+      "wholeFeatureDeletionAllowed": false,
+      "wholeModuleDeletionAllowed": false,
+      "actualRuntimeVerified": false
+    },
+    {
+      "featureId": "FSC-0504",
+      "name": "浏览当前线程子代理的内容或总览",
+      "previousMode": "unknown",
+      "mode": "unknown",
+      "method": "static-code",
+      "confidence": "product-ownership-insufficient",
+      "evidenceIds": [
+        "LTM-F05"
+      ],
+      "claim": "lc 按 canInteract 分流子代理内容与总览；目标还依据 spawnAgent sender/receiver 或 subAgentActivity、父子关系及 host 校验。打开内容先激活摘要和加载首页，总览对异步选择设置过期结果守卫。",
+      "sourceUnitIds": [
+        "LCH-S0002",
+        "LCH-S0194",
+        "LCH-S0276",
+        "LCH-S0141",
+        "LCH-S0261",
+        "LCH-S0145",
+        "LCH-S0267",
+        "LCH-S0268",
+        "LCH-S0283"
+      ],
+      "sourceReferences": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+          "bytes": 343849,
+          "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507",
+          "jsonPointer": "/adoptedGoals/1"
+        }
+      ],
+      "retentionDecision": "保留单个子代理内容和聚合总览两种既有操作，以及 ancestry、host、过期结果与失败处理。",
+      "moduleBoundary": "子代理目标解析、内容标签和总览协调分离；共享任务图不因当前外壳模式未知而删除。",
+      "remainingOwnershipBoundary": "目标由父线程/主机与工具活动推导；这些条件不声明产品模式，也不证明服务授权。其他外壳调用该浏览器的完整集合未确认。",
+      "wholeFeatureDeletionAllowed": false,
+      "wholeModuleDeletionAllowed": false,
+      "actualRuntimeVerified": false
+    },
+    {
+      "featureId": "FSC-0505",
+      "name": "从线程关联项打开 PR 详情面板",
+      "previousMode": "unknown",
+      "mode": "unknown",
+      "method": "static-code",
+      "confidence": "product-ownership-insufficient",
+      "evidenceIds": [
+        "LTM-F06"
+      ],
+      "claim": "lc 按 canonical/board 将 PR 目标送入 Y/J；二者创建不同描述符并按 host/cwd 决定持久化，返回 true 并不验证标签实际打开。账户查询/浏览器回退属于另一路 primary-selection 适配。",
+      "sourceUnitIds": [
+        "LCH-S0002",
+        "LCH-S0132",
+        "LCH-S0131",
+        "LCH-S0271",
+        "LCH-S0270",
+        "LCH-S0389",
+        "LCH-S0342"
+      ],
+      "sourceReferences": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+          "bytes": 343849,
+          "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507",
+          "jsonPointer": "/adoptedGoals/2"
+        }
+      ],
+      "retentionDecision": "保留从线程关联项打开 PR 详情；T06 拥有详情职责，T03 只消费入口，保持既有归属。",
+      "moduleBoundary": "入口、提供商描述符、标签注册与外部浏览器回退分离；创建、合并和其他 PR 控件不并入本功能。",
+      "remainingOwnershipBoundary": "canonical/board 描述符接受 repo/host/request，不含已证明的全局模式判定；未闭合 ChatGPT 或其他页面的实际消费，不能仅因通用 PR 组件判共享。",
+      "wholeFeatureDeletionAllowed": false,
+      "wholeModuleDeletionAllowed": false,
+      "actualRuntimeVerified": false
+    },
+    {
+      "featureId": "FSC-0506",
+      "name": "停止当前会话的全部后台终端",
+      "previousMode": "unknown",
+      "mode": "unknown",
+      "method": "static-code",
+      "confidence": "product-ownership-insufficient",
+      "evidenceIds": [
+        "LTM-F07"
+      ],
+      "claim": "$b 的行内停止按钮只把 conversationId 传入 cleanBackgroundTerminals；terminalId 仅用于本地 pending 展示，失败回调后 finally 清空 pending，没有该入口的 abort。",
+      "sourceUnitIds": [
+        "LCH-S0301",
+        "LCH-S0302",
+        "LCH-S0303"
+      ],
+      "sourceReferences": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-adoption-v1.json",
+          "bytes": 343849,
+          "sha256": "ab97ee1417c009cf8b1eafb1953c247f59183d22c5dbd746c0928ad10505b507",
+          "jsonPointer": "/adoptedGoals/3"
+        }
+      ],
+      "retentionDecision": "保留停止会话全部后台终端的职责，保留本地防重复、错误与 pending 清理；与取消代理 turn 分开。",
+      "moduleBoundary": "UI pending/错误适配与主机 cleanBackgroundTerminals 接口分离；不能改为仅停止所点单个 terminal。",
+      "remainingOwnershipBoundary": "后台终端数组、conversationId 与选定主机管理器来自外层；它们不足以穷尽其他产品消费者或证明该管理器实际清理范围和 PTY 后效。",
+      "wholeFeatureDeletionAllowed": false,
+      "wholeModuleDeletionAllowed": false,
+      "actualRuntimeVerified": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LTM-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "ac 将待建 worktree 改名委派给 Cn，将已有线程改名交给 renameThread 并传 host/previousTitle；归档预览移除改名入口。hn 保留注入 override 和 pending 映射，Jda 仍有动作路径、主机 title ack 与历史回放分支。",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "locator": {
+        "byteRange": {
+          "start": 28551,
+          "endExclusive": 31684
+        },
+        "spanSha256": "7b0e41bece96a2aa8741fbb965944a057a2d812752748c5e8293e7e64999beab",
+        "supportSourceUnitIds": [
+          "LCH-S0001",
+          "MTA-SOURCE-027",
+          "MTA-SOURCE-006"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-contract-and-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "LTM-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "fc/Ne 注册 togglePinnedSummary 并通过同一 V 切换本地摘要状态；mh 注册同一命令，使用受控 onOpenChange 或 kd。直接调用方 m_ 从 conversation_origin 派生 rn(tpp)/X(tpp或flora)，pr=!X&&!L&&!O&&!D；Tr 允许 rn 或 pr，Er 决定挂载 mh 并传 conversationId、摘要数据和受控状态。因此该用户目标包含本地线程及 ChatGPT chat/work 摘要适配。",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "locator": {
+        "byteRange": {
+          "start": 37647,
+          "endExclusive": 39760
+        },
+        "spanSha256": "84b1d2f297f48a123305648e86e63b4bfe988aaa36184d042609a9aace842965",
+        "supportSourceUnitIds": [
+          "MPA-SOURCE-055",
+          "MPA-SOURCE-049",
+          "MPA-SOURCE-079",
+          "MPA-SOURCE-058",
+          "LTM-S002",
+          "LTM-S003",
+          "LTM-S004",
+          "LTM-S005"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-contract-and-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "LTM-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "qc 的 native toggle-terminal 与 toggleTerminal 命令在 ready/能力条件下分别进入 UNa/open 和 $Na/toggle；后台终端 u 使用 conversationId、terminalId 与当前 host 打开持久化标签，未创建 PTY。",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "locator": {
+        "byteRange": {
+          "start": 72356,
+          "endExclusive": 74532
+        },
+        "spanSha256": "481254c87e5aafcaacba165cc20ceecbdc9090fabb3ec63510bcb5742b94e565",
+        "supportSourceUnitIds": [
+          "MPA-SOURCE-034",
+          "MPA-SOURCE-070",
+          "MPA-SOURCE-072",
+          "MPA-SOURCE-066",
+          "LCH-S0424"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-contract-and-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "LTM-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "本地页 hrt/PAe/Xqo/Zqo 到动态 shareThreadSnapshot；an 读取所选 host 的线程与 app-server 分页。准备阶段已可通过 Mt 上传，Nt 才发布；ready 后复制失败沿用已发布 URL。",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "locator": {
+        "byteRange": {
+          "start": 31858,
+          "endExclusive": 37466
+        },
+        "spanSha256": "dd0ccc61433009a7b2b453251f2a25cd4e273b93f50f4b48b53e4b9184d31e6d",
+        "supportSourceUnitIds": [
+          "LCH-S0002",
+          "LCH-S0118",
+          "LCH-S0247",
+          "LCH-S0334",
+          "LCH-S0352",
+          "LCH-S0367",
+          "LCH-S0368",
+          "LCH-S0372"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-contract-and-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "LTM-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "lc 按 canInteract 分流子代理内容与总览；目标还依据 spawnAgent sender/receiver 或 subAgentActivity、父子关系及 host 校验。打开内容先激活摘要和加载首页，总览对异步选择设置过期结果守卫。",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "locator": {
+        "byteRange": {
+          "start": 31858,
+          "endExclusive": 37466
+        },
+        "spanSha256": "dd0ccc61433009a7b2b453251f2a25cd4e273b93f50f4b48b53e4b9184d31e6d",
+        "supportSourceUnitIds": [
+          "LCH-S0002",
+          "LCH-S0194",
+          "LCH-S0276",
+          "LCH-S0141",
+          "LCH-S0261",
+          "LCH-S0145",
+          "LCH-S0267",
+          "LCH-S0268",
+          "LCH-S0283"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-contract-and-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "LTM-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "lc 按 canonical/board 将 PR 目标送入 Y/J；二者创建不同描述符并按 host/cwd 决定持久化，返回 true 并不验证标签实际打开。账户查询/浏览器回退属于另一路 primary-selection 适配。",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "locator": {
+        "byteRange": {
+          "start": 31858,
+          "endExclusive": 37466
+        },
+        "spanSha256": "dd0ccc61433009a7b2b453251f2a25cd4e273b93f50f4b48b53e4b9184d31e6d",
+        "supportSourceUnitIds": [
+          "LCH-S0002",
+          "LCH-S0132",
+          "LCH-S0131",
+          "LCH-S0271",
+          "LCH-S0270",
+          "LCH-S0389",
+          "LCH-S0342"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-contract-and-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "LTM-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "$b 的行内停止按钮只把 conversationId 传入 cleanBackgroundTerminals；terminalId 仅用于本地 pending 展示，失败回调后 finally 清空 pending，没有该入口的 abort。",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "locator": {
+        "byteRange": {
+          "start": 30961,
+          "endExclusive": 33933
+        },
+        "spanSha256": "475f212ba7e763095fda9067d2a2ebd61d7323c246af6810f505365f8320b4b4",
+        "supportSourceUnitIds": [
+          "LCH-S0301",
+          "LCH-S0302",
+          "LCH-S0303"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-contract-and-source-reviewed-runtime-unverified"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MTA-SOURCE-006",
+      "name": "Jda",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5464844,
+        "endExclusive": 5467687
+      },
+      "spanHash": "ad8f1692e00fc85ba04103d021dad52a2e4148b5912a7f75c5e4bf0b176ab0e3",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-006-Jda.txt",
+      "evidenceId": "MTA-E006",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-thread-actions-v1.json",
+        "bytes": 117163,
+        "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+        "jsonPointer": "/sourceUnits/5"
+      }
+    },
+    {
+      "id": "MTA-SOURCE-014",
+      "name": "export-tmt",
+      "role": "explicit ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11427936,
+        "endExclusive": 11427946
+      },
+      "spanHash": "ce7f9d645b51ad38e886eece53a3d021a2af34215ce32e9b38b6669b2285d99b",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MTA-SOURCE-014-export-tmt.txt",
+      "evidenceId": "MTA-E014",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-thread-actions-v1.json",
+        "bytes": 117163,
+        "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+        "jsonPointer": "/sourceUnits/13"
+      }
+    },
+    {
+      "id": "MTA-SOURCE-027",
+      "name": "hn",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 3717,
+        "endExclusive": 17047
+      },
+      "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-027-hn.txt",
+      "evidenceId": "MTA-E027",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-thread-actions-v1.json",
+        "bytes": 117163,
+        "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+        "jsonPointer": "/sourceUnits/26"
+      }
+    },
+    {
+      "id": "MTA-SOURCE-037",
+      "name": "hre",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295513,
+        "endExclusive": 295919
+      },
+      "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-037-hre.txt",
+      "evidenceId": "MTA-E037",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-thread-actions-v1.json",
+        "bytes": 117163,
+        "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+        "jsonPointer": "/sourceUnits/36"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-002",
+      "name": "CZe",
+      "role": "complete original top-level function",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3401957,
+        "endExclusive": 3422782
+      },
+      "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-002-CZe.txt",
+      "evidenceId": "MPA-E002",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/1"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-018",
+      "name": "Nw",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1498604,
+        "endExclusive": 1501107
+      },
+      "spanHash": "b9e6a2ed449e6e09276e4fc842d61d170f260123285a8dcd33797ae8f3bde888",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-018-Nw.txt",
+      "evidenceId": "MPA-E018",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/17"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-034",
+      "name": "qc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-app-shell-chrome-c6e5ce470743.js",
+      "sourceHash": "ffa2fa681999de4bc2331a51647906ab3b817906e3ea24ac24d4bb3e9f16d26f",
+      "byteRange": {
+        "start": 72356,
+        "endExclusive": 74532
+      },
+      "spanHash": "481254c87e5aafcaacba165cc20ceecbdc9090fabb3ec63510bcb5742b94e565",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-034-qc.txt",
+      "evidenceId": "MPA-E034",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/33"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-049",
+      "name": "Ne",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/flow-45712aa86ba3.js",
+      "sourceHash": "d5b8a646f85b87239ca7c994d8f552c5eb750955be3ea291770343d74148fd60",
+      "byteRange": {
+        "start": 1470,
+        "endExclusive": 2542
+      },
+      "spanHash": "e27c360bf4b1e81aa8c14d7f4c6c316154c9f07e7ca5059f8c4e89de34038660",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-049-Ne.txt",
+      "evidenceId": "MPA-E049",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/48"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-055",
+      "name": "fc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 37647,
+        "endExclusive": 39760
+      },
+      "spanHash": "84b1d2f297f48a123305648e86e63b4bfe988aaa36184d042609a9aace842965",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-055-fc.txt",
+      "evidenceId": "MPA-E055",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/54"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-058",
+      "name": "mh",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 55596,
+        "endExclusive": 57761
+      },
+      "spanHash": "410b7fa41a8b7cd0e9a6d20f4f8d930954a59de7c03e933186ccf84075c4de10",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-058-mh.txt",
+      "evidenceId": "MPA-E058",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/57"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-066",
+      "name": "GNa",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5915115,
+        "endExclusive": 5915151
+      },
+      "spanHash": "5872f9dcf9fad9cfd8b4c557aecb88c67c456f730915505070944891bd2adc4d",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-066-GNa.txt",
+      "evidenceId": "MPA-E066",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/65"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-068",
+      "name": "Pw",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1501107,
+        "endExclusive": 1501954
+      },
+      "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-068-Pw.txt",
+      "evidenceId": "MPA-E068",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/67"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-070",
+      "name": "UNa",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5913654,
+        "endExclusive": 5913711
+      },
+      "spanHash": "69408e7f14d767c74da5ecddecb4ccd42e1d9b70bd48a6a042a1eb0e99082ff3",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-070-UNa.txt",
+      "evidenceId": "MPA-E070",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/69"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-072",
+      "name": "$Na",
+      "role": "complete exported original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5915812,
+        "endExclusive": 5915935
+      },
+      "spanHash": "3fb95d372a33efb77f81a5de9ead8625fd6f92ad938dc740fe13ad5f312a82cb",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-072-_Na.txt",
+      "evidenceId": "MPA-E072",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/71"
+      }
+    },
+    {
+      "id": "MPA-SOURCE-079",
+      "name": "V",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js",
+      "sourceHash": "9582fb17df85dc4affeb2107c2b79818f18f57b65add6f9909f0c7f677f5220c",
+      "byteRange": {
+        "start": 3780,
+        "endExclusive": 4042
+      },
+      "spanHash": "b91ecc535761b73dc3574b360d465b3ba1babe7c9d6f464171bb420541c4cee9",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MPA-SOURCE-079-V.txt",
+      "evidenceId": "MPA-E079",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/78"
+      }
+    },
+    {
+      "id": "LCH-S0001",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 28551,
+        "endExclusive": 31684
+      },
+      "spanHash": "7b0e41bece96a2aa8741fbb965944a057a2d812752748c5e8293e7e64999beab",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:ac"
+      ],
+      "origins": [
+        "1:RP-S0001"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/0"
+      }
+    },
+    {
+      "id": "LCH-S0002",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 31858,
+        "endExclusive": 37466
+      },
+      "spanHash": "dd0ccc61433009a7b2b453251f2a25cd4e273b93f50f4b48b53e4b9184d31e6d",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:lc"
+      ],
+      "origins": [
+        "1:RP-S0002"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/1"
+      }
+    },
+    {
+      "id": "LCH-S0003",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 37647,
+        "endExclusive": 39760
+      },
+      "spanHash": "84b1d2f297f48a123305648e86e63b4bfe988aaa36184d042609a9aace842965",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:fc"
+      ],
+      "origins": [
+        "1:RP-S0003"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/2"
+      }
+    },
+    {
+      "id": "LCH-S0004",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 39760,
+        "endExclusive": 40243
+      },
+      "spanHash": "05f976edbe59e02a99d630f090e17543994d8e94a69dbe8f9cfa7ff522e3d9ca",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:pc"
+      ],
+      "origins": [
+        "1:RP-S0004"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/3"
+      }
+    },
+    {
+      "id": "LCH-S0005",
+      "sourcePath": "app.asar/webview/assets/local-conversation-page-a83a1af2c24b.js",
+      "sourceHash": "f6275448cc603026ca3567e60a8c48d77d2b24cdc431c882280bbaa84b6010a0",
+      "byteRange": {
+        "start": 40243,
+        "endExclusive": 43437
+      },
+      "spanHash": "4826670747207bc4d0b2f458755d4fe3b10acf7742bb50204a45ebdfedee7c57",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:mc"
+      ],
+      "origins": [
+        "1:RP-S0005"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/4"
+      }
+    },
+    {
+      "id": "LCH-S0118",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 1029312,
+        "endExclusive": 1030202
+      },
+      "spanHash": "f542bc876a32475384c59a803617357e3345c2e0b91ab7a38fd7e1b2baf816b2",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:hrt"
+      ],
+      "origins": [
+        "1:RP-S0118"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/117"
+      }
+    },
+    {
+      "id": "LCH-S0131",
+      "sourcePath": "app.asar/webview/assets/open-thread-pull-request-side-panel-tab-4d562c049766.js",
+      "sourceHash": "1ef85d0460b0631cca0f39152fd633fb9cdab199d2b32a2d24bf52107303b7d3",
+      "byteRange": {
+        "start": 4007,
+        "endExclusive": 4424
+      },
+      "spanHash": "36cb9f12496115b72966ed6d136a265a3f72a889a39966f6bce68ce39e60681a",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:J"
+      ],
+      "origins": [
+        "1:RP-S0131"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/130"
+      }
+    },
+    {
+      "id": "LCH-S0132",
+      "sourcePath": "app.asar/webview/assets/open-thread-pull-request-side-panel-tab-4d562c049766.js",
+      "sourceHash": "1ef85d0460b0631cca0f39152fd633fb9cdab199d2b32a2d24bf52107303b7d3",
+      "byteRange": {
+        "start": 4424,
+        "endExclusive": 4912
+      },
+      "spanHash": "4413bfc8ef0c0f10354055e278f986004a195c2f4bbb23b536846b3fea04c626",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Y"
+      ],
+      "origins": [
+        "1:RP-S0132"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/131"
+      }
+    },
+    {
+      "id": "LCH-S0141",
+      "sourcePath": "app.asar/webview/assets/open-local-conversation-background-agent-906b366ceacd.js",
+      "sourceHash": "fb0dda0415fa1a5199e96c17443746c96507b9876ddf19a8b34f8ea36a38087c",
+      "byteRange": {
+        "start": 376,
+        "endExclusive": 723
+      },
+      "spanHash": "dd673f7a06d42db6f1c820dc2855bfedbedc5ac4a9dbf236c6ddf74197d68ccb",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:y"
+      ],
+      "origins": [
+        "1:RP-S0141"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/140"
+      }
+    },
+    {
+      "id": "LCH-S0145",
+      "sourcePath": "app.asar/webview/assets/open-local-conversation-subagents-panel-5abfac9190b9.js",
+      "sourceHash": "676ecbb8172e729e5a77dc4f799cbca2f38f0aaf986bf44da9424f92e9237491",
+      "byteRange": {
+        "start": 354,
+        "endExclusive": 2646
+      },
+      "spanHash": "7d656927c3df7827268294d93ea3b31612e931c51bc37493513b488b8aeec73b",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:x"
+      ],
+      "origins": [
+        "1:RP-S0145"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/144"
+      }
+    },
+    {
+      "id": "LCH-S0159",
+      "sourcePath": "app.asar/webview/assets/toggle-thread-summary-panel-42b8a2c077a1.js",
+      "sourceHash": "9582fb17df85dc4affeb2107c2b79818f18f57b65add6f9909f0c7f677f5220c",
+      "byteRange": {
+        "start": 3780,
+        "endExclusive": 4042
+      },
+      "spanHash": "b91ecc535761b73dc3574b360d465b3ba1babe7c9d6f464171bb420541c4cee9",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:V"
+      ],
+      "origins": [
+        "1:RP-S0159"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/158"
+      }
+    },
+    {
+      "id": "LCH-S0193",
+      "sourcePath": "app.asar/webview/assets/open-target-622f980eb330.js",
+      "sourceHash": "04a527af414610472558067a99e6827f4ae73c732f0f5b2ee4b5101d66a5719d",
+      "byteRange": {
+        "start": 260,
+        "endExclusive": 533
+      },
+      "spanHash": "22ef428e8cc50617636e6bead4175c5e65f3cb63d445c4eaa6cf9ed79c3bee85",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:h"
+      ],
+      "origins": [
+        "1:RP-S0193"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/192"
+      }
+    },
+    {
+      "id": "LCH-S0194",
+      "sourcePath": "app.asar/webview/assets/open-target-622f980eb330.js",
+      "sourceHash": "04a527af414610472558067a99e6827f4ae73c732f0f5b2ee4b5101d66a5719d",
+      "byteRange": {
+        "start": 1305,
+        "endExclusive": 1650
+      },
+      "spanHash": "fd5f55d315ff959bd905fcbecdaf618a475e67cf6291290d26894018a59f806a",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:_"
+      ],
+      "origins": [
+        "1:RP-S0194"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/193"
+      }
+    },
+    {
+      "id": "LCH-S0206",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 181323,
+        "endExclusive": 181446
+      },
+      "spanHash": "306f8d8faaaf31e2faed709202b8390038e67ecc4ecc71fa9bce13d9d18b027a",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:UE"
+      ],
+      "origins": [
+        "1:RP-S0206"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/205"
+      }
+    },
+    {
+      "id": "LCH-S0247",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 7591251,
+        "endExclusive": 7591517
+      },
+      "spanHash": "8dd500bd44e2f2226c311d4a309d9bca0f7504ef8a14340707457505515efa05",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Xqo"
+      ],
+      "origins": [
+        "2:RP-S0005"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/246"
+      }
+    },
+    {
+      "id": "LCH-S0261",
+      "sourcePath": "app.asar/webview/assets/open-local-conversation-background-agent-906b366ceacd.js",
+      "sourceHash": "fb0dda0415fa1a5199e96c17443746c96507b9876ddf19a8b34f8ea36a38087c",
+      "byteRange": {
+        "start": 723,
+        "endExclusive": 1291
+      },
+      "spanHash": "ddffc825426023e0c06d39a19419796104e70f1c7304673e749e7f57e3ed27e1",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:b"
+      ],
+      "origins": [
+        "2:RP-S0019"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/260"
+      }
+    },
+    {
+      "id": "LCH-S0267",
+      "sourcePath": "app.asar/webview/assets/open-local-conversation-subagents-panel-5abfac9190b9.js",
+      "sourceHash": "676ecbb8172e729e5a77dc4f799cbca2f38f0aaf986bf44da9424f92e9237491",
+      "byteRange": {
+        "start": 2650,
+        "endExclusive": 2651
+      },
+      "spanHash": "8de0b3c47f112c59745f717a626932264c422a7563954872e237b223af4ad643",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "declaration:S"
+      ],
+      "origins": [
+        "2:RP-S0025"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/266"
+      }
+    },
+    {
+      "id": "LCH-S0268",
+      "sourcePath": "app.asar/webview/assets/open-local-conversation-subagents-panel-5abfac9190b9.js",
+      "sourceHash": "676ecbb8172e729e5a77dc4f799cbca2f38f0aaf986bf44da9424f92e9237491",
+      "byteRange": {
+        "start": 2710,
+        "endExclusive": 2723
+      },
+      "spanHash": "a5e2bcfde855c9fab81714eb278308e580dba7e10c64f00bf907b32e411682a8",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:S"
+      ],
+      "origins": [
+        "2:RP-S0026"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/267"
+      }
+    },
+    {
+      "id": "LCH-S0270",
+      "sourcePath": "app.asar/webview/assets/open-thread-pull-request-side-panel-tab-4d562c049766.js",
+      "sourceHash": "1ef85d0460b0631cca0f39152fd633fb9cdab199d2b32a2d24bf52107303b7d3",
+      "byteRange": {
+        "start": 624,
+        "endExclusive": 1036
+      },
+      "spanHash": "504cf78c8df3ecdcfa5c15d6c1be8fd22876e151a5a7007426b84629901c6d6b",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:me"
+      ],
+      "origins": [
+        "2:RP-S0028"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/269"
+      }
+    },
+    {
+      "id": "LCH-S0271",
+      "sourcePath": "app.asar/webview/assets/open-thread-pull-request-side-panel-tab-4d562c049766.js",
+      "sourceHash": "1ef85d0460b0631cca0f39152fd633fb9cdab199d2b32a2d24bf52107303b7d3",
+      "byteRange": {
+        "start": 1036,
+        "endExclusive": 1471
+      },
+      "spanHash": "636f3c20fef2ffce37c36c40dbddc297d5f66d83f9b69c25af48f2fc5c89b98c",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:he"
+      ],
+      "origins": [
+        "2:RP-S0029"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/270"
+      }
+    },
+    {
+      "id": "LCH-S0276",
+      "sourcePath": "app.asar/webview/assets/open-target-622f980eb330.js",
+      "sourceHash": "04a527af414610472558067a99e6827f4ae73c732f0f5b2ee4b5101d66a5719d",
+      "byteRange": {
+        "start": 533,
+        "endExclusive": 1305
+      },
+      "spanHash": "78c953702b17738d74e087ed57f82c7d74bfcf8ff4ab69772978da23e134829b",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:g"
+      ],
+      "origins": [
+        "2:RP-S0034"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/275"
+      }
+    },
+    {
+      "id": "LCH-S0283",
+      "sourcePath": "app.asar/webview/assets/verify-descendant-d02f27822163.js",
+      "sourceHash": "dc7baa2e1adc3b9b469f2e766c3b88ea25cdecd098534a9e39ee7c2b88596554",
+      "byteRange": {
+        "start": 190,
+        "endExclusive": 1005
+      },
+      "spanHash": "7ce150813fbc39ad30bcec54a5f333fa938719c02c41caccbd8ac2138c77183b",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:s"
+      ],
+      "origins": [
+        "2:RP-S0043"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/282"
+      }
+    },
+    {
+      "id": "LCH-S0301",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 30961,
+        "endExclusive": 33933
+      },
+      "spanHash": "475f212ba7e763095fda9067d2a2ebd61d7323c246af6810f505365f8320b4b4",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:$b"
+      ],
+      "origins": [
+        "2:RP-S0066"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/300"
+      }
+    },
+    {
+      "id": "LCH-S0302",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 37951,
+        "endExclusive": 39906
+      },
+      "spanHash": "44a385a2a4797373ed026066a15415647f8d38ced76eada3e270cf2c5009760d",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:dx"
+      ],
+      "origins": [
+        "2:RP-S0067"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/301"
+      }
+    },
+    {
+      "id": "LCH-S0303",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 40230,
+        "endExclusive": 41871
+      },
+      "spanHash": "5ad47e940913cfdae316a941aa3d4e9057fab962c42c391cd1753d9b10120768",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:yx"
+      ],
+      "origins": [
+        "2:RP-S0068"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/302"
+      }
+    },
+    {
+      "id": "LCH-S0334",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 7591517,
+        "endExclusive": 7592534
+      },
+      "spanHash": "76044c1c716f1c4a428ce7d22869ac2c990c5e90b242efc2c676b9a5b0ae2ee1",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Zqo"
+      ],
+      "origins": [
+        "3:RP-S0002"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/333"
+      }
+    },
+    {
+      "id": "LCH-S0341",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 34046,
+        "endExclusive": 36701
+      },
+      "spanHash": "be61e2669b8b21b61866b437c9a624b166da3bf2af41e4c6758db6c295dbe8db",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:nx"
+      ],
+      "origins": [
+        "3:RP-S0010"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/340"
+      }
+    },
+    {
+      "id": "LCH-S0342",
+      "sourcePath": "app.asar/webview/assets/local-conversation-thread-c8c5e92ea89e.js",
+      "sourceHash": "ee192ab3f19d493d64580f7690c94b05c589fe59c1757984e1c5a076976a47eb",
+      "byteRange": {
+        "start": 101571,
+        "endExclusive": 103213
+      },
+      "spanHash": "8156bdb5acfe63ca1505dfe90a6af8f53fbe971bf0266058fbe5ef84b7000e30",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:wC"
+      ],
+      "origins": [
+        "3:RP-S0011"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/341"
+      }
+    },
+    {
+      "id": "LCH-S0352",
+      "sourcePath": "app.asar/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourceHash": "4130419b79a4938aa0406042cfdf82336021a6aa52365949ee0f1e1dcff5370f",
+      "byteRange": {
+        "start": 24919,
+        "endExclusive": 31495
+      },
+      "spanHash": "6152486c595bcd0191d1063ad4af3728dd14241d91d0584773a20501cab5d739",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:en"
+      ],
+      "origins": [
+        "3:RP-S0031"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/351"
+      }
+    },
+    {
+      "id": "LCH-S0367",
+      "sourcePath": "app.asar/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourceHash": "4130419b79a4938aa0406042cfdf82336021a6aa52365949ee0f1e1dcff5370f",
+      "byteRange": {
+        "start": 7141,
+        "endExclusive": 8873
+      },
+      "spanHash": "f1d3afdde40cdbf0ff42f4e4cccdea2eaf66e50763e71b01948c8b278e778ce4",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Mt"
+      ],
+      "origins": [
+        "4:RP-S0001"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/366"
+      }
+    },
+    {
+      "id": "LCH-S0368",
+      "sourcePath": "app.asar/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourceHash": "4130419b79a4938aa0406042cfdf82336021a6aa52365949ee0f1e1dcff5370f",
+      "byteRange": {
+        "start": 8873,
+        "endExclusive": 9108
+      },
+      "spanHash": "ba22bd9f6628db49e1834e9de0d309a3d451f50713aba7cb525dfa1a76945eb7",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Nt"
+      ],
+      "origins": [
+        "4:RP-S0002"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/367"
+      }
+    },
+    {
+      "id": "LCH-S0370",
+      "sourcePath": "app.asar/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourceHash": "4130419b79a4938aa0406042cfdf82336021a6aa52365949ee0f1e1dcff5370f",
+      "byteRange": {
+        "start": 31495,
+        "endExclusive": 31612
+      },
+      "spanHash": "db7f31d30d1c708fd8055e20359dbb3fb4cc365c8b3bf41e5f1299b1738dc82c",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:tn"
+      ],
+      "origins": [
+        "4:RP-S0004"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/369"
+      }
+    },
+    {
+      "id": "LCH-S0371",
+      "sourcePath": "app.asar/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourceHash": "4130419b79a4938aa0406042cfdf82336021a6aa52365949ee0f1e1dcff5370f",
+      "byteRange": {
+        "start": 31913,
+        "endExclusive": 32033
+      },
+      "spanHash": "bde1d873d708e99d6165a9f44993fb8eff35b7e0247d31cfbb0e6d0302cb9f2c",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:rn"
+      ],
+      "origins": [
+        "4:RP-S0005"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/370"
+      }
+    },
+    {
+      "id": "LCH-S0372",
+      "sourcePath": "app.asar/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourceHash": "4130419b79a4938aa0406042cfdf82336021a6aa52365949ee0f1e1dcff5370f",
+      "byteRange": {
+        "start": 32033,
+        "endExclusive": 33787
+      },
+      "spanHash": "618ebe81a61d4663ec0beb11566950aec6469bee1c259bbeb65849eae5bffb9d",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:an"
+      ],
+      "origins": [
+        "4:RP-S0006"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/371"
+      }
+    },
+    {
+      "id": "LCH-S0389",
+      "sourcePath": "app.asar/webview/assets/local-conversation-summary-panel-artifacts-section-68c829a65fb1.js",
+      "sourceHash": "251a258550073a55420392a95bff832e2e46671326cda177d6deef9f6209af2e",
+      "byteRange": {
+        "start": 16067,
+        "endExclusive": 22869
+      },
+      "spanHash": "db83802156f525df1691aac94dcc441afbe6841f4112300888b216e704e5f418",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Xr"
+      ],
+      "origins": [
+        "4:RP-S0025"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/388"
+      }
+    },
+    {
+      "id": "LCH-S0424",
+      "sourcePath": "app.asar/webview/assets/open-local-conversation-background-terminal-tab-a0f175327f5b.js",
+      "sourceHash": "7f8a621acadcbb8eb6bd89bc47312034bd437667ef2db1e699fbe518c2d74573",
+      "byteRange": {
+        "start": 174,
+        "endExclusive": 545
+      },
+      "spanHash": "c9b8a87899bfddbc947e3a4999c27419d5738341c9398330425486237f9984d4",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:u"
+      ],
+      "origins": [
+        "4:RP-S0060"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-chrome-refinement-v1.json",
+        "bytes": 347935,
+        "sha256": "a7b080d387cd04f200a8301d1b521a2544a2c1639b97fa828d74c73d97a8f619",
+        "jsonPointer": "/sourceUnits/423"
+      }
+    },
+    {
+      "id": "LTM-S001",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 111237,
+        "endExclusive": 111239
+      },
+      "spanHash": "1b0316ed1cfed044035c55363e02ccafab26d66b1c2746b94d17285f043324aa",
+      "nodeType": "Identifier",
+      "labels": [
+        "caller-reference"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/local-thread-mode-classification-v1/caller-selected.json",
+        "jsonPointer": "/units/0",
+        "originalId": "RP-S0001"
+      }
+    },
+    {
+      "id": "LTM-S002",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 111227,
+        "endExclusive": 111532
+      },
+      "spanHash": "76d86152ae2b7cded102741f32ca3d5134cb0d5c1ff3019284fb96d4d5b20641",
+      "nodeType": "CallExpression",
+      "labels": [
+        "caller-call"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/local-thread-mode-classification-v1/caller-selected.json",
+        "jsonPointer": "/units/1",
+        "originalId": "RP-S0002"
+      }
+    },
+    {
+      "id": "LTM-S003",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 89378,
+        "endExclusive": 120269
+      },
+      "spanHash": "e98ccd9b9fe7b7749595463e8efe1105585ef4884e4c5b2a68177f32481df30d",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "caller-owner",
+        "declaration:m_"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/local-thread-mode-classification-v1/caller-selected.json",
+        "jsonPointer": "/units/2",
+        "originalId": "RP-S0003"
+      }
+    },
+    {
+      "id": "LTM-S004",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 55596,
+        "endExclusive": 57761
+      },
+      "spanHash": "410b7fa41a8b7cd0e9a6d20f4f8d930954a59de7c03e933186ccf84075c4de10",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:mh"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/local-thread-mode-classification-v1/caller-selected.json",
+        "jsonPointer": "/units/3",
+        "originalId": "RP-S0004"
+      }
+    },
+    {
+      "id": "LTM-S005",
+      "sourcePath": "app.asar/webview/assets/chatgpt-conversation-page-23bea3bc76ac.js",
+      "sourceHash": "5eb3da370c72450d6c6527056e00b817036b53925856a1d7652c24754d79952d",
+      "byteRange": {
+        "start": 57907,
+        "endExclusive": 59065
+      },
+      "spanHash": "6ab5069110eae775d97da734e375f3431e71e2e31ae7769f1b454806130f70ab",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:vh"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/local-thread-mode-classification-v1/caller-selected.json",
+        "jsonPointer": "/units/5",
+        "originalId": "RP-S0006"
+      }
+    }
+  ],
+  "reusedChromeFacts": [
+    "LCH-F01",
+    "LCH-F02",
+    "LCH-F03",
+    "LCH-F05",
+    "LCH-F06",
+    "LCH-F07",
+    "LCH-F12",
+    "LCH-F13",
+    "LCH-F15",
+    "LCH-F16",
+    "LCH-F17",
+    "LCH-F18",
+    "LCH-F19",
+    "LCH-F20",
+    "LCH-F21",
+    "LCH-F22",
+    "LCH-F24",
+    "LCH-F25",
+    "LCH-F26",
+    "LCH-F27",
+    "LCH-F30",
+    "LCH-F31"
+  ],
+  "callerLinks": [
+    {
+      "targetName": "mh",
+      "callerName": "m_",
+      "depth": 1,
+      "referenceSourceId": "LTM-S001",
+      "callSourceId": "LTM-S002",
+      "ownerSourceId": "LTM-S003"
+    }
+  ],
+  "callerSourceArchive": "analysis/codex-26.1007.30912-c5b273322a83/raw/local-thread-mode-classification-v1/caller-selected.json",
+  "rule": "Positive source-qualified retention is separate from exclusive product ownership. Mixed concrete consumers establish shared; labels, capabilities and unobserved live values alone do not establish exclusion.",
+  "counts": {
+    "existingFeaturesReviewed": 7,
+    "existingModeClassificationsChanged": 1,
+    "retainedUnknownOwnershipDecisions": 6,
+    "sourceFacts": 7,
+    "selectedSourceUnits": 56,
+    "sourceFilesRechecked": 19,
+    "newProgramParsePasses": 1,
+    "newParsedNodes": 49763,
+    "newCallerLinks": 1,
+    "newCanonicalFeatureIds": 0,
+    "newCanonicalOperationIds": 0,
+    "newCanonicalScenarioIds": 0,
+    "newClientLaunches": 0,
+    "newTargetEvaluations": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newProductPasses": 0
+  },
+  "selectedBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "clientImplementationStarted": false,
+  "stopBoundary": "Seven selected decisions are closed at their stated source scope. No recursive mode/account/service/native/provider expansion. Unknown product ownership does not reverse selected retention.",
+  "nextAction": "原计划6.3：复用已发布的三个 ChatGPT 专属分支决定组，核对可拆边界与共享依赖保留理由；只展开确实缺失的直接连接，不新增全量模式基础设施调查。"
+}

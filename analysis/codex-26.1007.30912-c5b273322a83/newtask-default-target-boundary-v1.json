@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T09:58:01.779486+00:00",
+  "purpose": "Close the finite default-newTask selectChat question and adopt a Codex-only reconstruction boundary using existing analysis.",
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+      "bytes": 94884,
+      "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45"
+    },
+    {
+      "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+      "bytes": 98261941,
+      "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189"
+    },
+    {
+      "path": ".analysis-local/mode-composer-disposition-work/primary-selected.json",
+      "bytes": 85010,
+      "sha256": "eb0e70f8f1b0ba55096acbc6e7a9b8ae2fe071bef5058556682f2db4eb7186c0"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/chatgpt-branch-dependency-boundaries-v1.json",
+      "bytes": 45988,
+      "sha256": "23d16992508646963249508a89146c61fd16379165244785021931b4f7f61526"
+    }
+  ],
+  "featurePolicy": {
+    "featureId": "FSC-0386",
+    "operationIds": [
+      "operation:menu-command:new-task",
+      "operation:menu-command:new-projectless-task"
+    ],
+    "baseGoalRef": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+      "bytes": 94884,
+      "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+      "jsonPointer": "/goals/1"
+    },
+    "baseDecisionId": "CBX-03",
+    "retain": [
+      "Shared draft preparation and selected/project/group context responsibilities of wH/Ati/U7r.",
+      "Command eligibility, navigation preparation failure, onNavigate/setup ordering and actual action on handled keyboard commands.",
+      "Separate draft preparation from FSC-0048 creation/first-turn submission."
+    ],
+    "omitOrAdapt": [
+      "Omit the already-qualified switchToMode1 Chat registration.",
+      "Adapt the newTask keyboard variant so it cannot switch to Chat.",
+      "Separate final h7r Chat-kind reveal from shared draft preparation; route the retained Codex operation through an explicit Codex draft reveal adapter.",
+      "Do not preserve explicit Chat system-hint/mode targets in the Codex-only interface; retain applicable shared draft state."
+    ],
+    "proposalQualification": "The Codex draft reveal adapter is a proposed restoration boundary. Simply changing selectChat to false is not proven equivalent: h7r calls a reveal provider whose effects were not expanded or executed.",
+    "acceptanceObligations": [
+      "Ordinary and shortcut newTask perform a Codex draft action without entering Chat; command eligibility still applies.",
+      "Selected, local/remote group and allowed projectless context preserve their distinct selection semantics.",
+      "Navigation preparation rejection prevents subsequent onNavigate/setup on the source branch; gm behavior is separately specified.",
+      "Fresh/reused draft and focus behavior match the intended Codex operation; preview option precedence is explicit.",
+      "Opening a draft does not submit a model task; actual submission remains a separate operation.",
+      "Provider reveal side effects and runtime winning handler require later verification; source readback is not a product pass."
+    ],
+    "featureModeClassification": "unknown",
+    "wholeFeatureDeletionAllowed": false,
+    "wholeModuleDeletionAllowed": false,
+    "implemented": false,
+    "actualRuntimeVerified": false
+  },
+  "facts": [
+    {
+      "id": "NTB-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "primary Qx imports initial VXt; initial exports wH as VXt. Ezt default newTask callback calls Qx(p,{selectChat:true}). This is an existing draft-preparation path, not a newly found feature or first-turn model RPC.",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 54159,
+          "endExclusive": 54168
+        },
+        "spanHash": "f14be2271bced2eba1cd2166488885d5c73b7119d139c245e7a67d272fe75775",
+        "sourceUnitIds": [
+          "NTB-S08",
+          "NTB-S07",
+          "NTB-S04",
+          "NTB-S01"
+        ]
+      },
+      "method": "Read frozen source spans; reuse saved Program binding metadata and exact ESM export/import specifiers. No target evaluation.",
+      "confidence": "high-static-source",
+      "verificationStatus": "source-qualified; actual runtime unverified"
+    },
+    {
+      "id": "NTB-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "wH prepares navigation unless gm() is true. With !gm and null prepareNavigation it returns before onNavigate and subsequent setup. With gm true it can run onNavigate/mode/setup but returns before refetch, ordinary draft preparation and final navigation. The effective gm value is delegated; no mode was inferred from the flag name.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4012680,
+          "endExclusive": 4013878
+        },
+        "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+        "sourceUnitIds": [
+          "NTB-S04",
+          "NTB-S09"
+        ]
+      },
+      "method": "Read frozen source spans; reuse saved Program binding metadata and exact ESM export/import specifiers. No target evaluation.",
+      "confidence": "high-static-source",
+      "verificationStatus": "source-qualified; actual runtime unverified"
+    },
+    {
+      "id": "NTB-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "selectChat is distinct from codexAppMode. wH explicit codexAppMode calls sPt; otherwise nonempty prefillChatGptSystemHints requests chat, or m7r may request work. m7r requires ij===work, an account and default_new_chats_to_work. sPt treats codex separately; gS guards chat with Qoe. Runtime atom values remain unknown.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4012680,
+          "endExclusive": 4013878
+        },
+        "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+        "sourceUnitIds": [
+          "NTB-S04",
+          "NTB-S11",
+          "NTB-S12",
+          "NTB-S10"
+        ]
+      },
+      "method": "Read frozen source spans; reuse saved Program binding metadata and exact ESM export/import specifiers. No target evaluation.",
+      "confidence": "high-static-source",
+      "verificationStatus": "source-qualified; actual runtime unverified"
+    },
+    {
+      "id": "NTB-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "At the final wH branch, truthy selectChat calls h7r; falsy selectChat invokes the prepared navigation directly. h7r explicitly supplies kind:chat, the home draft clientThreadId, routePath:/, state and navigate callback to x7n. x7n delegates to e.get(w7n,null).reveal. No explicit Codex guard appears inside h7r or x7n; this proves a Chat-kind reveal request, not the provider final behavior or a global product-mode switch.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4013878,
+          "endExclusive": 4014026
+        },
+        "spanHash": "fa137bff05332c6578c8ab61412115bfa8b46bf8339fe127ec61acfcc6c8dcec",
+        "sourceUnitIds": [
+          "NTB-S13",
+          "NTB-S14",
+          "NTB-S04"
+        ]
+      },
+      "method": "Read frozen source spans; reuse saved Program binding metadata and exact ESM export/import specifiers. No target evaluation.",
+      "confidence": "high-static-source",
+      "verificationStatus": "source-qualified; actual runtime unverified"
+    },
+    {
+      "id": "NTB-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Retain the conditional project/focus/draft responsibilities: activeProject conversion; focusComposerNonce; prepareNavigation and onNavigate ordering; project update on the current path; home draft identity/reuse/freshDraft; initial hints draft and Orbit branches. selectChat cannot justify deleting the shared function. None of these selected source callbacks proves model submission or durable storage.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4012680,
+          "endExclusive": 4013878
+        },
+        "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+        "sourceUnitIds": [
+          "NTB-S04"
+        ]
+      },
+      "method": "Read frozen source spans; reuse saved Program binding metadata and exact ESM export/import specifiers. No target evaluation.",
+      "confidence": "high-static-source",
+      "verificationStatus": "source-qualified; actual runtime unverified"
+    },
+    {
+      "id": "NTB-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Preview merge precedence differs: CH applies preview state after caller options; les applies preview then its explicit selectChat. Ati keeps explicit target then U7r selected/group/projectless decision. U7r distinguishes remote host and eligible local projects before projectless/default selection. These existing context operations remain retained; a single replacement Chat/Codex label does not preserve them.",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4012374,
+          "endExclusive": 4012558
+        },
+        "spanHash": "e23ffb6cef218f0f401e7ea3cee4b7f69eb4532b8303b8421fb5edaf7b654232",
+        "sourceUnitIds": [
+          "NTB-S03",
+          "NTB-S02",
+          "NTB-S05",
+          "NTB-S06"
+        ]
+      },
+      "method": "Read frozen source spans; reuse saved Program binding metadata and exact ESM export/import specifiers. No target evaluation.",
+      "confidence": "high-static-source",
+      "verificationStatus": "source-qualified; actual runtime unverified"
+    },
+    {
+      "id": "NTB-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Ezt keyboardHandler can switch work/chat under its guards, independently from default draft navigation. For the Codex-only reconstruction, adapt both that mode-switch target and the default-path Chat-kind reveal seam; neither whole-function deletion nor returning handled=true without an action is an acceptable retained behavior. The Codex reveal adapter is a reconstruction proposal with acceptance obligations, not recovered source or verified equivalence.",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 2366380,
+          "endExclusive": 2373356
+        },
+        "spanHash": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+        "sourceUnitIds": [
+          "NTB-S01",
+          "NTB-S04",
+          "NTB-S13"
+        ]
+      },
+      "method": "Read frozen source spans; reuse saved Program binding metadata and exact ESM export/import specifiers. No target evaluation.",
+      "confidence": "high-static-source",
+      "verificationStatus": "source-qualified; actual runtime unverified"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "NTB-S01",
+      "name": "Ezt",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2366380,
+        "endExclusive": 2373356
+      },
+      "spanHash": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+        "bytes": 94884,
+        "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+        "jsonPointer": "/sourceUnits/0"
+      },
+      "code": "function Ezt(e){\"use forget\";let t=(0,Y9.c)(108),{composerController:n,canSwitchMode:r,showPendingModeToggle:i,workspaceAgent:a,mode:o,routeProjectId:s,preservePendingInput:c,workModeAllowed:l,workModeLoading:u,workModeUpgradePlan:d,onModeChange:f}=e,p=ir(ic),m=ir(J),h=gm(),g=ii(),_=q(oh),v=Ta(),y=Da(`(min-width: 768px)`),b=q(mv),x=Q(tzt,h.userId),S;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(S={name:`chatgpt.seat-access`},t[0]=S):S=t[0];let C=Q(Po,S),w=fp(),T=QO(),{hash:E,pathname:D,search:O,state:k}=Dt(),A;t[1]===k?A=t[2]:(A=NO(k),t[1]=k,t[2]=A);let j=A,M=Ol(),N=q(Azt),P=q(gne),F=s??P,I=q(ga),L=q(Qh),R;t[3]!==L||t[4]!==I||t[5]!==F?(R=F==null?void 0:uf(F,I,L),t[3]=L,t[4]=I,t[5]=F,t[6]=R):R=t[6];let z=R,B;t[7]!==D||t[8]!==s?(B=s!=null&&vo(D)!=null,t[7]=D,t[8]=s,t[9]=B):B=t[9];let V=B,[H,U]=(0,X9.useState)(!1),[W,ee]=(0,X9.useState)(!1),[te,ne]=(0,X9.useState)(!1),re=(0,X9.useRef)(o),G=r&&te&&!l&&d==null,ie=G?`work`:o,ae=_.status===`loaded`?_.structure:null,oe=r&&y&&d!=null,se;t[10]!==h||t[11]!==x||t[12]!==b||t[13]!==N||t[14]!==F||t[15]!==O||t[16]!==v||t[17]!==ae||t[18]!==oe?(se=ezt({client:v,auth:h,accountStructure:ae,hasUpgradeOpportunity:oe,isTemporaryChat:F==null&&Wg(O),isVoiceActive:b||N,hasClicked:x===!0}),t[10]=h,t[11]=x,t[12]=b,t[13]=N,t[14]=F,t[15]=O,t[16]=v,t[17]=ae,t[18]=oe,t[19]=se):se=t[19];let ce=se,le=r&&!0,ue,de;t[20]!==n||t[21]!==o||t[22]!==p?(ue=()=>{if(n!=null){if(re.current===`chat`&&o===`work`){let e=p.get(UE);n.getPersistedText()!==e&&n.setPromptText(e)}n.setSuggestionTriggers(o===`chat`?kzt:Q9,{enableInlineSystemHints:o===`chat`,variant:o===`chat`?`chatgpt`:void 0}),re.current=o}},de=[n,o,p],t[20]=n,t[21]=o,t[22]=p,t[23]=ue,t[24]=de):(ue=t[23],de=t[24]),(0,X9.useLayoutEffect)(ue,de);let fe;t[25]!==n||t[26]!==w||t[27]!==W||t[28]!==p?(fe=()=>{W&&n!=null&&(ee(!1),Mme(p)?p.get(ll).warning(w.formatMessage({id:`composer.home.localProjectToChatNoCloudProjectsToast`,defaultMessage:`Local projects don't support Chat`,description:`Toast shown after switching from a local project to Chat when no cloud projects are available`})):Jf(n.view,DMe,{dismissOnInput:!0}))},t[25]=n,t[26]=w,t[27]=W,t[28]=p,t[29]=fe):fe=t[29];let pe=fe,K;t[30]!==m||t[31]!==h.accountId||t[32]!==h.userId||t[33]!==r||t[34]!==j||t[35]!==ie||t[36]!==E||t[37]!==n||t[38]!==V||t[39]!==g||t[40]!==o||t[41]!==M||t[42]!==f||t[43]!==T||t[44]!==D||t[45]!==F||t[46]!==p||t[47]!==O||t[48]!==P||t[49]!==k||t[50]!==l||t[51]!==d?(K=(e,t,i)=>{let a=i===void 0?`mode_picker`:i;if(e===ie)return;if(n?.cancelPendingSubmit(),Em(m,Xi,{item:e}),e===`work`&&d!=null){h.userId,Ip(m,yFt,{currentPlan:d,onUpgrade:(e,t)=>{let{accountId:n,defaultTab:r,promoCampaignId:i,userId:a}=t,o=r===`business`?`team`:`plus`,s=m.get(Wl);g()&&n===h.accountId&&a===h.userId&&m.get(wm)===n&&m.get(Gg)===a&&s.status===`denied`&&s.reason===`${d}-plan`&&T({currentPlan:d,defaultTab:r,event:e,chatGptContext:{openModalLocation:`tpp work toggle upsell`,targetPlan:o,checkoutOriginProductExperience:`work`,...i==null?{}:{promoCampaignId:i}},source:`work_mode_upsell`})}});return}if(e===`work`&&!l){r&&(U(!0),ne(!0));return}Em(m,BRt,{surface:RRt.CHATGPT_CHAT_MODE_PICKER_SURFACE_TOGGLE,uiEvent:{type:zRt.CHATGPT_CHAT_MODE_PICKER_UI_EVENT_TYPE_MODE_CLICKED,workDiscoveryBadgeVisible:t,selectedMode:e===`work`?V9.CHATGPT_CHAT_MODE_PICKER_MODE_WORK:V9.CHATGPT_CHAT_MODE_PICKER_MODE_CHAT}}),ne(!1);let s=p.get(gk),c=p.get(ga),u=F==null?void 0:zp(F,c,p.get(Qh)),_=F!=null&&gx(F)?F:u,v=F!=null&&(s?.type===`local`&&s.projectId===F||c[F]!=null);ee(e===`chat`&&F!=null&&v&&_==null);let y=F!=null,b=j;V||(e===`chat`?b=_??null:_!=null&&(b=_));let x=new URLSearchParams(e===`work`?Wd(O,!1):O);y&&(x.delete(`projectId`),x.delete(`hostId`));let S=x.toString(),C=S?`?${S}`:``;if(e===`chat`&&!V&&u==null)$C(p,null);else if(e===`work`&&b!=null){let e=uf(b,c,p.get(Qh));(e==null||e!==P)&&$C(p,{projectId:e??b,projectKind:`local`})}let w=y&&!V?`/`:D;(F!=null&&!V||b!==j||w!==D||C!==O)&&M({hash:E,pathname:w,search:C},{replace:!0,state:fC(k,b)}),e===`chat`&&n!=null&&(QRt(p,n),Qb(p,n.getPersistedText())),U(!0),a===`mode_picker`&&e!==o&&LRt(p,e),f(e,a)},t[30]=m,t[31]=h.accountId,t[32]=h.userId,t[33]=r,t[34]=j,t[35]=ie,t[36]=E,t[37]=n,t[38]=V,t[39]=g,t[40]=o,t[41]=M,t[42]=f,t[43]=T,t[44]=D,t[45]=F,t[46]=p,t[47]=O,t[48]=P,t[49]=k,t[50]=l,t[51]=d,t[52]=K):K=t[52];let me=K,he;t[53]===p?he=t[54]:(he=()=>Qx(p,{selectChat:!0}),t[53]=p,t[54]=he);let ge=r&&n!=null,_e;t[55]!==me||t[56]!==n||t[57]!==o||t[58]!==p||t[59]!==l?(_e=()=>{let e=p.get(XT);if(!(p.get(GE)||n?.hasText()!==!1||e.pullRequestMergeConflict!=null||Object.values(e).some(Dzt)||o===`chat`&&!l))return me(o===`chat`?`work`:`chat`),!0},t[55]=me,t[56]=n,t[57]=o,t[58]=p,t[59]=l,t[60]=_e):_e=t[60];let ve;t[61]!==ge||t[62]!==_e?(ve={enabled:ge,keyboardHandler:_e},t[61]=ge,t[62]=_e,t[63]=ve):ve=t[63],py(`newTask`,he,ve);let ye;t[64]===me?ye=t[65]:(ye=()=>me(`chat`),t[64]=me,t[65]=ye);let be;t[66]===le?be=t[67]:(be={enabled:le},t[66]=le,t[67]=be),py(`switchToMode1`,ye,be);let xe;t[68]===me?xe=t[69]:(xe=()=>me(`work`),t[68]=me,t[69]=xe);let Se;t[70]===le?Se=t[71]:(Se={enabled:le},t[70]=le,t[71]=Se),py(`switchToMode2`,xe,Se);let Ce;t[72]!==r||t[73]!==ie||t[74]!==ce||t[75]!==H||t[76]!==me||t[77]!==pe||t[78]!==i||t[79]!==d?(Ce=r||i?(0,Z9.jsx)(vFt,{autoFocusSelected:H,className:`electron:mt-2`,value:ie,disabled:i,onSelectedAutoFocus:()=>{U(!1)},onTransitionComplete:pe,onValueChange:me,workRequiresUpgrade:d!=null,emphasizeWorkUpgrade:ce}):void 0,t[72]=r,t[73]=ie,t[74]=ce,t[75]=H,t[76]=me,t[77]=pe,t[78]=i,t[79]=d,t[80]=Ce):Ce=t[80];let we=Ce;if(G&&we!=null){let e;return t[81]===we?e=t[82]:(e=(0,Z9.jsxs)(Z9.Fragment,{children:[null,(0,Z9.jsx)(H5,{modeToggle:we})]}),t[81]=we,t[82]=e),e}if(o===`chat`&&C.isLoading)return null;if(o===`chat`&&C.isCapable){let e;t[83]===me?e=t[84]:(e=()=>me(`work`),t[83]=me,t[84]=e);let n;return t[85]!==we||t[86]!==e?(n=(0,Z9.jsxs)(Z9.Fragment,{children:[null,(0,Z9.jsx)(DFt,{modeToggle:we,onSwitchToWork:e})]}),t[85]=we,t[86]=e,t[87]=n):n=t[87],n}let Te;t[88]===o?Te=t[89]:(Te=(0,Z9.jsx)(HFt,{mode:o}),t[88]=o,t[89]=Te);let Ee=N?void 0:we,De;t[90]===Symbol.for(`react.memo_cache_sentinel`)?(De=()=>{U(!1)},t[90]=De):De=t[90];let Oe;t[91]!==r||t[92]!==me||t[93]!==o||t[94]!==l?(Oe=l?e=>{if(e!==o&&!r)throw Error(`Suggestion destination is unavailable`);me(e,void 0,`task_suggestion`)}:void 0,t[91]=r,t[92]=me,t[93]=o,t[94]=l,t[95]=Oe):Oe=t[95];let ke=o===`work`?z??F:null,Ae;t[96]!==n||t[97]!==o||t[98]!==c||t[99]!==Ee||t[100]!==Oe||t[101]!==ke||t[102]!==u||t[103]!==a?(Ae=(0,Z9.jsx)(M9,{preservePendingInput:c,workspaceAgent:a,homeComposerController:n,homeComposerMode:o,homeComposerModeToggle:Ee,onTemporaryChatToggle:De,taskSuggestionsLoading:u,onChatGptTaskSuggestionSelected:Oe,projectId:ke}),t[96]=n,t[97]=o,t[98]=c,t[99]=Ee,t[100]=Oe,t[101]=ke,t[102]=u,t[103]=a,t[104]=Ae):Ae=t[104];let je;return t[105]!==Te||t[106]!==Ae?(je=(0,Z9.jsxs)(Z9.Fragment,{children:[Te,Ae]}),t[105]=Te,t[106]=Ae,t[107]=je):je=t[107],je}"
+    },
+    {
+      "id": "NTB-S02",
+      "name": "les",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 8008662,
+        "endExclusive": 8010435
+      },
+      "spanHash": "d16034cfc9e1efa76352eb9d2552ffe26ad03bd3e46e3ac6d971eb1932df4227",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+        "bytes": 94884,
+        "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+        "jsonPointer": "/sourceUnits/4"
+      },
+      "code": "function les(e){let t=(0,q2.c)(30),{homeComposerMode:n}=e,r=Di(q),{previewNavigationState:i}=(0,J2.useContext)(xH),a=Cc(),{pathname:o,state:s}=Pr(),c=G(bkr),l=G(une),u;t[0]!==i||t[1]!==r?(u=e=>{let{target:t,selectChat:n}=e;Ati(r,{canStartProjectlessChat:r.get(vz),currentThreadKey:r.get(bo),localProjectActionsEnabled:r.get(_z),startNewConversation:e=>wH(r,{...e,...i,selectChat:n}),startNewConversationInProject:e=>U9o(r,e,{...i,selectChat:n}),target:t})},t[0]=i,t[1]=r,t[2]=u):u=t[2];let d=Dd(u),f;t[3]!==d||t[4]!==n||t[5]!==i||t[6]!==r?(f=()=>{if(n===`chat`&&!m7r(r)){h7r(r,i);return}d({selectChat:!0})},t[3]=d,t[4]=n,t[5]=i,t[6]=r,t[7]=f):f=t[7];let p=Dd(f),m;t[8]===d?m=t[9]:(m=()=>d({selectChat:!0}),t[8]=d,t[9]=m),Pw(`newTask`,m);let h;t[10]!==d||t[11]!==a||t[12]!==i?(h=e=>{e==null?a(`/`,{state:{chatGptProjectId:null,...i}}):d({target:e})},t[10]=d,t[11]=a,t[12]=i,t[13]=h):h=t[13];let g;t[14]!==c||t[15]!==n||t[16]!==l||t[17]!==o||t[18]!==s?.sidebarCustomSectionId?(g=l&&id(o)&&s?.sidebarCustomSectionId==null&&(n===`chat`||c==null),t[14]=c,t[15]=n,t[16]=l,t[17]=o,t[18]=s?.sidebarCustomSectionId,t[19]=g):g=t[19];let _;t[20]===n?_=t[21]:(_=n===`chat`?(0,Y2.jsx)($,{id:`sidebarElectron.workNewChatNavLink`,defaultMessage:`New chat`,description:`Starts a new chat from the sidebar`}):(0,Y2.jsx)($,{id:`sidebarElectron.newThread`,defaultMessage:`New chat`,description:`Starts a new chat from the sidebar`}),t[20]=n,t[21]=_);let v;t[22]!==p||t[23]!==g||t[24]!==_?(v=(0,Y2.jsx)(VF,{className:`group`,animatedIcon:`sidebar-new-chat`,icon:xKe,isActive:g,label:_,onClick:p}),t[22]=p,t[23]=g,t[24]=_,t[25]=v):v=t[25];let y;return t[26]!==n||t[27]!==h||t[28]!==v?(y=(0,Y2.jsx)(F9o,{homeComposerMode:n,onTransferred:h,children:v}),t[26]=n,t[27]=h,t[28]=v,t[29]=y):y=t[29],y}"
+    },
+    {
+      "id": "NTB-S03",
+      "name": "CH",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4012374,
+        "endExclusive": 4012558
+      },
+      "spanHash": "e23ffb6cef218f0f401e7ea3cee4b7f69eb4532b8303b8421fb5edaf7b654232",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+        "bytes": 94884,
+        "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+        "jsonPointer": "/sourceUnits/6"
+      },
+      "code": "function CH(){let e=(0,g7r.c)(3),t=Di(q),{previewNavigationState:n}=(0,_7r.useContext)(xH),r;return e[0]!==n||e[1]!==t?(r=e=>wH(t,n==null?e:{...e,...n}),e[0]=n,e[1]=t,e[2]=r):r=e[2],r}"
+    },
+    {
+      "id": "NTB-S04",
+      "name": "wH",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4012680,
+        "endExclusive": 4013878
+      },
+      "spanHash": "8f3e54c32eb66a21ffdadd2a4c73ab6c0af0dde6180e7140865574610f8a967f",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+        "bytes": 94884,
+        "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+        "jsonPointer": "/sourceUnits/7"
+      },
+      "code": "function wH(e,t){let{activeProject:n,prefillAeonStartTarget:r=null,prefillComposerMode:i=null,startInSidebar:a,replace:o,onNavigate:s,selectChat:c,freshDraft:l,...u}=t??{},d=Date.now(),f={...u,...n===void 0?{}:{project:Smr(n)},focusComposerNonce:d,...r==null?{}:{prefillAeonStartTarget:r}},p=gm(),m={replace:o,state:f},h=f.aeonDraft?.isOrbit===!0,g=h&&e.get(Ec),_=h&&f.aeonDraftOnboardingStep===`composer`?co():null,v=`/`;_==null?g&&(v=wr):v=g?oi(_):$u(_);let y=p?null:e.get(Nf).prepareNavigation(v,m);if(!p&&y==null||(s?.(),t?.codexAppMode==null?(t?.prefillChatGptSystemHints?.length??0)>0?sPt(e,`chat`):m7r(e)&&gS(e,`work`):sPt(e,t.codexAppMode),k5r(e),bfr(e,d,i),p))return;e.get(gi).refetch({cancelRefetch:!1}),n!==void 0&&id(e.get(Nf).pathname)&&(YI(e,n),delete f.project),omr(e,e.get(ye));let b=Qe({entrypoint:`home`}),x=e.get(Da,b);if(_==null&&(l||e.get(mh,x)!=null||f.aeonDraft!=null||e.get(L5r,x)!=null)&&oje(e,{clientNewThreadId:x,draftThreadLocationId:b}),(l||f.prefillChatGptSystemHints!=null)&&(f.initialChatGptConversationId=b5r(e,f.prefillChatGptSystemHints??[])),f.aeonDraft?.isOrbit===!0){let t=_??e.get(Da,b);d7r(e,t,f.aeonDraft,r),Cmr(e,t,f)}c?h7r(e,f,e=>(m.state=e,y?.())):y?.()}"
+    },
+    {
+      "id": "NTB-S05",
+      "name": "Ati",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4062953,
+        "endExclusive": 4063388
+      },
+      "spanHash": "618f046ec846ba758faea4c9d0f78ff70aac69cd00b717f39da34a6075170520",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+        "bytes": 94884,
+        "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+        "jsonPointer": "/sourceUnits/8"
+      },
+      "code": "function Ati(e,{canStartProjectlessChat:t,currentThreadKey:n,localProjectActionsEnabled:r,projectless:i=!1,startNewConversation:a,startNewConversationInProject:o,target:s}){Ap(e,Gce,{item:`new_thread`});let c=s??U7r(e.get,{canStartProjectlessChat:t,currentThreadKey:n,localProjectActionsEnabled:r,projectless:i});switch(c.kind){case`group`:o(c.group);return;case`projectless`:a({activeProject:c.assignment});return;case`selected`:a()}}"
+    },
+    {
+      "id": "NTB-S06",
+      "name": "U7r",
+      "role": "selected Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4021517,
+        "endExclusive": 4022021
+      },
+      "spanHash": "6f6524bc3b253ba159b081be54ec9bf869adb9fb7705c3fb37fc7052c4e966ef",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+        "bytes": 94884,
+        "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+        "jsonPointer": "/sourceUnits/9"
+      },
+      "code": "function U7r(e,{canStartProjectlessChat:t,currentThreadKey:n,localProjectActionsEnabled:r,projectless:i=!1}){if(i)return{assignment:null,kind:`projectless`};let a=Pa(n),o=a==null?null:e(mm,a),s=n==null?null:e(SI,n);if(s?.projectKind===`remote`&&s.hostId!=null||r&&s?.projectKind===`local`)return{group:s,kind:`group`};let c=o==null?null:e(wa,o),l=o==null?null:e(ise,o);return t&&c===`projectless`&&(l==null||l===\"default\")?{assignment:o==null?null:e(QKe)?.[o]??null,kind:`projectless`}:{kind:`selected`}}"
+    },
+    {
+      "id": "NTB-S07",
+      "name": "export-VXt",
+      "role": "ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11378158,
+        "endExclusive": 11378167
+      },
+      "spanHash": "9e4a9699ad92e8fb12a5c538130f577eead33d97652ac33a0d39e46a1fe3fe6f",
+      "nodeType": "ExportSpecifier",
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/menu-command-goals-v1.json",
+        "bytes": 94884,
+        "sha256": "8f81f3fdc5d85420ca317dad1549ae328a8e31e96e03da5d868244713516ca45",
+        "jsonPointer": "/sourceUnits/17"
+      },
+      "code": "wH as VXt"
+    },
+    {
+      "id": "NTB-S08",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 54159,
+        "endExclusive": 54168
+      },
+      "spanHash": "f14be2271bced2eba1cd2166488885d5c73b7119d139c245e7a67d272fe75775",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Qx"
+      ],
+      "code": "VXt as Qx",
+      "origin": {
+        "path": ".analysis-local/mode-composer-disposition-work/primary-selected.json",
+        "bytes": 85010,
+        "sha256": "eb0e70f8f1b0ba55096acbc6e7a9b8ae2fe071bef5058556682f2db4eb7186c0",
+        "jsonPointer": "/units/61"
+      }
+    },
+    {
+      "name": "gm",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 128771,
+        "endExclusive": 128780
+      },
+      "spanHash": "063f80ef0e56d8597e43e379a4d8a4f2180a60fb9e040d519c1180e9f129ce19",
+      "nodeType": "ImportSpecifier",
+      "scopeId": 0,
+      "id": "NTB-S09",
+      "origin": {
+        "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+        "bytes": 98261941,
+        "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189",
+        "jsonPointer": "/programBindings/3211/declarations/0/declaration"
+      },
+      "code": "pIt as gm"
+    },
+    {
+      "name": "gS",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310108,
+        "endExclusive": 1310195
+      },
+      "spanHash": "7abb47bc3e652dd1aa48557f232380767a7f01afcc41b3248e49d4842469dba8",
+      "nodeType": "FunctionDeclaration",
+      "scopeId": 0,
+      "id": "NTB-S10",
+      "origin": {
+        "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+        "bytes": 98261941,
+        "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189",
+        "jsonPointer": "/programBindings/6550/declarations/0/declaration"
+      },
+      "code": "function gS(e,t){t===`chat`&&e.get(Qoe)||(e.get(dPt)!=null&&e.set(dPt,t),e.set(pPt,t))}"
+    },
+    {
+      "name": "sPt",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310342,
+        "endExclusive": 1310407
+      },
+      "spanHash": "f6a8bea76b67b011ec706096f29d4be8da6888f8bc8497cb63ee89d5e46b4a3b",
+      "nodeType": "FunctionDeclaration",
+      "scopeId": 0,
+      "id": "NTB-S11",
+      "origin": {
+        "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+        "bytes": 98261941,
+        "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189",
+        "jsonPointer": "/programBindings/6554/declarations/0/declaration"
+      },
+      "code": "function sPt(e,t){t!==`codex`&&gS(e,t),bFe(e,t===`codex`?q$e:Pu)}"
+    },
+    {
+      "name": "m7r",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4012558,
+        "endExclusive": 4012680
+      },
+      "spanHash": "a8b4ab0b975ce5c34fd3bc12cc974d5cfa0bf60486eb74c00474badeb16ef426",
+      "nodeType": "FunctionDeclaration",
+      "scopeId": 0,
+      "id": "NTB-S12",
+      "origin": {
+        "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+        "bytes": 98261941,
+        "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189",
+        "jsonPointer": "/programBindings/16070/declarations/0/declaration"
+      },
+      "code": "function m7r(e){let t=e.get(Ii);return e.get(ij)===`work`&&t!=null&&Vf(t,`809615575`).get(`default_new_chats_to_work`,!1)}"
+    },
+    {
+      "name": "h7r",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4013878,
+        "endExclusive": 4014026
+      },
+      "spanHash": "fa137bff05332c6578c8ab61412115bfa8b46bf8339fe127ec61acfcc6c8dcec",
+      "nodeType": "FunctionDeclaration",
+      "scopeId": 0,
+      "id": "NTB-S13",
+      "origin": {
+        "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+        "bytes": 98261941,
+        "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189",
+        "jsonPointer": "/programBindings/16072/declarations/0/declaration"
+      },
+      "code": "function h7r(e,t,n){x7n(e,{kind:`chat`,clientThreadId:e.get(Da,Qe({entrypoint:`home`})),routePath:`/`,state:t??{chatGptProjectId:null},navigate:n})}"
+    },
+    {
+      "name": "x7n",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2783433,
+        "endExclusive": 2783484
+      },
+      "spanHash": "28315bfdc53854ed33d86c8c9579c49e2f80a1d5cd08471091785aa900495768",
+      "nodeType": "FunctionDeclaration",
+      "scopeId": 0,
+      "id": "NTB-S14",
+      "origin": {
+        "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+        "bytes": 98261941,
+        "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189",
+        "jsonPointer": "/programBindings/12220/declarations/0/declaration"
+      },
+      "code": "function x7n(e,t){return e.get(w7n,null).reveal(t)}"
+    }
+  ],
+  "counts": {
+    "sourceFacts": 7,
+    "sourceUnits": 14,
+    "frozenFilesRechecked": 2,
+    "newProgramParses": 0,
+    "newFeatureIds": 0,
+    "newOperationIds": 0,
+    "newScenarioIds": 0,
+    "newModelSubmissions": 0,
+    "newClientLaunches": 0,
+    "newServiceCalls": 0,
+    "newTargetEvaluations": 0,
+    "newRuntimePasses": 0
+  },
+  "stopBoundary": "Stop at w7n.reveal and already-qualified helpers. Do not recursively expand providers to convert unverified runtime behavior into another static investigation. gm values, reveal effects, native command transport and actual winning handler remain explicit unknowns.",
+  "selectedQuestionClosed": true,
+  "policyAdoptedIntoEngineeringBasis": true,
+  "allChatEntrypointsClosed": false,
+  "fullAnalysisCompleted": false,
+  "independentClientBuildProven": false,
+  "actualRuntimeVerified": false
+}

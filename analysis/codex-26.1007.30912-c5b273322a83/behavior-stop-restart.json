@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "publishedAtUtc": "2026-10-23T14:46:26.693656+00:00",
+  "authorization": {
+    "groupMaximum": 2,
+    "groupConsumed": 2,
+    "groupRemaining": 0,
+    "newSubmissionsOn20261023": 1,
+    "setupException": "project-recovery-authorization.json",
+    "earlierOneTaskAuthorizationIncluded": false
+  },
+  "scenarioId": "owned-running-stop-restart-03",
+  "identity": {
+    "threadId": "01a1692d-c81a-7071-9fa6-62610f1b6090",
+    "turnId": "01a1692d-e641-78f3-b0bc-4546a4b0ebc7"
+  },
+  "project": {
+    "originalProjectId": "b165f2ee-e93e-4632-be51-b181409cac53",
+    "currentProjectId": "48180f71-f532-4b0b-9d1a-fb75c067137f",
+    "sameApprovedDirectory": true,
+    "registrationCalls": 1,
+    "trustClicks": 0,
+    "registrationRetries": 0,
+    "initialObserverFailure": "Extra dialog; no trust change or continued registration",
+    "resolution": "The same original call later fulfilled; root and unique UI identity were checked by read-only observations. No dialog click or second registration."
+  },
+  "preStop": {
+    "uiSampleAtUtc": "2026-10-23T14:33:03.725Z",
+    "status": "inProgress",
+    "samePropsObject": true,
+    "cwdMatches": true,
+    "pid": 37953,
+    "nativeCliDescendants": 3,
+    "row": {
+      "id": "local:client-new-thread:e8687c58-641b-4d22-b496-6a0746336309",
+      "visible": true,
+      "bindings": [
+        {
+          "depth": 15,
+          "field": "entry.conversationId",
+          "id": "01a1692d-c81a-7071-9fa6-62610f1b6090",
+          "cwdMatches": true,
+          "entryKey": "local:client-new-thread:e8687c58-641b-4d22-b496-6a0746336309",
+          "rule": "Nearest row entry only; do not accept a shared ancestor conversationId"
+        }
+      ]
+    },
+    "limits": "UI state immediately before control; not an independent backend task-start event."
+  },
+  "stop": {
+    "atUtc": "2026-10-23T14:33:04.425Z",
+    "signals": 1,
+    "signal": "SIGTERM",
+    "shutdownVerified": true
+  },
+  "restart": {
+    "pid": 50496,
+    "sameApplicationProfilePolicy": true,
+    "nativeCliVerified": true,
+    "firstAutomaticRestorationSample": {
+      "atUtc": "2026-10-23T14:37:08.496Z",
+      "promptCount": 0,
+      "bound": false
+    },
+    "navigation": {
+      "atUtc": "2026-10-23T14:37:08.567Z",
+      "rowId": "local:01a1692d-c81a-7071-9fa6-62610f1b6090",
+      "priorTemporaryRowId": "local:client-new-thread:e8687c58-641b-4d22-b496-6a0746336309",
+      "identityChanged": true,
+      "rule": "Actual row observed and bound through nearest entry.conversationId and cwd before click; no UUID prefix or route guessed.",
+      "completedAtUtc": "2026-10-23T14:37:10.054Z"
+    },
+    "observedOwnedRow": {
+      "id": "local:01a1692d-c81a-7071-9fa6-62610f1b6090",
+      "entryKey": "local:01a1692d-c81a-7071-9fa6-62610f1b6090",
+      "visible": true,
+      "depth": 15,
+      "threadId": "01a1692d-c81a-7071-9fa6-62610f1b6090",
+      "cwdMatches": true
+    },
+    "finalUiSampleAtUtc": "2026-10-23T14:37:10.550Z",
+    "sameThreadTurn": true,
+    "actualTerminalStatus": "interrupted",
+    "itemTypes": [
+      "userMessage"
+    ],
+    "resumeRpcCalls": 0,
+    "newPromptsAfterRestart": 0
+  },
+  "cleanup": {
+    "verified": true,
+    "atUtc": "2026-10-23T14:38:55.211684+00:00",
+    "signals": 1,
+    "scope": "Separate cleanup of restarted runtime after terminal observation; not another scenario intervention."
+  },
+  "readmeAfter": {
+    "bytes": 71,
+    "sha256": "ea559af119be4680632a6ca1214d531b6f80ca0ae63ef225f8392a88ed35e86c",
+    "unchanged": true
+  },
+  "outcome": "same-turn-interrupted-observed-after-restart",
+  "cancelScenarioOutcome": "not-tested/control-binding-unavailable",
+  "limits": [
+    "No resumed execution was observed.",
+    "No automatic current-page restoration in the first recorded sample; no general restoration policy conclusion.",
+    "Same-turn state is observed through bound UI props; independent backend delivery and durable write are not proved.",
+    "No file read/tool use was observed in this interrupted turn; unchanged fixture is not a tool audit.",
+    "This group is exhausted. No third model task or retry is authorized."
+  ],
+  "globalRecordsAdded": 0,
+  "fullAnalysisCompleted": false,
+  "thirdPartyImplementationsPublished": false
+}

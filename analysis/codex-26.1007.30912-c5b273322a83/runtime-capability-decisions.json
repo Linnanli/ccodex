@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "counts": {
+    "fullOriginalProgramParses": 2,
+    "distinctOriginalPrograms": 2,
+    "parsedAstNodes": 1080229,
+    "sourceFacts": 11,
+    "capabilityDecisions": 4,
+    "sameBindingAdoptionCallers": 2,
+    "isolatedSourceScenariosPassed": 22,
+    "actualNativeOrUiBehaviorsVerified": 0,
+    "newFeatureDefinitions": 0,
+    "newConfirmedModeClassifications": 0,
+    "modelSubmissionsAdded": 0,
+    "originalClientRunsAdded": 0,
+    "newReaRuns": 0,
+    "sourceSpansChecked": 186
+  },
+  "facts": [
+    {
+      "id": "RUNTIME-DECISION-001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Owl能力guard是bootstrap Program顶层IfStatement，检查Electron版本非null与showTaskManager函数形状；它不是task-manager菜单点击时才执行的检查。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 456322,
+        "endExclusive": 456487
+      },
+      "spanHash": "495c389257821f7a719232242e4fd598d529ada630d4ec5059e281d4aa44562d",
+      "nodeType": "IfStatement",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Task Manager是Help submenu的直接item，item在CZe内部无结构性条件，只有label/click；没有以allowDebugMenu、平台或requiredAccess包裹该item。此结论以menu factory被实际调用为前提。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3420992,
+        "endExclusive": 3421128
+      },
+      "spanHash": "734c02690a349b73c9854e0d8b66f643262546f950f97d397df49744d0dac1e0",
+      "nodeType": "ObjectExpression",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "完整main Program中CZe同绑定直接调用1处；工厂选项传入buildFlavor、allowDebugMenu、enableUpdater及desktopFeatureAvailability。该调用不证明真实运行值或产品模式。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3431615,
+        "endExclusive": 3432420
+      },
+      "spanHash": "d66c76eced65169f4123d63b3692f332e9ca20493b655ba63a6fb2389e4802ae",
+      "nodeType": "CallExpression",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "ut同绑定直接调用来自更新管理类的observeRelaunchNotificationPolicy；null结果不订阅策略事件，也不启动该处强制调度。有效provider注册策略变化监听并触发调度。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 59083,
+        "endExclusive": 59315
+      },
+      "spanHash": "ef9b79b3ba25b7273f01f946d6d9f7960c7743446972731af1f539a9ce2948d3",
+      "nodeType": "ClassMethod",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "getRelaunchNotificationPolicy在provider为空时返回null；存在provider时调用dt，dt调用native getter后经pt的schema safeParse返回有效数据或null。getter抛错没有在这些函数中catch。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 60234,
+        "endExclusive": 60328
+      },
+      "spanHash": "d49c9a0e9c2820f48c29b18ee18ec854e18002adae43562de8acbb00c86c7aa3",
+      "nodeType": "ClassMethod",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "强制调度先清理既有timer；未ready、缺少download时间、policy.relaunchNotification不严格等于2或已开始安装时清空notice并返回。null策略停止的是该强制调度路径。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 59315,
+        "endExclusive": 59862
+      },
+      "spanHash": "b682c086be6700853597e9a529e97fba10a56d10b19fc0c5ce86c2a55051e233",
+      "nodeType": "ClassMethod",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "普通installUpdatesIfAvailable按launch policy、allowInAppUpdatesForLaunch和updater可用性判断，再调用平台updater；该完整方法不读取owlUpdatePolicies。它与managed relaunch策略是不同职责，不能以null策略省略整个更新功能。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 48013,
+        "endExclusive": 48855
+      },
+      "spanHash": "9ab7472600adf7e918c18e1a1a320ac0276a90841a9123bc7241a4bf6634c93c",
+      "nodeType": "ClassMethod",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "initializeUpdaterOnce先按平台初始化updater，有updater后才观察relaunch policy；初始化/订阅抛错会进入catch并把updater置空，不能把shape-valid provider的运行异常当成安全缺省。",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 45184,
+        "endExclusive": 45895
+      },
+      "spanHash": "7a62dc0be4fb85f5bed3a5c7de422334bd248315d234cd628a7a071bac40f002",
+      "nodeType": "ClassMethod",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "原eJ在main Program有2个同绑定直接调用，来自window.open的createWindow回调和cloneTab方法；caller不再是完全未知的注入来源。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1853172,
+        "endExclusive": 1853680
+      },
+      "spanHash": "99dea5fd26a9bdb1bb8a8a7147e5b21742e7a1110accec912630b1ec0e10d5c0",
+      "nodeType": "FunctionDeclaration",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "window.open createWindow回调要求携带webContents且通过$q形状检查，交给eJ登记owner、route和lease，再发送adoptionLease及adoptedWebContentsId；缺失时抛出专门错误。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1883950,
+        "endExclusive": 1884824
+      },
+      "spanHash": "d6da4a9ccb64a76fad6c58065c071530badac05f7a8a805b6bb75bff4b54aac3",
+      "nodeType": "ArrowFunctionExpression",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    },
+    {
+      "id": "RUNTIME-DECISION-011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "cloneTab校验owner、导航和admission；有live source时调用webContents.clone并要求可adopt，再通过eJ保留navigation/errorPages。source为空时有materialize/cold-restore路径，不能将其当作live history clone的等价替代。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1977953,
+        "endExclusive": 1979215
+      },
+      "spanHash": "b6f4b1462e4cf0d75794ae42be91c6921556db121214aeb91a03a12badfe5583",
+      "nodeType": "ClassMethod",
+      "method": "static-code; full-original-Program-AST-and-selected-source-review",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-confirmed; actual-runtime-unverified"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "RUNTIME-DECISION-task-manager",
+      "capability": "task-manager presentation",
+      "decision": "保留为独立诊断能力；第一方菜单经能力接口调用，由选定运行时或独立实现提供真实UI。不能以debug-only理由排除、以空函数通过guard或用缺省隐藏菜单完成复刻。",
+      "firstPartyResponsibility": "菜单接线、能力声明与错误传播；隔离原运行时的私有方法名。",
+      "externalDependencyResponsibility": "真实诊断窗口、进程数据和生命周期；尚未选择实现或固定依赖版本。",
+      "evidenceIds": [
+        "RUNTIME-DECISION-001",
+        "RUNTIME-DECISION-002",
+        "RUNTIME-DECISION-003"
+      ],
+      "closedQuestions": [
+        "guard是Program顶层",
+        "菜单项不是局部debug分支",
+        "同Program menu factory调用身份"
+      ],
+      "remaining": [
+        "实际UI字段、动作、刷新与关闭行为",
+        "运行时功能/账户条件",
+        "公开替代能力与固定版本比较"
+      ],
+      "acceptance": "独立构建中菜单打开真实诊断界面，并按基线观察验证字段、动作和生命周期；能力缺失时该功能仍为未完成。",
+      "status": "analysis-design-decision; implementation-and-runtime-validation-pending",
+      "fullFeatureRequirementRetained": true,
+      "runtimeSubstituteProven": false,
+      "productMode": "unknown; retained pending evidence for ChatGPT-only exclusion"
+    },
+    {
+      "id": "RUNTIME-DECISION-updates",
+      "capability": "update transport and managed relaunch policy",
+      "decision": "将普通更新transport与nullable managed-relaunch policy分成两个第一方接口；null provider沿原无强制调度分支。完整复刻仍保留有策略时的通知、deadline、重试及平台更新职责。",
+      "firstPartyResponsibility": "schema验证、策略消费、notice/调度/重试与平台updater编排。",
+      "externalDependencyResponsibility": "更新transport和策略provider分别固定来源；process._linkedBinding属于运行时内部能力，不能当作普通npm包导入。",
+      "evidenceIds": [
+        "RUNTIME-DECISION-004",
+        "RUNTIME-DECISION-005",
+        "RUNTIME-DECISION-006",
+        "RUNTIME-DECISION-007",
+        "RUNTIME-DECISION-008"
+      ],
+      "closedQuestions": [
+        "选定null消费者分支",
+        "策略订阅触发点",
+        "普通安装方法与策略读取分开",
+        "provider运行异常可使初始化失败"
+      ],
+      "remaining": [
+        "provider实际数据与事件生命周期/注销",
+        "平台updater、签名及安装行为",
+        "完整时间helper与调度运行对照"
+      ],
+      "acceptance": "分别验收无provider、有策略、provider错误、普通更新与强制安装；22个局部场景不是实际更新通过。",
+      "status": "analysis-design-decision; implementation-and-runtime-validation-pending",
+      "fullFeatureRequirementRetained": true,
+      "runtimeSubstituteProven": false,
+      "productMode": "unknown; retained pending evidence for ChatGPT-only exclusion"
+    },
+    {
+      "id": "RUNTIME-DECISION-browser-ownership",
+      "capability": "window.open adoption and live history clone",
+      "decision": "保留为浏览器所有权和历史克隆能力；第一方manager维护pending/owner/route/清理，外部能力提供实际clone与可消费的adoption lease。冷恢复分支仅按原条件使用。",
+      "firstPartyResponsibility": "发起者/owner校验、tab路由和消息、pending记录及destroyed清理。",
+      "externalDependencyResponsibility": "view克隆、lease创建与原生消费/转移；不能仅替换类名或生成非空字符串。",
+      "evidenceIds": [
+        "RUNTIME-DECISION-009",
+        "RUNTIME-DECISION-010",
+        "RUNTIME-DECISION-011"
+      ],
+      "closedQuestions": [
+        "eJ的两处同绑定直接caller",
+        "window.open child receiver的结构来源",
+        "live clone与cold restore不同路径"
+      ],
+      "remaining": [
+        "完整receiver工厂和lease消费/accept身份",
+        "实际转移、重复消费/失效及浏览历史语义",
+        "目标平台的独立实现可行性"
+      ],
+      "acceptance": "在选定shell实际完成window.open与live back/forward/reload clone、owner隔离和销毁；失败/缺失能力仍关联未完成的浏览器功能。",
+      "status": "analysis-design-decision; implementation-and-runtime-validation-pending",
+      "fullFeatureRequirementRetained": true,
+      "runtimeSubstituteProven": false,
+      "productMode": "unknown; retained pending evidence for ChatGPT-only exclusion"
+    },
+    {
+      "id": "RUNTIME-DECISION-process-policy",
+      "capability": "restricted Node network and scoped local IPC",
+      "decision": "保留进程权限策略为独立运行时要求；运行时必须实际拒绝通用net并允许声明的IPC，或用可验证的独立进程/OS边界实现同一约束。不能删flag、伪造permission.has或放宽权限。",
+      "firstPartyResponsibility": "端点构造、restricted/unrestricted策略、relaunch环境/参数与open-event重放。",
+      "externalDependencyResponsibility": "实际权限执行；Framework中24.19.0静态Node版本结构不能证明IPC权限实现或ABI兼容。",
+      "existingEvidenceIds": [
+        "RUNTIME-REVIEW-0005",
+        "RUNTIME-REVIEW-0006",
+        "RUNTIME-REVIEW-0007",
+        "RUNTIME-REVIEW-0008",
+        "RUNTIME-REVIEW-0012"
+      ],
+      "closedQuestions": [],
+      "newSourceClaim": false,
+      "remaining": [
+        "最终IPC端点与所有caller",
+        "普通运行时的IPC权限差异",
+        "实际正反向权限及relaunch观察"
+      ],
+      "acceptance": "允许端点正例、通用net及越界IPC负例、重启与open-event重放均在选定shell通过。",
+      "status": "analysis-design-decision; implementation-and-runtime-validation-pending",
+      "fullFeatureRequirementRetained": true,
+      "runtimeSubstituteProven": false,
+      "productMode": "unknown; retained pending evidence for ChatGPT-only exclusion"
+    }
+  ],
+  "nextAction": {
+    "priority": "A2",
+    "question": "以可独立取得的固定Electron版本为对照，核对公开诊断/进程API、WebContents clone/adoption与Node权限能力，形成逐能力差异及是否需独立实现的决定。",
+    "closure": "每个结论引用固定版本官方接口/源码或明确缺席范围；不把名称缺席当全局不存在，不把API近似当行为等价。",
+    "preserve": "独立Owl来源、完整功能/模式和实际客户端行为缺口保持；不重跑已闭合的menu item与两处eJ caller。"
+  },
+  "sourceContracts": [
+    "raw/runtime-decisions/source-01/main-CqEoQDOU/source-contracts.json",
+    "raw/runtime-decisions/source-01/bootstrap-CooIJpZm/source-contracts.json"
+  ],
+  "observations": "raw/runtime-decisions/observations-02/observations.json",
+  "failedAttempt": "observations-01 failed before scenario execution: source selector matched callers as well as definition; corrected to exact saved filename in observations-02.",
+  "runtimeRouteSelected": false,
+  "independentRuntimeBuildProven": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limitations": [
+    "Selected class member calls are syntactic, not proof of actual this instance or method dispatch.",
+    "Full-Program binding census is bounded to the selected declarations and direct references, not all native/private API callers.",
+    "Old options/unknowns remain historical snapshots; these decisions close only the selected source questions.",
+    "The fourth policy decision reuses existing evidence and adds no new permission enforcement observation."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "publishedAtUtc": "2026-10-23T14:14:13.658554+00:00",
+  "scope": "Approved two-task synthetic desktop scenarios; exact UI props and process identities only. Not complete product behavior verification.",
+  "authorization": {
+    "maxAdditionalSubmissions": 2,
+    "reservedSubmissions": 1,
+    "remainingSubmissions": 1,
+    "newSubmissionsOn20261023": 0,
+    "priorSeparateOneTaskAuthorizationIncluded": false,
+    "remainingScenario": "owned-running-stop-restart-03"
+  },
+  "cancelScenario": {
+    "id": "owned-running-cancel-02",
+    "modelSubmissions": 1,
+    "identity": {
+      "threadId": "01a13824-439b-7683-b9dd-5b2d0180fe9a",
+      "turnId": "01a13824-774d-7c50-8cfb-851f008f635a"
+    },
+    "initialObservation": "unresolved/observation-timeout",
+    "laterUiState": "completed",
+    "cwdMatches": true,
+    "cancelClicks": 0,
+    "outcome": "not-tested/control-binding-unavailable",
+    "controlReason": "A visible enabled stop button was observed, but exact same-props thread/turn/running association was not closed; no click was made.",
+    "sameTurnReconnectItems": [
+      "Reconnecting... 2/5",
+      "Reconnecting... 3/5",
+      "Reconnecting... 4/5",
+      "Reconnecting... 5/5"
+    ],
+    "reconnectErrorInfoKey": "responseStreamDisconnected",
+    "agentFinalReply": "当前没有可用的直接只读文件工具，因此已停止，未读取 README.md，也未执行命令、修改文件或调用联网工具。",
+    "replyQualification": "The model stated that no direct read-only file tool was available. This is a reply, not independent file-access instrumentation.",
+    "ownedSidebarRow": "local:client-new-thread:f95b8117-fe69-43ff-9d95-f773179c7f47",
+    "rowQualification": "The temporary UI row was associated by its own fiber entry.conversationId, not by guessing a local:UUID selector.",
+    "readmeAfterOriginalSampleMatches": true,
+    "limits": [
+      "No cancellation outcome measured.",
+      "UI state is not independent backend delivery/storage proof.",
+      "Reconnect items do not establish quota exhaustion, rate limiting or a service-side root cause."
+    ]
+  },
+  "stopRestartScenario": {
+    "id": "owned-running-stop-restart-03",
+    "modelSubmissions": 0,
+    "scenarioSignals": 0,
+    "scenarioRestarts": 0,
+    "status": "not-submitted/existing-project-precondition-unavailable",
+    "observedAtUtc": "2026-10-23T14:09:36.601Z",
+    "projectControlCounts": {
+      "labelCount": 0,
+      "containerCount": 0
+    },
+    "ownedApplicationLoaded": true,
+    "fixtureRestored": {
+      "atUtc": "2026-10-23T14:03:37.049112+00:00",
+      "path": "/private/tmp/ccodex-behavior/projects/5bbb8917-0bfe-45a2-bdb9-e8946daaa236/README.md",
+      "bytes": 71,
+      "sha256": "ea559af119be4680632a6ca1214d531b6f80ca0ae63ef225f8392a88ed35e86c",
+      "reason": "Temporary synthetic README absent on resumed session; restored the exact approved bytes at the same recorded project path. No application project/trust change.",
+      "limitation": "Current bytes match the approved fixture; this is not proof of uninterrupted filesystem persistence since the earlier session."
+    },
+    "ownedLaunchAndCliVerified": true,
+    "cleanupVerified": true,
+    "limits": [
+      "No second prompt was filled or submitted.",
+      "Zero matching controls does not prove the stored project was deleted or identify why it is absent.",
+      "Cleanup SIGTERM occurred with no submitted scenario turn and is not a stop/restart intervention.",
+      "Fixture restoration is not proof of uninterrupted filesystem persistence.",
+      "The remaining one-task authorization is unconsumed; the original plan requires the existing project and forbids creating another."
+    ]
+  },
+  "globalRecordsAdded": 0,
+  "fullAnalysisCompleted": false,
+  "thirdPartyImplementationsPublished": false
+}

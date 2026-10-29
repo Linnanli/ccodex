@@ -1,0 +1,602 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scope": "Isolated execution of selected frozen JS with synthetic runtime/browser/RPC responses; not original-client behavior.",
+  "casesPassed": 22,
+  "cases": [
+    {
+      "id": "AMR-01",
+      "claim": "Missing generic API suppresses its provider; eager named provider reports unavailable.",
+      "status": "passed",
+      "observed": {
+        "capturedAtMs": 100,
+        "audioService": {
+          "exitCount": 0,
+          "lastExitAtMs": null,
+          "lastExitReason": null,
+          "lastExitCode": null
+        },
+        "audioDiscovery": {
+          "status": "unavailable",
+          "configuredAtMs": null,
+          "intervalStartedAtMs": null,
+          "collectedAtMs": null,
+          "generation": 0,
+          "collectionSequence": 0,
+          "deliveredReplyCount": null,
+          "droppedReplyCount": null
+        }
+      }
+    },
+    {
+      "id": "AMR-02",
+      "claim": "Deferred readiness configures once across provider instances.",
+      "status": "passed",
+      "observed": {
+        "configure": [
+          [
+            "Media.AudioSystem.GetDeviceDescription.Result"
+          ]
+        ],
+        "state": {
+          "status": "missing",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 100,
+          "collectedAtMs": null,
+          "generation": 1,
+          "collectionSequence": 0,
+          "deliveredReplyCount": null,
+          "droppedReplyCount": null
+        }
+      }
+    },
+    {
+      "id": "AMR-03",
+      "claim": "Synchronous configure failure remains one-shot and does not collect.",
+      "status": "passed",
+      "observed": {
+        "calls": 1,
+        "snapshot": {
+          "status": "unavailable",
+          "configuredAtMs": null,
+          "intervalStartedAtMs": null,
+          "collectedAtMs": null,
+          "generation": 0,
+          "collectionSequence": 0,
+          "deliveredReplyCount": null,
+          "droppedReplyCount": null
+        }
+      }
+    },
+    {
+      "id": "AMR-04",
+      "claim": "Ready buckets are added on every read, without JS snapshot differencing.",
+      "status": "passed",
+      "observed": {
+        "status": "ready",
+        "configuredAtMs": 100,
+        "intervalStartedAtMs": 100,
+        "collectedAtMs": 200,
+        "generation": 1,
+        "collectionSequence": 2,
+        "deliveredReplyCount": 6,
+        "droppedReplyCount": 4
+      }
+    },
+    {
+      "id": "AMR-05",
+      "claim": "Missing histogram hides retained counts; subsequent ready read reveals accumulation.",
+      "status": "passed",
+      "observed": {
+        "missing": {
+          "status": "missing",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 100,
+          "collectedAtMs": 201,
+          "generation": 1,
+          "collectionSequence": 2,
+          "deliveredReplyCount": null,
+          "droppedReplyCount": null
+        },
+        "ready": {
+          "status": "ready",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 100,
+          "collectedAtMs": 202,
+          "generation": 1,
+          "collectionSequence": 3,
+          "deliveredReplyCount": 3,
+          "droppedReplyCount": 2
+        }
+      }
+    },
+    {
+      "id": "AMR-06",
+      "claim": "Counter discontinuity advances generation and resets both counters.",
+      "status": "passed",
+      "observed": {
+        "reset": {
+          "status": "counter_discontinuity",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 222,
+          "collectedAtMs": 222,
+          "generation": 2,
+          "collectionSequence": 2,
+          "deliveredReplyCount": null,
+          "droppedReplyCount": null
+        },
+        "ready": {
+          "status": "ready",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 222,
+          "collectedAtMs": 223,
+          "generation": 2,
+          "collectionSequence": 3,
+          "deliveredReplyCount": 0,
+          "droppedReplyCount": 0
+        }
+      }
+    },
+    {
+      "id": "AMR-07",
+      "claim": "An unsupported bucket invalidates valid buckets from the same response.",
+      "status": "passed",
+      "observed": {
+        "invalid": {
+          "status": "unsupported",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 224,
+          "collectedAtMs": 224,
+          "generation": 2,
+          "collectionSequence": 1,
+          "deliveredReplyCount": null,
+          "droppedReplyCount": null
+        },
+        "ready": {
+          "status": "ready",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 224,
+          "collectedAtMs": 225,
+          "generation": 2,
+          "collectionSequence": 2,
+          "deliveredReplyCount": 0,
+          "droppedReplyCount": 0
+        }
+      }
+    },
+    {
+      "id": "AMR-08",
+      "claim": "Collection error increments sequence but preserves earlier counters and timestamp.",
+      "status": "passed",
+      "observed": {
+        "failed": {
+          "status": "unavailable",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 100,
+          "collectedAtMs": 200,
+          "generation": 1,
+          "collectionSequence": 2,
+          "deliveredReplyCount": null,
+          "droppedReplyCount": null
+        },
+        "ready": {
+          "status": "ready",
+          "configuredAtMs": 100,
+          "intervalStartedAtMs": 100,
+          "collectedAtMs": 226,
+          "generation": 1,
+          "collectionSequence": 3,
+          "deliveredReplyCount": 3,
+          "droppedReplyCount": 2
+        }
+      }
+    },
+    {
+      "id": "AMR-09",
+      "claim": "Named synchronous reader does not await a Promise returned by the native collector.",
+      "status": "passed",
+      "observed": {
+        "status": "unavailable",
+        "sequence": 1
+      }
+    },
+    {
+      "id": "AMR-10",
+      "claim": "Audio service lifecycle snapshot is separate from histogram state and returned by copy.",
+      "status": "passed",
+      "observed": {
+        "exitCount": 1,
+        "lastExitAtMs": 100,
+        "lastExitReason": "synthetic-exit",
+        "lastExitCode": 17
+      }
+    },
+    {
+      "id": "AMR-11",
+      "claim": "Generic configure discards a native Promise; generic collect adopts it.",
+      "status": "passed",
+      "observed": {
+        "configureSettlesBeforeNative": true,
+        "collectAwaitsNative": true
+      }
+    },
+    {
+      "id": "AMR-12",
+      "claim": "Generic provider cache survives later capability removal.",
+      "status": "passed",
+      "observed": {
+        "sameCachedProvider": true
+      }
+    },
+    {
+      "id": "AMR-13",
+      "claim": "Renderer global cleanup is identity-aware.",
+      "status": "passed",
+      "observed": {
+        "oldCleanupPreservedReplacement": true,
+        "currentCleanupRemoved": true
+      }
+    },
+    {
+      "id": "AMR-14",
+      "claim": "Renderer clones before disposing the received measurement object.",
+      "status": "passed",
+      "observed": {
+        "result": {
+          "collectedAt": 4,
+          "nested": {
+            "count": 3
+          }
+        },
+        "disposed": 1
+      }
+    },
+    {
+      "id": "AMR-15",
+      "claim": "Renderer collector rejects non-disposable response objects.",
+      "status": "passed",
+      "observed": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "AMR-16",
+      "claim": "Disposal failure rejects a generic collect even after cloning succeeded.",
+      "status": "passed",
+      "observed": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "AMR-17",
+      "claim": "Diagnostic timeout helper returns success and always aborts/clears its timer.",
+      "status": "passed",
+      "observed": {
+        "status": "succeeded",
+        "value": 7
+      }
+    },
+    {
+      "id": "AMR-18",
+      "claim": "Diagnostic helper converts rejection to failed.",
+      "status": "passed",
+      "observed": {
+        "status": "failed"
+      }
+    },
+    {
+      "id": "AMR-19",
+      "claim": "Diagnostic helper uses initialized 2000ms timeout and aborts a pending request.",
+      "status": "passed",
+      "observed": {
+        "result": {
+          "status": "timed_out"
+        },
+        "delayMs": 2000
+      }
+    },
+    {
+      "id": "AMR-20",
+      "claim": "Browser aggregate and host snapshot join without logging device IDs or labels.",
+      "status": "passed",
+      "observed": {
+        "diagnostic": {
+          "diagnosticVersion": 2,
+          "realtimeSessionId": "synthetic-session",
+          "startSource": "synthetic",
+          "mediaSetupIndex": 1,
+          "outcome": "not_found",
+          "queryStartedAtMs": 500,
+          "queryFinishedAtMs": 500,
+          "visibilityState": "visible",
+          "hasFocus": true,
+          "hasExplicitDeviceConstraint": true,
+          "browser": {
+            "status": "succeeded",
+            "value": {
+              "audioInputCount": 2,
+              "concreteInputCount": 1,
+              "hasLabeledInput": true,
+              "hasDefaultInput": true,
+              "requestedDevicePresent": true,
+              "completedAtMs": 500
+            }
+          },
+          "host": {
+            "status": "succeeded",
+            "value": {
+              "audioDiscovery": {
+                "status": "ready"
+              }
+            }
+          }
+        },
+        "logs": 1,
+        "disposed": 1
+      }
+    },
+    {
+      "id": "AMR-21",
+      "claim": "Absent host diagnostic service is unsupported while browser query can succeed.",
+      "status": "passed",
+      "observed": {
+        "host": {
+          "status": "unsupported"
+        },
+        "browser": {
+          "status": "succeeded",
+          "value": {
+            "audioInputCount": 0,
+            "concreteInputCount": 0,
+            "hasLabeledInput": false,
+            "hasDefaultInput": false,
+            "requestedDevicePresent": null,
+            "completedAtMs": 500
+          }
+        }
+      }
+    },
+    {
+      "id": "AMR-22",
+      "claim": "Outer diagnostic catches logging/callback errors without escaping.",
+      "status": "passed",
+      "observed": {
+        "resolved": true,
+        "logs": 1
+      }
+    }
+  ],
+  "sourceInputs": [
+    {
+      "kind": "main",
+      "label": "binding-Nh",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 468980,
+        "endExclusive": 469052
+      },
+      "spanHash": "97b6fa3b17be1d1cabad5777b1769b7af2b42c733341068b73ea8d09afe5b3fc"
+    },
+    {
+      "kind": "main",
+      "label": "binding-_le",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 469053,
+        "endExclusive": 469082
+      },
+      "spanHash": "3b4695bb21f595ec90076ab0a8398912b9a33a96dcc5adbc1b1c7a8ee25fa67f"
+    },
+    {
+      "kind": "main",
+      "label": "binding-vle",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 469082,
+        "endExclusive": 469200
+      },
+      "spanHash": "facd9143be56f5aa73867095de2aced9d9e4a0bb7137e10414c3169dba83abc6"
+    },
+    {
+      "kind": "main",
+      "label": "binding-rX",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2145703,
+        "endExclusive": 2145705
+      },
+      "spanHash": "d5c8f7460d2f08fa88fa6e987c42ca83e2fe6eea6f84c0a047c5726a3829d15d"
+    },
+    {
+      "kind": "main",
+      "label": "binding-jNe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2145706,
+        "endExclusive": 2145869
+      },
+      "spanHash": "176b71c8c66cfc8907270f3f8811e458891de23be47d25f2c88843ee908d5052"
+    },
+    {
+      "kind": "main",
+      "label": "binding-MNe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2145873,
+        "endExclusive": 2146040
+      },
+      "spanHash": "4c7f2f2f448053fa594ed2d0797ad07ddbdf38ff2f09f8ded07f83bbf92db972"
+    },
+    {
+      "kind": "main",
+      "label": "binding-uZ",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2410345,
+        "endExclusive": 2410395
+      },
+      "spanHash": "44bb4f94d58f9359b7d9b22e06a15864efd3ee399d4f94a2a714920a5015ffcd"
+    },
+    {
+      "kind": "main",
+      "label": "binding-dZ",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2410396,
+        "endExclusive": 2410401
+      },
+      "spanHash": "f0d2ae92bfb52f8141b70a7d4003b4f2503614b8cb112b5e7ccb01ab3f6e1e14"
+    },
+    {
+      "kind": "main",
+      "label": "binding-fZ",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2410402,
+        "endExclusive": 2410406
+      },
+      "spanHash": "9a6a3bc2d00af49ed97d00d4bce9add4d6a5e96b5c5c33e8e51ba5acab949282"
+    },
+    {
+      "kind": "main",
+      "label": "binding-pZ",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2410407,
+        "endExclusive": 2410411
+      },
+      "spanHash": "11766296bc9d7c0e2e507193b7212f7a3b453f968656fabedf2ec15d79ab115d"
+    },
+    {
+      "kind": "main",
+      "label": "binding-mZ",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2410412,
+        "endExclusive": 2410583
+      },
+      "spanHash": "4c227ad5aa837ce61f23e504bb01cc55652c051f384b8250fd407229de4aad41"
+    },
+    {
+      "kind": "main",
+      "label": "binding-gIe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2410584,
+        "endExclusive": 2410659
+      },
+      "spanHash": "2c40fd27ea14c5edd020608d6d815d2ff6f873df399ae1801d28efe6c66270d1"
+    },
+    {
+      "kind": "main",
+      "label": "binding-_Ie",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2410659,
+        "endExclusive": 2411297
+      },
+      "spanHash": "8be4e0555bd0fad6405e17e2b00cd2ce4198f7e832dbfb9c51428fad2c624b57"
+    },
+    {
+      "kind": "main",
+      "label": "binding-hZ",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2411297,
+        "endExclusive": 2411486
+      },
+      "spanHash": "311d6e015ad5a0babdc35552af989d00ac835ce81fe7733c0b955a2289fad2d7"
+    },
+    {
+      "kind": "main",
+      "label": "binding-vIe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "byteRange": {
+        "start": 2411490,
+        "endExclusive": 2411628
+      },
+      "spanHash": "e59bdbe4102aee2008ab69b0e4e3ae0bb945ab37891619068da17ae9c420ef27"
+    },
+    {
+      "kind": "initial",
+      "label": "binding-Gia",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "byteRange": {
+        "start": 5355311,
+        "endExclusive": 5356297
+      },
+      "spanHash": "6c0d6e688f940ef21554fe8804e35ee6d5bc2611a831df79d950456751971a03"
+    },
+    {
+      "kind": "initial",
+      "label": "binding-Kia",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "byteRange": {
+        "start": 5356297,
+        "endExclusive": 5356595
+      },
+      "spanHash": "66396fa1d3b77d11e9e88908f098909144714ccfa2d292d84ffd91996125e8b6"
+    },
+    {
+      "kind": "initial",
+      "label": "binding-qia",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "byteRange": {
+        "start": 5356599,
+        "endExclusive": 5356602
+      },
+      "spanHash": "ed0ad968df46e4c86efa742eac92f718bd0425437b118f430560c4dbc905d324"
+    },
+    {
+      "kind": "initial",
+      "label": "binding-Jia",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "byteRange": {
+        "start": 5356603,
+        "endExclusive": 5356661
+      },
+      "spanHash": "5d3b7eb73cf50045f4d6b1cd699a356912881aa77065768f8d237990792f29b2"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-GI",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 2179906,
+        "endExclusive": 2180975
+      },
+      "spanHash": "b276b90534717452db22952a1d825315a924cde8da3daecef73ad5a25e80befc"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-Gli",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 5753340,
+        "endExclusive": 5753778
+      },
+      "spanHash": "9132862616fa2dfa6c194b06db32108a54103754db2729f26dbe56dc77216fbb"
+    },
+    {
+      "kind": "shared",
+      "label": "binding-JL",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "byteRange": {
+        "start": 2300121,
+        "endExclusive": 2300348
+      },
+      "spanHash": "12a4716f7d092515b6150536ace14f430aeec4e47b12bff04719e625a60f025f"
+    }
+  ],
+  "substitutions": [
+    "Electron app methods and RPC base class",
+    "Browser document/media-device responses and logger",
+    "Lazy initialization dependencies vm/s_",
+    "Clock and timer scheduler"
+  ],
+  "realmQualification": "Node 22 host Symbol is shared into renderer VM fixtures so synthetic RPC disposal keys match source lookups; target renderer Symbol/runtime behavior unverified.",
+  "helperFidelity": "GI disposal helper and JL cancellation/disposal helper execute their exact selected source; no replacement for either.",
+  "realNativeCalls": 0,
+  "originalClientRuns": 0,
+  "modelSubmissions": 0,
+  "productScenariosExecuted": 0
+}

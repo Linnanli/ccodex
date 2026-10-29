@@ -1,0 +1,589 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "Artifact-only review of typed structural links; not feature grouping.",
+  "method": {
+    "inputPolicy": "Read only the three frozen contract JSON artifacts. No target-source, runtime, UI, credentials, personal data or external evidence catalog was read for this review.",
+    "acceptedBasis": [
+      "explicit identical callback/handler-definition evidence reference",
+      "explicit reciprocal contract/schema-registration dataflow reference",
+      "exact sourcePath plus sourceHash plus complete definition span equality"
+    ],
+    "rejectedBasis": [
+      "same command/message ID",
+      "same label",
+      "same URL/path",
+      "same source file/hash without complete definition identity",
+      "candidate/free callee name without original lexical binding"
+    ],
+    "evidenceValidationLevel": "Existing artifact fields and JSON references were checked; underlying target-source span hashes were not independently re-read in this task."
+  },
+  "sourceArtifacts": {
+    "route": {
+      "artifactPath": ".analysis-local/feature-work/route-contracts.json",
+      "absoluteArtifactPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/feature-work/route-contracts.json",
+      "sha256": "55c96e171a5cb524d72b93be6bb44e3f9a8fa0686574e1ef9e863adf1e29dcae",
+      "bytes": 3708633,
+      "baselineId": "codex-26.1007.30912-c5b273322a83"
+    },
+    "host": {
+      "artifactPath": ".analysis-local/feature-work/host-message-contracts.json",
+      "absoluteArtifactPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/feature-work/host-message-contracts.json",
+      "sha256": "10493de416d59e4fa306895a40cc09d613ff7cd3d742fb4caccb3670bb12b7e2",
+      "bytes": 599124,
+      "baselineId": "codex-26.1007.30912-c5b273322a83"
+    },
+    "menu": {
+      "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+      "absoluteArtifactPath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/entry-work/menu-command-contracts.json",
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+      "bytes": 10630684,
+      "baselineId": "codex-26.1007.30912-c5b273322a83"
+    }
+  },
+  "confirmedLinks": [
+    {
+      "linkId": "RL-001",
+      "kind": "shares-callback-definition",
+      "status": "confirmed",
+      "scope": "within-menu-artifact",
+      "directed": false,
+      "from": {
+        "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+        "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+        "jsonPointer": "/nativeMenuItems/2",
+        "evidenceIds": [
+          "ENTRY-AST-E01561",
+          "ENTRY-AST-E01594"
+        ],
+        "contractId": "native-menu-schema:1550396790cd34ad3e01468f",
+        "referencePointers": [
+          "/nativeMenuItems/2/callback/definitionEvidenceId"
+        ],
+        "contractIndexPointer": "/contractRecordIndex/217",
+        "sourceCoordinates": {
+          "baselineId": "codex-26.1007.30912-c5b273322a83",
+          "kind": "native-menu-schema",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "start": 3404080,
+          "endExclusive": 3404496,
+          "instance": ""
+        }
+      },
+      "to": {
+        "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+        "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+        "jsonPointer": "/nativeMenuItems/3",
+        "evidenceIds": [
+          "ENTRY-AST-E01595",
+          "ENTRY-AST-E01594"
+        ],
+        "contractId": "native-menu-schema:6e052e560fa72926e8c3c5ed",
+        "referencePointers": [
+          "/nativeMenuItems/3/callback/definitionEvidenceId"
+        ],
+        "contractIndexPointer": "/contractRecordIndex/218",
+        "sourceCoordinates": {
+          "baselineId": "codex-26.1007.30912-c5b273322a83",
+          "kind": "native-menu-schema",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "start": 3404499,
+          "endExclusive": 3404573,
+          "instance": ""
+        }
+      },
+      "evidenceIds": [
+        "ENTRY-AST-E01561",
+        "ENTRY-AST-E01595",
+        "ENTRY-AST-E01594"
+      ],
+      "basis": {
+        "kind": "explicit-identical-definition-reference",
+        "definitionEvidenceId": "ENTRY-AST-E01594",
+        "callbackStatuses": [
+          "inline-callable",
+          "inline-callable"
+        ],
+        "rule": "Both independently indexed menu schema records explicitly refer to the same callback definition evidence record. Item span/name/URL similarity was not used.",
+        "sourceSpanClaim": "Endpoint coordinates identify each complete schema item; they are not asserted to be callback-definition spans."
+      },
+      "conditions": {
+        "from": [],
+        "to": []
+      },
+      "unknowns": [
+        "This is callback-definition identity only; product mode, runtime visibility and activation remain unknown.",
+        "Injected receiver values and subsequent cross-process behavior are not established by this identity link."
+      ],
+      "mode": "unknown",
+      "runtimeStatus": "unverified"
+    },
+    {
+      "linkId": "RL-002",
+      "kind": "shares-callback-definition",
+      "status": "confirmed",
+      "scope": "within-menu-artifact",
+      "directed": false,
+      "from": {
+        "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+        "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+        "jsonPointer": "/nativeMenuItems/77",
+        "evidenceIds": [
+          "ENTRY-AST-E03360",
+          "ENTRY-AST-E03377"
+        ],
+        "contractId": "native-menu-schema:8226d9f9d01bac508f18bfe1",
+        "referencePointers": [
+          "/nativeMenuItems/77/callback/definitionEvidenceId"
+        ],
+        "contractIndexPointer": "/contractRecordIndex/292",
+        "sourceCoordinates": {
+          "baselineId": "codex-26.1007.30912-c5b273322a83",
+          "kind": "native-menu-schema",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "start": 3419476,
+          "endExclusive": 3419586,
+          "instance": ""
+        }
+      },
+      "to": {
+        "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+        "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+        "jsonPointer": "/nativeMenuItems/78",
+        "evidenceIds": [
+          "ENTRY-AST-E03378",
+          "ENTRY-AST-E03377"
+        ],
+        "contractId": "native-menu-schema:a85dc8a278fd848823cba06d",
+        "referencePointers": [
+          "/nativeMenuItems/78/callback/definitionEvidenceId"
+        ],
+        "contractIndexPointer": "/contractRecordIndex/293",
+        "sourceCoordinates": {
+          "baselineId": "codex-26.1007.30912-c5b273322a83",
+          "kind": "native-menu-schema",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "start": 3419615,
+          "endExclusive": 3419755,
+          "instance": ""
+        }
+      },
+      "evidenceIds": [
+        "ENTRY-AST-E03360",
+        "ENTRY-AST-E03378",
+        "ENTRY-AST-E03377",
+        "ENTRY-AST-E03361",
+        "ENTRY-AST-E03362"
+      ],
+      "basis": {
+        "kind": "explicit-identical-definition-reference",
+        "definitionEvidenceId": "ENTRY-AST-E03377",
+        "callbackStatuses": [
+          "bound-local-callable",
+          "bound-local-callable"
+        ],
+        "rule": "Both independently indexed menu schema records explicitly refer to the same callback definition evidence record. Item span/name/URL similarity was not used.",
+        "sourceSpanClaim": "Endpoint coordinates identify each complete schema item; they are not asserted to be callback-definition spans."
+      },
+      "conditions": {
+        "from": [
+          {
+            "kind": "ConditionalExpression",
+            "branch": "consequent",
+            "expression": "n",
+            "conditionEvidenceId": "ENTRY-AST-E03361",
+            "completeControlEvidenceId": "ENTRY-AST-E03362"
+          }
+        ],
+        "to": [
+          {
+            "kind": "ConditionalExpression",
+            "branch": "alternate",
+            "expression": "n",
+            "conditionEvidenceId": "ENTRY-AST-E03361",
+            "completeControlEvidenceId": "ENTRY-AST-E03362"
+          }
+        ]
+      },
+      "unknowns": [
+        "This is callback-definition identity only; product mode, runtime visibility and activation remain unknown.",
+        "Injected receiver values and subsequent cross-process behavior are not established by this identity link.",
+        "The same conditional expression selects consequent versus alternate; simultaneous activation is not asserted."
+      ],
+      "mode": "unknown",
+      "runtimeStatus": "unverified"
+    },
+    {
+      "linkId": "RL-003",
+      "kind": "schema-registration-dataflow",
+      "status": "confirmed",
+      "scope": "within-menu-artifact",
+      "directed": true,
+      "from": {
+        "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+        "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+        "jsonPointer": "/nativeMenuItems/2",
+        "evidenceIds": [
+          "ENTRY-AST-E01561",
+          "ENTRY-AST-E04819",
+          "ENTRY-AST-E04820"
+        ],
+        "contractId": "native-menu-schema:1550396790cd34ad3e01468f",
+        "referencePointers": [
+          "/nativeMenuItems/2/registrationUses/0",
+          "/nativeMenuItems/2/registrationReachability"
+        ],
+        "contractIndexPointer": "/contractRecordIndex/217",
+        "sourceCoordinates": {
+          "baselineId": "codex-26.1007.30912-c5b273322a83",
+          "kind": "native-menu-schema",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "start": 3404080,
+          "endExclusive": 3404496,
+          "instance": ""
+        }
+      },
+      "to": {
+        "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+        "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+        "jsonPointer": "/nativeMenuRegistrations/14",
+        "evidenceIds": [
+          "ENTRY-AST-E01462"
+        ],
+        "contractId": "native-menu-api:848646c9dd2b523934dfee84",
+        "referencePointers": [
+          "/nativeMenuRegistrations/14/reachableItemSchemaIndices/0",
+          "/nativeMenuRegistrations/14/callEvidenceId"
+        ],
+        "contractIndexPointer": "/contractRecordIndex/198",
+        "sourceCoordinates": {
+          "baselineId": "codex-26.1007.30912-c5b273322a83",
+          "kind": "native-menu-api",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "start": 3422125,
+          "endExclusive": 3422142,
+          "instance": ""
+        }
+      },
+      "evidenceIds": [
+        "ENTRY-AST-E01561",
+        "ENTRY-AST-E01462",
+        "ENTRY-AST-E04819",
+        "ENTRY-AST-E04820",
+        "ENTRY-AST-E01460",
+        "ENTRY-AST-E01461"
+      ],
+      "basis": {
+        "kind": "explicit-reciprocal-contract-index-reference",
+        "schemaRegistrationIndex": 14,
+        "apiReachableSchemaIndices": [
+          2
+        ],
+        "registrationReachability": "bound-source-dataflow",
+        "rule": "Schema item has an explicit registrationIndex 14 with two recorded dataflow steps; API record 14 reciprocally lists schema index 2. This records the analyzed source-dataflow relation, not equivalence of two behavior handlers."
+      },
+      "conditions": {
+        "api": [
+          {
+            "kind": "IfStatement",
+            "branch": "consequent",
+            "expression": "Kt",
+            "conditionEvidenceId": "ENTRY-AST-E01460",
+            "completeControlEvidenceId": "ENTRY-AST-E01461"
+          }
+        ],
+        "dataflowSteps": [
+          {
+            "evidenceId": "ENTRY-AST-E04819",
+            "conditions": [
+              {
+                "kind": "IfStatement",
+                "branch": "consequent",
+                "expression": "Kt",
+                "conditionEvidenceId": "ENTRY-AST-E01460",
+                "completeControlEvidenceId": "ENTRY-AST-E01461"
+              }
+            ]
+          },
+          {
+            "evidenceId": "ENTRY-AST-E04820",
+            "conditions": []
+          }
+        ]
+      },
+      "unknowns": [
+        "Runtime value of Kt is unknown.",
+        "Dynamic/external menu-member and template-producer details remain recorded as unknown in the source artifact.",
+        "Source dataflow does not establish runtime activation or feature equivalence."
+      ],
+      "mode": "unknown",
+      "runtimeStatus": "unverified"
+    }
+  ],
+  "needsReview": [
+    {
+      "reviewId": "NR-001",
+      "kind": "renderer-normal-fallback-handler-identity",
+      "status": "needs-review",
+      "basis": "The analyzed notes distinguish normal dynamic, fallback dynamic and fixed fallback dispatch layers. All six selected Pw call records carry handler-unresolved local-variable references; original outer registry bindings are not proven in their independently parsed consumer functions. No identical full handler definition or explicit shared handler reference was found in these existing records. Command IDs were not used to form identity links.",
+      "references": [
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererReviews/0/notes/5",
+          "evidenceIds": [
+            "ENTRY-AST-E06375",
+            "ENTRY-AST-E06376",
+            "ENTRY-AST-E06346",
+            "ENTRY-AST-E06381"
+          ]
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererReviews/0/notes/0",
+          "evidenceIds": [
+            "ENTRY-AST-E06346",
+            "ENTRY-AST-E06340",
+            "ENTRY-AST-E06344",
+            "ENTRY-AST-E06347",
+            "ENTRY-AST-E06339",
+            "ENTRY-AST-E06348",
+            "ENTRY-AST-E06349",
+            "ENTRY-AST-E06459"
+          ]
+        }
+      ],
+      "selectedRegistrationRecords": [
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererHookContracts/0/calls/0",
+          "evidenceIds": [
+            "ENTRY-AST-E06508",
+            "ENTRY-AST-E06514",
+            "ENTRY-AST-E06510"
+          ],
+          "contractId": "renderer-command-registration-candidate:8a61076933e285e5c6e15579",
+          "handlerStatus": "handler-unresolved",
+          "handlerExpression": "d",
+          "handlerBinding": {
+            "status": "lexical-bound",
+            "name": "d",
+            "kind": "variable",
+            "parameterPropertyPath": [],
+            "moduleSpecifier": null,
+            "definitionEvidenceId": "ENTRY-AST-E06510"
+          },
+          "registryBindingStatus": "callee outside independent function fragment; candidate registry link is separately reviewed, original enclosing-source binding remains unknown",
+          "localHandlerReferencePointer": "/rendererHookContracts/0/calls/0/handler",
+          "calleeReferencePointer": "/rendererHookContracts/0/calls/0/callee"
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererHookContracts/1/calls/0",
+          "evidenceIds": [
+            "ENTRY-AST-E06524",
+            "ENTRY-AST-E06528",
+            "ENTRY-AST-E06526"
+          ],
+          "contractId": "renderer-command-registration-candidate:1a3da0454b244ff4a532dae2",
+          "handlerStatus": "handler-unresolved",
+          "handlerExpression": "m",
+          "handlerBinding": {
+            "status": "lexical-bound",
+            "name": "m",
+            "kind": "variable",
+            "parameterPropertyPath": [],
+            "moduleSpecifier": null,
+            "definitionEvidenceId": "ENTRY-AST-E06526"
+          },
+          "registryBindingStatus": "callee outside independent function fragment; candidate registry link is separately reviewed, original enclosing-source binding remains unknown",
+          "localHandlerReferencePointer": "/rendererHookContracts/1/calls/0/handler",
+          "calleeReferencePointer": "/rendererHookContracts/1/calls/0/callee"
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererHookContracts/2/calls/0",
+          "evidenceIds": [
+            "ENTRY-AST-E06543",
+            "ENTRY-AST-E06573",
+            "ENTRY-AST-E06545"
+          ],
+          "contractId": "renderer-command-registration-candidate:9ff153efe67bb7648f6ac75f",
+          "handlerStatus": "handler-unresolved",
+          "handlerExpression": "i",
+          "handlerBinding": {
+            "status": "lexical-bound",
+            "name": "i",
+            "kind": "variable",
+            "parameterPropertyPath": [],
+            "moduleSpecifier": null,
+            "definitionEvidenceId": "ENTRY-AST-E06545"
+          },
+          "registryBindingStatus": "callee outside independent function fragment; candidate registry link is separately reviewed, original enclosing-source binding remains unknown",
+          "localHandlerReferencePointer": "/rendererHookContracts/2/calls/0/handler",
+          "calleeReferencePointer": "/rendererHookContracts/2/calls/0/callee"
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererHookContracts/3/calls/0",
+          "evidenceIds": [
+            "ENTRY-AST-E06579",
+            "ENTRY-AST-E06583",
+            "ENTRY-AST-E06581"
+          ],
+          "contractId": "renderer-command-registration-candidate:dd6163d5425f277790b1ea16",
+          "handlerStatus": "handler-unresolved",
+          "handlerExpression": "r",
+          "handlerBinding": {
+            "status": "lexical-bound",
+            "name": "r",
+            "kind": "variable",
+            "parameterPropertyPath": [],
+            "moduleSpecifier": null,
+            "definitionEvidenceId": "ENTRY-AST-E06581"
+          },
+          "registryBindingStatus": "callee outside independent function fragment; candidate registry link is separately reviewed, original enclosing-source binding remains unknown",
+          "localHandlerReferencePointer": "/rendererHookContracts/3/calls/0/handler",
+          "calleeReferencePointer": "/rendererHookContracts/3/calls/0/callee"
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererHookContracts/4/calls/0",
+          "evidenceIds": [
+            "ENTRY-AST-E06588",
+            "ENTRY-AST-E06612",
+            "ENTRY-AST-E06590"
+          ],
+          "contractId": "renderer-command-registration-candidate:112932627d45cc1674a93e39",
+          "handlerStatus": "handler-unresolved",
+          "handlerExpression": "p",
+          "handlerBinding": {
+            "status": "lexical-bound",
+            "name": "p",
+            "kind": "variable",
+            "parameterPropertyPath": [],
+            "moduleSpecifier": null,
+            "definitionEvidenceId": "ENTRY-AST-E06590"
+          },
+          "registryBindingStatus": "callee outside independent function fragment; candidate registry link is separately reviewed, original enclosing-source binding remains unknown",
+          "localHandlerReferencePointer": "/rendererHookContracts/4/calls/0/handler",
+          "calleeReferencePointer": "/rendererHookContracts/4/calls/0/callee"
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/rendererHookContracts/4/calls/1",
+          "evidenceIds": [
+            "ENTRY-AST-E06594",
+            "ENTRY-AST-E06612",
+            "ENTRY-AST-E06596"
+          ],
+          "contractId": "renderer-command-registration-candidate:8e27241c0a46144a3c5d3dad",
+          "handlerStatus": "handler-unresolved",
+          "handlerExpression": "Re",
+          "handlerBinding": {
+            "status": "lexical-bound",
+            "name": "Re",
+            "kind": "variable",
+            "parameterPropertyPath": [],
+            "moduleSpecifier": null,
+            "definitionEvidenceId": "ENTRY-AST-E06596"
+          },
+          "registryBindingStatus": "callee outside independent function fragment; candidate registry link is separately reviewed, original enclosing-source binding remains unknown",
+          "localHandlerReferencePointer": "/rendererHookContracts/4/calls/1/handler",
+          "calleeReferencePointer": "/rendererHookContracts/4/calls/1/callee"
+        }
+      ],
+      "requiredForConfirmation": [
+        "A full lexical binding/dataflow record connecting each handler variable to its complete callable definition.",
+        "An explicit shared callable reference or exact sourcePath/sourceHash/complete-handler-definition range equality, with original outer registry binding proven."
+      ],
+      "mode": "unknown",
+      "runtimeStatus": "unverified"
+    }
+  ],
+  "scopedComparisons": [
+    {
+      "comparison": "host-call-definition-versus-menu-entry-index",
+      "references": [
+        {
+          "artifactPath": ".analysis-local/feature-work/host-message-contracts.json",
+          "artifactSha256": "10493de416d59e4fa306895a40cc09d613ff7cd3d742fb4caccb3670bb12b7e2",
+          "jsonPointer": "/cases",
+          "evidenceIds": [
+            "HOST-AST-E00002",
+            "HOST-AST-E00001"
+          ]
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/contractRecordIndex",
+          "evidenceIds": []
+        }
+      ],
+      "hostDefinitionRangeRecords": 119,
+      "menuIndexRecords": 411,
+      "menuDistinctSourceCoordinates": 403,
+      "exactCoordinateMatches": 0,
+      "conclusion": "No confirmed identity link in this scoped coordinate comparison. The menu index does not include all nested callback/callee definition coordinates; this is not an absence proof for all possible cross-artifact links."
+    },
+    {
+      "comparison": "route-terminal-value-definition-versus-menu-entry-index",
+      "references": [
+        {
+          "artifactPath": ".analysis-local/feature-work/route-contracts.json",
+          "artifactSha256": "55c96e171a5cb524d72b93be6bb44e3f9a8fa0686574e1ef9e863adf1e29dcae",
+          "jsonPointer": "/componentBindings",
+          "evidenceIds": []
+        },
+        {
+          "artifactPath": ".analysis-local/entry-work/menu-command-contracts.json",
+          "artifactSha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/contractRecordIndex",
+          "evidenceIds": []
+        }
+      ],
+      "routeTerminalValueDefinitionRecords": 114,
+      "menuIndexRecords": 411,
+      "exactCoordinateMatches": 0,
+      "conclusion": "No confirmed identity link in this scoped coordinate comparison. Shared source/module names or URL targets were not used to widen the claim."
+    }
+  ],
+  "coverage": {
+    "nativeMenuItemsExaminedForSharedExplicitCallbackDefinition": 156,
+    "callbackDefinitionsReferenced": 112,
+    "sharedCallbackDefinitionGroups": 2,
+    "apiSchemaDataflowRelationsReviewed": 1,
+    "apiSchemaDataflowInventoryComplete": false,
+    "selectedRendererPwRecordsExamined": 6,
+    "rendererWholeOriginalProgramCoverage": "unknown",
+    "crossArtifactLinksConfirmed": 0,
+    "allPossibleArtifactLinksExhaustive": false
+  },
+  "summary": {
+    "confirmedLinks": 3,
+    "confirmedWithinMenuStructuralLinks": 3,
+    "confirmedCrossArtifactLinks": 0,
+    "modeClassifiedLinks": 0,
+    "runtimeVerifiedLinks": 0
+  },
+  "limitations": [
+    "This review preserves existing artifact limitations and makes no feature-group, behavior-equivalence or product-mode determination.",
+    "The two callback links are identity of explicit definition references. The schema/API link is a directed dataflow relation and must not be merged into handler identity.",
+    "Normal/fallback registration order and shared command IDs do not imply a shared callback.",
+    "Further confirmation requires targeted full-scope source/binding review, which was outside this artifact-only task."
+  ]
+}

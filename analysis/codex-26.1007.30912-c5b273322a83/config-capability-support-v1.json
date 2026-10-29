@@ -1,0 +1,2668 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T22:15:21.829253+00:00",
+  "scope": "20 named configuration/model/capability support purposes at selected source boundaries.",
+  "inputs": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v41.json",
+      "bytes": 1639596,
+      "sha256": "7216674b06b0687e2bff299889c240e9af91dd1ca7d55973f42fc0b2243c246c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v25.json",
+      "bytes": 521378,
+      "sha256": "c713db1bb8951b2f63b33912a8650f8571717fb0fa796c1c6ff9ee5aa995f90f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/entry-family-map.json",
+      "bytes": 3217503,
+      "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-config-dispatch.json",
+      "bytes": 130182,
+      "sha256": "43f762f0bd471f0c2204bc746707adb8197a37adab9b304ed9e0891ee6ca189e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-config-receiver-origin.json",
+      "bytes": 2020,
+      "sha256": "18bfcb3f84f661705e239ffd4ed4ca1a72146118399f40aa99f842989d8c6d5a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/public-experimental-compatibility.json",
+      "bytes": 26205,
+      "sha256": "f1939e6ab2b644e2b1c4d21ee2c8f37c08a8a56ffc29a103d97476c8fe480eb7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/bundled-marketplace-support-v1.json",
+      "bytes": 41115,
+      "sha256": "a9808442164c3d8f3cce3918c230a7821b742f4e837f2046e9aba289ba27150f"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "rawEvidence": {
+    "qualified-extraction-2.json.gz": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/config-capability-support-v1/qualified-extraction-2.json.gz",
+      "bytes": 92937,
+      "sha256": "66fd603595682e69de3a9ac3bfa864e8413a44ec9e1c84605c1dc3ed8caea579"
+    },
+    "extract-qualified.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/config-capability-support-v1/extract-qualified.cjs",
+      "bytes": 12770,
+      "sha256": "eba5813e09efed43002d09d7cbdf2b624c5d8c7d91bb5e428c612c330dfc8193"
+    },
+    "verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/config-capability-support-v1/verification.json",
+      "bytes": 65304,
+      "sha256": "c8b7b088f51a89e30e576ad84d65804d9be6e0e6fb8d4c2b7a10105b83f8258f"
+    },
+    "verify.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/config-capability-support-v1/verify.cjs",
+      "bytes": 12346,
+      "sha256": "bb303342c579c38f3154e08487028ddb5b23fa86b34a14bd2b2d98fb04c79a7a"
+    },
+    "publish.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/config-capability-support-v1/publish.py",
+      "bytes": 28649,
+      "sha256": "d8a1dbaf1a72a22c30d56c813025f7975c0d917cb2175d0d5514fe46b333b199"
+    }
+  },
+  "facts": [
+    {
+      "id": "CCS-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "jge分页读取model/list(includeHidden:true,cursor,limit:100)，保留服务顺序并累加，未做去重。选定绑定调用方是Age私有availability读取l，不是模型选择UI的来源证明。Mge另分页找启用的api_key_cyber_access_programs，Age.l把该查询拒绝降为false；model/list或statsig读取拒绝仍可使availability读取失败。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 1072352,
+          "endExclusive": 1072537
+        },
+        "spanHash": "daf9fa4de9efad398ddadec28c382aed89eed261ee6e297ef2d017e777a50477",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072537,
+            "endExclusive": 1072776
+          },
+          "spanHash": "e8672d3467b8ef50d2ee2d9063225b6336ce45c115be45c9a88cdf31da8f8e9a",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1071561,
+            "endExclusive": 1072184
+          },
+          "spanHash": "d666195cef3defb0adeced1b2b2acb96ba2718f419b2a1ee245b3ac761bfe929",
+          "nodeType": "ClassPrivateMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "MT排除两个gpt-daybreak-*-latest别名，过滤当前access可用模型，再依次选择原模型、可见默认、首个可见或null。AT按启用状态挑daybreakBlue/daybreakRed/standard；FT保留支持的reasoningEffort，否则用default。旧目录后备Tge使用program及名称过滤，NT按小写cyber/daybreak-red识别，非standard默认过滤两种gpt-6-astra名称。此为固定基线选择规则，不描述当前服务模型可用性。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 1063611,
+          "endExclusive": 1063839
+        },
+        "spanHash": "669b9a09b28048bc6131d25bf2395cbc827a9aa3557765d645905b9bbbfddcf9",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1063329,
+            "endExclusive": 1063528
+          },
+          "spanHash": "576034979cf9b4f0178337e0f10c2beeec676e94dff9b0d511e2532bce93d8ae",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072776,
+            "endExclusive": 1072906
+          },
+          "spanHash": "084598b1ce86a07c1d072ed589b3168572b3daa697425119a214571b73d644e0",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1063913,
+            "endExclusive": 1064096
+          },
+          "spanHash": "add08b2c6232c82645a03a89a7f80423ca3e42ca02419992235340af0e05e2ed",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1064224,
+            "endExclusive": 1064340
+          },
+          "spanHash": "3a843b42ff285e67cc7fd1c24fe2201578f588346d7353a40ad3926557d09180",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1064096,
+            "endExclusive": 1064151
+          },
+          "spanHash": "f4daf5bc9de0d9e047d035f2002963f4082e9ca1ba36fa28ca0343e42a626982",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1064151,
+            "endExclusive": 1064224
+          },
+          "spanHash": "8af03b46d428a100e692ff143b2ae8bd412ea7bf1fcffe3177b193d6da79a2c3",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1064426,
+            "endExclusive": 1064518
+          },
+          "spanHash": "cecbb393a17bf051108d1ca1159b02261aa7052b8d3b0d3e2351ac9d5e8e2783",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1064340,
+            "endExclusive": 1064426
+          },
+          "spanHash": "cd441c5d329fdfc23ea2c2ff7ebfdcf1eea6d1dbe7430e1fdd34b5161ba153e2",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1063115,
+            "endExclusive": 1063329
+          },
+          "spanHash": "3bfd667052f07d75788e65e8c726e518a8cc720bfc004704d1969195ff2ebeee",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1063839,
+            "endExclusive": 1063913
+          },
+          "spanHash": "af07c632b674e4eccee9f065c4d2c6de51b29140360909dc0087c97b459b1fb2",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1063528,
+            "endExclusive": 1063611
+          },
+          "spanHash": "29fda419de6b45353689875664ae08c306c22d4a34061a56017f76548e0161c1",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Age通过账户/认证/连接及配置事件刷新状态。只有读取account.type=apiKey后才发布随机apiKeySession；身份/连接断开递增generation并清状态，dispose使旧session无效。availability回调同时检查session与最新查询序号，过时结果不覆盖状态；读取拒绝可保持availability=null，不自动发布成功或重试。实际账户与模式未观察。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 1064830,
+          "endExclusive": 1065350
+        },
+        "spanHash": "4f0ea06be878e2cbe3d9e0508edf43f2f4d28a5ae3c90ff396fce6876a335ad1",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1071269,
+            "endExclusive": 1071561
+          },
+          "spanHash": "c3505702fdb4549f669b29c2bcb48f0346ef43a69d9c5b905abc664945a6152f",
+          "nodeType": "ClassPrivateMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1065397,
+            "endExclusive": 1065616
+          },
+          "spanHash": "3258091ce2b7b277c48d33dbdd6719f00129576a515b82f5339f68eb33f96d27",
+          "nodeType": "ClassPrivateProperty"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072184,
+            "endExclusive": 1072233
+          },
+          "spanHash": "8adc8bdd1609cde8a8832cb2c8fd3c4775a01eda948dd1e3b37e5f78f5e27db4",
+          "nodeType": "ClassPrivateMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1071212,
+            "endExclusive": 1071269
+          },
+          "spanHash": "51e07e1bab216bb46ed5ae1a8b56284b814a7f124f7666e7f68f1429dfeff1e4",
+          "nodeType": "ClassProperty"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072281,
+            "endExclusive": 1072350
+          },
+          "spanHash": "07b49adb52279a9a0afc179ca68747f297719709b41c58b6a172797c966fb976",
+          "nodeType": "ClassPrivateMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "saveApiKeyPreference先把自己的promise接入保存队列、等待前项，再核对session、连接身份、availability代次及配置刷新计数。要求可写user配置层、无profile、openai provider，且本地为apikey、其他host为personalAccessToken；还检查功能开关/版本及当前线程owner。写用户配置携带该层filePath/expectedVersion。任何前置条件失效可返回false且不声明保存成功。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 1065616,
+          "endExclusive": 1070131
+        },
+        "spanHash": "76227763e92dc39474a4cf58f3932fea850ccb3c8a30865fdc32f3806c796235",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072184,
+            "endExclusive": 1072233
+          },
+          "spanHash": "8adc8bdd1609cde8a8832cb2c8fd3c4775a01eda948dd1e3b37e5f78f5e27db4",
+          "nodeType": "ClassPrivateMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1071561,
+            "endExclusive": 1072184
+          },
+          "spanHash": "d666195cef3defb0adeced1b2b2acb96ba2718f419b2a1ee245b3ac761bfe929",
+          "nodeType": "ClassPrivateMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "偏好保存中的线程模型更新、用户默认配置、清理预热线程及daybreak元数据更新分步执行。仅明确unsupported thread/settings/update错误可吞掉；临时线程跳过元数据写。线程owner协调器接收可能部分更新的M，后续校验失败可返回部分值；捕获的A.error仍会被顶层重抛，A.accepted缺失也可返回false。源码没有跨线程/用户配置/预热缓存的事务或统一回滚；成功accepted后才发布selection并通知配置查询失效。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 1065616,
+          "endExclusive": 1070131
+        },
+        "spanHash": "76227763e92dc39474a4cf58f3932fea850ccb3c8a30865fdc32f3806c796235",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1070131,
+            "endExclusive": 1071212
+          },
+          "spanHash": "ee62dceacd95e7f0eace1753c97d9c8c6b78d917588958b1416daa2cd15b1b98",
+          "nodeType": "ClassMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "afe按连接注册，跳过durable，移除连接或dispose递增generation并解除监听。rfe从defaultEnableFeatures只复制nfe中三项布尔值，memories默认false，再按policy覆盖MCP/remote plugin/后台迁移/API-key开关；sendEnablement另强制codex_apps_mcp_2026_07_28与windows_sandbox_service为true。写前比较同一generation和ready execution snapshot。源码flag与产品模式分开，不凭功能名排除。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 716742,
+          "endExclusive": 717321
+        },
+        "spanHash": "9013bab2e97d3b2a28587ab7b7862b6def2959d81690a7c279b2ed6acfebf04f",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 717501,
+            "endExclusive": 717811
+          },
+          "spanHash": "a33e22a1d15aeaec917de3570ae6dba592df3d0c0beaaf5e3d08f748de946798",
+          "nodeType": "ClassMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 717321,
+            "endExclusive": 717501
+          },
+          "spanHash": "5ae01968b5d5604e87f3fcbb8d15039408454eac09b841a9138aeaaba6830578",
+          "nodeType": "ClassMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 717811,
+            "endExclusive": 719108
+          },
+          "spanHash": "0d7e685ac0724fea416dbec7e2439b1fe4e50750260026dc417db55723805fd5",
+          "nodeType": "ClassMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 716240,
+            "endExclusive": 716502
+          },
+          "spanHash": "3b25793f99390a90df6a427ae04d5d6f6e3ad6425dc1bd50ea10ab5c50e3fb71",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 716175,
+            "endExclusive": 716239
+          },
+          "spanHash": "d3abe9120e8c3175336d33727a620ff5f5dfced3d1b7cb6a8feedc8965ffe5da",
+          "nodeType": "VariableDeclarator"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "afe的config/read→rollout/compress链由then/catch单独启动，不被主enablement写await。配置中local_thread_store_compression的显式false优先于policy后备。rolloutCompressionRequested在compress的beforeSend回调设true，断连重置；失败路径只warning，没有立即重置该标记。主experimentalFeature/enablement/set成功后在仍有效时触发onChanged；不能把通知解释为压缩已完成或恰好执行一次。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 717811,
+          "endExclusive": 719108
+        },
+        "spanHash": "0d7e685ac0724fea416dbec7e2439b1fe4e50750260026dc417db55723805fd5",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 717501,
+            "endExclusive": 717811
+          },
+          "spanHash": "a33e22a1d15aeaec917de3570ae6dba592df3d0c0beaaf5e3d08f748de946798",
+          "nodeType": "ClassMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Y2每页100递归查找enabled严格为true的workspace_dependencies。工具执行入口直接查询后选择加载或null；另一个isWorkspaceDependenciesFeatureEnabled入口按host缓存Promise，拒绝时删缓存再抛，允许下次查询。成功或false的缓存没有在这个局部函数删除；完整失效策略/实际加载仍待其他证据。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 2570897,
+          "endExclusive": 2571146
+        },
+        "spanHash": "4097dffcde171c31e3c09cd4f2619a68b8f771eb7406c198679b16b6fec6d0f1",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2590148,
+            "endExclusive": 2590262
+          },
+          "spanHash": "c4308460fb8a6ded301b5ec52085aada2ad772fe0487c8c6e2476ae209219a11",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2590836,
+            "endExclusive": 2591128
+          },
+          "spanHash": "0b129828b3dcb9e7c48c7a4bfab6a3e1dc0d6b1c0198df000e1091b00cc0ed8f",
+          "nodeType": "ArrowFunctionExpression"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "mc以appServerConnection为WeakMap key串行hc，前项拒绝catch后仍继续下一项。hc读取feature快照，委托具名runtime/plugin选择与配置生成端口，明确hostServicesPipePath:null及includePrivateProcessEnv:false；本地host另有CUA/插件准备。gc替换指定MCP配置并清理cc指定的shell环境键；最终batchWrite使用expectedVersion/filePath:null及reloadUserConfig参数，默认true。准备副作用与配置提交没有整体回滚。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 177465,
+          "endExclusive": 177608
+        },
+        "spanHash": "c03346e187dc2e1b597ac4294de4860f9b1f7ac561f2f195446c0624851981d0",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 176941,
+            "endExclusive": 176955
+          },
+          "spanHash": "09d3430004c95711adf6d93c49f94eb7155e12aba6480d35efd7441cb9ac148a",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 177608,
+            "endExclusive": 179046
+          },
+          "spanHash": "c361e9bf263ce3c773f7b7f8ac49848b58a285054c90377d08478d31a6b6419e",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 179046,
+            "endExclusive": 179263
+          },
+          "spanHash": "5ebe923124ff88188f71a9301b013ccbe007d73e451833eeb2dac4e68c40749b",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 176902,
+            "endExclusive": 176940
+          },
+          "spanHash": "c76a65c9b679e4ad7102b4826c2599c7c2f400e839b03aa1662978c170fa759e",
+          "nodeType": "VariableDeclarator"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Qc仅处理local host的已安装codex_app插件及可解析命令。它构造规范化MCP配置；目标.mcp.json不存在或内容相同就返回，不创建缺失文件。内容不同时写带UUID临时文件，再rename覆盖，最后用空edits的config/batchWrite请求reloadUserConfig:true。写/rename/reload失败均传播，未声明临时文件清理或改写后重载失败的文件回滚。选定sie回调先Qc再mc。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 183884,
+          "endExclusive": 184918
+        },
+        "spanHash": "523fd837bee4750776422a0ad79775d1697cf241f6919a4fc1ef23f6ba8f4553",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 177465,
+            "endExclusive": 177608
+          },
+          "spanHash": "c03346e187dc2e1b597ac4294de4860f9b1f7ac561f2f195446c0624851981d0",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Bse在literal getStored迁移完成值不是true时，尝试用replace/null移除remote_control和features.remote_control，重载配置后再globalState.set(l.R,true)。try内部异常仅warning，未调用文件flush；set键通过具名l.R保留，本批不凭名字证明其物理存储。u0e调用该async迁移时未await；它与settingsStore初始化的独立promise链并行。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 363780,
+          "endExclusive": 364351
+        },
+        "spanHash": "60272bb6a83bd70b74dcc93bff429ed50cbb1c65a940d5fcdd322799911601c6",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3794132,
+            "endExclusive": 3823806
+          },
+          "spanHash": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "rS的config/value/write是Chronicle功能开关适配器，使用r.cr(chronicle)、upsert和expectedVersion:null。启用遇pending时保存true并返回waiting_for_permissions；denied路径尝试停recorder及写false，其他错误走同样补偿后重抛。关闭后配置写失败会尝试reconcileEnabled恢复recorder。aS顺序执行全部补偿、收集失败，附加失败时抛AggregateError；iS在补偿成功时仍抛原错误。不能把补偿请求等同于必然恢复。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 859531,
+          "endExclusive": 860077
+        },
+        "spanHash": "ea8eeb392847c9b51bc5f687ccfa5ab3ed34653909fec32e2f4b1150dac9a46e",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 860844,
+            "endExclusive": 861043
+          },
+          "spanHash": "30506a9075cfa57a1c7aea6773afec0f0bd51b56f8cc6b35253d0c7ae113f4bd",
+          "nodeType": "ClassPrivateMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 861189,
+            "endExclusive": 861354
+          },
+          "spanHash": "b67146ab426b6947293f3a6134a83c401fc0a6bfc58329e49ee7c3708ba94fcb",
+          "nodeType": "ClassPrivateMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 861576,
+            "endExclusive": 861699
+          },
+          "spanHash": "49751594ef42fea851e51c4ed5981b7fc351663bb724f017403effc73a20c8fa",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 861527,
+            "endExclusive": 861576
+          },
+          "spanHash": "fbe2fe1838cf8fd7bc3e1f6c6ec15f32ebbd442de9209ca92ecea06a56fc172e",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 861423,
+            "endExclusive": 861525
+          },
+          "spanHash": "856b4b06e929f444a7b776432b9c172dec5b4b46e3c89d685e6aaffa6db5dec7",
+          "nodeType": "ClassPrivateMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F13",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "MF的config/mcpServer/reload属于内测插件下载/注册后的后台重载，不是任意用户MCP服务重启入口。下载未更新且用户配置已指向同一本地市场时提前返回；否则验证注册市场必须为openai-internal-testing，只有下载更新或新登记才重载。只吞指定下载目录内ENOENT且文件名以.download结尾的缺失错误；其他错误经过记录/可能上报后抛出。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 1326093,
+          "endExclusive": 1327281
+        },
+        "spanHash": "3359f3e76acf1034fe59d965ea22f01e8cec976cd2f1814926b2716af9f6fab8",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F14",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "FHe.confirm将请求串行化，空路径直接true；读取配置后去重并按host规范路径。trusted不再提示；统一项目下local默认根且未设置信任可跳过。其余分为未设置与显式untrusted两组分别确认。回调与signal abort竞速，窗口销毁/RPC断开解除订阅并abort。只有未设置组且统一项目前后均启用时写trusted，携带user层expectedVersion；非ok结果抛配置层覆盖错误。显式untrusted组的同意不在此自动写成trusted。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 2626805,
+          "endExclusive": 2628757
+        },
+        "spanHash": "e4d468de977fd0cbcd3f4ee38dce629dea6535487882a81371466d3123ee8c28",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2628757,
+            "endExclusive": 2629184
+          },
+          "spanHash": "4b5e779772d6be3202ebadae6ae66658af028e263b2b35bee0b7de020f0c7d35",
+          "nodeType": "ClassMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F15",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "u0e的两条experimentalFeature/list回调分别交给Gae(startupPolicies,...)和relaunch参数pp(...)，每次通过Ue取得本地连接；第三条config/batchWrite回调传给用户保存配置读取后的settingsStore.initialize，使用pt并透传参数。这里只确认不同用途与注入位置，不将两次目录读取当用户功能，也不把settings初始化回调升级为文件持久化证明。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3794132,
+          "endExclusive": 3823806
+        },
+        "spanHash": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    },
+    {
+      "id": "CCS-F16",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定主进程构造器把同一个本地连接o注入Age和实验enablement协调器；afe变更回调使local Daybreak availability刷新并分别invalidate experimental-features/models查询。FHe实例的confirm/serviceForWindow被项目管理器和窗口服务复用。实例构造和回调源码不等于本次真实挂载、有效功能值或用户交互已经发生。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3304353,
+          "endExclusive": 3329810
+        },
+        "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+        "nodeType": "ClassMethod"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1064830,
+            "endExclusive": 1065350
+          },
+          "spanHash": "4f0ea06be878e2cbe3d9e0508edf43f2f4d28a5ae3c90ff396fce6876a335ad1",
+          "nodeType": "ClassMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 716742,
+            "endExclusive": 717321
+          },
+          "spanHash": "9013bab2e97d3b2a28587ab7b7862b6def2959d81690a7c279b2ed6acfebf04f",
+          "nodeType": "ClassMethod"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2626677,
+            "endExclusive": 2626805
+          },
+          "spanHash": "bfdce01dd125fef5ed4794a07a12f9ea0d23a6cba66d38a630e0561e93cac37f",
+          "nodeType": "ClassMethod"
+        }
+      ],
+      "method": "Frozen complete-Program lexical extraction; independent complete-Program and selected-declaration AST checks; UTF8 spans and manual control-flow review.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; actual host/session/flag, service acceptance and persistence unverified"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "CCS-D01",
+      "entryId": "app-server-direct-call-lexical-candidate:fd01c39289f93744bcf8d85c",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/831"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 178907,
+          "endExclusive": 179014
+        },
+        "spanHash": "031cb8d4711179ea94aba1e5e39bf0fa6f24b1658a3cc5f964274e324c773a0f",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 178909,
+          "endExclusive": 178949
+        },
+        "spanHash": "61ef8f5b69f68c71f12a4cdfcab016e7e4831054b15268b9173f7be315de55bf"
+      },
+      "sourceOwner": "hc",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F09"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "hc 的 config/batchWrite 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D02",
+      "entryId": "app-server-direct-call-lexical-candidate:202d8a256d020b1ce9e9a09d",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/832"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 184808,
+          "endExclusive": 184917
+        },
+        "spanHash": "fef643a568115b7c1db310a6d570d3834953ed698721fca8407e63a57fc744c4",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 184810,
+          "endExclusive": 184850
+        },
+        "spanHash": "61ef8f5b69f68c71f12a4cdfcab016e7e4831054b15268b9173f7be315de55bf"
+      },
+      "sourceOwner": "Qc",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F10"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Qc 的 config/batchWrite 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D03",
+      "entryId": "app-server-direct-call-lexical-candidate:ec396e485e5c6017eeb82dce",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/833"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 363937,
+          "endExclusive": 364178
+        },
+        "spanHash": "76e99b564eb4abd15993ad5a1c0b28928e1db8ea6113bc97d8dd1b8465a4d3b2",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 363939,
+          "endExclusive": 363979
+        },
+        "spanHash": "61ef8f5b69f68c71f12a4cdfcab016e7e4831054b15268b9173f7be315de55bf"
+      },
+      "sourceOwner": "Bse",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F11"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Bse 的 config/batchWrite 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D04",
+      "entryId": "app-server-direct-call-lexical-candidate:5276e1bc235c8f7659497638",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/836"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 718493,
+          "endExclusive": 718562
+        },
+        "spanHash": "c769ca61b5aab428f522eba83e06ff31c78d094bee8fc96bb1ef7736dcafdeec",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 718506,
+          "endExclusive": 718540
+        },
+        "spanHash": "ae7746937e81791a48800a476c4636bbd925a75196b3fbc368c989960e6ab1f3"
+      },
+      "sourceOwner": "afe.sendEnablement",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F07"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "afe.sendEnablement 的 config/read 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D05",
+      "entryId": "app-server-direct-call-lexical-candidate:9b006453fa2dc2da40df4242",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/837"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 718678,
+          "endExclusive": 718781
+        },
+        "spanHash": "baa7d4577032a9c05797d782caea05db20a17d06819837f7830f55d17b2dfba8",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 718691,
+          "endExclusive": 718730
+        },
+        "spanHash": "e83310cf9d309300941bc9364e614ced00a14ba0f57800ae0acd725bac83f120"
+      },
+      "sourceOwner": "afe.sendEnablement",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F07"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "afe.sendEnablement 的 rollout/compress 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D06",
+      "entryId": "app-server-direct-call-lexical-candidate:0b1fe0be71165272ded0c7f8",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/838"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 718949,
+          "endExclusive": 719037
+        },
+        "spanHash": "03bf247f78709906fab508b1b903f9e9501b464bfc30fcb72df1e43f3e52e900",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 718962,
+          "endExclusive": 719019
+        },
+        "spanHash": "70300998c20e1ccd7e098ffa8f719593ee1f2e67883c6811e3ef791fce60cd12"
+      },
+      "sourceOwner": "afe.sendEnablement",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F07"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "afe.sendEnablement 的 experimentalFeature/enablement/set 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D07",
+      "entryId": "app-server-direct-call-lexical-candidate:ac0b16deab0bf1e292fbea1c",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/839"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 861206,
+          "endExclusive": 861353
+        },
+        "spanHash": "1701f5ff844beead391c909d8e65ddd4950be9409e41e501e81207531bcf2c8e",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 861231,
+          "endExclusive": 861272
+        },
+        "spanHash": "57e4133c1cf71532d6d7773cf1fa15d2c1765d8acd556b89c5e7311a65171ce7"
+      },
+      "sourceOwner": "rS.n",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F12"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "rS.n 的 config/value/write 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D08",
+      "entryId": "app-server-direct-call-lexical-candidate:dafca8c9e5b4339c3eb6d9ee",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/840"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1066376,
+          "endExclusive": 1066442
+        },
+        "spanHash": "2c3d05c541efc7f4a3359b574e0aa1e2b8ace89bb37a9da9c38f031139ea48c1",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1066378,
+          "endExclusive": 1066412
+        },
+        "spanHash": "ae7746937e81791a48800a476c4636bbd925a75196b3fbc368c989960e6ab1f3"
+      },
+      "sourceOwner": "Age.saveApiKeyPreference",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F04"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Age.saveApiKeyPreference 的 config/read 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D09",
+      "entryId": "app-server-direct-call-lexical-candidate:85bd58e71f77b39561414c48",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/841"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1068411,
+          "endExclusive": 1068528
+        },
+        "spanHash": "5b4531bbe4a047b2be087c126156350c34ed39bfdec4f25fe0c19914d3569732",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1068413,
+          "endExclusive": 1068458
+        },
+        "spanHash": "146f0001820d840a4dd1dbdc7af12c6061f7f016a105e15246fff4d67818e1ff"
+      },
+      "sourceOwner": "Age.saveApiKeyPreference",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F05"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Age.saveApiKeyPreference 的 thread/settings/update 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D10",
+      "entryId": "app-server-direct-call-lexical-candidate:92a423808a85ceaf1c658fb4",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/842"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1068729,
+          "endExclusive": 1068837
+        },
+        "spanHash": "ea42abb416141a15a94c26cd799243fd11d3cfdea960de6e330d54a5dbc129e1",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1068731,
+          "endExclusive": 1068771
+        },
+        "spanHash": "61ef8f5b69f68c71f12a4cdfcab016e7e4831054b15268b9173f7be315de55bf"
+      },
+      "sourceOwner": "Age.saveApiKeyPreference",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F05"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Age.saveApiKeyPreference 的 config/batchWrite 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D11",
+      "entryId": "app-server-direct-call-lexical-candidate:38930f5d046dfb32939fab8d",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/843"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1068987,
+          "endExclusive": 1069091
+        },
+        "spanHash": "53c53a19d33f78e05bbce5f3ef4a299a8c94f3db8e0e7154d1406d9745c66663",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1068989,
+          "endExclusive": 1069034
+        },
+        "spanHash": "9f71640f75462083f493b73385cc0e8d966de688656c288e0cf3a29c0e8d12e7"
+      },
+      "sourceOwner": "Age.saveApiKeyPreference",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F05"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Age.saveApiKeyPreference 的 thread/metadata/update 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D12",
+      "entryId": "app-server-direct-call-lexical-candidate:3c05cb0c2d6e2b45f8bc0eb9",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/844"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1072405,
+          "endExclusive": 1072479
+        },
+        "spanHash": "32431919cc45b8508c00da7c5c89f3944d2fb8c33b9bd40f4b532e8e9f11f79f",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1072407,
+          "endExclusive": 1072440
+        },
+        "spanHash": "83c1096887aece44c139c245880fdbec32c3e8a11810260d47e2a945ac50c0dd"
+      },
+      "sourceOwner": "jge",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F01"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "jge 的 model/list 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D13",
+      "entryId": "app-server-direct-call-lexical-candidate:a9f51f09e53c2ea5b1294d2e",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/845"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1072585,
+          "endExclusive": 1072656
+        },
+        "spanHash": "7a44dc2d82d394a32c486d77880df37ac4bcd2224fddc106f876787f541d40a1",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1072587,
+          "endExclusive": 1072634
+        },
+        "spanHash": "a7dc610900cd88929c15dac4a05bff6428fa7c7a58162a86943fc11d54929752"
+      },
+      "sourceOwner": "Mge",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F01"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Mge 的 experimentalFeature/list 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D14",
+      "entryId": "app-server-direct-call-lexical-candidate:47bf4f6088ff7bf6e489ebf2",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/849"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1326769,
+          "endExclusive": 1326825
+        },
+        "spanHash": "c9e593207e322162066a01c1e78cc7c1e4ead5e3a75c53afc0dc2dd988c34f3d",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 1326771,
+          "endExclusive": 1326817
+        },
+        "spanHash": "92e675f89965bd68822aa2d12838176a8ebe7336a58056574eaef7dc4add3c9a"
+      },
+      "sourceOwner": "MF",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F13"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "MF 的 config/mcpServer/reload 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D15",
+      "entryId": "app-server-direct-call-lexical-candidate:9dad0fb9f1c549f0a9bc0357",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/871"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2570946,
+          "endExclusive": 2571017
+        },
+        "spanHash": "667f66e10a63a6bc920e2ecafbf885890363ac2042ea296fe68c4f9389710972",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2570948,
+          "endExclusive": 2570995
+        },
+        "spanHash": "a7dc610900cd88929c15dac4a05bff6428fa7c7a58162a86943fc11d54929752"
+      },
+      "sourceOwner": "Y2",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F08"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "Y2 的 experimentalFeature/list 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D16",
+      "entryId": "app-server-direct-call-lexical-candidate:9332033c19d706428154023e",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/890"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2626978,
+          "endExclusive": 2627033
+        },
+        "spanHash": "032b39e55b984da2f90f1febb35138a6629052a8439df7a72e655eeade9cc74b",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2626980,
+          "endExclusive": 2627014
+        },
+        "spanHash": "ae7746937e81791a48800a476c4636bbd925a75196b3fbc368c989960e6ab1f3"
+      },
+      "sourceOwner": "FHe.confirm",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F14"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "FHe.confirm 的 config/read 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D17",
+      "entryId": "app-server-direct-call-lexical-candidate:91cf846c44f616cccf51ec26",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/891"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2628343,
+          "endExclusive": 2628610
+        },
+        "spanHash": "e61d8f44150dcb0cfdf2d1b499a109b4b013c2777bc03668142cfd1ba951e650",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2628345,
+          "endExclusive": 2628385
+        },
+        "spanHash": "61ef8f5b69f68c71f12a4cdfcab016e7e4831054b15268b9173f7be315de55bf"
+      },
+      "sourceOwner": "FHe.confirm",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F14"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "FHe.confirm 的 config/batchWrite 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D18",
+      "entryId": "app-server-direct-call-lexical-candidate:a274d426f4c1b66c82429424",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/898"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3804002,
+          "endExclusive": 3804057
+        },
+        "spanHash": "2b264edc4b831dffc170600e1f28a213b4cf4323f8ca067c32bb12a9d5730c8b",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3804007,
+          "endExclusive": 3804054
+        },
+        "spanHash": "a7dc610900cd88929c15dac4a05bff6428fa7c7a58162a86943fc11d54929752"
+      },
+      "sourceOwner": "u0e",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F15"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "u0e 的 experimentalFeature/list 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D19",
+      "entryId": "app-server-direct-call-lexical-candidate:3f59c05f9f977cfb385cefcb",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/899"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3804342,
+          "endExclusive": 3804397
+        },
+        "spanHash": "2b264edc4b831dffc170600e1f28a213b4cf4323f8ca067c32bb12a9d5730c8b",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3804347,
+          "endExclusive": 3804394
+        },
+        "spanHash": "a7dc610900cd88929c15dac4a05bff6428fa7c7a58162a86943fc11d54929752"
+      },
+      "sourceOwner": "u0e",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F15"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "u0e 的 experimentalFeature/list 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    },
+    {
+      "id": "CCS-D20",
+      "entryId": "app-server-direct-call-lexical-candidate:abaeaf59130a613058a97204",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/900"
+      },
+      "fullCall": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3819117,
+          "endExclusive": 3819163
+        },
+        "spanHash": "064e14de34af4f7140b19bfe6df45a6ad3557d88438a349f2df31f25829089ed",
+        "nodeType": "CallExpression"
+      },
+      "originalPartialAnchor": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3819120,
+          "endExclusive": 3819160
+        },
+        "spanHash": "61ef8f5b69f68c71f12a4cdfcab016e7e4831054b15268b9173f7be315de55bf"
+      },
+      "sourceOwner": "u0e",
+      "disposition": "explicit-config-capability-support-mechanism",
+      "explicitMechanism": true,
+      "factIds": [
+        "CCS-F15"
+      ],
+      "featureIds": [],
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false,
+      "reason": "u0e 的 config/batchWrite 使用位置、参数及生命周期已明确；不按RPC名关联用户界面。",
+      "remainingWork": "有效session/host/home/flag、实际调用/服务接受、配置层覆盖、通知与磁盘完成仍待对应验证；复用本批已明的调用职责与具名边界。"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "CCS-S001",
+      "bindingOrMethod": "Age.constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1064830,
+        "endExclusive": 1065350
+      },
+      "spanHash": "4f0ea06be878e2cbe3d9e0508edf43f2f4d28a5ae3c90ff396fce6876a335ad1",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S002",
+      "bindingOrMethod": "Age.s",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1065397,
+        "endExclusive": 1065616
+      },
+      "spanHash": "3258091ce2b7b277c48d33dbdd6719f00129576a515b82f5339f68eb33f96d27",
+      "nodeType": "ClassPrivateProperty"
+    },
+    {
+      "id": "CCS-S003",
+      "bindingOrMethod": "Age.saveApiKeyPreference",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1065616,
+        "endExclusive": 1070131
+      },
+      "spanHash": "76227763e92dc39474a4cf58f3932fea850ccb3c8a30865fdc32f3806c796235",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S004",
+      "bindingOrMethod": "Age.getApiKeyCyberAccessProgram",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1070131,
+        "endExclusive": 1071212
+      },
+      "spanHash": "ee62dceacd95e7f0eace1753c97d9c8c6b78d917588958b1416daa2cd15b1b98",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S005",
+      "bindingOrMethod": "Age.dispose",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1071212,
+        "endExclusive": 1071269
+      },
+      "spanHash": "51e07e1bab216bb46ed5ae1a8b56284b814a7f124f7666e7f68f1429dfeff1e4",
+      "nodeType": "ClassProperty"
+    },
+    {
+      "id": "CCS-S006",
+      "bindingOrMethod": "Age.c",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1071269,
+        "endExclusive": 1071561
+      },
+      "spanHash": "c3505702fdb4549f669b29c2bcb48f0346ef43a69d9c5b905abc664945a6152f",
+      "nodeType": "ClassPrivateMethod"
+    },
+    {
+      "id": "CCS-S007",
+      "bindingOrMethod": "Age.l",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1071561,
+        "endExclusive": 1072184
+      },
+      "spanHash": "d666195cef3defb0adeced1b2b2acb96ba2718f419b2a1ee245b3ac761bfe929",
+      "nodeType": "ClassPrivateMethod"
+    },
+    {
+      "id": "CCS-S008",
+      "bindingOrMethod": "Age.u",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1072184,
+        "endExclusive": 1072233
+      },
+      "spanHash": "8adc8bdd1609cde8a8832cb2c8fd3c4775a01eda948dd1e3b37e5f78f5e27db4",
+      "nodeType": "ClassPrivateMethod"
+    },
+    {
+      "id": "CCS-S009",
+      "bindingOrMethod": "Age.f",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1072281,
+        "endExclusive": 1072350
+      },
+      "spanHash": "07b49adb52279a9a0afc179ca68747f297719709b41c58b6a172797c966fb976",
+      "nodeType": "ClassPrivateMethod"
+    },
+    {
+      "id": "CCS-S010",
+      "bindingOrMethod": "afe.constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 716742,
+        "endExclusive": 717321
+      },
+      "spanHash": "9013bab2e97d3b2a28587ab7b7862b6def2959d81690a7c279b2ed6acfebf04f",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S011",
+      "bindingOrMethod": "afe.dispose",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 717321,
+        "endExclusive": 717501
+      },
+      "spanHash": "5ae01968b5d5604e87f3fcbb8d15039408454eac09b841a9138aeaaba6830578",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S012",
+      "bindingOrMethod": "afe.sync",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 717501,
+        "endExclusive": 717811
+      },
+      "spanHash": "a33e22a1d15aeaec917de3570ae6dba592df3d0c0beaaf5e3d08f748de946798",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S013",
+      "bindingOrMethod": "afe.sendEnablement",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 717811,
+        "endExclusive": 719108
+      },
+      "spanHash": "0d7e685ac0724fea416dbec7e2439b1fe4e50750260026dc417db55723805fd5",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S014",
+      "bindingOrMethod": "u0e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3794132,
+        "endExclusive": 3823806
+      },
+      "spanHash": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S015",
+      "bindingOrMethod": "Y2",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2570897,
+        "endExclusive": 2571146
+      },
+      "spanHash": "4097dffcde171c31e3c09cd4f2619a68b8f771eb7406c198679b16b6fec6d0f1",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S016",
+      "bindingOrMethod": "Mge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1072537,
+        "endExclusive": 1072776
+      },
+      "spanHash": "e8672d3467b8ef50d2ee2d9063225b6336ce45c115be45c9a88cdf31da8f8e9a",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S017",
+      "bindingOrMethod": "jge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1072352,
+        "endExclusive": 1072537
+      },
+      "spanHash": "daf9fa4de9efad398ddadec28c382aed89eed261ee6e297ef2d017e777a50477",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S018",
+      "bindingOrMethod": "hc",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 177608,
+        "endExclusive": 179046
+      },
+      "spanHash": "c361e9bf263ce3c773f7b7f8ac49848b58a285054c90377d08478d31a6b6419e",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S019",
+      "bindingOrMethod": "Qc",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 183884,
+        "endExclusive": 184918
+      },
+      "spanHash": "523fd837bee4750776422a0ad79775d1697cf241f6919a4fc1ef23f6ba8f4553",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S020",
+      "bindingOrMethod": "Bse",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 363780,
+        "endExclusive": 364351
+      },
+      "spanHash": "60272bb6a83bd70b74dcc93bff429ed50cbb1c65a940d5fcdd322799911601c6",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S021",
+      "bindingOrMethod": "rS.setEnabled",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 859531,
+        "endExclusive": 860077
+      },
+      "spanHash": "ea8eeb392847c9b51bc5f687ccfa5ab3ed34653909fec32e2f4b1150dac9a46e",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S022",
+      "bindingOrMethod": "rS.e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 860844,
+        "endExclusive": 861043
+      },
+      "spanHash": "30506a9075cfa57a1c7aea6773afec0f0bd51b56f8cc6b35253d0c7ae113f4bd",
+      "nodeType": "ClassPrivateMethod"
+    },
+    {
+      "id": "CCS-S023",
+      "bindingOrMethod": "rS.n",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 861189,
+        "endExclusive": 861354
+      },
+      "spanHash": "b67146ab426b6947293f3a6134a83c401fc0a6bfc58329e49ee7c3708ba94fcb",
+      "nodeType": "ClassPrivateMethod"
+    },
+    {
+      "id": "CCS-S024",
+      "bindingOrMethod": "rS.i",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 861423,
+        "endExclusive": 861525
+      },
+      "spanHash": "856b4b06e929f444a7b776432b9c172dec5b4b46e3c89d685e6aaffa6db5dec7",
+      "nodeType": "ClassPrivateMethod"
+    },
+    {
+      "id": "CCS-S025",
+      "bindingOrMethod": "MF",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1326093,
+        "endExclusive": 1327281
+      },
+      "spanHash": "3359f3e76acf1034fe59d965ea22f01e8cec976cd2f1814926b2716af9f6fab8",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S026",
+      "bindingOrMethod": "FHe.constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2626677,
+        "endExclusive": 2626805
+      },
+      "spanHash": "bfdce01dd125fef5ed4794a07a12f9ea0d23a6cba66d38a630e0561e93cac37f",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S027",
+      "bindingOrMethod": "FHe.confirm",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2626805,
+        "endExclusive": 2628757
+      },
+      "spanHash": "e4d468de977fd0cbcd3f4ee38dce629dea6535487882a81371466d3123ee8c28",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S028",
+      "bindingOrMethod": "FHe.serviceForWindow",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2628757,
+        "endExclusive": 2629184
+      },
+      "spanHash": "4b5e779772d6be3202ebadae6ae66658af028e263b2b35bee0b7de020f0c7d35",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S029",
+      "bindingOrMethod": "jT",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1063528,
+        "endExclusive": 1063611
+      },
+      "spanHash": "29fda419de6b45353689875664ae08c306c22d4a34061a56017f76548e0161c1",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S030",
+      "bindingOrMethod": "MT",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1063611,
+        "endExclusive": 1063839
+      },
+      "spanHash": "669b9a09b28048bc6131d25bf2395cbc827a9aa3557765d645905b9bbbfddcf9",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S031",
+      "bindingOrMethod": "Tge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1063913,
+        "endExclusive": 1064096
+      },
+      "spanHash": "add08b2c6232c82645a03a89a7f80423ca3e42ca02419992235340af0e05e2ed",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S032",
+      "bindingOrMethod": "FT",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1072776,
+        "endExclusive": 1072906
+      },
+      "spanHash": "084598b1ce86a07c1d072ed589b3168572b3daa697425119a214571b73d644e0",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S033",
+      "bindingOrMethod": "AT",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1063329,
+        "endExclusive": 1063528
+      },
+      "spanHash": "576034979cf9b4f0178337e0f10c2beeec676e94dff9b0d511e2532bce93d8ae",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S034",
+      "bindingOrMethod": "wge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1063839,
+        "endExclusive": 1063913
+      },
+      "spanHash": "af07c632b674e4eccee9f065c4d2c6de51b29140360909dc0087c97b459b1fb2",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S035",
+      "bindingOrMethod": "kge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1064340,
+        "endExclusive": 1064426
+      },
+      "spanHash": "cd441c5d329fdfc23ea2c2ff7ebfdcf1eea6d1dbe7430e1fdd34b5161ba153e2",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S036",
+      "bindingOrMethod": "Cge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1063115,
+        "endExclusive": 1063329
+      },
+      "spanHash": "3bfd667052f07d75788e65e8c726e518a8cc720bfc004704d1969195ff2ebeee",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S037",
+      "bindingOrMethod": "rfe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 716240,
+        "endExclusive": 716502
+      },
+      "spanHash": "3b25793f99390a90df6a427ae04d5d6f6e3ad6425dc1bd50ea10ab5c50e3fb71",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S038",
+      "bindingOrMethod": "iS",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 861527,
+        "endExclusive": 861576
+      },
+      "spanHash": "fbe2fe1838cf8fd7bc3e1f6c6ec15f32ebbd442de9209ca92ecea06a56fc172e",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S039",
+      "bindingOrMethod": "aS",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 861576,
+        "endExclusive": 861699
+      },
+      "spanHash": "49751594ef42fea851e51c4ed5981b7fc351663bb724f017403effc73a20c8fa",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S040",
+      "bindingOrMethod": "mc",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 177465,
+        "endExclusive": 177608
+      },
+      "spanHash": "c03346e187dc2e1b597ac4294de4860f9b1f7ac561f2f195446c0624851981d0",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S041",
+      "bindingOrMethod": "gc",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 179046,
+        "endExclusive": 179263
+      },
+      "spanHash": "5ebe923124ff88188f71a9301b013ccbe007d73e451833eeb2dac4e68c40749b",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S042",
+      "bindingOrMethod": "NT",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1064426,
+        "endExclusive": 1064518
+      },
+      "spanHash": "cecbb393a17bf051108d1ca1159b02261aa7052b8d3b0d3e2351ac9d5e8e2783",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S043",
+      "bindingOrMethod": "Oge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1064224,
+        "endExclusive": 1064340
+      },
+      "spanHash": "3a843b42ff285e67cc7fd1c24fe2201578f588346d7353a40ad3926557d09180",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S044",
+      "bindingOrMethod": "Ege",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1064096,
+        "endExclusive": 1064151
+      },
+      "spanHash": "f4daf5bc9de0d9e047d035f2002963f4082e9ca1ba36fa28ca0343e42a626982",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S045",
+      "bindingOrMethod": "Dge",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1064151,
+        "endExclusive": 1064224
+      },
+      "spanHash": "8af03b46d428a100e692ff143b2ae8bd412ea7bf1fcffe3177b193d6da79a2c3",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "CCS-S046",
+      "bindingOrMethod": "nfe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 716175,
+        "endExclusive": 716239
+      },
+      "spanHash": "d3abe9120e8c3175336d33727a620ff5f5dfced3d1b7cb6a8feedc8965ffe5da",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "CCS-S047",
+      "bindingOrMethod": "lc",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 176941,
+        "endExclusive": 176955
+      },
+      "spanHash": "09d3430004c95711adf6d93c49f94eb7155e12aba6480d35efd7441cb9ac148a",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "CCS-S048",
+      "bindingOrMethod": "cc",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 176902,
+        "endExclusive": 176940
+      },
+      "spanHash": "c76a65c9b679e4ad7102b4826c2599c7c2f400e839b03aa1662978c170fa759e",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "CCS-S049",
+      "bindingOrMethod": "hostConstructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "id": "CCS-S050",
+      "bindingOrMethod": "workspaceLoadCallback",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2590148,
+        "endExclusive": 2590262
+      },
+      "spanHash": "c4308460fb8a6ded301b5ec52085aada2ad772fe0487c8c6e2476ae209219a11",
+      "nodeType": "ArrowFunctionExpression"
+    },
+    {
+      "id": "CCS-S051",
+      "bindingOrMethod": "workspaceCacheCallback",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2590836,
+        "endExclusive": 2591128
+      },
+      "spanHash": "0b129828b3dcb9e7c48c7a4bfab6a3e1dc0d6b1c0198df000e1091b00cc0ed8f",
+      "nodeType": "ArrowFunctionExpression"
+    }
+  ],
+  "semanticChecks": [
+    {
+      "id": "hidden-model-and-feature-pagination",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "model-access-selection-and-effort-fallback",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "api-session-and-generation-staleness",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "save-queue-and-user-layer-guards",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "thread-config-metadata-order-and-partial-result",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "feature-allowlist-and-forced-overrides",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "enablement-and-compression-are-independent",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "runtime-config-queue-and-private-env-exclusion",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "plugin-mcp-file-rewrite-then-reload",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "legacy-remote-control-migration",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "chronicle-rollback-and-error-aggregation",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "internal-plugin-reload-purpose",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "folder-trust-groups-and-versioned-save",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "workspace-promise-cache-rejection-removal",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "startup-ports-preserve-request-input",
+      "status": "passed",
+      "qualification": "Frozen-source assertion only; no target evaluation, service call, live data read or product acceptance."
+    },
+    {
+      "id": "20-exact-original-source-call-joins",
+      "status": "passed",
+      "qualification": "Original partial callee-name/first-argument spans preserved and joined to complete AST calls."
+    }
+  ],
+  "existingFeatureRelations": [
+    {
+      "featureIds": [
+        "FSC-0457",
+        "FSC-0458"
+      ],
+      "relationship": "Hidden-model availability helper belongs to API-key preference; selected model-picker to this helper edge not established.",
+      "newFeatureAssociation": false
+    },
+    {
+      "featureId": "FSC-0120",
+      "relationship": "Internal download-triggered MCP reload differs from selected-host user restart contract.",
+      "newFeatureAssociation": false
+    },
+    {
+      "featureIds": [
+        "FSC-0105",
+        "FSC-0374",
+        "FSC-0492"
+      ],
+      "relationship": "Source-injected project consent callback; per-entry completion and effective conditions remain separately qualified.",
+      "newFeatureAssociation": false
+    }
+  ],
+  "reconstructionResponsibilities": [
+    {
+      "responsibility": "API-key access preference coordinator",
+      "environment": "main",
+      "mode": "unknown; retain pending caller review",
+      "proposedPath": "apps/desktop/src/main/models/api-key-access-preference.ts",
+      "pathStatus": "maintenance-design-only; not original source or generated implementation",
+      "inputs": "Explicit connection/registry, policy, controller, state repository and guarded callback interfaces.",
+      "outputs": "Availability/selection/configuration/confirmation results or preserved original/aggregate failure.",
+      "sharedState": "session token, availability generations, serialized saves and accepted selection",
+      "sideEffects": "versioned config and coordinated thread-model updates with partial-result handling",
+      "importsAndExports": "First-party adapters injected at host/service boundaries.",
+      "dependencies": "Existing Node, schema/equality, disposable/RPC/runtime and app-server interfaces; third-party implementations stay package-managed.",
+      "sourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1064726,
+            "endExclusive": 1072351
+          },
+          "spanHash": "d5d06c73b673118d817f2c30cc94d3087c1f9aaec42bffc0b2419fc3bbf5d914",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072352,
+            "endExclusive": 1072537
+          },
+          "spanHash": "daf9fa4de9efad398ddadec28c382aed89eed261ee6e297ef2d017e777a50477",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072537,
+            "endExclusive": 1072776
+          },
+          "spanHash": "e8672d3467b8ef50d2ee2d9063225b6336ce45c115be45c9a88cdf31da8f8e9a",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1063611,
+            "endExclusive": 1063839
+          },
+          "spanHash": "669b9a09b28048bc6131d25bf2395cbc827a9aa3557765d645905b9bbbfddcf9",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1072776,
+            "endExclusive": 1072906
+          },
+          "spanHash": "084598b1ce86a07c1d072ed589b3168572b3daa697425119a214571b73d644e0",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "responsibility": "Execution capability publisher",
+      "environment": "main",
+      "mode": "unknown; retain pending caller review",
+      "proposedPath": "apps/desktop/src/main/runtime/feature-enablement.ts",
+      "pathStatus": "maintenance-design-only; not original source or generated implementation",
+      "inputs": "Explicit connection/registry, policy, controller, state repository and guarded callback interfaces.",
+      "outputs": "Availability/selection/configuration/confirmation results or preserved original/aggregate failure.",
+      "sharedState": "connection generations, policy snapshot and compression-request marker",
+      "sideEffects": "guarded enablement and independent compression; query invalidation callbacks",
+      "importsAndExports": "First-party adapters injected at host/service boundaries.",
+      "dependencies": "Existing Node, schema/equality, disposable/RPC/runtime and app-server interfaces; third-party implementations stay package-managed.",
+      "sourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 716591,
+            "endExclusive": 719109
+          },
+          "spanHash": "b4957c67185383cb29101228cc1fc694e0ea6ce35c9e9e9870b6b408fad8c7f7",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 716240,
+            "endExclusive": 716502
+          },
+          "spanHash": "3b25793f99390a90df6a427ae04d5d6f6e3ad6425dc1bd50ea10ab5c50e3fb71",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2570897,
+            "endExclusive": 2571146
+          },
+          "spanHash": "4097dffcde171c31e3c09cd4f2619a68b8f771eb7406c198679b16b6fec6d0f1",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "responsibility": "Runtime MCP configuration maintenance",
+      "environment": "main",
+      "mode": "unknown; retain pending caller review",
+      "proposedPath": "apps/desktop/src/main/runtime/mcp-config-maintenance.ts",
+      "pathStatus": "maintenance-design-only; not original source or generated implementation",
+      "inputs": "Explicit connection/registry, policy, controller, state repository and guarded callback interfaces.",
+      "outputs": "Availability/selection/configuration/confirmation results or preserved original/aggregate failure.",
+      "sharedState": "per-connection last config promise and explicit runtime selection",
+      "sideEffects": "managed MCP replacement, existing plugin file rewrite, migration and internal download reload",
+      "importsAndExports": "First-party adapters injected at host/service boundaries.",
+      "dependencies": "Existing Node, schema/equality, disposable/RPC/runtime and app-server interfaces; third-party implementations stay package-managed.",
+      "sourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 177608,
+            "endExclusive": 179046
+          },
+          "spanHash": "c361e9bf263ce3c773f7b7f8ac49848b58a285054c90377d08478d31a6b6419e",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 177465,
+            "endExclusive": 177608
+          },
+          "spanHash": "c03346e187dc2e1b597ac4294de4860f9b1f7ac561f2f195446c0624851981d0",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 183884,
+            "endExclusive": 184918
+          },
+          "spanHash": "523fd837bee4750776422a0ad79775d1697cf241f6919a4fc1ef23f6ba8f4553",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 363780,
+            "endExclusive": 364351
+          },
+          "spanHash": "60272bb6a83bd70b74dcc93bff429ed50cbb1c65a940d5fcdd322799911601c6",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 1326093,
+            "endExclusive": 1327281
+          },
+          "spanHash": "3359f3e76acf1034fe59d965ea22f01e8cec976cd2f1814926b2716af9f6fab8",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    },
+    {
+      "responsibility": "Project-folder trust confirmation",
+      "environment": "main",
+      "mode": "unknown; retain pending caller review",
+      "proposedPath": "apps/desktop/src/main/projects/folder-trust-confirmation.ts",
+      "pathStatus": "maintenance-design-only; not original source or generated implementation",
+      "inputs": "Explicit connection/registry, policy, controller, state repository and guarded callback interfaces.",
+      "outputs": "Availability/selection/configuration/confirmation results or preserved original/aggregate failure.",
+      "sharedState": "serialized prompts and window callback/signal registrations",
+      "sideEffects": "separate unknown/untrusted prompts and versioned writes of previously unset trust",
+      "importsAndExports": "First-party adapters injected at host/service boundaries.",
+      "dependencies": "Existing Node, schema/equality, disposable/RPC/runtime and app-server interfaces; third-party implementations stay package-managed.",
+      "sourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2626557,
+            "endExclusive": 2629185
+          },
+          "spanHash": "14de95a5488eb3aaba4539951489c9a38ba08cd3bb0076d072f1acbf936943c4",
+          "nodeType": "VariableDeclarator"
+        }
+      ]
+    },
+    {
+      "responsibility": "Chronicle configuration bridge",
+      "environment": "main",
+      "mode": "unknown; retain pending caller review",
+      "proposedPath": "apps/desktop/src/main/computer-history/chronicle-config.ts",
+      "pathStatus": "maintenance-design-only; not original source or generated implementation",
+      "inputs": "Explicit connection/registry, policy, controller, state repository and guarded callback interfaces.",
+      "outputs": "Availability/selection/configuration/confirmation results or preserved original/aggregate failure.",
+      "sharedState": "injected eligibility/controller and service activation state",
+      "sideEffects": "recorder/config handoff with sequential rollback and AggregateError propagation",
+      "importsAndExports": "First-party adapters injected at host/service boundaries.",
+      "dependencies": "Existing Node, schema/equality, disposable/RPC/runtime and app-server interfaces; third-party implementations stay package-managed.",
+      "sourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 858943,
+            "endExclusive": 861526
+          },
+          "spanHash": "54f4ed2b249756e8be82ec317abd0652eb64ccc44899eb44afa5cd47129a27bf",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 861576,
+            "endExclusive": 861699
+          },
+          "spanHash": "49751594ef42fea851e51c4ed5981b7fc351663bb724f017403effc73a20c8fa",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 861527,
+            "endExclusive": 861576
+          },
+          "spanHash": "fbe2fe1838cf8fd7bc3e1f6c6ec15f32ebbd442de9209ca92ecea06a56fc172e",
+          "nodeType": "FunctionDeclaration"
+        }
+      ]
+    }
+  ],
+  "modeBoundary": "Account/auth/host/build/feature predicates are recorded separately from product mode. No whole-feature or whole-class ChatGPT exclusion follows.",
+  "runtimeObservationsRequired": [
+    "用户配置层覆盖/版本冲突、保存中身份或availability变化、服务写成功后后续步骤失败，分别观察实际部分结果。",
+    "enablement与压缩不同完成顺序、断连和拒绝；工作区能力成功/false/失败缓存的有效失效路径。",
+    "已存在配置改写成功后reload失败、信任两组不同选择/窗口关闭、recorder与配置补偿单项或多项失败。"
+  ],
+  "runtimeObservationStatus": "Not executed; requirements only, no additional canonical scenarios or live-execution authorization.",
+  "counts": {
+    "originalSourcePurposesDecided": 20,
+    "sourceIdentities": 969,
+    "unassociatedSources": 700,
+    "explicitMechanisms": 238,
+    "pendingPurposeDecisions": 462,
+    "facts": 16,
+    "sourceUnits": 51,
+    "distinctCompletePrograms": 1,
+    "extractorFullProgramPasses": 2,
+    "independentFullProgramParses": 1,
+    "independentlyParsedDeclarations": 32,
+    "semanticChecks": 16,
+    "newFeatures": 0,
+    "newOperations": 0,
+    "newCanonicalScenarios": 0,
+    "newModeClassifications": 0,
+    "newRuntimePasses": 0
+  },
+  "retainedBoundaries": [
+    "Effective host/session/flag and actual constructor/IPC delivery/backend persistence unobserved.",
+    "Named runtime selection, path/schema/lock/recorder and app-server providers remain interfaces; no recursive expansion of already qualified providers.",
+    "Model/config/thread/controller updates and broadcasts are distinct phases; partial changes and compensation failures stay visible."
+  ],
+  "newExecution": {
+    "reaRuns": 0,
+    "targetEvaluations": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "serviceCalls": 0,
+    "implementation": 0
+  },
+  "selectedSourceBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "qualification": "Support purpose and lifecycle refinement only; no new user feature, mode decision, behavior pass or independent client implementation.",
+  "developmentQualification": "First verifier draft normalized underscores in the literal remote_control log string and failed its own expectation. Corrected to exact frozen text; first draft preserved locally. No target parse failure."
+}

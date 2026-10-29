@@ -1,0 +1,935 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "status": "passed-with-scope-limits",
+  "reviewRole": "independent original-plan requirements audit; mechanical check success is not task completion",
+  "fullAnalysisCompleted": false,
+  "finalClientImplementationAcceptanceClaimed": false,
+  "snapshotStatus": "final-reader-pins-supplied-by-root-and-independently-matched",
+  "checkCount": 194,
+  "errors": [],
+  "criterionStatusCounts": {
+    "satisfied-with-scope-limits": 4,
+    "partial": 5
+  },
+  "stageDeliveryStatusCounts": {
+    "satisfied-with-scope-limits": 1,
+    "partial": 5
+  },
+  "criteria": [
+    {
+      "id": "AC-01",
+      "status": "satisfied-with-scope-limits",
+      "proven": "固定baseline身份、ASAR哈希、版本与构建、归档内外元数据记录及副本复核已有交付；当前所选产品沿用该baseline，外部候选版本另列。",
+      "indirect": "继承baseline-reverification的副本复核结论；本次未重读目标或大二进制。",
+      "missing": "本条固定输入义务无新增缺口；7条unpacked声明哈希矛盾尚存，固定实测字节不等于声明完整性已证明。",
+      "pendingVerification": "原始签名／打包引起差异的原因、实际运行时兼容均不由固定输入证明。",
+      "closeWhen": "后续目标或字节变化建立独立baseline；外部公开包、app-server和运行时候选不混写为本基线安装身份。",
+      "readerSummary": "基线已固定，7条声明完整性矛盾仍记录；外部候选版本与目标身份分开。",
+      "references": [
+        {
+          "file": "baseline.json",
+          "jsonPointer": "/archiveSha256"
+        },
+        {
+          "file": "baseline-reverification.json",
+          "jsonPointer": "/declaredIntegrityVerified"
+        },
+        {
+          "file": "analysis-state.json",
+          "jsonPointer": "/baselineId"
+        }
+      ],
+      "requirement": "输入版本和哈希已固定，分析结果未混用版本。",
+      "planLine": 186,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-02",
+      "status": "partial",
+      "proven": "文件扫描、438发布模块候选、36粗功能组、旧968入口和后续独立catalog都有限定来源与分母。四批153条已单列。",
+      "indirect": "路由／菜单／设置／请求结构登记支持功能发现，不直接构成功能清单。",
+      "missing": "旧14来源台账与后来发现域之间尚无一个全局逐ID登记对账，完整功能粒度和覆盖范围尚未建立；本审计没有证明实际漏项。",
+      "pendingVerification": "候选是否同一用户操作、全部发现域是否已登记、各入口是否可达。",
+      "closeWhen": "每个已发现域逐ID标已登记／新增登记／重复／未映射，来源和边界可核对；再以职责与后效建立功能粒度，保留未知。",
+      "readerSummary": "发现范围已分列；跨catalog登记对齐与功能粒度未闭合，未知分母本身不是漏项证据。",
+      "references": [
+        {
+          "file": "feature-coverage.json",
+          "jsonPointer": "/limitations"
+        },
+        {
+          "file": "functional-entry-summary.json",
+          "jsonPointer": "/featureCensusDenominator"
+        },
+        {
+          "file": "settings-and-rpc-delivery-provenance.json",
+          "jsonPointer": "/scope"
+        }
+      ],
+      "requirement": "已登记所有发现的文件、入口和功能候选，并说明分析覆盖的范围。",
+      "planLine": 187,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-03",
+      "status": "partial",
+      "proven": "36组20 codex／9 shared／2 chatgpt／5 unknown均推断分类；438发布模块及相关候选保留unknown；确认排除0。",
+      "indirect": "保存的guard、配置scope、host选择和settings可见性可辅助区分产品／账户／host／平台维度，名称或literal ChatGPT不能完成分类。",
+      "missing": "有实际调用方支持的模式判定与拟排除项的共享依赖闭包未形成完整表。unknown是合法已登记分类；0排除本身不是失败。",
+      "pendingVerification": "真实模式值、共享caller、服务条件和分支可达性。",
+      "closeWhen": "每个拟排除项有模式条件、实际消费者和不被Codex依赖的依据；保留项的共享依赖进入恢复表。",
+      "readerSummary": "分类和unknown已记录，仍不能按名称或条件线索生成ChatGPT删除清单。",
+      "references": [
+        {
+          "file": "features.json",
+          "jsonPointer": "/0/modeConfidence"
+        },
+        {
+          "file": "modules.json",
+          "jsonPointer": "/0/mode"
+        },
+        {
+          "file": "analysis-state.json",
+          "jsonPointer": "/confirmedChatGptExclusions"
+        },
+        {
+          "file": "settings-agent-page-contracts.json",
+          "jsonPointer": "/scope"
+        }
+      ],
+      "requirement": "已区分 Codex、ChatGPT 专属、共享和未知项，排除理由可追溯。",
+      "planLine": 188,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-04",
+      "status": "partial",
+      "proven": "选定preload／host／context／network、composer／approval／notification／provider和新RPC／local-host注册提供有范围的静态职责与边界。",
+      "indirect": "完整函数、词法绑定、字段传播、结构契约及同handler链接支持局部链，不证明实际动态receiver、wire delivery或全功能语义。",
+      "missing": "36组codeChain仍通用；逐保留功能的入口→职责模块→状态所有权→存储→IPC／服务／native边界和异常后效未完整关联。",
+      "pendingVerification": "UI当前实例、manager真实挂载与选取、外层写入与lazy时序、RPC接收方、消息送达及持久化。",
+      "closeWhen": "保留功能逐项映射真实caller／receiver来源、payload与response、状态与持久化、取消／销毁后效；未知单列而不靠同名拼接。",
+      "readerSummary": "局部调用合同已补足；36组通用链路尚未变成逐功能职责、状态与外部边界表。",
+      "references": [
+        {
+          "file": "features.json",
+          "jsonPointer": "/0/codeChain"
+        },
+        {
+          "file": "ipc.json",
+          "jsonPointer": "/directedAppHostHttpSources"
+        },
+        {
+          "file": "submission-rpc-dependency-contracts.json",
+          "jsonPointer": "/limits"
+        },
+        {
+          "file": "local-host-registration-contracts.json",
+          "jsonPointer": "/scope"
+        }
+      ],
+      "requirement": "每个保留功能已追踪到足以说明其职责的模块和关键跨进程或外部边界。",
+      "planLine": 189,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-05",
+      "status": "satisfied-with-scope-limits",
+      "proven": "202依赖记录均有版本／来源依据、建议和未决项；17嵌入线索有逐项行动。React、Sentry、capnweb已有有限官方候选与公开入口依据。",
+      "indirect": "发行SRI、tag、接口名称／参数、source-map选定内容对应支持候选来源，不能证明本基线完整实际lock或库未修改。",
+      "missing": "本条记录／行动义务满足；必要caller闭包、完整修改状态、多个版本用途与实际锁定依然影响阶段3／6。",
+      "pendingVerification": "78根声明仅6有root安装版本依据，71无安装manifest；private／native可取得性，平台SDK、JSX／compiler／Scheduler、RPC实际包join未决。",
+      "closeWhen": "对保留功能所需依赖完成公开消费入口、第一方wrapper职责、修改／多版本决定和自己的锁文件；基线实际lock与新工程lock分开。",
+      "readerSummary": "依赖记录与未决行动齐备；来源候选、包导入建议和实际安装锁／完整等价仍分开。",
+      "references": [
+        {
+          "file": "dependency-summary.json",
+          "jsonPointer": "/counts"
+        },
+        {
+          "file": "dependencies.csv"
+        },
+        {
+          "file": "submission-rpc-dependency-contracts.json",
+          "jsonPointer": "/status"
+        },
+        {
+          "file": "implementation-plan.md"
+        }
+      ],
+      "requirement": "第三方依赖有版本与来源依据；无法确认的条目列出调查动作。",
+      "planLine": 190,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-06",
+      "status": "satisfied-with-scope-limits",
+      "proven": "native、Wasm、辅助二进制、Owl、私有服务和版本／fuse接口各有独立记录。",
+      "indirect": "原生静态getter、Framework版本、普通Electron／Sparkle和整个client feed是有限接口或发行元数据，不是Owl独立包、ABI或替代兼容证明。",
+      "missing": "本条独立记录义务满足；Owl源码／独立发行／许可／构建输入与私有接口、native ABI路线仍会改变恢复工程方案。",
+      "pendingVerification": "externalBinaryArchivesAcquired=0，未native重建、未兼容或升级验收；静态Node版本／NAPI不等于实际查询／传统addon ABI。",
+      "closeWhen": "选定可独立取得并固定版本／完整性的运行时或明确适配路线，所需特殊桌面能力逐合同有实现来源及可验证验收。",
+      "readerSummary": "各特殊依赖独立记录齐备；Owl独立取得、私有接口和native兼容仍是工程门槛。",
+      "references": [
+        {
+          "file": "native-runtime.json"
+        },
+        {
+          "file": "analysis-state.json",
+          "jsonPointer": "/runtimeDistribution/scope"
+        },
+        {
+          "file": "gaps.md"
+        }
+      ],
+      "requirement": "原生、Wasm、辅助程序、定制运行时和私有服务均有独立记录。",
+      "planLine": 191,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-07",
+      "status": "satisfied-with-scope-limits",
+      "proven": "17848限定输入的source-map范围、30缺失构建输入occurrences和REA partial／动态未解析范围已说明。",
+      "indirect": "REA成功解析15212 JS与机械引用通过证明这些限定检查执行；不证明50063032节点语义齐备或226389unknown关闭。",
+      "missing": "本条限制说明义务满足；缺失输入补齐、动态receiver／计算通道／副作用／共享闭包未全部解析。",
+      "pendingVerification": "远端或原构建系统map是否存在、原目录恢复关系、完整构建输入与动态调用关系。",
+      "closeWhen": "所有报告沿用限定覆盖；按保留功能优先补动态断点和工程输入决定，未知不被successful parse覆盖。",
+      "readerSummary": "map、构建缺口和解析限制已有范围说明；不表示map全域不存在或工程已可构建。",
+      "references": [
+        {
+          "file": "source-map-validation.json",
+          "jsonPointer": "/scopeLimit"
+        },
+        {
+          "file": "build-inputs.json"
+        },
+        {
+          "file": "analysis-state.json",
+          "jsonPointer": "/reaCounts"
+        },
+        {
+          "file": "gaps.md"
+        }
+      ],
+      "requirement": "Source map 覆盖、构建输入缺失、REA 解析限制和动态关系均有说明。",
+      "planLine": 192,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-08",
+      "status": "partial",
+      "proven": "30保存观察、1授权完成样例及其重启重新打开、5headless命令、11codec样例／40断言各保留独立范围。",
+      "indirect": "静态审批／取消／broken／dispose合同和5模块／7场景维护提议支持后续场景设计，但不是实际成功／失败／恢复运行记录。",
+      "missing": "主要正常／失败／取消／审批／文件写入／PTY／执行中断恢复未逐功能对照；36组conditions仍通用，未触发项条件不够具体。",
+      "pendingVerification": "运行中的任务取消、拒绝／批准后的后效、服务断连、文件／PTY操作与执行中断恢复；暂不可触发项的账户／平台／服务前提。",
+      "closeWhen": "每个主要保留链有前置条件、动作、预期／实测、静态差异和未验证理由；完成后reopen与执行中断恢复分别验收。",
+      "readerSummary": "有有限样例；主要异常、取消、审批和执行中断恢复尚未逐功能对照。",
+      "references": [
+        {
+          "file": "behavior-checks.md"
+        },
+        {
+          "file": "behavior-observations.json"
+        },
+        {
+          "file": "analysis-state.json",
+          "jsonPointer": "/submittedTaskRestartRecovery/interruptedExecutionRecoveryVerified"
+        },
+        {
+          "file": "features.json",
+          "jsonPointer": "/0/conditions"
+        }
+      ],
+      "requirement": "主要行为与静态结论已对照，未验证项有明确触发条件。",
+      "planLine": 193,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    },
+    {
+      "id": "AC-09",
+      "status": "partial",
+      "proven": "实施草案、局部模块边界与来源映射、依赖消费建议、5module／7scenario提议及阶段启动门槛已有证据。",
+      "indirect": "App-host、settings四层、provider、RPC职责提议可支撑部分维护任务；模板顺序并非完整功能依赖图。",
+      "missing": "全保留功能→源码／职责模块→具体任务依赖→精确场景与预期后效未形成；目录／工具／运行时／后台最终决定未闭合。",
+      "pendingVerification": "公开app-server实际版本成功路径和全能力覆盖、Owl／私有依赖取得或替代、完整构建与后续升级迁移／回退。",
+      "closeWhen": "每个任务、顺序边和验收卡引用来源；未决工程方案有明确开始条件，完整覆盖表可核对。本轮不要求客户端已经实现或打包。",
+      "readerSummary": "有带依据的局部建议和草案；完整任务依赖／功能验收表及工程路线仍待形成。",
+      "references": [
+        {
+          "file": "implementation-plan.md"
+        },
+        {
+          "file": "report.md"
+        },
+        {
+          "file": "gaps.md"
+        },
+        {
+          "file": "settings-general-page-contracts.json",
+          "jsonPointer": "/limitations"
+        }
+      ],
+      "requirement": "项目结构建议、恢复顺序和验收条件能够引用分析证据。",
+      "planLine": 194,
+      "planSource": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md"
+    }
+  ],
+  "stages": [
+    {
+      "number": 1,
+      "deliveryStatus": "satisfied-with-scope-limits",
+      "nextAction": "输入层无需重复全扫描；保留7条声明矛盾及实际运行时／ABI未知，外部版本另列。",
+      "requirements": [
+        {
+          "id": "1.1",
+          "planText": "记录版本、构建号、平台、CPU 架构、应用入口以及实际 Electron 或定制运行时信息。",
+          "status": "proved-with-limits",
+          "finding": "基线版本／入口／平台与定制运行时有元数据记录；实际运行时全部版本查询和ABI不由静态信息闭合。"
+        },
+        {
+          "id": "1.2",
+          "planText": "保存只读分析副本，覆盖 ASAR、unpacked 文件和必要的辅助资源；对输入生成哈希和文件清单。",
+          "status": "indirectly-supported",
+          "finding": "继承冻结／副本复核记录；本次只固定所选分析元数据，未重核所有原始字节。"
+        },
+        {
+          "id": "1.3",
+          "planText": "识别 JS、HTML、CSS、资源、原生模块、Wasm、可执行文件及包元数据；记录归档内外的关联关系。",
+          "status": "proved-records",
+          "finding": "文件与native/runtime/dependency类别记录有交付；识别不是源码可构建证明。"
+        },
+        {
+          "id": "1.4",
+          "planText": "查找外置及内联 source map，检查是否包含 `sourcesContent`，记录源码覆盖范围。",
+          "status": "proved-scoped-coverage",
+          "finding": "17848限定输入扫描范围明确，非远端／原构建系统全域不存在证明。"
+        },
+        {
+          "id": "1.5",
+          "planText": "核对构建脚本引用的文件和上级工程，列出存在、缺失及来源未明的构建输入。",
+          "status": "proved-records",
+          "finding": "30缺失occurrences已登记；尚无补齐后的新工程构建决定。"
+        }
+      ],
+      "title": "第一阶段 固定输入与文件清单",
+      "planLines": {
+        "start": 61,
+        "endInclusive": 70
+      },
+      "requiredDelivery": "基线清单、文件清单、source map 覆盖情况和初始构建缺口。发布归档作为分析证据保留，不进入最终客户端恢复源码目录。",
+      "numberingBasis": "Own audit subitem identifiers. Original numbered items, table fields and unnumbered paragraphs/bullets are mapped to exact plan text; no invented original numbering.",
+      "criterionReferences": [
+        "AC-01",
+        "AC-07"
+      ],
+      "selectedEvidenceReferences": [
+        "AC-01",
+        "AC-07"
+      ]
+    },
+    {
+      "number": 2,
+      "deliveryStatus": "partial",
+      "nextAction": "先对账发现域与稳定ID，再逐功能记录真实入口、条件、后效、模式和恢复观察点。",
+      "requirements": [
+        {
+          "id": "2.1",
+          "planText": "以代码中的路由、菜单、命令、快捷键、设置项、功能开关及处理函数建立功能候选清单，再对照实际界面和可触发行为核实。",
+          "status": "partial",
+          "finding": "各域有候选及增量catalog；全域登记对账／功能粒度／实际可达行为未齐备。"
+        },
+        {
+          "id": "2.2",
+          "planText": "调查范围包括会话与项目管理、消息与流式展示、任务执行与取消、审批、文件与变更查看、终端、设置、窗口和系统集成。",
+          "status": "partial",
+          "finding": "36粗组不能作为这些方向的完整功能分母；新记录仅补选定页面或边界。"
+        },
+        {
+          "id": "2.3",
+          "planText": "稳定的功能标识、用户可理解的名称",
+          "status": "proved-candidate-fields",
+          "finding": "36粗组已有ID／名称；需要以职责和后效细化粒度。"
+        },
+        {
+          "id": "2.4",
+          "planText": "页面、菜单、快捷键、命令或后台事件",
+          "status": "partial",
+          "finding": "触发字段仍导向候选入口和待观察UI。"
+        },
+        {
+          "id": "2.5",
+          "planText": "输入、输出、状态变化、失败与取消行为",
+          "status": "partial",
+          "finding": "部分静态合同有输入后效，逐功能失败／取消与状态尚未闭合。"
+        },
+        {
+          "id": "2.6",
+          "planText": "平台、账户、功能开关、服务或环境条件",
+          "status": "partial",
+          "finding": "36组conditions通用；各guard存在不证明实际环境值。"
+        },
+        {
+          "id": "2.7",
+          "planText": "`codex`、`chatgpt`、`shared`、`unknown`",
+          "status": "partial",
+          "finding": "四类登记存在；拟剥离的模式与共享调用闭包未闭合。"
+        },
+        {
+          "id": "2.8",
+          "planText": "入口、关键模块、IPC、后台服务、数据存储",
+          "status": "partial",
+          "finding": "36组codeChain通用；局部静态路径不能替代全部关联。"
+        },
+        {
+          "id": "2.9",
+          "planText": "来源标识；静态确认、行为确认或待验证",
+          "status": "proved-scope-records",
+          "finding": "来源和静态／runtime-pending分列；不计checkCount为功能完成。"
+        },
+        {
+          "id": "2.10",
+          "planText": "后续能够判断该功能已复刻的具体观察点",
+          "status": "partial",
+          "finding": "有粗验收说明及局部场景提议，主要功能精确卡未齐备。"
+        }
+      ],
+      "title": "第二阶段 功能范围盘点",
+      "planLines": {
+        "start": 71,
+        "endInclusive": 93
+      },
+      "requiredDelivery": "功能范围清单和模式边界图；每个排除项都有理由，每个保留项都有可追踪的入口或使用路径。",
+      "numberingBasis": "Own audit subitem identifiers. Original numbered items, table fields and unnumbered paragraphs/bullets are mapped to exact plan text; no invented original numbering.",
+      "criterionReferences": [
+        "AC-02",
+        "AC-03",
+        "AC-08"
+      ],
+      "selectedEvidenceReferences": [
+        "AC-02",
+        "AC-03",
+        "AC-08"
+      ]
+    },
+    {
+      "number": 3,
+      "deliveryStatus": "partial",
+      "nextAction": "按实际保留链选择正常包入口，锁定自己的依赖闭包，并决定第一方wrapper／修改／私有native方案。",
+      "requirements": [
+        {
+          "id": "3.1",
+          "planText": "已确认且未修改的公开包",
+          "status": "partial",
+          "finding": "有安装manifest和有限官方对照；完整未修改及使用闭包并未全确认。"
+        },
+        {
+          "id": "3.2",
+          "planText": "bundle 内嵌的公开库",
+          "status": "partial",
+          "finding": "React／Sentry／capnweb有公开入口候选；私有Sentry helper障碍、RPC实际join及完整修改未知。"
+        },
+        {
+          "id": "3.3",
+          "planText": "同时存在多个版本",
+          "status": "partial",
+          "finding": "多版本记录有，但必要caller及是否并存的功能决定未齐备。"
+        },
+        {
+          "id": "3.4",
+          "planText": "修改过的上游库",
+          "status": "partial",
+          "finding": "node-pty两Windows文件差异有记录；6处Sentry literal差异不够推断修改。"
+        },
+        {
+          "id": "3.5",
+          "planText": "私有包或未知代码",
+          "status": "partial",
+          "finding": "调查项保留；源码取得／许可／维护替代可行性未关闭。"
+        },
+        {
+          "id": "3.6",
+          "planText": "原生模块与 Wasm",
+          "status": "partial",
+          "finding": "有版本／平台／资源信息，完整接口／源码构建／实际ABI未闭合。"
+        },
+        {
+          "id": "3.7",
+          "planText": "每个条目包含名称、版本及其依据、来源、许可证线索、使用位置、运行时或构建时用途、模式归属、修改状态、建议引入方式和未解决问题。",
+          "status": "proved-records-with-unknowns",
+          "finding": "202记录有依据及未决字段；unknown的准确登记不等于已决定替换。"
+        }
+      ],
+      "title": "第三阶段 第三方依赖识别",
+      "planLines": {
+        "start": 94,
+        "endInclusive": 112
+      },
+      "requiredDelivery": "第三方依赖清单、第一方与第三方归属表、版本和来源未解决清单。最终工程不生成第三方实现副本；临时分析副本与最终维护源码分开管理。",
+      "numberingBasis": "Own audit subitem identifiers. Original numbered items, table fields and unnumbered paragraphs/bullets are mapped to exact plan text; no invented original numbering.",
+      "criterionReferences": [
+        "AC-05",
+        "AC-06"
+      ],
+      "selectedEvidenceReferences": [
+        "AC-05",
+        "AC-06"
+      ]
+    },
+    {
+      "number": 4,
+      "deliveryStatus": "partial",
+      "nextAction": "将补充的真实词法路径接到保留功能、接收方／状态／存储与后效，优先关闭动态断点。",
+      "requirements": [
+        {
+          "id": "4.1",
+          "planText": "建立 main、preload、renderer、worker 和辅助进程的入口与生命周期关系。",
+          "status": "partial",
+          "finding": "进程图和局部生命周期已有；真实manager挂载与全闭包未闭合。"
+        },
+        {
+          "id": "4.2",
+          "planText": "对 IPC 记录发送方、接收方、通道、请求与响应结构、通知、异常、超时和取消方式。",
+          "status": "partial",
+          "finding": "50来源通道候选及选定host／RPC合同；actualreceiver、传递、超时／异常逐功能未齐备。"
+        },
+        {
+          "id": "4.3",
+          "planText": "对页面及状态记录路由、组件调用、状态所有权、订阅、持久化和恢复行为。",
+          "status": "partial",
+          "finding": "页面／注册／通知状态片段已登记；全页状态和持久化恢复未闭合。"
+        },
+        {
+          "id": "4.4",
+          "planText": "对后台边界记录 app-server、命令行工具、MCP、原生接口和服务端接口的实际使用关系。",
+          "status": "partial",
+          "finding": "接口／schema与headless差异有来源；实例实际app-server版本、成功路径与完整能力覆盖待验证。"
+        },
+        {
+          "id": "4.5",
+          "planText": "对动态导入、计算得到的通道名、循环依赖、模块副作用和共享闭包补充验证。",
+          "status": "partial",
+          "finding": "选定AST／lexical绑定支撑部分关系，外层mutation／lazy时序／全共享闭包unknown。"
+        },
+        {
+          "id": "4.6",
+          "planText": "对无法直接解析的大 bundle，使用 AST 和作用域关系辅助分析，并保留原位置到格式化代码的映射。",
+          "status": "proved-method-with-partial-coverage",
+          "finding": "保存有界AST、原位置和失败限制；完整类不等于所有成员语义已审。"
+        },
+        {
+          "id": "4.7",
+          "planText": "公开 app-server 是候选集成方案，采用与否由覆盖情况决定；不能仅凭接入成功就认为桌面功能已全部恢复。",
+          "status": "pending-adoption",
+          "finding": "协议差异与negative fork已列；成功任务／审批／恢复覆盖不足以作最终采用。"
+        }
+      ],
+      "title": "第四阶段 REA 架构与调用链分析",
+      "planLines": {
+        "start": 113,
+        "endInclusive": 129
+      },
+      "requiredDelivery": "进程和模块图、IPC 契约、状态与数据流、后台能力差异，以及带来源的模块归属清单。",
+      "numberingBasis": "Own audit subitem identifiers. Original numbered items, table fields and unnumbered paragraphs/bullets are mapped to exact plan text; no invented original numbering.",
+      "criterionReferences": [
+        "AC-04",
+        "AC-07"
+      ],
+      "selectedEvidenceReferences": [
+        "AC-04",
+        "AC-07"
+      ]
+    },
+    {
+      "number": 5,
+      "deliveryStatus": "partial",
+      "nextAction": "先从已有5模块／7场景提议生成具体场景卡，逐一关联条件／预期／已观察或待验证；本次不运行。",
+      "requirements": [
+        {
+          "id": "5.1",
+          "planText": "对主要功能链执行可重复的行为观察，将运行结果与静态推断对照。",
+          "status": "partial",
+          "finding": "30观察与单个授权任务有保存；主要完整功能链的行为对照未齐。"
+        },
+        {
+          "id": "5.2",
+          "planText": "覆盖正常完成、失败、取消、重启恢复等有实际实现依据的路径。",
+          "status": "partial",
+          "finding": "完成及完成后reopen已有；运行中断恢复、审批、文件写入、PTY和主要fail／cancel未验证。"
+        },
+        {
+          "id": "5.3",
+          "planText": "账户、平台或服务条件不满足时，保留对应功能及其静态证据，标明待验证条件。",
+          "status": "partial",
+          "finding": "未知功能未删除；36组通用条件尚需逐项具体化，不读个人资料补证。"
+        }
+      ],
+      "title": "第五阶段 行为与依赖验证",
+      "planLines": {
+        "start": 130,
+        "endInclusive": 139
+      },
+      "requiredDelivery": "行为验证记录、可用于后续回归验证的场景，以及静态与运行结果的差异清单。",
+      "numberingBasis": "Own audit subitem identifiers. Original numbered items, table fields and unnumbered paragraphs/bullets are mapped to exact plan text; no invented original numbering.",
+      "criterionReferences": [
+        "AC-08"
+      ],
+      "selectedEvidenceReferences": [
+        "AC-08"
+      ]
+    },
+    {
+      "number": 6,
+      "deliveryStatus": "partial",
+      "nextAction": "形成保留功能→模块／来源→工程任务依赖→场景验收矩阵；明确Owl／后台／构建路线与未决门槛。",
+      "requirements": [
+        {
+          "id": "6.1",
+          "planText": "由模块职责、运行环境和共享关系决定的源码目录与包边界。",
+          "status": "partial",
+          "finding": "局部app-host／settings／provider职责可提议；438发布文件不是最终源码模块表。"
+        },
+        {
+          "id": "6.2",
+          "planText": "从原始文件或代码范围到拟恢复模块的映射。",
+          "status": "partial",
+          "finding": "局部138范围、app-host与settings等已有来源映射；全保留功能未齐备。"
+        },
+        {
+          "id": "6.3",
+          "planText": "ChatGPT 专属功能剥离清单及共享依赖保留理由。",
+          "status": "partial",
+          "finding": "确认排除0，unknown保留；完整可实施剥离／保留闭包未形成。"
+        },
+        {
+          "id": "6.4",
+          "planText": "第三方依赖引入方案，以及原生、Wasm、定制运行时和私有组件的处理决定。",
+          "status": "partial",
+          "finding": "正常包候选及wrapper职责存在；Owl／private取得和native ABI尚未决定。"
+        },
+        {
+          "id": "6.5",
+          "planText": "缺失构建输入的补齐方案和公开 app-server 的适用范围。",
+          "status": "partial",
+          "finding": "30缺口已说明；新工程输入决定与后台完整能力覆盖未关闭。"
+        },
+        {
+          "id": "6.6",
+          "planText": "根据依赖关系排列的功能恢复顺序、阶段验收和完整功能覆盖表。",
+          "status": "partial",
+          "finding": "已有阶段0—7候选与局部5module／7scenario，但全功能任务依赖和精确验收表未形成。"
+        },
+        {
+          "id": "6.7",
+          "planText": "基于固定版本证据、协议与行为差异的后续升级方式。",
+          "status": "partial",
+          "finding": "独立baseline／diff／迁移回退原则有草案；具体影响模块与回归卡仍依赖全功能映射。"
+        }
+      ],
+      "title": "第六阶段 形成实施依据",
+      "planLines": {
+        "start": 140,
+        "endInclusive": 153
+      },
+      "requiredDelivery": "分析报告和逆向实施计划草案。构建工具与客户端目录在此阶段确定，避免用预设目录解释未知代码。",
+      "numberingBasis": "Own audit subitem identifiers. Original numbered items, table fields and unnumbered paragraphs/bullets are mapped to exact plan text; no invented original numbering.",
+      "criterionReferences": [
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-09"
+      ],
+      "selectedEvidenceReferences": [
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-09"
+      ]
+    }
+  ],
+  "priorityActions": [
+    {
+      "priority": 1,
+      "title": "跨发现域登记与逐功能矩阵",
+      "action": "对账旧入口台账和新增catalog的稳定ID／来源域；从已保存任务或设置链开始，填入口、条件、第一方职责、receiver、状态／存储和后效。不要再以新增扫描数量替代覆盖。",
+      "closeWhen": "所有已发现候选都有登记归属；每个保留功能有可引用的关键路径，重复／未知明确单列。"
+    },
+    {
+      "priority": 2,
+      "title": "并行决定运行时与后台可行路线",
+      "action": "用既有Owl特殊能力记录确定独立发行／源码／许可／ABI或适配路线；将actual app-server实例版本及正常任务／审批／取消／恢复能力差异列为采用门槛。",
+      "closeWhen": "运行时可独立取得或适配合同可实施，后台选择有成功路径及差异处理依据；删除启动guard或schema相同不算关闭。"
+    },
+    {
+      "priority": 3,
+      "title": "把静态异常合同变为行为场景卡",
+      "action": "以5模块／7场景提议为起点，分别写正常、拒绝／批准、取消、断连、文件／PTY、运行中断恢复的前提、动作、预期后效和已有／待验证来源。",
+      "closeWhen": "主要功能逐卡有实测对照或精确未验证条件；本审计不授权或触发新运行。"
+    },
+    {
+      "priority": 4,
+      "title": "形成可执行的实施依据",
+      "action": "每个恢复任务绑定源范围、第一方wrapper、公开包入口、自己的锁与平台构建条件、先后依赖和回归卡；让证据足够的模块先做有限恢复，同时保留未决全验收项。",
+      "closeWhen": "完整功能覆盖表可追溯到任务与验收，关键工程方案不再由泛化阶段表代替。"
+    }
+  ],
+  "interpretationGuards": [
+    "本轮分析完成与后续实现完成分别评估；不以客户端尚未重建作为本轮额外扣项。",
+    "四项记录／范围义务满足不等于整个阶段或全部来源／行为已确认；不得换算完成百分比。",
+    "unknown是合法登记状态；功能分母未知、0排除、旧ledger映射0本身均不证明漏项、功能不存在或可以删除。",
+    "source字节／AST／引用／green checkCount只证明其限定机械范围，不能替代职责语义、runtime、共享闭包或全功能覆盖。",
+    "旧968入口、36粗组、438发布文件、375请求及337／38对账、新153合同、30观察和65571global evidence各保留独立分母。",
+    "正常包候选版本不等于baseline实际lock；名称／参数形状相同不等于完整实现未修改或行为等价。",
+    "历史93工件audit仅属164818旧run；本次current选定元数据另存pins，不追认全部历史或后续发布。"
+  ],
+  "currentEvidenceFacts": {
+    "features": {
+      "count": 36,
+      "modes": {
+        "codex": 20,
+        "shared": 9,
+        "unknown": 5,
+        "chatgpt": 2
+      },
+      "modeConfidence": {
+        "inferred": 36
+      },
+      "genericCodeChains": 36,
+      "genericConditions": 36,
+      "runtimePending": 36
+    },
+    "modules": {
+      "count": 438,
+      "modes": {
+        "unknown": 438
+      }
+    },
+    "dependencies": {
+      "count": 202,
+      "rowsWithVersionSourceIntegrationUnresolvedFields": 202
+    },
+    "nativeCollectionCounts": {
+      "archiveArtifacts": 49,
+      "diskRuntimeBinaries": 112,
+      "externalWasmArtifacts": 8,
+      "runtimeMetadata": 5,
+      "plistMetadata": 16,
+      "voiceSources": 12,
+      "sourceInputs": 756
+    },
+    "buildInputOccurrences": 30,
+    "behaviorObservationRecords": 30,
+    "ipc": {
+      "sourceChannelCandidates": 50,
+      "transports": 12,
+      "lexicalHostMessageTypes": 171
+    },
+    "selectedNewCatalogs": {
+      "settings-agent-page-contracts": {
+        "records": 65,
+        "scope": "Selected exact producer metadata, evidence and bounded reviews. No implementation extraction, original-source reparse or runtime equivalence claim.",
+        "globalRecordsAdded": 0,
+        "runtimeRunsAdded": 0,
+        "featureDenominatorEstablished": false,
+        "inputPin": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-agent-page-contracts.json",
+          "bytes": 145724,
+          "sha256": "797d2d69253cb896071d4d79c2d2f1df55556b0e1827acaa35679dca98311463"
+        }
+      },
+      "submission-rpc-dependency-contracts": {
+        "records": 24,
+        "scope": "Selected exact producer metadata, evidence and bounded reviews. No implementation extraction, original-source reparse or runtime equivalence claim.",
+        "globalRecordsAdded": 0,
+        "runtimeRunsAdded": 0,
+        "featureDenominatorEstablished": false,
+        "inputPin": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/submission-rpc-dependency-contracts.json",
+          "bytes": 207481,
+          "sha256": "8c972081dc3eb21a57694f17fe1abcf888f2dbbc2236162dd11999181e12a0e2"
+        }
+      },
+      "local-host-registration-contracts": {
+        "records": 25,
+        "scope": "Selected exact producer metadata, evidence and bounded reviews. No implementation extraction, original-source reparse or runtime equivalence claim.",
+        "globalRecordsAdded": 0,
+        "runtimeRunsAdded": 0,
+        "featureDenominatorEstablished": false,
+        "inputPin": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/local-host-registration-contracts.json",
+          "bytes": 796156,
+          "sha256": "ebb1ecc1cbf5fa7558051016f1095be05cf4c62c7b9e78b221c717ecf0cc8903"
+        }
+      },
+      "settings-general-page-contracts": {
+        "records": 39,
+        "scope": "Selected exact producer metadata, evidence and bounded reviews. No implementation extraction, original-source reparse or runtime equivalence claim.",
+        "globalRecordsAdded": 0,
+        "runtimeRunsAdded": 0,
+        "featureDenominatorEstablished": false,
+        "inputPin": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+          "bytes": 316778,
+          "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f"
+        }
+      }
+    }
+  },
+  "historicalAudit": {
+    "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/current-completion-audit.json",
+    "publicationRun": "20261013T164818487650Z",
+    "artifactCount": 93,
+    "scope": "Historical 63-snapshot audit; not authority for present updated products."
+  },
+  "reviewedInputs": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json",
+      "bytes": 131652,
+      "sha256": "b9eb39cc4180a10e8c284de6aac8b6f6d23d33114b90278dd80c26bd16105879"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/evidence-validation.json",
+      "bytes": 1809468,
+      "sha256": "afa57268c42731d2c591750d7b791760299f2568a734fafc5d3b8ed95d39c6ab"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/baseline.json",
+      "bytes": 1162,
+      "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/baseline-reverification.json",
+      "bytes": 11124,
+      "sha256": "9f27c67bfffe7a6f2069c11ddf64a20df44abe3612ba9cf5e7541159794883b7"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/feature-coverage.json",
+      "bytes": 1939,
+      "sha256": "094f35ed74eb29f72fdca6512630bf833cf2b1ddea037653eb79f56791e51513"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/functional-entry-summary.json",
+      "bytes": 4419,
+      "sha256": "bf4e79de1c757f956026054276056369452dc419585c5a084059138c1010e7ef"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/features.json",
+      "bytes": 43914,
+      "sha256": "caf3611ce38448743d2ecac379997f7005b6029a7aa5ffe11c59f44f0ef1f32c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/modules.json",
+      "bytes": 1396068,
+      "sha256": "fb328ab9b49fe3540d30f9925575c7226c2e186c8abc59f35f6b72a77faf00af"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/ipc.json",
+      "bytes": 67650,
+      "sha256": "c98654aa436764b8758b315c7c423e5e8d69f10b2c92820c9f40982fd4422be0"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/dependency-summary.json",
+      "bytes": 7125,
+      "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/native-runtime.json",
+      "bytes": 421989,
+      "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/source-map-validation.json",
+      "bytes": 382,
+      "sha256": "55ccdba951360264f714265458459668aaf51e0ae66af69b158ec6ef5a99395c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/build-inputs.json",
+      "bytes": 5040,
+      "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/behavior-observations.json",
+      "bytes": 64583,
+      "sha256": "43fd807d2f83cbb19ca03bc770120ada2c9125dd23994056de274a82d9b5f9ab"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/current-completion-audit.json",
+      "bytes": 32428,
+      "sha256": "1b225a920fa93b3c11aae888683b10f7d9524a506e6e36343a3b77cc523c23fa"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-and-rpc-delivery-provenance.json",
+      "bytes": 34359,
+      "sha256": "b4f1cb663f006e594426cca89eecb0a6246c4618777688a6eea0966f1ac7cbb1"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-agent-page-contracts.json",
+      "bytes": 145724,
+      "sha256": "797d2d69253cb896071d4d79c2d2f1df55556b0e1827acaa35679dca98311463"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/submission-rpc-dependency-contracts.json",
+      "bytes": 207481,
+      "sha256": "8c972081dc3eb21a57694f17fe1abcf888f2dbbc2236162dd11999181e12a0e2"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/local-host-registration-contracts.json",
+      "bytes": 796156,
+      "sha256": "ebb1ecc1cbf5fa7558051016f1095be05cf4c62c7b9e78b221c717ecf0cc8903"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+      "bytes": 316778,
+      "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/report.md",
+      "bytes": 42243,
+      "sha256": "834c48eac031048888b3eb3ce2d055b1ca72656813ab097a78d2e5589c9517f3"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/gaps.md",
+      "bytes": 15657,
+      "sha256": "0e67fdd0d47d3a2086b9d83dba7b0a5a2c908906ce364f4096d2851971fccee1"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/implementation-plan.md",
+      "bytes": 21056,
+      "sha256": "239032d72fcf227821157ac42efc482e9b7b9271224f686d630930e8a293a817"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/behavior-checks.md",
+      "bytes": 34227,
+      "sha256": "9f9d4b458f317d955c6311bf311938e020668f3728cb08ab4b771da540661a5c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/analysis-requirements-current-audit-work/assessment-input.json",
+      "bytes": 24485,
+      "sha256": "43e17cc775378b6f2c7f20c4408d2e80ebc1ccc707b4f2e0c9a72bedf6e78f3f"
+    }
+  ],
+  "selectedSnapshot": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/analysis-requirements-current-audit-work/selected-metadata-snapshot.json",
+    "bytes": 110639,
+    "sha256": "b8f8b2361735569d74fac6e98bb095ff81fe20904a19d2328880e472dcfce220"
+  },
+  "scopeLimits": [
+    "No target, producer, publisher, dependency or upstream code execution; no UI/network/model/private information access.",
+    "No original target source, full AST, implementation, whole global journal or old checker inventory read.",
+    "Published aggregate counts and prior bounded conclusions are inherited metadata; this audit does not revalidate their original source semantics.",
+    "Input hashes identify the current selected metadata snapshot only; they do not prove complete feature behavior or all archived artifact closure.",
+    "No new global or runtime evidence; 153 newly delivered records are selected contracts, not 153 features.",
+    "An exploratory read assumed a nonexistent Agent summary filename and raised FileNotFoundError; no products written. Its limitation is separately preserved as a diagnostic, not a passed checker."
+  ]
+}

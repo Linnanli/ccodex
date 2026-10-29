@@ -1,0 +1,43 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "allArchiveMembers": 21089,
+  "nonNodeModulesJsDiscovered": 14805,
+  "lexicallyScannedFiles": 438,
+  "publishedModuleCandidates": 438,
+  "literalImportEdges": 3920,
+  "explicitChannelSourcePairs": 50,
+  "distinctExplicitChannels": 25,
+  "centralDispatcherMessageTypes": 171,
+  "routePropertyCandidates": 155,
+  "routeRegistrationsLiteral": 77,
+  "routeRegistrationsComputed": 51,
+  "routeNavigationTargets": 12,
+  "settingRegistrationCandidates": 53,
+  "appServerDirectCallSites": 91,
+  "distinctAppServerDirectMethods": 52,
+  "curatedFeatureCandidates": 36,
+  "featuresWithSourceEvidence": 36,
+  "featureModeCounts": {
+    "codex": 20,
+    "chatgpt": 2,
+    "shared": 9,
+    "unknown": 5
+  },
+  "featuresRuntimeVerified": 0,
+  "confirmedExclusions": 0,
+  "centralDispatcherRange": [
+    2077834,
+    2105401
+  ],
+  "limitations": [
+    "本工具为补充字面静态扫描，REA 结果由主流程保存；未把正则当作 AST、调用链或行为证明。",
+    "代码包含 codex、chat/work、local/cloud/chatgpt thread kind 等多个维度；暂不将 work 视为 ChatGPT 专属。",
+    "功能候选来自入口和方法线索；功能分母尚在调查，36 个分组不代表完整功能数。",
+    "selected files 是第一方功能候选和混合 bundle；第三方范围由依赖归属分析单独确定。",
+    "显式 IPC 通道不等于全部接口；MessagePort RPC、计算通道和 native/owl 接口需要进一步解析。",
+    "route-property 同时包含导航目标及 route declaration；动态路径和上层守卫保留未解析。",
+    "central dispatcher 的 case 可能仅 no-op 或转发，登记存在不证明实现或 UI 可达。",
+    "设置注册不证明可见；账户、平台、feature flag 与 host capability 要逐项核实。",
+    "所有行为均未由本子任务运行验证，不能把静态证据计入行为覆盖。"
+  ]
+}

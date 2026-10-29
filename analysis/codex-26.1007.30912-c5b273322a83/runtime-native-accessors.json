@@ -1,0 +1,1256 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-13T13:43:25.351931+00:00",
+  "status": "static-code-and-wire-binding-confirmed; execution-caller-and-version-closure-unverified",
+  "method": "Parse Mach-O header/LC_SEGMENT_64/selected LC_SYMTAB entries; decode bounded x86_64 bytes and RIP displacement; LLVM finite disassembly retained without target execution.",
+  "sourceInputs": [
+    {
+      "path": ".analysis-local/current-baseline.json",
+      "bytes": 1162,
+      "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/files.json",
+      "bytes": 9406196,
+      "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+    },
+    {
+      "path": ".analysis-local/runtime-fuse-work/runtime-fuse-observation.json",
+      "bytes": 6778,
+      "sha256": "920cfe7aab6a7941dfd55d4c3bd36736d7a43fbb5cf318a17508ba7691e05ea1"
+    },
+    {
+      "path": ".analysis-local/runtime-fuse-work/evidence.jsonl",
+      "bytes": 6795,
+      "sha256": "e49b13cec82fc8698864039b71ca25afaeece3c0c755187073dcafc0f9a13ae8"
+    },
+    {
+      "path": ".analysis-local/runtime-fuse-work/summary.md",
+      "bytes": 1686,
+      "sha256": "ffb60732f225e4e7df8a551b2d279b739328130f02b5958fdf7b552c8723a8fb"
+    },
+    {
+      "path": ".analysis-local/runtime-fuse-work/validation.json",
+      "bytes": 10785,
+      "sha256": "7a3dc732f9b8f8c49ce9ae83019fe79ed347693dd7eabcea264ece728cc6e9e2"
+    },
+    {
+      "path": ".analysis-local/runtime-fuse-work/frozen-manifest.json",
+      "bytes": 2171,
+      "sha256": "2efce3db6eab91e01263e6ddfaf0a65c807dfc205a51ff8debce03c706a5cadb"
+    },
+    {
+      "path": "scripts/analysis/read_runtime_fuses.py",
+      "bytes": 9540,
+      "sha256": "ecbb1d998d2ad0aaffb2a715662e749f9a598142eb7c6295ac5c3796f23eee0c"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "scripts/analysis/read_runtime_native_accessors.py",
+      "bytes": 24016,
+      "sha256": "ab66e6d6b34bf53eeec2d4e03c78df7d2b0a6e407820bb0292ba8aa39b359518"
+    }
+  ],
+  "sourceBinary": {
+    "sourcePath": "Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+    "runtimeCopyPath": ".analysis-local/runtime/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework",
+    "bytes": 296533696,
+    "sourceHash": "34598d1cd28252b97c5010bd5d82e2ffc6ca71f2661c85cf89eeddfbb1706398",
+    "frozenInventoryHashMatch": true
+  },
+  "scope": {
+    "selectedBinaryCount": 1,
+    "selectedFuseAccessorFunctions": 9,
+    "selectedNodeApiAccessorFunctions": 1,
+    "accessorBodyBytes": 153,
+    "nodeApiBodyBytes": 77,
+    "machineCodeBodyBytes": 230,
+    "sourceEvidenceRecords": 48,
+    "completeNativeCallerClosure": false,
+    "targetApplicationLaunched": false,
+    "targetBinaryModified": false,
+    "fusesChanged": false,
+    "modelTasksSubmitted": 0,
+    "networkRequests": 0,
+    "broadNativeDisassembly": false,
+    "actualNodeVersion": "unknown",
+    "nodeModuleVersion": "unknown",
+    "nativeModulesAbi": "unknown"
+  },
+  "machO": {
+    "header": {
+      "magic": 4277009103,
+      "cpuType": 16777223,
+      "cpuSubtype": 3,
+      "fileType": 6,
+      "loadCommandCount": 81,
+      "loadCommandBytes": 10488,
+      "flags": 9535621,
+      "functionStartsCommandPresent": false
+    },
+    "segments": [
+      {
+        "name": "__TEXT",
+        "vmAddress": 0,
+        "vmSize": 277942272,
+        "fileOffset": 0,
+        "fileSize": 277942272,
+        "maxprot": 5,
+        "initprot": 5,
+        "commandFileOffset": 32,
+        "commandBytes": 1032,
+        "sections": [
+          {
+            "name": "__text",
+            "segmentName": "__TEXT",
+            "vmAddress": 10560,
+            "vmSize": 242641808,
+            "fileOffset": 10560,
+            "flags": 2147484672,
+            "sectionHeaderFileOffset": 104,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__stubs",
+            "segmentName": "__TEXT",
+            "vmAddress": 242652368,
+            "vmSize": 10338,
+            "fileOffset": 242652368,
+            "flags": 2147484680,
+            "sectionHeaderFileOffset": 184,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__init_offsets",
+            "segmentName": "__TEXT",
+            "vmAddress": 242662708,
+            "vmSize": 384,
+            "fileOffset": 242662708,
+            "flags": 22,
+            "sectionHeaderFileOffset": 264,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__gcc_except_tab",
+            "segmentName": "__TEXT",
+            "vmAddress": 242663092,
+            "vmSize": 284288,
+            "fileOffset": 242663092,
+            "flags": 0,
+            "sectionHeaderFileOffset": 344,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__const",
+            "segmentName": "__TEXT",
+            "vmAddress": 242947584,
+            "vmSize": 13572981,
+            "fileOffset": 242947584,
+            "flags": 0,
+            "sectionHeaderFileOffset": 424,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__literals",
+            "segmentName": "__TEXT",
+            "vmAddress": 256520576,
+            "vmSize": 204108,
+            "fileOffset": 256520576,
+            "flags": 0,
+            "sectionHeaderFileOffset": 504,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__cstring",
+            "segmentName": "__TEXT",
+            "vmAddress": 256724688,
+            "vmSize": 18144222,
+            "fileOffset": 256724688,
+            "flags": 2,
+            "sectionHeaderFileOffset": 584,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_methname",
+            "segmentName": "__TEXT",
+            "vmAddress": 274868910,
+            "vmSize": 115609,
+            "fileOffset": 274868910,
+            "flags": 2,
+            "sectionHeaderFileOffset": 664,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_methlist",
+            "segmentName": "__TEXT",
+            "vmAddress": 274984520,
+            "vmSize": 32488,
+            "fileOffset": 274984520,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 744,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__ustring",
+            "segmentName": "__TEXT",
+            "vmAddress": 275017008,
+            "vmSize": 605696,
+            "fileOffset": 275017008,
+            "flags": 0,
+            "sectionHeaderFileOffset": 824,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__unwind_info",
+            "segmentName": "__TEXT",
+            "vmAddress": 275622704,
+            "vmSize": 2218108,
+            "fileOffset": 275622704,
+            "flags": 0,
+            "sectionHeaderFileOffset": 904,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__eh_frame",
+            "segmentName": "__TEXT",
+            "vmAddress": 277840816,
+            "vmSize": 97584,
+            "fileOffset": 277840816,
+            "flags": 1610612747,
+            "sectionHeaderFileOffset": 984,
+            "sectionHeaderBytes": 80
+          }
+        ]
+      },
+      {
+        "name": "__DATA_CONST",
+        "vmAddress": 277942272,
+        "vmSize": 12804096,
+        "fileOffset": 277942272,
+        "fileSize": 12804096,
+        "maxprot": 3,
+        "initprot": 3,
+        "commandFileOffset": 1064,
+        "commandBytes": 712,
+        "sections": [
+          {
+            "name": "__got",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 277942272,
+            "vmSize": 38432,
+            "fileOffset": 277942272,
+            "flags": 6,
+            "sectionHeaderFileOffset": 1136,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__const",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 277980736,
+            "vmSize": 12727416,
+            "fileOffset": 277980736,
+            "flags": 0,
+            "sectionHeaderFileOffset": 1216,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_catlist",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 290708152,
+            "vmSize": 144,
+            "fileOffset": 290708152,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 1296,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__cfstring",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 290708296,
+            "vmSize": 35616,
+            "fileOffset": 290708296,
+            "flags": 0,
+            "sectionHeaderFileOffset": 1376,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_protolist",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 290743912,
+            "vmSize": 560,
+            "fileOffset": 290743912,
+            "flags": 268435467,
+            "sectionHeaderFileOffset": 1456,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_classlist",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 290744472,
+            "vmSize": 1648,
+            "fileOffset": 290744472,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 1536,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__asar_integrity",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 290746120,
+            "vmSize": 66,
+            "fileOffset": 290746120,
+            "flags": 0,
+            "sectionHeaderFileOffset": 1616,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_imageinfo",
+            "segmentName": "__DATA_CONST",
+            "vmAddress": 290746186,
+            "vmSize": 8,
+            "fileOffset": 290746186,
+            "flags": 0,
+            "sectionHeaderFileOffset": 1696,
+            "sectionHeaderBytes": 80
+          }
+        ]
+      },
+      {
+        "name": "__DATA",
+        "vmAddress": 290746368,
+        "vmSize": 4096000,
+        "fileOffset": 290746368,
+        "fileSize": 1245184,
+        "maxprot": 3,
+        "initprot": 3,
+        "commandFileOffset": 1776,
+        "commandBytes": 1752,
+        "sections": [
+          {
+            "name": "gc_info_section",
+            "segmentName": "__DATA",
+            "vmAddress": 290746368,
+            "vmSize": 267328,
+            "fileOffset": 290746368,
+            "flags": 0,
+            "sectionHeaderFileOffset": 1848,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__data",
+            "segmentName": "__DATA",
+            "vmAddress": 291016704,
+            "vmSize": 805824,
+            "fileOffset": 291016704,
+            "flags": 0,
+            "sectionHeaderFileOffset": 1928,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_classrefs",
+            "segmentName": "__DATA",
+            "vmAddress": 291822528,
+            "vmSize": 3592,
+            "fileOffset": 291822528,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 2008,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_selrefs",
+            "segmentName": "__DATA",
+            "vmAddress": 291826120,
+            "vmSize": 40280,
+            "fileOffset": 291826120,
+            "flags": 268435461,
+            "sectionHeaderFileOffset": 2088,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_const",
+            "segmentName": "__DATA",
+            "vmAddress": 291866400,
+            "vmSize": 93480,
+            "fileOffset": 291866400,
+            "flags": 0,
+            "sectionHeaderFileOffset": 2168,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__thread_vars",
+            "segmentName": "__DATA",
+            "vmAddress": 291959880,
+            "vmSize": 3504,
+            "fileOffset": 291959880,
+            "flags": 19,
+            "sectionHeaderFileOffset": 2248,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_data",
+            "segmentName": "__DATA",
+            "vmAddress": 291963384,
+            "vmSize": 16480,
+            "fileOffset": 291963384,
+            "flags": 0,
+            "sectionHeaderFileOffset": 2328,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_superrefs",
+            "segmentName": "__DATA",
+            "vmAddress": 291979864,
+            "vmSize": 1296,
+            "fileOffset": 291979864,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 2408,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_ivar",
+            "segmentName": "__DATA",
+            "vmAddress": 291981160,
+            "vmSize": 5040,
+            "fileOffset": 291981160,
+            "flags": 0,
+            "sectionHeaderFileOffset": 2488,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_intobj",
+            "segmentName": "__DATA",
+            "vmAddress": 291986200,
+            "vmSize": 792,
+            "fileOffset": 291986200,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 2568,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_doubleobj",
+            "segmentName": "__DATA",
+            "vmAddress": 291986992,
+            "vmSize": 32,
+            "fileOffset": 291986992,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 2648,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_protorefs",
+            "segmentName": "__DATA",
+            "vmAddress": 291987024,
+            "vmSize": 56,
+            "fileOffset": 291987024,
+            "flags": 268435467,
+            "sectionHeaderFileOffset": 2728,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_arraydata",
+            "segmentName": "__DATA",
+            "vmAddress": 291987080,
+            "vmSize": 432,
+            "fileOffset": 291987080,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 2808,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_arrayobj",
+            "segmentName": "__DATA",
+            "vmAddress": 291987512,
+            "vmSize": 120,
+            "fileOffset": 291987512,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 2888,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__objc_dictobj",
+            "segmentName": "__DATA",
+            "vmAddress": 291987632,
+            "vmSize": 240,
+            "fileOffset": 291987632,
+            "flags": 268435456,
+            "sectionHeaderFileOffset": 2968,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "crashpad_info",
+            "segmentName": "__DATA",
+            "vmAddress": 291987872,
+            "vmSize": 56,
+            "fileOffset": 291987872,
+            "flags": 0,
+            "sectionHeaderFileOffset": 3048,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__crash_info",
+            "segmentName": "__DATA",
+            "vmAddress": 291987928,
+            "vmSize": 64,
+            "fileOffset": 291987928,
+            "flags": 0,
+            "sectionHeaderFileOffset": 3128,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__thread_data",
+            "segmentName": "__DATA",
+            "vmAddress": 291988000,
+            "vmSize": 232,
+            "fileOffset": 291988000,
+            "flags": 17,
+            "sectionHeaderFileOffset": 3208,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__thread_bss",
+            "segmentName": "__DATA",
+            "vmAddress": 291988256,
+            "vmSize": 1480,
+            "fileOffset": 0,
+            "flags": 18,
+            "sectionHeaderFileOffset": 3288,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__bss",
+            "segmentName": "__DATA",
+            "vmAddress": 291989760,
+            "vmSize": 1940212,
+            "fileOffset": 0,
+            "flags": 1,
+            "sectionHeaderFileOffset": 3368,
+            "sectionHeaderBytes": 80
+          },
+          {
+            "name": "__common",
+            "segmentName": "__DATA",
+            "vmAddress": 293929984,
+            "vmSize": 911248,
+            "fileOffset": 0,
+            "flags": 1,
+            "sectionHeaderFileOffset": 3448,
+            "sectionHeaderBytes": 80
+          }
+        ]
+      },
+      {
+        "name": "PROTECTED_MEMORY",
+        "vmAddress": 294842368,
+        "vmSize": 4096,
+        "fileOffset": 291991552,
+        "fileSize": 4096,
+        "maxprot": 3,
+        "initprot": 3,
+        "commandFileOffset": 3528,
+        "commandBytes": 152,
+        "sections": [
+          {
+            "name": "protected_memory",
+            "segmentName": "PROTECTED_MEMORY",
+            "vmAddress": 294842368,
+            "vmSize": 146,
+            "fileOffset": 291991552,
+            "flags": 0,
+            "sectionHeaderFileOffset": 3600,
+            "sectionHeaderBytes": 80
+          }
+        ]
+      },
+      {
+        "name": "__LINKEDIT",
+        "vmAddress": 294846464,
+        "vmSize": 4538368,
+        "fileOffset": 291995648,
+        "fileSize": 4538048,
+        "maxprot": 1,
+        "initprot": 1,
+        "commandFileOffset": 3680,
+        "commandBytes": 72,
+        "sections": []
+      }
+    ],
+    "symbolTable": {
+      "commandFileOffset": 3784,
+      "commandBytes": 24,
+      "symbolTableFileOffset": 292994704,
+      "symbolCount": 14594,
+      "stringTableFileOffset": 293254320,
+      "stringTableBytes": 963088
+    },
+    "mappingEvidenceIds": [
+      "RUNTIME-NATIVE-ACCESSOR-E001",
+      "RUNTIME-NATIVE-ACCESSOR-E002",
+      "RUNTIME-NATIVE-ACCESSOR-E003",
+      "RUNTIME-NATIVE-ACCESSOR-E004",
+      "RUNTIME-NATIVE-ACCESSOR-E005"
+    ],
+    "addressKind": "unslid VM addresses; not observed process addresses"
+  },
+  "wireBinding": {
+    "priorFuseObservationHash": "920cfe7aab6a7941dfd55d4c3bd36736d7a43fbb5cf318a17508ba7691e05ea1",
+    "priorFuseEvidenceId": "RUNTIME-FUSE-E001",
+    "wireFileStart": 246224784,
+    "wireByteStart": 246224818,
+    "wireByteEndExclusive": 246224827,
+    "wireAscii": "010011001",
+    "wireEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E028",
+    "linkedAccessors": 9
+  },
+  "fuseAccessors": [
+    {
+      "ordinal": 0,
+      "officialSchemaName": "run_as_node",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses18IsRunAsNodeEnabledEv",
+        "unslidVmAddress": 77756896,
+        "nlistIndex": 2438,
+        "nlistFileOffset": 293033712,
+        "nlistBytes": 16,
+        "stringFileOffset": 293352196,
+        "stringBytesIncludingNull": 42,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E010",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E011"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77756896,
+        "fileOffset": 77756896,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a05c89d0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E029",
+      "ripDisplacementSigned": 168467912,
+      "ripDisplacementBytesHex": "c89d0a0a",
+      "ripNextUnslidVm": 77756906,
+      "readUnslidVm": 246224818,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224818,
+        "fileOffset": 246224818,
+        "bytes": 1
+      },
+      "readWireOrdinal": 0,
+      "rawByte": 48,
+      "wireAsciiByte": "0",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E030",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E002",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 1,
+      "officialSchemaName": "cookie_encryption",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses25IsCookieEncryptionEnabledEv",
+        "unslidVmAddress": 77756928,
+        "nlistIndex": 2439,
+        "nlistFileOffset": 293033728,
+        "nlistBytes": 16,
+        "stringFileOffset": 293352083,
+        "stringBytesIncludingNull": 49,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E012",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E013"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77756928,
+        "fileOffset": 77756928,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a05a99d0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E031",
+      "ripDisplacementSigned": 168467881,
+      "ripDisplacementBytesHex": "a99d0a0a",
+      "ripNextUnslidVm": 77756938,
+      "readUnslidVm": 246224819,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224819,
+        "fileOffset": 246224819,
+        "bytes": 1
+      },
+      "readWireOrdinal": 1,
+      "rawByte": 49,
+      "wireAsciiByte": "1",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E032",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E003",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 2,
+      "officialSchemaName": "node_options",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses20IsNodeOptionsEnabledEv",
+        "unslidVmAddress": 77756960,
+        "nlistIndex": 2440,
+        "nlistFileOffset": 293033744,
+        "nlistBytes": 16,
+        "stringFileOffset": 293351537,
+        "stringBytesIncludingNull": 44,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E014",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E015"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77756960,
+        "fileOffset": 77756960,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a058a9d0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E033",
+      "ripDisplacementSigned": 168467850,
+      "ripDisplacementBytesHex": "8a9d0a0a",
+      "ripNextUnslidVm": 77756970,
+      "readUnslidVm": 246224820,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224820,
+        "fileOffset": 246224820,
+        "bytes": 1
+      },
+      "readWireOrdinal": 2,
+      "rawByte": 48,
+      "wireAsciiByte": "0",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E034",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E004",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 3,
+      "officialSchemaName": "node_cli_inspect",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses23IsNodeCliInspectEnabledEv",
+        "unslidVmAddress": 77756992,
+        "nlistIndex": 2441,
+        "nlistFileOffset": 293033760,
+        "nlistBytes": 16,
+        "stringFileOffset": 293351441,
+        "stringBytesIncludingNull": 47,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E016",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E017"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77756992,
+        "fileOffset": 77756992,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a056b9d0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E035",
+      "ripDisplacementSigned": 168467819,
+      "ripDisplacementBytesHex": "6b9d0a0a",
+      "ripNextUnslidVm": 77757002,
+      "readUnslidVm": 246224821,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224821,
+        "fileOffset": 246224821,
+        "bytes": 1
+      },
+      "readWireOrdinal": 3,
+      "rawByte": 48,
+      "wireAsciiByte": "0",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E036",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E005",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 4,
+      "officialSchemaName": "embedded_asar_integrity_validation",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses40IsEmbeddedAsarIntegrityValidationEnabledEv",
+        "unslidVmAddress": 77757024,
+        "nlistIndex": 2437,
+        "nlistFileOffset": 293033696,
+        "nlistBytes": 16,
+        "stringFileOffset": 293352132,
+        "stringBytesIncludingNull": 64,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E008",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E009"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77757024,
+        "fileOffset": 77757024,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a054c9d0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E037",
+      "ripDisplacementSigned": 168467788,
+      "ripDisplacementBytesHex": "4c9d0a0a",
+      "ripNextUnslidVm": 77757034,
+      "readUnslidVm": 246224822,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224822,
+        "fileOffset": 246224822,
+        "bytes": 1
+      },
+      "readWireOrdinal": 4,
+      "rawByte": 49,
+      "wireAsciiByte": "1",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E038",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E006",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 5,
+      "officialSchemaName": "only_load_app_from_asar",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses28IsOnlyLoadAppFromAsarEnabledEv",
+        "unslidVmAddress": 77757056,
+        "nlistIndex": 2420,
+        "nlistFileOffset": 293033424,
+        "nlistBytes": 16,
+        "stringFileOffset": 293352031,
+        "stringBytesIncludingNull": 52,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E006",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E007"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77757056,
+        "fileOffset": 77757056,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a052d9d0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E039",
+      "ripDisplacementSigned": 168467757,
+      "ripDisplacementBytesHex": "2d9d0a0a",
+      "ripNextUnslidVm": 77757066,
+      "readUnslidVm": 246224823,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224823,
+        "fileOffset": 246224823,
+        "bytes": 1
+      },
+      "readWireOrdinal": 5,
+      "rawByte": 49,
+      "wireAsciiByte": "1",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E040",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E007",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 6,
+      "officialSchemaName": "load_browser_process_specific_v8_snapshot",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses45IsLoadBrowserProcessSpecificV8SnapshotEnabledEv",
+        "unslidVmAddress": 77757088,
+        "nlistIndex": 2442,
+        "nlistFileOffset": 293033776,
+        "nlistBytes": 16,
+        "stringFileOffset": 293351372,
+        "stringBytesIncludingNull": 69,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E018",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E019"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77757088,
+        "fileOffset": 77757088,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a050e9d0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E041",
+      "ripDisplacementSigned": 168467726,
+      "ripDisplacementBytesHex": "0e9d0a0a",
+      "ripNextUnslidVm": 77757098,
+      "readUnslidVm": 246224824,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224824,
+        "fileOffset": 246224824,
+        "bytes": 1
+      },
+      "readWireOrdinal": 6,
+      "rawByte": 48,
+      "wireAsciiByte": "0",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E042",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E008",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 7,
+      "officialSchemaName": "grant_file_protocol_extra_privileges",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses41IsGrantFileProtocolExtraPrivilegesEnabledEv",
+        "unslidVmAddress": 77757120,
+        "nlistIndex": 2443,
+        "nlistFileOffset": 293033792,
+        "nlistBytes": 16,
+        "stringFileOffset": 293351966,
+        "stringBytesIncludingNull": 65,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E020",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E021"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77757120,
+        "fileOffset": 77757120,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a05ef9c0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E043",
+      "ripDisplacementSigned": 168467695,
+      "ripDisplacementBytesHex": "ef9c0a0a",
+      "ripNextUnslidVm": 77757130,
+      "readUnslidVm": 246224825,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224825,
+        "fileOffset": 246224825,
+        "bytes": 1
+      },
+      "readWireOrdinal": 7,
+      "rawByte": 48,
+      "wireAsciiByte": "0",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E044",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E009",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    },
+    {
+      "ordinal": 8,
+      "officialSchemaName": "wasm_trap_handlers",
+      "nativeSymbol": {
+        "name": "__ZN8electron5fuses25IsWasmTrapHandlersEnabledEv",
+        "unslidVmAddress": 77757152,
+        "nlistIndex": 2444,
+        "nlistFileOffset": 293033808,
+        "nlistBytes": 16,
+        "stringFileOffset": 293351488,
+        "stringBytesIncludingNull": 49,
+        "nType": 15,
+        "sectionIndex": 1,
+        "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E022",
+        "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E023"
+      },
+      "codeMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__text",
+        "unslidVmAddress": 77757152,
+        "fileOffset": 77757152,
+        "bytes": 17
+      },
+      "bodyBytes": 17,
+      "bodyHex": "554889e58a05d09c0a0a3c310f94c05dc3",
+      "codeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E045",
+      "ripDisplacementSigned": 168467664,
+      "ripDisplacementBytesHex": "d09c0a0a",
+      "ripNextUnslidVm": 77757162,
+      "readUnslidVm": 246224826,
+      "readMapping": {
+        "segmentName": "__TEXT",
+        "segmentVmAddress": 0,
+        "segmentFileOffset": 0,
+        "sectionName": "__const",
+        "unslidVmAddress": 246224826,
+        "fileOffset": 246224826,
+        "bytes": 1
+      },
+      "readWireOrdinal": 8,
+      "rawByte": 49,
+      "wireAsciiByte": "1",
+      "byteEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E046",
+      "priorFuseEvidenceId": "RUNTIME-FUSE-E010",
+      "staticReturnPredicate": "AL := (memory[readUnslidVm] == 0x31); ret",
+      "executionVerified": false,
+      "callerClosureVerified": false,
+      "startupEnforcementVerified": false
+    }
+  ],
+  "napiGetVersion": {
+    "nativeSymbol": {
+      "name": "_napi_get_version",
+      "unslidVmAddress": 78817888,
+      "nlistIndex": 4098,
+      "nlistFileOffset": 293060272,
+      "nlistBytes": 16,
+      "stringFileOffset": 293582016,
+      "stringBytesIncludingNull": 18,
+      "nType": 15,
+      "sectionIndex": 1,
+      "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E024",
+      "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E025"
+    },
+    "codeMapping": {
+      "segmentName": "__TEXT",
+      "segmentVmAddress": 0,
+      "segmentFileOffset": 0,
+      "sectionName": "__text",
+      "unslidVmAddress": 78817888,
+      "fileOffset": 78817888,
+      "bytes": 77
+    },
+    "bodyBytes": 77,
+    "bodyEndUnslidVmExclusive": 78817965,
+    "bodyHex": "554889e5b8010000004885ff741f4885f6741cc7060a0000000f57c00f11477848c787880000000000000031c05dc348b9000000000100000048898f8800000048c7878000000000000000ebe0",
+    "bodyEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E047",
+    "writeInstructionUnslidVm": 78817907,
+    "writeInstructionFileOffset": 78817907,
+    "writeInstructionHex": "c7060a000000",
+    "storedUint32Immediate": 10,
+    "destinationRegister": "rsi",
+    "writeEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E048",
+    "controlFlow": [
+      {
+        "instructionUnslidVm": 78817900,
+        "kind": "conditional-equal",
+        "targetUnslidVm": 78817933,
+        "condition": "RDI == 0 after test"
+      },
+      {
+        "instructionUnslidVm": 78817905,
+        "kind": "conditional-equal",
+        "targetUnslidVm": 78817935,
+        "condition": "RSI == 0 after test"
+      },
+      {
+        "instructionUnslidVm": 78817963,
+        "kind": "unconditional-short-jump",
+        "targetUnslidVm": 78817933
+      }
+    ],
+    "returnUnslidVm": 78817934,
+    "followingPaddingBytes": 3,
+    "nextNativeSymbol": {
+      "name": "_napi_create_promise",
+      "unslidVmAddress": 78817968,
+      "nlistIndex": 4099,
+      "nlistFileOffset": 293060288,
+      "nlistBytes": 16,
+      "stringFileOffset": 293659518,
+      "stringBytesIncludingNull": 21,
+      "nType": 15,
+      "sectionIndex": 1,
+      "nlistEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E026",
+      "nameEvidenceId": "RUNTIME-NATIVE-ACCESSOR-E027"
+    },
+    "executionVerified": false,
+    "claimScope": "Named Node-API accessor statically encodes version value 10; actual execution, Node version, NODE_MODULE_VERSION and native-module ABI are unverified.",
+    "rangeBasis": "Selected symbol start, complete bounded control-flow bytes through the tail backward jump to the shared return, three bytes of padding, and following selected symbol; not an LC_FUNCTION_STARTS table.",
+    "externalApiMeaning": "Official Node documentation describes the result output as the maximum supported Node-API version; this static constant does not establish complete runtime/API compatibility."
+  },
+  "toolVersion": "Apple LLVM version 21.0.0\n  Optimized build.\n\n\n  Registered Targets:\n    aarch64    - AArch64 (little endian)\n    aarch64_32 - AArch64 (little endian ILP32)\n    aarch64_be - AArch64 (big endian)\n    arm        - ARM\n    arm64      - ARM64 (little endian)\n    arm64_32   - ARM64 (little endian ILP32)\n    armeb      - ARM (big endian)\n    thumb      - Thumb\n    thumbeb    - Thumb (big endian)\n    x86        - 32-bit X86: Pentium-Pro and above\n    x86-64     - 64-bit X86: EM64T and AMD64\n",
+  "toolRuns": [
+    {
+      "label": "llvm-version",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": ".analysis-local/runtime-native-accessors-work/llvm-version.stdout.txt",
+        "bytes": 489,
+        "sha256": "4480136e4279bdce40f98483eacd8cf19d098fd32841187278297c745623b051"
+      },
+      "stderr": {
+        "path": ".analysis-local/runtime-native-accessors-work/llvm-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "byteScope": null,
+      "toolExecutable": "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+      "toolResolvedPath": "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+      "toolSha256": "1dcc1432db4d828cf8cd71a84cb8d9bf63a7ca80b5eeec711a9e5f13a3f5f98e",
+      "targetApplicationExecuted": false,
+      "method": "LLVM tool reads target bytes as input; target executable is not launched"
+    },
+    {
+      "label": "fuse-accessors",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--start-address=0x4a279e0",
+        "--stop-address=0x4a27af1",
+        "/Users/nallylin/Documents/code/ccodex/.analysis-local/runtime/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": ".analysis-local/runtime-native-accessors-work/fuse-accessors.stdout.txt",
+        "bytes": 5539,
+        "sha256": "ac8afbade62a18ccf81a503fbbc248ac707f9afe8fa045fecb1f5edeb96ffe8e"
+      },
+      "stderr": {
+        "path": ".analysis-local/runtime-native-accessors-work/fuse-accessors.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "byteScope": {
+        "startUnslidVm": 77756896,
+        "endUnslidVmExclusive": 77757169,
+        "selectedFunctionCount": 9
+      },
+      "toolExecutable": "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+      "toolResolvedPath": "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+      "toolSha256": "1dcc1432db4d828cf8cd71a84cb8d9bf63a7ca80b5eeec711a9e5f13a3f5f98e",
+      "targetApplicationExecuted": false,
+      "method": "LLVM tool reads target bytes as input; target executable is not launched"
+    },
+    {
+      "label": "napi-get-version",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--start-address=0x4b2aa60",
+        "--stop-address=0x4b2aab0",
+        "/Users/nallylin/Documents/code/ccodex/.analysis-local/runtime/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.40/Codex Framework"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": ".analysis-local/runtime-native-accessors-work/napi-get-version.stdout.txt",
+        "bytes": 1497,
+        "sha256": "32be3488a37d02149238df5a30b10787e196a5240ff79039733760edad3a13ba"
+      },
+      "stderr": {
+        "path": ".analysis-local/runtime-native-accessors-work/napi-get-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "byteScope": {
+        "startUnslidVm": 78817888,
+        "endUnslidVmExclusive": 78817968,
+        "selectedFunctionCount": 1,
+        "paddingBytes": 3
+      },
+      "toolExecutable": "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+      "toolResolvedPath": "/Library/Developer/CommandLineTools/usr/bin/llvm-objdump",
+      "toolSha256": "1dcc1432db4d828cf8cd71a84cb8d9bf63a7ca80b5eeec711a9e5f13a3f5f98e",
+      "targetApplicationExecuted": false,
+      "method": "LLVM tool reads target bytes as input; target executable is not launched"
+    }
+  ],
+  "schemaReferences": [
+    {
+      "url": "https://nodejs.org/api/n-api.html#napi_get_version",
+      "checkedAt": "2026-10-13",
+      "sourceReview": "Reviewed by root task; excerpted meaning supplied to this static subtask.",
+      "externalPageReportedVersion": "v26.11.1",
+      "role": "External meaning of napi_get_version output as maximum supported Node-API version; not target Node release or a full ABI claim.",
+      "abiScope": "Node-API ABI stability does not cover Node C++ APIs or external libraries; no traditional NODE_MODULE_VERSION conclusion is made."
+    }
+  ],
+  "conclusions": {
+    "nativeAccessorReadBinding": "All nine selected compiled fuse accessors read the corresponding fixed wire byte through RIP-relative addressing and set AL to equality with 0x31 before returning.",
+    "nodeApiVersionEncoding": "The bounded _napi_get_version nonnull-pointer branch statically stores uint32 immediate 10 through RSI.",
+    "actualNodeVersion": "unknown",
+    "actualElectronCompatibilityVersion": "unknown",
+    "nodeModuleVersion": "unknown",
+    "nativeModulesAbi": "unknown",
+    "completeNativeCallerClosure": "unknown",
+    "startupExecutionAndEnforcement": "unknown"
+  },
+  "limitations": [
+    "Static accessor bodies and byte bindings do not prove callers, startup invocation or runtime enforcement.",
+    "Compiled native symbol names identify these selected functions; this is not a full native implementation or caller census.",
+    "Node-API version value 10 is a static constant in one named accessor, not a Node release or traditional NODE_MODULE_VERSION/native ABI proof.",
+    "The selected Framework path version 155.0.8059.40 and earlier external fuse schema tag are not actual Node/Electron compatibility version claims.",
+    "No target executable, Node diagnostic, altered fuse, network or model task was invoked.",
+    "The seven earlier archive/unpacked declaration contradictions remain unexplained by these native accessor observations."
+  ]
+}

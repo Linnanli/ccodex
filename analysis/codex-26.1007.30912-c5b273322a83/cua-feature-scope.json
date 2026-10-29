@@ -1,0 +1,1983 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scope": "Reconcile 14 already proved CUA consumers into scoped goals and recovery gates.",
+  "inputPins": [
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "feature-scope-current.json",
+      "bytes": 228416,
+      "sha256": "eb041d72e81d7ddd002d822a9638f1bb5964a0d0d471699316f2b8be614f2eac",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "feature-scope-current.csv",
+      "bytes": 3469,
+      "sha256": "e2eea68d93fc62fbb99219e8a342108fb3edeb9c30c83525904591d3ed9e9669",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "feature-scope-current-scenarios.json",
+      "bytes": 417070,
+      "sha256": "076598abccafe9803bb752708496565ae243bb96226d567cc794ec41744db6a1",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "core-feature-scope-provenance.json",
+      "bytes": 11884,
+      "sha256": "8617fd6d5f1da6c68d9d9eff4108e72b1f92b9b7e4112562f1e0df4aecd57fa6",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "cua-settings-consumer-contracts.json",
+      "bytes": 532327,
+      "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "cua-settings-consumer-provenance.json",
+      "bytes": 56587,
+      "sha256": "1d238ce4274cee1dd32dc07ac93ec42d3129289461671346d53e6a26da178db0",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "cua-settings-consumer-scenarios.json",
+      "bytes": 15847,
+      "sha256": "b4b7a4b12c43134a1550098ec958bf4657c6bd79abc1e907e2f14392e813fab0",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "computer-use-settings-boundary.json",
+      "bytes": 13005,
+      "sha256": "88faa57a41e3df198ba5c9bf477e2053cedb433202c2e17e25f24ea09ba52f10",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "settings-mode-boundary-contracts.json",
+      "bytes": 477440,
+      "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+      "jsonPointer": ""
+    },
+    {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "analysis-state.json",
+      "bytes": 155234,
+      "sha256": "255781acdd7615d1cdbd954b3ec8add5ba71d58b4d6879c9c482d9c61907186b",
+      "jsonPointer": ""
+    }
+  ],
+  "planPin": {
+    "path": "/Users/nallylin/Documents/code/ccodex/docs/reverse-engineering/analysis-plan.md",
+    "bytes": 16461,
+    "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+  },
+  "newFeatures": [
+    {
+      "featureId": "FSC-0038",
+      "name": "撤销电脑应用的始终允许授权",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "应用授权列表的移除与确认是一个独立目标；读取列表是该目标的机制，新增授权的审批卡属于FSC-0037且不与撤销合并。",
+      "trigger": "Vr主视图available → ci/li → fi选择对象 → li确认 → ui → removeAppApproval",
+      "parametersAndState": {
+        "inputs": [
+          "bundleIdentifier",
+          "displayName",
+          "approvedApps",
+          "pending removal target",
+          "mutation pending"
+        ],
+        "concreteValuesObserved": false
+      },
+      "chain": [
+        "Vr主视图available → ci/li → fi选择对象 → li确认 → ui → removeAppApproval",
+        "query/cache → typed local service facade → inherited desktop/native boundary"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/11"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/12"
+        }
+      ],
+      "operationMembers": [
+        {
+          "operationId": "operation:cua:removeAppApproval",
+          "originalContractId": "removeAppApproval",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/18"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/0"
+          },
+          "trigger": "Vr主视图available → ci/li → fi选择对象 → li确认 → ui → removeAppApproval",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "主视图computer-use availability为available，列表已取得；列表按钮按isSaving禁用。取消按钮pending禁用，但dialog onOpenChange关闭没有相同guard。",
+          "parametersAndEffects": "确认bundleIdentifier；null抛错；成功替换kn并关确认框"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:cua:getAppApprovals"
+      ],
+      "conditions": [
+        {
+          "sourceConditions": "主视图computer-use availability为available，列表已取得；列表按钮按isSaving禁用。取消按钮pending禁用，但dialog onOpenChange关闭没有相同guard。",
+          "actualValuesObserved": false
+        }
+      ],
+      "boundaries": [
+        "query/cache framework implementations and provider scope",
+        "selected-host/requirements/feature-gate producers",
+        "platform query and mapper fallback",
+        "native Messages search/permissions and worker handlers",
+        "OS defaults / installer / global policy files",
+        "actual preload/main service receiver and delivery",
+        "mobile returned-object to concrete toggle renderer",
+        "plugin transaction outside selected post-install branch",
+        "browser and Office action chains beyond 14 selected CUA settings methods",
+        "complete mode and transitive dependency closure"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "computer-use access family codexOrWorkLocal and positive UI source are retained; actual mode reachability/shared dependency closure is not established.",
+      "modeConditionRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/15"
+      },
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-consumer-qualified; selected frozen bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "scenarioIds": [
+        "FSC-0038:removeAppApproval:success",
+        "FSC-0038:removeAppApproval:failure",
+        "FSC-0038:removeAppApproval:cancel",
+        "FSC-0038:removeAppApproval:restore"
+      ],
+      "knownGaps": [
+        "actual React/query provider and bridge receiver",
+        "mode and third-party dependency closure",
+        "native permission and OS/service persistence",
+        "reopen/real UI acceptance"
+      ],
+      "page": "computer-use main settings",
+      "implementationAcceptance": "确认后以bundleIdentifier调用；null转为unavailable，成功替换app query并清空确认对象，失败danger toast。 必须在隔离测试环境通过真实控件/receiver及重开核对；本批没有执行这些场景。"
+    },
+    {
+      "featureId": "FSC-0039",
+      "name": "设置电脑使用操作的声音反馈",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "声音菜单的三个值是同一偏好的参数；query和菜单项不分别计为功能。",
+      "trigger": "Vr主视图available → ri → sound menu onSelect → setSoundMode",
+      "parametersAndState": {
+        "inputs": [
+          "foregroundClicks",
+          "foregroundAndBackgroundClicks",
+          "off",
+          "sound query",
+          "mutation pending"
+        ],
+        "concreteValuesObserved": false
+      },
+      "chain": [
+        "Vr主视图available → ri → sound menu onSelect → setSoundMode",
+        "query/cache → typed local service facade → inherited desktop/native boundary"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/13"
+        }
+      ],
+      "operationMembers": [
+        {
+          "operationId": "operation:cua:setSoundMode",
+          "originalContractId": "setSoundMode",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/25"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/7"
+          },
+          "trigger": "Vr主视图available → ri → sound menu onSelect → setSoundMode",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "主视图available且sound query data非null；loading或mutation pending禁用。非null未知值只以缺省项显示，不代表自动写回。",
+          "parametersAndEffects": "sound enum；成功setData；invalid nonnull显示缺省"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:cua:getSoundMode"
+      ],
+      "conditions": [
+        {
+          "sourceConditions": "主视图available且sound query data非null；loading或mutation pending禁用。非null未知值只以缺省项显示，不代表自动写回。",
+          "actualValuesObserved": false
+        }
+      ],
+      "boundaries": [
+        "query/cache framework implementations and provider scope",
+        "selected-host/requirements/feature-gate producers",
+        "platform query and mapper fallback",
+        "native Messages search/permissions and worker handlers",
+        "OS defaults / installer / global policy files",
+        "actual preload/main service receiver and delivery",
+        "mobile returned-object to concrete toggle renderer",
+        "plugin transaction outside selected post-install branch",
+        "browser and Office action chains beyond 14 selected CUA settings methods",
+        "complete mode and transitive dependency closure"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "computer-use access family codexOrWorkLocal and positive UI source are retained; actual mode reachability/shared dependency closure is not established.",
+      "modeConditionRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/15"
+      },
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-consumer-qualified; selected frozen bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "scenarioIds": [
+        "FSC-0039:setSoundMode:success",
+        "FSC-0039:setSoundMode:failure",
+        "FSC-0039:setSoundMode:cancel",
+        "FSC-0039:setSoundMode:restore"
+      ],
+      "knownGaps": [
+        "actual React/query provider and bridge receiver",
+        "mode and third-party dependency closure",
+        "native permission and OS/service persistence",
+        "reopen/real UI acceptance"
+      ],
+      "page": "computer-use main settings",
+      "implementationAcceptance": "选择值交给mutation；成功以服务返回值更新缓存。所选options没有本地onError，实际错误展示仍待框架验证。 必须在隔离测试环境通过真实控件/receiver及重开核对；本批没有执行这些场景。"
+    },
+    {
+      "featureId": "FSC-0040",
+      "name": "设置锁屏时是否允许电脑使用",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "本定义是电脑使用设置页的boolean控件；手机设置与安装后步骤复用该服务，但各自用户目标和事务不因此合并。",
+      "trigger": "Vr的macOS/available/locked capability → ai → onChange → setLockedUseEnabled",
+      "parametersAndState": {
+        "inputs": [
+          "boolean enabled",
+          "computerIconDataURL",
+          "lockIconDataURL",
+          "platform",
+          "locked capability",
+          "mutation pending"
+        ],
+        "concreteValuesObserved": false
+      },
+      "chain": [
+        "Vr的macOS/available/locked capability → ai → onChange → setLockedUseEnabled",
+        "query/cache → typed local service facade → inherited desktop/native boundary"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/4"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/5"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/6"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/7"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/14"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/26"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/27"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/28"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/29"
+        }
+      ],
+      "operationMembers": [
+        {
+          "operationId": "operation:cua:setLockedUseEnabled",
+          "originalContractId": "setLockedUseEnabled",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/26"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/8"
+          },
+          "trigger": "Vr的macOS/available/locked capability → ai → onChange → setLockedUseEnabled",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "主视图要求macOS、computer-use available和locked capability；ai另要求enabled非null，loading/pending禁用。gate、requirements和remote visibility各自保留。",
+          "parametersAndEffects": "boolean；service返回值回填enabled；null隐藏；另有两个外部消费者"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:cua:getLockedUseState"
+      ],
+      "conditions": [
+        {
+          "sourceConditions": "主视图要求macOS、computer-use available和locked capability；ai另要求enabled非null，loading/pending禁用。gate、requirements和remote visibility各自保留。",
+          "actualValuesObserved": false
+        }
+      ],
+      "boundaries": [
+        "query/cache framework implementations and provider scope",
+        "selected-host/requirements/feature-gate producers",
+        "platform query and mapper fallback",
+        "native Messages search/permissions and worker handlers",
+        "OS defaults / installer / global policy files",
+        "actual preload/main service receiver and delivery",
+        "mobile returned-object to concrete toggle renderer",
+        "plugin transaction outside selected post-install branch",
+        "browser and Office action chains beyond 14 selected CUA settings methods",
+        "complete mode and transitive dependency closure"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "computer-use access family codexOrWorkLocal and positive UI source are retained; actual mode reachability/shared dependency closure is not established.",
+      "modeConditionRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/15"
+      },
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-consumer-qualified; selected frozen bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "scenarioIds": [
+        "FSC-0040:setLockedUseEnabled:success",
+        "FSC-0040:setLockedUseEnabled:failure",
+        "FSC-0040:setLockedUseEnabled:cancel",
+        "FSC-0040:setLockedUseEnabled:restore"
+      ],
+      "knownGaps": [
+        "actual React/query provider and bridge receiver",
+        "mode and third-party dependency closure",
+        "native permission and OS/service persistence",
+        "reopen/real UI acceptance"
+      ],
+      "page": "computer-use main settings",
+      "implementationAcceptance": "以返回值更新enabled并保留图标；非null给success toast，null使行随后隐藏；rejection显示danger toast。 必须在隔离测试环境通过真实控件/receiver及重开核对；本批没有执行这些场景。"
+    },
+    {
+      "featureId": "FSC-0041",
+      "name": "设置Messages的全局读取策略",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "全局读取policy与逐聊天决定有不同作用域及后效，分为两个目标；policy的三个值不另算功能。",
+      "trigger": "Vr Messages子路由 → ei → Ar/jr → Cr policy control → Er → setMessagesReadAccessPolicy",
+      "parametersAndState": {
+        "inputs": [
+          "askPerChat",
+          "allowUnconfiguredChats",
+          "allowAllChats",
+          "readAccessPolicy",
+          "saved chat decisions",
+          "read query"
+        ],
+        "concreteValuesObserved": false
+      },
+      "chain": [
+        "Vr Messages子路由 → ei → Ar/jr → Cr policy control → Er → setMessagesReadAccessPolicy",
+        "query/cache → typed local service facade → inherited desktop/native boundary"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/8"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/15"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/18"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/19"
+        }
+      ],
+      "operationMembers": [
+        {
+          "operationId": "operation:cua:setMessagesReadAccessPolicy",
+          "originalContractId": "setMessagesReadAccessPolicy",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/20"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/2"
+          },
+          "trigger": "Vr Messages子路由 → ei → Ar/jr → Cr policy control → Er → setMessagesReadAccessPolicy",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "Messages直接路由在主视图guard之前返回；ei插件loading/installed分支另行控制。Cr按读取query状态及pending控制；只有新旧policy不同才提交。不得套用列表导航availability为直接路由guard。",
+          "parametersAndEffects": "policy enum；与当前值不同才提交；cancel/read cache replacement"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:cua:getMessagesReadDecisions"
+      ],
+      "conditions": [
+        {
+          "sourceConditions": "Messages直接路由在主视图guard之前返回；ei插件loading/installed分支另行控制。Cr按读取query状态及pending控制；只有新旧policy不同才提交。不得套用列表导航availability为直接路由guard。",
+          "actualValuesObserved": false
+        }
+      ],
+      "boundaries": [
+        "query/cache framework implementations and provider scope",
+        "selected-host/requirements/feature-gate producers",
+        "platform query and mapper fallback",
+        "native Messages search/permissions and worker handlers",
+        "OS defaults / installer / global policy files",
+        "actual preload/main service receiver and delivery",
+        "mobile returned-object to concrete toggle renderer",
+        "plugin transaction outside selected post-install branch",
+        "browser and Office action chains beyond 14 selected CUA settings methods",
+        "complete mode and transitive dependency closure"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "computer-use access family codexOrWorkLocal and positive UI source are retained; actual mode reachability/shared dependency closure is not established.",
+      "modeConditionRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/15"
+      },
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-consumer-qualified; selected frozen bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "scenarioIds": [
+        "FSC-0041:setMessagesReadAccessPolicy:success",
+        "FSC-0041:setMessagesReadAccessPolicy:failure",
+        "FSC-0041:setMessagesReadAccessPolicy:cancel",
+        "FSC-0041:setMessagesReadAccessPolicy:restore"
+      ],
+      "knownGaps": [
+        "actual React/query provider and bridge receiver",
+        "mode and third-party dependency closure",
+        "native permission and OS/service persistence",
+        "reopen/real UI acceptance"
+      ],
+      "page": "computer-use Messages settings",
+      "implementationAcceptance": "mutation先cancel读取query；null抛unavailable，成功替换缓存。allowAll只隐藏逐聊天控件，所选代码没有删除saved choices。 必须在隔离测试环境通过真实控件/receiver及重开核对；本批没有执行这些场景。"
+    },
+    {
+      "featureId": "FSC-0042",
+      "name": "管理Messages某个聊天的读取决定",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "新增、修改和移除同一chat的saved decision归于一个用户目标；它们的输入、确认和mutation并不等价。搜索仅服务Add选择器，不另造独立产品功能。",
+      "trigger": "ei → Ar/jr → Cr → 行内决定/新增pr/mr/移除ar → Tr或wr → read service",
+      "parametersAndState": {
+        "inputs": [
+          "chatGUID",
+          "displayName",
+          "alwaysAllow",
+          "ask",
+          "alwaysDeny",
+          "searchSessionId",
+          "debounced query",
+          "signal",
+          "pending removal target"
+        ],
+        "concreteValuesObserved": false
+      },
+      "chain": [
+        "ei → Ar/jr → Cr → 行内决定/新增pr/mr/移除ar → Tr或wr → read service",
+        "query/cache → typed local service facade → inherited desktop/native boundary"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/8"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/10"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/15"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/18"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/19"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/20"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/21"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/22"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/23"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/24"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/25"
+        }
+      ],
+      "operationMembers": [
+        {
+          "operationId": "operation:cua:setMessagesReadDecision",
+          "originalContractId": "setMessagesReadDecision",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/21"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/3"
+          },
+          "trigger": "ei → Ar/jr → Cr → 行内决定/新增pr/mr/移除ar → Tr或wr → read service",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "policy非allowAll时显示逐聊天控件。Add入口的disabled条件与三mutation合成isSaving不同；dialog需有selected chat且非saving才能提交。移除form另检查chat存在且非removing。",
+          "parametersAndEffects": "chatGUID, decision enum, displayName；Add与行内修改共用"
+        },
+        {
+          "operationId": "operation:cua:removeMessagesReadDecision",
+          "originalContractId": "removeMessagesReadDecision",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/22"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/4"
+          },
+          "trigger": "ei → Ar/jr → Cr → 行内决定/新增pr/mr/移除ar → Tr或wr → read service",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "policy非allowAll时显示逐聊天控件。Add入口的disabled条件与三mutation合成isSaving不同；dialog需有selected chat且非saving才能提交。移除form另检查chat存在且非removing。",
+          "parametersAndEffects": "确认chatGUID；null抛错；cancel/cache/clear target"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:cua:getMessagesReadDecisions",
+        "operation:cua:searchMessagesChats"
+      ],
+      "conditions": [
+        {
+          "sourceConditions": "policy非allowAll时显示逐聊天控件。Add入口的disabled条件与三mutation合成isSaving不同；dialog需有selected chat且非saving才能提交。移除form另检查chat存在且非removing。",
+          "actualValuesObserved": false
+        }
+      ],
+      "boundaries": [
+        "query/cache framework implementations and provider scope",
+        "selected-host/requirements/feature-gate producers",
+        "platform query and mapper fallback",
+        "native Messages search/permissions and worker handlers",
+        "OS defaults / installer / global policy files",
+        "actual preload/main service receiver and delivery",
+        "mobile returned-object to concrete toggle renderer",
+        "plugin transaction outside selected post-install branch",
+        "browser and Office action chains beyond 14 selected CUA settings methods",
+        "complete mode and transitive dependency closure"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "computer-use access family codexOrWorkLocal and positive UI source are retained; actual mode reachability/shared dependency closure is not established.",
+      "modeConditionRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/15"
+      },
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-consumer-qualified; selected frozen bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "scenarioIds": [
+        "FSC-0042:setMessagesReadDecision:success",
+        "FSC-0042:setMessagesReadDecision:failure",
+        "FSC-0042:setMessagesReadDecision:cancel",
+        "FSC-0042:setMessagesReadDecision:restore",
+        "FSC-0042:removeMessagesReadDecision:success",
+        "FSC-0042:removeMessagesReadDecision:failure",
+        "FSC-0042:removeMessagesReadDecision:cancel",
+        "FSC-0042:removeMessagesReadDecision:restore"
+      ],
+      "knownGaps": [
+        "actual React/query provider and bridge receiver",
+        "mode and third-party dependency closure",
+        "native permission and OS/service persistence",
+        "reopen/real UI acceptance"
+      ],
+      "page": "computer-use Messages settings",
+      "implementationAcceptance": "set传chatGUID/decision/displayName，remove传chatGUID；三读取mutation先cancel query，成功替换缓存。Add仅单次onSuccess关框，remove成功清对象。搜索为200ms debounce及串行队列，query取消不证明native查询停止。 必须在隔离测试环境通过真实控件/receiver及重开核对；本批没有执行这些场景。"
+    },
+    {
+      "featureId": "FSC-0043",
+      "name": "设置Messages是否始终允许向所有聊天发送",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "全局allowAll发送策略有独立开关及boolean作用域，不与逐聊天授权撤销或读取权限合并。",
+      "trigger": "ei → Ar/Mr → Nr global send switch → Fr → setMessagesSendAllowAllChats",
+      "parametersAndState": {
+        "inputs": [
+          "boolean allowAllChats",
+          "approvedChats",
+          "send query",
+          "global and remove pending"
+        ],
+        "concreteValuesObserved": false
+      },
+      "chain": [
+        "ei → Ar/Mr → Nr global send switch → Fr → setMessagesSendAllowAllChats",
+        "query/cache → typed local service facade → inherited desktop/native boundary"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/8"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/15"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/16"
+        }
+      ],
+      "operationMembers": [
+        {
+          "operationId": "operation:cua:setMessagesSendAllowAllChats",
+          "originalContractId": "setMessagesSendAllowAllChats",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/23"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/5"
+          },
+          "trigger": "ei → Ar/Mr → Nr global send switch → Fr → setMessagesSendAllowAllChats",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "send query加载/错误/nonnull由Mr分层处理；开关禁用条件合并global send mutation和remove pending。allowAll只隐藏逐聊天列表。",
+          "parametersAndEffects": "boolean；cancel/send cache replacement；列表隐藏不是删除"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:cua:getMessagesSendApprovals"
+      ],
+      "conditions": [
+        {
+          "sourceConditions": "send query加载/错误/nonnull由Mr分层处理；开关禁用条件合并global send mutation和remove pending。allowAll只隐藏逐聊天列表。",
+          "actualValuesObserved": false
+        }
+      ],
+      "boundaries": [
+        "query/cache framework implementations and provider scope",
+        "selected-host/requirements/feature-gate producers",
+        "platform query and mapper fallback",
+        "native Messages search/permissions and worker handlers",
+        "OS defaults / installer / global policy files",
+        "actual preload/main service receiver and delivery",
+        "mobile returned-object to concrete toggle renderer",
+        "plugin transaction outside selected post-install branch",
+        "browser and Office action chains beyond 14 selected CUA settings methods",
+        "complete mode and transitive dependency closure"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "computer-use access family codexOrWorkLocal and positive UI source are retained; actual mode reachability/shared dependency closure is not established.",
+      "modeConditionRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/15"
+      },
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-consumer-qualified; selected frozen bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "scenarioIds": [
+        "FSC-0043:setMessagesSendAllowAllChats:success",
+        "FSC-0043:setMessagesSendAllowAllChats:failure",
+        "FSC-0043:setMessagesSendAllowAllChats:cancel",
+        "FSC-0043:setMessagesSendAllowAllChats:restore"
+      ],
+      "knownGaps": [
+        "actual React/query provider and bridge receiver",
+        "mode and third-party dependency closure",
+        "native permission and OS/service persistence",
+        "reopen/real UI acceptance"
+      ],
+      "page": "computer-use Messages settings",
+      "implementationAcceptance": "先cancel send query再mutation；null抛unavailable，成功替换send缓存，失败danger toast。列表隐藏不能解读成移除saved approvals。 必须在隔离测试环境通过真实控件/receiver及重开核对；本批没有执行这些场景。"
+    },
+    {
+      "featureId": "FSC-0044",
+      "name": "撤销Messages某个聊天的始终允许发送授权",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "definitionStatus": "author-reviewed-scoped-user-goal",
+      "granularityRationale": "逐聊天授权撤销有chatGUID选择与确认；只覆盖既有授权的移除，没有据此新增一个允许发送授权的设置功能。",
+      "trigger": "ei → Ar/Mr → Nr saved approval row → ar确认 → Pr → removeMessagesSendApproval",
+      "parametersAndState": {
+        "inputs": [
+          "chatGUID",
+          "displayName",
+          "approvedChats",
+          "pending removal target",
+          "remove/global pending"
+        ],
+        "concreteValuesObserved": false
+      },
+      "chain": [
+        "ei → Ar/Mr → Nr saved approval row → ar确认 → Pr → removeMessagesSendApproval",
+        "query/cache → typed local service facade → inherited desktop/native boundary"
+      ],
+      "sourceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/8"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/15"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/17"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/25"
+        }
+      ],
+      "operationMembers": [
+        {
+          "operationId": "operation:cua:removeMessagesSendApproval",
+          "originalContractId": "removeMessagesSendApproval",
+          "operationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "functional-operation-reconciliation.json",
+            "bytes": 1229922,
+            "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+            "jsonPointer": "/operationCandidates/24"
+          },
+          "consumerRelationRef": {
+            "kind": "frozen-metadata-json-pointer",
+            "path": "cua-settings-consumer-contracts.json",
+            "bytes": 532327,
+            "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+            "jsonPointer": "/operationRelations/6"
+          },
+          "trigger": "ei → Ar/Mr → Nr saved approval row → ar确认 → Pr → removeMessagesSendApproval",
+          "operationType": "settings-control-mutation",
+          "sourceConditions": "allowAllChats为false才展示逐聊天列表；行按钮由remove或global pending禁用。form仅chat存在且非removing提交，cancel按钮与onOpenChange关闭guard不同。",
+          "parametersAndEffects": "确认chatGUID；cache/clear target；所选options无onMutate cancel"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:cua:getMessagesSendApprovals"
+      ],
+      "conditions": [
+        {
+          "sourceConditions": "allowAllChats为false才展示逐聊天列表；行按钮由remove或global pending禁用。form仅chat存在且非removing提交，cancel按钮与onOpenChange关闭guard不同。",
+          "actualValuesObserved": false
+        }
+      ],
+      "boundaries": [
+        "query/cache framework implementations and provider scope",
+        "selected-host/requirements/feature-gate producers",
+        "platform query and mapper fallback",
+        "native Messages search/permissions and worker handlers",
+        "OS defaults / installer / global policy files",
+        "actual preload/main service receiver and delivery",
+        "mobile returned-object to concrete toggle renderer",
+        "plugin transaction outside selected post-install branch",
+        "browser and Office action chains beyond 14 selected CUA settings methods",
+        "complete mode and transitive dependency closure"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "computer-use access family codexOrWorkLocal and positive UI source are retained; actual mode reachability/shared dependency closure is not established.",
+      "modeConditionRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/15"
+      },
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "sourceSpecificationStatus": "inherited-consumer-qualified; selected frozen bytes freshly rechecked",
+      "runtimeStatus": "actual-ui-acceptance-not-executed",
+      "completeChainProven": false,
+      "scenarioIds": [
+        "FSC-0044:removeMessagesSendApproval:success",
+        "FSC-0044:removeMessagesSendApproval:failure",
+        "FSC-0044:removeMessagesSendApproval:cancel",
+        "FSC-0044:removeMessagesSendApproval:restore"
+      ],
+      "knownGaps": [
+        "actual React/query provider and bridge receiver",
+        "mode and third-party dependency closure",
+        "native permission and OS/service persistence",
+        "reopen/real UI acceptance"
+      ],
+      "page": "computer-use Messages settings",
+      "implementationAcceptance": "以chatGUID移除；null抛unavailable，成功替换send缓存并清对象，失败toast。所选remove options没有global send/读取mutation的onMutate query.cancel。 必须在隔离测试环境通过真实控件/receiver及重开核对；本批没有执行这些场景。"
+    }
+  ],
+  "operationDecisions": [
+    {
+      "operationId": "operation:cua:removeAppApproval",
+      "originalId": "removeAppApproval",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/18"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0038"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "应用授权列表的移除与确认是一个独立目标；读取列表是该目标的机制，新增授权的审批卡属于FSC-0037且不与撤销合并。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/0"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:setSoundMode",
+      "originalId": "setSoundMode",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/25"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0039"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "声音菜单的三个值是同一偏好的参数；query和菜单项不分别计为功能。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/7"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:setLockedUseEnabled",
+      "originalId": "setLockedUseEnabled",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/26"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0040"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "本定义是电脑使用设置页的boolean控件；手机设置与安装后步骤复用该服务，但各自用户目标和事务不因此合并。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/8"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:setMessagesReadAccessPolicy",
+      "originalId": "setMessagesReadAccessPolicy",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/20"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0041"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "全局读取policy与逐聊天决定有不同作用域及后效，分为两个目标；policy的三个值不另算功能。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/2"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:setMessagesReadDecision",
+      "originalId": "setMessagesReadDecision",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/21"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0042"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "新增、修改和移除同一chat的saved decision归于一个用户目标；它们的输入、确认和mutation并不等价。搜索仅服务Add选择器，不另造独立产品功能。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/3"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:removeMessagesReadDecision",
+      "originalId": "removeMessagesReadDecision",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/22"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0042"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "新增、修改和移除同一chat的saved decision归于一个用户目标；它们的输入、确认和mutation并不等价。搜索仅服务Add选择器，不另造独立产品功能。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/4"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:setMessagesSendAllowAllChats",
+      "originalId": "setMessagesSendAllowAllChats",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/23"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0043"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "全局allowAll发送策略有独立开关及boolean作用域，不与逐聊天授权撤销或读取权限合并。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/5"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:removeMessagesSendApproval",
+      "originalId": "removeMessagesSendApproval",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/24"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0044"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "assigned-user-operation",
+      "reason": "逐聊天授权撤销有chatGUID选择与确认；只覆盖既有授权的移除，没有据此新增一个允许发送授权的设置功能。",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/6"
+      },
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:getAppApprovals",
+      "originalId": "getAppApprovals",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/27"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0038"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "reason": "The proved control uses this query/search as state or selection support; it is not an additional independently defined user goal.",
+      "supportKind": "settings-state-query",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/9"
+      },
+      "supportDoesNotExhaustConsumers": true,
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:getSoundMode",
+      "originalId": "getSoundMode",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/30"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0039"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "reason": "The proved control uses this query/search as state or selection support; it is not an additional independently defined user goal.",
+      "supportKind": "settings-state-query",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/12"
+      },
+      "supportDoesNotExhaustConsumers": true,
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:getLockedUseState",
+      "originalId": "getLockedUseState",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/31"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0040"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "reason": "The proved control uses this query/search as state or selection support; it is not an additional independently defined user goal.",
+      "supportKind": "settings-state-query",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/13"
+      },
+      "supportDoesNotExhaustConsumers": true,
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:getMessagesReadDecisions",
+      "originalId": "getMessagesReadDecisions",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/28"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0041",
+        "FSC-0042"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "reason": "The proved control uses this query/search as state or selection support; it is not an additional independently defined user goal.",
+      "supportKind": "settings-state-query",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/10"
+      },
+      "supportDoesNotExhaustConsumers": true,
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:searchMessagesChats",
+      "originalId": "searchMessagesChats",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/19"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0042"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "reason": "The proved control uses this query/search as state or selection support; it is not an additional independently defined user goal.",
+      "supportKind": "serialized-selector-search",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/1"
+      },
+      "supportDoesNotExhaustConsumers": true,
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    },
+    {
+      "operationId": "operation:cua:getMessagesSendApprovals",
+      "originalId": "getMessagesSendApprovals",
+      "operationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "functional-operation-reconciliation.json",
+        "bytes": 1229922,
+        "sha256": "ec6d99fba197e052052639b11f8faae79c93ebf6a1aebb15762daa8d885a4989",
+        "jsonPointer": "/operationCandidates/29"
+      },
+      "catalogNamespace": "cua",
+      "featureIds": [
+        "FSC-0043",
+        "FSC-0044"
+      ],
+      "classificationConfidence": "inferred",
+      "excludedFromProductScope": false,
+      "operationEquivalenceClaimed": false,
+      "actualUiChainObserved": false,
+      "status": "supporting-mechanism",
+      "reason": "The proved control uses this query/search as state or selection support; it is not an additional independently defined user goal.",
+      "supportKind": "settings-state-query",
+      "consumerRelationRef": {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/operationRelations/11"
+      },
+      "supportDoesNotExhaustConsumers": true,
+      "priorQueueStatus": "service-consumer-and-mode-pending"
+    }
+  ],
+  "recoveryStages": [
+    {
+      "id": "CUA-RECOVERY-01",
+      "name": "声明本地服务接口与外部依赖",
+      "dependsOn": [],
+      "evidenceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "computer-use-settings-boundary.json",
+          "bytes": 13005,
+          "sha256": "88faa57a41e3df198ba5c9bf477e2053cedb433202c2e17e25f24ea09ba52f10",
+          "jsonPointer": "/operations"
+        }
+      ],
+      "decision": "保留14个typed wrapper/interface的语义，不复制React/query/cache/native第三方实现；真实receiver、OS存储和包版本另作集成门槛。"
+    },
+    {
+      "id": "CUA-RECOVERY-02",
+      "name": "能力路由与query/cache策略",
+      "dependsOn": [
+        "CUA-RECOVERY-01"
+      ],
+      "evidenceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/3"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/4"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/5"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/6"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/7"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/8"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/10"
+        }
+      ],
+      "decision": "恢复主视图与直接Messages路由的不同guard、host与本地服务作用域、null/loading/error、串行搜索和query取消边界。"
+    },
+    {
+      "id": "CUA-RECOVERY-03",
+      "name": "七个用户目标的控件与状态",
+      "dependsOn": [
+        "CUA-RECOVERY-02"
+      ],
+      "evidenceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/11"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/12"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/13"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/14"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/15"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/16"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/17"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/18"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/19"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/20"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/21"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/22"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/23"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/24"
+        },
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-contracts.json",
+          "bytes": 532327,
+          "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+          "jsonPointer": "/facts/25"
+        }
+      ],
+      "decision": "按FSC-0038至0044接8种写动作，保持不同enum、参数、确认、pending、toast、query.cancel及缓存后效；不把set/remove称等价。"
+    },
+    {
+      "id": "CUA-RECOVERY-04",
+      "name": "真实provider、receiver与重开验收",
+      "dependsOn": [
+        "CUA-RECOVERY-03"
+      ],
+      "evidenceRefs": [
+        {
+          "kind": "frozen-metadata-json-pointer",
+          "path": "cua-settings-consumer-scenarios.json",
+          "bytes": 15847,
+          "sha256": "b4b7a4b12c43134a1550098ec958bf4657c6bd79abc1e907e2f14392e813fab0",
+          "jsonPointer": "/scenarios/19"
+        }
+      ],
+      "decision": "执行32条功能规格及相关query竞态，再核对OS/native权限、持久化和重开；mobile/安装事务需要其独立入口与验收。当前全部未执行。"
+    }
+  ],
+  "sharedConsumerQualification": {
+    "methods": [
+      "setLockedUseEnabled",
+      "getLockedUseState"
+    ],
+    "relatedSourceFacts": [
+      {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/facts/26"
+      },
+      {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/facts/27"
+      },
+      {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/facts/28"
+      },
+      {
+        "kind": "frozen-metadata-json-pointer",
+        "path": "cua-settings-consumer-contracts.json",
+        "bytes": 532327,
+        "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+        "jsonPointer": "/facts/29"
+      }
+    ],
+    "qualification": "Mobile toggle renderer and installation flag ingress remain unresolved; shared service callers do not inherit settings-page feature acceptance."
+  },
+  "sourceVerificationScope": {
+    "consumerContract": {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "cua-settings-consumer-contracts.json",
+      "bytes": 532327,
+      "sha256": "4fcb424b9969feafdfc7442e645a41757f32590d213eeecbdfdefa068963dd2a",
+      "jsonPointer": ""
+    },
+    "modeCase": {
+      "kind": "frozen-metadata-json-pointer",
+      "path": "settings-mode-boundary-contracts.json",
+      "bytes": 477440,
+      "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+      "jsonPointer": "/settingsSectionReviews/15"
+    },
+    "selectedInheritedUnits": 77,
+    "newOriginalProgramParses": 0,
+    "newReaRuns": 0
+  },
+  "constraints": {
+    "newScopedFeatureDefinitions": 7,
+    "reviewedOperationCandidates": 14,
+    "assignedUserOperationsAdded": 8,
+    "mechanismSupportOperationsAdded": 6,
+    "newUnexecutedScenarioSpecifications": 32,
+    "targetCodeExecuted": false,
+    "originalClientRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "actualSettingsMutationsAdded": 0,
+    "runtimeObservationsAdded": 0,
+    "globalRecordsAdded": 0,
+    "newModeAssignments": 0,
+    "newConfirmedExclusions": 0,
+    "featureDenominatorEstablished": false,
+    "thirdPartyImplementationsPublished": false,
+    "independentSemanticPeerReviewAdded": false,
+    "fullAnalysisCompleted": false
+  }
+}

@@ -1,0 +1,4662 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T15:53:07.041036+00:00",
+  "question": {
+    "issueId": "SD-03",
+    "question": "For the existing UI resumeConversation path and old raw resumeThread candidate, which exact provider/request descriptor and receiver are selected, and are their operations equivalent?",
+    "fixedInput": "thread-resume-entry-contracts.json, request wrapper/facade contracts and their saved source selections; frozen sources only if a specific binding is missing.",
+    "closure": "Locate both concrete provider/receiver chains and their request/notification/state effects, or give the exact unresolvable injection boundary. Classify the one existing queued operation without adding new features or redoing route discovery. Static closure is separate from actual service acceptance.",
+    "authorization": "Offline analysis only; no new model submission, original-client launch, account mutation or client implementation."
+  },
+  "sourceUnits": {
+    "main-01-binding-jfe": {
+      "label": "binding-jfe",
+      "name": "jfe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 751049,
+        "endExclusive": 751400
+      },
+      "spanHash": "d242cc3fdfba1819db1802736cc86b796f11d9e56fff9a4221569890ab303d30",
+      "nodeType": "VariableDeclarator",
+      "file": "001-binding-jfe.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 746339,
+            "endExclusive": 754063
+          },
+          "spanHash": "86dfba4cd1ad1104d8fd1516686d763ff243f69a8c3891110a74d00b94212dc7",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/0"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-binding-jfe.txt",
+        "bytes": 351,
+        "sha256": "d242cc3fdfba1819db1802736cc86b796f11d9e56fff9a4221569890ab303d30"
+      }
+    },
+    "main-01-ref-jfe-3328428-owner": {
+      "label": "ref-jfe-3328428-owner",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "file": "003-ref-jfe-3328428-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/2"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-ref-jfe-3328428-owner.txt",
+        "bytes": 25457,
+        "sha256": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6"
+      }
+    },
+    "main-01-binding-Afe": {
+      "label": "binding-Afe",
+      "name": "Afe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 746483,
+        "endExclusive": 751048
+      },
+      "spanHash": "276f139dc9b087a9e7f539d9f00745171bacc5344546347d2f93a8e9721a9198",
+      "nodeType": "VariableDeclarator",
+      "file": "005-binding-Afe.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 746339,
+            "endExclusive": 754063
+          },
+          "spanHash": "86dfba4cd1ad1104d8fd1516686d763ff243f69a8c3891110a74d00b94212dc7",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/4"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-binding-Afe.txt",
+        "bytes": 4565,
+        "sha256": "276f139dc9b087a9e7f539d9f00745171bacc5344546347d2f93a8e9721a9198"
+      }
+    },
+    "main-01-ref-Afe-3327323-owner": {
+      "label": "ref-Afe-3327323-owner",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "file": "007-ref-Afe-3327323-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/6"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-ref-Afe-3327323-owner.txt",
+        "bytes": 25457,
+        "sha256": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6"
+      }
+    },
+    "main-01-binding-Ofe": {
+      "label": "binding-Ofe",
+      "name": "Ofe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 743210,
+        "endExclusive": 746339
+      },
+      "spanHash": "da74dfd71a6bb55c5be6d57e8a6b0d947e0e6a8ed18e33085dc3528b03db7d04",
+      "nodeType": "FunctionDeclaration",
+      "file": "009-binding-Ofe.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/8"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-binding-Ofe.txt",
+        "bytes": 3129,
+        "sha256": "da74dfd71a6bb55c5be6d57e8a6b0d947e0e6a8ed18e33085dc3528b03db7d04"
+      }
+    },
+    "main-01-binding-_fe": {
+      "label": "binding-_fe",
+      "name": "_fe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 732516,
+        "endExclusive": 735042
+      },
+      "spanHash": "879d2f23bf520ec7eb899fbefb8760b041bd7529e58bafbf75f014d48374ad3e",
+      "nodeType": "VariableDeclarator",
+      "file": "013-binding-_fe.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 732504,
+            "endExclusive": 735043
+          },
+          "spanHash": "5b202711212f1fdbc3053df8a3e575616d08ef3294627465f996af68630ffa5a",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/12"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-binding-_fe.txt",
+        "bytes": 2526,
+        "sha256": "879d2f23bf520ec7eb899fbefb8760b041bd7529e58bafbf75f014d48374ad3e"
+      }
+    },
+    "main-01-binding-Zde": {
+      "label": "binding-Zde",
+      "name": "Zde",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 713053,
+        "endExclusive": 713196
+      },
+      "spanHash": "d010803c03822879358338b2a99bcea50f415b920b1361595a512bf0883c6493",
+      "nodeType": "VariableDeclarator",
+      "file": "017-binding-Zde.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 713049,
+            "endExclusive": 713197
+          },
+          "spanHash": "b5f13e5cbbd7e258d0df40050733a84ed875a7be2392f54db0b6c07e1a596a2e",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/16"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-binding-Zde.txt",
+        "bytes": 143,
+        "sha256": "d010803c03822879358338b2a99bcea50f415b920b1361595a512bf0883c6493"
+      }
+    },
+    "main-01-ref-Zde-3332248-owner": {
+      "label": "ref-Zde-3332248-owner",
+      "name": "createAppHost",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3329810,
+        "endExclusive": 3341402
+      },
+      "spanHash": "bd90104f047528b338f16b7f63e0cfe824a4af361fee8f9d8a7c84ff03f0c46e",
+      "nodeType": "ClassMethod",
+      "file": "019-ref-Zde-3332248-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/18"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-ref-Zde-3332248-owner.txt",
+        "bytes": 11592,
+        "sha256": "bd90104f047528b338f16b7f63e0cfe824a4af361fee8f9d8a7c84ff03f0c46e"
+      }
+    },
+    "main-01-binding-i": {
+      "label": "binding-i",
+      "name": "i",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 167,
+        "endExclusive": 197
+      },
+      "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb",
+      "nodeType": "VariableDeclarator",
+      "file": "021-binding-i.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 715
+          },
+          "spanHash": "9a37b44616d3333664ac01751f365557f2bf1ea43f3d60a0e58ff14863175520",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/20"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-binding-i.txt",
+        "bytes": 30,
+        "sha256": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb"
+      }
+    },
+    "main-01-member-use-hostAppServerManagers-3327292-owner": {
+      "label": "member-use-hostAppServerManagers-3327292-owner",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "file": "023-member-use-hostAppServerManagers-3327292-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/22"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-use-hostAppServerManagers-3327292-owner.txt",
+        "bytes": 25457,
+        "sha256": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6"
+      }
+    },
+    "main-01-member-use-appServerManagersService-3328366-owner": {
+      "label": "member-use-appServerManagersService-3328366-owner",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "file": "029-member-use-appServerManagersService-3328366-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/28"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-use-appServerManagersService-3328366-owner.txt",
+        "bytes": 25457,
+        "sha256": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6"
+      }
+    },
+    "main-01-member-use-runAppServerManagerInMain-3328396-owner": {
+      "label": "member-use-runAppServerManagerInMain-3328396-owner",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "file": "032-member-use-runAppServerManagerInMain-3328396-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/31"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-use-runAppServerManagerInMain-3328396-owner.txt",
+        "bytes": 25457,
+        "sha256": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6"
+      }
+    },
+    "main-01-member-use-hostAppServerManagers-3328432-owner": {
+      "label": "member-use-hostAppServerManagers-3328432-owner",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "file": "035-member-use-hostAppServerManagers-3328432-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/34"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-use-hostAppServerManagers-3328432-owner.txt",
+        "bytes": 25457,
+        "sha256": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6"
+      }
+    },
+    "main-01-member-use-appServerManagersService-3328500-owner": {
+      "label": "member-use-appServerManagersService-3328500-owner",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "file": "038-member-use-appServerManagersService-3328500-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/37"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-use-appServerManagersService-3328500-owner.txt",
+        "bytes": 25457,
+        "sha256": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6"
+      }
+    },
+    "main-01-member-use-appServerManagersService-3332300-owner": {
+      "label": "member-use-appServerManagersService-3332300-owner",
+      "name": "createAppHost",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3329810,
+        "endExclusive": 3341402
+      },
+      "spanHash": "bd90104f047528b338f16b7f63e0cfe824a4af361fee8f9d8a7c84ff03f0c46e",
+      "nodeType": "ClassMethod",
+      "file": "047-member-use-appServerManagersService-3332300-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302505,
+            "endExclusive": 3360341
+          },
+          "spanHash": "2f3ef2f4ece759371a3ce6d96e3f63242a7f7bd0241a56e770499b2f89d6453e",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302500,
+            "endExclusive": 3360341
+          },
+          "spanHash": "ac5dd6b770abad4fffb3edd761ec6019658b1887ef5aa30a9529c64d25cc7317",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "hXe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3302496,
+            "endExclusive": 3360341
+          },
+          "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3301195,
+            "endExclusive": 3360909
+          },
+          "spanHash": "a23542432e506a1374af57be8a38e834b12e924f2645d90e1b18f9db706d5949",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/46"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-use-appServerManagersService-3332300-owner.txt",
+        "bytes": 11592,
+        "sha256": "bd90104f047528b338f16b7f63e0cfe824a4af361fee8f9d8a7c84ff03f0c46e"
+      }
+    },
+    "main-01-member-runAppServerManagerInMain-3361734-owner": {
+      "label": "member-runAppServerManagerInMain-3361734-owner",
+      "name": "vXe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3361693,
+        "endExclusive": 3366660
+      },
+      "spanHash": "d3dc99db6944d9f12885e44e0fda7707d518659a32e359a7ad4fdb6a20b15618",
+      "nodeType": "FunctionDeclaration",
+      "file": "065-member-runAppServerManagerInMain-3361734-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/64"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-runAppServerManagerInMain-3361734-owner.txt",
+        "bytes": 4967,
+        "sha256": "d3dc99db6944d9f12885e44e0fda7707d518659a32e359a7ad4fdb6a20b15618"
+      }
+    },
+    "main-01-member-runAppServerManagerInMain-3363488-owner": {
+      "label": "member-runAppServerManagerInMain-3363488-owner",
+      "name": "vXe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3361693,
+        "endExclusive": 3366660
+      },
+      "spanHash": "d3dc99db6944d9f12885e44e0fda7707d518659a32e359a7ad4fdb6a20b15618",
+      "nodeType": "FunctionDeclaration",
+      "file": "067-member-runAppServerManagerInMain-3363488-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/66"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-runAppServerManagerInMain-3363488-owner.txt",
+        "bytes": 4967,
+        "sha256": "d3dc99db6944d9f12885e44e0fda7707d518659a32e359a7ad4fdb6a20b15618"
+      }
+    },
+    "main-01-member-runAppServerManagerInMain-3801361-owner": {
+      "label": "member-runAppServerManagerInMain-3801361-owner",
+      "name": "u0e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3794132,
+        "endExclusive": 3823806
+      },
+      "spanHash": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7",
+      "nodeType": "FunctionDeclaration",
+      "file": "070-member-runAppServerManagerInMain-3801361-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d",
+        "jsonPointer": "/units/69"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-01-member-runAppServerManagerInMain-3801361-owner.txt",
+        "bytes": 29674,
+        "sha256": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7"
+      }
+    },
+    "manager-exports-01-binding-kM": {
+      "label": "binding-kM",
+      "name": "kM",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 955376,
+        "endExclusive": 1011437
+      },
+      "spanHash": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f",
+      "nodeType": "VariableDeclarator",
+      "file": "001-binding-kM.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955372,
+            "endExclusive": 1012394
+          },
+          "spanHash": "1ba0d53e2fefda2b329c1648a7dfefc8f8f85cd671832dc0c95433e7a816c074",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-exports-01/source-contracts.json",
+        "bytes": 32918,
+        "sha256": "64b942e43a8653b8cd49b0fbc5c93b538e85dbe5e6e4b0ea6128d0534b566427",
+        "jsonPointer": "/units/0"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-exports-01-binding-kM.txt",
+        "bytes": 56061,
+        "sha256": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f"
+      }
+    },
+    "manager-exports-01-binding-vp": {
+      "label": "binding-vp",
+      "name": "vp",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 262646,
+        "endExclusive": 277466
+      },
+      "spanHash": "db14d1d7fe36623d3cc4ee355b61ab29c614c28957bc993c7513409881032e96",
+      "nodeType": "VariableDeclarator",
+      "file": "005-binding-vp.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262642,
+            "endExclusive": 277467
+          },
+          "spanHash": "19f3bd93f018be7953458636ea31e44eeff778bb5b111c35c8832083f7751947",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-exports-01/source-contracts.json",
+        "bytes": 32918,
+        "sha256": "64b942e43a8653b8cd49b0fbc5c93b538e85dbe5e6e4b0ea6128d0534b566427",
+        "jsonPointer": "/units/4"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-exports-01-binding-vp.txt",
+        "bytes": 14820,
+        "sha256": "db14d1d7fe36623d3cc4ee355b61ab29c614c28957bc993c7513409881032e96"
+      }
+    },
+    "manager-exports-01-cjs-getter-Tr": {
+      "label": "cjs-getter-Tr",
+      "name": null,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1579110,
+        "endExclusive": 1579187
+      },
+      "spanHash": "070363af14ac2f6767bd808ead6b249ae71f9d8eee2d6296a52f17fd29f6c2f2",
+      "nodeType": "CallExpression",
+      "file": "009-cjs-getter-Tr.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591319
+          },
+          "spanHash": "0c7645f132dd00e2a98630fe9231b2270a5225eb9ea3a9207080c79a85abab2a",
+          "nodeType": "SequenceExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591320
+          },
+          "spanHash": "cb03c132d99d46ccd71f6c47dbe2cca32a8fc693805c4c08a4419f4f9509ca2b",
+          "nodeType": "ExpressionStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-exports-01/source-contracts.json",
+        "bytes": 32918,
+        "sha256": "64b942e43a8653b8cd49b0fbc5c93b538e85dbe5e6e4b0ea6128d0534b566427",
+        "jsonPointer": "/units/8"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-exports-01-cjs-getter-Tr.txt",
+        "bytes": 77,
+        "sha256": "070363af14ac2f6767bd808ead6b249ae71f9d8eee2d6296a52f17fd29f6c2f2"
+      }
+    },
+    "manager-exports-01-cjs-getter-Yn": {
+      "label": "cjs-getter-Yn",
+      "name": null,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1580587,
+        "endExclusive": 1580664
+      },
+      "spanHash": "f97423c2f2e47ed23bc3e25a7fe2fd43e59d90ab6bce7bdfd96bfaba57a086ac",
+      "nodeType": "CallExpression",
+      "file": "010-cjs-getter-Yn.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591319
+          },
+          "spanHash": "0c7645f132dd00e2a98630fe9231b2270a5225eb9ea3a9207080c79a85abab2a",
+          "nodeType": "SequenceExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591320
+          },
+          "spanHash": "cb03c132d99d46ccd71f6c47dbe2cca32a8fc693805c4c08a4419f4f9509ca2b",
+          "nodeType": "ExpressionStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-exports-01/source-contracts.json",
+        "bytes": 32918,
+        "sha256": "64b942e43a8653b8cd49b0fbc5c93b538e85dbe5e6e4b0ea6128d0534b566427",
+        "jsonPointer": "/units/9"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-exports-01-cjs-getter-Yn.txt",
+        "bytes": 77,
+        "sha256": "f97423c2f2e47ed23bc3e25a7fe2fd43e59d90ab6bce7bdfd96bfaba57a086ac"
+      }
+    },
+    "manager-focus-01-binding-DT": {
+      "label": "binding-DT",
+      "name": "DT",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 684941,
+        "endExclusive": 709407
+      },
+      "spanHash": "d28531e1a16aa099b7fe89e3abad2e55a8c54637c0be63f670c09b1ea05e3395",
+      "nodeType": "FunctionDeclaration",
+      "file": "001-binding-DT.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/0"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-binding-DT.txt",
+        "bytes": 24466,
+        "sha256": "d28531e1a16aa099b7fe89e3abad2e55a8c54637c0be63f670c09b1ea05e3395"
+      }
+    },
+    "manager-focus-01-binding-zw": {
+      "label": "binding-zw",
+      "name": "zw",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 664630,
+        "endExclusive": 669385
+      },
+      "spanHash": "127a2e0f0437132fb7f2d3e3ad8b57efaf8e6296c2d8b68a9d8289369b7456cc",
+      "nodeType": "FunctionDeclaration",
+      "file": "002-binding-zw.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/1"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-binding-zw.txt",
+        "bytes": 4755,
+        "sha256": "127a2e0f0437132fb7f2d3e3ad8b57efaf8e6296c2d8b68a9d8289369b7456cc"
+      }
+    },
+    "manager-focus-01-binding-mB": {
+      "label": "binding-mB",
+      "name": "mB",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1191852,
+        "endExclusive": 1262862
+      },
+      "spanHash": "07f12f6bc38244a4fa979bceb96707cad2fed29a41b7278ca17548f70fe726fc",
+      "nodeType": "VariableDeclarator",
+      "file": "003-binding-mB.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191765,
+            "endExclusive": 1262885
+          },
+          "spanHash": "2e295ef2f0a142844f0985060a3a159ac3324c9c835a54bce6ab1cdd089b5e64",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/2"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-binding-mB.txt",
+        "bytes": 71010,
+        "sha256": "07f12f6bc38244a4fa979bceb96707cad2fed29a41b7278ca17548f70fe726fc"
+      }
+    },
+    "manager-focus-01-cjs-getter-Tr": {
+      "label": "cjs-getter-Tr",
+      "name": null,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1579110,
+        "endExclusive": 1579187
+      },
+      "spanHash": "070363af14ac2f6767bd808ead6b249ae71f9d8eee2d6296a52f17fd29f6c2f2",
+      "nodeType": "CallExpression",
+      "file": "004-cjs-getter-Tr.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591319
+          },
+          "spanHash": "0c7645f132dd00e2a98630fe9231b2270a5225eb9ea3a9207080c79a85abab2a",
+          "nodeType": "SequenceExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591320
+          },
+          "spanHash": "cb03c132d99d46ccd71f6c47dbe2cca32a8fc693805c4c08a4419f4f9509ca2b",
+          "nodeType": "ExpressionStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/3"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-cjs-getter-Tr.txt",
+        "bytes": 77,
+        "sha256": "070363af14ac2f6767bd808ead6b249ae71f9d8eee2d6296a52f17fd29f6c2f2"
+      }
+    },
+    "manager-focus-01-cjs-getter-Yn": {
+      "label": "cjs-getter-Yn",
+      "name": null,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1580587,
+        "endExclusive": 1580664
+      },
+      "spanHash": "f97423c2f2e47ed23bc3e25a7fe2fd43e59d90ab6bce7bdfd96bfaba57a086ac",
+      "nodeType": "CallExpression",
+      "file": "005-cjs-getter-Yn.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591319
+          },
+          "spanHash": "0c7645f132dd00e2a98630fe9231b2270a5225eb9ea3a9207080c79a85abab2a",
+          "nodeType": "SequenceExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1572270,
+            "endExclusive": 1591320
+          },
+          "spanHash": "cb03c132d99d46ccd71f6c47dbe2cca32a8fc693805c4c08a4419f4f9509ca2b",
+          "nodeType": "ExpressionStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/4"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-cjs-getter-Yn.txt",
+        "bytes": 77,
+        "sha256": "f97423c2f2e47ed23bc3e25a7fe2fd43e59d90ab6bce7bdfd96bfaba57a086ac"
+      }
+    },
+    "manager-focus-01-class-method-kM-constructor": {
+      "label": "class-method-kM-constructor",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 958390,
+        "endExclusive": 969324
+      },
+      "spanHash": "425c723b46781e0354b76526ddea9f61a3e5f0e89d621ed86dc4d928b7d054bf",
+      "nodeType": "ClassMethod",
+      "file": "006-class-method-kM-constructor.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955397,
+            "endExclusive": 1011437
+          },
+          "spanHash": "2df45d36cf12642cefd15fe86fd653a76437b801803fed80089e96bb92c2d45f",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955379,
+            "endExclusive": 1011437
+          },
+          "spanHash": "8834ab05df4c27e46cf8ae8ad2af050fbc4352ee379ef8707d26ce40ddee804d",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "kM",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955376,
+            "endExclusive": 1011437
+          },
+          "spanHash": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955372,
+            "endExclusive": 1012394
+          },
+          "spanHash": "1ba0d53e2fefda2b329c1648a7dfefc8f8f85cd671832dc0c95433e7a816c074",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/5"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-kM-constructor.txt",
+        "bytes": 10934,
+        "sha256": "425c723b46781e0354b76526ddea9f61a3e5f0e89d621ed86dc4d928b7d054bf"
+      }
+    },
+    "manager-focus-01-class-method-kM-#e": {
+      "label": "class-method-kM-#e",
+      "name": null,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 973469,
+        "endExclusive": 975470
+      },
+      "spanHash": "b9a4336997e81ffdc2cf87ac9c9d1a2d1033ead1475a42fa6608fa5956bba7fd",
+      "nodeType": "ClassPrivateMethod",
+      "file": "007-class-method-kM-_e.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955397,
+            "endExclusive": 1011437
+          },
+          "spanHash": "2df45d36cf12642cefd15fe86fd653a76437b801803fed80089e96bb92c2d45f",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955379,
+            "endExclusive": 1011437
+          },
+          "spanHash": "8834ab05df4c27e46cf8ae8ad2af050fbc4352ee379ef8707d26ce40ddee804d",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "kM",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955376,
+            "endExclusive": 1011437
+          },
+          "spanHash": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955372,
+            "endExclusive": 1012394
+          },
+          "spanHash": "1ba0d53e2fefda2b329c1648a7dfefc8f8f85cd671832dc0c95433e7a816c074",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/6"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-kM-private-e.txt",
+        "bytes": 2001,
+        "sha256": "b9a4336997e81ffdc2cf87ac9c9d1a2d1033ead1475a42fa6608fa5956bba7fd"
+      }
+    },
+    "manager-focus-01-class-method-kM-resumeThread": {
+      "label": "class-method-kM-resumeThread",
+      "name": "resumeThread",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 975470,
+        "endExclusive": 975641
+      },
+      "spanHash": "292ed2087af65abbe87f4d7b02748b270dca0e698fdd681ec8b05948b21bab1d",
+      "nodeType": "ClassMethod",
+      "file": "008-class-method-kM-resumeThread.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955397,
+            "endExclusive": 1011437
+          },
+          "spanHash": "2df45d36cf12642cefd15fe86fd653a76437b801803fed80089e96bb92c2d45f",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955379,
+            "endExclusive": 1011437
+          },
+          "spanHash": "8834ab05df4c27e46cf8ae8ad2af050fbc4352ee379ef8707d26ce40ddee804d",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "kM",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955376,
+            "endExclusive": 1011437
+          },
+          "spanHash": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955372,
+            "endExclusive": 1012394
+          },
+          "spanHash": "1ba0d53e2fefda2b329c1648a7dfefc8f8f85cd671832dc0c95433e7a816c074",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/7"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-kM-resumeThread.txt",
+        "bytes": 171,
+        "sha256": "292ed2087af65abbe87f4d7b02748b270dca0e698fdd681ec8b05948b21bab1d"
+      }
+    },
+    "manager-focus-01-class-method-kM-resumeConversation": {
+      "label": "class-method-kM-resumeConversation",
+      "name": "resumeConversation",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 975641,
+        "endExclusive": 975716
+      },
+      "spanHash": "b8835776325c50479ceb503a650beac3e8ef8ac06544279cae7a077cba72899b",
+      "nodeType": "ClassMethod",
+      "file": "009-class-method-kM-resumeConversation.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955397,
+            "endExclusive": 1011437
+          },
+          "spanHash": "2df45d36cf12642cefd15fe86fd653a76437b801803fed80089e96bb92c2d45f",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955379,
+            "endExclusive": 1011437
+          },
+          "spanHash": "8834ab05df4c27e46cf8ae8ad2af050fbc4352ee379ef8707d26ce40ddee804d",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "kM",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955376,
+            "endExclusive": 1011437
+          },
+          "spanHash": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955372,
+            "endExclusive": 1012394
+          },
+          "spanHash": "1ba0d53e2fefda2b329c1648a7dfefc8f8f85cd671832dc0c95433e7a816c074",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/8"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-kM-resumeConversation.txt",
+        "bytes": 75,
+        "sha256": "b8835776325c50479ceb503a650beac3e8ef8ac06544279cae7a077cba72899b"
+      }
+    },
+    "manager-focus-01-class-method-kM-#t": {
+      "label": "class-method-kM-#t",
+      "name": null,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 975716,
+        "endExclusive": 975988
+      },
+      "spanHash": "a8454d36c895731c0203f9421d951abb50dbf9f894befad9e342439675ee8576",
+      "nodeType": "ClassPrivateMethod",
+      "file": "010-class-method-kM-_t.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955397,
+            "endExclusive": 1011437
+          },
+          "spanHash": "2df45d36cf12642cefd15fe86fd653a76437b801803fed80089e96bb92c2d45f",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955379,
+            "endExclusive": 1011437
+          },
+          "spanHash": "8834ab05df4c27e46cf8ae8ad2af050fbc4352ee379ef8707d26ce40ddee804d",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "kM",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955376,
+            "endExclusive": 1011437
+          },
+          "spanHash": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955372,
+            "endExclusive": 1012394
+          },
+          "spanHash": "1ba0d53e2fefda2b329c1648a7dfefc8f8f85cd671832dc0c95433e7a816c074",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/9"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-kM-private-t.txt",
+        "bytes": 272,
+        "sha256": "a8454d36c895731c0203f9421d951abb50dbf9f894befad9e342439675ee8576"
+      }
+    },
+    "manager-focus-01-class-method-kM-sendRequest": {
+      "label": "class-method-kM-sendRequest",
+      "name": "sendRequest",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1006543,
+        "endExclusive": 1006733
+      },
+      "spanHash": "454f5f1c758ae09e714b37a24a8e20c0a5ef9d5741e5128857b175e19305bacc",
+      "nodeType": "ClassMethod",
+      "file": "011-class-method-kM-sendRequest.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955397,
+            "endExclusive": 1011437
+          },
+          "spanHash": "2df45d36cf12642cefd15fe86fd653a76437b801803fed80089e96bb92c2d45f",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955379,
+            "endExclusive": 1011437
+          },
+          "spanHash": "8834ab05df4c27e46cf8ae8ad2af050fbc4352ee379ef8707d26ce40ddee804d",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "kM",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955376,
+            "endExclusive": 1011437
+          },
+          "spanHash": "c0bd80e317d5ff3750872fe514ee2410e17f57889b11bbf5f6c044808c345a9f",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 955372,
+            "endExclusive": 1012394
+          },
+          "spanHash": "1ba0d53e2fefda2b329c1648a7dfefc8f8f85cd671832dc0c95433e7a816c074",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/10"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-kM-sendRequest.txt",
+        "bytes": 190,
+        "sha256": "454f5f1c758ae09e714b37a24a8e20c0a5ef9d5741e5128857b175e19305bacc"
+      }
+    },
+    "manager-focus-01-class-method-vp-constructor": {
+      "label": "class-method-vp-constructor",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 262677,
+        "endExclusive": 262754
+      },
+      "spanHash": "f3002daa57a235e83622af3faa8bb78190001f86b116ffc1674aa7f81d4ccc08",
+      "nodeType": "ClassMethod",
+      "file": "012-class-method-vp-constructor.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262667,
+            "endExclusive": 277466
+          },
+          "spanHash": "6ddf96838dda3a26cd941a2356257383923a065528b004e5f342ce4837efbea2",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262649,
+            "endExclusive": 277466
+          },
+          "spanHash": "1a910a8e63c9d141a304892e1fac5f7c43bedcb992482af5e66d4e7a753843a8",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "vp",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262646,
+            "endExclusive": 277466
+          },
+          "spanHash": "db14d1d7fe36623d3cc4ee355b61ab29c614c28957bc993c7513409881032e96",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262642,
+            "endExclusive": 277467
+          },
+          "spanHash": "19f3bd93f018be7953458636ea31e44eeff778bb5b111c35c8832083f7751947",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/11"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-vp-constructor.txt",
+        "bytes": 77,
+        "sha256": "f3002daa57a235e83622af3faa8bb78190001f86b116ffc1674aa7f81d4ccc08"
+      }
+    },
+    "manager-focus-01-class-method-vp-sendRequest": {
+      "label": "class-method-vp-sendRequest",
+      "name": "sendRequest",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 269186,
+        "endExclusive": 269246
+      },
+      "spanHash": "5c1e00e9ab3001cd04b5878c16aac76e0f562fbf1b15886286409b62c0ae6742",
+      "nodeType": "ClassMethod",
+      "file": "013-class-method-vp-sendRequest.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262667,
+            "endExclusive": 277466
+          },
+          "spanHash": "6ddf96838dda3a26cd941a2356257383923a065528b004e5f342ce4837efbea2",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262649,
+            "endExclusive": 277466
+          },
+          "spanHash": "1a910a8e63c9d141a304892e1fac5f7c43bedcb992482af5e66d4e7a753843a8",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "vp",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262646,
+            "endExclusive": 277466
+          },
+          "spanHash": "db14d1d7fe36623d3cc4ee355b61ab29c614c28957bc993c7513409881032e96",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262642,
+            "endExclusive": 277467
+          },
+          "spanHash": "19f3bd93f018be7953458636ea31e44eeff778bb5b111c35c8832083f7751947",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/12"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-vp-sendRequest.txt",
+        "bytes": 60,
+        "sha256": "5c1e00e9ab3001cd04b5878c16aac76e0f562fbf1b15886286409b62c0ae6742"
+      }
+    },
+    "manager-focus-01-class-method-vp-resumeConversation": {
+      "label": "class-method-vp-resumeConversation",
+      "name": "resumeConversation",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 269484,
+        "endExclusive": 269558
+      },
+      "spanHash": "69db5c6a75bb1b37cdc82029daf1212f74d435a59ad03db707fc1a07bdc4b5fa",
+      "nodeType": "ClassMethod",
+      "file": "014-class-method-vp-resumeConversation.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262667,
+            "endExclusive": 277466
+          },
+          "spanHash": "6ddf96838dda3a26cd941a2356257383923a065528b004e5f342ce4837efbea2",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262649,
+            "endExclusive": 277466
+          },
+          "spanHash": "1a910a8e63c9d141a304892e1fac5f7c43bedcb992482af5e66d4e7a753843a8",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "vp",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262646,
+            "endExclusive": 277466
+          },
+          "spanHash": "db14d1d7fe36623d3cc4ee355b61ab29c614c28957bc993c7513409881032e96",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262642,
+            "endExclusive": 277467
+          },
+          "spanHash": "19f3bd93f018be7953458636ea31e44eeff778bb5b111c35c8832083f7751947",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/13"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-vp-resumeConversation.txt",
+        "bytes": 74,
+        "sha256": "69db5c6a75bb1b37cdc82029daf1212f74d435a59ad03db707fc1a07bdc4b5fa"
+      }
+    },
+    "manager-focus-01-class-method-vp-resumeThread": {
+      "label": "class-method-vp-resumeThread",
+      "name": "resumeThread",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 269558,
+        "endExclusive": 269620
+      },
+      "spanHash": "43c5da465fd535c210816cfe3d982e1f397044ef61d90af8a5e6e2fa0a23716b",
+      "nodeType": "ClassMethod",
+      "file": "015-class-method-vp-resumeThread.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262667,
+            "endExclusive": 277466
+          },
+          "spanHash": "6ddf96838dda3a26cd941a2356257383923a065528b004e5f342ce4837efbea2",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262649,
+            "endExclusive": 277466
+          },
+          "spanHash": "1a910a8e63c9d141a304892e1fac5f7c43bedcb992482af5e66d4e7a753843a8",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "vp",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262646,
+            "endExclusive": 277466
+          },
+          "spanHash": "db14d1d7fe36623d3cc4ee355b61ab29c614c28957bc993c7513409881032e96",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 262642,
+            "endExclusive": 277467
+          },
+          "spanHash": "19f3bd93f018be7953458636ea31e44eeff778bb5b111c35c8832083f7751947",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/14"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-vp-resumeThread.txt",
+        "bytes": 62,
+        "sha256": "43c5da465fd535c210816cfe3d982e1f397044ef61d90af8a5e6e2fa0a23716b"
+      }
+    },
+    "manager-focus-01-class-method-mB-constructor": {
+      "label": "class-method-mB-constructor",
+      "name": "constructor",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1194720,
+        "endExclusive": 1199895
+      },
+      "spanHash": "54f99bb64cda5ca24951ab238a04b4da9a93c311abae6d95c4d596b30bb70e14",
+      "nodeType": "ClassMethod",
+      "file": "016-class-method-mB-constructor.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191860,
+            "endExclusive": 1262862
+          },
+          "spanHash": "3bad59e678adc7a31ece896789961f8d6c68cc86045baa24c9099acfd4d9a6d5",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191855,
+            "endExclusive": 1262862
+          },
+          "spanHash": "31a7486fb727e817ae6efb5875b279d902e69b5d2013198f91d4f6cfb3fccbcf",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "mB",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191852,
+            "endExclusive": 1262862
+          },
+          "spanHash": "07f12f6bc38244a4fa979bceb96707cad2fed29a41b7278ca17548f70fe726fc",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191765,
+            "endExclusive": 1262885
+          },
+          "spanHash": "2e295ef2f0a142844f0985060a3a159ac3324c9c835a54bce6ab1cdd089b5e64",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/15"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-mB-constructor.txt",
+        "bytes": 5175,
+        "sha256": "54f99bb64cda5ca24951ab238a04b4da9a93c311abae6d95c4d596b30bb70e14"
+      }
+    },
+    "manager-focus-01-class-method-mB-sendInternalRequest": {
+      "label": "class-method-mB-sendInternalRequest",
+      "name": "sendInternalRequest",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1215446,
+        "endExclusive": 1216470
+      },
+      "spanHash": "a4296f6696a521ca1825475a67949c5280f1c4431b74c72349bb0203658c4d02",
+      "nodeType": "ClassMethod",
+      "file": "017-class-method-mB-sendInternalRequest.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191860,
+            "endExclusive": 1262862
+          },
+          "spanHash": "3bad59e678adc7a31ece896789961f8d6c68cc86045baa24c9099acfd4d9a6d5",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191855,
+            "endExclusive": 1262862
+          },
+          "spanHash": "31a7486fb727e817ae6efb5875b279d902e69b5d2013198f91d4f6cfb3fccbcf",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "mB",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191852,
+            "endExclusive": 1262862
+          },
+          "spanHash": "07f12f6bc38244a4fa979bceb96707cad2fed29a41b7278ca17548f70fe726fc",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191765,
+            "endExclusive": 1262885
+          },
+          "spanHash": "2e295ef2f0a142844f0985060a3a159ac3324c9c835a54bce6ab1cdd089b5e64",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/16"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-mB-sendInternalRequest.txt",
+        "bytes": 1024,
+        "sha256": "a4296f6696a521ca1825475a67949c5280f1c4431b74c72349bb0203658c4d02"
+      }
+    },
+    "manager-focus-01-class-method-mB-handleHostRequest": {
+      "label": "class-method-mB-handleHostRequest",
+      "name": "handleHostRequest",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1219151,
+        "endExclusive": 1219169
+      },
+      "spanHash": "b04ee6382bae230d2ed037bf466174f7e00a2a5e3f4413c8e90a88f556823e13",
+      "nodeType": "ClassProperty",
+      "file": "018-class-method-mB-handleHostRequest.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191860,
+            "endExclusive": 1262862
+          },
+          "spanHash": "3bad59e678adc7a31ece896789961f8d6c68cc86045baa24c9099acfd4d9a6d5",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191855,
+            "endExclusive": 1262862
+          },
+          "spanHash": "31a7486fb727e817ae6efb5875b279d902e69b5d2013198f91d4f6cfb3fccbcf",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "mB",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191852,
+            "endExclusive": 1262862
+          },
+          "spanHash": "07f12f6bc38244a4fa979bceb96707cad2fed29a41b7278ca17548f70fe726fc",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191765,
+            "endExclusive": 1262885
+          },
+          "spanHash": "2e295ef2f0a142844f0985060a3a159ac3324c9c835a54bce6ab1cdd089b5e64",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/17"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-mB-handleHostRequest.txt",
+        "bytes": 18,
+        "sha256": "b04ee6382bae230d2ed037bf466174f7e00a2a5e3f4413c8e90a88f556823e13"
+      }
+    },
+    "manager-focus-01-class-method-mB-ensureReady": {
+      "label": "class-method-mB-ensureReady",
+      "name": "ensureReady",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1223261,
+        "endExclusive": 1224977
+      },
+      "spanHash": "361aa67902ae6e1facfc18feb947d58a7b41675845b901ff4f108a09e4e488c5",
+      "nodeType": "ClassMethod",
+      "file": "019-class-method-mB-ensureReady.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191860,
+            "endExclusive": 1262862
+          },
+          "spanHash": "3bad59e678adc7a31ece896789961f8d6c68cc86045baa24c9099acfd4d9a6d5",
+          "nodeType": "ClassBody"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191855,
+            "endExclusive": 1262862
+          },
+          "spanHash": "31a7486fb727e817ae6efb5875b279d902e69b5d2013198f91d4f6cfb3fccbcf",
+          "nodeType": "ClassExpression"
+        },
+        {
+          "name": "mB",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191852,
+            "endExclusive": 1262862
+          },
+          "spanHash": "07f12f6bc38244a4fa979bceb96707cad2fed29a41b7278ca17548f70fe726fc",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1191765,
+            "endExclusive": 1262885
+          },
+          "spanHash": "2e295ef2f0a142844f0985060a3a159ac3324c9c835a54bce6ab1cdd089b5e64",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/units/18"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/manager-focus-01-class-method-mB-ensureReady.txt",
+        "bytes": 1716,
+        "sha256": "361aa67902ae6e1facfc18feb947d58a7b41675845b901ff4f108a09e4e488c5"
+      }
+    },
+    "transport-01-binding-ET": {
+      "label": "binding-ET",
+      "name": "ET",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 684429,
+        "endExclusive": 684941
+      },
+      "spanHash": "c67663cd1f827f6eb976a718271f08dc5d591a41e9c91dc4dd283447453bcb0d",
+      "nodeType": "FunctionDeclaration",
+      "file": "001-binding-ET.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/transport-01/source-contracts.json",
+        "bytes": 9951,
+        "sha256": "5995a4e81aac3317a705396ca7fb397a45a53b5878fd6717e802db04cee312f0",
+        "jsonPointer": "/units/0"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/transport-01-binding-ET.txt",
+        "bytes": 512,
+        "sha256": "c67663cd1f827f6eb976a718271f08dc5d591a41e9c91dc4dd283447453bcb0d"
+      }
+    },
+    "transport-01-binding-GR": {
+      "label": "binding-GR",
+      "name": "GR",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1158658,
+        "endExclusive": 1159420
+      },
+      "spanHash": "8c8fedd2eab18eb838005b90732d7d6d63393f367129fa0139f91f030a3f4cec",
+      "nodeType": "VariableDeclarator",
+      "file": "002-binding-GR.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1158501,
+            "endExclusive": 1159421
+          },
+          "spanHash": "9cb128aeb1433047f63721a19041d196857c6e221775cc1c6bc4b11fd06c9409",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/transport-01/source-contracts.json",
+        "bytes": 9951,
+        "sha256": "5995a4e81aac3317a705396ca7fb397a45a53b5878fd6717e802db04cee312f0",
+        "jsonPointer": "/units/1"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/transport-01-binding-GR.txt",
+        "bytes": 762,
+        "sha256": "8c8fedd2eab18eb838005b90732d7d6d63393f367129fa0139f91f030a3f4cec"
+      }
+    },
+    "transport-01-binding-JI": {
+      "label": "binding-JI",
+      "name": "JI",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1102518,
+        "endExclusive": 1114756
+      },
+      "spanHash": "606fd0b22d839ee93ed37820e1829c619f6d55ff4870412a409f89be979c6ef0",
+      "nodeType": "VariableDeclarator",
+      "file": "003-binding-JI.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1102502,
+            "endExclusive": 1114757
+          },
+          "spanHash": "09e6d930f54d2f82d7e80bb563a2f5d08cc319ecde14b25bf9d6e5ee1efb931a",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/transport-01/source-contracts.json",
+        "bytes": 9951,
+        "sha256": "5995a4e81aac3317a705396ca7fb397a45a53b5878fd6717e802db04cee312f0",
+        "jsonPointer": "/units/2"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/transport-01-binding-JI.txt",
+        "bytes": 12238,
+        "sha256": "606fd0b22d839ee93ed37820e1829c619f6d55ff4870412a409f89be979c6ef0"
+      }
+    },
+    "transport-01-binding-MR": {
+      "label": "binding-MR",
+      "name": "MR",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1147694,
+        "endExclusive": 1155864
+      },
+      "spanHash": "f9404771f828f8bbd4f38e55c8eb2236de4cbf590a98f075ea5254bad89df8cd",
+      "nodeType": "VariableDeclarator",
+      "file": "004-binding-MR.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1147638,
+            "endExclusive": 1156332
+          },
+          "spanHash": "9c77a03f82339a5fcddd7ba6808eb9a243f06a5146e5356340dbe2d2061c2576",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 1591361
+          },
+          "spanHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/transport-01/source-contracts.json",
+        "bytes": 9951,
+        "sha256": "5995a4e81aac3317a705396ca7fb397a45a53b5878fd6717e802db04cee312f0",
+        "jsonPointer": "/units/3"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/transport-01-binding-MR.txt",
+        "bytes": 8170,
+        "sha256": "f9404771f828f8bbd4f38e55c8eb2236de4cbf590a98f075ea5254bad89df8cd"
+      }
+    },
+    "publish-02-binding-It": {
+      "label": "binding-It",
+      "name": "It",
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 18414,
+        "endExclusive": 22011
+      },
+      "spanHash": "e6261f23129088df4370ec10120abaa52ec7402072c4cac12f37f2fca71b70a4",
+      "nodeType": "FunctionDeclaration",
+      "file": "001-binding-It.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 66551
+          },
+          "spanHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-02/source-contracts.json",
+        "bytes": 126888,
+        "sha256": "7397f34c715ea271cac691230073b1396ab2dce45d28dbce52f57d108042dff8",
+        "jsonPointer": "/units/0"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/publish-02-binding-It.txt",
+        "bytes": 3597,
+        "sha256": "e6261f23129088df4370ec10120abaa52ec7402072c4cac12f37f2fca71b70a4"
+      }
+    },
+    "publish-02-binding-ge": {
+      "label": "binding-ge",
+      "name": null,
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 540,
+        "endExclusive": 549
+      },
+      "spanHash": "3bbbc904529d6582d9f41192920ef326984a90275d363b7794f97d2dc8cb12a3",
+      "nodeType": "ImportSpecifier",
+      "file": "008-binding-ge.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 55,
+            "endExclusive": 594
+          },
+          "spanHash": "bc5ef4250ce790f07dccd10dde9450d3a09e2194241df053a425cd18b43252c0",
+          "nodeType": "ImportDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 66551
+          },
+          "spanHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-02/source-contracts.json",
+        "bytes": 126888,
+        "sha256": "7397f34c715ea271cac691230073b1396ab2dce45d28dbce52f57d108042dff8",
+        "jsonPointer": "/units/7"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/publish-02-binding-ge.txt",
+        "bytes": 9,
+        "sha256": "3bbbc904529d6582d9f41192920ef326984a90275d363b7794f97d2dc8cb12a3"
+      }
+    },
+    "publish-02-binding-de": {
+      "label": "binding-de",
+      "name": null,
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 393,
+        "endExclusive": 402
+      },
+      "spanHash": "722d5c4bc710e41e975a4bda2c178f5e38f34b379c36f567cfbedd2ec064a6fb",
+      "nodeType": "ImportSpecifier",
+      "file": "012-binding-de.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 55,
+            "endExclusive": 594
+          },
+          "spanHash": "bc5ef4250ce790f07dccd10dde9450d3a09e2194241df053a425cd18b43252c0",
+          "nodeType": "ImportDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 66551
+          },
+          "spanHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-02/source-contracts.json",
+        "bytes": 126888,
+        "sha256": "7397f34c715ea271cac691230073b1396ab2dce45d28dbce52f57d108042dff8",
+        "jsonPointer": "/units/11"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/publish-02-binding-de.txt",
+        "bytes": 9,
+        "sha256": "722d5c4bc710e41e975a4bda2c178f5e38f34b379c36f567cfbedd2ec064a6fb"
+      }
+    },
+    "publish-02-member-use-resumeThread-20323": {
+      "label": "member-use-resumeThread-20323",
+      "name": null,
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 20323,
+        "endExclusive": 20351
+      },
+      "spanHash": "824f6bf18d545bcb2fd5e893f465de96fbb00aff55933d8548a43081b2f1a36d",
+      "nodeType": "CallExpression",
+      "file": "016-member-use-resumeThread-20323.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20317,
+            "endExclusive": 20351
+          },
+          "spanHash": "f6534f9aa908df991b5b523a48aa714df0e92e537bc1c7db72e677be658759fd",
+          "nodeType": "AwaitExpression"
+        },
+        {
+          "name": "t",
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20315,
+            "endExclusive": 20351
+          },
+          "spanHash": "55a18c928e2ececdb0a4f7371fe442ad157bb2c4118d8c9af2154dd9a7ffe473",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20311,
+            "endExclusive": 20352
+          },
+          "spanHash": "6de3d31a505ad7b461bf0c9883522ca74ac2a77d48ec43f1f9a7d9ac0242a517",
+          "nodeType": "VariableDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20310,
+            "endExclusive": 20516
+          },
+          "spanHash": "6312f45309643aeb24d69cc38e73cc619796ad14613e7abd6a40e585f32b9294",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20112,
+            "endExclusive": 20516
+          },
+          "spanHash": "e0e767d22db3c8727dbbdb3932bd42d9d8e9b25c10e6ffd2002c8cd42e30ee6f",
+          "nodeType": "IfStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20111,
+            "endExclusive": 20517
+          },
+          "spanHash": "9ba70b23ec5f3bee9df130225d7b683cc8079d28ecd6d111726fc9c567c4c5b4",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20108,
+            "endExclusive": 20524
+          },
+          "spanHash": "7ebd5530295d87d2f2c24f206ecf09b75bf55cf30cf7b595b0de0b32667964de",
+          "nodeType": "TryStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20107,
+            "endExclusive": 20531
+          },
+          "spanHash": "95f4938f8b0317183a3f162ea96659269d6273b4b4269f8cf4e42fceef36d3f1",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20092,
+            "endExclusive": 20531
+          },
+          "spanHash": "7a17e11fac095c3eb246dd87814e31eb71d172a887255afc521ad42b452a1add",
+          "nodeType": "IfStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18626,
+            "endExclusive": 22001
+          },
+          "spanHash": "977740bb11876dddd8b67805242856a89bb2fbaefbb7f088f0a3f8c569248712",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18606,
+            "endExclusive": 22001
+          },
+          "spanHash": "e4b16e090dddf09c3dabfb74eb96fe7d1a913b31ac7807dd56c447829f12bd75",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": "mutationFn",
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18595,
+            "endExclusive": 22001
+          },
+          "spanHash": "149338049b3c2d57044cd2d66c5cce8b56cc53a8726d5f66de9ed5628596fcad",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18533,
+            "endExclusive": 22002
+          },
+          "spanHash": "57ff9b6715937ac6ceeada5da8606b55ff97c7b621885428b0c5f0edbcd17469",
+          "nodeType": "ObjectExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18517,
+            "endExclusive": 22003
+          },
+          "spanHash": "45ac59339f7718f992787948b3af3244dfcf19f4b482660cfab7e67f76dabd27",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18513,
+            "endExclusive": 22004
+          },
+          "spanHash": "ccb648eee7ce2f898cf6720f97e5eaf22164223a264b12007541cda8f8d9631a",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18510,
+            "endExclusive": 22004
+          },
+          "spanHash": "f15775880dbaa95e9c2484194345a0626dfd9d27d356e14aab6794379c32af91",
+          "nodeType": "AssignmentExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18446,
+            "endExclusive": 22004
+          },
+          "spanHash": "e5b8f86d4675a2420ff53505cd9ec6d6bb949ea0f481f4adea20fb4de4af4402",
+          "nodeType": "SequenceExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18446,
+            "endExclusive": 22004
+          },
+          "spanHash": "e5b8f86d4675a2420ff53505cd9ec6d6bb949ea0f481f4adea20fb4de4af4402",
+          "nodeType": "ExpressionStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18445,
+            "endExclusive": 22005
+          },
+          "spanHash": "42362ca3983a3323ecdf262a5178da6ad127f9f762bb2c29b01383c3655f1bf7",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18441,
+            "endExclusive": 22005
+          },
+          "spanHash": "725b9b5731514aac62ba904f968f3f21febdf819685ce4aa845f934ad09ab96d",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18438,
+            "endExclusive": 22007
+          },
+          "spanHash": "1464c273fba48f64df11968ebbbc2e98baa8fb3a1b1fbfd639bdb69ba83a42af",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18435,
+            "endExclusive": 22007
+          },
+          "spanHash": "dd0fe270f6911236735fd28960b26ccd1c3a18ba648b2a49376ad5296fad167b",
+          "nodeType": "AssignmentExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18434,
+            "endExclusive": 22010
+          },
+          "spanHash": "dbfaa714e6be58e4fd620e61ce6783ce3e7fb490d230cc6787fb0f7fe4b06ff5",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18428,
+            "endExclusive": 22010
+          },
+          "spanHash": "a71f35cd7adaf7e43e1aa349535b69f96a9eaadd63dfd9820fde1042f230438e",
+          "nodeType": "ReturnStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18427,
+            "endExclusive": 22011
+          },
+          "spanHash": "c8b8e7bb1adcfac1e860a8bf921c9042ed16f0539dd42af65aa6d8e55b72d42e",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": "It",
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18414,
+            "endExclusive": 22011
+          },
+          "spanHash": "e6261f23129088df4370ec10120abaa52ec7402072c4cac12f37f2fca71b70a4",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 66551
+          },
+          "spanHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-02/source-contracts.json",
+        "bytes": 126888,
+        "sha256": "7397f34c715ea271cac691230073b1396ab2dce45d28dbce52f57d108042dff8",
+        "jsonPointer": "/units/15"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/publish-02-member-use-resumeThread-20323.txt",
+        "bytes": 28,
+        "sha256": "824f6bf18d545bcb2fd5e893f465de96fbb00aff55933d8548a43081b2f1a36d"
+      }
+    },
+    "publish-02-member-use-resumeThread-20323-owner": {
+      "label": "member-use-resumeThread-20323-owner",
+      "name": null,
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 18606,
+        "endExclusive": 22001
+      },
+      "spanHash": "e4b16e090dddf09c3dabfb74eb96fe7d1a913b31ac7807dd56c447829f12bd75",
+      "nodeType": "ArrowFunctionExpression",
+      "file": "017-member-use-resumeThread-20323-owner.txt",
+      "ancestors": [
+        {
+          "name": "mutationFn",
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18595,
+            "endExclusive": 22001
+          },
+          "spanHash": "149338049b3c2d57044cd2d66c5cce8b56cc53a8726d5f66de9ed5628596fcad",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18533,
+            "endExclusive": 22002
+          },
+          "spanHash": "57ff9b6715937ac6ceeada5da8606b55ff97c7b621885428b0c5f0edbcd17469",
+          "nodeType": "ObjectExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18517,
+            "endExclusive": 22003
+          },
+          "spanHash": "45ac59339f7718f992787948b3af3244dfcf19f4b482660cfab7e67f76dabd27",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18513,
+            "endExclusive": 22004
+          },
+          "spanHash": "ccb648eee7ce2f898cf6720f97e5eaf22164223a264b12007541cda8f8d9631a",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18510,
+            "endExclusive": 22004
+          },
+          "spanHash": "f15775880dbaa95e9c2484194345a0626dfd9d27d356e14aab6794379c32af91",
+          "nodeType": "AssignmentExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18446,
+            "endExclusive": 22004
+          },
+          "spanHash": "e5b8f86d4675a2420ff53505cd9ec6d6bb949ea0f481f4adea20fb4de4af4402",
+          "nodeType": "SequenceExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18446,
+            "endExclusive": 22004
+          },
+          "spanHash": "e5b8f86d4675a2420ff53505cd9ec6d6bb949ea0f481f4adea20fb4de4af4402",
+          "nodeType": "ExpressionStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18445,
+            "endExclusive": 22005
+          },
+          "spanHash": "42362ca3983a3323ecdf262a5178da6ad127f9f762bb2c29b01383c3655f1bf7",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18441,
+            "endExclusive": 22005
+          },
+          "spanHash": "725b9b5731514aac62ba904f968f3f21febdf819685ce4aa845f934ad09ab96d",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18438,
+            "endExclusive": 22007
+          },
+          "spanHash": "1464c273fba48f64df11968ebbbc2e98baa8fb3a1b1fbfd639bdb69ba83a42af",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18435,
+            "endExclusive": 22007
+          },
+          "spanHash": "dd0fe270f6911236735fd28960b26ccd1c3a18ba648b2a49376ad5296fad167b",
+          "nodeType": "AssignmentExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18434,
+            "endExclusive": 22010
+          },
+          "spanHash": "dbfaa714e6be58e4fd620e61ce6783ce3e7fb490d230cc6787fb0f7fe4b06ff5",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18428,
+            "endExclusive": 22010
+          },
+          "spanHash": "a71f35cd7adaf7e43e1aa349535b69f96a9eaadd63dfd9820fde1042f230438e",
+          "nodeType": "ReturnStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18427,
+            "endExclusive": 22011
+          },
+          "spanHash": "c8b8e7bb1adcfac1e860a8bf921c9042ed16f0539dd42af65aa6d8e55b72d42e",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": "It",
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18414,
+            "endExclusive": 22011
+          },
+          "spanHash": "e6261f23129088df4370ec10120abaa52ec7402072c4cac12f37f2fca71b70a4",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 66551
+          },
+          "spanHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-02/source-contracts.json",
+        "bytes": 126888,
+        "sha256": "7397f34c715ea271cac691230073b1396ab2dce45d28dbce52f57d108042dff8",
+        "jsonPointer": "/units/16"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/publish-02-member-use-resumeThread-20323-owner.txt",
+        "bytes": 3395,
+        "sha256": "e4b16e090dddf09c3dabfb74eb96fe7d1a913b31ac7807dd56c447829f12bd75"
+      }
+    },
+    "publish-02-member-use-resumeThread-20323-statement": {
+      "label": "member-use-resumeThread-20323-statement",
+      "name": null,
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 20311,
+        "endExclusive": 20352
+      },
+      "spanHash": "6de3d31a505ad7b461bf0c9883522ca74ac2a77d48ec43f1f9a7d9ac0242a517",
+      "nodeType": "VariableDeclaration",
+      "file": "018-member-use-resumeThread-20323-statement.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20310,
+            "endExclusive": 20516
+          },
+          "spanHash": "6312f45309643aeb24d69cc38e73cc619796ad14613e7abd6a40e585f32b9294",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20112,
+            "endExclusive": 20516
+          },
+          "spanHash": "e0e767d22db3c8727dbbdb3932bd42d9d8e9b25c10e6ffd2002c8cd42e30ee6f",
+          "nodeType": "IfStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20111,
+            "endExclusive": 20517
+          },
+          "spanHash": "9ba70b23ec5f3bee9df130225d7b683cc8079d28ecd6d111726fc9c567c4c5b4",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20108,
+            "endExclusive": 20524
+          },
+          "spanHash": "7ebd5530295d87d2f2c24f206ecf09b75bf55cf30cf7b595b0de0b32667964de",
+          "nodeType": "TryStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20107,
+            "endExclusive": 20531
+          },
+          "spanHash": "95f4938f8b0317183a3f162ea96659269d6273b4b4269f8cf4e42fceef36d3f1",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 20092,
+            "endExclusive": 20531
+          },
+          "spanHash": "7a17e11fac095c3eb246dd87814e31eb71d172a887255afc521ad42b452a1add",
+          "nodeType": "IfStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18626,
+            "endExclusive": 22001
+          },
+          "spanHash": "977740bb11876dddd8b67805242856a89bb2fbaefbb7f088f0a3f8c569248712",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18606,
+            "endExclusive": 22001
+          },
+          "spanHash": "e4b16e090dddf09c3dabfb74eb96fe7d1a913b31ac7807dd56c447829f12bd75",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": "mutationFn",
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18595,
+            "endExclusive": 22001
+          },
+          "spanHash": "149338049b3c2d57044cd2d66c5cce8b56cc53a8726d5f66de9ed5628596fcad",
+          "nodeType": "ObjectProperty"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18533,
+            "endExclusive": 22002
+          },
+          "spanHash": "57ff9b6715937ac6ceeada5da8606b55ff97c7b621885428b0c5f0edbcd17469",
+          "nodeType": "ObjectExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18517,
+            "endExclusive": 22003
+          },
+          "spanHash": "45ac59339f7718f992787948b3af3244dfcf19f4b482660cfab7e67f76dabd27",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18513,
+            "endExclusive": 22004
+          },
+          "spanHash": "ccb648eee7ce2f898cf6720f97e5eaf22164223a264b12007541cda8f8d9631a",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18510,
+            "endExclusive": 22004
+          },
+          "spanHash": "f15775880dbaa95e9c2484194345a0626dfd9d27d356e14aab6794379c32af91",
+          "nodeType": "AssignmentExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18446,
+            "endExclusive": 22004
+          },
+          "spanHash": "e5b8f86d4675a2420ff53505cd9ec6d6bb949ea0f481f4adea20fb4de4af4402",
+          "nodeType": "SequenceExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18446,
+            "endExclusive": 22004
+          },
+          "spanHash": "e5b8f86d4675a2420ff53505cd9ec6d6bb949ea0f481f4adea20fb4de4af4402",
+          "nodeType": "ExpressionStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18445,
+            "endExclusive": 22005
+          },
+          "spanHash": "42362ca3983a3323ecdf262a5178da6ad127f9f762bb2c29b01383c3655f1bf7",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18441,
+            "endExclusive": 22005
+          },
+          "spanHash": "725b9b5731514aac62ba904f968f3f21febdf819685ce4aa845f934ad09ab96d",
+          "nodeType": "ArrowFunctionExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18438,
+            "endExclusive": 22007
+          },
+          "spanHash": "1464c273fba48f64df11968ebbbc2e98baa8fb3a1b1fbfd639bdb69ba83a42af",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18435,
+            "endExclusive": 22007
+          },
+          "spanHash": "dd0fe270f6911236735fd28960b26ccd1c3a18ba648b2a49376ad5296fad167b",
+          "nodeType": "AssignmentExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18434,
+            "endExclusive": 22010
+          },
+          "spanHash": "dbfaa714e6be58e4fd620e61ce6783ce3e7fb490d230cc6787fb0f7fe4b06ff5",
+          "nodeType": "CallExpression"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18428,
+            "endExclusive": 22010
+          },
+          "spanHash": "a71f35cd7adaf7e43e1aa349535b69f96a9eaadd63dfd9820fde1042f230438e",
+          "nodeType": "ReturnStatement"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18427,
+            "endExclusive": 22011
+          },
+          "spanHash": "c8b8e7bb1adcfac1e860a8bf921c9042ed16f0539dd42af65aa6d8e55b72d42e",
+          "nodeType": "BlockStatement"
+        },
+        {
+          "name": "It",
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18414,
+            "endExclusive": 22011
+          },
+          "spanHash": "e6261f23129088df4370ec10120abaa52ec7402072c4cac12f37f2fca71b70a4",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "name": null,
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 66551
+          },
+          "spanHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "nodeType": "Program"
+        }
+      ],
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-02/source-contracts.json",
+        "bytes": 126888,
+        "sha256": "7397f34c715ea271cac691230073b1396ab2dce45d28dbce52f57d108042dff8",
+        "jsonPointer": "/units/17"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/publish-02-member-use-resumeThread-20323-statement.txt",
+        "bytes": 41,
+        "sha256": "6de3d31a505ad7b461bf0c9883522ca74ac2a77d48ec43f1f9a7d9ac0242a517"
+      }
+    },
+    "main-connection-factory": {
+      "name": "createAppServerConnection",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3354071,
+        "endExclusive": 3358558
+      },
+      "spanHash": "00af5577ac2f8a514e777f2b0343ec16b414c2a4ec60c7777635d63130774342",
+      "nodeType": "ClassMethod",
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/connection-factory-selection.json",
+        "bytes": 2265,
+        "sha256": "cf1e7b1f051108e8aa99ea07ef547a20c0abecc04705dbfcd8dd5b0d1a0e8570",
+        "jsonPointer": "/selection/owner"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/main-connection-factory.txt",
+        "bytes": 4487,
+        "sha256": "00af5577ac2f8a514e777f2b0343ec16b414c2a4ec60c7777635d63130774342"
+      }
+    },
+    "startup-local-z": {
+      "name": "z",
+      "expression": "z=!_.app.isPackaged",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3795023,
+        "endExclusive": 3795042
+      },
+      "spanHash": "599a3600e26fe1a2dd3f2329455d1f8418060b1d88ceefe5336e183d3d38beb3",
+      "nodeType": "VariableDeclarator",
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/startup-gate.json",
+        "bytes": 4048,
+        "sha256": "b9eabff3472c587ca85110cc45c20caab7129653907800168bc6cbca7b377f46",
+        "jsonPointer": "/declarations/0"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/startup-local-z.txt",
+        "bytes": 19,
+        "sha256": "599a3600e26fe1a2dd3f2329455d1f8418060b1d88ceefe5336e183d3d38beb3"
+      }
+    },
+    "startup-local-ne": {
+      "name": "ne",
+      "expression": "ne=z&&process.env.CODEX_APP_SERVER_MANAGER_IN_MAIN===`1`",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3795043,
+        "endExclusive": 3795099
+      },
+      "spanHash": "30bd9a661734831b62f830da108b70d14861c9979e922ba536bb2dfa59417b33",
+      "nodeType": "VariableDeclarator",
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/startup-gate.json",
+        "bytes": 4048,
+        "sha256": "b9eabff3472c587ca85110cc45c20caab7129653907800168bc6cbca7b377f46",
+        "jsonPointer": "/declarations/1"
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/startup-local-ne.txt",
+        "bytes": 56,
+        "sha256": "30bd9a661734831b62f830da108b70d14861c9979e922ba536bb2dfa59417b33"
+      }
+    },
+    "connection-export-pn": {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1587354,
+        "endExclusive": 1587431
+      },
+      "spanHash": "1f88c344a2c04f6035b6dc362a934945d5ee28bd796c8102cef08e7d9efe773a",
+      "nodeType": "bounded-exact-CJS-getter-literal; no additional AST parse",
+      "origin": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6",
+        "jsonPointer": "/bindings/2",
+        "qualification": "Pointer identifies the separately whole-Program-qualified mB declaration; getter range is a unique literal read from that same frozen Program."
+      },
+      "savedSource": {
+        "path": "raw/resume-provider-resolution/connection-export-pn.txt",
+        "bytes": 77,
+        "sha256": "1f88c344a2c04f6035b6dc362a934945d5ee28bd796c8102cef08e7d9efe773a"
+      }
+    }
+  },
+  "sourceFacts": [
+    {
+      "id": "RESUME-PROVIDER-001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "启动函数u0e令z=!app.isPackaged，ne=z且CODEX_APP_SERVER_MANAGER_IN_MAIN严格等于字符串1，再将ne传入vXe。打包条件为真时该开关为假；本批没有读取运行中app.isPackaged或环境变量。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3795023,
+        "endExclusive": 3795042
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "startup-local-z",
+        "startup-local-ne",
+        "main-01-member-runAppServerManagerInMain-3801361-owner"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "hXe只在runAppServerManagerInMain为真时创建jfe(hostAppServerManagers)，否则服务为undefined；createAppHost把该值发布为appServerManagers。服务存在性仍不等于产品模式。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "main-01-ref-jfe-3328428-owner",
+        "main-01-ref-Zde-3332248-owner",
+        "main-01-binding-jfe"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Afe按连接、读取身份context和generation维护资源，调用注入create并在结果仍current时发布；jfe.open只为当前有效resource返回ready，manager为i.Tr闭包，闭包每次调用先assertCurrent再取同一个resource.manager。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 746483,
+        "endExclusive": 751048
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "main-01-binding-Afe",
+        "main-01-binding-jfe"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Ofe将new i.Yn保存为返回resource.manager，注入new _fe(connection,hostId,assertCurrent,threadAccessGetter)。main的i来自src-BJv5Mk7n；该文件的Yn getter绑定Program变量kM，Tr getter绑定vp。这是主进程实例的源码连接，不把kM等同于另一bundle的Dfn对象。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 743210,
+        "endExclusive": 746339
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "main-01-binding-Ofe",
+        "main-01-binding-i",
+        "manager-exports-01-cjs-getter-Yn",
+        "manager-exports-01-cjs-getter-Tr"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "vp构造器保存getter；resumeConversation与resumeThread各自返回转发原参数的函数。jfe提供的getter仍带current检查，能力复制与实际RPC送达属于依赖/运行边界。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 262677,
+        "endExclusive": 262754
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "manager-focus-01-class-method-vp-constructor",
+        "manager-focus-01-class-method-vp-resumeConversation",
+        "manager-focus-01-class-method-vp-resumeThread"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "kM.resumeThread直接sendRequest(thread/resume,原参数)，将返回thread映射并合并live状态，然后返回完整response；resumeConversation进入#t(view)，#e合并in-flight并协调hydration，#t释放readResumeInputs并返回ready/not-ready、已有activeTurnId与threadSource。二者不是相同接口/效果。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 975470,
+        "endExclusive": 975641
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "manager-focus-01-class-method-kM-resumeThread",
+        "manager-focus-01-class-method-kM-resumeConversation",
+        "manager-focus-01-class-method-kM-#e",
+        "manager-focus-01-class-method-kM-#t"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "kM的协调恢复路径调用DT与zw；DT经ET发送构造后的thread/resume，并包含history/permission/notification/state恢复。ET的默认120秒超时及两次超时重试、closing-thread四次重试与旧shared Han同类，但本批不宣称两个完整pipeline或运行实例等价。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 973469,
+        "endExclusive": 975470
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "manager-focus-01-class-method-kM-#e",
+        "manager-focus-01-binding-DT",
+        "manager-focus-01-binding-zw",
+        "transport-01-binding-ET"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "kM.sendRequest转交构造器保存的requestClient；_fe生成id/method/params/trace，send调用connection.handleHostRequest并等待promise。thread/resume不在该sendRequest的outcome-unknown跟踪方法列表，超时abandon不能当作后台未执行或模型取消。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 958390,
+        "endExclusive": 969324
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "manager-focus-01-class-method-kM-constructor",
+        "manager-focus-01-class-method-kM-sendRequest",
+        "main-01-binding-_fe"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "所选createAppServerConnection通过i.pn创建连接；src的pn getter返回mB。mB构造器把GR.handleHostRequest装到自身；GR建立host destination并交clientRequestQueue.enqueueHost，返回promise与abandon。该连接的实际transport取决于createAppServerConnection中的j5与host配置。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3354071,
+        "endExclusive": 3358558
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "main-connection-factory",
+        "connection-export-pn",
+        "manager-focus-01-class-method-mB-constructor",
+        "transport-01-binding-GR"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "mB为JI注入发送回调，回调交给MR.sendMessage；MR从getConnection取底层connection，按durable/普通分支序列化并调用send。实际socket/stdio/远程接收者、后台接受及通知/持久化未由这些静态边确认，不能直接换成公开CLI。",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1194720,
+        "endExclusive": 1199895
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "manager-focus-01-class-method-mB-constructor",
+        "transport-01-binding-JI",
+        "transport-01-binding-MR"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "publish-actions的It创建create-environment-recovery-draft mutation。check分支确认历史中已有相同clientUserMessageId后调用l.resumeThread({threadId})，验证返回的唯一环境匹配目标，再强制加载历史并标记draft恢复ready；l绑定到ge(scope,de())，ge是shared y$t/KI导入。错误被该check分支吞掉；其他recover分支的startTurnWithOutcome是另一步。",
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "locator": {
+        "kind": "byte-range",
+        "start": 18414,
+        "endExclusive": 22011
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "confirmed",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "publish-02-binding-It",
+        "publish-02-binding-ge"
+      ]
+    },
+    {
+      "id": "RESUME-PROVIDER-012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "旧TTC-OP-thread-resume记录的raw API应保留为支撑机制：已有独立的环境恢复调用者，且与页面resumeConversation的参数、协调、返回及状态副作用不同。不把它合并为页面操作，也不新建一个用户功能；消费者闭包和实际模式仍未知。",
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "locator": {
+        "kind": "byte-range",
+        "start": 18414,
+        "endExclusive": 22011
+      },
+      "method": "frozen-source AST and exact-byte review; no target execution",
+      "confidence": "inferred",
+      "verificationStatus": "source-contract-only; actual instance/service/durable effects unobserved",
+      "sourceUnitIds": [
+        "publish-02-binding-It",
+        "manager-focus-01-class-method-kM-resumeThread"
+      ]
+    }
+  ],
+  "lexicalReceiverEvidence": {
+    "member": "resumeThread",
+    "reference": {
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 20323,
+        "endExclusive": 20337
+      },
+      "spanHash": "38b1995156f171b1268b5be133e6ebfd5141a860abbea86f550ab56c2c20a81d",
+      "nodeType": "MemberExpression"
+    },
+    "parent": {
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 20323,
+        "endExclusive": 20351
+      },
+      "spanHash": "824f6bf18d545bcb2fd5e893f465de96fbb00aff55933d8548a43081b2f1a36d",
+      "nodeType": "CallExpression"
+    },
+    "expression": "l.resumeThread({threadId:e})",
+    "owner": {
+      "name": null,
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "byteRange": {
+        "start": 18606,
+        "endExclusive": 22001
+      },
+      "spanHash": "e4b16e090dddf09c3dabfb74eb96fe7d1a913b31ac7807dd56c447829f12bd75",
+      "nodeType": "ArrowFunctionExpression"
+    },
+    "receiverBinding": {
+      "scopeKind": "BlockStatement",
+      "scope": {
+        "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+        "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+        "byteRange": {
+          "start": 18626,
+          "endExclusive": 22001
+        },
+        "spanHash": "977740bb11876dddd8b67805242856a89bb2fbaefbb7f088f0a3f8c569248712",
+        "nodeType": "BlockStatement"
+      },
+      "definitions": [
+        {
+          "kind": "let",
+          "declaration": {
+            "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+            "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+            "byteRange": {
+              "start": 19043,
+              "endExclusive": 19055
+            },
+            "spanHash": "ad61721e0d59a53deab1a467db4cf497b6a1f4589357a7621129c1ee54c0a7b7",
+            "nodeType": "VariableDeclarator"
+          }
+        }
+      ]
+    }
+  },
+  "startupGate": {
+    "baselineId": "codex-26.1007.30912-c5b273322a83",
+    "method": "selected complete u0e FunctionDeclaration AST, local z/ne declaration and sole reference; no target evaluation",
+    "inputUnit": {
+      "label": "member-runAppServerManagerInMain-3801361-owner",
+      "name": "u0e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3794132,
+        "endExclusive": 3823806
+      },
+      "spanHash": "aa998731f96bf4a2670d4d7fc4cec7e02f2371f94faab08393dfbdec67ef67b7",
+      "nodeType": "FunctionDeclaration",
+      "file": "070-member-runAppServerManagerInMain-3801361-owner.txt",
+      "ancestors": [
+        {
+          "name": null,
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 0,
+            "endExclusive": 3824411
+          },
+          "spanHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "nodeType": "Program"
+        }
+      ]
+    },
+    "parserSha256": "43d95824b43928626ccf99136e95ab90260c18406f22f8acf57f239483127f66",
+    "completeProgramParsed": false,
+    "selectedUnitParsed": true,
+    "nodeCount": 6538,
+    "declarations": [
+      {
+        "name": "z",
+        "expression": "z=!_.app.isPackaged",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3795023,
+          "endExclusive": 3795042
+        },
+        "spanHash": "599a3600e26fe1a2dd3f2329455d1f8418060b1d88ceefe5336e183d3d38beb3",
+        "nodeType": "VariableDeclarator"
+      },
+      {
+        "name": "ne",
+        "expression": "ne=z&&process.env.CODEX_APP_SERVER_MANAGER_IN_MAIN===`1`",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3795043,
+          "endExclusive": 3795099
+        },
+        "spanHash": "30bd9a661734831b62f830da108b70d14861c9979e922ba536bb2dfa59417b33",
+        "nodeType": "VariableDeclarator"
+      }
+    ],
+    "references": [
+      {
+        "reference": {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3795043,
+            "endExclusive": 3795045
+          },
+          "spanHash": "cb58e4600bf0142cbe4ad513de98b73c5c9da7f4023a393d13b395375fccaea6",
+          "nodeType": "Identifier"
+        },
+        "parent": {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3795043,
+            "endExclusive": 3795099
+          },
+          "spanHash": "30bd9a661734831b62f830da108b70d14861c9979e922ba536bb2dfa59417b33",
+          "nodeType": "VariableDeclarator"
+        },
+        "expression": "ne=z&&process.env.CODEX_APP_SERVER_MANAGER_IN_MAIN===`1`"
+      },
+      {
+        "reference": {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3801387,
+            "endExclusive": 3801389
+          },
+          "spanHash": "cb58e4600bf0142cbe4ad513de98b73c5c9da7f4023a393d13b395375fccaea6",
+          "nodeType": "Identifier"
+        },
+        "parent": {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3801361,
+            "endExclusive": 3801389
+          },
+          "spanHash": "221eac4ab885f65e5ab845709b073a75a45a50f04fc6b0cdc397829dd04d3fcc",
+          "nodeType": "ObjectProperty"
+        },
+        "expression": "runAppServerManagerInMain:ne"
+      }
+    ],
+    "modelSubmissionsAdded": 0
+  },
+  "sourceAnalysisQueries": [
+    {
+      "metadata": {
+        "path": ".analysis-local/resume-provider-resolution-work/main-01/source-contracts.json",
+        "bytes": 2164537,
+        "sha256": "73e7c5e2299806d2cfc2e8c076c3b47e8fcbdbab47294b2e5faca152f936f00d"
+      },
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "nodeCount": 958314,
+      "parserErrors": 0,
+      "config": {
+        "bindings": [
+          "jfe",
+          "Afe",
+          "Ofe",
+          "_fe",
+          "Zde",
+          "i"
+        ],
+        "members": [
+          "appServerManagersService",
+          "hostAppServerManagers",
+          "runAppServerManagerInMain"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-01/source-contracts.json",
+        "bytes": 1812057,
+        "sha256": "763b4c1bf567c513e52ec41ef3475b020d3927201518790ccf17c13a97e7965b"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeCount": 410911,
+      "parserErrors": 0,
+      "config": {
+        "bindings": [],
+        "members": [
+          "resumeConversation",
+          "resumeThread",
+          "sendRequest"
+        ],
+        "exports": [
+          "Yn",
+          "Tr"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-exports-01/source-contracts.json",
+        "bytes": 32918,
+        "sha256": "64b942e43a8653b8cd49b0fbc5c93b538e85dbe5e6e4b0ea6128d0534b566427"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeCount": 410911,
+      "parserErrors": 0,
+      "config": {
+        "bindings": [
+          "kM",
+          "vp"
+        ],
+        "members": [],
+        "exports": [
+          "Yn",
+          "Tr"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "path": ".analysis-local/resume-provider-resolution-work/manager-focus-01/source-contracts.json",
+        "bytes": 52031,
+        "sha256": "301b607c5e5641646b30377c9f25cc89fe2bcd391ef3faf3ec97c759bb94ede6"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeCount": 410911,
+      "parserErrors": 0,
+      "config": {
+        "bindings": [],
+        "definitionOnlyBindings": [
+          "DT",
+          "zw",
+          "mB"
+        ],
+        "members": [],
+        "exports": [
+          "Yn",
+          "Tr"
+        ],
+        "classMethods": [
+          {
+            "binding": "kM",
+            "names": [
+              "constructor",
+              "resumeThread",
+              "resumeConversation",
+              "#e",
+              "#t",
+              "sendRequest"
+            ]
+          },
+          {
+            "binding": "vp",
+            "names": [
+              "constructor",
+              "resumeThread",
+              "resumeConversation",
+              "sendRequest"
+            ]
+          },
+          {
+            "binding": "mB",
+            "names": [
+              "constructor",
+              "handleHostRequest",
+              "sendInternalRequest",
+              "sendMessage",
+              "handleHostMessage",
+              "ensureReady"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "path": ".analysis-local/resume-provider-resolution-work/transport-01/source-contracts.json",
+        "bytes": 9951,
+        "sha256": "5995a4e81aac3317a705396ca7fb397a45a53b5878fd6717e802db04cee312f0"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "nodeCount": 410911,
+      "parserErrors": 0,
+      "config": {
+        "bindings": [],
+        "definitionOnlyBindings": [
+          "ET",
+          "GR",
+          "JI",
+          "MR"
+        ],
+        "members": [],
+        "exports": []
+      }
+    },
+    {
+      "metadata": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-01/source-contracts.json",
+        "bytes": 125810,
+        "sha256": "2b09de204cadcf3ed691cac63fc763df1cdcec69d3bda1d1f76f14db06764154"
+      },
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "nodeCount": 15920,
+      "parserErrors": 0,
+      "config": {
+        "bindings": [
+          "It",
+          "ge",
+          "de"
+        ],
+        "members": [
+          "resumeThread"
+        ],
+        "exports": []
+      }
+    },
+    {
+      "metadata": {
+        "path": ".analysis-local/resume-provider-resolution-work/publish-02/source-contracts.json",
+        "bytes": 126888,
+        "sha256": "7397f34c715ea271cac691230073b1396ab2dce45d28dbce52f57d108042dff8"
+      },
+      "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+      "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+      "nodeCount": 15920,
+      "parserErrors": 0,
+      "config": {
+        "bindings": [
+          "It",
+          "ge",
+          "de"
+        ],
+        "members": [
+          "resumeThread"
+        ],
+        "exports": []
+      }
+    }
+  ],
+  "inheritedInputs": [
+    {
+      "path": "thread-resume-entry-contracts.json",
+      "bytes": 38794,
+      "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+    },
+    {
+      "path": "thread-resume-isolated-observations.json",
+      "bytes": 9706,
+      "sha256": "869b3618d807508def3b4907b56342368ed2dad2103327b8c2e9a899e82b838e"
+    },
+    {
+      "path": "submission-host-instance.json",
+      "bytes": 449270,
+      "sha256": "6416754067f8ab19d8026e73b1a6ae335ca12368f5eb548cd9fd3fd9f5b2d10e"
+    },
+    {
+      "path": "request-wrapper-contracts.json",
+      "bytes": 585390,
+      "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+    },
+    {
+      "path": "feature-scope-v25.json",
+      "bytes": 2063087,
+      "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+    },
+    {
+      "path": "restoration-coverage-v16.json",
+      "bytes": 1109752,
+      "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+    },
+    {
+      "path": "analysis-stage-decisions-v4.json",
+      "bytes": 92640,
+      "sha256": "bd83af234fa51b914f3b9424e34d6fb9a32ad00f5782c69edb0a063739e285de"
+    }
+  ],
+  "operationDisposition": {
+    "operationId": "operation:ttc:TTC-OP-thread-resume",
+    "role": "support",
+    "status": "supporting-mechanism",
+    "excludedFromProductScope": false,
+    "featureIds": [],
+    "allConsumersAssigned": false,
+    "sameBusinessOperationAsPageResumeClaimed": false,
+    "actualUiToDfnInstanceProven": false,
+    "mode": "unknown",
+    "basisFactIds": [
+      "RESUME-PROVIDER-006",
+      "RESUME-PROVIDER-011",
+      "RESUME-PROVIDER-012"
+    ]
+  },
+  "providerBranches": [
+    {
+      "condition": "appServerManagers is absent; startup gate guarantees absence when app.isPackaged is true",
+      "sourceChain": "Bfn -> yMc, conditional X3/loi/Sii -> N3 manager -> vMc/X2t -> selected manager; KI primary/client/cache/deferred predicates retained",
+      "evidence": "submission-host-instance.json",
+      "qualification": "Static conditional composition. Actual mount, scope/host population and selected KI branch unobserved."
+    },
+    {
+      "condition": "unpackaged AND CODEX_APP_SERVER_MANAGER_IN_MAIN=1 AND host entry resource current/ready",
+      "sourceChain": "createAppHost.appServerManagers -> SMc ready entry.manager -> jfe -> vp current getter -> Ofe resource.manager kM -> _fe -> connection mB/GR/JI/MR -> injected transport connection.send",
+      "qualification": "New source receiver join; runtime flags, RPC delivery, identity readiness and service effects unobserved."
+    }
+  ],
+  "maintenanceDecision": {
+    "decision": "Keep page resume coordination, raw thread/resume adapter, hydration/state effects, RPC provider lifecycle, transport delivery and environment-draft recovery distinct. Externalize RPC framework implementation. Preserve all provider branches and unknown capabilities.",
+    "confidence": "inferred; design proposal",
+    "clientImplementationGenerated": false
+  },
+  "remainingBoundaries": [
+    "Actual UI KI branch/scope/host/manager identity and initialization order",
+    "Underlying selected stdio/socket/remote service receiver and source/version binding; public CLI adoption still conditional",
+    "Full hydration/settings/permission/history delegates, notification ordering and durable recovery effects",
+    "Mode/account/cloud/platform ownership and complete consumers; no product exclusion inferred"
+  ],
+  "nameSearchScope": {
+    "method": "rg -l literal resumeThread in frozen webview/assets and .vite/build JavaScript files",
+    "matchedPaths": [
+      "app.asar/.vite/build/main-CqEoQDOU.js",
+      "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "app.asar/webview/assets/publish-actions-c0626be2877a.js"
+    ],
+    "qualification": "Name-based discovery only; aliases/computed properties/native methods and consumer completeness not established."
+  },
+  "counts": {
+    "fullProgramParses": 7,
+    "distinctNewParsedPrograms": 3,
+    "parsedProgramNodes": 2633798,
+    "selectedUnitParses": 1,
+    "selectedUnitNodes": 6538,
+    "sourceFacts": 12,
+    "savedFirstPartySelectionsIncludingOverlaps": 55,
+    "newReaRuns": 0,
+    "newModelSubmissions": 0,
+    "newClientRuns": 0,
+    "newTargetCodeExecutions": 0,
+    "newUserFeatures": 0,
+    "operationQueueBefore": 1,
+    "operationQueueAfter": 0,
+    "supportOperationsBefore": 116,
+    "supportOperationsAfter": 117,
+    "newProductScenarioPasses": 0
+  },
+  "limits": [
+    "Repeated source queries are counted separately; all seven outputs are retained, including the first query without CJS getter selection and the first publish query without receiver-binding output.",
+    "The query runner evolved during this batch; saved query results are original receipts, and the saved final runner supports rerunning the named questions, not byte-identical reproduction of every intermediate metadata shape.",
+    "No actual module/RPC/IPC/service request was executed. The historical 19 isolated resume cases remain limited evidence and are not new observations here.",
+    "No raw API to page business equivalence or full application feature denominator is asserted."
+  ],
+  "fullAnalysisCompleted": false
+}

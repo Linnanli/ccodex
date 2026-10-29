@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "nodeVersion": "v22.23.2",
+  "scope": "One Node VM command; only saved host functions, synthetic FI records and compiler memo-cache substitutes.",
+  "executed": 17,
+  "passed": 17,
+  "failed": 0,
+  "scenarios": [
+    {
+      "id": "SEC-VM-01",
+      "label": "local default uses the saved default object",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.394Z",
+      "output": {
+        "value": {
+          "id": "local",
+          "display_name": "Local",
+          "kind": "local"
+        },
+        "sameDefaultObject": true,
+        "reads": [
+          "remote_ssh_connections",
+          "remote_wsl_connections",
+          "remote_control_connections",
+          "host_config"
+        ]
+      }
+    },
+    {
+      "id": "SEC-VM-02",
+      "label": "unknown string host falls back to local",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.397Z",
+      "output": {
+        "value": {
+          "id": "local",
+          "display_name": "Local",
+          "kind": "local"
+        },
+        "sameDefaultObject": true
+      }
+    },
+    {
+      "id": "SEC-VM-03",
+      "label": "missing remote arrays use empty lists by default",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.398Z",
+      "output": {
+        "remoteList": []
+      }
+    },
+    {
+      "id": "SEC-VM-04",
+      "label": "explicit wait for SSH with no SSH data returns undefined",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.401Z",
+      "output": {
+        "result": "undefined"
+      }
+    },
+    {
+      "id": "SEC-VM-05",
+      "label": "cloud executor uses local kind while preserving the input id",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.402Z",
+      "output": {
+        "id": "environment-git:hosted:fixture%2Fcloud",
+        "kind": "local",
+        "display_name": "Cloud executor"
+      }
+    },
+    {
+      "id": "SEC-VM-06",
+      "label": "malformed hosted percent encoding throws URIError",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.403Z",
+      "output": {
+        "errorName": "URIError"
+      }
+    },
+    {
+      "id": "SEC-VM-07",
+      "label": "SSH alias is trimmed and takes precedence over flags",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.404Z",
+      "output": {
+        "id": "fixture-ssh",
+        "display_name": "Fixture SSH",
+        "kind": "ssh",
+        "codex_cli_command": [],
+        "terminal_command": [
+          "ssh",
+          "fixture-alias"
+        ]
+      }
+    },
+    {
+      "id": "SEC-VM-08",
+      "label": "SSH identity and port become arguments when alias is empty",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.405Z",
+      "output": {
+        "id": "fixture-ssh",
+        "display_name": "Fixture SSH",
+        "kind": "ssh",
+        "codex_cli_command": [],
+        "terminal_command": [
+          "ssh",
+          "-i",
+          "fixture.pem",
+          "-p",
+          "2222",
+          "host.invalid"
+        ]
+      }
+    },
+    {
+      "id": "SEC-VM-09",
+      "label": "WSL produces its own host kind and terminal arguments",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.406Z",
+      "output": {
+        "id": "fixture-wsl",
+        "display_name": "Fixture WSL",
+        "kind": "wsl",
+        "codex_cli_command": [],
+        "terminal_command": [
+          "wsl.exe",
+          "-d",
+          "Fixture"
+        ],
+        "distro": "Fixture"
+      }
+    },
+    {
+      "id": "SEC-VM-10",
+      "label": "remote-control retains its metadata without a terminal command",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.407Z",
+      "output": {
+        "id": "fixture-control",
+        "display_name": "Fixture Control",
+        "kind": "remote-control",
+        "codex_cli_command": [],
+        "terminal_command": [],
+        "env_id": "fixture-env",
+        "host_name": "fixture-host",
+        "online": true,
+        "busy": false,
+        "os": "fixture-os",
+        "arch": "fixture-arch"
+      }
+    },
+    {
+      "id": "SEC-VM-11",
+      "label": "combined list order makes the first duplicate id win",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.408Z",
+      "output": {
+        "id": "fixture-duplicate",
+        "display_name": "Fixture SSH",
+        "kind": "ssh",
+        "codex_cli_command": [],
+        "terminal_command": [
+          "ssh",
+          "fixture-alias"
+        ]
+      }
+    },
+    {
+      "id": "SEC-VM-12",
+      "label": "matching host_config is returned by identity",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.409Z",
+      "output": {
+        "value": {
+          "id": "fixture-override",
+          "kind": "local",
+          "display_name": "Fixture override"
+        },
+        "sameConfigObject": true
+      }
+    },
+    {
+      "id": "SEC-VM-13",
+      "label": "nonmatching host_config does not override the selected remote host",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.410Z",
+      "output": {
+        "id": "fixture-ssh",
+        "display_name": "Fixture SSH",
+        "kind": "ssh",
+        "codex_cli_command": [],
+        "terminal_command": [
+          "ssh",
+          "fixture-alias"
+        ]
+      }
+    },
+    {
+      "id": "SEC-VM-14",
+      "label": "matching host_config precedes cloud executor detection",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.411Z",
+      "output": {
+        "value": {
+          "id": "environment-git:hosted:fixture",
+          "kind": "ssh",
+          "display_name": "Fixture cloud override"
+        },
+        "sameConfigObject": true
+      }
+    },
+    {
+      "id": "SEC-VM-15",
+      "label": "null host id with no host_config throws TypeError",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.412Z",
+      "output": {
+        "errorName": "TypeError"
+      }
+    },
+    {
+      "id": "SEC-VM-16",
+      "label": "undefined id matches absent host_config id and falls back",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.413Z",
+      "output": {
+        "value": {
+          "id": "local",
+          "display_name": "Local",
+          "kind": "local"
+        },
+        "sameDefaultObject": true
+      }
+    },
+    {
+      "id": "SEC-VM-17",
+      "label": "unchanged FI array identities reuse the mapped host object",
+      "status": "passed",
+      "startedAtUtc": "2026-10-23T17:38:07.414Z",
+      "output": {
+        "value": {
+          "id": "fixture-ssh",
+          "display_name": "Fixture SSH",
+          "kind": "ssh",
+          "codex_cli_command": [],
+          "terminal_command": [
+            "ssh",
+            "fixture-alias"
+          ]
+        },
+        "sameMappedObject": true
+      }
+    }
+  ],
+  "savedSourceUnitsLoaded": 15,
+  "savedFunctionsLoaded": 10,
+  "savedSourceBytesLoaded": 1941,
+  "units": [
+    {
+      "name": "definition-pzt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2178770,
+        "endExclusive": 2178937
+      },
+      "utf16Range": {
+        "start": 2141708,
+        "endExclusive": 2141875
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "3512973d60a107ff99f6a85ba9f8e06a28bcbad36ba596215831469a0c3b0bf8",
+      "localSourceFilename": "01-002-definition-pzt.txt",
+      "completeAstNode": true,
+      "bytes": 167
+    },
+    {
+      "name": "definition-mzt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2178937,
+        "endExclusive": 2179077
+      },
+      "utf16Range": {
+        "start": 2141875,
+        "endExclusive": 2142015
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "72eccd16da407968d3d46484e8905cb814998d829a1bb0583ae9c1625b7cb4fb",
+      "localSourceFilename": "01-003-definition-mzt.txt",
+      "completeAstNode": true,
+      "bytes": 140
+    },
+    {
+      "name": "definition-lzt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2178155,
+        "endExclusive": 2178641
+      },
+      "utf16Range": {
+        "start": 2141093,
+        "endExclusive": 2141579
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "233aa48eda980897e5188d348e838de306892bdd86eb15bcf7d20547e09bda0a",
+      "localSourceFilename": "01-004-definition-lzt.txt",
+      "completeAstNode": true,
+      "bytes": 486
+    },
+    {
+      "name": "definition-OM",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1893940,
+        "endExclusive": 1894025
+      },
+      "utf16Range": {
+        "start": 1856886,
+        "endExclusive": 1856971
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "52c9202b054dc16edd42dc04f842a63c4d6679ad499088a4e37a49ad7485e97a",
+      "localSourceFilename": "01-005-definition-OM.txt",
+      "completeAstNode": true,
+      "bytes": 85
+    },
+    {
+      "name": "definition-mbt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1895272,
+        "endExclusive": 1895455
+      },
+      "utf16Range": {
+        "start": 1858218,
+        "endExclusive": 1858401
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "a695ccbd93f58125d00acad790da4ef7fabd1bba2fd615510bd716d3125f419b",
+      "localSourceFilename": "01-006-definition-mbt.txt",
+      "completeAstNode": true,
+      "bytes": 183
+    },
+    {
+      "name": "definition-sbt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1894552,
+        "endExclusive": 1894603
+      },
+      "utf16Range": {
+        "start": 1857498,
+        "endExclusive": 1857549
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "239c97809eee2a224998f27b0a960dc310b5da6ea177d884c6879a23db6d8ac1",
+      "localSourceFilename": "01-007-definition-sbt.txt",
+      "completeAstNode": true,
+      "bytes": 51
+    },
+    {
+      "name": "definition-obt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1894512,
+        "endExclusive": 1894552
+      },
+      "utf16Range": {
+        "start": 1857458,
+        "endExclusive": 1857498
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "21ab8fbb2a7795933b5b0d8e28e3faa4070e672dfbaf831e42bf8c9c090c96dc",
+      "localSourceFilename": "01-008-definition-obt.txt",
+      "completeAstNode": true,
+      "bytes": 40
+    },
+    {
+      "name": "definition-pbt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1894976,
+        "endExclusive": 1895272
+      },
+      "utf16Range": {
+        "start": 1857922,
+        "endExclusive": 1858218
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "f43fd157d2339ae8b7f4a05d3842337ea916400ccd0dff4098b1683e44c21c4c",
+      "localSourceFilename": "01-009-definition-pbt.txt",
+      "completeAstNode": true,
+      "bytes": 296
+    },
+    {
+      "name": "definition-fbt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1894764,
+        "endExclusive": 1894976
+      },
+      "utf16Range": {
+        "start": 1857710,
+        "endExclusive": 1857922
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "d60d475cac40dab3f603a5f63dbd1a1e92ebcffa49d41616a80373c98050ca83",
+      "localSourceFilename": "01-010-definition-fbt.txt",
+      "completeAstNode": true,
+      "bytes": 212
+    },
+    {
+      "name": "definition-nbt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1894160,
+        "endExclusive": 1894325
+      },
+      "utf16Range": {
+        "start": 1857106,
+        "endExclusive": 1857271
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "ae05abe6321b0f7bd83105408f4f69d2aaa363ce38187e8ea07de71d982bb1fb",
+      "localSourceFilename": "01-011-definition-nbt.txt",
+      "completeAstNode": true,
+      "bytes": 165
+    },
+    {
+      "name": "assignment-II",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2178746,
+        "endExclusive": 2178756
+      },
+      "utf16Range": {
+        "start": 2141684,
+        "endExclusive": 2141694
+      },
+      "nodeType": "AssignmentExpression",
+      "spanHash": "0d5e0cbf93fe2397774315efec3c50dca07c1a15a0eb90f0df08f9cd2f1c2f37",
+      "localSourceFilename": "01-015-assignment-II.txt",
+      "completeAstNode": true,
+      "bytes": 10
+    },
+    {
+      "name": "assignment-hbt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1895519,
+        "endExclusive": 1895541
+      },
+      "utf16Range": {
+        "start": 1858465,
+        "endExclusive": 1858487
+      },
+      "nodeType": "AssignmentExpression",
+      "spanHash": "b7e666c256508d7fa6286c7a694301dcf420404b2650de41fbd2a00e8f96ed1a",
+      "localSourceFilename": "01-019-assignment-hbt.txt",
+      "completeAstNode": true,
+      "bytes": 22
+    },
+    {
+      "name": "assignment-gbt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1895542,
+        "endExclusive": 1895561
+      },
+      "utf16Range": {
+        "start": 1858488,
+        "endExclusive": 1858507
+      },
+      "nodeType": "AssignmentExpression",
+      "spanHash": "31a66bc817a9a882fd447beb70405f2bd9adbe23deae74f65a5feeb34efe1a97",
+      "localSourceFilename": "01-017-assignment-gbt.txt",
+      "completeAstNode": true,
+      "bytes": 19
+    },
+    {
+      "name": "assignment-_bt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1895562,
+        "endExclusive": 1895582
+      },
+      "utf16Range": {
+        "start": 1858508,
+        "endExclusive": 1858528
+      },
+      "nodeType": "AssignmentExpression",
+      "spanHash": "6ec416906905aea00babe68171ee615666b83f6e6b44e9b2fe245161a4280978",
+      "localSourceFilename": "01-021-assignment-_bt.txt",
+      "completeAstNode": true,
+      "bytes": 20
+    },
+    {
+      "name": "assignment-gzt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2179151,
+        "endExclusive": 2179196
+      },
+      "utf16Range": {
+        "start": 2142089,
+        "endExclusive": 2142134
+      },
+      "nodeType": "AssignmentExpression",
+      "spanHash": "910144488642f8ca3e918024c534aa9b6b9e9eb552630b734219550521d64d58",
+      "localSourceFilename": "01-013-assignment-gzt.txt",
+      "completeAstNode": true,
+      "bytes": 45
+    }
+  ],
+  "originalClientRunsAdded": 0,
+  "originalStorageInstanceRunsAdded": 0,
+  "modelSubmissionsAdded": 0,
+  "nativeCommandsExecutedFromReturnedArguments": 0,
+  "savedTargetFunctionsExecutedInVm": true,
+  "independentSemanticPeerReviewAdded": false,
+  "fullAnalysisCompleted": false
+}

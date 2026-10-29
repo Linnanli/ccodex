@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "status": "finite-fragment-static-review; original-module-scope-and-runtime-unknown",
+  "inputs": [
+    {
+      "key": "baseline",
+      "path": ".analysis-local/current-baseline.json",
+      "bytes": 1162,
+      "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+    },
+    {
+      "key": "project",
+      "path": ".analysis-local/mode-boundary-work/project-review.json",
+      "bytes": 999753,
+      "sha256": "7504ab23698d0f5d5b8c97781a3a024d870c8ef3fe93e39bad79a41d568be797"
+    },
+    {
+      "key": "project-evidence",
+      "path": ".analysis-local/mode-boundary-work/project-evidence.jsonl",
+      "bytes": 923427,
+      "sha256": "d17073b52083da8e905fb9dc7c1780e650c97cb38c5940b03bcfcfa5a4b97a9c"
+    },
+    {
+      "key": "guards",
+      "path": ".analysis-local/feature-work/route-guard-notes.json",
+      "bytes": 177258,
+      "sha256": "af3572ffe7f90646b009e43a74ff11497a7905a6c645514dc71b650b239a5854"
+    },
+    {
+      "key": "ast",
+      "path": ".analysis-local/review-work/request-wrapper-ast.json",
+      "bytes": 5895568,
+      "sha256": "dee7cd3f485aa8eea86c6a51fcad41eeb12f02de45f72a2f82be0b1b8dee7733"
+    },
+    {
+      "key": "ast-evidence",
+      "path": ".analysis-local/review-work/request-wrapper-ast-evidence.jsonl",
+      "bytes": 10827371,
+      "sha256": "3971be04d94d11cbdfcdc8379eafd5c0c41065845ad7b3c1dda82275cc60d481"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "bytes": 11440241,
+      "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+    },
+    {
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/chatgpt-project-settings-dialog-8af3e5dc9374.js",
+      "sourcePath": "app.asar/webview/assets/chatgpt-project-settings-dialog-8af3e5dc9374.js",
+      "bytes": 38918,
+      "sha256": "71fced71a57cb1c80bf802544ee8f2ce071788e8f18a8319798ec8434eb9b0d3"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "scripts/analysis/project_upstream_review.mjs",
+      "bytes": 16525,
+      "sha256": "7e0ea74b7bdd78d1c2bea8d22c14a07c4cf66048826ef018bd7f20ac292875e9"
+    },
+    {
+      "path": "scripts/analysis/verify_project_upstream.py",
+      "bytes": 36054,
+      "sha256": "1a8e52a6298253f00a9cc204616f96c3e3300b9497bf622865826515fb6e2a27"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "bytes": 11440241
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/chatgpt-project-settings-dialog-8af3e5dc9374.js",
+      "sourceHash": "71fced71a57cb1c80bf802544ee8f2ce071788e8f18a8319798ec8434eb9b0d3",
+      "bytes": 38918
+    }
+  ],
+  "reproduction": {
+    "scriptPath": "scripts/analysis/project_upstream_review.mjs",
+    "scriptSha256": "7e0ea74b7bdd78d1c2bea8d22c14a07c4cf66048826ef018bd7f20ac292875e9",
+    "command": "/Users/nallylin/.nvm/versions/node/v22.23.2/bin/node scripts/analysis/project_upstream_review.mjs",
+    "parserPath": "/private/tmp/ccodex-rea-tooling/install/node_modules/@babel/parser/lib/index.js",
+    "parserSha256": "43d95824b43928626ccf99136e95ab90260c18406f22f8acf57f239483127f66"
+  },
+  "scope": {
+    "selectedChain": "settings.je -> initial.fkn -> local Emn candidate and five direct/transitive predicate helpers",
+    "jsonlPointerConvention": "JSONL is materialized as an ordered array of records; sourceArtifact.jsonPointer /N points to zero-based record N. No synthetic alias object is used.",
+    "newWholeLargeBundleAst": false,
+    "targetExecuted": false,
+    "uiUsed": false,
+    "authRead": false,
+    "personalHistoryRead": false,
+    "modelCalls": false,
+    "fragment": {
+      "range": {
+        "start": 1977943,
+        "endExclusive": 1979523
+      },
+      "bytes": 1580,
+      "evidenceId": "PUP-E0001",
+      "completeProgramFragment": true,
+      "totalTopLevelFunctionDeclarations": 14,
+      "astNodes": 469
+    },
+    "selectedFunctionDenominator": 6,
+    "allInitialFunctionDenominator": "unknown",
+    "consumerCoverage": "One saved localFolders property and its saved lexical references; not all fkn consumers"
+  },
+  "exportContract": {
+    "importLocal": "je",
+    "importedName": "fkn",
+    "exportLocal": "Emn",
+    "sourceArtifact": {
+      "key": "ast",
+      "jsonPointer": "/files/2/exports/0/bindings/6312"
+    },
+    "evidenceIds": [
+      "CGP-E00152",
+      "CGP-E01565",
+      "PUP-E0015",
+      "REQUEST-WRAPPER-AST-07063"
+    ],
+    "identityStatus": "saved-complete-module-export-alias-confirmed; candidate-definition-fragment-bound",
+    "originalModuleDefinitionScope": "unknown"
+  },
+  "functions": [
+    {
+      "name": "Emn",
+      "evidenceId": "PUP-E0002",
+      "range": {
+        "start": 1979470,
+        "endExclusive": 1979523
+      },
+      "parameterNames": [
+        "e"
+      ],
+      "calls": [
+        {
+          "evidenceId": "PUP-E0008",
+          "range": {
+            "start": 1979493,
+            "endExclusive": 1979498
+          },
+          "calleeKind": "Identifier",
+          "calleeName": "bO",
+          "argumentCount": 1,
+          "localFragmentBinding": {
+            "status": "bound-to-top-level-function-in-complete-fragment",
+            "targetFunctionEvidenceId": "PUP-E0005",
+            "originalModuleScope": "unknown"
+          }
+        },
+        {
+          "evidenceId": "PUP-E0009",
+          "range": {
+            "start": 1979500,
+            "endExclusive": 1979505
+          },
+          "calleeKind": "Identifier",
+          "calleeName": "xO",
+          "argumentCount": 1,
+          "localFragmentBinding": {
+            "status": "bound-to-top-level-function-in-complete-fragment",
+            "targetFunctionEvidenceId": "PUP-E0007",
+            "originalModuleScope": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "vO",
+      "evidenceId": "PUP-E0003",
+      "range": {
+        "start": 1977943,
+        "endExclusive": 1977992
+      },
+      "parameterNames": [
+        "e"
+      ],
+      "calls": [
+        {
+          "evidenceId": "PUP-E0010",
+          "range": {
+            "start": 1977965,
+            "endExclusive": 1977986
+          },
+          "calleeKind": "OptionalMemberExpression",
+          "calleeName": "e?.startsWith",
+          "argumentCount": 1,
+          "localFragmentBinding": {
+            "status": "member-or-external-implementation-unknown",
+            "targetFunctionEvidenceId": null,
+            "originalModuleScope": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "yO",
+      "evidenceId": "PUP-E0004",
+      "range": {
+        "start": 1977992,
+        "endExclusive": 1978150
+      },
+      "parameterNames": [
+        "e"
+      ],
+      "calls": [
+        {
+          "evidenceId": "PUP-E0011",
+          "range": {
+            "start": 1978109,
+            "endExclusive": 1978148
+          },
+          "calleeKind": "MemberExpression",
+          "calleeName": "Array.isArray",
+          "argumentCount": 1,
+          "localFragmentBinding": {
+            "status": "member-or-external-implementation-unknown",
+            "targetFunctionEvidenceId": null,
+            "originalModuleScope": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "bO",
+      "evidenceId": "PUP-E0005",
+      "range": {
+        "start": 1978150,
+        "endExclusive": 1978419
+      },
+      "parameterNames": [
+        "e"
+      ],
+      "calls": [
+        {
+          "evidenceId": "PUP-E0012",
+          "range": {
+            "start": 1978172,
+            "endExclusive": 1978177
+          },
+          "calleeKind": "Identifier",
+          "calleeName": "yO",
+          "argumentCount": 1,
+          "localFragmentBinding": {
+            "status": "bound-to-top-level-function-in-complete-fragment",
+            "targetFunctionEvidenceId": "PUP-E0004",
+            "originalModuleScope": "unknown"
+          }
+        },
+        {
+          "evidenceId": "PUP-E0013",
+          "range": {
+            "start": 1978179,
+            "endExclusive": 1978193
+          },
+          "calleeKind": "Identifier",
+          "calleeName": "vO",
+          "argumentCount": 1,
+          "localFragmentBinding": {
+            "status": "bound-to-top-level-function-in-complete-fragment",
+            "targetFunctionEvidenceId": "PUP-E0003",
+            "originalModuleScope": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "xmn",
+      "evidenceId": "PUP-E0006",
+      "range": {
+        "start": 1978871,
+        "endExclusive": 1978941
+      },
+      "parameterNames": [
+        "e"
+      ],
+      "calls": []
+    },
+    {
+      "name": "xO",
+      "evidenceId": "PUP-E0007",
+      "range": {
+        "start": 1979381,
+        "endExclusive": 1979470
+      },
+      "parameterNames": [
+        "e"
+      ],
+      "calls": [
+        {
+          "evidenceId": "PUP-E0014",
+          "range": {
+            "start": 1979437,
+            "endExclusive": 1979462
+          },
+          "calleeKind": "Identifier",
+          "calleeName": "xmn",
+          "argumentCount": 1,
+          "localFragmentBinding": {
+            "status": "bound-to-top-level-function-in-complete-fragment",
+            "targetFunctionEvidenceId": "PUP-E0006",
+            "originalModuleScope": "unknown"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "sourceArtifact": {
+        "key": "ast",
+        "jsonPointer": "/files/2/exports/0/bindings/6312"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "ast",
+        "jsonPointer": "/files/2/exports/0/evidenceId"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/calls/356"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/68"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/395"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/398"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/8"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/446"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/447"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/448"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/lexicalBindings/69"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/calls/295"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/assignments/177"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/assignments/178"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modules/1/targetedReview/localFoldersProperty/0"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "guards",
+        "jsonPointer": "/notes/8"
+      }
+    },
+    {
+      "sourceArtifact": {
+        "key": "guards",
+        "jsonPointer": "/notes/10"
+      }
+    }
+  ],
+  "semanticReviews": [
+    {
+      "id": "PUP-R01",
+      "scope": "Six complete predicates/helpers",
+      "classification": "data-eligibility-predicate; product-mode-unknown",
+      "evidenceIds": [
+        "PUP-E0001",
+        "PUP-E0002",
+        "PUP-E0003",
+        "PUP-E0004",
+        "PUP-E0005",
+        "PUP-E0006",
+        "PUP-E0007"
+      ],
+      "facts": [
+        "Emn returns bO(project) && xO(project) === open-default.",
+        "vO accepts a string-like id only when its optional startsWith(g-p-) call returns true; yO checks string gizmo.id, string gizmo.display.name, and absent sharing or array sharing.subjects.",
+        "bO requires yO, vO, absent/null first_party_project_type, null gizmo_snorlax_type, share_recipient=private, hasSharingSubjects !== true, and no sharing.subjects.",
+        "xO requires a non-null project and a memory_scope property in gizmo; xmn maps project_v2 to project-only and every other value to open-default. Missing memory_scope yields undefined and fails Emn.",
+        "The six complete function bodies contain no network/IPC calls or direct chat/work/codex mode/feature-flag/environment reads."
+      ],
+      "unknowns": [
+        "Member methods may have caller-controlled implementations; this is ordinary source structure rather than a runtime purity proof.",
+        "The original enclosing lexical scope and possible later assignments to these helper identifiers are not established by the finite fragment. Saved AST proves Emn as fkn export identity, while the exact original-module definition binding remains limited.",
+        "ID prefix and gizmo data fields do not establish ChatGPT-exclusive product ownership, server origin, Codex visibility or complete caller denominator."
+      ],
+      "confirmedExclude": false
+    },
+    {
+      "id": "PUP-R02",
+      "scope": "Preserved settings localFolders consumer",
+      "classification": "complete-module-binding-reused; outer-gates-unknown",
+      "sourceArtifact": {
+        "key": "project",
+        "jsonPointer": "/modeBoundaryReview/1"
+      },
+      "evidenceIds": [
+        "CGP-E00779",
+        "CGP-E00152",
+        "CGP-E01565",
+        "CGP-E01848",
+        "CGP-E00786",
+        "CGP-E00792",
+        "CGP-E00031",
+        "CGP-E00879",
+        "CGP-E00881",
+        "CGP-E00883",
+        "CGP-E00154",
+        "CGP-E01504",
+        "CGP-E01790",
+        "CGP-E01791"
+      ],
+      "facts": [
+        "The complete localFolders property uses s && L && je(i), with i bound to the project prop and je bound to initial.fkn in the saved complete-module AST.",
+        "s is the local result of c(rt), c imported from shared.Ban. Its implementation and runtime value are outside this chain.",
+        "L is initialized from the Pt-body local Re (binding-448), assigned Me(Fe,a) or the memo cache n[13]. Me is imported initial.gkn; Fe is the Pt-body local project field, and a is projectCrudStatus.",
+        "Pt-body Re shadows the Program import Re from initial.rOn. Connecting L to rOn by spelling would be incorrect.",
+        "The localFolders branch renders imported at from local-folders-section.t with disabled/onSavingChange/projectId/projectName; that downstream implementation is not reviewed here."
+      ],
+      "unknowns": [
+        "gkn implementation, c(rt) implementation, memo values, entitlement/platform gates, mounting and runtime reachability remain unknown."
+      ],
+      "confirmedExclude": false
+    },
+    {
+      "id": "PUP-R03",
+      "scope": "Existing shared settings caller and dedicated route guards",
+      "classification": "inherited-static-context; not-exclusive-caller-proof",
+      "sourceArtifact": {
+        "key": "guards",
+        "jsonPointer": "/notes/8"
+      },
+      "evidenceIds": [
+        "RG-025",
+        "RG-026",
+        "RG-027",
+        "RG-032",
+        "RG-139",
+        "RG-143"
+      ],
+      "facts": [
+        "Frozen pss/Dos/jos notes trace the same lazy settings export into sidebar settings that also carries Work and local task context; this finite predicate review does not establish that all contexts can satisfy the localFolders branch.",
+        "The dedicated sFs project route has its own mapping/redirect and default oZ.allowWork=false boundary. It cannot replace the shared settings caller or classify the localFolders predicate as removable."
+      ],
+      "unknowns": [
+        "Complete callers, original outer lexical scope and actual mode/flag/data values remain unknown."
+      ],
+      "confirmedExclude": false
+    }
+  ],
+  "summary": {
+    "selectedFunctions": 6,
+    "selectedCalls": 7,
+    "fragmentBytes": 1580,
+    "evidenceRecords": 38,
+    "freshEvidenceRecords": 15,
+    "reusedEvidenceRecords": 23,
+    "confirmedModeExclusions": 0,
+    "runtimeVerifiedChains": 0
+  },
+  "limitations": [
+    "No full initial/shared AST was newly scanned; saved indexes do not include a complete original-module definition binding for Emn.",
+    "A fragment Program proves local helper bindings inside that fragment, not the original full-module lexical context or reassignment denominator.",
+    "Old journals are checked only for referenced spans; no claim that all historical producer pins or all rows were independently validated.",
+    "Semantic reviews are manual and use exact complete selected nodes plus saved complete-module consumers; identity/range extraction is reproducible."
+  ]
+}

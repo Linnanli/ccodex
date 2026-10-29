@@ -1,0 +1,2483 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "archiveSha256": "c5b273322a833ce5165429d468021cc6289a11cc68d075b80ae773bd7fb6731f",
+  "recordedAtUtc": "2026-10-13T11:57:05.118122+00:00",
+  "status": "analysis-stage-options; no route selected, acquired, implemented or runtime-verified",
+  "method": "derive-decisions-from-existing-frozen-and-published-records; validate-hash-pointer-evidence-references",
+  "scope": {
+    "runtimeSourceDenominator": {
+      "selection": "Fixed 10 entry/main/bootstrap/preload/network files; mixed published bundles, not recovered modules or full app coverage",
+      "selectedSourceFiles": 10,
+      "parsedSourceFiles": 10,
+      "auxiliaryHelperFiles": 1,
+      "totalCoreBytes": 5379973,
+      "allCallAndConstructorExpressions": 90246,
+      "sourceConfirmedElectronDerivedCallSites": 1242,
+      "electronDerivedMemberReferences": 241,
+      "unresolvedNameOnlyCandidateCalls": 4293,
+      "unknownCandidateSelection": "Unknown member call with method name overlapping confirmed API tails or fixed window/IPC names; possible non-runtime false positives. Not exhaustive unknown receiver denominator.",
+      "distinctElectronDerivedCalleePaths": 229,
+      "derivedJavaScriptBindCalls": 6,
+      "resolutionBudgetHits": 34,
+      "supplementaryReviewedFunctionOrObjectAnchors": 11,
+      "supplementaryReviewedSchemaOrNameBindings": 3,
+      "documentReferences": 23,
+      "evidenceCount": 11512
+    },
+    "inputArtifactCount": 9,
+    "optionCount": 3,
+    "requiredCustomBoundaryCount": 4,
+    "commonRequirementCount": 6,
+    "proposedInvestigationCount": 6,
+    "moduleBoundaryProposalCount": 11,
+    "fullApplicationCoverage": false,
+    "newTargetScan": false,
+    "targetCodeExecuted": false
+  },
+  "runnerSource": {
+    "path": ".analysis-local/runtime-decision-work/build-runtime-adapter-options.py",
+    "sha256": "f0a6a9f5fcf0c184b0289c83ecd67915d960e715a971144643dd71b96b2d984c"
+  },
+  "inputs": [
+    {
+      "id": "runtime",
+      "path": ".analysis-local/runtime-api-work/runtime-api-contracts.json",
+      "sha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+      "bytes": 3913933,
+      "format": "json"
+    },
+    {
+      "id": "runtime-summary",
+      "path": ".analysis-local/runtime-api-work/summary.md",
+      "sha256": "d1f2130a0932cab2021ddb42a910b3c98dcabea4e901f81183616fc8dfbb4c73",
+      "bytes": 5598,
+      "format": "markdown"
+    },
+    {
+      "id": "runtime-evidence",
+      "path": ".analysis-local/runtime-api-work/evidence.jsonl",
+      "sha256": "d79a1af263047b4f5146df99455f1579ae696d54daa41ca0b2cc1a68fe1723b5",
+      "bytes": 9171882,
+      "format": "jsonl"
+    },
+    {
+      "id": "native",
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/native-runtime.json",
+      "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+      "bytes": 421989,
+      "format": "json"
+    },
+    {
+      "id": "dependency-summary",
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/dependency-summary.json",
+      "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2",
+      "bytes": 7125,
+      "format": "json"
+    },
+    {
+      "id": "build-inputs",
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/build-inputs.json",
+      "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+      "bytes": 5040,
+      "format": "json"
+    },
+    {
+      "id": "boundaries",
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/module-boundary-proposals.json",
+      "sha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+      "bytes": 69138,
+      "format": "json"
+    },
+    {
+      "id": "private-dependencies",
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/dependencies.csv",
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+      "bytes": 208587,
+      "format": "csv"
+    },
+    {
+      "id": "published-evidence",
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/evidence.jsonl",
+      "sha256": "e0c0965293ac7733fcce7cc2d1a99c7a3a4eff7ae7f13e6674fedb43a92625a0",
+      "bytes": 25926923,
+      "format": "jsonl"
+    }
+  ],
+  "goalConstraint": {
+    "target": "Complete Codex functionality in the intended independent client",
+    "intermediateSliceRole": "Technical feasibility and intermediate verification only; not a reduced final delivery scope",
+    "gapRule": "Untested contracts and temporary unsupported capability fallbacks remain open for later full-target acceptance; they cannot close analysis gaps.",
+    "status": "Full target feature denominator and acceptance coverage are not established by the existing scoped records",
+    "sourceRefs": [
+      {
+        "inputId": "runtime",
+        "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+        "jsonPointer": "/scope",
+        "evidenceIds": []
+      },
+      {
+        "inputId": "boundaries",
+        "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+        "jsonPointer": "/scope",
+        "evidenceIds": []
+      },
+      {
+        "inputId": "boundaries",
+        "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+        "jsonPointer": "/openArchitectureDecisions",
+        "evidenceIds": []
+      }
+    ]
+  },
+  "recommendation": {
+    "claimKind": "inferred-analysis-direction",
+    "text": "Investigate independently pinnable Owl acquisition first, while defining owned capability/transport interfaces. If availability remains unknown, prioritize an ordinary Electron adapter feasibility investigation for an explicit feature slice; retain the other-shell route as a rewrite option. None is a proven replacement.",
+    "sourceRefs": [
+      {
+        "inputId": "runtime",
+        "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+        "jsonPointer": "/actualRuntime",
+        "evidenceIds": [
+          "RUNTIME-REVIEW-0001",
+          "RUNTIME-REVIEW-0016"
+        ]
+      },
+      {
+        "inputId": "runtime",
+        "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+        "jsonPointer": "/supplementaryContracts/0",
+        "evidenceIds": [
+          "RUNTIME-API-000071",
+          "RUNTIME-API-000072",
+          "RUNTIME-API-000073",
+          "RUNTIME-API-001042",
+          "RUNTIME-REVIEW-0001",
+          "RUNTIME-REVIEW-0016"
+        ]
+      },
+      {
+        "inputId": "runtime",
+        "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+        "jsonPointer": "/supplementaryContracts/6",
+        "evidenceIds": [
+          "RUNTIME-REVIEW-0015"
+        ]
+      },
+      {
+        "inputId": "boundaries",
+        "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+        "jsonPointer": "/scope",
+        "evidenceIds": []
+      },
+      {
+        "inputId": "boundaries",
+        "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+        "jsonPointer": "/openArchitectureDecisions",
+        "evidenceIds": []
+      }
+    ]
+  },
+  "options": [
+    {
+      "id": "RUNTIME-OPTION-pinned-independent-owl",
+      "route": "Independently obtain and pin Owl runtime dependency",
+      "recommendation": "First, bounded investigation of acquisition/provenance; adoption is conditional on an independently maintainable distribution and contracts.",
+      "status": "candidate; independent availability unknown",
+      "claimKind": "inferred-route-comparison",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/actualRuntime",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/runtimeMetadata/0",
+          "evidenceIds": [
+            "dep-e-02507"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/0",
+          "evidenceIds": [
+            "RUNTIME-API-000071",
+            "RUNTIME-API-000072",
+            "RUNTIME-API-000073",
+            "RUNTIME-API-001042",
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/0",
+          "evidenceIds": [
+            "dep-e-02540"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/4",
+          "evidenceIds": [
+            "dep-e-02544"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/5",
+          "evidenceIds": [
+            "dep-e-02545"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/6",
+          "evidenceIds": [
+            "dep-e-02546"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/7",
+          "evidenceIds": [
+            "dep-e-02547"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/10",
+          "evidenceIds": [
+            "dep-e-02550"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/11",
+          "evidenceIds": [
+            "dep-e-02551"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/20",
+          "evidenceIds": [
+            "dep-e-02560"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/21",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/24",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/25",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/27",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/29",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/diskRuntimeBinaries/0",
+          "evidenceIds": [
+            "dep-e-02387"
+          ]
+        }
+      ],
+      "requiredBoundaryIds": [
+        "RUNTIME-BOUNDARY-task-manager-gate",
+        "RUNTIME-BOUNDARY-native-update-binding",
+        "RUNTIME-BOUNDARY-webcontents-adoption",
+        "RUNTIME-BOUNDARY-node-permissions-ipc"
+      ],
+      "requiredCommonRequirementIds": [
+        "RUNTIME-COMMON-public-primitives",
+        "RUNTIME-COMMON-transport-world-boundary",
+        "RUNTIME-COMMON-private-packages",
+        "RUNTIME-COMMON-native-artifacts",
+        "RUNTIME-COMMON-build-inputs",
+        "RUNTIME-COMMON-other-custom-capabilities"
+      ],
+      "necessaryConditions": [
+        "Identify an independently obtainable runtime artifact/source and its supported development interface",
+        "Pin runtime version/archive identity and separately verified delivered artifact hash; runtimeArchiveSha metadata is not assumed to equal a framework binary hash",
+        "Determine actual Electron/Node versions, ABI and selected platform/architecture support",
+        "Obtain necessary Owl types/preparation/native rebuild support or author reproducible equivalents",
+        "Verify required custom APIs and private/native integrations for the retained feature slice"
+      ],
+      "replacementBoundary": "Retain Owl semantics through a pinned independent runtime dependency; existing packaged binaries remain evidence, not proof of independent acquisition, rebuildability or an upgrade channel.",
+      "verificationGates": [
+        "Acquisition/provenance artifact recorded and content hash verified",
+        "Owned minimal entry/preload can build/package against the independent runtime",
+        "All four required boundary contracts and retained custom capabilities pass targeted fixtures",
+        "A second runtime version can be compared against the same owned capability contracts before upgrade"
+      ],
+      "unknowns": [
+        "Independent distribution/source availability and versioning",
+        "Actual native/API compatibility and upgrade support",
+        "Complete runtime packaging requirements"
+      ],
+      "decisionExit": "Prefer only if the independent dependency and tooling can be pinned and the chosen contracts verified. If availability stays unresolved, keep it unknown and proceed with the owned adapter investigation."
+    },
+    {
+      "id": "RUNTIME-OPTION-electron-owned-adapters",
+      "route": "Version-pinned ordinary Electron with first-party runtime adapters",
+      "recommendation": "If independent Owl acquisition remains unresolved, prioritize ordinary Electron adapter technical feasibility on an explicit intermediate feature slice. The complete Codex goal remains; no replacement success or reduced final scope is claimed.",
+      "status": "candidate; public subset only supported as documentation candidates",
+      "claimKind": "inferred-route-comparison",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/scope",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/actualRuntime",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/0",
+          "evidenceIds": [
+            "RUNTIME-API-000071",
+            "RUNTIME-API-000072",
+            "RUNTIME-API-000073",
+            "RUNTIME-API-001042",
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/6",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0015"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/scope",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/openArchitectureDecisions",
+          "evidenceIds": []
+        }
+      ],
+      "requiredBoundaryIds": [
+        "RUNTIME-BOUNDARY-task-manager-gate",
+        "RUNTIME-BOUNDARY-native-update-binding",
+        "RUNTIME-BOUNDARY-webcontents-adoption",
+        "RUNTIME-BOUNDARY-node-permissions-ipc"
+      ],
+      "requiredCommonRequirementIds": [
+        "RUNTIME-COMMON-public-primitives",
+        "RUNTIME-COMMON-transport-world-boundary",
+        "RUNTIME-COMMON-private-packages",
+        "RUNTIME-COMMON-native-artifacts",
+        "RUNTIME-COMMON-build-inputs",
+        "RUNTIME-COMMON-other-custom-capabilities"
+      ],
+      "necessaryConditions": [
+        "Pin a real selected Electron runtime version; do not infer it from the release devDependency",
+        "Own the startup and capability interfaces so the four custom boundaries are explicit",
+        "For each intermediate custom capability choose implementation, verified alternate behavior, or explicit temporary unsupported fallback; every capability required by the full Codex goal must still meet final acceptance",
+        "Resolve retained first-party/private interfaces and native modules without depending on copied production closures",
+        "Maintain app-host/app-server/coordination and preload worlds as separate verified adapters"
+      ],
+      "replacementBoundary": "Public Electron primitives may implement an intermediate technical feature slice. They do not replace Owl task manager, linked binding, native adoption or permission enforcement merely by similar API shape. A temporarily narrower client is evidence for that intermediate slice only; missing full Codex capabilities remain open gaps.",
+      "verificationGates": [
+        "Chosen public API version and call options/callbacks checked",
+        "Four boundary decisions recorded explicitly and verified per intermediate feature",
+        "Transport/world/lifecycle/native fixtures plus isolated owned integration",
+        "Clean repeatable install/build/package and version-to-version retained-feature checks",
+        "Full Codex feature-to-capability acceptance matrix accounts for untested calls, missing features and all remaining runtime contracts before final acceptance"
+      ],
+      "unknowns": [
+        "Full required feature set and unreviewed runtime receivers",
+        "Equivalent custom capability implementations and dynamic contracts",
+        "Selected runtime ABI, private dependency availability and end-to-end behavior"
+      ],
+      "decisionExit": "Intermediate feasibility can pass only for the explicitly tested slice. Continue toward full Codex acceptance; unknown required boundaries, unsupported interim features and untested contracts remain open rather than closing the analysis gap."
+    },
+    {
+      "id": "RUNTIME-OPTION-other-shell-rewrite",
+      "route": "Reimplement host boundary on another shell",
+      "recommendation": "Reserve as an architectural rewrite option after the domain/transport interfaces and retained features are decided; no specific shell recommendation or benchmark made.",
+      "status": "candidate; feasibility and cost unknown",
+      "claimKind": "inferred-route-comparison",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/6",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0015"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/5",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0013",
+            "RUNTIME-REVIEW-0014"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/2",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0005",
+            "RUNTIME-REVIEW-0006",
+            "RUNTIME-REVIEW-0007",
+            "RUNTIME-REVIEW-0012"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/scope",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/openArchitectureDecisions",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/0",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0001",
+            "REQUEST-WRAPPER-TARGET-0002",
+            "REQUEST-WRAPPER-TARGET-0003",
+            "REQUEST-WRAPPER-TARGET-0004",
+            "REQUEST-WRAPPER-TARGET-0005",
+            "REQUEST-WRAPPER-TARGET-0006",
+            "REQUEST-WRAPPER-TARGET-0007",
+            "REQUEST-WRAPPER-TARGET-0008",
+            "REQUEST-WRAPPER-TARGET-0009",
+            "REQUEST-WRAPPER-TARGET-0010",
+            "REQUEST-WRAPPER-TARGET-0011",
+            "REQUEST-WRAPPER-TARGET-0012",
+            "REQUEST-WRAPPER-TARGET-0013",
+            "REQUEST-WRAPPER-TARGET-0014",
+            "REQUEST-WRAPPER-TARGET-0048",
+            "REQUEST-WRAPPER-TARGET-0049",
+            "REQUEST-WRAPPER-TARGET-0050",
+            "REQUEST-WRAPPER-TARGET-0051",
+            "REQUEST-WRAPPER-TARGET-0060"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/1",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-BINDING-0005",
+            "REQUEST-WRAPPER-TARGET-0023",
+            "REQUEST-WRAPPER-TARGET-0061",
+            "REQUEST-WRAPPER-TARGET-0062",
+            "REQUEST-WRAPPER-TARGET-0063"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/3",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0015",
+            "REQUEST-WRAPPER-TARGET-0016",
+            "REQUEST-WRAPPER-TARGET-0017",
+            "REQUEST-WRAPPER-TARGET-0018"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/5",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0031",
+            "REQUEST-WRAPPER-TARGET-0032",
+            "REQUEST-WRAPPER-TARGET-0033",
+            "REQUEST-WRAPPER-TARGET-0034",
+            "REQUEST-WRAPPER-TARGET-0035",
+            "REQUEST-WRAPPER-TARGET-0036",
+            "REQUEST-WRAPPER-TARGET-0055"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/6",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0056",
+            "REQUEST-WRAPPER-TARGET-0057",
+            "REQUEST-WRAPPER-TARGET-0058",
+            "REQUEST-WRAPPER-TARGET-0059",
+            "REQUEST-WRAPPER-TARGET-0070",
+            "REQUEST-WRAPPER-TARGET-0071",
+            "REQUEST-WRAPPER-TARGET-0072",
+            "REQUEST-WRAPPER-TARGET-0073",
+            "REQUEST-WRAPPER-TARGET-0074"
+          ]
+        }
+      ],
+      "requiredBoundaryIds": [
+        "RUNTIME-BOUNDARY-task-manager-gate",
+        "RUNTIME-BOUNDARY-native-update-binding",
+        "RUNTIME-BOUNDARY-webcontents-adoption",
+        "RUNTIME-BOUNDARY-node-permissions-ipc"
+      ],
+      "requiredCommonRequirementIds": [
+        "RUNTIME-COMMON-public-primitives",
+        "RUNTIME-COMMON-transport-world-boundary",
+        "RUNTIME-COMMON-private-packages",
+        "RUNTIME-COMMON-native-artifacts",
+        "RUNTIME-COMMON-build-inputs",
+        "RUNTIME-COMMON-other-custom-capabilities"
+      ],
+      "necessaryConditions": [
+        "Select and pin an independently obtainable shell and host runtime",
+        "Reimplement main/preload/world isolation, window/session/browser ownership and IPC/port semantics on owned interfaces",
+        "Migrate synchronous callers explicitly if the shell bridge is asynchronous",
+        "Reimplement native integrations or constrain the feature scope through explicit capability decisions",
+        "Preserve separate app-server and app-host service identities and required process/security policies"
+      ],
+      "replacementBoundary": "Domain/state/contracts can guide new implementation; existing Electron/Owl production bundle is not portable as a compatible shell adapter. View ownership and permission enforcement may require a different implementation while preserving chosen behavior. Intermediate scope decisions do not reduce the full Codex target or close its remaining gaps.",
+      "verificationGates": [
+        "Contract feasibility spike for one selected IPC/preload/view lifecycle path",
+        "All retained feature boundaries mapped to concrete target primitives with negative/error tests",
+        "Native/OS permission behavior and browser lifecycle integration",
+        "Owned build/package and upgrade fixtures on selected platforms"
+      ],
+      "unknowns": [
+        "Target shell chosen features, primitives, version and performance",
+        "Migration effort and complete feature feasibility",
+        "Equivalent security/lifecycle semantics"
+      ],
+      "decisionExit": "Choose only after evidence shows its explicit contract mappings are implementable and preferable for the chosen project. Current records do not establish that it is cheaper or more compatible."
+    }
+  ],
+  "requiredCustomBoundaries": [
+    {
+      "id": "RUNTIME-BOUNDARY-task-manager-gate",
+      "claimKind": "source-confirmed-existing-record-plus-inferred-decision",
+      "observedContract": "The complete bootstrap branch rejects process.versions.electron != null when app.showTaskManager is not a function. A separate bound source call uses that API; the guard is only one runtime capability check.",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/0",
+          "evidenceIds": [
+            "RUNTIME-API-000071",
+            "RUNTIME-API-000072",
+            "RUNTIME-API-000073",
+            "RUNTIME-API-001042",
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/48",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-003232"
+          ]
+        }
+      ],
+      "owlRequirement": "An independently obtained Owl distribution must expose the actual required app capability and fulfill its reachable caller behavior; a function-valued placeholder only passes the shape test.",
+      "electronAdapterBoundary": "In an owned reconstructed entrypoint, introduce an explicit task-manager capability. Implement the selected feature contract or mark that feature unsupported with a deliberate caller/UI fallback. Removing the frozen guard alone is not a compatibility implementation.",
+      "otherShellBoundary": "Reimplement task-manager presentation/process integration and the startup capability decision in the chosen shell. No equivalence to the packaged task manager is established.",
+      "unknowns": [
+        "Task manager full input/output, UI and process semantics",
+        "Other Owl startup requirements beyond this guard",
+        "Reachability and required feature policy for the chosen client slice"
+      ],
+      "verificationGates": [
+        "Capability-declaration tests reject falsely supported methods",
+        "Chosen startup path and reachable task-manager caller agree on supported or explicit unsupported behavior",
+        "End-to-end task-manager behavior and lifecycle fixture if the feature is retained"
+      ],
+      "compatibilityStatus": "unknown; no adapter implemented or executed"
+    },
+    {
+      "id": "RUNTIME-BOUNDARY-native-update-binding",
+      "claimKind": "source-confirmed-existing-record-plus-inferred-decision",
+      "observedContract": "The reviewed function calls process._linkedBinding with electron_browser_owl_update_policies when available, validates owlUpdatePolicies.getRelaunchNotificationPolicy and on as functions, and returns null on discovery failure or invalid shape.",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/1",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0002",
+            "RUNTIME-REVIEW-0003",
+            "RUNTIME-REVIEW-0004"
+          ]
+        }
+      ],
+      "owlRequirement": "Confirm native binding availability, returned schema, callback/event behavior and its runtime build provenance for the pinned distribution.",
+      "electronAdapterBoundary": "Define a first-party update/relaunch-policy interface and map owned callers to it. Do not assume an ordinary Node addon or a similarly named public update API can populate this process-internal binding. An absent-policy fallback is allowed only after tracing and verifying the reachable caller null branch.",
+      "otherShellBoundary": "Rebuild the update/relaunch policy domain around the chosen shell updater or an owned service, with an explicit capability result; retain required caller semantics or document an intentional feature change.",
+      "unknowns": [
+        "All callers and effects of the null fallback",
+        "Native event arguments, lifetime and relaunch notification policy semantics",
+        "Independent native source/distribution and actual ABI"
+      ],
+      "verificationGates": [
+        "Missing, throwing and invalid-shape provider cases preserve reviewed discovery result",
+        "Trace every reachable consumer before relying on null",
+        "Policy event subscription/disposal and restart decision fixtures",
+        "Native build/load compatibility for the measured target runtime if a native implementation is retained"
+      ],
+      "compatibilityStatus": "unknown; optional discovery is not evidence that the whole update feature can be omitted"
+    },
+    {
+      "id": "RUNTIME-BOUNDARY-webcontents-adoption",
+      "claimKind": "source-confirmed-existing-record-plus-inferred-decision",
+      "observedContract": "The reviewed injected receiver must expose destroy and _createWebViewAdoptionLease; the routine calls the latter with owner, requires a nonempty lease string, tracks pending leases and a destroyed listener, and cleans up on the reviewed failure path.",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/5",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0013",
+            "RUNTIME-REVIEW-0014"
+          ]
+        }
+      ],
+      "owlRequirement": "Resolve every retained caller and concrete receiver/factory, then confirm owner identity, lease acceptance/consumption and destruction protocol in the pinned Owl runtime.",
+      "electronAdapterBoundary": "Use an owned browser-view ownership/lifetime manager and an explicit adoption token protocol if this feature is retained. WebContentsView documentation or a generated nonempty string does not establish native lease consumption, detach/attach behavior or object ownership equivalence.",
+      "otherShellBoundary": "Reimplement host/view ownership transfer and browser lifecycle for the chosen view primitive; translating the JS call name alone cannot preserve runtime ownership.",
+      "unknowns": [
+        "Injected receiver full cross-caller provenance",
+        "Lease consumer, allowed owner relationships, reuse/expiry and transfer semantics",
+        "Renderer/process movement and complete cleanup ordering"
+      ],
+      "verificationGates": [
+        "Resolve selected-feature receiver and lease consumer",
+        "Test invalid/empty lease, failed creation, destroyed source, duplicate owner and cleanup cases",
+        "Test adoption/transfer success and destruction order on the actual selected shell",
+        "Treat feature omission or changed ownership semantics as a recorded scope decision"
+      ],
+      "compatibilityStatus": "unknown; public view APIs are candidates rather than proven substitutes"
+    },
+    {
+      "id": "RUNTIME-BOUNDARY-node-permissions-ipc",
+      "claimKind": "source-confirmed-existing-record-plus-inferred-decision",
+      "observedContract": "The restricted branch prepares a permission relaunch with filesystem, addon, child-process, worker and dynamically scoped IPC flags, removes NODE_OPTIONS, queues open events, then relaunches/exits. The reviewed check requires denied general net plus permitted IPC scopes; platform path construction differs.",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/2",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0005",
+            "RUNTIME-REVIEW-0006",
+            "RUNTIME-REVIEW-0007",
+            "RUNTIME-REVIEW-0012"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/3",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0008"
+          ]
+        }
+      ],
+      "owlRequirement": "Measure the actual embedded Node/permission implementation and resolve retained per-platform IPC paths; confirm the runtime accepts and enforces those exact scopes.",
+      "electronAdapterBoundary": "Design an explicit process/network/IPC capability policy for the owned host. Confirm its selected runtime supports the required restrictions or isolate the affected service behind a separately constrained process/OS boundary. Dropping --allow-ipc flags, faking process.permission.has or relaxing net restrictions changes the security contract.",
+      "otherShellBoundary": "Map the capability contract to owned host-process and IPC authorization boundaries, preserving the required denied network and permitted local endpoint behavior; mechanism equivalence remains unproven.",
+      "unknowns": [
+        "Actual Owl/Node versions and permission enforcement",
+        "Final dynamic IPC paths and how every startup/relaunch caller reaches them",
+        "Equivalent policy mechanism on the selected target shell and platforms",
+        "The current fetched public Node permissions page had no ipc match; this does not prove absence in every version"
+      ],
+      "verificationGates": [
+        "Resolve and record task-owned per-platform IPC endpoints",
+        "Negative test: denied general network operation; positive test: explicitly allowed local IPC",
+        "Negative test: IPC outside the declared scope",
+        "Verify relaunch flags/environment, single-instance/open-event replay, and failure paths without widening permissions"
+      ],
+      "compatibilityStatus": "unknown; permission and IPC enforcement cannot be inferred from API name or flag acceptance"
+    }
+  ],
+  "commonRequirements": [
+    {
+      "id": "RUNTIME-COMMON-public-primitives",
+      "claimKind": "inferred-implementation-prerequisite",
+      "requirement": "Put app/lifecycle, window, WebContents, session, preload/IPC and optional Owl capabilities behind owned interfaces. Select a runtime version first, review that version documentation and the actual chosen-call arguments/callbacks; current public document matches alone do not prove packaged Owl equivalence.",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/scope",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/actualRuntime",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/6",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0015"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/3",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0008"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/4",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0009",
+            "RUNTIME-REVIEW-0010",
+            "RUNTIME-REVIEW-0011"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Dynamic options/spreads/callback lifetimes",
+        "176 of 229 callee paths have no per-member documentation review in the existing inventory",
+        "Full feature reachability beyond the fixed ten-file scan"
+      ],
+      "verificationGates": [
+        "Per-feature capability matrix and caller tests",
+        "Lifecycle/platform guards and destroyed-object handling",
+        "Version-pinned public API and event/error ordering review"
+      ]
+    },
+    {
+      "id": "RUNTIME-COMMON-transport-world-boundary",
+      "claimKind": "inferred-implementation-prerequisite",
+      "requirement": "Preserve app-server requests, app-host RPC and cross-client coordination as distinct services. Preserve synchronous preload initialization, clone/serialization rules, chunk sequence/acknowledgement, MessagePort ownership and disposal; an alternative async bridge requires an explicit caller migration.",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/6",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0015"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/8",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E001",
+            "REVIEW-CHUNK-E002",
+            "REVIEW-CHUNK-E003",
+            "REVIEW-CHUNK-E004",
+            "REVIEW-CHUNK-E005",
+            "REVIEW-CHUNK-E006",
+            "REVIEW-CHUNK-E007",
+            "REVIEW-CHUNK-E008",
+            "REVIEW-CHUNK-E009",
+            "REVIEW-CHUNK-E010",
+            "REVIEW-CHUNK-E011",
+            "REVIEW-CHUNK-E012",
+            "REVIEW-CHUNK-E013",
+            "REVIEW-CHUNK-E014",
+            "REVIEW-CHUNK-E015",
+            "REVIEW-CHUNK-E016",
+            "REVIEW-CHUNK-E017",
+            "REVIEW-CHUNK-E018",
+            "REVIEW-CHUNK-E019",
+            "REVIEW-CHUNK-E020",
+            "REVIEW-CHUNK-E021",
+            "REVIEW-CHUNK-E022",
+            "REVIEW-CHUNK-E023",
+            "REVIEW-CHUNK-E024",
+            "REVIEW-CHUNK-E025",
+            "REVIEW-CHUNK-E026",
+            "REVIEW-CHUNK-E027",
+            "REVIEW-CHUNK-E028",
+            "REVIEW-CHUNK-E029",
+            "REVIEW-CHUNK-E030"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/0",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0001",
+            "REQUEST-WRAPPER-TARGET-0002",
+            "REQUEST-WRAPPER-TARGET-0003",
+            "REQUEST-WRAPPER-TARGET-0004",
+            "REQUEST-WRAPPER-TARGET-0005",
+            "REQUEST-WRAPPER-TARGET-0006",
+            "REQUEST-WRAPPER-TARGET-0007",
+            "REQUEST-WRAPPER-TARGET-0008",
+            "REQUEST-WRAPPER-TARGET-0009",
+            "REQUEST-WRAPPER-TARGET-0010",
+            "REQUEST-WRAPPER-TARGET-0011",
+            "REQUEST-WRAPPER-TARGET-0012",
+            "REQUEST-WRAPPER-TARGET-0013",
+            "REQUEST-WRAPPER-TARGET-0014",
+            "REQUEST-WRAPPER-TARGET-0048",
+            "REQUEST-WRAPPER-TARGET-0049",
+            "REQUEST-WRAPPER-TARGET-0050",
+            "REQUEST-WRAPPER-TARGET-0051",
+            "REQUEST-WRAPPER-TARGET-0060"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/1",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-BINDING-0005",
+            "REQUEST-WRAPPER-TARGET-0023",
+            "REQUEST-WRAPPER-TARGET-0061",
+            "REQUEST-WRAPPER-TARGET-0062",
+            "REQUEST-WRAPPER-TARGET-0063"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/3",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0015",
+            "REQUEST-WRAPPER-TARGET-0016",
+            "REQUEST-WRAPPER-TARGET-0017",
+            "REQUEST-WRAPPER-TARGET-0018"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/5",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0031",
+            "REQUEST-WRAPPER-TARGET-0032",
+            "REQUEST-WRAPPER-TARGET-0033",
+            "REQUEST-WRAPPER-TARGET-0034",
+            "REQUEST-WRAPPER-TARGET-0035",
+            "REQUEST-WRAPPER-TARGET-0036",
+            "REQUEST-WRAPPER-TARGET-0055"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/6",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0056",
+            "REQUEST-WRAPPER-TARGET-0057",
+            "REQUEST-WRAPPER-TARGET-0058",
+            "REQUEST-WRAPPER-TARGET-0059",
+            "REQUEST-WRAPPER-TARGET-0070",
+            "REQUEST-WRAPPER-TARGET-0071",
+            "REQUEST-WRAPPER-TARGET-0072",
+            "REQUEST-WRAPPER-TARGET-0073",
+            "REQUEST-WRAPPER-TARGET-0074"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Selected runtime transport branches and concrete injected implementations",
+        "Full platform/renderer integration of reviewed pure transport contracts"
+      ],
+      "verificationGates": [
+        "Serialization/chunk/ack fixtures with owned inputs",
+        "Port transfer, close and callback cleanup fixtures",
+        "Initial preload availability/error and synchronization fixtures",
+        "One isolated integration path per retained transport before claiming support"
+      ]
+    },
+    {
+      "id": "RUNTIME-COMMON-private-packages",
+      "claimKind": "inferred-implementation-prerequisite",
+      "requirement": "Resolve the retained private first-party interfaces and private vendor packages independently. The root declarations identify workspace/file/link inputs, not obtainable distributions, exact shipped boundaries or interchangeable public replacements.",
+      "sourceRefs": [
+        {
+          "inputId": "dependency-summary",
+          "inputSha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2",
+          "jsonPointer": "/counts/rootPrivateCandidates",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "dependency-summary",
+          "inputSha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2",
+          "jsonPointer": "/limitations",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 1,
+            "recordId": "root-002"
+          },
+          "evidenceIds": [
+            "dep-e-02261"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 11,
+            "recordId": "root-012"
+          },
+          "evidenceIds": [
+            "dep-e-02271"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 12,
+            "recordId": "root-013"
+          },
+          "evidenceIds": [
+            "dep-e-02272"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 13,
+            "recordId": "root-014"
+          },
+          "evidenceIds": [
+            "dep-e-02273"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 14,
+            "recordId": "root-015"
+          },
+          "evidenceIds": [
+            "dep-e-02274"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 16,
+            "recordId": "root-017"
+          },
+          "evidenceIds": [
+            "dep-e-02276"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 17,
+            "recordId": "root-018"
+          },
+          "evidenceIds": [
+            "dep-e-02277"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 18,
+            "recordId": "root-019"
+          },
+          "evidenceIds": [
+            "dep-e-02278"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 21,
+            "recordId": "root-022"
+          },
+          "evidenceIds": [
+            "dep-e-02281"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 23,
+            "recordId": "root-024"
+          },
+          "evidenceIds": [
+            "dep-e-02283"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 25,
+            "recordId": "root-026"
+          },
+          "evidenceIds": [
+            "dep-e-02285"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 30,
+            "recordId": "root-031"
+          },
+          "evidenceIds": [
+            "dep-e-02290"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 31,
+            "recordId": "root-032"
+          },
+          "evidenceIds": [
+            "dep-e-02291"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 59,
+            "recordId": "root-060"
+          },
+          "evidenceIds": [
+            "dep-e-02319"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 66,
+            "recordId": "root-067"
+          },
+          "evidenceIds": [
+            "dep-e-02326"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Independent package/source availability",
+        "Mode ownership and final included feature set",
+        "Shipped modification status and exact dependency boundaries"
+      ],
+      "verificationGates": [
+        "Per-retained-package obtain/pin/own-interface/replace decision",
+        "Transport identity preserved during replacement",
+        "Actual dependency lock and source provenance for the independent project"
+      ]
+    },
+    {
+      "id": "RUNTIME-COMMON-native-artifacts",
+      "claimKind": "inferred-implementation-prerequisite",
+      "requirement": "Use native artifact and package metadata to identify required integrations, then obtain/rebuild or replace those needed by retained features. Binary/platform identification, N-API filenames and framework metadata do not establish source rebuildability or compatibility with an ordinary Electron runtime.",
+      "sourceRefs": [
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/13",
+          "evidenceIds": [
+            "dep-e-02351"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/14",
+          "evidenceIds": [
+            "dep-e-02352"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/15",
+          "evidenceIds": [
+            "dep-e-02353"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/diskRuntimeBinaries/0",
+          "evidenceIds": [
+            "dep-e-02387"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/diskRuntimeBinaries/79",
+          "evidenceIds": [
+            "dep-e-02466"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/diskRuntimeBinaries/82",
+          "evidenceIds": [
+            "dep-e-02469"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/diskRuntimeBinaries/85",
+          "evidenceIds": [
+            "dep-e-02472"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/diskRuntimeBinaries/86",
+          "evidenceIds": [
+            "dep-e-02473"
+          ]
+        },
+        {
+          "inputId": "dependency-summary",
+          "inputSha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2",
+          "jsonPointer": "/limitations",
+          "evidenceIds": []
+        }
+      ],
+      "unknowns": [
+        "Native source/build distributions, exact ABI/load behavior and feature inclusion",
+        "App packaging/signing and native helper capability requirements"
+      ],
+      "verificationGates": [
+        "Measure actual selected Node/Electron/native ABI",
+        "Rebuild required native modules for selected architectures or define owned replacements",
+        "Load and feature fixtures in an isolated owned project",
+        "Clean install/package artifact manifest and hashes"
+      ]
+    },
+    {
+      "id": "RUNTIME-COMMON-build-inputs",
+      "claimKind": "inferred-implementation-prerequisite",
+      "requirement": "Author independent build/configuration/lock inputs after deciding runtime and feature slice. The release records missing Owl preparation/types/rebuild scripts, monorepo type generation and root lock/build configuration; copying the production bundle does not recover them.",
+      "sourceRefs": [
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/0",
+          "evidenceIds": [
+            "dep-e-02540"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/4",
+          "evidenceIds": [
+            "dep-e-02544"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/5",
+          "evidenceIds": [
+            "dep-e-02545"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/6",
+          "evidenceIds": [
+            "dep-e-02546"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/7",
+          "evidenceIds": [
+            "dep-e-02547"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/10",
+          "evidenceIds": [
+            "dep-e-02550"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/11",
+          "evidenceIds": [
+            "dep-e-02551"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/20",
+          "evidenceIds": [
+            "dep-e-02560"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/21",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/24",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/25",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/27",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/29",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/scope",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/openArchitectureDecisions",
+          "evidenceIds": []
+        }
+      ],
+      "unknowns": [
+        "Independent Owl development interface and native rebuild tooling",
+        "Recovered modules/shared closures and full project dependency order"
+      ],
+      "verificationGates": [
+        "Explicit runtime and dependency pins",
+        "Clean install/build/package without the original application checkout",
+        "Source-to-artifact manifest with native/runtime hashes",
+        "Repeatable upgrade comparison and retained-feature regression fixtures",
+        "Full Codex target-feature inventory and acceptance matrix must account for all required capabilities; intermediate slice tests and unsupported fallbacks cannot close missing analysis or final feature gaps"
+      ]
+    },
+    {
+      "id": "RUNTIME-COMMON-other-custom-capabilities",
+      "claimKind": "inferred-implementation-prerequisite",
+      "requirement": "Review retained call sites for Session permission prompting, native menu tracking, runtime feature switches, measurement controls, history swipe and scoped user-agent switches. Give each a concrete owned interface and supported/unsupported decision. The four highlighted boundaries are a priority set, not the complete custom API denominator.",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/0",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-004031"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/1",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-002502",
+            "RUNTIME-API-002528"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/6",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-002498",
+            "RUNTIME-API-002530"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/11",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-004029",
+            "RUNTIME-API-004033"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/30",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-002555"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/43",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-001905",
+            "RUNTIME-API-001908",
+            "RUNTIME-API-004106"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/44",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-002551",
+            "RUNTIME-API-002564"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/47",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-002558",
+            "RUNTIME-API-002561"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/84",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-003676",
+            "RUNTIME-API-003677",
+            "RUNTIME-API-003678"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/apiContracts/191",
+          "evidenceIds": [
+            "RUNTIME-API-001065",
+            "RUNTIME-API-001066",
+            "RUNTIME-API-001067",
+            "RUNTIME-API-001943",
+            "RUNTIME-API-001944",
+            "RUNTIME-API-001945"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/4",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0009",
+            "RUNTIME-REVIEW-0010",
+            "RUNTIME-REVIEW-0011"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Dynamic options, callback/event lifetime and feature reachability of retained callers",
+        "Per-member replacement feasibility and semantics",
+        "Favicon candidates have unresolved receivers and must not be promoted to confirmed runtime APIs"
+      ],
+      "verificationGates": [
+        "Per-retained-feature custom capability matrix",
+        "Permission request/check/prompt behavior reviewed separately from process-level network/IPC policy",
+        "Native menu tracking and platform lifecycle callbacks tested if retained",
+        "Unsupported fallback recorded explicitly rather than silent no-op"
+      ]
+    }
+  ],
+  "privateDependencyObservations": [
+    {
+      "recordId": "root-002",
+      "name": "@oai/integrity-state",
+      "declaredVersion": "file:../../../lib/applied/js/oai_js_integrity_state",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 1,
+            "recordId": "root-002"
+          },
+          "evidenceIds": [
+            "dep-e-02261"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-012",
+      "name": "@worklouder/device-kit-oai",
+      "declaredVersion": "file:../vendor/oai-js-registry/worklouder/device-kit-oai/0.2.1/package",
+      "classification": "third-party-private-vendor",
+      "sourceClassification": "release-declaration-only",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 11,
+            "recordId": "root-012"
+          },
+          "evidenceIds": [
+            "dep-e-02271"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-013",
+      "name": "@worklouder/wl-device-kit",
+      "declaredVersion": "file:../vendor/oai-js-registry/worklouder/wl-device-kit/0.2.2/package",
+      "classification": "third-party-private-vendor",
+      "sourceClassification": "release-declaration-only",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 12,
+            "recordId": "root-013"
+          },
+          "evidenceIds": [
+            "dep-e-02272"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-014",
+      "name": "app-server-manager",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 13,
+            "recordId": "root-014"
+          },
+          "evidenceIds": [
+            "dep-e-02273"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-015",
+      "name": "app-server-types",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 14,
+            "recordId": "root-015"
+          },
+          "evidenceIds": [
+            "dep-e-02274"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-017",
+      "name": "browser-api",
+      "declaredVersion": "file:../../../lib/oai_browser_use/browser-api",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 16,
+            "recordId": "root-017"
+          },
+          "evidenceIds": [
+            "dep-e-02276"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-018",
+      "name": "browser-backend-common",
+      "declaredVersion": "link:../../../lib/oai_browser_use/browser-backend-common",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 17,
+            "recordId": "root-018"
+          },
+          "evidenceIds": [
+            "dep-e-02277"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-019",
+      "name": "browser-common",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 18,
+            "recordId": "root-019"
+          },
+          "evidenceIds": [
+            "dep-e-02278"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-022",
+      "name": "commands",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 21,
+            "recordId": "root-022"
+          },
+          "evidenceIds": [
+            "dep-e-02281"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-024",
+      "name": "external-agent-migration",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 23,
+            "recordId": "root-024"
+          },
+          "evidenceIds": [
+            "dep-e-02283"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-026",
+      "name": "git-worker",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 25,
+            "recordId": "root-026"
+          },
+          "evidenceIds": [
+            "dep-e-02285"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-031",
+      "name": "protocol",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 30,
+            "recordId": "root-031"
+          },
+          "evidenceIds": [
+            "dep-e-02290"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-032",
+      "name": "shared-node",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 31,
+            "recordId": "root-032"
+          },
+          "evidenceIds": [
+            "dep-e-02291"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-060",
+      "name": "@openai/codex-app-tools-plugin",
+      "declaredVersion": "workspace:*",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 59,
+            "recordId": "root-060"
+          },
+          "evidenceIds": [
+            "dep-e-02319"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "root-067",
+      "name": "browser-client",
+      "declaredVersion": "link:../../../lib/oai_browser_use/browser-client",
+      "classification": "first-party-private-candidate",
+      "sourceClassification": "monorepo-reference",
+      "independentObtainability": "unknown",
+      "runtimeInclusionAndMode": "unknown",
+      "sourceRefs": [
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 66,
+            "recordId": "root-067"
+          },
+          "evidenceIds": [
+            "dep-e-02326"
+          ]
+        }
+      ]
+    }
+  ],
+  "investigationRoute": [
+    {
+      "order": 1,
+      "id": "RUNTIME-INVESTIGATE-owl-availability",
+      "action": "Record independent Owl source/distribution/types/build interface and exact versions/hashes if obtainable; absence of such a record remains unknown.",
+      "status": "proposed-not-performed",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/actualRuntime",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/runtimeMetadata/0",
+          "evidenceIds": [
+            "dep-e-02507"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/0",
+          "evidenceIds": [
+            "dep-e-02540"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/4",
+          "evidenceIds": [
+            "dep-e-02544"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/5",
+          "evidenceIds": [
+            "dep-e-02545"
+          ]
+        }
+      ],
+      "exitCriteria": "A concrete independently obtainable pinned dependency with provenance/tooling, or an explicit unresolved acquisition record; packaged app presence alone is insufficient."
+    },
+    {
+      "order": 2,
+      "id": "RUNTIME-INVESTIGATE-four-boundaries",
+      "action": "Resolve retained callers and choose implementation/capability fallback for task manager, native update policy, adoption and network/IPC permissions before committing to a shell.",
+      "status": "proposed-not-performed",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/0",
+          "evidenceIds": [
+            "RUNTIME-API-000071",
+            "RUNTIME-API-000072",
+            "RUNTIME-API-000073",
+            "RUNTIME-API-001042",
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/1",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0002",
+            "RUNTIME-REVIEW-0003",
+            "RUNTIME-REVIEW-0004"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/5",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0013",
+            "RUNTIME-REVIEW-0014"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/2",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0005",
+            "RUNTIME-REVIEW-0006",
+            "RUNTIME-REVIEW-0007",
+            "RUNTIME-REVIEW-0012"
+          ]
+        }
+      ],
+      "exitCriteria": "Four boundary decisions each identify receiver/caller requirements, unknowns and required positive/negative/lifecycle fixtures."
+    },
+    {
+      "order": 3,
+      "id": "RUNTIME-INVESTIGATE-feature-slice",
+      "action": "Select an owned minimal feature slice for intermediate technical feasibility, settle its private/native dependencies and preserve host/application transport identities; resolve its dynamic options/callback lifetimes first while maintaining the complete Codex target.",
+      "status": "proposed-not-performed",
+      "sourceRefs": [
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/scope",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/openArchitectureDecisions",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/0",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0001",
+            "REQUEST-WRAPPER-TARGET-0002",
+            "REQUEST-WRAPPER-TARGET-0003",
+            "REQUEST-WRAPPER-TARGET-0004",
+            "REQUEST-WRAPPER-TARGET-0005",
+            "REQUEST-WRAPPER-TARGET-0006",
+            "REQUEST-WRAPPER-TARGET-0007",
+            "REQUEST-WRAPPER-TARGET-0008",
+            "REQUEST-WRAPPER-TARGET-0009",
+            "REQUEST-WRAPPER-TARGET-0010",
+            "REQUEST-WRAPPER-TARGET-0011",
+            "REQUEST-WRAPPER-TARGET-0012",
+            "REQUEST-WRAPPER-TARGET-0013",
+            "REQUEST-WRAPPER-TARGET-0014",
+            "REQUEST-WRAPPER-TARGET-0048",
+            "REQUEST-WRAPPER-TARGET-0049",
+            "REQUEST-WRAPPER-TARGET-0050",
+            "REQUEST-WRAPPER-TARGET-0051",
+            "REQUEST-WRAPPER-TARGET-0060"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/1",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-BINDING-0005",
+            "REQUEST-WRAPPER-TARGET-0023",
+            "REQUEST-WRAPPER-TARGET-0061",
+            "REQUEST-WRAPPER-TARGET-0062",
+            "REQUEST-WRAPPER-TARGET-0063"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/3",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0015",
+            "REQUEST-WRAPPER-TARGET-0016",
+            "REQUEST-WRAPPER-TARGET-0017",
+            "REQUEST-WRAPPER-TARGET-0018"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/5",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0031",
+            "REQUEST-WRAPPER-TARGET-0032",
+            "REQUEST-WRAPPER-TARGET-0033",
+            "REQUEST-WRAPPER-TARGET-0034",
+            "REQUEST-WRAPPER-TARGET-0035",
+            "REQUEST-WRAPPER-TARGET-0036",
+            "REQUEST-WRAPPER-TARGET-0055"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/6",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0056",
+            "REQUEST-WRAPPER-TARGET-0057",
+            "REQUEST-WRAPPER-TARGET-0058",
+            "REQUEST-WRAPPER-TARGET-0059",
+            "REQUEST-WRAPPER-TARGET-0070",
+            "REQUEST-WRAPPER-TARGET-0071",
+            "REQUEST-WRAPPER-TARGET-0072",
+            "REQUEST-WRAPPER-TARGET-0073",
+            "REQUEST-WRAPPER-TARGET-0074"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/13",
+          "evidenceIds": [
+            "dep-e-02351"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/14",
+          "evidenceIds": [
+            "dep-e-02352"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/15",
+          "evidenceIds": [
+            "dep-e-02353"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 1,
+            "recordId": "root-002"
+          },
+          "evidenceIds": [
+            "dep-e-02261"
+          ]
+        },
+        {
+          "inputId": "private-dependencies",
+          "inputSha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba",
+          "locator": {
+            "kind": "csv-data-row",
+            "zeroBasedIndexExcludingHeader": 11,
+            "recordId": "root-012"
+          },
+          "evidenceIds": [
+            "dep-e-02271"
+          ]
+        }
+      ],
+      "exitCriteria": "The intermediate matrix declares tested/untested/unsupported capabilities explicitly; every uncovered full-target capability remains in the later full Codex acceptance matrix."
+    },
+    {
+      "order": 4,
+      "id": "RUNTIME-INVESTIGATE-contract-fixtures",
+      "action": "Specify serialization/chunk ack, synchronous preload initialization, MessagePort ownership, destroy ordering, permission denial and platform fixtures using owned inputs before adapter implementation.",
+      "status": "proposed-not-performed",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/6",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0015"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/8",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E001",
+            "REVIEW-CHUNK-E002",
+            "REVIEW-CHUNK-E003",
+            "REVIEW-CHUNK-E004",
+            "REVIEW-CHUNK-E005",
+            "REVIEW-CHUNK-E006",
+            "REVIEW-CHUNK-E007",
+            "REVIEW-CHUNK-E008",
+            "REVIEW-CHUNK-E009",
+            "REVIEW-CHUNK-E010",
+            "REVIEW-CHUNK-E011",
+            "REVIEW-CHUNK-E012",
+            "REVIEW-CHUNK-E013",
+            "REVIEW-CHUNK-E014",
+            "REVIEW-CHUNK-E015",
+            "REVIEW-CHUNK-E016",
+            "REVIEW-CHUNK-E017",
+            "REVIEW-CHUNK-E018",
+            "REVIEW-CHUNK-E019",
+            "REVIEW-CHUNK-E020",
+            "REVIEW-CHUNK-E021",
+            "REVIEW-CHUNK-E022",
+            "REVIEW-CHUNK-E023",
+            "REVIEW-CHUNK-E024",
+            "REVIEW-CHUNK-E025",
+            "REVIEW-CHUNK-E026",
+            "REVIEW-CHUNK-E027",
+            "REVIEW-CHUNK-E028",
+            "REVIEW-CHUNK-E029",
+            "REVIEW-CHUNK-E030"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/5",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0013",
+            "RUNTIME-REVIEW-0014"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/2",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0005",
+            "RUNTIME-REVIEW-0006",
+            "RUNTIME-REVIEW-0007",
+            "RUNTIME-REVIEW-0012"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/3",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0008"
+          ]
+        }
+      ],
+      "exitCriteria": "Fixtures state expected outputs, failures and scope; pure functions remain separate from UI/IPC integration coverage."
+    },
+    {
+      "order": 5,
+      "id": "RUNTIME-INVESTIGATE-isolated-adapter",
+      "action": "After selecting a route and implementing its owned interfaces, validate one isolated startup/window/transport feature path and its failure/disposal cases on the selected runtime.",
+      "status": "proposed-not-performed",
+      "sourceRefs": [
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/6",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0015"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/3",
+          "evidenceIds": [
+            "RUNTIME-REVIEW-0008"
+          ]
+        },
+        {
+          "inputId": "runtime",
+          "inputSha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363",
+          "jsonPointer": "/supplementaryContracts/0",
+          "evidenceIds": [
+            "RUNTIME-API-000071",
+            "RUNTIME-API-000072",
+            "RUNTIME-API-000073",
+            "RUNTIME-API-001042",
+            "RUNTIME-REVIEW-0001",
+            "RUNTIME-REVIEW-0016"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/0",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0001",
+            "REQUEST-WRAPPER-TARGET-0002",
+            "REQUEST-WRAPPER-TARGET-0003",
+            "REQUEST-WRAPPER-TARGET-0004",
+            "REQUEST-WRAPPER-TARGET-0005",
+            "REQUEST-WRAPPER-TARGET-0006",
+            "REQUEST-WRAPPER-TARGET-0007",
+            "REQUEST-WRAPPER-TARGET-0008",
+            "REQUEST-WRAPPER-TARGET-0009",
+            "REQUEST-WRAPPER-TARGET-0010",
+            "REQUEST-WRAPPER-TARGET-0011",
+            "REQUEST-WRAPPER-TARGET-0012",
+            "REQUEST-WRAPPER-TARGET-0013",
+            "REQUEST-WRAPPER-TARGET-0014",
+            "REQUEST-WRAPPER-TARGET-0048",
+            "REQUEST-WRAPPER-TARGET-0049",
+            "REQUEST-WRAPPER-TARGET-0050",
+            "REQUEST-WRAPPER-TARGET-0051",
+            "REQUEST-WRAPPER-TARGET-0060"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/1",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-BINDING-0005",
+            "REQUEST-WRAPPER-TARGET-0023",
+            "REQUEST-WRAPPER-TARGET-0061",
+            "REQUEST-WRAPPER-TARGET-0062",
+            "REQUEST-WRAPPER-TARGET-0063"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/3",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0015",
+            "REQUEST-WRAPPER-TARGET-0016",
+            "REQUEST-WRAPPER-TARGET-0017",
+            "REQUEST-WRAPPER-TARGET-0018"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/5",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0031",
+            "REQUEST-WRAPPER-TARGET-0032",
+            "REQUEST-WRAPPER-TARGET-0033",
+            "REQUEST-WRAPPER-TARGET-0034",
+            "REQUEST-WRAPPER-TARGET-0035",
+            "REQUEST-WRAPPER-TARGET-0036",
+            "REQUEST-WRAPPER-TARGET-0055"
+          ]
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/proposals/6",
+          "evidenceIds": [
+            "REQUEST-WRAPPER-TARGET-0056",
+            "REQUEST-WRAPPER-TARGET-0057",
+            "REQUEST-WRAPPER-TARGET-0058",
+            "REQUEST-WRAPPER-TARGET-0059",
+            "REQUEST-WRAPPER-TARGET-0070",
+            "REQUEST-WRAPPER-TARGET-0071",
+            "REQUEST-WRAPPER-TARGET-0072",
+            "REQUEST-WRAPPER-TARGET-0073",
+            "REQUEST-WRAPPER-TARGET-0074"
+          ]
+        }
+      ],
+      "exitCriteria": "Actual selected runtime/ABI and behavior records match the retained slice; no original-client or whole-UI completion inferred."
+    },
+    {
+      "order": 6,
+      "id": "RUNTIME-INVESTIGATE-rebuild-upgrade",
+      "action": "Pin independent dependencies/configuration, rebuild/package from a clean environment, then compare another version with the same capability and behavior fixtures and expand to full Codex acceptance.",
+      "status": "proposed-not-performed",
+      "sourceRefs": [
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/0",
+          "evidenceIds": [
+            "dep-e-02540"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/4",
+          "evidenceIds": [
+            "dep-e-02544"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/5",
+          "evidenceIds": [
+            "dep-e-02545"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/6",
+          "evidenceIds": [
+            "dep-e-02546"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/7",
+          "evidenceIds": [
+            "dep-e-02547"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/10",
+          "evidenceIds": [
+            "dep-e-02550"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/11",
+          "evidenceIds": [
+            "dep-e-02551"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/20",
+          "evidenceIds": [
+            "dep-e-02560"
+          ]
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/21",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/24",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/25",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/27",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "build-inputs",
+          "inputSha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+          "jsonPointer": "/29",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "boundaries",
+          "inputSha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6",
+          "jsonPointer": "/upgradeRule",
+          "evidenceIds": []
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/13",
+          "evidenceIds": [
+            "dep-e-02351"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/14",
+          "evidenceIds": [
+            "dep-e-02352"
+          ]
+        },
+        {
+          "inputId": "native",
+          "inputSha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b",
+          "jsonPointer": "/archiveArtifacts/15",
+          "evidenceIds": [
+            "dep-e-02353"
+          ]
+        }
+      ],
+      "exitCriteria": "Clean-build artifact manifests, runtime/native pins, upgrade contract results and the full Codex feature/capability acceptance matrix exist; intermediate slices or bundle beautification alone cannot close final gaps."
+    }
+  ],
+  "limitations": [
+    "This is a scoped analysis decision proposal, not a recovered original architecture or an implemented port.",
+    "Only existing designated metadata/contracts were read; no fresh target scan, native reverse engineering, client/UI/model execution, authentication or personal history access.",
+    "Source-confirmed API use, public documentation match and runtime/behavior equivalence remain distinct.",
+    "Not-found-in-current-public-reference is limited to the prior fetched reference pages; it is not a proof that all runtime versions lack an implementation.",
+    "The existing fixed ten-file runtime denominator and local module proposals do not establish all runtime capabilities or complete feature ownership.",
+    "Deleting a guard, adding a function placeholder, producing a nonempty token, matching names or copying a native binary does not pass a compatibility gate."
+  ],
+  "validation": {
+    "status": "passed",
+    "errors": [],
+    "inputHashesReread": 9,
+    "referenceOccurrences": 177,
+    "jsonPointerReferenceOccurrences": 145,
+    "csvRecordReferenceOccurrences": 32,
+    "distinctEvidenceReferences": 151,
+    "evidenceReferenceOccurrences": 460,
+    "scope": "Existing-record references, attribution, counts and unchanged inputs only; no new source/behavior equivalence validation."
+  }
+}

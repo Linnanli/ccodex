@@ -1,0 +1,1298 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T18:16:57.357329+00:00",
+  "decisionScope": "SD-02 bounded provider/build disposition; 17 saved missing-description paths plus four existing cross-cutting contracts. Not a complete custom-runtime denominator.",
+  "routeDecision": {
+    "selectedArchitecture": "First-party capability contracts and adapters separate from an independently obtained runtime/native provider.",
+    "selectedFullRuntime": null,
+    "sourcePreparation": "The listed bounded contracts can inform later implementation. Partial source-owner/consumer items remain internal analysis work; native/provider gaps remain explicit integration gates.",
+    "routes": [
+      {
+        "id": "ROUTE-OWL",
+        "decision": "保留为取回原能力的候选；当前不能列作已取得的独立依赖。",
+        "missing": [
+          "独立发行URL/版本与archive hash含义",
+          "源码/修改集和适用许可",
+          "types/headers、构建脚本、工具链与锁定输入",
+          "平台/ABI与能力行为验证"
+        ],
+        "qualified": false
+      },
+      {
+        "id": "ROUTE-STOCK",
+        "decision": "拒绝固定 Electron 42.3.0 直接替换整个 Owl 运行时；公共接口保留为按合同验证的原语。",
+        "basis": [
+          "17个保存路径缺席的声明/实例读数",
+          "clone/adoption和权限差异",
+          "八个特权设置URL在固定guest被拒绝"
+        ],
+        "qualified": false
+      },
+      {
+        "id": "ROUTE-ADAPTER",
+        "decision": "采用独立能力边界作为维护设计；平台bridge/运行时fork或等价服务实现逐组评估。不是已选定或构建通过的完整运行时。",
+        "missing": "RAM-01至RAM-15的逐组前提；引擎级能力不能仅以JS接口形状或占位实现验收。",
+        "qualified": false
+      }
+    ],
+    "excludedFallbacks": [
+      "依赖原客户端安装路径",
+      "复制原framework作为已恢复源码",
+      "删除保留能力/放宽权限",
+      "把空函数、页面占位或假lease计为功能完成"
+    ]
+  },
+  "publicProvenanceOverlay": {
+    "primaryReview": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-adoption-primary-review-v1.json",
+      "bytes": 3158,
+      "sha256": "4761f91fc0716c5a389403fe0093778f901b3300cdaf1ac2962b60206937b219"
+    },
+    "electronSourceCommit": "e0127e99aeaa66bb580538fc7409831b5248cccb",
+    "electronDepsNode": "24.15.0",
+    "frozenStaticNode": "24.19.0",
+    "versionDifferenceQualification": "Source metadata versus frozen native static structure; neither proves executed runtime identity or binary ABI compatibility/incompatibility.",
+    "sparkleSpmRoute": "precompiled-binary-target; source-build-not-proven",
+    "upstreamBytesOrBinariesAcquired": false
+  },
+  "capabilityGroups": [
+    {
+      "id": "RAM-01",
+      "title": "原生菜单 tracking",
+      "surfaceFactIds": [
+        "RSDF-01",
+        "RSDF-04"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/3"
+        }
+      ],
+      "firstPartyResponsibility": "保留 menu-open/begin 与 menu-close/destroy/end 的成对生命周期。",
+      "providerDecision": "独立平台菜单桥或选定运行时提供 tracking；公开 popup 的存在不足以采用。",
+      "exactRemainingPrerequisite": "菜单开启、关闭和销毁的原生时序及 tracking 副作用；取得对应实现源码或运行时扩展。",
+      "acceptance": "在菜单关闭、窗口销毁和重复清理下对照基线时序，验证没有遗留 tracking。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/native-menu-tracking",
+      "proposedContractPath": "packages/contracts/src/runtime/native-menu-tracking",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-contract-available",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-02",
+      "title": "音频 measurement",
+      "surfaceFactIds": [
+        "RSDF-02",
+        "RSDF-03"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/2"
+        }
+      ],
+      "firstPartyResponsibility": "保留具名 histogram 配置、ready/unsupported/unavailable 和计数不连续分支。",
+      "providerDecision": "独立运行时 telemetry provider；进程 metrics 不作为音频 histogram 数据源。",
+      "exactRemainingPrerequisite": "具名 histogram 的真实生产者、数据格式及调用消费者闭包；底层采集实现尚未取得。",
+      "acceptance": "对照配置、采样、计数重置、unsupported 与异常分支；真实采样结果需要独立数据源。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/measurement",
+      "proposedContractPath": "packages/contracts/src/runtime/measurement",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "partial-consumer-and-provider-contract",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-03",
+      "title": "运行时特性与 Windows policy",
+      "surfaceFactIds": [
+        "RSDF-05",
+        "RSDF-07",
+        "RSDF-08"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/6"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/7"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-feature-policy-contracts.json",
+          "bytes": 66085,
+          "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492",
+          "jsonPointer": "/maintenanceDecision"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-feature-policy-contracts.json",
+          "bytes": 66085,
+          "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492",
+          "jsonPointer": "/unresolvedNativeEffects"
+        }
+      ],
+      "firstPartyResponsibility": "沿用已分析的两键 allowlist、boolean 合并、成功后缓存、reset、认证 owner/generation 和特定 unsupported 错误映射。",
+      "providerDecision": "以独立接口调用支持相同特性的引擎或受维护运行时扩展；gate SDK/RPC 仍通过依赖引入。",
+      "exactRemainingPrerequisite": "两键的原生效果、默认值与可逆性；supported-feature registry；Windows policy fallback 的实际清理效果。",
+      "acceptance": "在目标平台核对 set/reset、账号切换、过期 generation、unsupported 与真实引擎效果。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/runtime-feature-policy",
+      "proposedContractPath": "packages/contracts/src/runtime/runtime-feature-policy",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-first-party-contract-available",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-04",
+      "title": "Chrome 调试页策略",
+      "surfaceFactIds": [
+        "RSDF-06"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/5"
+        }
+      ],
+      "firstPartyResponsibility": "保留设置写入、副作用、启动路径与 allowDebugMenu 组合条件；不按名称排除。",
+      "providerDecision": "由有对应特权页和开关语义的运行时提供；普通页面路由不是替代实现。",
+      "exactRemainingPrerequisite": "启动 owner 的完整条件及底层开关作用范围；选定运行时的等效页面/策略 provider。",
+      "acceptance": "分别检查启动与设置切换，以及不同 build flavor 下允许和拒绝的页面范围。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/chrome-page-policy",
+      "proposedContractPath": "packages/contracts/src/runtime/chrome-page-policy",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "partial-startup-contract",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-05",
+      "title": "Task Manager",
+      "surfaceFactIds": [
+        "RSDF-09"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/8"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-capability-decisions.json",
+          "bytes": 18241,
+          "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7",
+          "jsonPointer": "/decisions/0"
+        }
+      ],
+      "firstPartyResponsibility": "由第一方承担菜单、能力声明、错误传播和独立诊断 UI 的集成；保留顶层 bootstrap 前提。",
+      "providerDecision": "独立诊断 UI 加真实进程数据 provider 是候选；getAppMetrics 仅作为数据原语，不能单独验收。",
+      "exactRemainingPrerequisite": "基线实际字段、动作、刷新/关闭语义和独立 UI 实现；不以空函数满足 guard。",
+      "acceptance": "菜单打开真实界面，核对进程数据、动作、刷新、关闭及错误；不把函数存在当作通过。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/diagnostics/task-manager",
+      "proposedContractPath": "packages/contracts/src/runtime/diagnostics/task-manager",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-entry-contract-available",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-06",
+      "title": "窗口平台能力",
+      "surfaceFactIds": [
+        "RSDF-10",
+        "RSDF-11",
+        "RSDF-12"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/9"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/10"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/11"
+        }
+      ],
+      "firstPartyResponsibility": "保留 always-on-top 的 false/null 发布及 Windows GPU/backdrop 判定；input-shape 先补 owner。",
+      "providerDecision": "分别由平台/运行时能力探测器提供真实结果；三个能力不合并成恒真的通用 predicate。",
+      "exactRemainingPrerequisite": "input-shape 实际功能消费者与平台条件仍需内部源码追踪；三项原生支持条件和实现 provider 未验证。",
+      "acceptance": "逐平台验证不支持结果、状态发布、GPU 条件和操作副作用；补齐 input-shape 消费者后确定其验收。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/window-capabilities",
+      "proposedContractPath": "packages/contracts/src/runtime/window-capabilities",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "partial-input-shape-owner-unresolved",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-07",
+      "title": "历史滑动导航",
+      "surfaceFactIds": [
+        "RSDF-13"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/12"
+        }
+      ],
+      "firstPartyResponsibility": "保留 primary 窗口注册、darwin 限制、overlayBounds/Color 空值转换及状态保存。",
+      "providerDecision": "macOS 原生窗口/手势桥或运行时扩展；普通 back/forward 调用不足以覆盖 overlay 协议。",
+      "exactRemainingPrerequisite": "原生手势、overlay 与导航状态同步的独立 provider 及目标 SDK/headers。",
+      "acceptance": "检查非 primary 窗口、非 darwin、空 overlay、导航更新和销毁时的手势表现。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/history-swipe",
+      "proposedContractPath": "packages/contracts/src/runtime/history-swipe",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-caller-contract-available",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-08",
+      "title": "通知授权状态",
+      "surfaceFactIds": [
+        "RSDF-14"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/13"
+        }
+      ],
+      "firstPartyResponsibility": "保留 authorization 不可用返回 null，granted/denied/not-determined 的精确映射和错误传播。",
+      "providerDecision": "独立 OS 通知授权查询桥；公开通知展示接口不证明能读取同一授权状态。",
+      "exactRemainingPrerequisite": "目标平台授权 API、bridge 源码与实际状态映射；不从能显示通知推导授权结果。",
+      "acceptance": "以合成通知场景核对全部授权状态、不可用和异常，不更改个人通知设置。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/notifications/authorization",
+      "proposedContractPath": "packages/contracts/src/runtime/notifications/authorization",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-mapping-contract-available",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-09",
+      "title": "屏幕光标能力",
+      "surfaceFactIds": [
+        "RSDF-15"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/14"
+        }
+      ],
+      "firstPartyResponsibility": "保留能力为 true 才建立 controller 的工厂条件。",
+      "providerDecision": "平台坐标/权限能力探测器；getCursorScreenPoint 只是坐标 getter。",
+      "exactRemainingPrerequisite": "平台能力条件与独立探测 provider；当前 getter 读数不构成跨平台证明。",
+      "acceptance": "核对支持/不支持时 controller 建立与清理，以及平台坐标行为。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/cursor-capabilities",
+      "proposedContractPath": "packages/contracts/src/runtime/cursor-capabilities",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-factory-contract-available",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-10",
+      "title": "浏览器权限 prompt",
+      "surfaceFactIds": [
+        "RSDF-16"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/15"
+        }
+      ],
+      "firstPartyResponsibility": "保留 app partition、browser permission handling、prompt 委托、request/check 默认拒绝和相关导航/下载策略。",
+      "providerDecision": "能提供 prompt 协议及权限状态服务的独立运行时/引擎扩展，或经过行为验证的服务适配。",
+      "exactRemainingPrerequisite": "prompt 参数、响应及生命周期和浏览器服务后效；公开 request handler 不构成同协议实现。",
+      "acceptance": "在独立 partition 验证允许/拒绝/关闭、重复请求、过期回复和默认拒绝及相关策略。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/browser-permissions",
+      "proposedContractPath": "packages/contracts/src/runtime/browser-permissions",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "partial-native-prompt-contract",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-11",
+      "title": "系统字体枚举",
+      "surfaceFactIds": [
+        "RSDF-17"
+      ],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6",
+          "jsonPointer": "/facts/16"
+        }
+      ],
+      "firstPartyResponsibility": "第一方承担直接查询和结果传递；不凭空填充字体列表或静默兜底。",
+      "providerDecision": "独立 OS 字体枚举 bridge 或运行时扩展。",
+      "exactRemainingPrerequisite": "返回值格式、字体集合/本地化行为及对应 OS provider 源码和目标 SDK。",
+      "acceptance": "在目标平台对照实际枚举结果、排序/命名和失败传播。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/fonts",
+      "proposedContractPath": "packages/contracts/src/runtime/fonts",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-call-contract-available",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-12",
+      "title": "浏览器 ownership、adoption 和 clone",
+      "surfaceFactIds": [],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-capability-decisions.json",
+          "bytes": 18241,
+          "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7",
+          "jsonPointer": "/decisions/2"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b",
+          "jsonPointer": "/implementationDecision"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/public-history-duplicate-comparison.json",
+          "bytes": 27890,
+          "sha256": "51d16a4db824fdff6f04d767a01bd428a4822c78f61761b1fe7c7297b811eff1",
+          "jsonPointer": ""
+        }
+      ],
+      "firstPartyResponsibility": "主进程 owner manager 管理 route admission、generation、session/preload、pending 与销毁；可保留同一 live view 的移动方案。",
+      "providerDecision": "lease 消费/失效和 live clone 仍需引擎 provider 或可证明行为等价的所有权协议；不是生成非空 lease 字符串。",
+      "exactRemainingPrerequisite": "可独立构建的 clone/adoption 实现；原 live clone 的实际历史/页面状态语义；同一 view 移动不能证明复制能力。",
+      "acceptance": "核对 window.open、live clone 与 cold restore 各自路径、拒绝/销毁、重复消费；记录历史、表单和堆状态，不假定它们相同。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/browser-ownership",
+      "proposedContractPath": "packages/contracts/src/runtime/browser-ownership",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "ownership-preparation-available; clone-provider-unresolved",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-13",
+      "title": "受限 Node 网络与 scoped IPC",
+      "surfaceFactIds": [],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-capability-decisions.json",
+          "bytes": 18241,
+          "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7",
+          "jsonPointer": "/decisions/3"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/public-runtime-comparison.json",
+          "bytes": 7231,
+          "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412",
+          "jsonPointer": ""
+        }
+      ],
+      "firstPartyResponsibility": "保留端点构造、restricted/unrestricted 分流、relaunch 参数/环境和 open-event 重放；设计独立 broker/权限执行接口。",
+      "providerDecision": "实际执行限制的运行时扩展或独立进程/OS 边界；普通 Node permission flags 不能作为已满足的 provider。",
+      "exactRemainingPrerequisite": "能拒绝通用网络和越界 IPC、允许声明端点的执行机制、平台策略与可构建实现；不是 permission.has 的返回值。",
+      "acceptance": "允许端点正例、网络及越界 IPC 负例和重启重放实际通过；保留旧探针仅覆盖本地 TCP/Unix socket 的范围。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/process-policy",
+      "proposedContractPath": "packages/contracts/src/runtime/process-policy",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-policy-contract-available; enforcement-provider-unresolved",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-14",
+      "title": "普通更新与 managed relaunch",
+      "surfaceFactIds": [],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-capability-decisions.json",
+          "bytes": 18241,
+          "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7",
+          "jsonPointer": "/decisions/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b",
+          "jsonPointer": "/distributionRecords/3"
+        }
+      ],
+      "firstPartyResponsibility": "普通 transport 与 nullable managed-policy 分离；保留 schema、策略监听、notice/deadline/重试与初始化失败语义。",
+      "providerDecision": "Sparkle 是 macOS 更新依赖候选；其 SPM 是预编译路线。managed policy 需独立 provider，运行时 linkedBinding 不是 npm 包。",
+      "exactRemainingPrerequisite": "独立签名/更新 feed/安装配置、平台 updater 以及 managed-policy 事件/注销；Sparkle 来源不覆盖 Owl binding。",
+      "acceptance": "分别验证 null policy、有效策略、getter 错误、普通安装和强制安装；source-build 与 precompiled 路线分别标明。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/updates",
+      "proposedContractPath": "packages/contracts/src/runtime/updates",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-consumer-contract-available; provider-unresolved",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    },
+    {
+      "id": "RAM-15",
+      "title": "四类特权浏览器设置",
+      "surfaceFactIds": [],
+      "sourceContracts": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-browser-settings-comparison.json",
+          "bytes": 9346,
+          "sha256": "c0521f180c9889f1e20757ff2cb70872674fc9c20b2bdb3f9b9d8da20ad7ed6b",
+          "jsonPointer": "/architectureDecision"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/native-browser-settings-comparison.json",
+          "bytes": 9346,
+          "sha256": "c0521f180c9889f1e20757ff2cb70872674fc9c20b2bdb3f9b9d8da20ad7ed6b",
+          "jsonPointer": "/requiredFamilies"
+        }
+      ],
+      "firstPartyResponsibility": "保留 contactInfo/passwordManager/extensions/siteSettings，kind/host/capability、partition、mountId、theme、导航和过期响应清理。",
+      "providerDecision": "独立运行时提供 WebUI/backing services，或独立设置 UI 加等价服务适配；原生服务不能由页面占位补齐。",
+      "exactRemainingPrerequisite": "四类页面的底层数据/服务行为、独立 provider 与构建来源；固定 stock guest 已拒绝八个目标 URL。",
+      "acceptance": "四类操作、独立分区、挂载/卸载、历史/主题和底层服务行为逐项验证；不能仅以页面加载验收。",
+      "proposedAdapterPath": "packages/runtime-adapter/src/browser-settings",
+      "proposedContractPath": "packages/contracts/src/runtime/browser-settings",
+      "foundationTaskIds": [
+        "W02",
+        "W03"
+      ],
+      "consumerTaskIds": [
+        "T26"
+      ],
+      "consumerJoinQualification": "T26 from the saved privileged-settings owner; other complete feature-consumer joins remain unclaimed.",
+      "buildGateIds": [
+        "BG-01",
+        "BG-02",
+        "BG-03",
+        "BG-04"
+      ],
+      "sourcePreparationStatus": "bounded-caller-contract-available; backing-services-unresolved",
+      "runtimeAcceptance": "unverified",
+      "confidence": "inferred",
+      "mode": "unknown; retained",
+      "fullRequirementRetained": true,
+      "thirdPartyImplementationGenerated": false
+    }
+  ],
+  "buildGates": [
+    {
+      "id": "BG-01",
+      "purpose": "运行时类型与能力合同",
+      "buildInputIds": [
+        "BUILD-001",
+        "BUILD-003",
+        "BUILD-013",
+        "BUILD-015"
+      ],
+      "decision": "types 必须从选定 provider 的合同产生；声明一个不存在的方法不构成兼容。"
+    },
+    {
+      "id": "BG-02",
+      "purpose": "独立获取、启动与源码来源",
+      "buildInputIds": [
+        "BUILD-005",
+        "BUILD-006",
+        "BUILD-011",
+        "BUILD-021"
+      ],
+      "decision": "runtime-driver 只指向独立依赖/源码构建产物；记录 commit、平台、校验和与 SDK/headers。现未取得完整 Owl 输入。"
+    },
+    {
+      "id": "BG-03",
+      "purpose": "原生 ABI 与编译配置",
+      "buildInputIds": [
+        "BUILD-026"
+      ],
+      "decision": "按目标 runtime headers、NODE_MODULE_VERSION/Node-API 要求、架构与 SDK 重建 native packages。Node 版本、Node-API 10 或本地 Node22 objc load 均不证明 Owl/候选 Electron ABI。"
+    },
+    {
+      "id": "BG-04",
+      "purpose": "独立打包、安装和升级",
+      "buildInputIds": [
+        "BUILD-012",
+        "BUILD-017",
+        "BUILD-022",
+        "BUILD-025",
+        "BUILD-027",
+        "BUILD-028",
+        "BUILD-029",
+        "BUILD-030"
+      ],
+      "decision": "锁定独立 artifact/构建配方、preload/resources/helpers、应用标识/数据根和签名更新配置；新版本重建并验证能力差异，不读取原安装路径。"
+    }
+  ],
+  "nativeDependencyJoins": [
+    {
+      "dependencyRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef",
+          "jsonPointer": "/rows/28"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef",
+          "jsonPointer": "/rows/123"
+        }
+      ],
+      "name": "node-pty",
+      "decision": "沿用已确认修改边界；独立补丁包/适配路线仍需目标运行时构建、PTY创建和释放验证，不能换成普通上游后声称等价。"
+    },
+    {
+      "dependencyRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef",
+          "jsonPointer": "/rows/29"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef",
+          "jsonPointer": "/rows/125"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/objc-independent-build.json",
+          "bytes": 3458,
+          "sha256": "1f74a89baa7521c9e655d0e397637dfbd8a2ca08fa462c5ef1e49d4664029c6a",
+          "jsonPointer": "/scope"
+        }
+      ],
+      "name": "objc-js",
+      "decision": "已有独立SDK配方在本地Node22.23.2/x64构建与一次export-only load通过；不抹去该证据，也不扩大成目标Owl/Electron集成通过。"
+    },
+    {
+      "dependencyRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b",
+          "jsonPointer": "/distributionRecords/3"
+        }
+      ],
+      "name": "Sparkle",
+      "decision": "作为独立第三方更新组件管理；SPM binary与源码重建分列；选定runtime的更新bridge、签名/feed和策略provider仍需单独实现。"
+    }
+  ],
+  "checkedFrozenSpans": [
+    {
+      "factId": "RSDF-01",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 3787008,
+        "endExclusive": 3787039
+      },
+      "spanHash": "6a2d9f96040af9f90b205dcaa1ea5dca3af6fc65d2bf4891a06d6dd00990e024"
+    },
+    {
+      "factId": "RSDF-02",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 2146011,
+        "endExclusive": 2146038
+      },
+      "spanHash": "d104d276aefafa8bbfe646508766a90cc0a14c6b592306bd1327f804c4e591a8"
+    },
+    {
+      "factId": "RSDF-03",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 2145936,
+        "endExclusive": 2145975
+      },
+      "spanHash": "a7fa9f73d9477e0e34b56135b995b444a3c1d4dc4a8812bd17499375500004ff"
+    },
+    {
+      "factId": "RSDF-04",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 3785795,
+        "endExclusive": 3785824
+      },
+      "spanHash": "234d223c1b7ad073d6d5b8875f887af0d87cf420c2840546db508f200e6b063c"
+    },
+    {
+      "factId": "RSDF-05",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 2471693,
+        "endExclusive": 2471725
+      },
+      "spanHash": "6ad407a90de7de95e3110459fe44c564d999ce5e6f96074260fec4bc9c2093a4"
+    },
+    {
+      "factId": "RSDF-06",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 1436764,
+        "endExclusive": 1436799
+      },
+      "spanHash": "5b8becdfbf4d0aa8f53936e6088179dd94fd7579ea3e3cd59b27d6e94d9f3f4d"
+    },
+    {
+      "factId": "RSDF-07",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 2471539,
+        "endExclusive": 2471585
+      },
+      "spanHash": "e7689d337265c623234988813850c3bf70b37aa3c677956f326164d6b1370024"
+    },
+    {
+      "factId": "RSDF-08",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 2471939,
+        "endExclusive": 2471966
+      },
+      "spanHash": "e331d360b89d71237330754df8d50fce96a4e3f38b5224d2fce78a707a6cf69f"
+    },
+    {
+      "factId": "RSDF-09",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 3421104,
+        "endExclusive": 3421127
+      },
+      "spanHash": "40b6957d0bbafd628ac16f8e65d9f9e6f7e61fc19625274ff3207d0a5b019894"
+    },
+    {
+      "factId": "RSDF-10",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 1090260,
+        "endExclusive": 1090300
+      },
+      "spanHash": "88830986dbc4e2a70f43b36ca393d232252be4a4d7e85feec4f15b02d273747a"
+    },
+    {
+      "factId": "RSDF-11",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 384601,
+        "endExclusive": 384640
+      },
+      "spanHash": "bac45e12eed186114304169545ba5f66de44bf2eef2d967d6e8e29db99c39ba8"
+    },
+    {
+      "factId": "RSDF-12",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 1389904,
+        "endExclusive": 1389947
+      },
+      "spanHash": "d5ba6daeea76f2cea97deef58fe285e0868a84e7c8563c1304e1010ede1e320b"
+    },
+    {
+      "factId": "RSDF-13",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 3726168,
+        "endExclusive": 3726282
+      },
+      "spanHash": "691a8d74c375bee987837e1dfce27702fbbb08997d9d5b83f90b3729c6b0a89a"
+    },
+    {
+      "factId": "RSDF-14",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 3142620,
+        "endExclusive": 3142656
+      },
+      "spanHash": "8ecb2fc87fc180e2c5549fc3a289f2a70933ff92ec4e90b5b8ead7f87b80617d"
+    },
+    {
+      "factId": "RSDF-15",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 3149525,
+        "endExclusive": 3149564
+      },
+      "spanHash": "375169a1480bef7834c652933e5d6783dfe015cde64551a161df126198fbd299"
+    },
+    {
+      "factId": "RSDF-16",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 1533182,
+        "endExclusive": 1533243
+      },
+      "spanHash": "af7535ea72e8279d9ba28644fa7169db6e63a6620595a98d613179acd5a320d0"
+    },
+    {
+      "factId": "RSDF-17",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "kind": "byte-range",
+        "start": 3140407,
+        "endExclusive": 3140444
+      },
+      "spanHash": "511ac2bc6a8f7339e5eb15ab758a9db750b6708fc89aff941f10c25a0cbbe113"
+    },
+    {
+      "factId": "RUNTIME-DECISION-001",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 456322,
+        "endExclusive": 456487
+      },
+      "spanHash": "495c389257821f7a719232242e4fd598d529ada630d4ec5059e281d4aa44562d"
+    },
+    {
+      "factId": "RUNTIME-DECISION-002",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3420992,
+        "endExclusive": 3421128
+      },
+      "spanHash": "734c02690a349b73c9854e0d8b66f643262546f950f97d397df49744d0dac1e0"
+    },
+    {
+      "factId": "RUNTIME-DECISION-003",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3431615,
+        "endExclusive": 3432420
+      },
+      "spanHash": "d66c76eced65169f4123d63b3692f332e9ca20493b655ba63a6fb2389e4802ae"
+    },
+    {
+      "factId": "RUNTIME-DECISION-004",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 59083,
+        "endExclusive": 59315
+      },
+      "spanHash": "ef9b79b3ba25b7273f01f946d6d9f7960c7743446972731af1f539a9ce2948d3"
+    },
+    {
+      "factId": "RUNTIME-DECISION-005",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 60234,
+        "endExclusive": 60328
+      },
+      "spanHash": "d49c9a0e9c2820f48c29b18ee18ec854e18002adae43562de8acbb00c86c7aa3"
+    },
+    {
+      "factId": "RUNTIME-DECISION-006",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 59315,
+        "endExclusive": 59862
+      },
+      "spanHash": "b682c086be6700853597e9a529e97fba10a56d10b19fc0c5ce86c2a55051e233"
+    },
+    {
+      "factId": "RUNTIME-DECISION-007",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 48013,
+        "endExclusive": 48855
+      },
+      "spanHash": "9ab7472600adf7e918c18e1a1a320ac0276a90841a9123bc7241a4bf6634c93c"
+    },
+    {
+      "factId": "RUNTIME-DECISION-008",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 45184,
+        "endExclusive": 45895
+      },
+      "spanHash": "7a62dc0be4fb85f5bed3a5c7de422334bd248315d234cd628a7a071bac40f002"
+    },
+    {
+      "factId": "RUNTIME-DECISION-009",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1853172,
+        "endExclusive": 1853680
+      },
+      "spanHash": "99dea5fd26a9bdb1bb8a8a7147e5b21742e7a1110accec912630b1ec0e10d5c0"
+    },
+    {
+      "factId": "RUNTIME-DECISION-010",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1883950,
+        "endExclusive": 1884824
+      },
+      "spanHash": "d6da4a9ccb64a76fad6c58065c071530badac05f7a8a805b6bb75bff4b54aac3"
+    },
+    {
+      "factId": "RUNTIME-DECISION-011",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1977953,
+        "endExclusive": 1979215
+      },
+      "spanHash": "b6f4b1462e4cf0d75794ae42be91c6921556db121214aeb91a03a12badfe5583"
+    }
+  ],
+  "remainingInternalAnalysis": [
+    {
+      "id": "RI-01",
+      "groupIds": [
+        "RAM-02"
+      ],
+      "work": "音频histogram完整生产/消费边界"
+    },
+    {
+      "id": "RI-02",
+      "groupIds": [
+        "RAM-04"
+      ],
+      "work": "调试页策略启动owner完整条件"
+    },
+    {
+      "id": "RI-03",
+      "groupIds": [
+        "RAM-06"
+      ],
+      "work": "input-shape消费者和平台条件"
+    }
+  ],
+  "denominatorLimits": [
+    "212个公开声明路径只具候选资格，未由本矩阵逐一证明兼容。",
+    "4293个未解析名称候选和34个预算受限表达式不在17路径比较范围；名称候选也不是新增功能数。",
+    "其他已记录custom能力（例如setAgentActive）不能因不在17路径中而视为已解决；本矩阵不声称整个运行时盘点关闭。",
+    "所有模式未知项继续保留；未新增ChatGPT排除或功能验收。"
+  ],
+  "nextInternalAction": {
+    "issueId": "SD-05",
+    "question": "用已保存的main/globalState/shutdown/provider合同形成数据域到owner、路径来源、写入与恢复边界的映射。",
+    "closure": "逐域区分已确认逻辑根、运行有效根未测和认证/原生/后台外部存储；列明具体缺失provider，避免以globalState局部合同证明全域隔离。",
+    "authorization": "冻结/保存证据与自有分析脚本；无新增模型、客户端或个人数据操作。"
+  },
+  "counts": {
+    "capabilityGroups": 15,
+    "savedSurfacePathsAssignedExactlyOnce": 17,
+    "crossCuttingContractGroups": 4,
+    "buildGates": 4,
+    "nativeDependencyFamiliesJoined": 3,
+    "primarySourceReviewObservations": 5,
+    "sourcePreparationGroupsWithExplicitInternalFollowup": 3,
+    "fullRuntimeRoutesQualified": 0,
+    "newRuntimeProbeRuns": 0,
+    "newReaRuns": 0,
+    "newOriginalSourceParses": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newProductScenarioPasses": 0,
+    "newClientImplementation": 0
+  },
+  "currentProductScope": {
+    "featureDefinitions": 373,
+    "restorationTaskGroups": 48,
+    "unexecutedScenarioSpecifications": 1216
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+      "bytes": 62319,
+      "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-capability-decisions.json",
+      "bytes": 18241,
+      "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-distribution.json",
+      "bytes": 35755,
+      "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-node-version.json",
+      "bytes": 77717,
+      "sha256": "866f3acf38a7728ab3c38869f635076fc84b4a611fe2cfa486170e98ed32d8f5"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-native-accessors.json",
+      "bytes": 43790,
+      "sha256": "3efe07afdd98ccb9b9e3fe01177c642a03e4028e6dbae52472e2291435f834cd"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/public-runtime-comparison.json",
+      "bytes": 7231,
+      "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/browser-ownership-contracts.json",
+      "bytes": 17166,
+      "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/browser-clone-route-qualification.json",
+      "bytes": 9927,
+      "sha256": "5c44bc58bdb7aef35307e50198557d2cf3dac57a78d1e4be9e2b33d5afe8bd7e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/public-history-duplicate-comparison.json",
+      "bytes": 27890,
+      "sha256": "51d16a4db824fdff6f04d767a01bd428a4822c78f61761b1fe7c7297b811eff1"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/native-browser-settings-comparison.json",
+      "bytes": 9346,
+      "sha256": "c0521f180c9889f1e20757ff2cb70872674fc9c20b2bdb3f9b9d8da20ad7ed6b"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-feature-policy-contracts.json",
+      "bytes": 66085,
+      "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/build-input-dispositions-v1.json",
+      "bytes": 33279,
+      "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/dependency-investigation-actions-v1.json",
+      "bytes": 392136,
+      "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/objc-independent-build.json",
+      "bytes": 3458,
+      "sha256": "1f74a89baa7521c9e655d0e397637dfbd8a2ca08fa462c5ef1e49d4664029c6a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+      "bytes": 279783,
+      "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+      "bytes": 1171222,
+      "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+      "bytes": 2065758,
+      "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v24-scenarios.json",
+      "bytes": 1944258,
+      "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/association-overlap-decisions-v1-evidence.jsonl",
+      "bytes": 13649,
+      "sha256": "92a1dc553a92ae5334bda4ad3cd959877d727fad45fc45796765042564122015"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    },
+    {
+      "path": "scripts/analysis/publish_runtime_adoption_matrix.py",
+      "bytes": 35376,
+      "sha256": "08aa2218774be5821f87946647cc37799035fa3a07581709623af112e51c3aef"
+    }
+  ],
+  "fullAnalysisCompleted": false,
+  "independentRuntimeBuildProven": false
+}

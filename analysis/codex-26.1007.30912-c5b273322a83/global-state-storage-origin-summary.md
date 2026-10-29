@@ -1,0 +1,13 @@
+# globalState 构造、文件写入与恢复边界
+
+本批对3个冻结Program作作用域分析，保存33个选定AST范围和37条静态事实：main中的await g.U启动结果，经bootstrap导出的gT、uT(home)和startup的D/Vr构造，返回为globalState，再经vXe/hXe.scopedState传给MMe第9个实参并写入this.globalState。路径是源码中的构造和注入关系；未读取原应用的实际对象或home。见[静态契约](global-state-storage-origin.json)、[候选行为结果](global-state-storage-observations.json)及[来源索引](global-state-storage-origin-provenance.json)。
+
+Vr把状态放在Map中，主文件名为.codex-global-state.json。普通set先改内存、安排写入、同步通知监听器；atom键使用500ms防抖，custom-runtime两键使用microtask合并，其他键直接排队。窗口随后广播不代表文件已写完。flush调用会记录并吞掉写入错误的qr；flushOrThrow使用会抛出的Jr。updateAndPersist另走同步写主文件后才改内存的提交路径；备份或监听器错误各自捕获并记录。不能把这些不同接口合并成同一种“写入完成”保证。
+
+加载时，主文件不存在便返回空Map，不读取单独存在的备份；主文件存在但读取／解析失败时才尝试.bak。写入先序列化到同目录的临时文件，再重命名到目标；普通异步提交先主文件、后备份。所选写入函数没有fsync，主文件与备份没有整体回滚。Windows的特定rename错误有100/200/400ms重试，本批未执行这些平台分支。
+
+实际运行了1条本机Node22命令，共9个隔离场景，执行13个保存的第一方单位4774字节，使用带路径限制的真实文件I/O。观察到atom内存先更新、显式flush完成主／备份写入、自建值可重开；缺失主文件不读备份、损坏主文件读取有效备份；flush错误被吞而flushOrThrow抛ENOENT，之后队列可恢复；updateAndPersist主写失败时旧内存保留，而备份失败时主提交／内存／通知已成功。另区分普通set与已提交更新的监听器错误，并观察两次atom更新在显式flush时只做一对主／备份替换。
+
+这些场景使用空的已知schema集合和合成logger；schema、默认值与archives比较器调用次数均为0。没有运行原应用、实际globalState实例、个人profile、CLI或模型服务；本机Node22不证明目标Node24/Owl、Windows、定时器自然到期、正常关闭flush或断电耐久性。CLI/backend的任务记录可能使用其他存储，本批不能解释原turn变为interrupted的完整机制。
+
+维护建议将第一方global-state接口／队列和JSON文件后端分为两个职责路径，8个以上原范围的逐项映射在契约中；Node fs、path、crypto及timers作为运行时依赖引入，schema和比较器保持独立依赖边界。没有生成客户端源码或第三方实现。首次受限下载ENOTFOUND和首次导出形式假设错误均已保留，后续固定工具安装与修正后的完整分析成功；37条记录不是对旧全局证据或完整功能分母的加算。

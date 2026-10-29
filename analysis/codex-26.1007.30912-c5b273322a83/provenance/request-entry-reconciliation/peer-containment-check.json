@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "reviewer": "/root/preload_app_host",
+  "checkedAtUtc": "2026-10-13T17:52:38.419354+00:00",
+  "status": "passed-independent-saved-range-unique-containment-check",
+  "priorPeerReview": {
+    "path": ".analysis-local/request-entry-reconciliation-work/peer-review.json",
+    "bytes": 7446,
+    "sha256": "3a0b0b79ddc9ef6be8dc7a0cd076de3f480e3182955978d9a010e6407b5312d4"
+  },
+  "priorInputReceipt": {
+    "path": ".analysis-local/request-entry-reconciliation-work/peer-input-check.json",
+    "bytes": 15229,
+    "sha256": "f690e7ce3c8dd2411908a6c8c6cdc769ec7001314752ccf2fb066cc44381796c"
+  },
+  "reviewedProductPins": [
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/reconciliation.json",
+      "bytes": 2291957,
+      "sha256": "4a3384ed73d30e3be0a23eaf071f8e3905263d95700dfe164d629fbb4bf9c391"
+    },
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/journal.jsonl",
+      "bytes": 1546912,
+      "sha256": "427976886a8041c65e28564d5dc09da072f6ee32e23c802b8a87e7b09e453232"
+    }
+  ],
+  "sourceArtifactSnapshotPins": [
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-contracts.json",
+      "bytes": 585390,
+      "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+    },
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+      "bytes": 1411812,
+      "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+    }
+  ],
+  "method": "For each of all337 linked old FEATURE coordinate ranges, enumerate all375 saved wrapper full-call ranges; filter by exact sourcePath and sourceHash plus fullCall.start <= oldLexical.start and oldLexical.endExclusive <= fullCall.endExclusive. Require the resulting ID list to be exactly one element, equal to the explicit linked AST call ID. No method/name comparison contributes to the identity filter.",
+  "results": {
+    "allSavedFullCallRangesExamined": 375,
+    "oldLinkedFeatureRangesChecked": 337,
+    "exactlyOneContainingFullCallRange": 337,
+    "uniqueRangeMatchesLinkedAstCallId": 337,
+    "ambiguousOrUnmatchedRanges": 0,
+    "canonicalPerFeatureResultsSha256": "c9f8140b83eeb68dba5a9b64a1b297bb4094f87f2f1dc61cccfce3bb3335aa67",
+    "canonicalization": "UTF-8 JSON array in main candidate order; each object has oldEvidenceId, expectedAstCallId, containingFullCallIds; sort_keys=True, separators=(comma,colon), ensure_ascii=False"
+  },
+  "errors": [],
+  "limitations": [
+    "Unique containment is a saved coordinate association, not strict same-span equality, operation/feature identity or runtime registration.",
+    "Original source bytes were not read, parsed, executed or freshly hashed. Source hashes and ranges come from previously pinned saved JSON/JSONL."
+  ],
+  "actions": {
+    "originalTargetSourceRead": false,
+    "targetOrCliExecuted": false,
+    "uiUsed": false,
+    "networkUsed": false,
+    "modelInvoked": false,
+    "credentialsOrPersonalHistoryRead": false,
+    "oldArtifactsModified": false,
+    "onlyNewFileWritten": ".analysis-local/request-entry-reconciliation-work/peer-containment-check.json"
+  }
+}

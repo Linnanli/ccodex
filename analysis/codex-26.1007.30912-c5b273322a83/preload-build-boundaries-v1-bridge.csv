@@ -1,0 +1,23 @@
+entry,property,sourceUnitId,expression,qualification
+PBB-APP,windowType,PBB-S004,windowType:T,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,acknowledgeChunkedMessage,PBB-S005,"acknowledgeChunkedMessage:(t,n)=>{e.ipcRenderer.send(o,t,n)}",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getPreloadStartedAtMs,PBB-S006,getPreloadStartedAtMs:()=>w,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,sendMessageFromView,PBB-S007,"sendMessageFromView:async t=>{t.type===`shared-object-set`&&I(t.key,t.value),await e.ipcRenderer.invoke(E,t)}",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getPathForFile,PBB-S008,getPathForFile:t=>e.webUtils.getPathForFile(t)||null,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,startFileDrag,PBB-S009,"startFileDrag:t=>e.ipcRenderer.sendSync(v,t)===!0",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,startLinkDrag,PBB-S010,"startLinkDrag:t=>{e.ipcRenderer.send(y,t)}",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,sendWorkerMessageFromView,PBB-S011,"sendWorkerMessageFromView:async(t,n)=>{await e.ipcRenderer.invoke(b(t),n)}",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,subscribeToWorkerMessages,PBB-S012,"subscribeToWorkerMessages:(t,n)=>{let r=L.get(t);r||(r=new Set,L.set(t,r));let i=R.get(t);return i||(i=(e,n)=>{let r=L.get(t);r&&r.forEach(e=>{e(n)})},R.set(t,i),e.ipcRenderer.on(x(t),i)),r.add(n),()=>{let r=L.get(t);if(!r||(r.delete(n),r.size>0))return;L.delete(t);let i=R.get(t);i&&e.ipcRenderer.removeListener(x(t),i),R.delete(t)}}",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,showContextMenu,PBB-S013,"showContextMenu:async(t,n)=>e.ipcRenderer.invoke(l,t,n)",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getFastModeRolloutMetrics,PBB-S014,"getFastModeRolloutMetrics:async t=>e.ipcRenderer.invoke(m,t)",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getSharedObjectSnapshotValue,PBB-S015,getSharedObjectSnapshotValue:e=>A[e],Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getInitialSidebarBootstrap,PBB-S016,"getInitialSidebarBootstrap:()=>(F===void 0&&(F=e.ipcRenderer.sendSync(p)),F)",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getSystemThemeVariant,PBB-S017,getSystemThemeVariant:N,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,subscribeToSystemThemeVariant,PBB-S018,"subscribeToSystemThemeVariant:e=>(P.add(e),()=>{P.delete(e)})",Source expression; external IPC handler effects are not established by this property.
+PBB-APP,triggerSentryTestError,PBB-S019,triggerSentryTestError:async()=>{await e.ipcRenderer.invoke(g)},Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getSentryInitOptions,PBB-S020,getSentryInitOptions:()=>O,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getDesktopUserAgent,PBB-S021,getDesktopUserAgent:()=>C({appVersion:O.appVersion}),Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getAppSessionId,PBB-S022,getAppSessionId:()=>O.codexAppSessionId,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,getBuildFlavor,PBB-S023,getBuildFlavor:()=>k,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,isDeviceCheckSupported,PBB-S024,isDeviceCheckSupported:()=>process.platform===`darwin`&&process.arch===`arm64`,Source expression; external IPC handler effects are not established by this property.
+PBB-APP,isIntelMacBuild,PBB-S025,isIntelMacBuild:()=>process.platform===`darwin`&&process.arch===`x64`,Source expression; external IPC handler effects are not established by this property.

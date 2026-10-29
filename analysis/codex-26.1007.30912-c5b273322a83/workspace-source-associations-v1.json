@@ -1,0 +1,437 @@
+{
+  "schemaVersion": "conditional-source-goal-adoption/1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T13:53:37.069115+00:00",
+  "requirements": [
+    "2.1",
+    "2.2"
+  ],
+  "acceptanceGap": "SD-01 / RG-01",
+  "previousGoalTurnClassification": {
+    "classification": "progress",
+    "evidence": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/inbox-source-disposition-v1.json",
+      "bytes": 23561,
+      "sha256": "df8d5c28c576b5b658daac1d5133988fa6a0dc2966742559133f2b12c261d838"
+    },
+    "result": "Two inbox sources adopted and100 remaining host candidates compared; two exact candidates queued."
+  },
+  "scope": "Adopt exactly the reviewed receiver associations in this recipe, using existing goal semantics and exact source identities.",
+  "records": [
+    {
+      "decisionId": "WSA-D01",
+      "entryId": "host-top-level-message-case:3dc0f4dcf1a79f7522295b0c",
+      "label": "electron-pick-workspace-root-option",
+      "featureIds": [
+        "FSC-0491"
+      ],
+      "operationIds": [
+        "operation:core-route:fsc-0491:pick-folder"
+      ],
+      "source": {
+        "id": "CROP-S118",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2101743,
+          "endExclusive": 2101860
+        },
+        "spanHash": "59ab60deb47d8198f95c34351f92f7edf27bfbeda6b4a67c1b307889f9e3f37f",
+        "nodeType": "SwitchCase",
+        "labels": [
+          "dispatch:electron-pick-workspace-root-option"
+        ]
+      },
+      "ownershipWitnessId": "FMO-SOURCE-1791",
+      "factIds": [
+        "CROP-W02",
+        "CROP-W03"
+      ],
+      "claim": "所选主进程case等待projectFolderPicker.pickProjectSources(view,allowMultiple)，与FSC-0491既有pick-folder操作的发送及选择器合同对应；只条件支持该操作，不覆盖勾选、继续或项目登记的全部目标。实际挂载、宿主、对话框、返回消息和产品模式仍未验证。",
+      "previousDispositionRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v34.json",
+        "bytes": 1607793,
+        "sha256": "8cba41896d6ab2fc61a2b4a7099ac2dcfcf10d086209f3892e0b93eae3479c55",
+        "jsonPointer": "/entries/752"
+      },
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/752"
+      },
+      "featureContract": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/core-route-operations-v1.json",
+        "bytes": 286864,
+        "sha256": "b2bed95eaac9033bccd73e597814236ec9336a0d23b3b2893f9f59b7d79c5f2e",
+        "jsonPointer": "/adoptedGoals/0"
+      },
+      "previousRemainingWork": "Identify concrete senders, services and retained user consumers; establish mode/shared and actual effect separately.",
+      "remainingWork": "Conditional support for existing goal operation only. Actual mount, host/provider instance, result delivery, product mode, filesystem/project/Git effects and durable state remain unobserved; preserve the original source contract variants.",
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false
+    },
+    {
+      "decisionId": "WSA-D02",
+      "entryId": "host-top-level-message-case:8fdbb79301de64259eccdf6a",
+      "label": "electron-onboarding-skip-workspace",
+      "featureIds": [
+        "FSC-0492"
+      ],
+      "operationIds": [
+        "operation:core-route:fsc-0492:skip-or-start-from-scratch"
+      ],
+      "source": {
+        "id": "CROP-S119",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2101860,
+          "endExclusive": 2101971
+        },
+        "spanHash": "7316cc852ce131fb524b4e360706476329b18561e2cce5d1e8853fe8942fee0c",
+        "nodeType": "SwitchCase",
+        "labels": [
+          "dispatch:electron-onboarding-skip-workspace"
+        ]
+      },
+      "ownershipWitnessId": "FMO-SOURCE-1792",
+      "factIds": [
+        "CROP-W08",
+        "CROP-W09",
+        "CROP-W10"
+      ],
+      "claim": "所选主进程case等待skipOnboardingWorkspace(view,initializeGitRepository)，与FSC-0492既有Skip／Start from scratch操作合同对应。空登记结果、异常、可选Git初始化和分开的结果／导航消息保留各自语义；关联不证明目录、Git、项目服务、消息交付或产品模式的实际效果。",
+      "previousDispositionRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v34.json",
+        "bytes": 1607793,
+        "sha256": "8cba41896d6ab2fc61a2b4a7099ac2dcfcf10d086209f3892e0b93eae3479c55",
+        "jsonPointer": "/entries/753"
+      },
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/753"
+      },
+      "featureContract": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/core-route-operations-v1.json",
+        "bytes": 286864,
+        "sha256": "b2bed95eaac9033bccd73e597814236ec9336a0d23b3b2893f9f59b7d79c5f2e",
+        "jsonPointer": "/adoptedGoals/1"
+      },
+      "previousRemainingWork": "Identify concrete senders, services and retained user consumers; establish mode/shared and actual effect separately.",
+      "remainingWork": "Conditional support for existing goal operation only. Actual mount, host/provider instance, result delivery, product mode, filesystem/project/Git effects and durable state remain unobserved; preserve the original source contract variants.",
+      "productMode": "unknown",
+      "actualRuntimeVerified": false,
+      "functionalEntryFullyResolved": false
+    }
+  ],
+  "counts": {
+    "sourceIdentities": 968,
+    "unassociatedSources": 706,
+    "explicitMechanisms": 181,
+    "pendingSourceDecisions": 525,
+    "adoptedAssociations": 2,
+    "unchangedSourceRecords": 966,
+    "cumulativeConditionalHostAssociations": 5,
+    "remainingPendingHostSources": 98,
+    "sourceSpansChecked": 21,
+    "frozenFiles": 2,
+    "newSourceSemanticDiscoveries": 0,
+    "newSourceParses": 0,
+    "newFeatures": 0,
+    "newOperations": 0,
+    "newModes": 0,
+    "newScenarios": 0,
+    "newRuntimePasses": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newImplementation": 0
+  },
+  "currentLedgers": {
+    "legacy": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v35.json",
+      "bytes": 1610595,
+      "sha256": "46d5bb085042de28b087ebd35a22686e09b8cbdea66362d1132da22eed7736fc"
+    },
+    "backlog": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v19.json",
+      "bytes": 509048,
+      "sha256": "4bea84cb0be9cd04342a33cca4a51e763ed1ab080827cf1925ef9588297a2fc7"
+    },
+    "csv": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v35.csv",
+      "bytes": 126085,
+      "sha256": "d2633dfad8b58642ecaee426b6b2abd62f87f3b3033d5a7e2aace74ad76eac9d"
+    }
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v34.json",
+      "bytes": 1607793,
+      "sha256": "8cba41896d6ab2fc61a2b4a7099ac2dcfcf10d086209f3892e0b93eae3479c55"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v18.json",
+      "bytes": 509066,
+      "sha256": "d3a2b2e709497119709f3492dc26b4002d08b9a13c1d310edf1f728c309fdd17"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/core-route-operations-v1.json",
+      "bytes": 286864,
+      "sha256": "b2bed95eaac9033bccd73e597814236ec9336a0d23b3b2893f9f59b7d79c5f2e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-case-overlap-candidates-v1.json",
+      "bytes": 70719,
+      "sha256": "88ac1cb6b66ee1f2d3e4b39d3e9df263e3abe216f16d23a3ab7ae37eda794ad3"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v52.json",
+      "bytes": 2853644,
+      "sha256": "b9c4a2b2f75a45c3e4d48f96a594b5b24c8757dbaa0826da7e44f57c633ab647"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v18.json",
+      "bytes": 8560856,
+      "sha256": "6b000f0c8a5e50596906f1cb40b557b8d5b8e3bf6f30f56151d0be6c7e483600"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/entry-family-map.json",
+      "bytes": 3217503,
+      "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-terminal-disposition-v1.json",
+      "bytes": 53390,
+      "sha256": "d14a73aca8cd18d49719ebcf7df926ef1498099c62f2528115c61677127b21a6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v49-scenarios.json",
+      "bytes": 2694848,
+      "sha256": "7b11da6e403f58ce07697245c75398b7abda13476eef48ad31a92dd80d97ea9a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v6.json",
+      "bytes": 2512,
+      "sha256": "14ad5dbf8905dffe4a9c5b79399ba1177e35f3fd618b62d5e098fdb5f1a86c8a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v43.json",
+      "bytes": 1556177,
+      "sha256": "6a89977a41a466b13fe07479e3a82a35c872328d54fba757d25f623ada10cd5e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-current-ordering-v26.json",
+      "bytes": 49708,
+      "sha256": "7c9859baa26645b0731b9ae8537e43ba1e9f267c92224474c2cad9a7c9b7c349"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-plan-v11.md",
+      "bytes": 21504,
+      "sha256": "84fa4d10ac9a1d57a4fc1e563f935572b1bee9d3ec85e6cde94444b68b3753a7"
+    }
+  ],
+  "sourceSpansChecked": [
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1443885,
+        "endExclusive": 1443944
+      },
+      "spanHash": "82aeb730e3342cb47cc4e7c659d260fb9a6c582dfc8f6960f909603dc28e99b6"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2077859,
+        "endExclusive": 2078008
+      },
+      "spanHash": "c68114cea5e8e485f0d8a4cf0632ad8fd3920990433bec17693ee1fe1938a549"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2077834,
+        "endExclusive": 2105402
+      },
+      "spanHash": "58539c2e26bcbdbfbea437d2a38da590850dbd0e7037f81c1f589ddbf0d4962b"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2101743,
+        "endExclusive": 2101860
+      },
+      "spanHash": "59ab60deb47d8198f95c34351f92f7edf27bfbeda6b4a67c1b307889f9e3f37f"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/select-workspace-page-93a123d78c93.js",
+      "sourceHash": "e0dafaecd02d1179a0035ac686a77ce080f1731c0ebe158f793805f22797df48",
+      "byteRange": {
+        "start": 970,
+        "endExclusive": 2105
+      },
+      "spanHash": "92885e5089b003a31fb066a1189533d25a776394725c32be8126e69ac71fd323"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/select-workspace-page-93a123d78c93.js",
+      "sourceHash": "e0dafaecd02d1179a0035ac686a77ce080f1731c0ebe158f793805f22797df48",
+      "byteRange": {
+        "start": 9656,
+        "endExclusive": 10354
+      },
+      "spanHash": "85d464693710d210cf8ac9a6bb262314b5c612701ac87de8cf6adfe88ff71234"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/select-workspace-page-93a123d78c93.js",
+      "sourceHash": "e0dafaecd02d1179a0035ac686a77ce080f1731c0ebe158f793805f22797df48",
+      "byteRange": {
+        "start": 2191,
+        "endExclusive": 7857
+      },
+      "spanHash": "4e42677466073ff5c2e53192d5ebefe4b2b5b9613190291346ee60ae93f6a4e1"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2017375,
+        "endExclusive": 2017725
+      },
+      "spanHash": "dccc2a82ad52e1c4ec41cf72b20562acedc00f312129ad933e0dfe5866342fc7"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2017725,
+        "endExclusive": 2018201
+      },
+      "spanHash": "c70eb365a4b1467ed4e286f38f0f8e23c9228b04f1643c2066c40391dfd9eeda"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2018201,
+        "endExclusive": 2018410
+      },
+      "spanHash": "fbcccc01f22fdf8cf8c48fd42da0b74308ed930ddfd1cdd5609519f93a3697c5"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2101860,
+        "endExclusive": 2101971
+      },
+      "spanHash": "7316cc852ce131fb524b4e360706476329b18561e2cce5d1e8853fe8942fee0c"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/select-workspace-page-93a123d78c93.js",
+      "sourceHash": "e0dafaecd02d1179a0035ac686a77ce080f1731c0ebe158f793805f22797df48",
+      "byteRange": {
+        "start": 8993,
+        "endExclusive": 9656
+      },
+      "spanHash": "662e4294a97578bcf057e50640ad9d3538d8c10ea75d03bc4932641baedc7d09"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/select-workspace-page-93a123d78c93.js",
+      "sourceHash": "e0dafaecd02d1179a0035ac686a77ce080f1731c0ebe158f793805f22797df48",
+      "byteRange": {
+        "start": 10354,
+        "endExclusive": 13915
+      },
+      "spanHash": "75afb054eb7d79c3b3ebab882377afdc73d40a9a0c5d44cbb6f184134a704d63"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/select-workspace-page-93a123d78c93.js",
+      "sourceHash": "e0dafaecd02d1179a0035ac686a77ce080f1731c0ebe158f793805f22797df48",
+      "byteRange": {
+        "start": 13915,
+        "endExclusive": 15099
+      },
+      "spanHash": "77648aefc96e4c96c97925561d1d73fe083cc5502d071d4bbdbf8ad9f520bc98"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2111623,
+        "endExclusive": 2112492
+      },
+      "spanHash": "d3f3e1eca03ca728f8d30817747700b5c149dd6dcc172bc104e7059bf4d6c2f5"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2069539,
+        "endExclusive": 2069555
+      },
+      "spanHash": "b580c5ee52ae002d8e7494df0279e0d97b09149b0fffc960ed69d2b3799f10ce"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2112951,
+        "endExclusive": 2113338
+      },
+      "spanHash": "54d49f79123c7ffe344cc829f5d325c4c313178920993d3e257c0d037f29dfed"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2112492,
+        "endExclusive": 2112749
+      },
+      "spanHash": "2d5302bb289a16d09384f3d3aa106c1700d98da3cc1dd870ddd3092585b4dc90"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2112749,
+        "endExclusive": 2112951
+      },
+      "spanHash": "072eb1118c432c0ce8b10bc8b8d97557fc22cccaed4c9b5f0875a481d59f4f5b"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2113338,
+        "endExclusive": 2113430
+      },
+      "spanHash": "00f05afa97c9d7ffd7d6caa6d1d7d41cb37dd2a4cf35814d20f79476822c7149"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2113430,
+        "endExclusive": 2113881
+      },
+      "spanHash": "44df66406deaf91deb430f323671c605aef811246690d6dee630d743fe20da08"
+    }
+  ],
+  "assumptions": [
+    "Message type is a stable primitive string across the predicate and switch reads.",
+    "Standard String.prototype.startsWith and Error semantics apply."
+  ],
+  "stopCondition": "Already documented source contracts only; no provider recursion or target/client/model/service execution.",
+  "selectedAccountingBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false
+}

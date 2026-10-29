@@ -1,0 +1,11 @@
+# 持久化键策略、记录合并与窗口广播
+
+本批补充先前REA/AST接收候选，从同一冻结main选取8个完整范围，共2486字节，形成20条来源事实和2条推断，另列13个未执行场景。新范围用唯一文本边界定位，并作一次Node语法检查；没有执行目标函数、重跑REA或独立解析整个Program的作用域绑定。见[结构化契约](main-persistence-policy.json)及[来源索引](main-persistence-policy-provenance.json)。
+
+TY测试thread-browser-tabs-v1:与thread-tab-routes-v1:两个前缀。pR对其他键或空incoming直接放行；对于cloud-aeon-sidebar-cache-v1且两次schema解析成功、身份一致时，检查revision、刷新时间或removalBaseRevision。这是特定缓存键的接纳条件，不能写成通用相等比较，也不能由名称决定模式归属。schema命名空间及比较器实现／版本仍待调查。
+
+hR先取得解析后的记录或空对象，再按expectedValue条件、delete属性存在性、createOnly／updateOnly和时间戳比较处理条目。delete:false仍因属性存在而进入删除分支。随后按数值下限、条目数和反向枚举的JSON字节预算裁剪；超预算条目删除后不增加累计预算，后续较小条目仍可能保留。普通更新中的先delete再defineProperty可能改变非索引键的枚举顺序，因此不能随意替换为对象赋值。未执行schema／比较器，不能假设safeParse保留原对象身份或把比较器当作某个已确认包。
+
+广播把undefined编码为value:null、deleted:true；普通null仍是deleted:false。非标签页键或任何删除发给所有窗口；标签页键的非删除只查来源webContents所在窗口，缺失时该分支不发送。delete方法筛选key in state后浅拷贝、删除、set，再逐键广播；筛选包含继承属性且不去重。reset先set空状态，再发全窗口sync，所选消息没有owner写入标志。上述方法内部没有证明实际sender送达或存储耐久性。
+
+维护建议将第一方记录合并、缓存接纳与窗口消息适配分开，保留schema、比较器、window manager和globalState依赖接口；拟议路径及8范围映射见契约。未生成客户端源码或复制第三方实现。原Program词法绑定、真实调用实例、owner/filter、持久后端、MODE bootstrap/store及完整功能分母继续待查；本批不把停止／重启的interrupted观察扩大为恢复执行证明，也不增加模型提交。

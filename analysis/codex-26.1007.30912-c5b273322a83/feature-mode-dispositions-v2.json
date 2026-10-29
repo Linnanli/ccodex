@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "Authoritative source-qualified feature-mode overlay; base identity/operation/scenario ledgers remain immutable.",
+  "baseFeatureLedger": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v48.json",
+    "bytes": 2810067,
+    "sha256": "f29f5fdd7ef4a7339fbf3d644237f6b311ed38f870d37612f7142279a3aa564f"
+  },
+  "rule": "Classify mixed cross-product feature definitions as shared when concrete Codex and ChatGPT-facing branches are traced. Runtime validation is recorded separately. This is not whole-module or whole-feature exclusion.",
+  "overrides": [
+    {
+      "featureId": "FSC-0481",
+      "previousMode": "unknown",
+      "mode": "shared",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "evidenceIds": [
+        "ECD-F13"
+      ],
+      "qualification": "Mixed cross-product parameterized user goal. Actual execution is unverified; individual product surfaces use branch dispositions, not whole-feature deletion.",
+      "evidenceRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-composer-disposition-v1.json",
+        "bytes": 84797,
+        "sha256": "4c547fc428aadf77797ed2cf8adf0900386acfd183fa6bcaee5db91561c55586",
+        "jsonPointer": "/featureModeDecision"
+      }
+    },
+    {
+      "featureId": "FSC-0402",
+      "previousMode": "unknown",
+      "mode": "shared",
+      "confidence": "confirmed",
+      "method": "static-code",
+      "evidenceIds": [
+        "LTM-F02"
+      ],
+      "qualification": "Shared local-thread and ChatGPT chat/work summary goal; source classification only, not a whole-module deletion or runtime pass.",
+      "evidenceRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/local-thread-mode-classification-v1.json",
+        "bytes": 69210,
+        "sha256": "456e5f91ab3d1dc831c825a84ddb8c894b7de9e6b0f27d0ac7515a6ca37512b3",
+        "jsonPointer": "/decisions/1"
+      }
+    }
+  ],
+  "baseModeCounts": {
+    "unknown": 503,
+    "shared": 1
+  },
+  "effectiveModeCounts": {
+    "unknown": 501,
+    "shared": 3
+  },
+  "featureCount": 504,
+  "wholeFeatureExclusionsAdded": 0,
+  "sourceClassificationOnly": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "previousOverlay": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v1.json",
+    "bytes": 1642,
+    "sha256": "41582657e7c9be066d7dade125b7cc83395968f6f65c69c907a0f4db5a39b652"
+  }
+}

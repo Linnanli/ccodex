@@ -1,0 +1,1135 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "plan": {
+    "path": "docs/reverse-engineering/analysis-plan.md",
+    "bytes": 16461,
+    "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+  },
+  "requirementId": "6.3",
+  "purpose": "Refine three existing ChatGPT branch decisions with direct dependency boundaries; no new product scope",
+  "baseDecisions": {
+    "path": "chat-branch-decisions.json",
+    "bytes": 12041,
+    "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+  },
+  "sourceContract": {
+    "path": "raw/chat-branch-decisions/branch-source.json",
+    "bytes": 15475,
+    "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282"
+  },
+  "composerSupplement": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-composer-disposition-v1.json",
+    "bytes": 84797,
+    "sha256": "4c547fc428aadf77797ed2cf8adf0900386acfd183fa6bcaee5db91561c55586"
+  },
+  "modeClassificationOverlayUnchanged": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v2.json",
+    "bytes": 2512,
+    "sha256": "b051755ab468e7945e77c863e660a316d287e923937b3147afe9238de91141dc"
+  },
+  "policies": [
+    {
+      "decisionId": "CBX-01",
+      "decision": "exclude-this-branch-from-restored-client",
+      "responsibility": "临时 Chat 入门弹窗宿主（从主页页脚位置挂载）",
+      "omitAt": {
+        "sourceContract": {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282"
+        },
+        "jsonPointer": "/fragments/10"
+      },
+      "directDependencyChain": [
+        "primary CFt lazy initializer",
+        "chatgpt-temporary-chat-ui export ChatGptTemporaryChatOnboardingModalHost",
+        "same shim imports primary kr as t",
+        "primary exports A4 as kr",
+        "A4 gates t_ then renders Xwt"
+      ],
+      "evidenceIds": [
+        "CBD-F01",
+        "CBD-F02"
+      ],
+      "retain": [
+        "jRt/M9/NRt 共享布局与 Codex 首轮入口",
+        "VIt 状态/控制器适配及 B 导出",
+        "仍有其他消费者或未知初始化副作用的懒加载/公告/账户/持久化机制"
+      ],
+      "instruction": "省略该条件挂载点；重构时单独管理弹窗宿主适配。不能因为目标文件名含 ChatGPT 而删除整个 primary、初始化组或共享服务。",
+      "moduleDeletionAllowed": false,
+      "removalImplemented": false
+    },
+    {
+      "decisionId": "CBX-02",
+      "decision": "exclude-chat-alternatives-retain-neutral-policy",
+      "evidenceIds": [
+        "CBD-F03",
+        "CBD-F04",
+        "CBD-F06"
+      ],
+      "neutralPolicy": {
+        "suggestionTriggers": {
+          "/": "slash-command",
+          "@": "at-mention",
+          "$": "skill-mention"
+        },
+        "enableInlineSystemHints": false,
+        "variant": {
+          "kind": "undefined"
+        }
+      },
+      "additionalBindingDecision": {
+        "name": "kzt",
+        "pureLiteralAssignment": true,
+        "valueReads": 1,
+        "localExports": 0,
+        "conditionalOmissionEligible": true,
+        "condition": "Remove its sole Chat-specific configuration choice; retain Q9 and the unrelated imported kzt-as-JT binding."
+      },
+      "retain": [
+        "Q9 的三项触发器及对应处理器",
+        "控制器和 layout effect 生命周期",
+        "chat→work 的草稿恢复和后续 re.current 状态更新",
+        "导入为 JT 的其他模块绑定及尚未分类的 suggestion 模块"
+      ],
+      "instruction": "移除已列 Chat 配置选择，保留中性/Codex 配置。仅在该选择移除后省略 primary 私有 kzt 纯字面量绑定；升级必须重新核对读写/导出，不能按名字全局删 kzt。",
+      "moduleDeletionAllowed": false,
+      "removalImplemented": false
+    },
+    {
+      "decisionId": "CBX-03",
+      "decision": "exclude-this-registration-callsite",
+      "evidenceIds": [
+        "CBD-F05"
+      ],
+      "omitAt": {
+        "sourceContract": {
+          "path": "raw/chat-branch-decisions/branch-source.json",
+          "bytes": 15475,
+          "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282"
+        },
+        "jsonPointer": "/fragments/5"
+      },
+      "retain": [
+        "py 命令注册机制及其他命令",
+        "非 Chat 切换和必要的共享过渡处理",
+        "Codex 创建任务的实际行为"
+      ],
+      "instruction": "省略 switchToMode1 这处 Chat 目标注册；newTask 要分开核对 default callback 与切模式 keyboardHandler。单模式产品不能因原样保留后者而重新进入 Chat，也不能直接返回 true 却不执行任何动作。",
+      "remainingDirectBoundary": "primary Qx 从 app-initial 导入 VXt；核对该函数对 selectChat 的守卫和实际目标后，再决定如何保留 Codex newTask 变体。",
+      "allChatEntrypointsClosed": false,
+      "moduleDeletionAllowed": false,
+      "removalImplemented": false
+    }
+  ],
+  "facts": [
+    {
+      "id": "CBD-F01",
+      "claim": "CFt 懒加载 ChatGptTemporaryChatOnboardingModalHost；目标小文件仅将 primary 的 kr 以该名字转导出。primary 的 kr 绑定 A4，A4 经 t_ 守卫后渲染 Xwt。Xwt 按临时会话、已读和公告资格构建 temporary-chat-onboarding 候选，并在关闭时写本地已读状态及调用 Kwt。原“页脚”实际是挂在该位置的入门弹窗宿主。",
+      "sourceUnitIds": [
+        "CBD-P005",
+        "CBD-L001",
+        "CBD-L002",
+        "CBD-R001",
+        "CBD-R002",
+        "CBD-R003",
+        "CBD-R004"
+      ],
+      "qualification": "直接动态导入/转导出/组件链闭合。t_、公告队列、账户查询与持久化提供方不继续展开；未挂载组件、读个人状态或调用服务。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F02",
+      "claim": "jRt 在临时 Chat 条件之前调用 VIt(E)，并把其结果用于 chatHomeState、额外开发者指令、文件拖放和 NRt 属性；Codex Tzt 仍经 M9 到 jRt/NRt。VIt 还被导出为 B，不能因为一个页脚挂载点被省略而删除该状态适配器或整个主包。",
+      "sourceUnitIds": [
+        "CBD-P112",
+        "CBD-P002",
+        "CBD-P100",
+        "CBD-U002",
+        "CBD-U004",
+        "CBD-B012"
+      ],
+      "qualification": "说明直接依赖与保留边界，不声称所有非 Chat 条件下 VIt 返回相同结果，也未证明完整跨产品消费者和实际副作用。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F03",
+      "claim": "primary 私有 kzt 的纯字面量仅配置 /→slash-command 与 @→at-mention；Q9 在相同两项之外还配置 $→skill-mention。完整 Program 的语法角色核对显示 kzt 只有一处值读取（Ezt 的 chat 条件分支）、一次定义和一次写入，没有本地导出；导入端名 kzt as JT 不属于此私有绑定。省略该 Chat 选择后，可不生成这个无其他静态读取的纯配置绑定。",
+      "sourceUnitIds": [
+        "CBD-P006",
+        "CBD-P007",
+        "CBD-P120",
+        "CBD-P106",
+        "CBD-U002"
+      ],
+      "qualification": "结论只限本基线 primary 的私有配置值；保留 Q9、slash/@ 处理器和其他模块的同名绑定。不扩大到完整 suggestion 模块或所有反射/动态行为。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F04",
+      "claim": "Ezt 的同一 layout effect 除设置触发配置，还处理 chat→work 的持久文本恢复及 re.current 更新；Tzt 明确使用 Q9、enableInlineSystemHints:false 和 undefined variant。删除 Chat 配置选择不能连同 effect、控制器生命周期或 work 草稿恢复一并删除。",
+      "sourceUnitIds": [
+        "CBD-P120",
+        "CBD-U003",
+        "CBD-B003"
+      ],
+      "qualification": "策略是具体输入替换与共享职责保留；实际编辑器触发、草稿写入和恢复尚未运行验收。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F05",
+      "claim": "switchToMode1 的直接回调请求 chat；同一 Ezt 另为 newTask 注册 default callback Qx(selectChat:true) 和有守卫的 keyboardHandler。后者在空输入等条件满足时请求 o===chat?work:chat 并返回 true。因此仅移除 switchToMode1 不能证明 Chat 入口已全部切断，保留 newTask 名称也不等于应原样保留其切模式变体。",
+      "sourceUnitIds": [
+        "CBD-U003",
+        "CBD-B006",
+        "CBD-B007",
+        "CBD-B008"
+      ],
+      "qualification": "Qx 的 selectChat 参数含义与实际目标仍需核对直接函数，不能从参数名断言永远进入 Chat。不得静默吞掉按键，也不得把命令改成直接提交首轮。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F06",
+      "claim": "三处同名字符串 CFt as bt、VIt as _u、kzt as JT 是 ImportSpecifier 的外部端名；它们不是本地 CFt/VIt/kzt 的值读取。VIt as B 才是本地绑定导出。引用清单按语法位置分别记录，避免按压缩名字相等合并依赖或据此删除导入。",
+      "sourceUnitIds": [
+        "CBD-P102",
+        "CBD-P104",
+        "CBD-P106",
+        "CBD-P100"
+      ],
+      "qualification": "只纠正本批四个符号的引用角色；不宣称通用抽取器所有历史 reference hints 都已完成语义引用审计。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CBD-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "CFt 懒加载 ChatGptTemporaryChatOnboardingModalHost；目标小文件仅将 primary 的 kr 以该名字转导出。primary 的 kr 绑定 A4，A4 经 t_ 守卫后渲染 Xwt。Xwt 按临时会话、已读和公告资格构建 temporary-chat-onboarding 候选，并在关闭时写本地已读状态及调用 Kwt。原“页脚”实际是挂在该位置的入门弹窗宿主。",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 2191204,
+          "endExclusive": 2191509
+        },
+        "spanSha256": "a322325d3e3b6b4619cb3492a6ccb1844cd398809c74848b93224cce9bb481f6",
+        "supportSourceUnitIds": [
+          "CBD-P005",
+          "CBD-L001",
+          "CBD-L002",
+          "CBD-R001",
+          "CBD-R002",
+          "CBD-R003",
+          "CBD-R004"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "jRt 在临时 Chat 条件之前调用 VIt(E)，并把其结果用于 chatHomeState、额外开发者指令、文件拖放和 NRt 属性；Codex Tzt 仍经 M9 到 jRt/NRt。VIt 还被导出为 B，不能因为一个页脚挂载点被省略而删除该状态适配器或整个主包。",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 2314501,
+          "endExclusive": 2317965
+        },
+        "spanSha256": "d84eb7f6d06a5bf42f9861fc5e795d5d5f48c724700bb4dabaedf34062d52a2e",
+        "supportSourceUnitIds": [
+          "CBD-P112",
+          "CBD-P002",
+          "CBD-P100",
+          "CBD-U002",
+          "CBD-U004",
+          "CBD-B012"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "primary 私有 kzt 的纯字面量仅配置 /→slash-command 与 @→at-mention；Q9 在相同两项之外还配置 $→skill-mention。完整 Program 的语法角色核对显示 kzt 只有一处值读取（Ezt 的 chat 条件分支）、一次定义和一次写入，没有本地导出；导入端名 kzt as JT 不属于此私有绑定。省略该 Chat 选择后，可不生成这个无其他静态读取的纯配置绑定。",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 2374208,
+          "endExclusive": 2374250
+        },
+        "spanSha256": "48cd749ba282e0c93dc3f22d30f708157c3b5d3e969c7172da1df64f66c055b4",
+        "supportSourceUnitIds": [
+          "CBD-P006",
+          "CBD-P007",
+          "CBD-P120",
+          "CBD-P106",
+          "CBD-U002"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Ezt 的同一 layout effect 除设置触发配置，还处理 chat→work 的持久文本恢复及 re.current 更新；Tzt 明确使用 Q9、enableInlineSystemHints:false 和 undefined variant。删除 Chat 配置选择不能连同 effect、控制器生命周期或 work 草稿恢复一并删除。",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 2367769,
+          "endExclusive": 2368013
+        },
+        "spanSha256": "99528117eb1ce99e82bc23fd9c735911c838bf29d4c51349113331bcfca5ce61",
+        "supportSourceUnitIds": [
+          "CBD-P120",
+          "CBD-U003",
+          "CBD-B003"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "switchToMode1 的直接回调请求 chat；同一 Ezt 另为 newTask 注册 default callback Qx(selectChat:true) 和有守卫的 keyboardHandler。后者在空输入等条件满足时请求 o===chat?work:chat 并返回 true。因此仅移除 switchToMode1 不能证明 Chat 入口已全部切断，保留 newTask 名称也不等于应原样保留其切模式变体。",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 2366380,
+          "endExclusive": 2373356
+        },
+        "spanSha256": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+        "supportSourceUnitIds": [
+          "CBD-U003",
+          "CBD-B006",
+          "CBD-B007",
+          "CBD-B008"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    },
+    {
+      "id": "CBD-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "三处同名字符串 CFt as bt、VIt as _u、kzt as JT 是 ImportSpecifier 的外部端名；它们不是本地 CFt/VIt/kzt 的值读取。VIt as B 才是本地绑定导出。引用清单按语法位置分别记录，避免按压缩名字相等合并依赖或据此删除导入。",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "locator": {
+        "byteRange": {
+          "start": 31077,
+          "endExclusive": 31086
+        },
+        "spanSha256": "0e943fc70a3da62d303515f637af15cadd1fb40a3809667a30028fc4b7969b16",
+        "supportSourceUnitIds": [
+          "CBD-P102",
+          "CBD-P104",
+          "CBD-P106",
+          "CBD-P100"
+        ]
+      },
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-reviewed-runtime-unverified"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "CBD-P001",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2187172,
+        "endExclusive": 2187175
+      },
+      "spanHash": "b17e16716ef62003d87a49d2bd21753c032459f3888c4a3e8402fb39baa30d6e",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "declaration:CFt",
+        "program-use:CFt",
+        "use-parent:CFt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/0",
+        "originalId": "RP-S0001"
+      }
+    },
+    {
+      "id": "CBD-P002",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2240395,
+        "endExclusive": 2254244
+      },
+      "spanHash": "b67c0b742c57cb6d75052f1876999719e030a8e842858d0bd86a87adc738edba",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:VIt",
+        "use-parent:VIt",
+        "use-owner:VIt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/1",
+        "originalId": "RP-S0002"
+      }
+    },
+    {
+      "id": "CBD-P003",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2373828,
+        "endExclusive": 2373831
+      },
+      "spanHash": "b8491ca8815c453dc3806a5c5c68b6d1d2c328bb85fdf117017877d53e6718d1",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "declaration:kzt",
+        "program-use:kzt",
+        "use-parent:kzt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/2",
+        "originalId": "RP-S0003"
+      }
+    },
+    {
+      "id": "CBD-P004",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2373832,
+        "endExclusive": 2373834
+      },
+      "spanHash": "c7c58bd6007672362da2106fdbfaf9f50629e4bdf8598169c598027394ef9791",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "declaration:Q9",
+        "program-use:Q9",
+        "use-parent:Q9"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/3",
+        "originalId": "RP-S0004"
+      }
+    },
+    {
+      "id": "CBD-P005",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2191204,
+        "endExclusive": 2191509
+      },
+      "spanHash": "a322325d3e3b6b4619cb3492a6ccb1844cd398809c74848b93224cce9bb481f6",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:CFt",
+        "use-parent:CFt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/4",
+        "originalId": "RP-S0005"
+      }
+    },
+    {
+      "id": "CBD-P006",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2374208,
+        "endExclusive": 2374250
+      },
+      "spanHash": "48cd749ba282e0c93dc3f22d30f708157c3b5d3e969c7172da1df64f66c055b4",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:kzt",
+        "use-parent:kzt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/5",
+        "originalId": "RP-S0006"
+      }
+    },
+    {
+      "id": "CBD-P007",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2374251,
+        "endExclusive": 2374310
+      },
+      "spanHash": "7f4b4394fc96196a855ebbea4b61718853038312c46f16280243d1119709dec5",
+      "nodeType": "AssignmentExpression",
+      "labels": [
+        "assignment:Q9",
+        "use-parent:Q9"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/6",
+        "originalId": "RP-S0007"
+      }
+    },
+    {
+      "id": "CBD-P100",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2374802,
+        "endExclusive": 2374810
+      },
+      "spanHash": "724e217415a7e46b1ba29f92939330b5939a13ae70c47e4fc851591df30f6abf",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:B",
+        "use-parent:VIt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/99",
+        "originalId": "RP-S0100"
+      }
+    },
+    {
+      "id": "CBD-P102",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 31077,
+        "endExclusive": 31086
+      },
+      "spanHash": "0e943fc70a3da62d303515f637af15cadd1fb40a3809667a30028fc4b7969b16",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "use-parent:CFt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/101",
+        "originalId": "RP-S0102"
+      }
+    },
+    {
+      "id": "CBD-P104",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 35745,
+        "endExclusive": 35754
+      },
+      "spanHash": "9419cab6205c6249560a0fca6f48bf9471550000428429e1c9f408781161ae30",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "use-parent:VIt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/103",
+        "originalId": "RP-S0104"
+      }
+    },
+    {
+      "id": "CBD-P106",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 61807,
+        "endExclusive": 61816
+      },
+      "spanHash": "3e33165f9ca1a793d6d94aa50e07f4703b96a034c779e4b26f6aeadd74918ed3",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "use-parent:kzt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/105",
+        "originalId": "RP-S0106"
+      }
+    },
+    {
+      "id": "CBD-P112",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2314501,
+        "endExclusive": 2317965
+      },
+      "spanHash": "d84eb7f6d06a5bf42f9861fc5e795d5d5f48c724700bb4dabaedf34062d52a2e",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "use-owner:VIt",
+        "use-owner:CFt"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/111",
+        "originalId": "RP-S0112"
+      }
+    },
+    {
+      "id": "CBD-P120",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2367769,
+        "endExclusive": 2368013
+      },
+      "spanHash": "99528117eb1ce99e82bc23fd9c735911c838bf29d4c51349113331bcfca5ce61",
+      "nodeType": "ArrowFunctionExpression",
+      "labels": [
+        "use-owner:kzt",
+        "use-owner:Q9"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+        "bytes": 119401,
+        "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca",
+        "jsonPointer": "/units/119",
+        "originalId": "RP-S0120"
+      }
+    },
+    {
+      "id": "CBD-L001",
+      "sourcePath": "app.asar/webview/assets/chatgpt-temporary-chat-ui-46add7a3858a.js",
+      "sourceHash": "7a66411f035a5d7418f051ae5d373c604f74f68e30fbb9045d6bccc6b3901918",
+      "byteRange": {
+        "start": 52,
+        "endExclusive": 59
+      },
+      "spanHash": "b9f222f0c8b1dbdc0f552ba197cef4069071ec70ec99e77c89f6b4d91b61387f",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:t"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/footer-selected.json",
+        "bytes": 2337,
+        "sha256": "021608f27ea5e79f5877c10bb87f543e96596f24c605b1a50e7dd8de76dfef18",
+        "jsonPointer": "/units/0",
+        "originalId": "RP-S0001"
+      }
+    },
+    {
+      "id": "CBD-L002",
+      "sourcePath": "app.asar/webview/assets/chatgpt-temporary-chat-ui-46add7a3858a.js",
+      "sourceHash": "7a66411f035a5d7418f051ae5d373c604f74f68e30fbb9045d6bccc6b3901918",
+      "byteRange": {
+        "start": 107,
+        "endExclusive": 151
+      },
+      "spanHash": "321d54dc8b7ebce262cf15c0ac656b5898a64b846509e8499e96a1e388bf5d1e",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:ChatGptTemporaryChatOnboardingModalHost"
+      ],
+      "origin": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/footer-selected.json",
+        "bytes": 2337,
+        "sha256": "021608f27ea5e79f5877c10bb87f543e96596f24c605b1a50e7dd8de76dfef18",
+        "jsonPointer": "/units/1",
+        "originalId": "RP-S0002"
+      }
+    },
+    {
+      "name": "wzt",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2359672,
+        "endExclusive": 2365615
+      },
+      "spanHash": "ec8a19cfb9db5ae9280f5b37e4fc0fe92c6982a9c68e7704c6ad32cec821dfda",
+      "id": "CBD-U001",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/units/0"
+      }
+    },
+    {
+      "name": "Tzt",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2365615,
+        "endExclusive": 2366380
+      },
+      "spanHash": "fd49167b61fd6e34f1086dfe30f42a12d263d5087f3a92b7ff94e3c312218514",
+      "id": "CBD-U002",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/units/1"
+      }
+    },
+    {
+      "name": "Ezt",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2366380,
+        "endExclusive": 2373356
+      },
+      "spanHash": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+      "id": "CBD-U003",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/units/2"
+      }
+    },
+    {
+      "name": "M9",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2312695,
+        "endExclusive": 2314447
+      },
+      "spanHash": "721d48091bc6d7b16d75cb9bb2d8f5eb0c9b7dd40b7d171222ee4d2a0bde280f",
+      "id": "CBD-U004",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/units/3"
+      }
+    },
+    {
+      "name": "jRt",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2314501,
+        "endExclusive": 2317965
+      },
+      "spanHash": "d84eb7f6d06a5bf42f9861fc5e795d5d5f48c724700bb4dabaedf34062d52a2e",
+      "id": "CBD-U005",
+      "nodeType": "FunctionDeclaration",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/units/4"
+      }
+    },
+    {
+      "id": "CBD-B001",
+      "owner": "wzt",
+      "nodeType": "VariableDeclarator",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2363439,
+        "endExclusive": 2363452
+      },
+      "spanHash": "6d51b35bec97750780ff855de16beba26dc566b3708c414813e5e278b1db611c",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/0"
+      }
+    },
+    {
+      "id": "CBD-B002",
+      "owner": "wzt",
+      "nodeType": "VariableDeclarator",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2363453,
+        "endExclusive": 2363483
+      },
+      "spanHash": "7e6bd7422f990a52074f2714b1366f5d10a43ee3db01d28ce24a65740e65cd41",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/1"
+      }
+    },
+    {
+      "id": "CBD-B003",
+      "owner": "Tzt",
+      "nodeType": "OptionalCallExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2365871,
+        "endExclusive": 2365943
+      },
+      "spanHash": "8eaeed969a9a97831f452dfdb6c551b210b474831640b640c9c37128687f3ca4",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/2"
+      }
+    },
+    {
+      "id": "CBD-B004",
+      "owner": "Tzt",
+      "nodeType": "CallExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2366236,
+        "endExclusive": 2366327
+      },
+      "spanHash": "c1215f9891b1e1fa880c8750c7ec943c07aa7fb0a84100cf6e898a8b7f176914",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/3"
+      }
+    },
+    {
+      "id": "CBD-B005",
+      "owner": "Ezt",
+      "nodeType": "CallExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2367883,
+        "endExclusive": 2367998
+      },
+      "spanHash": "8973bf73b577a2a4c521928de24208e28a6a60199dd688bbf646fd01cc277834",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/4"
+      }
+    },
+    {
+      "id": "CBD-B006",
+      "owner": "Ezt",
+      "nodeType": "CallExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2371344,
+        "endExclusive": 2371369
+      },
+      "spanHash": "c742218c01ee22da8d26b3a7b5265ab90242422a7834565e0696d40e53e66e46",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/5"
+      }
+    },
+    {
+      "id": "CBD-B007",
+      "owner": "Ezt",
+      "nodeType": "ArrowFunctionExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2371247,
+        "endExclusive": 2371261
+      },
+      "spanHash": "f61e5496a5676101976d7dd8e59b39cbe3572d8f274f70eabe2423d841a0fc4e",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/6"
+      }
+    },
+    {
+      "id": "CBD-B008",
+      "owner": "Ezt",
+      "nodeType": "VariableDeclarator",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2367718,
+        "endExclusive": 2367726
+      },
+      "spanHash": "8253a5354955d5724bb9da1644bb81713a21f9c24e5ef2a46b01f8204a4c64ea",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/7"
+      }
+    },
+    {
+      "id": "CBD-B009",
+      "owner": "Ezt",
+      "nodeType": "CallExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2372908,
+        "endExclusive": 2373132
+      },
+      "spanHash": "bc06eab8960b8530f23d6da672dab273377bccf12aee1347aeb24f80f3f6866c",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/8"
+      }
+    },
+    {
+      "id": "CBD-B010",
+      "owner": "M9",
+      "nodeType": "CallExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2314298,
+        "endExclusive": 2314391
+      },
+      "spanHash": "7a87a10f9254c51bdb25fd8a9f7adf3e5fbb08e49aa781d85c6192e8069d1c93",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/9"
+      }
+    },
+    {
+      "id": "CBD-B011",
+      "owner": "jRt",
+      "nodeType": "ConditionalExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2317643,
+        "endExclusive": 2317715
+      },
+      "spanHash": "40330b8b936f03434dd24c4cce4517e27e666bba2828d8a125fb5289fa351af7",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/10"
+      }
+    },
+    {
+      "id": "CBD-B012",
+      "owner": "jRt",
+      "nodeType": "CallExpression",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2316246,
+        "endExclusive": 2316620
+      },
+      "spanHash": "f3881d15ec61a2420dbc67a28cabc98684e682450a656541e190cc918731148f",
+      "origin": {
+        "path": "raw/chat-branch-decisions/branch-source.json",
+        "bytes": 15475,
+        "sha256": "8da72ff24c58a4febbb98a14f49fb954cb47bc5af11243a972944a8b7ae30282",
+        "jsonPointer": "/fragments/11"
+      }
+    },
+    {
+      "exported": "kr",
+      "local": "A4",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2382200,
+        "endExclusive": 2382208
+      },
+      "spanHash": "0e724c108b5b8cc38e9cb547cdfb6646f9bef6e633476aa70f1cbd92945cdba3",
+      "nodeType": "ExportSpecifier",
+      "id": "CBD-R001"
+    },
+    {
+      "kind": "function",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 1773306,
+        "endExclusive": 1773432
+      },
+      "spanHash": "3e23405c71b15d18654f4e608c94b88687e5429807a4c816b5535c7452331828",
+      "nodeType": "FunctionDeclaration",
+      "id": "CBD-R002",
+      "name": "A4"
+    },
+    {
+      "kind": "import",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 44446,
+        "endExclusive": 44454
+      },
+      "spanHash": "5cf52db1ad4ecc0bb78499e714dc4b9de22cd984db74e53c8ce77b362e074b48",
+      "nodeType": "ImportSpecifier",
+      "id": "CBD-R003",
+      "name": "t_"
+    },
+    {
+      "kind": "function",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 1773432,
+        "endExclusive": 1774488
+      },
+      "spanHash": "ab4e7d48c20ed01c22aba93566fa153e08f2fbd56cf9c0ced9f79afd413825eb",
+      "nodeType": "FunctionDeclaration",
+      "id": "CBD-R004",
+      "name": "Xwt"
+    }
+  ],
+  "referenceInventory": {
+    "CFt": {
+      "foreign-import-port-not-a-reference-to-this-local-binding": 1,
+      "binding-definition": 1,
+      "binding-write": 1,
+      "value-read": 1
+    },
+    "Q9": {
+      "value-read": 2,
+      "binding-definition": 1,
+      "binding-write": 1
+    },
+    "kzt": {
+      "foreign-import-port-not-a-reference-to-this-local-binding": 1,
+      "value-read": 1,
+      "binding-definition": 1,
+      "binding-write": 1
+    },
+    "VIt": {
+      "foreign-import-port-not-a-reference-to-this-local-binding": 1,
+      "binding-definition": 1,
+      "value-read": 1,
+      "local-binding-export": 1
+    }
+  },
+  "referenceRolesRef": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/direct-links.json",
+    "bytes": 7921,
+    "sha256": "d159f0bd93f19e74c460b6bdb3bfc7c67cfb54fd11235247b14b9e6b6c414059",
+    "jsonPointer": "/referenceRoles"
+  },
+  "sourceArchives": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/primary-selected.json",
+      "bytes": 119401,
+      "sha256": "40b3d05a9ff21f32b72684f1fbe0be22dcada9e6fe3ac819672758f22a1e6fca"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/footer-selected.json",
+      "bytes": 2337,
+      "sha256": "021608f27ea5e79f5877c10bb87f543e96596f24c605b1a50e7dd8de76dfef18"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/chatgpt-branch-dependency-boundaries-v1/direct-links.json",
+      "bytes": 7921,
+      "sha256": "d159f0bd93f19e74c460b6bdb3bfc7c67cfb54fd11235247b14b9e6b6c414059"
+    }
+  ],
+  "upgradeConstraints": [
+    "Rebind private configuration by declaration/value/consumer roles rather than minified name.",
+    "Preserve slash, at-mention and skill-mention in the Codex policy.",
+    "Preserve shared effect lifetime, draft recovery and command arbitration.",
+    "Treat the temporary-chat file as a reexport edge, not an independent architectural module.",
+    "Recheck all newly added reads/exports before omitting the private pure configuration.",
+    "Validate actual Codex first task, keyboard behavior and editor behavior separately from source checks."
+  ],
+  "counts": {
+    "existingBranchDecisionGroupsRefined": 3,
+    "privatePureConfigOmissionDecisionsAdded": 1,
+    "dynamicReexportChainsClosed": 1,
+    "sourceFacts": 6,
+    "sourceUnits": 36,
+    "newProgramParses": 2,
+    "newParsedNodes": 712788,
+    "newFeatureIds": 0,
+    "featureModeClassificationsChanged": 0,
+    "newScenarioIds": 0,
+    "wholeFeatureExclusionsAdded": 0,
+    "wholeModuleExclusionsAdded": 0,
+    "newTargetEvaluations": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newRuntimePasses": 0,
+    "clientImplementationStarted": false
+  },
+  "selectedDirectDependencyBatchClosed": true,
+  "allChatEntrypointsClosed": false,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "clientImplementationStarted": false,
+  "stopBoundary": "Direct footer/configuration/command boundaries only. No recursive feature-gate, account, native, announcement or persistence provider expansion.",
+  "nextAction": "只核对 primary Qx→initial VXt 的默认 newTask 接收器：selectChat 参数、产品模式守卫及导航/项目/草稿副作用，复用既有任务创建合同；不执行目标或递归服务提供方。"
+}

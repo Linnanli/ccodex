@@ -1,0 +1,2724 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T22:33:32.524775+00:00",
+  "scope": "SQ-02-menu-commands-02 fixed11; downstream callbacks and necessary explicit identities only.",
+  "goals": [
+    {
+      "id": "MTA-GOAL-01",
+      "featureId": "FSC-0391",
+      "name": "打开或切换命令面板",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:9b098ad984c9db83e9c11da5",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408008,
+            "endExclusive": 3408106
+          },
+          "spanHash": "851d2407c573e9c6d0cb38b98173a75e5b281f0ab0640eb3286429267c472413",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/45"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/12"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:93a657cb1f528e76de9cb6c7",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408110,
+            "endExclusive": 3408204
+          },
+          "spanHash": "08a41634b84818015893ab1bcfde9b66fcb5237fa2bb4c9dbb88204606a9adf0",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/46"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/13"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:9b098ad984c9db83e9c11da5",
+        "native-menu-schema:93a657cb1f528e76de9cb6c7"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:command-menu-explicit-root",
+          "operationType": "menu-user-goal",
+          "trigger": "openCommandMenu accelerator index1 sends query empty"
+        },
+        {
+          "operationId": "operation:menu-thread:command-menu-toggle",
+          "operationType": "menu-user-goal",
+          "trigger": "openCommandMenu default sends query undefined"
+        }
+      ],
+      "behavior": [
+        "Both menu schemas use me to select M window and send command-menu. First passes query empty string; second calls me() with undefined query.",
+        "W$s registers the message through xs. Defined query resets root/filter, writes query and opens/focuses/selects input. Undefined query closes when already open; otherwise initializes root and may select chats based on isBrowser/mode/capability.",
+        "Close path blurs input, closes session, delegates mLs cleanup, resets root and active flag. Chat-capable/browser rendering paths remain conditional; no blanket deletion of W$s."
+      ],
+      "conditions": [
+        "N access/keymap policy and valid M window apply.",
+        "W$s isBrowser, app mode, chat capability/loading, current active flag and prior search/filter influence toggle/render/session behavior."
+      ],
+      "failureAndCancellation": [
+        "No window -> no message. Explicit-empty and undefined requests must not be collapsed: open and toggle have different behavior.",
+        "Delegated cleanup/session/search/command execution and focus outcomes remain unverified."
+      ],
+      "knownGaps": [
+        "Actual mount and message delivery, complete providers/command execution and mode-specific result sources."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-017",
+          "name": "W$s",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9275495,
+            "endExclusive": 9279256
+          },
+          "spanHash": "b69ab961ae0f6aebd1f99988eb80eae09b564341a8708a4bc222537d18faad4d",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-017-W_s.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        }
+      ],
+      "deduplication": [
+        "Two schemas are one command-palette goal with two operations; differing payload means they are not interchangeable aliases.",
+        "FSC-0067 searches configurable shortcut settings, not executable command palette."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0391:MTA:1",
+          "featureId": "FSC-0391",
+          "operationId": "operation:menu-thread:command-menu-explicit-root",
+          "kind": "explicit",
+          "preconditions": "panel initially open or closed",
+          "trigger": "invoke index1 shortcut",
+          "expectedEffect": "query empty is defined; reset and open, not close",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0391:MTA:2",
+          "featureId": "FSC-0391",
+          "operationId": "operation:menu-thread:command-menu-toggle",
+          "kind": "toggle",
+          "preconditions": "panel initially open",
+          "trigger": "invoke default shortcut",
+          "expectedEffect": "undefined query closes via M cleanup",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0391:MTA:3",
+          "featureId": "FSC-0391",
+          "operationId": "operation:menu-thread:command-menu-explicit-root",
+          "kind": "context",
+          "preconditions": "browser/work/chat capabilities vary",
+          "trigger": "invoke default when closed",
+          "expectedEffect": "preserve conditional chat/root view and loading guard",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0391:MTA:4",
+          "featureId": "FSC-0391",
+          "operationId": "operation:menu-thread:command-menu-explicit-root",
+          "kind": "failure",
+          "preconditions": "missing window or delegated session failure",
+          "trigger": "invoke once",
+          "expectedEffect": "no invented panel/command success; preserve delegate boundary",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M01"
+      ],
+      "consumerModules": [
+        "renderer/search/command-menu",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E039",
+        "MTA-E040"
+      ],
+      "decisionEvidenceId": "MTA-E041"
+    },
+    {
+      "id": "MTA-GOAL-02",
+      "featureId": "FSC-0392",
+      "name": "搜索当前工作区文件并打开结果",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:81f3d98fbb167d166e59b9b8",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408208,
+            "endExclusive": 3408279
+          },
+          "spanHash": "5d22a0b2d0643a082cdaf9e086f8f5b08cfc03ef6a805079df5450bba6f65a09",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/47"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/14"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:81f3d98fbb167d166e59b9b8"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:search-workspace-files",
+          "operationType": "menu-user-goal",
+          "trigger": "searchFiles accelerator"
+        }
+      ],
+      "behavior": [
+        "Menu he uses M and sends file-search-command-menu.",
+        "RPt enabled f=c.length>0&&!Jee(s). Handler when f dispatches command-menu with trimmed current window selection or empty, sets Dy=files and ghe=true.",
+        "RPt registers workspace-scoped thread-file-search with commandMenuFeature=codex and requiredAccess=codexLocal; f and current category affect enabled/exclusive.",
+        "Result selection delegates UIe with scope,path,cwd,hostConfig,hostId,openInSidePanel=true; jPt search/result implementation remains delegated."
+      ],
+      "conditions": [
+        "Effective roots, host, Jee policy, mode/access and command-menu mount matter; no roots means no handler effect."
+      ],
+      "failureAndCancellation": [
+        "No enabled scope -> no search/open; selection/query state is not a proven filesystem search result.",
+        "Provider errors, request cancellation and file-open errors remain delegated."
+      ],
+      "knownGaps": [
+        "Actual search provider/index/request/result ordering, jPt implementation and actual UIe navigation/open result."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-022",
+          "name": "RPt",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+          "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+          "byteRange": {
+            "start": 2168765,
+            "endExclusive": 2170351
+          },
+          "spanHash": "6c17129ad033729ac65333cee0b4d13a9593402ebec8edfb781756da785792f8",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-022-RPt.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        }
+      ],
+      "deduplication": [
+        "Different from MCP/skills/browser-history/settings searches. Positive codex registration establishes retention, not complete exclusive ownership."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0392:MTA:1",
+          "featureId": "FSC-0392",
+          "operationId": "operation:menu-thread:search-workspace-files",
+          "kind": "guard",
+          "preconditions": "vary roots and Jee policy",
+          "trigger": "invoke searchFiles",
+          "expectedEffect": "only enabled scope opens files category",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0392:MTA:2",
+          "featureId": "FSC-0392",
+          "operationId": "operation:menu-thread:search-workspace-files",
+          "kind": "seed",
+          "preconditions": "selected text contains surrounding spaces",
+          "trigger": "invoke searchFiles",
+          "expectedEffect": "seed trimmed selection then files/exclusive state",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0392:MTA:3",
+          "featureId": "FSC-0392",
+          "operationId": "operation:menu-thread:search-workspace-files",
+          "kind": "select",
+          "preconditions": "known search result and host context",
+          "trigger": "select file",
+          "expectedEffect": "delegate UIe with exact scope/cwd/host/side-panel fields; actual open separately observed",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M01"
+      ],
+      "consumerModules": [
+        "renderer/search/command-menu",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E042"
+      ],
+      "decisionEvidenceId": "MTA-E043"
+    },
+    {
+      "id": "MTA-GOAL-03",
+      "featureId": "FSC-0393",
+      "name": "搜索客户端聊天记录",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:d4ca0600d6ca971f14c5f23f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408283,
+            "endExclusive": 3408354
+          },
+          "spanHash": "1df1c13868a127d06315fd7a1aa19824bec7fbe4b0d5f620d4647692a25f25f9",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/48"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/15"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:d4ca0600d6ca971f14c5f23f"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:search-chats",
+          "operationType": "menu-user-goal",
+          "trigger": "searchChats accelerator"
+        }
+      ],
+      "behavior": [
+        "Menu ge sends chat-search-command-menu to M window.",
+        "W$s F handler may close active eligible chat search; if active root chat intent without l it dispatches ArrowDown and returns.",
+        "Otherwise resets root, restores stored chat search/filter for eligible l or clears root search, sets chat intent, conditionally opens search session, opens/focuses/selects input.",
+        "Rendering chooses A$s chat-session view or K$s root view with rootChatSearchIntent; source aggregation and backend search are delegated."
+      ],
+      "conditions": [
+        "isBrowser, mode=work, capability, active flag, current category and chat intent determine branch; loading can return null."
+      ],
+      "failureAndCancellation": [
+        "Same shortcut can close or move selection instead of issuing a new search.",
+        "Failed capability/session/result provider behavior remains delegated; no blanket Chat-only exclusion."
+      ],
+      "knownGaps": [
+        "Actual retained source aggregation, permission/capability combinations, search results/pagination/errors and query cancellation."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-017",
+          "name": "W$s",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9275495,
+            "endExclusive": 9279256
+          },
+          "spanHash": "b69ab961ae0f6aebd1f99988eb80eae09b564341a8708a4bc222537d18faad4d",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-017-W_s.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        }
+      ],
+      "deduplication": [
+        "Different from FSC-0280 archived collection search and FSC-0217 browsing history; command shares W$s shell with FSC-0391."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0393:MTA:1",
+          "featureId": "FSC-0393",
+          "operationId": "operation:menu-thread:search-chats",
+          "kind": "toggle",
+          "preconditions": "active eligible chat view",
+          "trigger": "invoke searchChats",
+          "expectedEffect": "close instead of starting duplicate session",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0393:MTA:2",
+          "featureId": "FSC-0393",
+          "operationId": "operation:menu-thread:search-chats",
+          "kind": "root-intent",
+          "preconditions": "active root, intent set and l false",
+          "trigger": "invoke searchChats",
+          "expectedEffect": "dispatch ArrowDown and return",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0393:MTA:3",
+          "featureId": "FSC-0393",
+          "operationId": "operation:menu-thread:search-chats",
+          "kind": "open",
+          "preconditions": "inactive and context controlled",
+          "trigger": "invoke searchChats",
+          "expectedEffect": "preserve intent, prior-filter restoration or reset and conditional provider session",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M01"
+      ],
+      "consumerModules": [
+        "renderer/search/command-menu",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E044"
+      ],
+      "decisionEvidenceId": "MTA-E045"
+    },
+    {
+      "id": "MTA-GOAL-04",
+      "featureId": "FSC-0394",
+      "name": "按编号选择侧边栏线程",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:8a2b27ab75a37fa3a5ab7da7",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408371,
+            "endExclusive": 3408450
+          },
+          "spanHash": "0a0d0e3392f3c2d58bc62ab5c86c24853880d215d1373bd2c5a6a68734da9824",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/49"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/16"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:8a2b27ab75a37fa3a5ab7da7"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:numbered-thread",
+          "operationType": "menu-user-goal",
+          "trigger": "thread1 through thread9 parameterized by index"
+        }
+      ],
+      "behavior": [
+        "CZe Oe=i.Ot.map constructs hidden accelerator entries; main i requires src-BJv5Mk7n. Its Ot getter returns LG, which filters MG webview ids by /^thread[1-9]$/ then maps ids.",
+        "Nine metadata rows thread1..thread9 are present. Index is one parameter of one navigation goal; it is not nine new goals.",
+        "Menu _e(e) sends run-command id without allowAppShellTabShortcut because the generator calls default options; focusBrowserAddressBar-specific origin panel is not used by these ids.",
+        "Selected host case validates command/access then dispatches Mw or keyboard dispatcher. QQa maps L6n onto $Qa with index and target/getTargets; $Qa chooses current getter result at index or captured target, then onSelect when nonnull.",
+        "r$a shows separate recent-thread commands and fallback sidebar context. It is contextual evidence only; its o$a wrapper-to-QQa edge and effective winning numbered registration remain unresolved."
+      ],
+      "conditions": [
+        "Command metadata/access, primary-number-shortcut-target keymap policy, active registration and supplied target ordering affect result.",
+        "Captured targets versus getTargets() are different timing modes; missing target yields no onSelect."
+      ],
+      "failureAndCancellation": [
+        "Missing window/target yields no selection. Wrong index/active scope must not silently select another target.",
+        "Actual selected target navigation and focus are delegated to supplied onSelect; do not confuse threadN with recentThreadN or focusTabN."
+      ],
+      "knownGaps": [
+        "Effective numbered component mount/targets/onSelect and command priority; actual navigation and shortcut preference effects."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-003",
+          "name": "LG",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1396226,
+            "endExclusive": 1396302
+          },
+          "spanHash": "10aa83a006d82599649ba542541cfac5d2b3aa149cd2b47e1e60924d19d7c150",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MTA-SOURCE-003-LG.txt"
+        },
+        {
+          "id": "MTA-SOURCE-004",
+          "name": "MG",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1355606,
+            "endExclusive": 1395546
+          },
+          "spanHash": "0e3af7921c0069af3a876259da27eb88b72340a63c8aa6bdfae0500fd2026103",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MTA-SOURCE-004-MG.txt"
+        },
+        {
+          "id": "MTA-SOURCE-005",
+          "name": "exports-Ot",
+          "role": "complete CJS getter descriptor",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 1577478,
+            "endExclusive": 1577555
+          },
+          "spanHash": "f3710d6be80e0331ea2b60dd4b69feb84a6440e807c629de6123e53c061676cd",
+          "nodeType": "CallExpression",
+          "savedPath": "source/MTA-SOURCE-005-exports-Ot.txt"
+        },
+        {
+          "id": "MTA-SOURCE-015",
+          "name": "numbered-targets-QQa",
+          "role": "numbered target component",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 6246693,
+            "endExclusive": 6247095
+          },
+          "spanHash": "aeeb7b08e2a7abae8dd0fd09617d33320e99d5377754536c3c33e0b08411152e",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-015-numbered-targets-QQa.txt"
+        },
+        {
+          "id": "MTA-SOURCE-008",
+          "name": "$Qa",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 6247095,
+            "endExclusive": 6247442
+          },
+          "spanHash": "d0370984bdbdd56b927785e85ff1af2114d0c1601279ccc821586e33b18d4520",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-008-_Qa.txt"
+        },
+        {
+          "id": "MTA-SOURCE-009",
+          "name": "r$a",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 6247520,
+            "endExclusive": 6249450
+          },
+          "spanHash": "4dbeacd6524d243a7a1dc3f74b4593efd3143cbf372d62a36f48a7e9498f1523",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-009-r_a.txt"
+        },
+        {
+          "id": "MTA-SOURCE-020",
+          "name": "run-command-switch",
+          "role": "selected host message case",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9642852,
+            "endExclusive": 9643376
+          },
+          "spanHash": "ec4972cb0226b7fbf97dd0b61ae2c462404605c04d781015c5ce4e4eaa218eff",
+          "nodeType": "SwitchCase",
+          "savedPath": "source/MTA-SOURCE-020-run-command-switch.txt"
+        }
+      ],
+      "deduplication": [
+        "FSC-0070 configures numeric shortcut target; it is not selecting a numbered thread.",
+        "Single schema generates nine command variants. Recent-thread and focus-tab commands are distinct and not merged by numeric labels."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0394:MTA:1",
+          "featureId": "FSC-0394",
+          "operationId": "operation:menu-thread:numbered-thread",
+          "kind": "expansion",
+          "preconditions": "read fixed catalog without execution",
+          "trigger": "expand generator",
+          "expectedEffect": "exact thread1..thread9 ids; one parameterized operation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0394:MTA:2",
+          "featureId": "FSC-0394",
+          "operationId": "operation:menu-thread:numbered-thread",
+          "kind": "timing",
+          "preconditions": "captured targets or current getTargets available",
+          "trigger": "invoke index k",
+          "expectedEffect": "select getter()[k] when supplied else captured target; no call for absent target",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0394:MTA:3",
+          "featureId": "FSC-0394",
+          "operationId": "operation:menu-thread:numbered-thread",
+          "kind": "scope",
+          "preconditions": "conflicting/disabled registration and keymap context",
+          "trigger": "invoke numbered command",
+          "expectedEffect": "preserve effective priority/active and sidebar versus tab distinction",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M02"
+      ],
+      "consumerModules": [
+        "renderer/threads/actions",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E046"
+      ],
+      "decisionEvidenceId": "MTA-E047"
+    },
+    {
+      "id": "MTA-GOAL-05",
+      "featureId": "FSC-0395",
+      "name": "复制当前线程工作目录",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:9320349e7ebba70027203af9",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408456,
+            "endExclusive": 3408536
+          },
+          "spanHash": "e77887b0c7d4c452a247dadc91794cee98e0b5111a86fa704a8500c5f8dabd0a",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/50"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/17"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:c24e78a43eaf4bc1e1ae7e55",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408772,
+            "endExclusive": 3408851
+          },
+          "spanHash": "dac15a21b88753fd14d0419dfbec9f7be05c980fe1b992da983ba0a8d0e38cc9",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/54"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/21"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:9320349e7ebba70027203af9",
+        "native-menu-schema:c24e78a43eaf4bc1e1ae7e55"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:copy-thread-directory",
+          "operationType": "menu-user-goal",
+          "trigger": "copyConversationPath or copyWorkingDirectory"
+        }
+      ],
+      "behavior": [
+        "CZe copyConversationPath sends copy-conversation-path. copyWorkingDirectory first may route copy-url to focused visible browser when normalized accelerator equals T and Ve accepts; otherwise sends copy-working-directory.",
+        "Selected hn registers both messages with identical D(g, optional {conversationId:r,hostId:A}) call; context omitted for pending worktree.",
+        "hn obtains D=copyWorkingDirectory from Kt; explicit import tmt resolves to Jda. Jda delegates Gda.",
+        "Gda may await Ive thread data and prefer latestWorktree.workspaceRoot when host capability fg applies, else input cwd. Truthy path delegates bc; success toast only on truthy awaited result; rejection yields error toast."
+      ],
+      "conditions": [
+        "Native browser-copy preemption differs between the two entry paths.",
+        "Current cwd/thread/host/pending-worktree and refreshed worktree root govern payload; effective bc adapter unknown."
+      ],
+      "failureAndCancellation": [
+        "No window -> no send; browser copy-url acceptance bypasses thread copy.",
+        "Empty path or false bc result produces no success toast in Gda; asynchronous errors are caught and reported. Gda itself launches an async IIFE and does not return the completion Promise."
+      ],
+      "knownGaps": [
+        "Actual clipboard provider and browser-copy dispatch; thread refresh and current root/durability/permission results."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-027",
+          "name": "hn",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+          "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+          "byteRange": {
+            "start": 3717,
+            "endExclusive": 17047
+          },
+          "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-027-hn.txt"
+        },
+        {
+          "id": "MTA-SOURCE-006",
+          "name": "Jda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5464844,
+            "endExclusive": 5467687
+          },
+          "spanHash": "ad8f1692e00fc85ba04103d021dad52a2e4148b5912a7f75c5e4bf0b176ab0e3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-006-Jda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-010",
+          "name": "Gda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5463700,
+            "endExclusive": 5464258
+          },
+          "spanHash": "3f86417d0fa97cba21cc7ac6276fe5a0108307a95baed4bd6a140fcf1d56a8a3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-010-Gda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        },
+        {
+          "id": "MTA-SOURCE-014",
+          "name": "export-tmt",
+          "role": "explicit ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11427936,
+            "endExclusive": 11427946
+          },
+          "spanHash": "ce7f9d645b51ad38e886eece53a3d021a2af34215ce32e9b38b6669b2285d99b",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MTA-SOURCE-014-export-tmt.txt"
+        }
+      ],
+      "deduplication": [
+        "Two message labels converge to same source-defined goal in hn; native working-directory path has additional browser preemption.",
+        "Different from theme/plugin/Markdown copy and from FSC-0398 app deep link."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0395:MTA:1",
+          "featureId": "FSC-0395",
+          "operationId": "operation:menu-thread:copy-thread-directory",
+          "kind": "reuse",
+          "preconditions": "same hn context",
+          "trigger": "compare both message callbacks",
+          "expectedEffect": "same thread-directory delegate, one operation with two menu entry variants",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0395:MTA:2",
+          "featureId": "FSC-0395",
+          "operationId": "operation:menu-thread:copy-thread-directory",
+          "kind": "browser",
+          "preconditions": "normalized accelerator matches T and Ve succeeds",
+          "trigger": "invoke copyWorkingDirectory",
+          "expectedEffect": "browser copy-url consumes action; do not also copy thread path",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0395:MTA:3",
+          "featureId": "FSC-0395",
+          "operationId": "operation:menu-thread:copy-thread-directory",
+          "kind": "refresh",
+          "preconditions": "host fg true and current worktree changes",
+          "trigger": "invoke thread path copy",
+          "expectedEffect": "await refresh and prefer latest root before bc",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0395:MTA:4",
+          "featureId": "FSC-0395",
+          "operationId": "operation:menu-thread:copy-thread-directory",
+          "kind": "failure",
+          "preconditions": "path absent, bc false or rejects",
+          "trigger": "invoke once",
+          "expectedEffect": "preserve no-success or error-toast branches; do not infer awaitable Gda completion",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M02"
+      ],
+      "consumerModules": [
+        "renderer/threads/actions",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E048",
+        "MTA-E049"
+      ],
+      "decisionEvidenceId": "MTA-E050"
+    },
+    {
+      "id": "MTA-GOAL-06",
+      "featureId": "FSC-0396",
+      "name": "置顶或取消置顶当前线程",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:d3bb1f8b51802c6c17fc9b8a",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408540,
+            "endExclusive": 3408615
+          },
+          "spanHash": "8a0df1b65ced746882a434170fde0282bc8d67f97b1b187fcd836ff52c731b8c",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/51"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/18"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:d3bb1f8b51802c6c17fc9b8a"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:toggle-thread-pin",
+          "operationType": "menu-user-goal",
+          "trigger": "toggleThreadPin message"
+        }
+      ],
+      "behavior": [
+        "CZe be sends toggle-thread-pin. hn imports un component from pin bridge t export i and supplies enabled=R&&!k,onToggle=fn when conversationId exists.",
+        "Bridge i subscribes via shared Pvn/hre and calls onToggle only when enabled. hn fn rechecks R&&!k; pending worktree p uses dt(C,p,!L), otherwise an from Wda.",
+        "Wda computes isPinned from queried threadIds and canPin/thread id, then toggles via nJ(scope,id,!isPinned).",
+        "nJ has special pr/ZW route; ordinary pin rejects unsupported host/metadata conditions, preserves list position and delegates zda through Re action history with perform/redo/undo and shouldCommit. Actual writers remain delegated."
+      ],
+      "conditions": [
+        "canPin, current/pending thread identity, restricted flags, host eligibility and existing pinned state gate behavior."
+      ],
+      "failureAndCancellation": [
+        "Disabled or absent conversation produces no bridge effect; ordinary nJ may return false without commit.",
+        "Redo/undo can throw if delegate cannot restore; eventual service/store failures and UI reporting remain unverified."
+      ],
+      "knownGaps": [
+        "Actual nJ/zda/ZW storage/provider, action-history settlement and cross-window/account persistence."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-027",
+          "name": "hn",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+          "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+          "byteRange": {
+            "start": 3717,
+            "endExclusive": 17047
+          },
+          "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-027-hn.txt"
+        },
+        {
+          "id": "MTA-SOURCE-007",
+          "name": "Wda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5463146,
+            "endExclusive": 5463700
+          },
+          "spanHash": "77966d7e08fb667a1fa3fcc136f787c92802410e496d8a7113e7dd49ce9575f8",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-007-Wda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-012",
+          "name": "nJ",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5460286,
+            "endExclusive": 5460922
+          },
+          "spanHash": "e6befab86a504302b811f0c695c9f613e3c9b26375b1f3a5a08056c8f925aa3c",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-012-nJ.txt"
+        },
+        {
+          "id": "MTA-SOURCE-013",
+          "name": "export-emt",
+          "role": "explicit ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11398329,
+            "endExclusive": 11398339
+          },
+          "spanHash": "323e3669e238a6188d002c7a111774020140d79332e56d5f732cd557a7a1c3fc",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MTA-SOURCE-013-export-emt.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        }
+      ],
+      "deduplication": [
+        "No finite current feature toggles pin; shared hn/Wda service is reused rather than making one feature per pin/unpin gesture."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0396:MTA:1",
+          "featureId": "FSC-0396",
+          "operationId": "operation:menu-thread:toggle-thread-pin",
+          "kind": "guard",
+          "preconditions": "vary enabled/restricted/canPin/id",
+          "trigger": "invoke pin message",
+          "expectedEffect": "no mutation when blocked; preserve pending-worktree split",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0396:MTA:2",
+          "featureId": "FSC-0396",
+          "operationId": "operation:menu-thread:toggle-thread-pin",
+          "kind": "toggle",
+          "preconditions": "ordinary valid thread with pinned snapshot",
+          "trigger": "invoke once",
+          "expectedEffect": "toggle opposite state through nJ; false return not success",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0396:MTA:3",
+          "featureId": "FSC-0396",
+          "operationId": "operation:menu-thread:toggle-thread-pin",
+          "kind": "history",
+          "preconditions": "controlled delegate and prior list position",
+          "trigger": "perform undo/redo",
+          "expectedEffect": "preserve list successor and restoration failure; actual durable store separately verified",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M02"
+      ],
+      "consumerModules": [
+        "renderer/threads/actions",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E051"
+      ],
+      "decisionEvidenceId": "MTA-E052"
+    },
+    {
+      "id": "MTA-GOAL-07",
+      "featureId": "FSC-0397",
+      "name": "重命名当前线程或待建工作树",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:bf9ef72dc655b8489e7fe940",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408619,
+            "endExclusive": 3408691
+          },
+          "spanHash": "8792e0663befa8645ad99641c03e99cb9b2f9f9815533dc20e0f8005ff288a83",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/52"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/19"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:bf9ef72dc655b8489e7fe940"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:rename-current-thread",
+          "operationType": "menu-user-goal",
+          "trigger": "renameThread message"
+        }
+      ],
+      "behavior": [
+        "CZe xe sends rename-thread. hn Wn rejects restricted k or absent pending-worktree/conversation identity, then invokes I.",
+        "I defaults to a configured dialog unless onRename override supplied; preserves initial title, conditional maxLength/pattern/nonempty/trim/background-save options.",
+        "onSave resolves pending client thread mapping and host; absent mapped id calls optional onRenamePendingWorktree. Otherwise calls Jda.renameThread with previousTitle/title/showErrorToast=false.",
+        "Jda tries jda action path, else awaits selected host provider setThreadTitle with requireAcknowledgement=true and RNi refresh; changed previous title can use Re history perform/undo/redo. Returned Promise rejects on failure after optional toast."
+      ],
+      "conditions": [
+        "Explicit onRename override, restricted state, pending ids, host launch mode and special title policies affect flow."
+      ],
+      "failureAndCancellation": [
+        "Dialog cancellation and override effects remain delegated; save must not invent a registered thread.",
+        "Missing mapping may only rename pending worktree; acknowledged provider rejection prevents following refresh and can be rethrown."
+      ],
+      "knownGaps": [
+        "Dialog actual mount/validation/cancel and effective provider title acknowledgement, pending state and durable history."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-027",
+          "name": "hn",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+          "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+          "byteRange": {
+            "start": 3717,
+            "endExclusive": 17047
+          },
+          "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-027-hn.txt"
+        },
+        {
+          "id": "MTA-SOURCE-006",
+          "name": "Jda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5464844,
+            "endExclusive": 5467687
+          },
+          "spanHash": "ad8f1692e00fc85ba04103d021dad52a2e4148b5912a7f75c5e4bf0b176ab0e3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-006-Jda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-014",
+          "name": "export-tmt",
+          "role": "explicit ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11427936,
+            "endExclusive": 11427946
+          },
+          "spanHash": "ce7f9d645b51ad38e886eece53a3d021a2af34215ce32e9b38b6669b2285d99b",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MTA-SOURCE-014-export-tmt.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        }
+      ],
+      "deduplication": [
+        "Different from remote-device, security-key and cloud-environment rename. Normal and pending-worktree variants are one current-title goal with explicit identity branches."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0397:MTA:1",
+          "featureId": "FSC-0397",
+          "operationId": "operation:menu-thread:rename-current-thread",
+          "kind": "guard",
+          "preconditions": "restricted or no identity",
+          "trigger": "invoke rename",
+          "expectedEffect": "no dialog/save",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0397:MTA:2",
+          "featureId": "FSC-0397",
+          "operationId": "operation:menu-thread:rename-current-thread",
+          "kind": "dialog",
+          "preconditions": "normal or special/pending worktree",
+          "trigger": "open and cancel/save",
+          "expectedEffect": "preserve conditional validation/background and override policy",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0397:MTA:3",
+          "featureId": "FSC-0397",
+          "operationId": "operation:menu-thread:rename-current-thread",
+          "kind": "pending",
+          "preconditions": "pending client thread not mapped",
+          "trigger": "save new title",
+          "expectedEffect": "call optional pending-worktree rename rather than invented provider id",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0397:MTA:4",
+          "featureId": "FSC-0397",
+          "operationId": "operation:menu-thread:rename-current-thread",
+          "kind": "provider",
+          "preconditions": "known thread/host and failing acknowledgement",
+          "trigger": "save once then undo/redo in controlled adapter",
+          "expectedEffect": "require acknowledgement, preserve refresh ordering and history/failure behavior",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M02"
+      ],
+      "consumerModules": [
+        "renderer/threads/actions",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E053"
+      ],
+      "decisionEvidenceId": "MTA-E054"
+    },
+    {
+      "id": "MTA-GOAL-08",
+      "featureId": "FSC-0046",
+      "name": "通过快捷键归档当前线程",
+      "newDefinition": false,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:8242d1b564cb4634c1f888b4",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408695,
+            "endExclusive": 3408768
+          },
+          "spanHash": "2f79e93c5e81298f55b528a438dd2c9e59ef6e824e356844b44355aeac3e57eb",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/53"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/20"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:8242d1b564cb4634c1f888b4"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:thread-archive:overflow-local",
+          "trigger": "选择归档并通过适用确认",
+          "operationType": "archive-with-undo",
+          "parameters": [
+            "conversationId",
+            "hostId",
+            "source",
+            "appHistory"
+          ],
+          "operationRef": {
+            "path": "thread-archive-entry-contracts.json",
+            "jsonPointer": "/facts/0"
+          }
+        }
+      ],
+      "behavior": [
+        "CZe Se sends archive-thread with source native_accelerator. hn registered callback extracts source and calls G.",
+        "G is the same guarded/confirmation archive closure used by selected hn ordinary archive UI; it checks restricted/id/special state and queries heartbeat automation before choosing immediate archive or confirmation.",
+        "hn W forwards Jda.archiveThread with host/source/home navigation callbacks and appHistory. Existing thread-archive-entry-contracts already qualify the conditional backend/undo chain; this batch adds the native entry, not a second archive implementation."
+      ],
+      "conditions": [
+        "Current hn scope, id, restrictions, active thread/automation and host/provider conditions retained; actual injected message delivery unobserved."
+      ],
+      "failureAndCancellation": [
+        "Confirmation cancel must not archive; automation-list failure logs and follows its source-defined fallback.",
+        "Existing optimistic/local/backend/undo boundaries remain unchanged; archive is not a generic cancellation operation."
+      ],
+      "knownGaps": [
+        "Actual active receiver/mode, confirmation, service acceptance, storage and undo/reopen behavior remain existing FSC-0046 gaps."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-027",
+          "name": "hn",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+          "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+          "byteRange": {
+            "start": 3717,
+            "endExclusive": 17047
+          },
+          "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-027-hn.txt"
+        },
+        {
+          "id": "MTA-SOURCE-006",
+          "name": "Jda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5464844,
+            "endExclusive": 5467687
+          },
+          "spanHash": "ad8f1692e00fc85ba04103d021dad52a2e4148b5912a7f75c5e4bf0b176ab0e3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-006-Jda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        },
+        {
+          "id": "MTA-SOURCE-014",
+          "name": "export-tmt",
+          "role": "explicit ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11427936,
+            "endExclusive": 11427946
+          },
+          "spanHash": "ce7f9d645b51ad38e886eece53a3d021a2af34215ce32e9b38b6669b2285d99b",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MTA-SOURCE-014-export-tmt.txt"
+        }
+      ],
+      "deduplication": [
+        "Associate existing FSC-0046 for the selected hn local archive flow; do not add duplicate goal/operation.",
+        "Cross-mode/mount/runtime equivalence remains unverified. Reuse archived-row recovery goals separately."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0046:MTA:1",
+          "featureId": "FSC-0046",
+          "operationId": "operation:thread-archive:overflow-local",
+          "kind": "entry",
+          "preconditions": "native message delivered to mounted local hn",
+          "trigger": "invoke archive accelerator",
+          "expectedEffect": "forward native_accelerator source to same G closure",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0046:MTA:2",
+          "featureId": "FSC-0046",
+          "operationId": "operation:thread-archive:overflow-local",
+          "kind": "confirm",
+          "preconditions": "restricted/active/automation variants",
+          "trigger": "invoke and cancel/confirm",
+          "expectedEffect": "retain existing guard and confirmation paths",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0046:MTA:3",
+          "featureId": "FSC-0046",
+          "operationId": "operation:thread-archive:overflow-local",
+          "kind": "failure",
+          "preconditions": "controlled automation/service error",
+          "trigger": "invoke archive",
+          "expectedEffect": "retain logged query fallback and existing backend rollback/undo boundaries",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M02"
+      ],
+      "consumerModules": [
+        "renderer/threads/actions",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E055"
+      ],
+      "decisionEvidenceId": "MTA-E056"
+    },
+    {
+      "id": "MTA-GOAL-09",
+      "featureId": "FSC-0398",
+      "name": "复制当前线程的应用深链",
+      "newDefinition": true,
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:c3c3514d28def4e99e333270",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3408855,
+            "endExclusive": 3408927
+          },
+          "spanHash": "7e9fb8f1967caf933db55d597d46ece38648905d46a7b8e93411530f8a38fa7d",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/55"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/22"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:c3c3514d28def4e99e333270"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-thread:copy-thread-deeplink",
+          "operationType": "menu-user-goal",
+          "trigger": "copyDeeplink message"
+        }
+      ],
+      "behavior": [
+        "CZe Ce sends copy-deeplink. hn Qn only calls ot(r,A,undefined) for truthy conversation id.",
+        "ot=copyAppLink comes from Jda. It reads selected provider conversation threadAccess or supplied fallback then delegates Kda.",
+        "Kda builds codex://threads/{id}. For local host with no access it passes base link to bc; otherwise Bda decorates using host/access before bc."
+      ],
+      "conditions": [
+        "Current thread id, selected/fallback host and threadAccess affect link; no thread -> no copy."
+      ],
+      "failureAndCancellation": [
+        "Kda does not await or return bc and has no local failure toast/catch; clipboard completion/error is not proven by callback return.",
+        "Bda encoding/access semantics and unknown provider remain delegated."
+      ],
+      "knownGaps": [
+        "Actual Bda host/access query encoding, clipboard behavior and deep-link receiver/open compatibility."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MTA-SOURCE-027",
+          "name": "hn",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+          "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+          "byteRange": {
+            "start": 3717,
+            "endExclusive": 17047
+          },
+          "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-027-hn.txt"
+        },
+        {
+          "id": "MTA-SOURCE-006",
+          "name": "Jda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5464844,
+            "endExclusive": 5467687
+          },
+          "spanHash": "ad8f1692e00fc85ba04103d021dad52a2e4148b5912a7f75c5e4bf0b176ab0e3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-006-Jda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-011",
+          "name": "Kda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5464258,
+            "endExclusive": 5464361
+          },
+          "spanHash": "4895b6ed1f3a3fd75f01cfd9f72b070da6540de0fc54d0af2f9cb9147c329efa",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-011-Kda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-014",
+          "name": "export-tmt",
+          "role": "explicit ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11427936,
+            "endExclusive": 11427946
+          },
+          "spanHash": "ce7f9d645b51ad38e886eece53a3d021a2af34215ce32e9b38b6669b2285d99b",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MTA-SOURCE-014-export-tmt.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        }
+      ],
+      "deduplication": [
+        "Separate from copying working directory and from actual deep-link navigation. No current finite equivalent."
+      ],
+      "mode": "unknown",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "modeEvidence": "Selected source supports retention; complete mode/shared-consumer closure is not established. Labels and chatgpt strings do not establish exclusion.",
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0398:MTA:1",
+          "featureId": "FSC-0398",
+          "operationId": "operation:menu-thread:copy-thread-deeplink",
+          "kind": "local",
+          "preconditions": "local thread with absent access",
+          "trigger": "invoke copy app link",
+          "expectedEffect": "delegate base codex://threads/id",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0398:MTA:2",
+          "featureId": "FSC-0398",
+          "operationId": "operation:menu-thread:copy-thread-deeplink",
+          "kind": "qualified",
+          "preconditions": "remote host or access present",
+          "trigger": "invoke copy",
+          "expectedEffect": "use Bda-decorated link; do not drop host/access fields",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        },
+        {
+          "scenarioId": "FSC-0398:MTA:3",
+          "featureId": "FSC-0398",
+          "operationId": "operation:menu-thread:copy-thread-deeplink",
+          "kind": "absent-or-failure",
+          "preconditions": "missing id or clipboard failure",
+          "trigger": "invoke once",
+          "expectedEffect": "missing id no call; preserve delegated non-awaited completion/error boundary",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static expected boundary; no real UI/native/service/durable outcome observed."
+        }
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M02"
+      ],
+      "consumerModules": [
+        "renderer/threads/actions",
+        "desktop-message-subscription",
+        "host/provider-boundary"
+      ],
+      "evidenceIds": [
+        "MTA-E057"
+      ],
+      "decisionEvidenceId": "MTA-E058"
+    }
+  ],
+  "additionalMaintenanceProposals": [
+    {
+      "id": "MTA-M01",
+      "responsibility": "命令面板状态与工作区/聊天搜索入口适配",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MTA-SOURCE-017",
+          "name": "W$s",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9275495,
+            "endExclusive": 9279256
+          },
+          "spanHash": "b69ab961ae0f6aebd1f99988eb80eae09b564341a8708a4bc222537d18faad4d",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-017-W_s.txt"
+        },
+        {
+          "id": "MTA-SOURCE-022",
+          "name": "RPt",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+          "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+          "byteRange": {
+            "start": 2168765,
+            "endExclusive": 2170351
+          },
+          "spanHash": "6c17129ad033729ac65333cee0b4d13a9593402ebec8edfb781756da785792f8",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-022-RPt.txt"
+        },
+        {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt"
+        }
+      ],
+      "imports": [
+        "mode/capability/root providers",
+        "A$s/K$s/jPt result implementations and UIe file-open adapter"
+      ],
+      "exports": [
+        "command-menu/chat-search/file-search message subscriptions and workspace file slot"
+      ],
+      "sharedState": [
+        "Aw/V$s/Dy intent/category atoms, local queries/filter, input ref and search session"
+      ],
+      "sideEffects": [
+        "subscribe/cleanup, focus/select/blur, search/session state and file-open delegation"
+      ],
+      "thirdPartyDependencies": [
+        "hook/memo/state/router implementations are imported through existing dependency catalog; no implementation copies",
+        "Owl/browser clipboard and selected host/backend remain explicit adapters"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/search/command-menu-adapter.tsx",
+      "assignment": "Inferred proposal; not original file recovery; pending SQ-03 unified process/state ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MTA-E059"
+    },
+    {
+      "id": "MTA-M02",
+      "responsibility": "当前线程的标题、置顶、复制、归档与编号命令适配",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MTA-SOURCE-027",
+          "name": "hn",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+          "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+          "byteRange": {
+            "start": 3717,
+            "endExclusive": 17047
+          },
+          "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-027-hn.txt"
+        },
+        {
+          "id": "MTA-SOURCE-006",
+          "name": "Jda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5464844,
+            "endExclusive": 5467687
+          },
+          "spanHash": "ad8f1692e00fc85ba04103d021dad52a2e4148b5912a7f75c5e4bf0b176ab0e3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-006-Jda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-007",
+          "name": "Wda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5463146,
+            "endExclusive": 5463700
+          },
+          "spanHash": "77966d7e08fb667a1fa3fcc136f787c92802410e496d8a7113e7dd49ce9575f8",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-007-Wda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-010",
+          "name": "Gda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5463700,
+            "endExclusive": 5464258
+          },
+          "spanHash": "3f86417d0fa97cba21cc7ac6276fe5a0108307a95baed4bd6a140fcf1d56a8a3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-010-Gda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-011",
+          "name": "Kda",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5464258,
+            "endExclusive": 5464361
+          },
+          "spanHash": "4895b6ed1f3a3fd75f01cfd9f72b070da6540de0fc54d0af2f9cb9147c329efa",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-011-Kda.txt"
+        },
+        {
+          "id": "MTA-SOURCE-012",
+          "name": "nJ",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5460286,
+            "endExclusive": 5460922
+          },
+          "spanHash": "e6befab86a504302b811f0c695c9f613e3c9b26375b1f3a5a08056c8f925aa3c",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-012-nJ.txt"
+        },
+        {
+          "id": "MTA-SOURCE-015",
+          "name": "numbered-targets-QQa",
+          "role": "numbered target component",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 6246693,
+            "endExclusive": 6247095
+          },
+          "spanHash": "aeeb7b08e2a7abae8dd0fd09617d33320e99d5377754536c3c33e0b08411152e",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-015-numbered-targets-QQa.txt"
+        },
+        {
+          "id": "MTA-SOURCE-008",
+          "name": "$Qa",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 6247095,
+            "endExclusive": 6247442
+          },
+          "spanHash": "d0370984bdbdd56b927785e85ff1af2114d0c1601279ccc821586e33b18d4520",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-008-_Qa.txt"
+        }
+      ],
+      "imports": [
+        "host/thread/pending context, action-history, route and dialogs",
+        "clipboard, provider and durable writer adapters; special pin helpers unresolved"
+      ],
+      "exports": [
+        "message handlers, contextual actions and parameterized numbered-target registrations"
+      ],
+      "sharedState": [
+        "thread/host/title/pins, worktree pending map, current root, action-history keys and target snapshots"
+      ],
+      "sideEffects": [
+        "confirm/save/acknowledge, conditional pin/undo, copy delegation, archive/navigation and subscriptions"
+      ],
+      "thirdPartyDependencies": [
+        "hook/memo/state/router implementations are imported through existing dependency catalog; no implementation copies",
+        "Owl/browser clipboard and selected host/backend remain explicit adapters"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/threads/thread-command-adapter.tsx",
+      "assignment": "Inferred proposal; not original file recovery; pending SQ-03 unified process/state ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MTA-E060"
+    }
+  ],
+  "reusedMaintenanceUnits": [
+    {
+      "id": "MENU-UNIT-application-menu",
+      "ref": {
+        "path": "native-menu-roles-v1.json",
+        "bytes": 866774,
+        "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+        "jsonPointer": "/maintenanceUnits/0"
+      }
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MTA-SOURCE-001",
+      "name": "CZe",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3401957,
+        "endExclusive": 3422782
+      },
+      "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-001-CZe.txt",
+      "evidenceId": "MTA-E001"
+    },
+    {
+      "id": "MTA-SOURCE-002",
+      "name": "i",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 167,
+        "endExclusive": 197
+      },
+      "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MTA-SOURCE-002-i.txt",
+      "evidenceId": "MTA-E002"
+    },
+    {
+      "id": "MTA-SOURCE-003",
+      "name": "LG",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1396226,
+        "endExclusive": 1396302
+      },
+      "spanHash": "10aa83a006d82599649ba542541cfac5d2b3aa149cd2b47e1e60924d19d7c150",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MTA-SOURCE-003-LG.txt",
+      "evidenceId": "MTA-E003"
+    },
+    {
+      "id": "MTA-SOURCE-004",
+      "name": "MG",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1355606,
+        "endExclusive": 1395546
+      },
+      "spanHash": "0e3af7921c0069af3a876259da27eb88b72340a63c8aa6bdfae0500fd2026103",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MTA-SOURCE-004-MG.txt",
+      "evidenceId": "MTA-E004"
+    },
+    {
+      "id": "MTA-SOURCE-005",
+      "name": "exports-Ot",
+      "role": "complete CJS getter descriptor",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1577478,
+        "endExclusive": 1577555
+      },
+      "spanHash": "f3710d6be80e0331ea2b60dd4b69feb84a6440e807c629de6123e53c061676cd",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-005-exports-Ot.txt",
+      "evidenceId": "MTA-E005"
+    },
+    {
+      "id": "MTA-SOURCE-006",
+      "name": "Jda",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5464844,
+        "endExclusive": 5467687
+      },
+      "spanHash": "ad8f1692e00fc85ba04103d021dad52a2e4148b5912a7f75c5e4bf0b176ab0e3",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-006-Jda.txt",
+      "evidenceId": "MTA-E006"
+    },
+    {
+      "id": "MTA-SOURCE-007",
+      "name": "Wda",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5463146,
+        "endExclusive": 5463700
+      },
+      "spanHash": "77966d7e08fb667a1fa3fcc136f787c92802410e496d8a7113e7dd49ce9575f8",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-007-Wda.txt",
+      "evidenceId": "MTA-E007"
+    },
+    {
+      "id": "MTA-SOURCE-008",
+      "name": "$Qa",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6247095,
+        "endExclusive": 6247442
+      },
+      "spanHash": "d0370984bdbdd56b927785e85ff1af2114d0c1601279ccc821586e33b18d4520",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-008-_Qa.txt",
+      "evidenceId": "MTA-E008"
+    },
+    {
+      "id": "MTA-SOURCE-009",
+      "name": "r$a",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6247520,
+        "endExclusive": 6249450
+      },
+      "spanHash": "4dbeacd6524d243a7a1dc3f74b4593efd3143cbf372d62a36f48a7e9498f1523",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-009-r_a.txt",
+      "evidenceId": "MTA-E009"
+    },
+    {
+      "id": "MTA-SOURCE-010",
+      "name": "Gda",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5463700,
+        "endExclusive": 5464258
+      },
+      "spanHash": "3f86417d0fa97cba21cc7ac6276fe5a0108307a95baed4bd6a140fcf1d56a8a3",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-010-Gda.txt",
+      "evidenceId": "MTA-E010"
+    },
+    {
+      "id": "MTA-SOURCE-011",
+      "name": "Kda",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5464258,
+        "endExclusive": 5464361
+      },
+      "spanHash": "4895b6ed1f3a3fd75f01cfd9f72b070da6540de0fc54d0af2f9cb9147c329efa",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-011-Kda.txt",
+      "evidenceId": "MTA-E011"
+    },
+    {
+      "id": "MTA-SOURCE-012",
+      "name": "nJ",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5460286,
+        "endExclusive": 5460922
+      },
+      "spanHash": "e6befab86a504302b811f0c695c9f613e3c9b26375b1f3a5a08056c8f925aa3c",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-012-nJ.txt",
+      "evidenceId": "MTA-E012"
+    },
+    {
+      "id": "MTA-SOURCE-013",
+      "name": "export-emt",
+      "role": "explicit ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11398329,
+        "endExclusive": 11398339
+      },
+      "spanHash": "323e3669e238a6188d002c7a111774020140d79332e56d5f732cd557a7a1c3fc",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MTA-SOURCE-013-export-emt.txt",
+      "evidenceId": "MTA-E013"
+    },
+    {
+      "id": "MTA-SOURCE-014",
+      "name": "export-tmt",
+      "role": "explicit ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11427936,
+        "endExclusive": 11427946
+      },
+      "spanHash": "ce7f9d645b51ad38e886eece53a3d021a2af34215ce32e9b38b6669b2285d99b",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MTA-SOURCE-014-export-tmt.txt",
+      "evidenceId": "MTA-E014"
+    },
+    {
+      "id": "MTA-SOURCE-015",
+      "name": "numbered-targets-QQa",
+      "role": "numbered target component",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6246693,
+        "endExclusive": 6247095
+      },
+      "spanHash": "aeeb7b08e2a7abae8dd0fd09617d33320e99d5377754536c3c33e0b08411152e",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-015-numbered-targets-QQa.txt",
+      "evidenceId": "MTA-E015"
+    },
+    {
+      "id": "MTA-SOURCE-016",
+      "name": "registration-command-menu",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9277212,
+        "endExclusive": 9277234
+      },
+      "spanHash": "e33df78d474d024dcb988ba0f89935b1e69cff9f1a2a61beca832cfdcfb54ab7",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-016-registration-command-menu.txt",
+      "evidenceId": "MTA-E016"
+    },
+    {
+      "id": "MTA-SOURCE-017",
+      "name": "W$s",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9275495,
+        "endExclusive": 9279256
+      },
+      "spanHash": "b69ab961ae0f6aebd1f99988eb80eae09b564341a8708a4bc222537d18faad4d",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-017-W_s.txt",
+      "evidenceId": "MTA-E017"
+    },
+    {
+      "id": "MTA-SOURCE-018",
+      "name": "import-xs",
+      "role": "complete ESM import declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 95660,
+        "endExclusive": 136889
+      },
+      "spanHash": "1be551b2878597d55352877c0f2caeeb354161f8b815eccd831da6daff82db62",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MTA-SOURCE-018-import-xs.txt",
+      "evidenceId": "MTA-E018"
+    },
+    {
+      "id": "MTA-SOURCE-019",
+      "name": "registration-chat-search-command-menu",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9278000,
+        "endExclusive": 9278034
+      },
+      "spanHash": "c1ff9e3cf860d45a861debe509d8bed66b6b5fb5ce8cbe8abc97b5863f845742",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-019-registration-chat-search-command-menu.txt",
+      "evidenceId": "MTA-E019"
+    },
+    {
+      "id": "MTA-SOURCE-020",
+      "name": "run-command-switch",
+      "role": "selected host message case",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9642852,
+        "endExclusive": 9643376
+      },
+      "spanHash": "ec4972cb0226b7fbf97dd0b61ae2c462404605c04d781015c5ce4e4eaa218eff",
+      "nodeType": "SwitchCase",
+      "savedPath": "source/MTA-SOURCE-020-run-command-switch.txt",
+      "evidenceId": "MTA-E020"
+    },
+    {
+      "id": "MTA-SOURCE-021",
+      "name": "registration-file-search-command-menu",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2169460,
+        "endExclusive": 2169492
+      },
+      "spanHash": "5cde82a1fe0ce4886983cdce8e1c7dd2e40b75caf4d46e2d2c2e7cbc4d0bbb4c",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-021-registration-file-search-command-menu.txt",
+      "evidenceId": "MTA-E021"
+    },
+    {
+      "id": "MTA-SOURCE-022",
+      "name": "RPt",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2168765,
+        "endExclusive": 2170351
+      },
+      "spanHash": "6c17129ad033729ac65333cee0b4d13a9593402ebec8edfb781756da785792f8",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-022-RPt.txt",
+      "evidenceId": "MTA-E022"
+    },
+    {
+      "id": "MTA-SOURCE-023",
+      "name": "import-Ws",
+      "role": "complete ESM import declaration",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 29967,
+        "endExclusive": 44658
+      },
+      "spanHash": "c3237a76a188793125cde83f65918405842fa95d909bd98cdf31323cceb11806",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MTA-SOURCE-023-import-Ws.txt",
+      "evidenceId": "MTA-E023"
+    },
+    {
+      "id": "MTA-SOURCE-024",
+      "name": "support-import-It",
+      "role": "complete supporting ESM import",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 841,
+        "endExclusive": 1497
+      },
+      "spanHash": "415cbad676b8d544fc54a091688f92ce275b729acc5e720879070d1935de5e29",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MTA-SOURCE-024-support-import-It.txt",
+      "evidenceId": "MTA-E024"
+    },
+    {
+      "id": "MTA-SOURCE-025",
+      "name": "support-import-un",
+      "role": "complete supporting ESM import",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 1795,
+        "endExclusive": 1868
+      },
+      "spanHash": "0b2ace734f201c4166caa35e00c27bb5abfca83b01bbb370a12fe057aea3a2e4",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MTA-SOURCE-025-support-import-un.txt",
+      "evidenceId": "MTA-E025"
+    },
+    {
+      "id": "MTA-SOURCE-026",
+      "name": "registration-rename-thread",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 10025,
+        "endExclusive": 10050
+      },
+      "spanHash": "ec5a976871286e6c1c6ce93b3b946348d40ffc34be671ecc4bce6cd57f37d768",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-026-registration-rename-thread.txt",
+      "evidenceId": "MTA-E026"
+    },
+    {
+      "id": "MTA-SOURCE-027",
+      "name": "hn",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 3717,
+        "endExclusive": 17047
+      },
+      "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-027-hn.txt",
+      "evidenceId": "MTA-E027"
+    },
+    {
+      "id": "MTA-SOURCE-028",
+      "name": "import-ue",
+      "role": "complete ESM import declaration",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 55,
+        "endExclusive": 841
+      },
+      "spanHash": "58dc11e159c9f8781dd7ea0c4e4fc96cc0c78872a74a0380be32f0464dfcc965",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MTA-SOURCE-028-import-ue.txt",
+      "evidenceId": "MTA-E028"
+    },
+    {
+      "id": "MTA-SOURCE-029",
+      "name": "registration-archive-thread",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 10157,
+        "endExclusive": 10183
+      },
+      "spanHash": "97167c48cf49ff77d32379be7519f112bbcdc8dd14e08c773811168c7140f509",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-029-registration-archive-thread.txt",
+      "evidenceId": "MTA-E029"
+    },
+    {
+      "id": "MTA-SOURCE-030",
+      "name": "registration-copy-conversation-path",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 10423,
+        "endExclusive": 10457
+      },
+      "spanHash": "2c8dc43bb744e44f3d44727e5a88357579c59fc898ad5df7bb449ffd3964ba82",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-030-registration-copy-conversation-path.txt",
+      "evidenceId": "MTA-E030"
+    },
+    {
+      "id": "MTA-SOURCE-031",
+      "name": "registration-copy-working-directory",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 10697,
+        "endExclusive": 10731
+      },
+      "spanHash": "badf590bf5907ab6337fd48887d6d8dbf9c892fbaaa9913b4dec1c08cee77ef2",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-031-registration-copy-working-directory.txt",
+      "evidenceId": "MTA-E031"
+    },
+    {
+      "id": "MTA-SOURCE-032",
+      "name": "registration-copy-deeplink",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+      "byteRange": {
+        "start": 10954,
+        "endExclusive": 10979
+      },
+      "spanHash": "46f331d08ab16891b2fd51b6919525f6a87856019411c945e81d5c2b4d09de17",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-032-registration-copy-deeplink.txt",
+      "evidenceId": "MTA-E032"
+    },
+    {
+      "id": "MTA-SOURCE-033",
+      "name": "export-t",
+      "role": "explicit ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/thread-pin-shortcut-bridge-5eb0aeacf77b.js",
+      "sourceHash": "e155220fad7d25c5d30b36d096eb83a3409e35fedebb420f945babda7f2ed9e0",
+      "byteRange": {
+        "start": 395,
+        "endExclusive": 401
+      },
+      "spanHash": "e93f8a2b20b639958bf1e36b0bb574e5dd54fa29197b0e1c5e43a56f9af5575c",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MTA-SOURCE-033-export-t.txt",
+      "evidenceId": "MTA-E033"
+    },
+    {
+      "id": "MTA-SOURCE-034",
+      "name": "registration-toggle-thread-pin",
+      "role": "literal-message registration candidate",
+      "sourcePath": "app.asar/webview/assets/thread-pin-shortcut-bridge-5eb0aeacf77b.js",
+      "sourceHash": "e155220fad7d25c5d30b36d096eb83a3409e35fedebb420f945babda7f2ed9e0",
+      "byteRange": {
+        "start": 297,
+        "endExclusive": 323
+      },
+      "spanHash": "62b1f5441dc5c303ca6031e21f53b34a537e8edf5adb49e4444488c460809633",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-034-registration-toggle-thread-pin.txt",
+      "evidenceId": "MTA-E034"
+    },
+    {
+      "id": "MTA-SOURCE-035",
+      "name": "i",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/thread-pin-shortcut-bridge-5eb0aeacf77b.js",
+      "sourceHash": "e155220fad7d25c5d30b36d096eb83a3409e35fedebb420f945babda7f2ed9e0",
+      "byteRange": {
+        "start": 124,
+        "endExclusive": 329
+      },
+      "spanHash": "94051d8c525654d1576baca291498c2fe6f23628a71754528b4e19ec89bdd805",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-035-i.txt",
+      "evidenceId": "MTA-E035"
+    },
+    {
+      "id": "MTA-SOURCE-036",
+      "name": "import-r",
+      "role": "complete ESM import declaration",
+      "sourcePath": "app.asar/webview/assets/thread-pin-shortcut-bridge-5eb0aeacf77b.js",
+      "sourceHash": "e155220fad7d25c5d30b36d096eb83a3409e35fedebb420f945babda7f2ed9e0",
+      "byteRange": {
+        "start": 55,
+        "endExclusive": 124
+      },
+      "spanHash": "f78f882cd3124a3d77a4891044f83760c4c627da3faf600aaa85b1a54e32b890",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MTA-SOURCE-036-import-r.txt",
+      "evidenceId": "MTA-E036"
+    },
+    {
+      "id": "MTA-SOURCE-037",
+      "name": "hre",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295513,
+        "endExclusive": 295919
+      },
+      "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MTA-SOURCE-037-hre.txt",
+      "evidenceId": "MTA-E037"
+    },
+    {
+      "id": "MTA-SOURCE-038",
+      "name": "export-Pvn",
+      "role": "explicit ESM export specifier",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8117067,
+        "endExclusive": 8117077
+      },
+      "spanHash": "fda0fac4c3504c12024238f2cef7b258a4386366719bf4d2432294dbe79dc8fb",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MTA-SOURCE-038-export-Pvn.txt",
+      "evidenceId": "MTA-E038"
+    }
+  ],
+  "sourceJoins": [
+    {
+      "local": "xs",
+      "imported": "Pvn",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MTA-SOURCE-018",
+      "consumerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "exportUnit": "MTA-SOURCE-038",
+      "exportedLocal": "hre",
+      "definitionUnit": "MTA-SOURCE-037",
+      "qualification": "Explicit ESM identity; mount, subscription delivery and injected service values unobserved."
+    },
+    {
+      "local": "Ws",
+      "imported": "Pvn",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MTA-SOURCE-023",
+      "consumerSourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "exportUnit": "MTA-SOURCE-038",
+      "exportedLocal": "hre",
+      "definitionUnit": "MTA-SOURCE-037",
+      "qualification": "Explicit ESM identity; mount, subscription delivery and injected service values unobserved."
+    },
+    {
+      "local": "It",
+      "imported": "emt",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MTA-SOURCE-024",
+      "consumerSourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "exportUnit": "MTA-SOURCE-013",
+      "exportedLocal": "Wda",
+      "definitionUnit": "MTA-SOURCE-007",
+      "qualification": "Explicit ESM identity; mount, subscription delivery and injected service values unobserved."
+    },
+    {
+      "local": "Kt",
+      "imported": "tmt",
+      "module": "./app-initial-6350d04672d0.js",
+      "sourceUnit": "MTA-SOURCE-024",
+      "consumerSourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "exportUnit": "MTA-SOURCE-014",
+      "exportedLocal": "Jda",
+      "definitionUnit": "MTA-SOURCE-006",
+      "qualification": "Explicit ESM identity; mount, subscription delivery and injected service values unobserved."
+    },
+    {
+      "local": "un",
+      "imported": "t",
+      "module": "./thread-pin-shortcut-bridge-5eb0aeacf77b.js",
+      "sourceUnit": "MTA-SOURCE-025",
+      "consumerSourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "exportUnit": "MTA-SOURCE-033",
+      "exportedLocal": "i",
+      "definitionUnit": "MTA-SOURCE-035",
+      "qualification": "Explicit ESM identity; mount, subscription delivery and injected service values unobserved."
+    },
+    {
+      "local": "ue",
+      "imported": "Pvn",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MTA-SOURCE-028",
+      "consumerSourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+      "exportUnit": "MTA-SOURCE-038",
+      "exportedLocal": "hre",
+      "definitionUnit": "MTA-SOURCE-037",
+      "qualification": "Explicit ESM identity; mount, subscription delivery and injected service values unobserved."
+    },
+    {
+      "local": "r",
+      "imported": "Pvn",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MTA-SOURCE-036",
+      "consumerSourcePath": "app.asar/webview/assets/thread-pin-shortcut-bridge-5eb0aeacf77b.js",
+      "exportUnit": "MTA-SOURCE-038",
+      "exportedLocal": "hre",
+      "definitionUnit": "MTA-SOURCE-037",
+      "qualification": "Explicit ESM identity; mount, subscription delivery and injected service values unobserved."
+    }
+  ],
+  "numberedGenerator": {
+    "schemaEntryId": "native-menu-schema:8a2b27ab75a37fa3a5ab7da7",
+    "mainImport": {
+      "id": "MTA-SOURCE-002",
+      "name": "i",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 167,
+        "endExclusive": 197
+      },
+      "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MTA-SOURCE-002-i.txt",
+      "evidenceId": "MTA-E002"
+    },
+    "export": {
+      "id": "MTA-SOURCE-005",
+      "name": "exports-Ot",
+      "role": "complete CJS getter descriptor",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1577478,
+        "endExclusive": 1577555
+      },
+      "spanHash": "f3710d6be80e0331ea2b60dd4b69feb84a6440e807c629de6123e53c061676cd",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MTA-SOURCE-005-exports-Ot.txt",
+      "evidenceId": "MTA-E005"
+    },
+    "filter": {
+      "id": "MTA-SOURCE-003",
+      "name": "LG",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1396226,
+        "endExclusive": 1396302
+      },
+      "spanHash": "10aa83a006d82599649ba542541cfac5d2b3aa149cd2b47e1e60924d19d7c150",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MTA-SOURCE-003-LG.txt",
+      "evidenceId": "MTA-E003"
+    },
+    "catalog": {
+      "id": "MTA-SOURCE-004",
+      "name": "MG",
+      "role": "original Program declaration",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1355606,
+        "endExclusive": 1395546
+      },
+      "spanHash": "0e3af7921c0069af3a876259da27eb88b72340a63c8aa6bdfae0500fd2026103",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MTA-SOURCE-004-MG.txt",
+      "evidenceId": "MTA-E004"
+    },
+    "expandedIds": [
+      "thread1",
+      "thread2",
+      "thread3",
+      "thread4",
+      "thread5",
+      "thread6",
+      "thread7",
+      "thread8",
+      "thread9"
+    ],
+    "scope": "Nine variants of one parameterized user operation; actual winning target component remains unresolved."
+  },
+  "sourceQuery": {
+    "path": "raw/menu-thread-actions-v1/source-query.json",
+    "bytes": 30160,
+    "sha256": "0ab5ca49e26376f605fb06657ea7f90f59e4fb9d5bd235521169e14d59176834"
+  },
+  "inputPins": [
+    {
+      "path": "feature-scope-v29.json",
+      "bytes": 2144038,
+      "sha256": "1f8e1f8c75570927370cbc16e76463668b3a6fcb4e601856cbae3f563f489c54"
+    },
+    {
+      "path": "feature-scope-v26-scenarios.json",
+      "bytes": 1996660,
+      "sha256": "5821f858daf778d1f7da515a49989e3270c6d3dd374ea0768b2aba8debd806c6"
+    },
+    {
+      "path": "restoration-coverage-v20.json",
+      "bytes": 1210857,
+      "sha256": "dc7474372ec4c23b800f41e7b0821326bfa5ded81b05d529f5d254007e17ff0f"
+    },
+    {
+      "path": "legacy-entry-dispositions-v7.json",
+      "bytes": 1412516,
+      "sha256": "74a071b7c35012c356295bb851ce78e664c3e8773c8f6850e65030171a333439"
+    },
+    {
+      "path": "native-menu-roles-v1.json",
+      "bytes": 866774,
+      "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+    },
+    {
+      "path": "menu-command-contracts.json",
+      "bytes": 10630684,
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf"
+    },
+    {
+      "path": "thread-archive-entry-contracts.json",
+      "bytes": 57846,
+      "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93"
+    },
+    {
+      "path": "command-registration-contracts.json",
+      "bytes": 292164,
+      "sha256": "6a59f0a2287e186396b70c2aa54a22a9b12a0fee578b730ee7247ba0900a7193"
+    },
+    {
+      "path": "command-consumer-contracts.json",
+      "bytes": 397516,
+      "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba"
+    },
+    {
+      "path": "chat-branch-decisions.json",
+      "bytes": 12041,
+      "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+    },
+    {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    }
+  ],
+  "dependencyPolicy": {
+    "implementationCopiesGenerated": 0,
+    "catalog": {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    "runtime": "Native and clipboard providers remain imported adapters; no replacement qualification claimed.",
+    "renderer": "Third-party hooks/state/router implementations stay dependencies; first-party handlers/policy retained."
+  },
+  "counts": {
+    "selectedMenuSchemas": 11,
+    "normalizedUserGoals": 9,
+    "newFiniteDefinitions": 8,
+    "reusedFiniteDefinitions": 1,
+    "newUserOperations": 9,
+    "newScenarioSpecifications": 30,
+    "parameterizedThreadCommands": 9,
+    "explicitEsmJoins": 7,
+    "savedSourceSelections": 38,
+    "fullOriginalProgramsParsed": 7,
+    "additionalMaintenanceProposals": 2,
+    "existingUnifiedResponsibilityOwnersUnchanged": 37,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0,
+    "newProductScenarioPasses": 0
+  },
+  "completedBatch": "SQ-02-menu-commands-02",
+  "questionCompleted": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limits": [
+    "All new goal ownership unknown; positive codex file-search registration establishes retention only.",
+    "r$a/o$a/QQa effective mounted path is not fully joined; numbered selection remains contextual.",
+    "Shared providers/mount/IPC delivery/native/backend and durability remain explicit unresolved boundaries.",
+    "No new Chat-only exclusion; previous CBX-01..03 scope retained.",
+    "Unexecuted specifications and source/hash/reference checks are not product/build/runtime passes."
+  ]
+}

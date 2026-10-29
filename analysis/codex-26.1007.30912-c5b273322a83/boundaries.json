@@ -1,0 +1,135 @@
+[
+  {
+    "id": "main-bootstrap",
+    "claim": "early-bootstrap 在网络初始化满足后加载 bootstrap",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04967",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "main-startup",
+    "claim": "bootstrap 动态导入 main 后调用 runMainAppStartup",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04968",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "renderer-entry",
+    "claim": "主 HTML 的 renderer module 入口",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04969",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "renderer-lazy",
+    "claim": "renderer 入口按序初始化 RPC 和 app-main",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04970",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "react-root",
+    "claim": "app-main 创建 React root 并渲染 app-initial 返回组件",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04971",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "preload-api",
+    "claim": "preload 暴露 electronBridge",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04972",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "typed-host-transport",
+    "claim": "renderer postMessage 通过 electronBridge.sendMessageFromView 转发",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04973",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "request-forward",
+    "claim": "mcp-request 交给对应 host app-server connection，并支持 coalesce/priority/timeout/expiry",
+    "mode": "codex",
+    "evidenceId": "FEATURE-E04974",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "prewarm-forward",
+    "claim": "thread-prewarm-start 独立预热请求路径",
+    "mode": "codex",
+    "evidenceId": "FEATURE-E04975",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "request-abandon",
+    "claim": "mcp-request-abandon 通过 host connection 丢弃客户端请求",
+    "mode": "codex",
+    "evidenceId": "FEATURE-E04976",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "profile-isolation",
+    "claim": "显式环境变量控制 userData",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04977",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "single-instance",
+    "claim": "macOS packaged 显式 userData 启用 single-instance lock",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04978",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "codex-home",
+    "claim": "CODEX_HOME 控制 Codex 数据根目录",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04979",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "persisted-mode",
+    "claim": "chat/work composer mode 有持久化状态",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04980",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "mode-switch",
+    "claim": "Codex 与 chat/work 路由模式切换不等于字符串删除",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04981",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "work-chat-access",
+    "claim": "chat/work effective mode 由账户能力、workOnly 与加载状态共同决定",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04982",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "atom-persistence",
+    "claim": "main 维护 electron-persisted-atom-state 并向各窗口同步",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04983",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "remote-version",
+    "claim": "客户端 app-server 最低版本常量为 0.141.0",
+    "mode": "codex",
+    "evidenceId": "FEATURE-E04984",
+    "status": "static-confirmed"
+  },
+  {
+    "id": "app-host-port",
+    "claim": "另有 MessageChannel app-host RPC，统一消息 IPC 不是全部接口",
+    "mode": "shared",
+    "evidenceId": "FEATURE-E04985",
+    "status": "static-confirmed"
+  }
+]

@@ -1,0 +1,167 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scope": "Fixed public Electron 42.3.0 darwin-x64 primitive comparison; not a Codex client behavior acceptance run.",
+  "originalRequirements": {
+    "path": "runtime-capability-decisions.json",
+    "bytes": 18241,
+    "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7"
+  },
+  "publicRuntimeVersions": {
+    "electron": "42.3.0",
+    "node": "24.15.0",
+    "chrome": "148.0.7778.180",
+    "modules": "146",
+    "napi": "10"
+  },
+  "owlStaticVersionBoundary": {
+    "node": "24.19.0",
+    "chromium": "155.0.8059.40",
+    "kind": "previous static binary evidence; no Owl runtime or traditional ABI measured here"
+  },
+  "nodeSourceComparisonTag": "v24.19.0",
+  "versionLimitation": "Public runtime Node 24.15.0 observations and Node 24.19.0 source inputs are distinct; N-API 10 does not establish traditional ABI compatibility.",
+  "capabilities": {
+    "showTaskManager": "undefined",
+    "getAppMetrics": "function",
+    "webContentsClone": "undefined",
+    "webViewAdoptionLease": "undefined",
+    "setAgentActive": "undefined",
+    "navigationHistoryRestore": "function",
+    "navigationHistoryGetAllEntries": "function",
+    "permissionObject": "undefined",
+    "allowIpcInNodeEnvironmentFlags": false,
+    "permissionInNodeEnvironmentFlags": true,
+    "owlUpdateBinding": "unavailable"
+  },
+  "decisions": [
+    {
+      "id": "diagnostics",
+      "observation": "showTaskManager is undefined; getAppMetrics returned CPU and memory field shapes.",
+      "decision": "Public metrics are a candidate data primitive. A maintained first-party task-manager UI and behavior verification remain required; a placeholder does not meet the original guard capability."
+    },
+    {
+      "id": "managed-update-policy",
+      "observation": "electron_browser_owl_update_policies linked binding is unavailable.",
+      "decision": "Keep ordinary updater transport separate from nullable managed policy. Prior source null handling supports a policy-provider boundary, not removal of all update functionality."
+    },
+    {
+      "id": "browser-ownership-and-clone",
+      "observation": "clone, _createWebViewAdoptionLease and setAgentActive are undefined. Public history restoration resolved and retained edited form state, but returned the initial page heap value instead of the edited live value.",
+      "decision": "History restoration is a tested candidate primitive only. Live clone, view ownership, lease acceptance and lifecycle still need explicit contracts and acceptance; full equivalence is unproven."
+    },
+    {
+      "id": "node-network-and-ipc",
+      "observation": "The Owl --allow-ipc flag exited 9 as an unknown option. With --permission, both has(net) and has(ipc) returned false while owned TCP loopback and Unix socket round trips succeeded.",
+      "decision": "Permission.has(false) does not establish transport denial in this public runtime. Preserve the original network/declared-IPC requirement; a real isolation or runtime implementation is needed. This probe does not test arbitrary remote destinations."
+    }
+  ],
+  "runtimeRouteDecision": "Reject unmodified Electron 42.3.0 as a direct drop-in for the observed Owl contracts. Electron with first-party adapters remains a candidate; no full runtime route is selected or independently built.",
+  "publicMainObservations": [
+    {
+      "id": "public-owl-update-binding",
+      "status": "unavailable",
+      "message": "No such binding was linked: electron_browser_owl_update_policies"
+    },
+    {
+      "id": "public-process-metrics",
+      "status": "returned",
+      "records": 1,
+      "recordKeys": [
+        "cpu",
+        "creationTime",
+        "memory",
+        "pid",
+        "sandboxed",
+        "type"
+      ],
+      "cpuKeys": [
+        "cumulativeCPUUsage",
+        "idleWakeupsPerSecond",
+        "percentCPUUsage"
+      ],
+      "memoryKeys": [
+        "peakWorkingSetSize",
+        "workingSetSize"
+      ]
+    },
+    {
+      "id": "public-navigation-history-restore",
+      "status": "resolved",
+      "entryCount": 2,
+      "entryKeys": [
+        "pageState",
+        "title",
+        "url"
+      ],
+      "restoredIndex": 0,
+      "restoredUrlMatchesSyntheticA": true,
+      "restoredState": {
+        "input": "edited-owned-fixture",
+        "heap": "owned-memory-only",
+        "title": "CCODEX_PUBLIC_A"
+      },
+      "limitation": "Public primitive observation only; no Owl clone/adoption or full functional equivalence tested."
+    }
+  ],
+  "publicNodeObservations": {
+    "kind": "public-electron-run-as-node-permission-probe",
+    "node": "v24.15.0",
+    "pid": 83188,
+    "permissionEnabled": true,
+    "scopes": {
+      "net": false,
+      "ipc": false
+    },
+    "allowIpcInNodeEnvironmentFlags": false,
+    "originalClientRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "observations": [
+      {
+        "id": "owned-tcp-loopback",
+        "status": "roundtrip-completed"
+      },
+      {
+        "id": "owned-unix-ipc",
+        "status": "roundtrip-completed"
+      }
+    ]
+  },
+  "counts": {
+    "officialSourceInputs": 16,
+    "publicRuntimeLaunchAttempts": 4,
+    "successfulMainProbeProcesses": 1,
+    "successfulNodeTransportProbeProcesses": 1,
+    "expectedUnsupportedFlagProcesses": 1,
+    "mainProbeFailuresBeforeCapabilityChecks": 1,
+    "capabilityDecisions": 4,
+    "originalClientRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "newReaRuns": 0,
+    "newFeatureDefinitions": 0,
+    "newConfirmedModeClassifications": 0
+  },
+  "failedAttempts": [
+    "Initial public source fetch had DNS failures; successful second fetch retained separately.",
+    "First main probe used the wrong argument position and failed before capability checks; timed out, was terminated, and no owned processes remained. Corrected second probe exited 0."
+  ],
+  "cleanup": {
+    "ownedProcessesRemaining": 0,
+    "fixtureDirectoryRemoved": true,
+    "socketRemoved": true
+  },
+  "nextAction": {
+    "kind": "finite-stage-consolidation",
+    "question": "复用现有证据，按分析计划九项完成标准给出已满足、内部待补和外部输入缺失的阶段交付；把剩余调查限定为会改变功能边界、依赖引入或独立构建决定的问题。",
+    "closure": "每个未满足项有影响、下一项动作和验收条件；不要求所有unknown清零，不把已闭合源码定位重复作为进度。",
+    "scopePreserved": "完整Codex目标与ChatGPT专属排除证据要求不变；客户端实施仍属于后续阶段。"
+  },
+  "fullAnalysisCompleted": false,
+  "independentRuntimeBuildProven": false,
+  "limitations": [
+    "Synthetic local pages and endpoints only; no original account or model task used.",
+    "Fixed tag URLs and received body hashes recorded; upstream commit identity was not independently resolved.",
+    "Full functional denominator, mode classification and the 212 unexecuted scenario specifications remain unchanged.",
+    "Acquisition receipt says not launched at acquisition time; later launch receipts are separate historical records.",
+    "The public binary archive and browser caches are not copied into published raw output; third-party source inputs remain analysis-only."
+  ]
+}

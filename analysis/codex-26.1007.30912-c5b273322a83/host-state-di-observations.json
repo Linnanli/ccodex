@@ -1,0 +1,817 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "nodeVersion": "v22.23.2",
+  "scope": "One Node22 VM command joining saved window registration, trust, snapshot receiver, repository and preload seed snippets with synthetic windows, IPC, context construction and environment. Node path/url are local runtime candidates.",
+  "executed": 26,
+  "passed": 26,
+  "failed": 0,
+  "scenarios": [
+    {
+      "id": "HSD-VM-01",
+      "label": "registered sender before context installation receives empty seed",
+      "output": {
+        "empty": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-02",
+      "label": "same repository is exposed as a shallow initial snapshot after context installation",
+      "output": {
+        "sameNestedIdentity": true,
+        "separateOuterObject": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-03",
+      "label": "unregistered sender is rejected even with context present",
+      "output": {
+        "empty": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-04",
+      "label": "closing a registered window removes sender identity and blocks later reads",
+      "output": {
+        "registeredAfterClose": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-05",
+      "label": "different frame object is rejected despite equal URL",
+      "output": {
+        "empty": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-06",
+      "label": "missing senderFrame falls back to sender mainFrame",
+      "output": {
+        "accepted": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-07",
+      "label": "URL condition about:blank",
+      "output": {
+        "accepted": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-08",
+      "label": "URL condition app://-/view",
+      "output": {
+        "accepted": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-09",
+      "label": "URL condition app:///view",
+      "output": {
+        "accepted": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-10",
+      "label": "URL condition app://example/view",
+      "output": {
+        "accepted": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-11",
+      "label": "URL condition http://localhost:5175/view",
+      "output": {
+        "accepted": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-12",
+      "label": "URL condition http://localhost:5176/view",
+      "output": {
+        "accepted": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-13",
+      "label": "synthetic renderer URL environment changes allowed HTTP origin",
+      "output": {
+        "accepted": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-14",
+      "label": "renderer environment origin matching preserves protocol",
+      "output": {
+        "accepted": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-15",
+      "label": "malformed renderer environment does not admit the default HTTP origin",
+      "output": {
+        "accepted": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-16",
+      "label": "bundled file URL comparison accepts a matching string prefix",
+      "output": {
+        "accepted": true,
+        "prefixComparison": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-17",
+      "label": "unrelated file URL is rejected",
+      "output": {
+        "accepted": false
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-18",
+      "label": "nullish context snapshot falls back to empty object",
+      "output": {
+        "empty": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-19",
+      "label": "snapshot error propagates through synchronous preload initialization",
+      "output": {
+        "propagated": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-20",
+      "label": "trust exception propagates before context resolution",
+      "output": {
+        "propagated": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-21",
+      "label": "setWindowContext registers only live app service windows",
+      "output": {
+        "registered": [
+          21
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-22",
+      "label": "setWindowContext retains new context after registration throws and stops remaining windows",
+      "output": {
+        "newContextRetained": true,
+        "visited": [
+          21
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-23",
+      "label": "preload seed is a snapshot until another delivery mechanism updates it",
+      "output": {
+        "firstSeed": 1,
+        "secondSeed": 2
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-24",
+      "label": "window callback failure happens after registration identity is stored",
+      "output": {
+        "identityRetained": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-25",
+      "label": "window listener setup failure retains earlier registry writes",
+      "output": {
+        "identityRetained": true
+      },
+      "status": "passed"
+    },
+    {
+      "id": "HSD-VM-26",
+      "label": "bound trust method retains its function when the manager property is replaced",
+      "output": {
+        "boundFunctionRetained": true
+      },
+      "status": "passed"
+    }
+  ],
+  "savedSourceUnitsLoaded": 24,
+  "savedSourceBytesLoaded": 3947,
+  "units": [
+    {
+      "name": "definition-x1e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3753925,
+        "endExclusive": 3754038
+      },
+      "utf16Range": {
+        "start": 3749010,
+        "endExclusive": 3749123
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "4090dc31a7248a625cd1402c98a8d89dcc32dbb31b2f7b2c685752eef5e47239",
+      "localSourceFilename": "01-001-definition-x1e.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-001-definition-x1e.txt",
+      "bytes": 113,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "definition-P9",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3754168,
+        "endExclusive": 3754326
+      },
+      "utf16Range": {
+        "start": 3749253,
+        "endExclusive": 3749411
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "3cf0adb53dd976d378d4dd15ec6bf57090c328cde4e1c3c226a467db6821860d",
+      "localSourceFilename": "01-002-definition-P9.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-002-definition-P9.txt",
+      "bytes": 158,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "definition-C1e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3754326,
+        "endExclusive": 3754435
+      },
+      "utf16Range": {
+        "start": 3749411,
+        "endExclusive": 3749520
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "81bf04afcc7a10c2a285c15ff30f5f7a820a75c77c42faec39ea5ff64ac28704",
+      "localSourceFilename": "01-003-definition-C1e.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-003-definition-C1e.txt",
+      "bytes": 109,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "definition-N9",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3754038,
+        "endExclusive": 3754099
+      },
+      "utf16Range": {
+        "start": 3749123,
+        "endExclusive": 3749184
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "b863d86e1ef5f17e7041848476dc64c551ee2795b8a7f5d320d17150e202fbb6",
+      "localSourceFilename": "01-004-definition-N9.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-004-definition-N9.txt",
+      "bytes": 61,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "definition-S1e",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3754099,
+        "endExclusive": 3754168
+      },
+      "utf16Range": {
+        "start": 3749184,
+        "endExclusive": 3749253
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "ec1a862269197dc0e343de8204b73d5a8afce0687059f0554d975a7d60133486",
+      "localSourceFilename": "01-005-definition-S1e.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-005-definition-S1e.txt",
+      "bytes": 69,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "definition-M9",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3753865,
+        "endExclusive": 3753925
+      },
+      "utf16Range": {
+        "start": 3748950,
+        "endExclusive": 3749010
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "1733c74f503dda3033c538c1452a2c683f6035b2713a3ac71f6e2117980456fe",
+      "localSourceFilename": "01-006-definition-M9.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-006-definition-M9.txt",
+      "bytes": 60,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "definition-lL",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1379699,
+        "endExclusive": 1379802
+      },
+      "utf16Range": {
+        "start": 1379670,
+        "endExclusive": 1379773
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "687284797ce2aa571854d5245e4c3c0b5ad7e5e70f38dfe34ea07dcbc4aa3ac0",
+      "localSourceFilename": "01-007-definition-lL.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-007-definition-lL.txt",
+      "bytes": 103,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "definition-T9",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3718775,
+        "endExclusive": 3718860
+      },
+      "utf16Range": {
+        "start": 3713862,
+        "endExclusive": 3713947
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "75ad53a4e6c5beb16e357a988d0bf8a11d6b2b7766dd9416e8627289db467941",
+      "localSourceFilename": "01-008-definition-T9.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-008-definition-T9.txt",
+      "bytes": 85,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3721160,
+        "endExclusive": 3721188
+      },
+      "utf16Range": {
+        "start": 3716247,
+        "endExclusive": 3716275
+      },
+      "nodeType": "VariableDeclarator",
+      "spanHash": "5fdad1c4d228e85c4701c2ddfd04165c9cbf29d9b88fc70b5d8b263a7fd81789",
+      "name": "definition-e1e",
+      "localSourceFilename": "01-003-definition-e1e.txt",
+      "completeAstNode": true,
+      "origin": "source-05 Program lexical declaration",
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-derived-01/01-003-definition-e1e.txt",
+      "bytes": 28,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-derived-01/source-contracts.json",
+        "bytes": 2292,
+        "sha256": "7c62683d476f3986e8779ab2d20619f16fc2d24b2413250e13ecdbcf5a74b4b0"
+      }
+    },
+    {
+      "name": "registered-webcontents-field",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3722442,
+        "endExclusive": 3722475
+      },
+      "utf16Range": {
+        "start": 3717527,
+        "endExclusive": 3717560
+      },
+      "nodeType": "ClassProperty",
+      "spanHash": "4d51ade11ffa981caafe52aa0b26881f6331994f15da0f19f5e62471e1596309",
+      "localSourceFilename": "01-009-registered-webcontents-field.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/01-009-registered-webcontents-field.txt",
+      "bytes": 33,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-05/source-contracts.json",
+        "bytes": 138388,
+        "sha256": "70f17b5f02d734ed3b6cea907f81ccef3688b0e11968ad781c8fb5c9a4674368"
+      }
+    },
+    {
+      "name": "y1e-hasRegisteredWebContents",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3732967,
+        "endExclusive": 3733042
+      },
+      "utf16Range": {
+        "start": 3728052,
+        "endExclusive": 3728127
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "79cf056c4de964f0288b6dfed0473bf45bb90928d2f054d24ddb5c4ee97e43ba",
+      "localSourceFilename": "01-006-y1e-hasRegisteredWebContents.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-006-y1e-hasRegisteredWebContents.txt",
+      "bytes": 75,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "y1e-isAppServiceWindow",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3733042,
+        "endExclusive": 3733106
+      },
+      "utf16Range": {
+        "start": 3728127,
+        "endExclusive": 3728191
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "c5557d7087f639a64e90f6b0d4ea43cd763c923a249ece46bc404611e78944d3",
+      "localSourceFilename": "01-007-y1e-isAppServiceWindow.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-007-y1e-isAppServiceWindow.txt",
+      "bytes": 64,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "y1e-isTrustedIpcSender",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3734430,
+        "endExclusive": 3734580
+      },
+      "utf16Range": {
+        "start": 3729515,
+        "endExclusive": 3729665
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "89d77e2563a53457062e6ecd7ca0a0ab8ce8f0864fc9b603269a3149aae63cc9",
+      "localSourceFilename": "01-008-y1e-isTrustedIpcSender.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-008-y1e-isTrustedIpcSender.txt",
+      "bytes": 150,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "y1e-registerWindow",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3745599,
+        "endExclusive": 3746678
+      },
+      "utf16Range": {
+        "start": 3740684,
+        "endExclusive": 3741763
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "39d364041a44860fa27e93d916dcc7c4786394cb369fe8dfc1cd733deb85ca66",
+      "localSourceFilename": "01-009-y1e-registerWindow.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-009-y1e-registerWindow.txt",
+      "bytes": 1079,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "hXe-getSharedObjectSnapshot",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3350663,
+        "endExclusive": 3350738
+      },
+      "utf16Range": {
+        "start": 3345795,
+        "endExclusive": 3345870
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "08003413f0ee90c148a4d2950bf76983e8dd6ffa7d96c67cd7deff3a56ff9eb8",
+      "localSourceFilename": "01-004-hXe-getSharedObjectSnapshot.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-004-hXe-getSharedObjectSnapshot.txt",
+      "bytes": 75,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "window-service-setWindowContext",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3763071,
+        "endExclusive": 3763204
+      },
+      "utf16Range": {
+        "start": 3758156,
+        "endExclusive": 3758289
+      },
+      "nodeType": "ObjectProperty",
+      "spanHash": "3e2383ad9117712126e3752eeb83e8675dc9515b0d240fbdc7cffcc427ab6700",
+      "localSourceFilename": "01-013-window-service-setWindowContext.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-013-window-service-setWindowContext.txt",
+      "bytes": 133,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "window-service-isTrustedIpcSender",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3763801,
+        "endExclusive": 3763848
+      },
+      "utf16Range": {
+        "start": 3758886,
+        "endExclusive": 3758933
+      },
+      "nodeType": "ObjectProperty",
+      "spanHash": "7a7a898c1c6242901d075fdf26bcff11014913c4d3955d979e5c6182c473169c",
+      "localSourceFilename": "01-014-window-service-isTrustedIpcSender.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-014-window-service-isTrustedIpcSender.txt",
+      "bytes": 47,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "window-service-getContextForWebContents",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3764079,
+        "endExclusive": 3764143
+      },
+      "utf16Range": {
+        "start": 3759164,
+        "endExclusive": 3759228
+      },
+      "nodeType": "ObjectProperty",
+      "spanHash": "94706281d29d34de205ddf9a624181cdcd321150a15c39c997ab1cfd580c7dcf",
+      "localSourceFilename": "01-015-window-service-getContextForWebContents.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/01-015-window-service-getContextForWebContents.txt",
+      "bytes": 64,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-04/source-contracts.json",
+        "bytes": 1748111,
+        "sha256": "cf7e90f57a8fa4ed9b6ef32c1d8fbde982ae381a1e17c96cb708770522e93d9e"
+      }
+    },
+    {
+      "name": "snapshot-option-function-isTrustedIpcEvent",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3798938,
+        "endExclusive": 3798991
+      },
+      "utf16Range": {
+        "start": 3794023,
+        "endExclusive": 3794076
+      },
+      "nodeType": "ArrowFunctionExpression",
+      "spanHash": "89e74c7ba5a80888fe9157eaca1a6eec26ef1320b1b728d62a0d0875700d5443",
+      "localSourceFilename": "01-014-snapshot-option-function-isTrustedIpcEvent.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-03/01-014-snapshot-option-function-isTrustedIpcEvent.txt",
+      "bytes": 53,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-03/source-contracts.json",
+        "bytes": 3936362,
+        "sha256": "271a23edd894327fa072ab695717fc396e85cc0f1a57f2e92ba51a859cb8e700"
+      }
+    },
+    {
+      "name": "snapshot-receiver-definition",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3386541,
+        "endExclusive": 3387428
+      },
+      "utf16Range": {
+        "start": 3381671,
+        "endExclusive": 3382558
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "c782088921b7583dad6caf42bd99b5b09de8be5cd794d5577b5fae5896d3d17f",
+      "localSourceFilename": "01-015-snapshot-receiver-definition.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-03/01-015-snapshot-receiver-definition.txt",
+      "bytes": 887,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/host-state-di-work/source-03/source-contracts.json",
+        "bytes": 3936362,
+        "sha256": "271a23edd894327fa072ab695717fc396e85cc0f1a57f2e92ba51a859cb8e700"
+      }
+    },
+    {
+      "name": "definition-wee",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 43451,
+        "endExclusive": 43799
+      },
+      "utf16Range": {
+        "start": 43451,
+        "endExclusive": 43799
+      },
+      "nodeType": "VariableDeclarator",
+      "spanHash": "88fc21509f48eee86b3fc4d0492ada92a7cd25d62e0cc3fe336d95d8bbe9325f",
+      "localSourceFilename": "01-014-definition-wee.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-03/01-014-definition-wee.txt",
+      "bytes": 348,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-03/source-contracts.json",
+        "bytes": 151552,
+        "sha256": "30e811f75a1accc66ff7401092737ef8e0f5114b6d565e2aaf4fc3c75092fe14"
+      }
+    },
+    {
+      "name": "definition-A",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 2861,
+        "endExclusive": 2933
+      },
+      "utf16Range": {
+        "start": 2861,
+        "endExclusive": 2933
+      },
+      "nodeType": "VariableDeclarator",
+      "spanHash": "47ed6f107f47615a7b4081702a6ac57aad018a8c78206f4627037df491661330",
+      "localSourceFilename": "02-001-definition-A.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-04/02-001-definition-A.txt",
+      "bytes": 72,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-04/source-contracts.json",
+        "bytes": 137673,
+        "sha256": "a5a4df97bfec7548828317f5dd1e05c6bbb1bb505a73273011550634ca0f622e"
+      }
+    },
+    {
+      "name": "snapshot-value-getter",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "byteRange": {
+        "start": 4213,
+        "endExclusive": 4249
+      },
+      "utf16Range": {
+        "start": 4213,
+        "endExclusive": 4249
+      },
+      "nodeType": "ObjectProperty",
+      "spanHash": "abd98a61b3edf63fbed0047340a74ea54b95bbd9694e8c688a5404e1b5875287",
+      "localSourceFilename": "02-006-snapshot-value-getter.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-04/02-006-snapshot-value-getter.txt",
+      "bytes": 36,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-04/source-contracts.json",
+        "bytes": 137673,
+        "sha256": "a5a4df97bfec7548828317f5dd1e05c6bbb1bb505a73273011550634ca0f622e"
+      }
+    },
+    {
+      "name": "definition-Pt",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 10897,
+        "endExclusive": 10942
+      },
+      "utf16Range": {
+        "start": 10897,
+        "endExclusive": 10942
+      },
+      "nodeType": "VariableDeclarator",
+      "spanHash": "5912b9eb8fa23579a108eb93bd6297d1e146234420f71b1b7587d37257bd9688",
+      "localSourceFilename": "02-002-definition-Pt.txt",
+      "completeAstNode": true,
+      "savedSourcePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-06/02-002-definition-Pt.txt",
+      "bytes": 45,
+      "metadata": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/host-state-provider/analysis/source-06/source-contracts.json",
+        "bytes": 211584,
+        "sha256": "28868bd9b86f823834a6902e24baca9f85d362b81309e8c0b080a5eb68566f31"
+      }
+    }
+  ],
+  "targetCodeExecuted": true,
+  "syntheticProvidersOnly": true,
+  "fullConstructorsExecuted": false,
+  "originalClientRunsAdded": 0,
+  "actualIpcMessagesAdded": 0,
+  "actualSettingsMutationsAdded": 0,
+  "modelSubmissionsAdded": 0,
+  "independentSemanticPeerReviewAdded": false,
+  "fullAnalysisCompleted": false
+}

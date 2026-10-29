@@ -1,0 +1,858 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T07:25:42.491553+00:00",
+  "source": {
+    "path": "build-inputs.json",
+    "bytes": 5040,
+    "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31"
+  },
+  "decisions": [
+    {
+      "id": "BUILD-001",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/0"
+      },
+      "original": {
+        "script": "compile",
+        "input": "./scripts/ensure-owl-electron-types.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02540"
+        ]
+      },
+      "input": "./scripts/ensure-owl-electron-types.mjs",
+      "decisionClass": "runtime-types",
+      "replacement": "packages/runtime-adapter/src/types + tools/build/runtime-types",
+      "action": "Author types from the selected runtime capability contract; retain unresolved private APIs as explicit unsupported capability decisions.",
+      "dependsOn": [
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-002",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/1"
+      },
+      "original": {
+        "script": "compile",
+        "input": "../cli/run-package-typescript.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02541"
+        ]
+      },
+      "input": "../cli/run-package-typescript.mjs",
+      "decisionClass": "workspace-tooling",
+      "replacement": "tools/build + workspace package scripts",
+      "action": "Author equivalent compile/lint/dev-build orchestration without original monorepo relative imports.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-003",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/2"
+      },
+      "original": {
+        "script": "tsc",
+        "input": "./scripts/ensure-owl-electron-types.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02542"
+        ]
+      },
+      "input": "./scripts/ensure-owl-electron-types.mjs",
+      "decisionClass": "runtime-types",
+      "replacement": "packages/runtime-adapter/src/types + tools/build/runtime-types",
+      "action": "Author types from the selected runtime capability contract; retain unresolved private APIs as explicit unsupported capability decisions.",
+      "dependsOn": [
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-004",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/3"
+      },
+      "original": {
+        "script": "tsc",
+        "input": "../cli/run-package-typescript.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02543"
+        ]
+      },
+      "input": "../cli/run-package-typescript.mjs",
+      "decisionClass": "workspace-tooling",
+      "replacement": "tools/build + workspace package scripts",
+      "action": "Author equivalent compile/lint/dev-build orchestration without original monorepo relative imports.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-005",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/4"
+      },
+      "original": {
+        "script": "prepare:owl",
+        "input": "./scripts/prepare-dev.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02544"
+        ]
+      },
+      "input": "./scripts/prepare-dev.mjs",
+      "decisionClass": "runtime-driver",
+      "replacement": "tools/build/runtime-driver",
+      "action": "Author acquisition, launch and native-rebuild driver for an independently sourced, pinned runtime; do not copy the installed app.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-006",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/5"
+      },
+      "original": {
+        "script": "owl",
+        "input": "./scripts/owl-shell.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02545"
+        ]
+      },
+      "input": "./scripts/owl-shell.mjs",
+      "decisionClass": "runtime-driver",
+      "replacement": "tools/build/runtime-driver",
+      "action": "Author acquisition, launch and native-rebuild driver for an independently sourced, pinned runtime; do not copy the installed app.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-007",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/6"
+      },
+      "original": {
+        "script": "build:dev-vite",
+        "input": "./scripts/build-dev-vite.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02546"
+        ]
+      },
+      "input": "./scripts/build-dev-vite.mjs",
+      "decisionClass": "workspace-tooling",
+      "replacement": "tools/build + workspace package scripts",
+      "action": "Author equivalent compile/lint/dev-build orchestration without original monorepo relative imports.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-008",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/7"
+      },
+      "original": {
+        "script": "forge:make",
+        "input": "../app-server-types/generate-types.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02547"
+        ]
+      },
+      "input": "../app-server-types/generate-types.mjs",
+      "decisionClass": "contract-generator",
+      "replacement": "tools/build/generate-contracts + packages/contracts",
+      "action": "Generate from verified fixed schema inputs; maintain desktop extensions and protocol differences separately.",
+      "dependsOn": [
+        "W01",
+        "W05"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-009",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/8"
+      },
+      "original": {
+        "script": "forge:make:owl-shell",
+        "input": "../app-server-types/generate-types.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02548"
+        ]
+      },
+      "input": "../app-server-types/generate-types.mjs",
+      "decisionClass": "contract-generator",
+      "replacement": "tools/build/generate-contracts + packages/contracts",
+      "action": "Generate from verified fixed schema inputs; maintain desktop extensions and protocol differences separately.",
+      "dependsOn": [
+        "W01",
+        "W05"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-010",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/9"
+      },
+      "original": {
+        "script": "forge:publish",
+        "input": "../app-server-types/generate-types.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02549"
+        ]
+      },
+      "input": "../app-server-types/generate-types.mjs",
+      "decisionClass": "contract-generator",
+      "replacement": "tools/build/generate-contracts + packages/contracts",
+      "action": "Generate from verified fixed schema inputs; maintain desktop extensions and protocol differences separately.",
+      "dependsOn": [
+        "W01",
+        "W05"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-011",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/10"
+      },
+      "original": {
+        "script": "owl:ensure",
+        "input": "./scripts/owl-shell.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02550"
+        ]
+      },
+      "input": "./scripts/owl-shell.mjs",
+      "decisionClass": "runtime-driver",
+      "replacement": "tools/build/runtime-driver",
+      "action": "Author acquisition, launch and native-rebuild driver for an independently sourced, pinned runtime; do not copy the installed app.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-012",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/11"
+      },
+      "original": {
+        "script": "package",
+        "input": "./scripts/package.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02551"
+        ]
+      },
+      "input": "./scripts/package.mjs",
+      "decisionClass": "packaging-metadata",
+      "replacement": "tools/build/package + apps/desktop build metadata",
+      "action": "Author independent identity/version/resource/runtime layout and reproducible build metadata.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-013",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/12"
+      },
+      "original": {
+        "script": "lint",
+        "input": "./scripts/ensure-owl-electron-types.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02552"
+        ]
+      },
+      "input": "./scripts/ensure-owl-electron-types.mjs",
+      "decisionClass": "runtime-types",
+      "replacement": "packages/runtime-adapter/src/types + tools/build/runtime-types",
+      "action": "Author types from the selected runtime capability contract; retain unresolved private APIs as explicit unsupported capability decisions.",
+      "dependsOn": [
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-014",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/13"
+      },
+      "original": {
+        "script": "lint",
+        "input": "../scripts/run-package-oxlint.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02553"
+        ]
+      },
+      "input": "../scripts/run-package-oxlint.mjs",
+      "decisionClass": "workspace-tooling",
+      "replacement": "tools/build + workspace package scripts",
+      "action": "Author equivalent compile/lint/dev-build orchestration without original monorepo relative imports.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-015",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/14"
+      },
+      "original": {
+        "script": "lint:fix",
+        "input": "./scripts/ensure-owl-electron-types.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02554"
+        ]
+      },
+      "input": "./scripts/ensure-owl-electron-types.mjs",
+      "decisionClass": "runtime-types",
+      "replacement": "packages/runtime-adapter/src/types + tools/build/runtime-types",
+      "action": "Author types from the selected runtime capability contract; retain unresolved private APIs as explicit unsupported capability decisions.",
+      "dependsOn": [
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-016",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/15"
+      },
+      "original": {
+        "script": "lint:fix",
+        "input": "../scripts/run-package-oxlint.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02555"
+        ]
+      },
+      "input": "../scripts/run-package-oxlint.mjs",
+      "decisionClass": "workspace-tooling",
+      "replacement": "tools/build + workspace package scripts",
+      "action": "Author equivalent compile/lint/dev-build orchestration without original monorepo relative imports.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-017",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/16"
+      },
+      "original": {
+        "script": "metadata-path",
+        "input": "./scripts/dev-metadata.ts",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02556"
+        ]
+      },
+      "input": "./scripts/dev-metadata.ts",
+      "decisionClass": "packaging-metadata",
+      "replacement": "tools/build/package + apps/desktop build metadata",
+      "action": "Author independent identity/version/resource/runtime layout and reproducible build metadata.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-018",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/17"
+      },
+      "original": {
+        "script": "memory:analyze-snapshot",
+        "input": "./scripts/analyze-heap-snapshot.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02557"
+        ]
+      },
+      "input": "./scripts/analyze-heap-snapshot.mjs",
+      "decisionClass": "diagnostic-tool",
+      "replacement": "tools/diagnostics/heap",
+      "action": "Author diagnostic tooling independently; not a product startup prerequisite. Keep product Task Manager capability in W03.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-019",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/18"
+      },
+      "original": {
+        "script": "e2e:computer-use-native-pipe",
+        "input": "./scripts/computer-use-native-pipe-e2e.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02558"
+        ]
+      },
+      "input": "./scripts/computer-use-native-pipe-e2e.mjs",
+      "decisionClass": "verification-tool",
+      "replacement": "tests/desktop + tools/diagnostics",
+      "action": "Author owned-fixture desktop/native-pipe/CDP verification. Retain the actual computer-use/browser features and their acceptance requirements.",
+      "dependsOn": [
+        "W03",
+        "W04"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-020",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/19"
+      },
+      "original": {
+        "script": "playwright:agent:repl",
+        "input": "./scripts/playwright-electron-agent-cdp.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02559"
+        ]
+      },
+      "input": "./scripts/playwright-electron-agent-cdp.mjs",
+      "decisionClass": "verification-tool",
+      "replacement": "tests/desktop + tools/diagnostics",
+      "action": "Author owned-fixture desktop/native-pipe/CDP verification. Retain the actual computer-use/browser features and their acceptance requirements.",
+      "dependsOn": [
+        "W03",
+        "W04"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-021",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/20"
+      },
+      "original": {
+        "script": "rebuild:native-modules",
+        "input": "./scripts/owl-shell.mjs",
+        "status": "missing-from-release",
+        "evidenceIds": [
+          "dep-e-02560"
+        ]
+      },
+      "input": "./scripts/owl-shell.mjs",
+      "decisionClass": "runtime-driver",
+      "replacement": "tools/build/runtime-driver",
+      "action": "Author acquisition, launch and native-rebuild driver for an independently sourced, pinned runtime; do not copy the installed app.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-022",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/21"
+      },
+      "original": {
+        "input": "pnpm-lock.yaml",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "pnpm-lock.yaml",
+      "decisionClass": "new-project-lock",
+      "replacement": "pnpm-lock.yaml",
+      "action": "Generate one exact new-project lock for the proposed pnpm workspace; preserve original installed-version uncertainty. Alternative lock names are inventory occurrences, not three required locks.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-023",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/22"
+      },
+      "original": {
+        "input": "package-lock.json",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "package-lock.json",
+      "decisionClass": "new-project-lock",
+      "replacement": "pnpm-lock.yaml",
+      "action": "Generate one exact new-project lock for the proposed pnpm workspace; preserve original installed-version uncertainty. Alternative lock names are inventory occurrences, not three required locks.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-024",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/23"
+      },
+      "original": {
+        "input": "yarn.lock",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "yarn.lock",
+      "decisionClass": "new-project-lock",
+      "replacement": "pnpm-lock.yaml",
+      "action": "Generate one exact new-project lock for the proposed pnpm workspace; preserve original installed-version uncertainty. Alternative lock names are inventory occurrences, not three required locks.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-025",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/24"
+      },
+      "original": {
+        "input": "pnpm-workspace.yaml",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "pnpm-workspace.yaml",
+      "decisionClass": "workspace-config",
+      "replacement": "pnpm-workspace.yaml",
+      "action": "Author package membership and local dependency boundaries for the independent workspace.",
+      "dependsOn": [
+        "W02"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-026",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/25"
+      },
+      "original": {
+        "input": "tsconfig.json",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "tsconfig.json",
+      "decisionClass": "typescript-config",
+      "replacement": "tsconfig.base.json + per-process tsconfig.json",
+      "action": "Author process-specific type environments/references, target runtime and renderer compilation.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-027",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/26"
+      },
+      "original": {
+        "input": "forge.config.ts",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "forge.config.ts",
+      "decisionClass": "packager-config",
+      "replacement": "apps/desktop/forge.config.ts or selected runtime packager integration",
+      "action": "Author one packaging config after runtime integration is established; keep independent IDs, native ABI, resources, signing and update channel.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-028",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/27"
+      },
+      "original": {
+        "input": "forge.config.js",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "forge.config.js",
+      "decisionClass": "packager-config",
+      "replacement": "apps/desktop/forge.config.ts or selected runtime packager integration",
+      "action": "Author one packaging config after runtime integration is established; keep independent IDs, native ABI, resources, signing and update channel.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-029",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/28"
+      },
+      "original": {
+        "input": "vite.config.ts",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "vite.config.ts",
+      "decisionClass": "bundler-config",
+      "replacement": "apps/desktop/vite.config.ts + per-process entry configs",
+      "action": "Author separate main/preload/renderer/worker entries and externalize native and third-party dependencies appropriately.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    },
+    {
+      "id": "BUILD-030",
+      "originalOccurrenceRef": {
+        "path": "build-inputs.json",
+        "bytes": 5040,
+        "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31",
+        "jsonPointer": "/29"
+      },
+      "original": {
+        "input": "vite.config.js",
+        "status": "missing-from-release",
+        "evidenceIds": [],
+        "basis": "complete-frozen-archive-path-inventory"
+      },
+      "input": "vite.config.js",
+      "decisionClass": "bundler-config",
+      "replacement": "apps/desktop/vite.config.ts + per-process entry configs",
+      "action": "Author separate main/preload/renderer/worker entries and externalize native and third-party dependencies appropriately.",
+      "dependsOn": [
+        "W02",
+        "W03"
+      ],
+      "acceptance": "Clean install/build/package or the named dedicated verification succeeds without original monorepo/install paths.",
+      "decisionStatus": "analysis-disposition-proposed",
+      "replacementImplemented": false,
+      "originalInputRecovered": false
+    }
+  ],
+  "counts": {
+    "originalOccurrences": 30,
+    "uniqueOriginalInputPaths": 21,
+    "dispositionRecords": 30,
+    "implementedReplacements": 0
+  },
+  "packagingChoice": "TypeScript/Vite/Forge responsibilities are source-derived candidates; runtime integration and exact new lock remain pending.",
+  "originalBuildReproduced": false,
+  "independentClientBuildProven": false
+}

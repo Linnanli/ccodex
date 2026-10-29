@@ -1,0 +1,802 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "archiveSha256": "c5b273322a833ce5165429d468021cc6289a11cc68d075b80ae773bd7fb6731f",
+  "status": "frozen-after-bounded-source-AST-and-independent-saved-artifact-verification",
+  "frozenAtUtc": "2026-10-13T18:45:24.061055+00:00",
+  "summary": {
+    "reviewedCandidates": 38,
+    "oldWrapperCalls": 375,
+    "oldRegisteredDeferred": 337,
+    "oldNotAligned": 38,
+    "literal": 16,
+    "dynamicOrConditional": 22,
+    "selectedFiles": 5,
+    "completeParseUnits": 27,
+    "completeParseBytesIncludingOverlap": 205464,
+    "astNodesIncludingSyntheticWrappers": 43645,
+    "wholeBundleASTParsed": 0,
+    "oldEntries": 968,
+    "oldSupportNodes": 176,
+    "oldDeferred": 337,
+    "savedCoordinateOccurrencesCompared": 5513,
+    "callRangeRelations": 0,
+    "callerScopeRelationOccurrences": 3,
+    "ownerClassScopeRelationOccurrences": 97,
+    "methodResolutionKinds": {
+      "finite-literal-or-direct-conditional": 20,
+      "computed-or-forwarded-unresolved": 17,
+      "finite-literal-table-values; index-unresolved": 1
+    },
+    "savedAdapterKinds": {
+      "unresolved": 22,
+      "coordination-socket-request": 1,
+      "desktop-http-fetch": 6,
+      "host-manager-rpc-selector": 4,
+      "resolver-request-facade": 1,
+      "manager-request-facade": 4
+    },
+    "boundedSemanticRefinementKinds": {
+      "injected-coordination-adapter-member": 4,
+      "same-class-http-adapter-member": 3
+    },
+    "confirmedOmissions": 0,
+    "confirmedUnregisteredFunctionEntries": 0,
+    "newFeaturesClaimed": 0,
+    "featureCensusDenominator": "unknown",
+    "wholeClientCoverageClaimed": false
+  },
+  "scope": {
+    "savedArtifactSnapshots": 25,
+    "selectedOriginalSourceFiles": 5,
+    "originalSourceFullFileHashBytes": 25065653,
+    "completeASTParseUnits": 27,
+    "completeScopeBytesIncludingOverlap": 205464,
+    "astNodesIncludingSyntheticWrappers": 43645,
+    "wholeBundleASTParsed": 0,
+    "reviewedWrapperCalls": 38,
+    "oldLiteralCalls": 16,
+    "oldDynamicOrConditionalCalls": 22,
+    "sourceProof": "Authored parser attempts read fixed-baseline original bytes, rehash the five files and exact selected spans, and parse 27 complete saved scopes. Independent verifier and peer verify saved artifacts/receipts and metadata, without rereading original target bytes or rerunning parser.",
+    "ownershipAndMode": "first-party/third-party ownership, upstream equivalence, Codex/ChatGPT/shared mode, instance and runtime values remain unknown.",
+    "historicalDiscoveryPredicate": "Current saved features.py direct-literal predicate explains observed scope differences; historical exact producer revision and run remain unknown.",
+    "registrationRelations": "0 call-coordinate relationships; 3 caller and 97 owner-class relations are qualified spatial context only, not operation identity, registration or features."
+  },
+  "finalProducts": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/review.json",
+      "bytes": 1547487,
+      "sha256": "e1b6a36da71bbbd7a684d095f9546c4292da720fc78bbb4fd8065351aba3589d"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/scope-facts.json",
+      "bytes": 523588,
+      "sha256": "c67892ac89e40abdb74b84995e5966a59959f8588c9d3f619d902358f37c3290"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/journal.jsonl",
+      "bytes": 39289,
+      "sha256": "3f3dfb0e3f9bc934f7930aae16e2d6fc8427b250cd9f780343f0345d75b66ded"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/summary.md",
+      "bytes": 6063,
+      "sha256": "4aa2357f4fff7a37e0a3bdc7cd853b4d700abc2c17005fc277ad998f90bd5e78"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/input-receipts.json",
+      "bytes": 19248,
+      "sha256": "b8844b6ce2d717c345607de9e18f37fa9061a0dd7a0f3075c852f49547bde40a"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "bytes": 3824411,
+      "kind": "fixed-baseline-target-source",
+      "inventoryPinMatched": true,
+      "fullFileReadForHash": true,
+      "fullFileASTParsed": false,
+      "originalBytesCopied": false
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/src-BJv5Mk7n.js",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "bytes": 1591361,
+      "kind": "fixed-baseline-target-source",
+      "inventoryPinMatched": true,
+      "fullFileReadForHash": true,
+      "fullFileASTParsed": false,
+      "originalBytesCopied": false
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "bytes": 11440241,
+      "kind": "fixed-baseline-target-source",
+      "inventoryPinMatched": true,
+      "fullFileReadForHash": true,
+      "fullFileASTParsed": false,
+      "originalBytesCopied": false
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-shared-8bd9d0399038.js",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "bytes": 8175575,
+      "kind": "fixed-baseline-target-source",
+      "inventoryPinMatched": true,
+      "fullFileReadForHash": true,
+      "fullFileASTParsed": false,
+      "originalBytesCopied": false
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourcePath": "app.asar/webview/assets/share-thread-857fe1d9dce4.js",
+      "sourceHash": "4130419b79a4938aa0406042cfdf82336021a6aa52365949ee0f1e1dcff5370f",
+      "bytes": 34065,
+      "kind": "fixed-baseline-target-source",
+      "inventoryPinMatched": true,
+      "fullFileReadForHash": true,
+      "fullFileASTParsed": false,
+      "originalBytesCopied": false
+    }
+  ],
+  "toolRuntime": {
+    "path": "/private/tmp/ccodex-rea-tooling/install/node_modules/@babel/parser/lib/index.js",
+    "sha256": "43d95824b43928626ccf99136e95ab90260c18406f22f8acf57f239483127f66",
+    "bytes": 480937,
+    "kind": "tool-runtime-implementation",
+    "copied": false
+  },
+  "inputReceiptCount": 25,
+  "validation": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/validation.json",
+    "checks": 2432,
+    "errors": []
+  },
+  "peer": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/peer-review.json",
+    "checks": 1950,
+    "errors": [],
+    "status": "passed-with-scope-limits"
+  },
+  "confirmedOmissionCandidates": [],
+  "confirmedUnregisteredFunctionEntryCandidates": [],
+  "legacyWrapperValidationOrManifest": "not-located; no implicit pass or publication scope expansion",
+  "journalIntegration": "38-row independent local review journal; not added to global journal",
+  "targetExecuted": false,
+  "cliTargetExecuted": false,
+  "uiUsed": false,
+  "modelInvoked": false,
+  "networkUsed": false,
+  "thirdPartyImplementationCopied": false,
+  "files": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/input-receipts.json",
+      "relativePath": "attempts/v1/input-receipts.json",
+      "bytes": 17100,
+      "sha256": "d1fc70df449e4c23c5ab6c0a3fa575be625bde8e370ee8dadd9a683256d207dd",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/run.json",
+      "relativePath": "attempts/v1/run.json",
+      "bytes": 3010,
+      "sha256": "0b1765b5f99e1ae86f4c02233996f32c56ad1e9e030c591d8459f4dddaa5cb01",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/scope-facts.json",
+      "relativePath": "attempts/v1/scope-facts.json",
+      "bytes": 515995,
+      "sha256": "e301e0b074ad5529f3e695682476509e85df81be8ca42340b9f879b59bed7a0a",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/scope.stderr",
+      "relativePath": "attempts/v1/scope.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/scope.stdout",
+      "relativePath": "attempts/v1/scope.stdout",
+      "bytes": 297,
+      "sha256": "6bb0834043b190c061769a49cc6d039246cb81f1afa3d41bf39cce7072bbe30c",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/scope_review.cjs",
+      "relativePath": "attempts/v1/scope_review.cjs",
+      "bytes": 10751,
+      "sha256": "34b43fd4de46a74f030fb9431483fd24155726e8326bb63daf0484d9fb6ae111",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/snapshot.stderr",
+      "relativePath": "attempts/v1/snapshot.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/snapshot.stdout",
+      "relativePath": "attempts/v1/snapshot.stdout",
+      "bytes": 102,
+      "sha256": "e1f89eb879d1fb93324b4f6f8ab3730e174391107fcc7b05d5155dd0cd01c63a",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v1/snapshot_inputs.py",
+      "relativePath": "attempts/v1/snapshot_inputs.py",
+      "bytes": 3170,
+      "sha256": "45592e55b3f4286b26bbea1111dd876bf13bf818c2f2bf2768125359d46a5f17",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/discovery.stderr",
+      "relativePath": "attempts/v2/discovery.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/discovery.stdout",
+      "relativePath": "attempts/v2/discovery.stdout",
+      "bytes": 125,
+      "sha256": "5f14851ddce4d1128d41d5d33dc3aaf969e959848ac4139bbbaeb625db8b93d7",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/discovery_inputs.py",
+      "relativePath": "attempts/v2/discovery_inputs.py",
+      "bytes": 1522,
+      "sha256": "4380bc3b38b9e63f6e758d8dc9a077078ce68924cef4fd95a34a7b056570a43c",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/journal.jsonl",
+      "relativePath": "attempts/v2/journal.jsonl",
+      "bytes": 39289,
+      "sha256": "3f3dfb0e3f9bc934f7930aae16e2d6fc8427b250cd9f780343f0345d75b66ded",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/review.json",
+      "relativePath": "attempts/v2/review.json",
+      "bytes": 1545096,
+      "sha256": "dc0b9f76ddf993f8d78151b95c00b3c651bdb76f8924efcb382ba1fa9ee3b405",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/review.py",
+      "relativePath": "attempts/v2/review.py",
+      "bytes": 20102,
+      "sha256": "f4ac22e7e6d117d0a7520f6ff85ec824e36fae2fbdd3dd85007d7c226615b49b",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/review.stderr",
+      "relativePath": "attempts/v2/review.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/review.stdout",
+      "relativePath": "attempts/v2/review.stdout",
+      "bytes": 1310,
+      "sha256": "36b4628cbadf6aedc1795789a71c71b3bec7ae6ab4df3829d9e8855941c61406",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/run.json",
+      "relativePath": "attempts/v2/run.json",
+      "bytes": 4942,
+      "sha256": "739004c0507468aa949d8a35070f6441470deafe4b17a67927e7387f141a6389",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/scope-facts.json",
+      "relativePath": "attempts/v2/scope-facts.json",
+      "bytes": 522605,
+      "sha256": "a445dffce9d4a2480302b844910a13135b15a35a67bb7d3564a7c17e3ab231c8",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/scope.stderr",
+      "relativePath": "attempts/v2/scope.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/scope.stdout",
+      "relativePath": "attempts/v2/scope.stdout",
+      "bytes": 297,
+      "sha256": "6bb0834043b190c061769a49cc6d039246cb81f1afa3d41bf39cce7072bbe30c",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/scope_review.cjs",
+      "relativePath": "attempts/v2/scope_review.cjs",
+      "bytes": 11511,
+      "sha256": "c751e622c40f4be959e72885b7688b936594153e55b5c28964100d1481afe863",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v2/summary.md",
+      "relativePath": "attempts/v2/summary.md",
+      "bytes": 5916,
+      "sha256": "42fcdad060f3488e5788c70ebe81e42ab33d23c9cb75f46ddeb65db8bad54465",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/review.py",
+      "relativePath": "attempts/v3/review.py",
+      "bytes": 20337,
+      "sha256": "04b4b909dc45c6f5c5ca48de3af53dd7046210442b0f6e8a4d7ad077c0a62009",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/review.stderr",
+      "relativePath": "attempts/v3/review.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/review.stdout",
+      "relativePath": "attempts/v3/review.stdout",
+      "bytes": 1310,
+      "sha256": "36b4628cbadf6aedc1795789a71c71b3bec7ae6ab4df3829d9e8855941c61406",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/run.json",
+      "relativePath": "attempts/v3/run.json",
+      "bytes": 5249,
+      "sha256": "adeb27b1366bb4e7f6858d631e9abd27d44b3ad97fff4ded5290b159a0b23089",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/scope.stderr",
+      "relativePath": "attempts/v3/scope.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/scope.stdout",
+      "relativePath": "attempts/v3/scope.stdout",
+      "bytes": 297,
+      "sha256": "6bb0834043b190c061769a49cc6d039246cb81f1afa3d41bf39cce7072bbe30c",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/scope_review.cjs",
+      "relativePath": "attempts/v3/scope_review.cjs",
+      "bytes": 11593,
+      "sha256": "d2ae6dda16e309b4190e358dc325b8788497d638eac78aab9008a45c3759031d",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/verify.py",
+      "relativePath": "attempts/v3/verify.py",
+      "bytes": 14933,
+      "sha256": "a247847c0d9b1d13c7137e14e02ab001016578e2bef765602cad77c1f385e71d",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/verify.stderr",
+      "relativePath": "attempts/v3/verify.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/attempts/v3/verify.stdout",
+      "relativePath": "attempts/v3/verify.stdout",
+      "bytes": 51,
+      "sha256": "60f2f4751bc9344082aa3dca8fe9d9aabcde25f6c8a87e23a504d399a283c22a",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/discovery_inputs.py",
+      "relativePath": "discovery_inputs.py",
+      "bytes": 1522,
+      "sha256": "4380bc3b38b9e63f6e758d8dc9a077078ce68924cef4fd95a34a7b056570a43c",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/input-receipts.json",
+      "relativePath": "input-receipts.json",
+      "bytes": 19248,
+      "sha256": "b8844b6ce2d717c345607de9e18f37fa9061a0dd7a0f3075c852f49547bde40a",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/mode-facade-work/evidence.jsonl",
+      "relativePath": "inputs/.analysis-local/mode-facade-work/evidence.jsonl",
+      "bytes": 56003,
+      "sha256": "af854ae19a07fc68d5788077d4f2915a2c037da3aa15cc99708981d381fca4e0",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/mode-facade-work/frozen-manifest.json",
+      "relativePath": "inputs/.analysis-local/mode-facade-work/frozen-manifest.json",
+      "bytes": 3672,
+      "sha256": "f9850e52304bf434d480665e07ed86800a6d103b069f0e51cd7757f77417ebb6",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/mode-facade-work/request-facade-contract.json",
+      "relativePath": "inputs/.analysis-local/mode-facade-work/request-facade-contract.json",
+      "bytes": 118483,
+      "sha256": "266efcb50bb74f6a2fb5cee49c383cd4308e5338a354e86863d71ac3a1426e68",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/input-receipts.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/input-receipts.json",
+      "bytes": 20532,
+      "sha256": "3c64330cdd8984c4730c58a11b4060020d0f9e9086663865bde9357dcba128cf",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/inputs/.analysis-local/feature-work/app-server-methods.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/inputs/.analysis-local/feature-work/app-server-methods.json",
+      "bytes": 108350,
+      "sha256": "51943011efc280a26c7b7251f13770237297dc7279bef24103a10686821f9792",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/files.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/files.json",
+      "bytes": 9406196,
+      "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/functional-entry-ledger.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/functional-entry-ledger.json",
+      "bytes": 22973530,
+      "sha256": "a48d715799db66408c96990caba2e45a28dc2dafb4486bc1514413c722c5fff9",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/functional-entry-reviewed-links.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/functional-entry-reviewed-links.json",
+      "bytes": 25848,
+      "sha256": "fec03a61fc26c14d30ad31fbcf6f964f090bf0b0d68c4be261065acba933f970",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-contracts.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-contracts.json",
+      "bytes": 585390,
+      "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+      "bytes": 1411812,
+      "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/journal.jsonl",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/journal.jsonl",
+      "bytes": 1546912,
+      "sha256": "427976886a8041c65e28564d5dc09da072f6ee32e23c802b8a87e7b09e453232",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/manifest.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/manifest.json",
+      "bytes": 20176,
+      "sha256": "8efa147f3e684c698ff0a213437bf5d2a533b47e538b0fec633edf612e3709d1",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/reconciliation.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/reconciliation.json",
+      "bytes": 2291957,
+      "sha256": "4a3384ed73d30e3be0a23eaf071f8e3905263d95700dfe164d629fbb4bf9c391",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/source-receipts.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/source-receipts.json",
+      "bytes": 31395,
+      "sha256": "c4e71afe7f01a92936a6e3036fd54c5a448fbbbd45e7727cfcbf658bb77ecb3e",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/request-entry-reconciliation-work/validation.json",
+      "relativePath": "inputs/.analysis-local/request-entry-reconciliation-work/validation.json",
+      "bytes": 1850,
+      "sha256": "2391486a559ef24c7d33cc9764eaa3ef9d8a0b4e650dae7dc00ee96b86ea0d0f",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/review-work/request-wrapper-ast-evidence.jsonl",
+      "relativePath": "inputs/.analysis-local/review-work/request-wrapper-ast-evidence.jsonl",
+      "bytes": 10827371,
+      "sha256": "3971be04d94d11cbdfcdc8379eafd5c0c41065845ad7b3c1dda82275cc60d481",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/review-work/request-wrapper-ast.json",
+      "relativePath": "inputs/.analysis-local/review-work/request-wrapper-ast.json",
+      "bytes": 5895568,
+      "sha256": "dee7cd3f485aa8eea86c6a51fcad41eeb12f02de45f72a2f82be0b1b8dee7733",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/review-work/request-wrapper-target-evidence.jsonl",
+      "relativePath": "inputs/.analysis-local/review-work/request-wrapper-target-evidence.jsonl",
+      "bytes": 45644,
+      "sha256": "e2f15c94dc3ed0fdf1fcec35805d30cdd003cb8e39358c527ef6931cb977c952",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/.analysis-local/review-work/request-wrapper-targets.json",
+      "relativePath": "inputs/.analysis-local/review-work/request-wrapper-targets.json",
+      "bytes": 11474,
+      "sha256": "cf73998d449d617c51437783776ff9599821bac7a4a3a72202143935c3ff5ee7",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/dependency-summary.json",
+      "relativePath": "inputs/analysis/codex-26.1007.30912-c5b273322a83/dependency-summary.json",
+      "bytes": 7125,
+      "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+      "relativePath": "inputs/analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-contracts.json",
+      "bytes": 54499,
+      "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/feature-coverage.json",
+      "relativePath": "inputs/analysis/codex-26.1007.30912-c5b273322a83/feature-coverage.json",
+      "bytes": 1939,
+      "sha256": "094f35ed74eb29f72fdca6512630bf833cf2b1ddea037653eb79f56791e51513",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/rea-application-observed.run.json",
+      "relativePath": "inputs/analysis/codex-26.1007.30912-c5b273322a83/rea-application-observed.run.json",
+      "bytes": 1223,
+      "sha256": "153b69862e6960564424f9db0435bef1893eb2de135c038b13929700d5742280",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/analysis/codex-26.1007.30912-c5b273322a83/rea-summary.json",
+      "relativePath": "inputs/analysis/codex-26.1007.30912-c5b273322a83/rea-summary.json",
+      "bytes": 51227135,
+      "sha256": "2617f2a4ecf827f5c4d8a2728869da81a44278801a2f479088e5c39a6d343fee",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/inputs/scripts/analysis/features.py",
+      "relativePath": "inputs/scripts/analysis/features.py",
+      "bytes": 31927,
+      "sha256": "00099908bc309863f2624d8c5dc4a1bc99e045e844997e6d051dcd3efaa66339",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/journal.jsonl",
+      "relativePath": "journal.jsonl",
+      "bytes": 39289,
+      "sha256": "3f3dfb0e3f9bc934f7930aae16e2d6fc8427b250cd9f780343f0345d75b66ded",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-01/receipt.json",
+      "relativePath": "peer/attempt-01/receipt.json",
+      "bytes": 1351,
+      "sha256": "f0d77f524bcb7f3a70195ea5f21a805a0206895503860b70ee6883e147ef4551",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-01/source.py",
+      "relativePath": "peer/attempt-01/source.py",
+      "bytes": 1733,
+      "sha256": "c714a4a9937b5ad4e0873a35e7ca21bf47964900a436cd2f9c4144b5732b7fd7",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-01/stderr.txt",
+      "relativePath": "peer/attempt-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-01/stdout.txt",
+      "relativePath": "peer/attempt-01/stdout.txt",
+      "bytes": 117507,
+      "sha256": "bbdd55e42ea6ebf345f64f93e6aff1103d8e381d9bf0b647b567f4e9328e2936",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-02/receipt.json",
+      "relativePath": "peer/attempt-02/receipt.json",
+      "bytes": 1352,
+      "sha256": "6c7dfa3532771a43c556c1018f9d23bd31fa35e9565967be60a4a249732170ac",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-02/source.py",
+      "relativePath": "peer/attempt-02/source.py",
+      "bytes": 4548,
+      "sha256": "4205b995908deb9ebcfb7058a89be8bf31c21dd9793913445022b6b7d629ca8a",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-02/stderr.txt",
+      "relativePath": "peer/attempt-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-02/stdout.txt",
+      "relativePath": "peer/attempt-02/stdout.txt",
+      "bytes": 22192,
+      "sha256": "421fd2e7cc3f4054e74e0c7398a766f266d6383be315cdac491306ce45cfe6bb",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-03/receipt.json",
+      "relativePath": "peer/attempt-03/receipt.json",
+      "bytes": 1348,
+      "sha256": "817b3e6451b3d98b2847fbe3de9ee4f45c28e7be0c572b55478c837d545679bc",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-03/source.py",
+      "relativePath": "peer/attempt-03/source.py",
+      "bytes": 19968,
+      "sha256": "c684b16bf29dc5cc61c13e78d8a3a7a15582bee6f633933334ce34ca88a14850",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-03/stderr.txt",
+      "relativePath": "peer/attempt-03/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/attempt-03/stdout.txt",
+      "relativePath": "peer/attempt-03/stdout.txt",
+      "bytes": 783,
+      "sha256": "427e0f7d94eb3d57267d161a49fb2821e3d53dec5f5591f0785990edf77388d5",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/independent-check.py",
+      "relativePath": "peer/independent-check.py",
+      "bytes": 19968,
+      "sha256": "c684b16bf29dc5cc61c13e78d8a3a7a15582bee6f633933334ce34ca88a14850",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/inspect-receipt-chain.py",
+      "relativePath": "peer/inspect-receipt-chain.py",
+      "bytes": 4548,
+      "sha256": "4205b995908deb9ebcfb7058a89be8bf31c21dd9793913445022b6b7d629ca8a",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/inspect-saved-scope.py",
+      "relativePath": "peer/inspect-saved-scope.py",
+      "bytes": 1733,
+      "sha256": "c714a4a9937b5ad4e0873a35e7ca21bf47964900a436cd2f9c4144b5732b7fd7",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/peer-review.json",
+      "relativePath": "peer/peer-review.json",
+      "bytes": 202163,
+      "sha256": "f5af846ed9e9415d5414d6f8d8977a55dd274ea81b64168b86be80d78c2f1325",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/peer-review.md",
+      "relativePath": "peer/peer-review.md",
+      "bytes": 801,
+      "sha256": "0e9da9b7c7c6773e9e71f5e4fd416a40ab2c28467224de19faa075532e54cc86",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer/run-owned-inspection.py",
+      "relativePath": "peer/run-owned-inspection.py",
+      "bytes": 1535,
+      "sha256": "9b1f1581d7e79a20a32d77e6f391022d136d70d88a2bd0b414dd34a7a7c3e25b",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/peer-input-check.json",
+      "relativePath": "peer-input-check.json",
+      "bytes": 62723,
+      "sha256": "edb7b929bd3d18a9bffe4b0410a322e878812383343f2351d5963e460fd4db58",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/review.json",
+      "relativePath": "review.json",
+      "bytes": 1547487,
+      "sha256": "e1b6a36da71bbbd7a684d095f9546c4292da720fc78bbb4fd8065351aba3589d",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/review.py",
+      "relativePath": "review.py",
+      "bytes": 20337,
+      "sha256": "04b4b909dc45c6f5c5ca48de3af53dd7046210442b0f6e8a4d7ad077c0a62009",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/scope-facts.json",
+      "relativePath": "scope-facts.json",
+      "bytes": 523588,
+      "sha256": "c67892ac89e40abdb74b84995e5966a59959f8588c9d3f619d902358f37c3290",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/scope_review.cjs",
+      "relativePath": "scope_review.cjs",
+      "bytes": 11593,
+      "sha256": "d2ae6dda16e309b4190e358dc325b8788497d638eac78aab9008a45c3759031d",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/snapshot_inputs.py",
+      "relativePath": "snapshot_inputs.py",
+      "bytes": 3170,
+      "sha256": "45592e55b3f4286b26bbea1111dd876bf13bf818c2f2bf2768125359d46a5f17",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/summary.md",
+      "relativePath": "summary.md",
+      "bytes": 6063,
+      "sha256": "4aa2357f4fff7a37e0a3bdc7cd853b4d700abc2c17005fc277ad998f90bd5e78",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/validation.json",
+      "relativePath": "validation.json",
+      "bytes": 1868,
+      "sha256": "4dfdea8b84d3b211031b93062f54325db29781afc877363214eba9813b9789a9",
+      "mode": "0444"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/request-entry-unmatched-review-work/verify.py",
+      "relativePath": "verify.py",
+      "bytes": 14933,
+      "sha256": "a247847c0d9b1d13c7137e14e02ab001016578e2bef765602cad77c1f385e71d",
+      "mode": "0444"
+    }
+  ],
+  "freeze": {
+    "filesMode": "0444",
+    "directoriesUnchanged": true,
+    "listedFilesExcludingManifest": 88,
+    "totalFilesIncludingManifest": 89
+  }
+}

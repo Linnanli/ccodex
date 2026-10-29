@@ -1,0 +1,1988 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "FSC-0481 composer caller, concrete props, callbacks and branch dispositions",
+  "facts": [
+    {
+      "id": "ECD-F01",
+      "claim": "Ezt 的直接调用方为 wzt；shared-home 条件成立时传入 controller、effectiveMode、canSwitchMode、pending、workspaceAgent、project、work 许可/计划和 onModeChange，否则选择 Tzt。",
+      "sourceUnitIds": [
+        "RP-S0002",
+        "RP-S0003",
+        "RP-S0007"
+      ],
+      "qualification": "只闭合该具名消费者；wzt 的最外层路由/实际挂载未在本批证明。JSX 的 chatgpt/codex key 不作为产品归属证明。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F02",
+      "claim": "wzt 的切换许可 R 来自 Dbe/cPt：非 extension、ChatGPT 产品或 seat capability、workModeEnabled、非 workOnly、非阻止条件同时满足。z 再加 work 访问/升级/disabled 条件，B 表示许可查询 loading。",
+      "sourceUnitIds": [
+        "RP-S0003",
+        "ECD-I005",
+        "ECD-I006"
+      ],
+      "qualification": "workModeEnabled 来自 gg()===yf；本批不再展开 gg 的提供方或把未知实际值当作固定模式。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F03",
+      "claim": "wzt 的 effectiveMode 先考虑路径/route state 强制值，再使用 ik；有初次 pending input 时可使用 useState 保存的初始 effectiveMode/shared-home/workEnabled 快照。",
+      "sourceUnitIds": [
+        "RP-S0003",
+        "ECD-I011",
+        "ECD-I012"
+      ],
+      "qualification": "ik 精确连接 initial 的 _S，初始化关系复用已发布 bootstrap 合同；初始快照不等于本批已证明实时状态。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F04",
+      "claim": "Ezt 切换 handler 在请求等于显示模式 ie 时返回；否则先 cancelPendingSubmit 并记选择事件，再处理升级、许可、项目/导航/文本迁移，最后调用 onModeChange。",
+      "sourceUnitIds": [
+        "RP-S0007"
+      ],
+      "qualification": "同一模式可能有 pending 展示覆盖；不能从 picker 已显示 work 推定模式写入已完成。同步抛错和后效未执行。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F05",
+      "claim": "请求 work 且有升级计划时打开升级流程并返回；无 work 许可时只在 canSwitchMode 条件下设置聚焦/pending 状态并返回，不执行后续 onModeChange。升级回调还检查账户、用户、存活状态和当前 denied 原因。",
+      "sourceUnitIds": [
+        "RP-S0007"
+      ],
+      "qualification": "这不是 Codex 本地访问状态 ep 的替代；实际账户/计划/服务条件未知，未打开升级或购买流程。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F06",
+      "claim": "正常切换会计算本地/云项目映射，删除 projectId/hostId 查询参数并按条件 replace 导航；chat 目标与 work 目标分别调整 selected project，之后才处理 chat 文本并回调。",
+      "sourceUnitIds": [
+        "RP-S0007"
+      ],
+      "qualification": "本批只记录具体顺序和输入条件；映射 helper、router 后效、持久化和项目迁移结果未验证。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F07",
+      "claim": "chat 目标且 controller 存在时，QRt 清理特定 app/plugin mention 和文档节点，再由 Qb/lYr 写入 persisted text；layout effect 还按 chat/work 改 suggestion triggers 和 inline system hints。",
+      "sourceUnitIds": [
+        "RP-S0007",
+        "RP-S0005",
+        "ECD-I003",
+        "ECD-I004"
+      ],
+      "qualification": "mention 的具体库/插件集合及 controller 实例未知；这些是第一方适配代码，不包含编辑器第三方实现。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F08",
+      "claim": "wzt 的 onModeChange 先执行 rzt 和本地 state 更新：mode_picker 来源调用 JAe/iPt，其他来源调用 NT/gS；iPt 本身也调用 gS。",
+      "sourceUnitIds": [
+        "RP-S0003",
+        "ECD-I007",
+        "ECD-I008",
+        "ECD-I009",
+        "ECD-I010"
+      ],
+      "qualification": "入口来源不同但最终写入器相同；gS 的 Qoe 短路、异常和耐久限制复用既有合同，不能把 f(e,source) 当作成功确认。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F09",
+      "claim": "Ezt 注册 switchToMode1(chat) 和 switchToMode2(work)，enabled 为 canSwitchMode；newTask 另有 controller/canSwitchMode 资格与空输入/冲突/状态判断的 keyboardHandler，可切换模式并消费按键，默认回调仍是 Qx(selectChat=true)。",
+      "sourceUnitIds": [
+        "RP-S0007"
+      ],
+      "qualification": "不能把该 newTask 变体等同于始终创建任务。py 的完整注册优先级与真实焦点/快捷键仲裁沿用开放边界。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F10",
+      "claim": "界面按 pending、chat seat loading/capable、voice 和 work 许可选择 mode toggle、chat shell、普通 composer 以及 task-suggestion callback；task_suggestion 来源在不允许切换到另一模式时可抛错。",
+      "sourceUnitIds": [
+        "RP-S0007"
+      ],
+      "qualification": "UI 分支存在不证明本地任务、审批、PTY 或后台服务能力已复刻。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F11",
+      "claim": "primary 的 LRt 只 invalidates chatgpt-task-suggestions 对应 mode 的缓存；ezt 始终返回 false。它们不是同名 initial/shared 函数，也不负责模式持久化。",
+      "sourceUnitIds": [
+        "RP-S0004",
+        "RP-S0006",
+        "RP-S0007"
+      ],
+      "qualification": "以文件与 Program 绑定区分 minified 名字，不跨 Program 按名字相等合并职责。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F12",
+      "claim": "wzt 的 onDocumentChange 使用 eme/hYr 保存 document/plainTextMode 和序列化内容；rzt 还出现在 dispose、mode change 等位置。Ezt 的控制器/草稿职责与切换控件不是同一可整体删除边界。",
+      "sourceUnitIds": [
+        "RP-S0003",
+        "ECD-I001",
+        "ECD-I002",
+        "RP-S0007"
+      ],
+      "qualification": "不新增 rzt 或底层存储提供方调查；保存结果、恢复和实际 controller 生命周期未验证。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    },
+    {
+      "id": "ECD-F13",
+      "claim": "FSC-0481 的参数化目标同时包含显式 codex 请求的 kti/detail-level/访问恢复路径，以及 chat/work 产品选择入口和 composer 变体，因此该功能定义按源码职责归为 shared。",
+      "sourceUnitIds": [
+        "MES-S001",
+        "MES-S002",
+        "RP-S0003",
+        "RP-S0007"
+      ],
+      "qualification": "只分类功能定义，未把整个 RCGA-M05 或 Ezt 判为 shared/可删除；静态归属与实际运行验收分开。",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed-runtime-unverified"
+    }
+  ],
+  "branchDecisions": [
+    {
+      "id": "ECD-D01",
+      "scope": "a1s codex request and kti Codex adapter",
+      "disposition": "retain",
+      "evidenceIds": [
+        "ECD-F13"
+      ],
+      "reason": "保留 Codex 访问引导、detail-level、状态清理和导航/项目恢复职责。"
+    },
+    {
+      "id": "ECD-D02",
+      "scope": "request-chat controls and chat-specific composer presentation",
+      "disposition": "omit-from-codex-only-product-surface",
+      "evidenceIds": [
+        "ECD-F02",
+        "ECD-F07",
+        "ECD-F08",
+        "ECD-F09",
+        "ECD-F10"
+      ],
+      "reason": "目标不包含切入 ChatGPT chat 的控件、chat 专属展示和该目标的 suggestion variant；仅按具体分支取舍，不删除 gS/控制器/存储实现。"
+    },
+    {
+      "id": "ECD-D03",
+      "scope": "work request, upgrade/pending and task-suggestion paths",
+      "disposition": "conditional",
+      "evidenceIds": [
+        "ECD-F02",
+        "ECD-F05",
+        "ECD-F10"
+      ],
+      "reason": "先按调用上下文区分 ChatGPT work-mode 界面与 Codex 仍依赖的任务/共享 home 路径。升级界面是剥离候选，整个 work handler 不满足全局专用删除条件。"
+    },
+    {
+      "id": "ECD-D04",
+      "scope": "shared-home/controller/project/document adapters",
+      "disposition": "conditional-retain",
+      "evidenceIds": [
+        "ECD-F01",
+        "ECD-F03",
+        "ECD-F06",
+        "ECD-F07",
+        "ECD-F12"
+      ],
+      "reason": "保留 Codex 条件实际依赖的适配职责；不能以 Tzt 替代分支存在为由宣称已覆盖全部 Codex home 行为。"
+    },
+    {
+      "id": "ECD-D05",
+      "scope": "newTask keyboard mode-switch variant",
+      "disposition": "separate-from-default-task-command",
+      "evidenceIds": [
+        "ECD-F09"
+      ],
+      "reason": "单模式界面中单独处理切换模式的 keyboardHandler，保留所需任务创建行为及注册仲裁调查。"
+    }
+  ],
+  "featureModeDecision": {
+    "featureId": "FSC-0481",
+    "previousMode": "unknown",
+    "mode": "shared",
+    "confidence": "confirmed",
+    "method": "static-code",
+    "evidenceIds": [
+      "ECD-F13"
+    ],
+    "qualification": "Mixed cross-product parameterized user goal. Actual execution is unverified; individual product surfaces use branch dispositions, not whole-feature deletion."
+  },
+  "sourceUnits": [
+    {
+      "id": "RP-S0001",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2364663,
+        "endExclusive": 2364666
+      },
+      "spanHash": "5dcb98a990079ee3189b164c7a21674417a04dbb7b737e644fe2eb30e1176164",
+      "nodeType": "Identifier",
+      "labels": [
+        "caller-reference"
+      ],
+      "code": "Ezt"
+    },
+    {
+      "id": "RP-S0002",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2364652,
+        "endExclusive": 2365014
+      },
+      "spanHash": "90b3e24c4cb95fe52e5c7bfefc31ce0e8769d533d703392aaad4d060071aef39",
+      "nodeType": "CallExpression",
+      "labels": [
+        "caller-call"
+      ],
+      "code": "(0,Z9.jsx)(Ezt,{composerController:e,canSwitchMode:z,showPendingModeToggle:B,workspaceAgent:r,mode:a.effectiveMode,preservePendingInput:t,routeProjectId:T==null?n:O?.gizmo.id??n,workModeAllowed:M,workModeLoading:d.status===`loading`,workModeUpgradePlan:N,onModeChange:(e,t)=>{rzt(i),H(!0),t===`mode_picker`?JAe(i,e):NT(i,e)}},a.workModeEnabled?`chatgpt`:`codex`)"
+    },
+    {
+      "id": "RP-S0003",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2359672,
+        "endExclusive": 2365615
+      },
+      "spanHash": "ec8a19cfb9db5ae9280f5b37e4fc0fe92c6982a9c68e7704c6ad32cec821dfda",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "caller-owner",
+        "declaration:wzt"
+      ],
+      "code": "function wzt(e){\"use forget\";let t=(0,Y9.c)(92),{routeProjectId:n,workspaceAgent:r}=e,i=ir(ic),a=q(ik),o;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(o={name:`chatgpt`},t[0]=o):o=t[0];let s=Q(Po,o),c;t[1]===Symbol.for(`react.memo_cache_sentinel`)?(c={name:`chatgpt.seat-access`},t[1]=c):c=t[1];let l=Q(Po,c),u=q(pu),d=q(Wl);if(q(Ne)){let e=i.query.getOptions(BC),t=i.queryClient.getQueryState(e.queryKey);(t==null||t.status===`pending`&&t.fetchStatus===`idle`)&&i.queryClient.prefetchQuery(e)}let f=q(li),{pathname:p,search:m,hash:h,state:g,key:_}=Dt(),v=t_(),y=(0,X9.useContext)(IV),b;t[2]!==y||t[3]!==v?(b=!v||y?.getInput()?.id===`pending-home-input`,t[2]=y,t[3]=v,t[4]=b):b=t[4];let[x]=(0,X9.useState)(b),S;t[5]!==p||t[6]!==r?(S=Xg(p)!=null||r!=null,t[5]=p,t[6]=r,t[7]=S):S=t[7];let C=S,w;t[8]===p?w=t[9]:(w=vo(p),t[8]=p,t[9]=w);let T=w,E;t[10]!==T||t[11]!==g||t[12]!==u?(E=T??(u.status===`allowed`?null:NO(g)),t[10]=T,t[11]=g,t[12]=u,t[13]=E):E=t[13];let D=E,{data:O}=Q(hS,D),k;t[14]!==O||t[15]!==D?(k=D==null||hde(O)&&wD(O)===`open-default`,t[14]=O,t[15]=D,t[16]=k):k=t[16];let A=k,j=gg()===yf,M=d.status===`allowed`,N;t[17]!==d.reason||t[18]!==d.status?(N=null,d.status===`denied`&&(d.reason===`go-plan`?N=Nm.GO:d.reason===`free-plan`&&(N=Nm.FREE)),t[17]=d.reason,t[18]=d.status,t[19]=N):N=t[19];let P=C||g?.aeonDraft!=null||g?.sharedSnapshotId!=null,F=new URLSearchParams(m),I;t[20]!==P||t[21]!==A||t[22]!==p?(I=P||Xd(`/mission-control`,p)!=null||!A,t[20]=P,t[21]=A,t[22]=p,t[23]=I):I=t[23];let L;t[24]!==s||t[25]!==l||t[26]!==f||t[27]!==I||t[28]!==j?(L=Dbe({chatGptProductAccess:s,chatSeatAccess:l,isModeToggleBlocked:I,windowType:`electron`,workOnlyModeEnabled:f,workModeEnabled:j}),t[24]=s,t[25]=l,t[26]=f,t[27]=I,t[28]=j,t[29]=L):L=t[29];let R=L,z=R&&(M||N!=null||d.status===`denied`&&d.reason===`workspace-disabled`),B=R&&d.status===`loading`,[V,H]=(0,X9.useState)(!1),U=Xd(`/mission-control`,p)==null?void 0:`work`;!V&&F.get(`sketch`)===`1`&&p===`/`&&n==null&&![`work`,`tpp`].includes(new URLSearchParams(h.slice(1)).get(`surface`)??F.get(`surface`)??``)&&s.isCapable&&!f&&(U=`chat`),C?U=`chat`:P?U=`work`:s.isCapable&&O!=null&&!A&&(U=`chat`),p===`/`&&n==null&&Wg(m)&&s.isCapable&&!f&&(U=`chat`);let W=U??a;if(J9.length>0){let e=U??i.get(ik);yzt(J9,{scope:i,kind:`home-composer`,pathname:p,effectiveMode:e,isHydrationRender:!v,hasCustomAssistant:C||e===`chat`&&cT(g)!=null,hasProject:n!=null||T!=null||NO(g)!=null||i.get(gk)!=null})}let ee;t[30]!==p||t[31]!==u||t[32]!==d.status||t[33]!==M||t[34]!==j?(ee=(j||Xd(`/mission-control`,p)!=null)&&(u.status===`allowed`||M||d.status===`loading`),t[30]=p,t[31]=u,t[32]=d.status,t[33]=M,t[34]=j,t[35]=ee):ee=t[35];let te=ee,ne=z||W===`chat`||te,re;t[36]!==W||t[37]!==ne||t[38]!==j?(re={effectiveMode:W,usesSharedHome:ne,workModeEnabled:j},t[36]=W,t[37]=ne,t[38]=j,t[39]=re):re=t[39];let[G]=(0,X9.useState)(re);if(W==null&&(!x||G.effectiveMode==null)){let e;return t[40]===Symbol.for(`react.memo_cache_sentinel`)?(e=(0,Z9.jsx)(Ozt,{}),t[40]=e):e=t[40],e}let ie=g?.prefillPromptOnlyIfEmpty&&g.prefillPrompt!=null?void 0:g?.prefillPrompt??void 0,ae;t[41]===m?ae=t[42]:(ae=Wg(m),t[41]=m,t[42]=ae);let oe=ae,se;t[43]===i.value?se=t[44]:(se=Df(i.value),t[43]=i.value,t[44]=se);let ce=e=>{let t=oe?``:i.get(UE),n=ie??void 0??t,r=ie==null&&!oe?nw(i):void 0,a=`plain`;g?.prefillPrompt,ZT(n)&&(a=`prompt`);let o=r?.plainTextMode===e?r.document:void 0;if(W===`chat`&&!(x&&BV()?.dataset.edited===`true`)){let t=o==null?[]:wFe(o).systemHints;o==null&&a===`prompt`&&(t=bC(n,{plainTextMode:e}).systemHints),QTe(i,i.get(iO),t)}return{defaultText:n,defaultTextKind:a,initialDocument:o}},le;t[45]!==x||t[46]!==_?(le=x?()=>{let e=BV();return e==null?null:{element:e,locationKey:_}}:void 0,t[45]=x,t[46]=_,t[47]=le):le=t[47];let ue=W===`chat`,de=W===`chat`?`chatgpt`:void 0,fe;t[48]!==ue||t[49]!==de?(fe={enableInlineSystemHints:ue,variant:de},t[48]=ue,t[49]=de,t[50]=fe):fe=t[50];let pe;t[51]!==x||t[52]!==W||t[53]!==U||t[54]!==h||t[55]!==y||t[56]!==R||t[57]!==V||t[58]!==p||t[59]!==n||t[60]!==i||t[61]!==m||t[62]!==g?(pe=(e,t)=>{Wg(i.get(Yg)?.search??m)||eme(i,e,t),x&&!V&&p===`/`&&m===``&&h===``&&g==null&&n==null&&U==null&&W===`work`&&R&&BV()?.dataset.edited!==`true`&&i.get(gk),y?.getInput()?.id===`pending-home-input`&&y.onAdopt()},t[51]=x,t[52]=W,t[53]=U,t[54]=h,t[55]=y,t[56]=R,t[57]=V,t[58]=p,t[59]=n,t[60]=i,t[61]=m,t[62]=g,t[63]=pe):pe=t[63];let K;t[64]===i?K=t[65]:(K=()=>rzt(i),t[64]=i,t[65]=K);let me;t[66]!==x||t[67]!==z||t[68]!==O?.gizmo||t[69]!==T||t[70]!==W||t[71]!==G||t[72]!==n||t[73]!==i||t[74]!==H||t[75]!==B||t[76]!==g||t[77]!==te||t[78]!==d.status||t[79]!==M||t[80]!==j||t[81]!==N||t[82]!==r?(me=e=>{let t=x&&e==null,a=t?G:{effectiveMode:W,usesSharedHome:z||W===`chat`||te,workModeEnabled:j};return a.effectiveMode==null?(0,Z9.jsx)(Ozt,{}):(0,Z9.jsxs)(Z9.Fragment,{children:[null,g?.sharedSnapshotId!=null&&e!=null?(0,Z9.jsx)(EFt,{shareId:g.sharedSnapshotId,handoffId:g.sharedSnapshotHandoffId}):null,a.usesSharedHome?(0,Z9.jsx)(Ezt,{composerController:e,canSwitchMode:z,showPendingModeToggle:B,workspaceAgent:r,mode:a.effectiveMode,preservePendingInput:t,routeProjectId:T==null?n:O?.gizmo.id??n,workModeAllowed:M,workModeLoading:d.status===`loading`,workModeUpgradePlan:N,onModeChange:(e,t)=>{rzt(i),H(!0),t===`mode_picker`?JAe(i,e):NT(i,e)}},a.workModeEnabled?`chatgpt`:`codex`):(0,Z9.jsx)(Tzt,{preservePendingInput:t,composerController:e,routeProjectId:n})]})},t[66]=x,t[67]=z,t[68]=O?.gizmo,t[69]=T,t[70]=W,t[71]=G,t[72]=n,t[73]=i,t[74]=H,t[75]=B,t[76]=g,t[77]=te,t[78]=d.status,t[79]=M,t[80]=j,t[81]=N,t[82]=r,t[83]=me):me=t[83];let he;return t[84]!==se||t[85]!==ce||t[86]!==le||t[87]!==fe||t[88]!==pe||t[89]!==K||t[90]!==me?(he=(0,Z9.jsx)(GDe,{getInitialContent:ce,getInitialInput:le,renderWhilePending:!1,initialSuggestionOptions:fe,onDocumentChange:pe,onDocumentDispose:K,children:me},se),t[84]=se,t[85]=ce,t[86]=le,t[87]=fe,t[88]=pe,t[89]=K,t[90]=me,t[91]=he):he=t[91],he}"
+    },
+    {
+      "id": "RP-S0004",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2348697,
+        "endExclusive": 2348869
+      },
+      "spanHash": "c7ecc43a17b3cb2468a56e4369da628b77021363857ace19fd98dfdccae01932",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:LRt"
+      ],
+      "code": "function LRt(e,t){let n=e.get(z9);n!=null&&e.queryClient.invalidateQueries({queryKey:[`chatgpt-task-suggestions`,n],predicate:({queryKey:e})=>e[3]===t,refetchType:`none`})}"
+    },
+    {
+      "id": "RP-S0005",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2356313,
+        "endExclusive": 2356849
+      },
+      "spanHash": "640d67cdc6cc5264d46011b3837b4fa572734ac8fd750d53fdd9bcda084c8586",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:QRt"
+      ],
+      "code": "function QRt(e,t){let n=e.get(iO),r=e.get(Ty,n),i=e=>{let t=e.slice(e.indexOf(`:`)+1);return t===Bie||MOe.has(t)};r.some(i)&&rT(e,n,r.filter(e=>!i(e)));let{state:a}=t.view,o=a.tr;a.doc.descendants((e,t)=>{let n=e.attrs.path;if((e.type.name!==`appMention`||typeof n!=`string`||n!==`app://${Bie}`&&!MOe.has(n.slice(6)))&&(e.type.name!==`pluginMention`||n!==Op))return;let r=o.mapping.map(t),i=t+e.nodeSize,s=a.doc.textBetween(i,Math.min(i+1,a.doc.content.size))===` `;o.delete(r,o.mapping.map(i+ +!!s))}),o.docChanged&&t.view.dispatch(o)}"
+    },
+    {
+      "id": "RP-S0006",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2357008,
+        "endExclusive": 2357139
+      },
+      "spanHash": "3572f0b850e1ea76c0e6361c2096729c8d925a407c8300ef1b6b41d9b0211978",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:ezt"
+      ],
+      "code": "function ezt({client:e,auth:t,accountStructure:n,hasUpgradeOpportunity:r,isTemporaryChat:i,isVoiceActive:a,hasClicked:o}){return!1}"
+    },
+    {
+      "id": "RP-S0007",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2366380,
+        "endExclusive": 2373356
+      },
+      "spanHash": "6c2d3d553ef7015938e4d2ff5dc63f0d1522e1792ef62a2fdfaa5443793ab3d2",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:Ezt"
+      ],
+      "code": "function Ezt(e){\"use forget\";let t=(0,Y9.c)(108),{composerController:n,canSwitchMode:r,showPendingModeToggle:i,workspaceAgent:a,mode:o,routeProjectId:s,preservePendingInput:c,workModeAllowed:l,workModeLoading:u,workModeUpgradePlan:d,onModeChange:f}=e,p=ir(ic),m=ir(J),h=gm(),g=ii(),_=q(oh),v=Ta(),y=Da(`(min-width: 768px)`),b=q(mv),x=Q(tzt,h.userId),S;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(S={name:`chatgpt.seat-access`},t[0]=S):S=t[0];let C=Q(Po,S),w=fp(),T=QO(),{hash:E,pathname:D,search:O,state:k}=Dt(),A;t[1]===k?A=t[2]:(A=NO(k),t[1]=k,t[2]=A);let j=A,M=Ol(),N=q(Azt),P=q(gne),F=s??P,I=q(ga),L=q(Qh),R;t[3]!==L||t[4]!==I||t[5]!==F?(R=F==null?void 0:uf(F,I,L),t[3]=L,t[4]=I,t[5]=F,t[6]=R):R=t[6];let z=R,B;t[7]!==D||t[8]!==s?(B=s!=null&&vo(D)!=null,t[7]=D,t[8]=s,t[9]=B):B=t[9];let V=B,[H,U]=(0,X9.useState)(!1),[W,ee]=(0,X9.useState)(!1),[te,ne]=(0,X9.useState)(!1),re=(0,X9.useRef)(o),G=r&&te&&!l&&d==null,ie=G?`work`:o,ae=_.status===`loaded`?_.structure:null,oe=r&&y&&d!=null,se;t[10]!==h||t[11]!==x||t[12]!==b||t[13]!==N||t[14]!==F||t[15]!==O||t[16]!==v||t[17]!==ae||t[18]!==oe?(se=ezt({client:v,auth:h,accountStructure:ae,hasUpgradeOpportunity:oe,isTemporaryChat:F==null&&Wg(O),isVoiceActive:b||N,hasClicked:x===!0}),t[10]=h,t[11]=x,t[12]=b,t[13]=N,t[14]=F,t[15]=O,t[16]=v,t[17]=ae,t[18]=oe,t[19]=se):se=t[19];let ce=se,le=r&&!0,ue,de;t[20]!==n||t[21]!==o||t[22]!==p?(ue=()=>{if(n!=null){if(re.current===`chat`&&o===`work`){let e=p.get(UE);n.getPersistedText()!==e&&n.setPromptText(e)}n.setSuggestionTriggers(o===`chat`?kzt:Q9,{enableInlineSystemHints:o===`chat`,variant:o===`chat`?`chatgpt`:void 0}),re.current=o}},de=[n,o,p],t[20]=n,t[21]=o,t[22]=p,t[23]=ue,t[24]=de):(ue=t[23],de=t[24]),(0,X9.useLayoutEffect)(ue,de);let fe;t[25]!==n||t[26]!==w||t[27]!==W||t[28]!==p?(fe=()=>{W&&n!=null&&(ee(!1),Mme(p)?p.get(ll).warning(w.formatMessage({id:`composer.home.localProjectToChatNoCloudProjectsToast`,defaultMessage:`Local projects don't support Chat`,description:`Toast shown after switching from a local project to Chat when no cloud projects are available`})):Jf(n.view,DMe,{dismissOnInput:!0}))},t[25]=n,t[26]=w,t[27]=W,t[28]=p,t[29]=fe):fe=t[29];let pe=fe,K;t[30]!==m||t[31]!==h.accountId||t[32]!==h.userId||t[33]!==r||t[34]!==j||t[35]!==ie||t[36]!==E||t[37]!==n||t[38]!==V||t[39]!==g||t[40]!==o||t[41]!==M||t[42]!==f||t[43]!==T||t[44]!==D||t[45]!==F||t[46]!==p||t[47]!==O||t[48]!==P||t[49]!==k||t[50]!==l||t[51]!==d?(K=(e,t,i)=>{let a=i===void 0?`mode_picker`:i;if(e===ie)return;if(n?.cancelPendingSubmit(),Em(m,Xi,{item:e}),e===`work`&&d!=null){h.userId,Ip(m,yFt,{currentPlan:d,onUpgrade:(e,t)=>{let{accountId:n,defaultTab:r,promoCampaignId:i,userId:a}=t,o=r===`business`?`team`:`plus`,s=m.get(Wl);g()&&n===h.accountId&&a===h.userId&&m.get(wm)===n&&m.get(Gg)===a&&s.status===`denied`&&s.reason===`${d}-plan`&&T({currentPlan:d,defaultTab:r,event:e,chatGptContext:{openModalLocation:`tpp work toggle upsell`,targetPlan:o,checkoutOriginProductExperience:`work`,...i==null?{}:{promoCampaignId:i}},source:`work_mode_upsell`})}});return}if(e===`work`&&!l){r&&(U(!0),ne(!0));return}Em(m,BRt,{surface:RRt.CHATGPT_CHAT_MODE_PICKER_SURFACE_TOGGLE,uiEvent:{type:zRt.CHATGPT_CHAT_MODE_PICKER_UI_EVENT_TYPE_MODE_CLICKED,workDiscoveryBadgeVisible:t,selectedMode:e===`work`?V9.CHATGPT_CHAT_MODE_PICKER_MODE_WORK:V9.CHATGPT_CHAT_MODE_PICKER_MODE_CHAT}}),ne(!1);let s=p.get(gk),c=p.get(ga),u=F==null?void 0:zp(F,c,p.get(Qh)),_=F!=null&&gx(F)?F:u,v=F!=null&&(s?.type===`local`&&s.projectId===F||c[F]!=null);ee(e===`chat`&&F!=null&&v&&_==null);let y=F!=null,b=j;V||(e===`chat`?b=_??null:_!=null&&(b=_));let x=new URLSearchParams(e===`work`?Wd(O,!1):O);y&&(x.delete(`projectId`),x.delete(`hostId`));let S=x.toString(),C=S?`?${S}`:``;if(e===`chat`&&!V&&u==null)$C(p,null);else if(e===`work`&&b!=null){let e=uf(b,c,p.get(Qh));(e==null||e!==P)&&$C(p,{projectId:e??b,projectKind:`local`})}let w=y&&!V?`/`:D;(F!=null&&!V||b!==j||w!==D||C!==O)&&M({hash:E,pathname:w,search:C},{replace:!0,state:fC(k,b)}),e===`chat`&&n!=null&&(QRt(p,n),Qb(p,n.getPersistedText())),U(!0),a===`mode_picker`&&e!==o&&LRt(p,e),f(e,a)},t[30]=m,t[31]=h.accountId,t[32]=h.userId,t[33]=r,t[34]=j,t[35]=ie,t[36]=E,t[37]=n,t[38]=V,t[39]=g,t[40]=o,t[41]=M,t[42]=f,t[43]=T,t[44]=D,t[45]=F,t[46]=p,t[47]=O,t[48]=P,t[49]=k,t[50]=l,t[51]=d,t[52]=K):K=t[52];let me=K,he;t[53]===p?he=t[54]:(he=()=>Qx(p,{selectChat:!0}),t[53]=p,t[54]=he);let ge=r&&n!=null,_e;t[55]!==me||t[56]!==n||t[57]!==o||t[58]!==p||t[59]!==l?(_e=()=>{let e=p.get(XT);if(!(p.get(GE)||n?.hasText()!==!1||e.pullRequestMergeConflict!=null||Object.values(e).some(Dzt)||o===`chat`&&!l))return me(o===`chat`?`work`:`chat`),!0},t[55]=me,t[56]=n,t[57]=o,t[58]=p,t[59]=l,t[60]=_e):_e=t[60];let ve;t[61]!==ge||t[62]!==_e?(ve={enabled:ge,keyboardHandler:_e},t[61]=ge,t[62]=_e,t[63]=ve):ve=t[63],py(`newTask`,he,ve);let ye;t[64]===me?ye=t[65]:(ye=()=>me(`chat`),t[64]=me,t[65]=ye);let be;t[66]===le?be=t[67]:(be={enabled:le},t[66]=le,t[67]=be),py(`switchToMode1`,ye,be);let xe;t[68]===me?xe=t[69]:(xe=()=>me(`work`),t[68]=me,t[69]=xe);let Se;t[70]===le?Se=t[71]:(Se={enabled:le},t[70]=le,t[71]=Se),py(`switchToMode2`,xe,Se);let Ce;t[72]!==r||t[73]!==ie||t[74]!==ce||t[75]!==H||t[76]!==me||t[77]!==pe||t[78]!==i||t[79]!==d?(Ce=r||i?(0,Z9.jsx)(vFt,{autoFocusSelected:H,className:`electron:mt-2`,value:ie,disabled:i,onSelectedAutoFocus:()=>{U(!1)},onTransitionComplete:pe,onValueChange:me,workRequiresUpgrade:d!=null,emphasizeWorkUpgrade:ce}):void 0,t[72]=r,t[73]=ie,t[74]=ce,t[75]=H,t[76]=me,t[77]=pe,t[78]=i,t[79]=d,t[80]=Ce):Ce=t[80];let we=Ce;if(G&&we!=null){let e;return t[81]===we?e=t[82]:(e=(0,Z9.jsxs)(Z9.Fragment,{children:[null,(0,Z9.jsx)(H5,{modeToggle:we})]}),t[81]=we,t[82]=e),e}if(o===`chat`&&C.isLoading)return null;if(o===`chat`&&C.isCapable){let e;t[83]===me?e=t[84]:(e=()=>me(`work`),t[83]=me,t[84]=e);let n;return t[85]!==we||t[86]!==e?(n=(0,Z9.jsxs)(Z9.Fragment,{children:[null,(0,Z9.jsx)(DFt,{modeToggle:we,onSwitchToWork:e})]}),t[85]=we,t[86]=e,t[87]=n):n=t[87],n}let Te;t[88]===o?Te=t[89]:(Te=(0,Z9.jsx)(HFt,{mode:o}),t[88]=o,t[89]=Te);let Ee=N?void 0:we,De;t[90]===Symbol.for(`react.memo_cache_sentinel`)?(De=()=>{U(!1)},t[90]=De):De=t[90];let Oe;t[91]!==r||t[92]!==me||t[93]!==o||t[94]!==l?(Oe=l?e=>{if(e!==o&&!r)throw Error(`Suggestion destination is unavailable`);me(e,void 0,`task_suggestion`)}:void 0,t[91]=r,t[92]=me,t[93]=o,t[94]=l,t[95]=Oe):Oe=t[95];let ke=o===`work`?z??F:null,Ae;t[96]!==n||t[97]!==o||t[98]!==c||t[99]!==Ee||t[100]!==Oe||t[101]!==ke||t[102]!==u||t[103]!==a?(Ae=(0,Z9.jsx)(M9,{preservePendingInput:c,workspaceAgent:a,homeComposerController:n,homeComposerMode:o,homeComposerModeToggle:Ee,onTemporaryChatToggle:De,taskSuggestionsLoading:u,onChatGptTaskSuggestionSelected:Oe,projectId:ke}),t[96]=n,t[97]=o,t[98]=c,t[99]=Ee,t[100]=Oe,t[101]=ke,t[102]=u,t[103]=a,t[104]=Ae):Ae=t[104];let je;return t[105]!==Te||t[106]!==Ae?(je=(0,Z9.jsxs)(Z9.Fragment,{children:[Te,Ae]}),t[105]=Te,t[106]=Ae,t[107]=je):je=t[107],je}"
+    },
+    {
+      "id": "RP-S0008",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 30670,
+        "endExclusive": 30679
+      },
+      "spanHash": "b262b87f868f181a49da3d1fbfcddb1a11dcf0bd447c0d95d3215836af0c9797",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Ne"
+      ],
+      "code": "BAt as Ne"
+    },
+    {
+      "id": "RP-S0009",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 30814,
+        "endExclusive": 30822
+      },
+      "spanHash": "f4063462ded994c634c13e637deb2ccdd6d0aaceed42666ec47530fbe9595191",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:q"
+      ],
+      "code": "Ban as q"
+    },
+    {
+      "id": "RP-S0010",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 31142,
+        "endExclusive": 31151
+      },
+      "spanHash": "561bc64b7eb10c405ee80019d2c08aa643d59834daaaac35997d8b247255efd7",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Dt"
+      ],
+      "code": "Can as Dt"
+    },
+    {
+      "id": "RP-S0011",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 31918,
+        "endExclusive": 31927
+      },
+      "spanHash": "99c320ff3ef8ec031bc18a20b946d32542010da2db11ce2451d2165af401e725",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:tr"
+      ],
+      "code": "FUt as tr"
+    },
+    {
+      "id": "RP-S0012",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 31948,
+        "endExclusive": 31957
+      },
+      "spanHash": "015fc65674d68c930e44d05e5d3dcb9613834494fc662672e55e99dad6e5c6ac",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:ir"
+      ],
+      "code": "Fan as ir"
+    },
+    {
+      "id": "RP-S0013",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 32249,
+        "endExclusive": 32257
+      },
+      "spanHash": "2bbaf9be87bc0f744a3b82263c09dc50fd60a70e66709b600e444896b83295cd",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:J"
+      ],
+      "code": "H0t as J"
+    },
+    {
+      "id": "RP-S0014",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 32481,
+        "endExclusive": 32489
+      },
+      "spanHash": "d369d262962c5119788e75c7bcc46a2ced732521f3ee4922c1c42c207d9f340e",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:ii"
+      ],
+      "code": "Hy as ii"
+    },
+    {
+      "id": "RP-S0015",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 32529,
+        "endExclusive": 32538
+      },
+      "spanHash": "39f93dc46c4ceef993d3e6817cf8eb9cf7e2ef34ddb0b6dcdc233645c5d9e36b",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:li"
+      ],
+      "code": "IAt as li"
+    },
+    {
+      "id": "RP-S0016",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 32925,
+        "endExclusive": 32934
+      },
+      "spanHash": "65e0ba88d83d48e21cfce24dff235836879293afdfe2b1845bfc7f27abc8dfb0",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Xi"
+      ],
+      "code": "Jqt as Xi"
+    },
+    {
+      "id": "RP-S0017",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 33116,
+        "endExclusive": 33125
+      },
+      "spanHash": "422fa17f6eccf610b27b65c26cf204228758b660377cd7c4d1ab02f74d58d627",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:ga"
+      ],
+      "code": "Kkt as ga"
+    },
+    {
+      "id": "RP-S0018",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 33204,
+        "endExclusive": 33213
+      },
+      "spanHash": "ac98d61bc09acedf994cd39e610711bfe853526bfe484c3de2de8e98b2b67b04",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Ta"
+      ],
+      "code": "LIt as Ta"
+    },
+    {
+      "id": "RP-S0019",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 33223,
+        "endExclusive": 33231
+      },
+      "spanHash": "371dc3b81009b0bf9f27a50dfd0e52bc85702ef696928e2c2ca03634b767ea56",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Da"
+      ],
+      "code": "LO as Da"
+    },
+    {
+      "id": "RP-S0020",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 33649,
+        "endExclusive": 33657
+      },
+      "spanHash": "1a27d5b3779608e4877a0f14713b0f20e980d0157f24003790f7d6900ef21084",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:vo"
+      ],
+      "code": "N3 as vo"
+    },
+    {
+      "id": "RP-S0021",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 33822,
+        "endExclusive": 33830
+      },
+      "spanHash": "2d746978096c07fb4f03006c843e01d1ec978b35c0ef9f708c918b4be1534b2d",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Po"
+      ],
+      "code": "Nk as Po"
+    },
+    {
+      "id": "RP-S0022",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 34578,
+        "endExclusive": 34586
+      },
+      "spanHash": "140a19e97f61bfcac1554606388d0f9c6021d415be5fe1ec48b6e3c61785df9b",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:ic"
+      ],
+      "code": "QW as ic"
+    },
+    {
+      "id": "RP-S0023",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 34875,
+        "endExclusive": 34883
+      },
+      "spanHash": "300b0f970dfeaff734f6c48479a1179d233346af697f1e5b19d1875e81e06d78",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Q"
+      ],
+      "code": "Ran as Q"
+    },
+    {
+      "id": "RP-S0024",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 35151,
+        "endExclusive": 35160
+      },
+      "spanHash": "fb7673c3175e7fc0ecd062e5211a118842cb6044d1fb58c941d0825708e4e632",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:ll"
+      ],
+      "code": "T0t as ll"
+    },
+    {
+      "id": "RP-S0025",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 35332,
+        "endExclusive": 35341
+      },
+      "spanHash": "0e18cf8e177a6452f0cc1aeafe1cd9aa79dd4e7f2674013fdbadaa29fd41a85d",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Ol"
+      ],
+      "code": "Tan as Ol"
+    },
+    {
+      "id": "RP-S0026",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 35486,
+        "endExclusive": 35495
+      },
+      "spanHash": "651fabfaa80d1a306bbb5247dc8490d5a35fed761d0ab264692f85d88be0a100",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Wl"
+      ],
+      "code": "UAt as Wl"
+    },
+    {
+      "id": "RP-S0027",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 35707,
+        "endExclusive": 35716
+      },
+      "spanHash": "de09ef9d4fb4ab2f49f1d4353f054eb557f27b46715fefb5484bf00db718b258",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:pu"
+      ],
+      "code": "VAt as pu"
+    },
+    {
+      "id": "RP-S0028",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 36161,
+        "endExclusive": 36170
+      },
+      "spanHash": "c9af376395a086ad5f87256e67ff865bc2bfa26703442ecb47d6da7b4042cd61",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:id"
+      ],
+      "code": "Wkt as id"
+    },
+    {
+      "id": "RP-S0029",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 37066,
+        "endExclusive": 37075
+      },
+      "spanHash": "4004abd03ff530047b02031e295f110e570cf2a4a5c665eae70e83ba60759898",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Wd"
+      ],
+      "code": "_Mt as Wd"
+    },
+    {
+      "id": "RP-S0030",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 37145,
+        "endExclusive": 37154
+      },
+      "spanHash": "1729ede4e8ca00703a71b0fe7a85ce1238ef244631a222f12950fc0c5d4106ce",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Xd"
+      ],
+      "code": "_an as Xd"
+    },
+    {
+      "id": "RP-S0031",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 37407,
+        "endExclusive": 37415
+      },
+      "spanHash": "2ddd24b65a7dd29337515ec73947dbc6837e5b1d8aea7cd557de02d7d2e364b5",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:uf"
+      ],
+      "code": "aV as uf"
+    },
+    {
+      "id": "RP-S0032",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 37622,
+        "endExclusive": 37631
+      },
+      "spanHash": "7148b3f6aa404202849a191344d38097f699fd35e3cf9318e7403228d2a78e5a",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:yf"
+      ],
+      "code": "bAt as yf"
+    },
+    {
+      "id": "RP-S0033",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 37902,
+        "endExclusive": 37910
+      },
+      "spanHash": "193560bcc44a3e650708f8c9b074b86d2eb6726fe8ad2fc1fa0ebd75a57c9ceb",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Df"
+      ],
+      "code": "cG as Df"
+    },
+    {
+      "id": "RP-S0034",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 38345,
+        "endExclusive": 38353
+      },
+      "spanHash": "4a63acdc82716e1dc0b560ee49c7f2eb1fec5a8b8de4a5992a705656582fce5e",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Jf"
+      ],
+      "code": "dy as Jf"
+    },
+    {
+      "id": "RP-S0035",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 38415,
+        "endExclusive": 38425
+      },
+      "spanHash": "e26b423b2034cd0bf66f0033b8520b20d289f44f2909cc9b5298ca628cfdd49e",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:gne"
+      ],
+      "code": "eAt as gne"
+    },
+    {
+      "id": "RP-S0036",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 38863,
+        "endExclusive": 38872
+      },
+      "spanHash": "c0129543f61d5ec6eb758910d08eeae6fb4e09a60b0925a221b0be75a33c1ffb",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:fp"
+      ],
+      "code": "ffn as fp"
+    },
+    {
+      "id": "RP-S0037",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 39303,
+        "endExclusive": 39312
+      },
+      "spanHash": "e3a1816d25668f2c3a4d6ff40c153a7fd628358b1a84eb2e9f9293c0a9fd9c3f",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Op"
+      ],
+      "code": "hRt as Op"
+    },
+    {
+      "id": "RP-S0038",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 39497,
+        "endExclusive": 39506
+      },
+      "spanHash": "fd20dd7ed844ce3b584e1bfe2bc1a1605c07197ba0417253ce86e789e443e3ce",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Ip"
+      ],
+      "code": "iQt as Ip"
+    },
+    {
+      "id": "RP-S0039",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 39547,
+        "endExclusive": 39555
+      },
+      "spanHash": "75f9a7b56f65cc57aa18d754f37aca96fdf6da571339ed508b5cf6cb39318a5e",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:zp"
+      ],
+      "code": "iV as zp"
+    },
+    {
+      "id": "RP-S0040",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 40362,
+        "endExclusive": 40370
+      },
+      "spanHash": "802cbfe4e820dfbdff6407b757cef8f545af23be49a7c9c7c1e93a239c01a487",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:gm"
+      ],
+      "code": "lX as gm"
+    },
+    {
+      "id": "RP-S0041",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 40569,
+        "endExclusive": 40578
+      },
+      "spanHash": "058349f36706886ad140369d1033abfe5e02ed0615a7fe84572baa2d0058a5c2",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:wm"
+      ],
+      "code": "mNt as wm"
+    },
+    {
+      "id": "RP-S0042",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 40589,
+        "endExclusive": 40599
+      },
+      "spanHash": "be273356f868bea148815e1194d74c908878ba98c7d1d3748e8e662c975002a3",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Bie"
+      ],
+      "code": "mRt as Bie"
+    },
+    {
+      "id": "RP-S0043",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 40631,
+        "endExclusive": 40640
+      },
+      "spanHash": "695a571ac1be776861dbaf3f4984e244dd93ec06bc0fe545ad56f79f483cbb66",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Em"
+      ],
+      "code": "mWt as Em"
+    },
+    {
+      "id": "RP-S0044",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 40900,
+        "endExclusive": 40909
+      },
+      "spanHash": "21a7d0a82cabf00152402c68e6fb61f93dbbb6d3473295b02bbe6ab2f03c3483",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Nm"
+      ],
+      "code": "nIt as Nm"
+    },
+    {
+      "id": "RP-S0045",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 41495,
+        "endExclusive": 41504
+      },
+      "spanHash": "186e87943a5f2e8818698d5eaf9a63a2a0cdc2bbf0ee2771fa7e3d8335f79417",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:oh"
+      ],
+      "code": "pNt as oh"
+    },
+    {
+      "id": "RP-S0046",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 42824,
+        "endExclusive": 42832
+      },
+      "spanHash": "ebe9921c122ba4d19dcb644466025e49166e1ae0303c411df16df51b155dd4a5",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Qh"
+      ],
+      "code": "tV as Qh"
+    },
+    {
+      "id": "RP-S0047",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 43228,
+        "endExclusive": 43237
+      },
+      "spanHash": "59434c19e6cd5798b13129cc522d4913d8cf7ecb05548643a29dadbb77d62ce7",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:gg"
+      ],
+      "code": "vAt as gg"
+    },
+    {
+      "id": "RP-S0048",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 44134,
+        "endExclusive": 44143
+      },
+      "spanHash": "a076dc607321bb3a7d95f0b2e90363da734113a10f7cb7da74e3c9f9fbcfe78c",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Wg"
+      ],
+      "code": "yMt as Wg"
+    },
+    {
+      "id": "RP-S0049",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 44144,
+        "endExclusive": 44153
+      },
+      "spanHash": "6320e3bc257fa6357215ae41c77a84d66d7bea00393b903a5a6e5eebf7ad6d2d",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Gg"
+      ],
+      "code": "yNt as Gg"
+    },
+    {
+      "id": "RP-S0050",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 44303,
+        "endExclusive": 44312
+      },
+      "spanHash": "5190c464ac8862452bf1bc52dd9a21deeb96bbc7d48961f138dde1abc778ebcf",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Yg"
+      ],
+      "code": "z1t as Yg"
+    },
+    {
+      "id": "RP-S0051",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 44313,
+        "endExclusive": 44321
+      },
+      "spanHash": "4db65af053927f4ec18195de94f615a51194ef331679b62e8cdfddd4c9a8bce9",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Xg"
+      ],
+      "code": "z3 as Xg"
+    },
+    {
+      "id": "RP-S0052",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 44446,
+        "endExclusive": 44454
+      },
+      "spanHash": "5cf52db1ad4ecc0bb78499e714dc4b9de22cd984db74e53c8ce77b362e074b48",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:t_"
+      ],
+      "code": "zO as t_"
+    },
+    {
+      "id": "RP-S0053",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 46252,
+        "endExclusive": 46262
+      },
+      "spanHash": "afaf611b685bd5a08f3f26d4accc7c1dc6571e2a668dcee1cc6ec5efac44ee08",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:hde"
+      ],
+      "code": "Ckn as hde"
+    },
+    {
+      "id": "RP-S0054",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 46693,
+        "endExclusive": 46702
+      },
+      "spanHash": "1d680dc05e27a0972706115b390b869d4f5a20d79305f53f532a096b71a08f85",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:mv"
+      ],
+      "code": "Djn as mv"
+    },
+    {
+      "id": "RP-S0055",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 48461,
+        "endExclusive": 48471
+      },
+      "spanHash": "bafdc9959b2cb901151be0708f66c5b5d5458c9a45a00e608e40ec3da7582afe",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:eme"
+      ],
+      "code": "I2t as eme"
+    },
+    {
+      "id": "RP-S0056",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 48534,
+        "endExclusive": 48543
+      },
+      "spanHash": "45ba4d59f708cfe9cb79d6bfed8ee4cc36f4f414a29f26901f03623bc047ecb8",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:py"
+      ],
+      "code": "IBn as py"
+    },
+    {
+      "id": "RP-S0057",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 48872,
+        "endExclusive": 48882
+      },
+      "spanHash": "c24fb95841c93573113aec485943db8c85f5bd7a664ce1a8a744a9a8683a8898",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Mme"
+      ],
+      "code": "Izt as Mme"
+    },
+    {
+      "id": "RP-S0058",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 49274,
+        "endExclusive": 49283
+      },
+      "spanHash": "522b47cc958a112ae6b1ed63e03201e70f75b320151aba7284e9b8c10ce75eb2",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Ty"
+      ],
+      "code": "Jwn as Ty"
+    },
+    {
+      "id": "RP-S0059",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 52247,
+        "endExclusive": 52256
+      },
+      "spanHash": "0f7dab92baa024f8c7efd31d88c3225bd4e9456b41b92d4f0b7cea000322cd2b",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Qb"
+      ],
+      "code": "R2t as Qb"
+    },
+    {
+      "id": "RP-S0060",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 52979,
+        "endExclusive": 52988
+      },
+      "spanHash": "9dff6ece9855104177e62c215332bb78901ecbcde3deeeb46eebccf6a9aec20d",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:gx"
+      ],
+      "code": "Skn as gx"
+    },
+    {
+      "id": "RP-S0061",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 53462,
+        "endExclusive": 53472
+      },
+      "spanHash": "ebfaa2abced84cc49e4e8e4a1b0183c8a0d045eb0df89f0779b8d4792ddc9ec8",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Dbe"
+      ],
+      "code": "Tqn as Dbe"
+    },
+    {
+      "id": "RP-S0062",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 54159,
+        "endExclusive": 54168
+      },
+      "spanHash": "f14be2271bced2eba1cd2166488885d5c73b7119d139c245e7a67d272fe75775",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:Qx"
+      ],
+      "code": "VXt as Qx"
+    },
+    {
+      "id": "RP-S0063",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 54856,
+        "endExclusive": 54865
+      },
+      "spanHash": "5e4d64a93d7a081d5d664ca9389cd67986c4e87ab15e1bbadd9abac5a3bd8b9c",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:hS"
+      ],
+      "code": "XDn as hS"
+    },
+    {
+      "id": "RP-S0064",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 56636,
+        "endExclusive": 56645
+      },
+      "spanHash": "bba0c5110f2338f45b0ca00cc485c5aa75bff0dff455743fb6d92609f6aae873",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:fC"
+      ],
+      "code": "_xt as fC"
+    },
+    {
+      "id": "RP-S0065",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 56993,
+        "endExclusive": 57001
+      },
+      "spanHash": "6b4568a56054357033d7a365f419b1f90310032931573710e528ecb1b6217477",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:bC"
+      ],
+      "code": "am as bC"
+    },
+    {
+      "id": "RP-S0066",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 57639,
+        "endExclusive": 57648
+      },
+      "spanHash": "48f1a726c485b6f788309243fd79e85f4f97847532b3c744bceb1be8477170f2",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:BC"
+      ],
+      "code": "bwn as BC"
+    },
+    {
+      "id": "RP-S0067",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 57868,
+        "endExclusive": 57878
+      },
+      "spanHash": "1ee6ae7e6f7820ac7858af534d536006a669a326a9fc0ac5f3a78578ed6360aa",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:QTe"
+      ],
+      "code": "cTn as QTe"
+    },
+    {
+      "id": "RP-S0068",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 58033,
+        "endExclusive": 58042
+      },
+      "spanHash": "e31b1bdecca43be877fc6318d160e4f5c0d6da3ba78569bc8fa163311fa943c5",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:$C"
+      ],
+      "code": "csn as $C"
+    },
+    {
+      "id": "RP-S0069",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 58117,
+        "endExclusive": 58126
+      },
+      "spanHash": "8cf26ac9cf634af3c36646defe598fea62594cba91f17706b001f2572f3b6ba6",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:nw"
+      ],
+      "code": "d2t as nw"
+    },
+    {
+      "id": "RP-S0070",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 59396,
+        "endExclusive": 59405
+      },
+      "spanHash": "ae00fd039f19feea986e6bc54933924f520b7f2b96272e20b7d4e91c827f0e22",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:GDe"
+      ],
+      "code": "ft as GDe"
+    },
+    {
+      "id": "RP-S0071",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 59978,
+        "endExclusive": 59988
+      },
+      "spanHash": "71bd7cbf521909727e76f7016c8d191bf3822fa837de16d104a867a4ad4756ba",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:MOe"
+      ],
+      "code": "hFn as MOe"
+    },
+    {
+      "id": "RP-S0072",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 60085,
+        "endExclusive": 60094
+      },
+      "spanHash": "ee66ab249779bd883458e419397f169bc75eb8e4d7b61747d91a728bdce919b9",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:rT"
+      ],
+      "code": "hTn as rT"
+    },
+    {
+      "id": "RP-S0073",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 60357,
+        "endExclusive": 60366
+      },
+      "spanHash": "9216c4f5134be3d25bfdc0384956e63b6df5c75f9a08a8fa3416e3dfde67575d",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:cT"
+      ],
+      "code": "hxt as cT"
+    },
+    {
+      "id": "RP-S0074",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 61258,
+        "endExclusive": 61267
+      },
+      "spanHash": "a64ddea030cb353315e4fac30d028ec29f3d300e7cc62357625e79ed2593b4b1",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:NT"
+      ],
+      "code": "jqn as NT"
+    },
+    {
+      "id": "RP-S0075",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 61754,
+        "endExclusive": 61764
+      },
+      "spanHash": "2cce0c3c537cb7fcd9d6b8b22d8a4d07005e96d9c384008b107ec22a4a5b44af",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:JAe"
+      ],
+      "code": "kqn as JAe"
+    },
+    {
+      "id": "RP-S0076",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 61836,
+        "endExclusive": 61845
+      },
+      "spanHash": "5aa72fcdb9f75080c041b49dd4fd405a4ceed63a43c604cb6b67a4e4e7526021",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:XT"
+      ],
+      "code": "l2t as XT"
+    },
+    {
+      "id": "RP-S0077",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 61846,
+        "endExclusive": 61855
+      },
+      "spanHash": "2a57c294cf1e0415f049fea50ed7c51953e561c00501d6e3f0f84043cf47e669",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:ZT"
+      ],
+      "code": "l3t as ZT"
+    },
+    {
+      "id": "RP-S0078",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 62894,
+        "endExclusive": 62904
+      },
+      "spanHash": "e1635f0c50b46d7281765606fcd7399164068f97fe80c777023a7fa5129536d1",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:DMe"
+      ],
+      "code": "mxt as DMe"
+    },
+    {
+      "id": "RP-S0079",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 64280,
+        "endExclusive": 64289
+      },
+      "spanHash": "612c2aa9897ce2e42382836669079f9d2260c25940beaa47356545d8f3c5d89c",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:UE"
+      ],
+      "code": "q0t as UE"
+    },
+    {
+      "id": "RP-S0080",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 64419,
+        "endExclusive": 64428
+      },
+      "spanHash": "84ee15f4d8223f5533551b3c52a2038cf4f1446b067400c832bcc89f8c9b9951",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:GE"
+      ],
+      "code": "qKn as GE"
+    },
+    {
+      "id": "RP-S0081",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 65058,
+        "endExclusive": 65067
+      },
+      "spanHash": "401348685f3490c971b05e88578a01f3b08b317a501970974b22fbf6278b1f82",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:wFe"
+      ],
+      "code": "rm as wFe"
+    },
+    {
+      "id": "RP-S0082",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 65546,
+        "endExclusive": 65555
+      },
+      "spanHash": "337507dd9539f72f8b605636c1d12d0671981ff56fee6d232acb1d2ca6bf3f68",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:wD"
+      ],
+      "code": "skn as wD"
+    },
+    {
+      "id": "RP-S0083",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 66312,
+        "endExclusive": 66321
+      },
+      "spanHash": "e636fe538b2cf3155d0a06f6654fe2ca3e74daf69eb96d510a575dda9cfc1e93",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:iO"
+      ],
+      "code": "uZt as iO"
+    },
+    {
+      "id": "RP-S0084",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 66969,
+        "endExclusive": 66978
+      },
+      "spanHash": "5d8d2a4b977dc490c3c7d33b2edb213ce8fb737c1e88b292efe887c3923901c0",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:NO"
+      ],
+      "code": "vxt as NO"
+    },
+    {
+      "id": "RP-S0085",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 67227,
+        "endExclusive": 67236
+      },
+      "spanHash": "7bc0530dd9c9947c0d9009849af535818524090336dd3daea8a7f29bc282d428",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:GO"
+      ],
+      "code": "wgn as GO"
+    },
+    {
+      "id": "RP-S0086",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 67421,
+        "endExclusive": 67430
+      },
+      "spanHash": "b6a71d73fb80a49f868b588eb07e191f29a64f5fc28567fbf24989108115909c",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:QO"
+      ],
+      "code": "xFt as QO"
+    },
+    {
+      "id": "RP-S0087",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 67707,
+        "endExclusive": 67716
+      },
+      "spanHash": "73bc154b61e2ee177add1b4b9dd51a719152fc29f502615d3429478747c71c8c",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:ik"
+      ],
+      "code": "xqn as ik"
+    },
+    {
+      "id": "RP-S0088",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 68061,
+        "endExclusive": 68070
+      },
+      "spanHash": "1f5b7b15690ed465b113982bdcf2945f90215b0e87f188c2da21da2d7649983e",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import:gk"
+      ],
+      "code": "ycn as gk"
+    },
+    {
+      "id": "RP-S0089",
+      "sourcePath": "app.asar/webview/assets/app-primary-6f60e9ac4103.js",
+      "sourceHash": "7fe9c00b03cb1de3ebc3a4bf298fc44b13a7fe67ca9cc335a9e2ecda969a1321",
+      "byteRange": {
+        "start": 2383911,
+        "endExclusive": 2383919
+      },
+      "spanHash": "362f9e2cf66ba5a5d36a41e5f52ee20eeff93152e94a31d99b762497a4b29366",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:t"
+      ],
+      "code": "wzt as t"
+    },
+    {
+      "id": "ECD-I001",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11351621,
+        "endExclusive": 11351631
+      },
+      "spanHash": "d89c98ad19ced7bdeabed08df0c71672413df3ba6cb5e39d6a2048e939683f6a",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:I2t"
+      ],
+      "code": "hYr as I2t"
+    },
+    {
+      "id": "ECD-I002",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3758153,
+        "endExclusive": 3758280
+      },
+      "spanHash": "dcd87c7c45bfdaeb73f77828b7423a46bb2a487c90227dfc99960a7eb548332c",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:hYr"
+      ],
+      "code": "function hYr(e,t,n){zYr(e,{document:t.toJSON(),plainTextMode:n},n?WB(t,{preserveTextLinkMarks:!0}).content:ZYr().serialize(t))}"
+    },
+    {
+      "id": "ECD-I003",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11369338,
+        "endExclusive": 11369348
+      },
+      "spanHash": "5849bc8da71368d449bcd9e25c76031f4d97bcd41c0761df89d4facd2771f358",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:R2t"
+      ],
+      "code": "lYr as R2t"
+    },
+    {
+      "id": "ECD-I004",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3756864,
+        "endExclusive": 3756953
+      },
+      "spanHash": "c984f777afbdb53f8a1b1efb18623287e5bb94e74656eaa4c7e7596d2145ab34",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:lYr"
+      ],
+      "code": "function lYr(e,t){let n=e.get(PV),r=typeof t==`function`?t(n):t;Object.is(n,r)||zYr(e,r)}"
+    },
+    {
+      "id": "ECD-I005",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11374822,
+        "endExclusive": 11374832
+      },
+      "spanHash": "e1ceab0fd17e7bf28a751b52ef74ee03ea2acae8e82017f1c23c8f4d6cc2182c",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:Tqn"
+      ],
+      "code": "cPt as Tqn"
+    },
+    {
+      "id": "ECD-I006",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310407,
+        "endExclusive": 1310609
+      },
+      "spanHash": "843782ea7771a1b0e6fd3bfd3461111f0f7e8ecd6dbad452870de6281eb3e588",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:cPt"
+      ],
+      "code": "function cPt({chatGptProductAccess:e,isModeToggleBlocked:t,chatSeatAccess:n,windowType:r,workOnlyModeEnabled:i=!1,workModeEnabled:a}){return r!==`extension`&&(e.isCapable||n?.isCapable===!0)&&a&&!i&&!t}"
+    },
+    {
+      "id": "ECD-I007",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11408309,
+        "endExclusive": 11408318
+      },
+      "spanHash": "97a8ad18369538f7fb6162a87e27fd5281b5423cd4b30f812a1fa1e1be1b78dc",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:jqn"
+      ],
+      "code": "gS as jqn"
+    },
+    {
+      "id": "ECD-I008",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310108,
+        "endExclusive": 1310195
+      },
+      "spanHash": "7abb47bc3e652dd1aa48557f232380767a7f01afcc41b3248e49d4842469dba8",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:gS"
+      ],
+      "code": "function gS(e,t){t===`chat`&&e.get(Qoe)||(e.get(dPt)!=null&&e.set(dPt,t),e.set(pPt,t))}"
+    },
+    {
+      "id": "ECD-I009",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11410282,
+        "endExclusive": 11410292
+      },
+      "spanHash": "a01eb42b4a9173f7a07ae37f80d47aa7b46525f1faa3f89686b4a56ea81283c1",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:kqn"
+      ],
+      "code": "iPt as kqn"
+    },
+    {
+      "id": "ECD-I010",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310195,
+        "endExclusive": 1310221
+      },
+      "spanHash": "81139424a52441d7413e7c373af5c01847ff6fbff4ed290cefb55062dde5fccc",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "declaration:iPt"
+      ],
+      "code": "function iPt(e,t){gS(e,t)}"
+    },
+    {
+      "id": "ECD-I011",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11435946,
+        "endExclusive": 11435955
+      },
+      "spanHash": "f736d61319d378e2a8a8ce80871a35cfa2f0184356ab62c8bd0a5e5e750b9e82",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export:xqn"
+      ],
+      "code": "_S as xqn"
+    },
+    {
+      "id": "ECD-I012",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1310969,
+        "endExclusive": 1310971
+      },
+      "spanHash": "f0037b717fa510534acabd25e74bc36857bab1d140e5625f8434086262daaaa7",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "declaration:_S"
+      ],
+      "code": "_S"
+    },
+    {
+      "id": "MES-S001",
+      "name": "a1s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9282807,
+        "endExclusive": 9284253
+      },
+      "spanHash": "ddb360dcd80c869772b3a397c707fb1fed6a70f415339e56ad7c360d1c66e382",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/30423/declarations/0/declaration",
+      "code": "function a1s(){let e=(0,o1s.c)(24),t=Di(q),n=Cc(),{pathname:r,state:i}=Pr(),a=G(ij),o;e[0]===Symbol.for(`react.memo_cache_sentinel`)?(o={name:`chatgpt`},e[0]=o):o=e[0];let s=Zs(Bo,o),c=G(ep).status,l;e[1]===Symbol.for(`react.memo_cache_sentinel`)?(l={name:`codex.browser`},e[1]=l):l=e[1],Zs(Bo,l);let u=G(Qoe),d=G(Dc).status,f;e[2]!==r||e[3]!==a?(f=a!==`work`||!id(r),e[2]=r,e[3]=a,e[4]=f):f=e[4];let p=f,m;e[5]!==c||e[6]!==n||e[7]!==r||e[8]!==a||e[9]!==t||e[10]!==i?.returnLocation?(m=e=>{if(e!==`codex`&&iPt(t,e),r===`/codex-access`){if(e!==`codex`){let e=i?.returnLocation;e==null?n(`/`,{replace:!0}):n(xm(e),{replace:!0,state:e.state})}return}if(e!==`codex`&&a===`work`){wH(t),gS(t,e);return}kti(t,{codexLocalAccessStatus:c,currentMode:a,navigate:n,nextMode:e===`codex`?`codex`:`work`,startNewConversation:()=>{wH(t)}})},e[5]=c,e[6]=n,e[7]=r,e[8]=a,e[9]=t,e[10]=i?.returnLocation,e[11]=m):m=e[11];let h=m,g;e[12]===h?g=e[13]:(g=()=>h(`chat`),e[12]=h,e[13]=g);let _=s.isCapable&&!u&&p,v;e[14]===_?v=e[15]:(v={enabled:_,priority:`fallback`},e[14]=_,e[15]=v),Pw(`switchToMode1`,g,v);let y;e[16]===h?y=e[17]:(y=()=>h(`work`),e[16]=h,e[17]=y);let b=d===`allowed`&&p,x;e[18]===b?x=e[19]:(x={enabled:b,priority:`fallback`},e[18]=b,e[19]=x),Pw(`switchToMode2`,y,x);let S;e[20]===h?S=e[21]:(S=()=>h(`codex`),e[20]=h,e[21]=S);let C=c!==`error`,w;return e[22]===C?w=e[23]:(w={enabled:C,priority:`fallback`},e[22]=C,e[23]=w),Pw(`switchToMode3`,S,w),null}",
+      "programBinding": {
+        "name": "a1s",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 9282807,
+                "endExclusive": 9284253
+              },
+              "spanSha256": "ddb360dcd80c869772b3a397c707fb1fed6a70f415339e56ad7c360d1c66e382",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "MES-S002",
+      "name": "kti",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4061657,
+        "endExclusive": 4062953
+      },
+      "spanHash": "095ec9fba000ffb8925dd77ff5a2295bede016c5da64c78e2272515ad4a447d5",
+      "nodeType": "FunctionDeclaration",
+      "metadataPointer": "/programBindings/16264/declarations/0/declaration",
+      "code": "function kti(e,{codexLocalAccessStatus:t,currentMode:n,navigate:r,nextMode:i,openHome:a=!1,restoreNavigation:o=!0,startNewConversation:s}){let c=e.get(Ec);if(i===`codex`)switch(t){case`loading`:case`allowed`:break;case`denied`:{let t=e.get(Jg);r(ORt,{state:{returnLocation:t}});return}case`error`:return}if(i===n&&!a)return;gei(e);let l=e.get(zti,i),u=e.get(Jg),d=e.get(ye),f=u?.pathname===`/library`||u?.pathname.startsWith(`/library/`);if(u!=null&&!f&&e.set(zti,n,{location:fti(u,Fti(e,u)),selectedProject:d}),bFe(e,i===`work`?Pu:q$e),a){r(`/`,{state:{sidebarProductMode:i}});return}if(!o)return;let p=e.get(bo);if(p!=null&&u!=null&&(i===`work`||Pa(p)!=null)){(c||u.state?.sidebarThreadLocationId!=null)&&r(xm(u),{replace:!c,state:c?{...u.state,sidebarProductMode:i}:{...u.state,sidebarThreadLocationId:null}});return}if(f){YI(e,l?.selectedProject==null?null:{projectId:l.selectedProject.projectId,projectKind:l.selectedProject.type}),c&&u!=null&&r(xm(u),{state:{...u.state,sidebarProductMode:i}});return}if(l==null){if(u!=null&&id(u.pathname)&&u.state==null&&d==null){c&&r(xm(u),{state:{sidebarProductMode:i}});return}YI(e,null),s();return}YI(e,l.selectedProject==null?null:{projectId:l.selectedProject.projectId,projectKind:l.selectedProject.type}),r(xm(l.location),{state:l.location.state})}",
+      "programBinding": {
+        "name": "kti",
+        "scopeId": 0,
+        "declarations": [
+          {
+            "kind": "function-declaration",
+            "declaration": {
+              "source": {
+                "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/webview/assets/app-initial-6350d04672d0.js",
+                "bytes": 11440241,
+                "sha256": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f"
+              },
+              "byteRange": {
+                "start": 4061657,
+                "endExclusive": 4062953
+              },
+              "spanSha256": "095ec9fba000ffb8925dd77ff5a2295bede016c5da64c78e2272515ad4a447d5",
+              "nodeType": "FunctionDeclaration",
+              "locatorScope": "complete-function-or-member"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "esmJoins": [
+    {
+      "local": "Dbe",
+      "module": "./app-initial-6350d04672d0.js",
+      "exported": "Tqn",
+      "targetLocal": "cPt",
+      "sourceUnitIds": [
+        "RP-S0061",
+        "ECD-I005",
+        "ECD-I006"
+      ]
+    },
+    {
+      "local": "NT",
+      "module": "./app-initial-6350d04672d0.js",
+      "exported": "jqn",
+      "targetLocal": "gS",
+      "sourceUnitIds": [
+        "RP-S0074",
+        "ECD-I007",
+        "ECD-I008"
+      ]
+    },
+    {
+      "local": "JAe",
+      "module": "./app-initial-6350d04672d0.js",
+      "exported": "kqn",
+      "targetLocal": "iPt",
+      "sourceUnitIds": [
+        "RP-S0075",
+        "ECD-I009",
+        "ECD-I010"
+      ]
+    },
+    {
+      "local": "ik",
+      "module": "./app-initial-6350d04672d0.js",
+      "exported": "xqn",
+      "targetLocal": "_S",
+      "sourceUnitIds": [
+        "RP-S0087",
+        "ECD-I011",
+        "ECD-I012"
+      ]
+    },
+    {
+      "local": "Qb",
+      "module": "./app-initial-6350d04672d0.js",
+      "exported": "R2t",
+      "targetLocal": "lYr",
+      "sourceUnitIds": [
+        "RP-S0059",
+        "ECD-I003",
+        "ECD-I004"
+      ]
+    },
+    {
+      "local": "eme",
+      "module": "./app-initial-6350d04672d0.js",
+      "exported": "I2t",
+      "targetLocal": "hYr",
+      "sourceUnitIds": [
+        "RP-S0055",
+        "ECD-I001",
+        "ECD-I002"
+      ]
+    }
+  ],
+  "callerLinks": [
+    {
+      "targetName": "Ezt",
+      "callerName": "wzt",
+      "depth": 1,
+      "referenceSourceId": "RP-S0001",
+      "callSourceId": "RP-S0002",
+      "ownerSourceId": "RP-S0003"
+    }
+  ],
+  "sourceMetadataPin": {
+    "path": ".analysis-local/submission-host-instance-work/initial-host-scope-bindings.json",
+    "bytes": 98261941,
+    "sha256": "3fee2bbee9b31051329adcdf94ea5c14e9474927695c31e9e0dae704ded50189"
+  },
+  "previousExplicitSwitch": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-explicit-switch-v1.json",
+    "bytes": 68904,
+    "sha256": "633d9ef6e756e6d2876ba75329fcb2be4eca59054b5318528758732b1b8b0e9e"
+  },
+  "bootstrapSupplement": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/mode-bootstrap-consumer-v1.json",
+    "bytes": 86770,
+    "sha256": "53f53d9befc56475093ab4350def25f397b9f0da2ffaa99996efbb3589c3c234"
+  },
+  "baseFeatureLedger": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v48.json",
+    "bytes": 2810067,
+    "sha256": "f29f5fdd7ef4a7339fbf3d644237f6b311ed38f870d37612f7142279a3aa564f"
+  },
+  "counts": {
+    "sourceFacts": 13,
+    "cataloguedSourceUnits": 103,
+    "sourceFiles": 2,
+    "exactEsmJoins": 6,
+    "namedCallerLinks": 1,
+    "wholeProgramParsePasses": 1,
+    "wholeProgramParsedNodes": 712770,
+    "boundedExportParsePasses": 1,
+    "newCanonicalFeatureIds": 0,
+    "newCanonicalOperationIds": 0,
+    "unexecutedChildCases": 6,
+    "existingFeatureModeClassificationsChanged": 1,
+    "newRuntimePasses": 0,
+    "newModelSubmissions": 0
+  },
+  "childCaseSpecifications": [
+    {
+      "caseId": "ECD-C01",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "canSwitchMode/seat/work-only/blocked 和 pending 首帧快照",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "ECD-C02",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "same mode、升级、无许可三种提前返回与 cancelPendingSubmit 顺序",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "ECD-C03",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "mode_picker/task_suggestion/shortcut 的父回调及 gS guard",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "ECD-C04",
+      "parentSpecId": "RCGA-FSC-0481:guard-and-variant-contract",
+      "trigger": "newTask 空输入、冲突、disabled 与 default callback/keyboardHandler 仲裁",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "ECD-C05",
+      "parentSpecId": "RCGA-FSC-0481:integration-boundary",
+      "trigger": "chat/work 的路由、查询参数、项目、mention、文本与 controller 迁移",
+      "status": "unexecuted-source-derived-child-case"
+    },
+    {
+      "caseId": "ECD-C06",
+      "parentSpecId": "RCGA-FSC-0481:integration-boundary",
+      "trigger": "真实 Codex shared-home/Tzt 条件、跨模式切换、重启和草稿恢复",
+      "status": "unexecuted-source-derived-child-case"
+    }
+  ],
+  "selectedBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "clientImplementationStarted": false,
+  "stopBoundary": "Selected Ezt/wzt/cPt/callback chain closed. No recursive gg/account/service/native/storage expansion; outer mount and actual props/effects remain unverified.",
+  "nextAction": "Apply the same static classification rule to a finite batch of already source-qualified local-thread goals, reusing their route/backend contracts; do not reopen this mode infrastructure."
+}

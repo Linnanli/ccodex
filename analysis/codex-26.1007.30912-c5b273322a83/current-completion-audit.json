@@ -1,0 +1,637 @@
+{
+  "schema": "current-completion-requirement-matrix/v1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "publicationRun": "20261013T164818487650Z",
+  "publicationArtifactCount": 93,
+  "status": "current-requirements-audited; underlying-analysis-still-incomplete",
+  "fullAnalysisCompleted": false,
+  "finalClientImplementationAcceptanceClaimed": false,
+  "scope": "Selected frozen analysis artifacts only; no global journal, raw code redo, target execution, UI, model, network, credentials or account history.",
+  "historicalAuditRole": "criteria-audit at 20261013T115019432678Z is context only; current requirements are reassessed against selected current snapshots, not inherited automatically.",
+  "snapshotScope": {
+    "exitCode": 0,
+    "artifactCount": 93,
+    "snapshots": 63,
+    "publicationMatchedSnapshots": 25,
+    "errors": []
+  },
+  "counts": {
+    "criteria": {
+      "satisfied": 4,
+      "partial": 5
+    },
+    "stages": {
+      "satisfied": 1,
+      "partial": 5
+    }
+  },
+  "metrics": {
+    "featureCandidates": 36,
+    "featureModes": {
+      "codex": 20,
+      "shared": 9,
+      "unknown": 5,
+      "chatgpt": 2
+    },
+    "inferredFeatureModes": 36,
+    "genericConditionFeatureRecords": 36,
+    "genericCodeChainFeatureRecords": 36,
+    "featureRuntimePendingRecords": 36,
+    "publishedModuleCandidates": 438,
+    "moduleModes": {
+      "unknown": 438
+    },
+    "entryCandidates": 968,
+    "primaryEntryCandidates": 868,
+    "auxiliaryEntryCandidates": 100,
+    "supportNodes": 176,
+    "deferredCandidates": 337,
+    "ledgerSourceArtifacts": 14,
+    "confirmedFeatureMappingsByLedger": 0,
+    "operationEquivalenceLinksByLedger": 0,
+    "globalFunctionalDenominatorEstablished": false,
+    "confirmedExclusions": 0,
+    "runtimeObservationRecords": 30,
+    "dependencyRecords": 202,
+    "dependencyFieldsPresent": {
+      "versionBasis": 202,
+      "sourcePath": 202,
+      "sourceHash": 202,
+      "recommendedIntegration": 202,
+      "unresolved": 202
+    },
+    "nativeIndependentCollections": {
+      "archiveArtifacts": 49,
+      "diskRuntimeBinaries": 112,
+      "externalWasmArtifacts": 8,
+      "runtimeMetadata": 5,
+      "plistMetadata": 16,
+      "voiceSources": 12,
+      "sourceInputs": 756
+    }
+  },
+  "criteria": [
+    {
+      "id": "AC-01",
+      "requirement": "输入版本和哈希已固定，分析结果未混用版本。",
+      "status": "satisfied",
+      "necessaryEvidence": "固定基线身份、输入摘要和版本隔离；当前产物引用该身份。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0002",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/publication/20261013T164818487650Z/run.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0005",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/baseline.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0006",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/baseline-reverification.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0007",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/baseline-reverification.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0043",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json"
+        }
+      ],
+      "provenScope": "指定publication exit 0、93 artifacts；63份选定分析来源已先复制，其中25份当前发布工件与run登记匹配。既有副本复核一致，7条声明矛盾保留。",
+      "missingClosureConditions": "本条没有新增完成缺口；声明完整性、外部CLI源码身份和实际runtime兼容不被本条一并证明。未重新核验全部93产物或原始大输入。",
+      "nextSpecificSafeInvestigation": "继续在本快照中将外部工具/CLI版本与固定客户端身份分列；任何后续版本变化建独立基线。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0002",
+        "COMPLETION-REFRESH-0005",
+        "COMPLETION-REFRESH-0006",
+        "COMPLETION-REFRESH-0007",
+        "COMPLETION-REFRESH-0043"
+      ]
+    },
+    {
+      "id": "AC-02",
+      "requirement": "已登记所有发现的文件、入口和功能候选，并说明分析覆盖的范围。",
+      "status": "partial",
+      "necessaryEvidence": "各已发现文件、入口和功能候选有来源登记，跨发现域登记是否齐备可核对，明确扫描/注册/实例的范围。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0008",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/feature-coverage.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0009",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/functional-entry-summary.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0012",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/report.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0042",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/gaps.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0004",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json"
+        }
+      ],
+      "provenScope": "旧14输入入口台账登记868主类+100辅助；176支持与337deferred另列。后续候选确有各自来源产物，未发现本审计可证实的漏项。",
+      "missingClosureConditions": "全局“所有已发现”登记的当前跨产物对齐尚未证明；旧台账不会自动纳入后续发现。功能分母unknown单独不是漏登记证明，operation等价与功能映射也不是本条登记动作的替代判据。",
+      "nextSpecificSafeInvestigation": "以14输入台账和当前report逐个补充域做只读candidate-ID/source-domain reconciliation，逐项标old-ledger/新增独立登记/重复/未映射；不先猜功能总数。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0008",
+        "COMPLETION-REFRESH-0009",
+        "COMPLETION-REFRESH-0012",
+        "COMPLETION-REFRESH-0042",
+        "COMPLETION-REFRESH-0004"
+      ]
+    },
+    {
+      "id": "AC-03",
+      "requirement": "已区分 Codex、ChatGPT 专属、共享和未知项，排除理由可追溯。",
+      "status": "partial",
+      "necessaryEvidence": "Codex/chatgpt/shared/unknown均可登记；任何排除必须有真实模式条件、调用方和共享依赖理由。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0008",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/feature-coverage.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0011",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/modules.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0013",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/chatgpt-mode-boundary-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0014",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0021",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0022",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition-summary.md"
+        }
+      ],
+      "provenScope": "36组20 codex/9 shared/2 chatgpt/5 unknown全部inferred；438模块明确分类unknown，9个续查候选也unknown，确认排除0。unknown是已分类状态，不等于不存在或可删。",
+      "missingClosureConditions": "实际模式判定和拟排除项的保留依赖闭包仍无完整证据。0排除或存在unknown本身不构成失败；当前名称/Work/gate/header不足以授权排除。",
+      "nextSpecificSafeInvestigation": "对一个已登记project localFolders候选追踪所有实际consumer及product/host/account/gate维度，生成保留/共享/未知分支证据表；不读取实际账号或删除分支。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0008",
+        "COMPLETION-REFRESH-0011",
+        "COMPLETION-REFRESH-0013",
+        "COMPLETION-REFRESH-0014",
+        "COMPLETION-REFRESH-0021",
+        "COMPLETION-REFRESH-0022"
+      ]
+    },
+    {
+      "id": "AC-04",
+      "requirement": "每个保留功能已追踪到足以说明其职责的模块和关键跨进程或外部边界。",
+      "status": "partial",
+      "necessaryEvidence": "每个保留功能有入口→职责模块→关键IPC/服务/native边界、参数后效和状态所有权来源。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0010",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/features.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0015",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/boundaries.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0016",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0017",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/preload-app-host-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0018",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/host-http-service-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0019",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/app-host-context-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0020",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/application-network-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0044",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/features.json"
+        }
+      ],
+      "provenScope": "19进程/传输边界及preload→host context/provider→network选定静态链已有来源；新的条件/信任/policy/lifecycle合同应保留。",
+      "missingClosureConditions": "36/36 codeChain仍通用非穷尽文字；候选链、41同handler链接、结构链接均不证明功能等价。外层绑定、动态实例、RPC/base、状态和持久化的逐功能闭合仍缺。",
+      "nextSpecificSafeInvestigation": "选择一个已登记请求链，围绕actual caller、服务接收方、payload/response、取消/销毁与持久化建立feature-to-boundary矩阵，仅补静态来源和未知队列。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0010",
+        "COMPLETION-REFRESH-0015",
+        "COMPLETION-REFRESH-0016",
+        "COMPLETION-REFRESH-0017",
+        "COMPLETION-REFRESH-0018",
+        "COMPLETION-REFRESH-0019",
+        "COMPLETION-REFRESH-0020",
+        "COMPLETION-REFRESH-0044"
+      ]
+    },
+    {
+      "id": "AC-05",
+      "requirement": "第三方依赖有版本与来源依据；无法确认的条目列出调查动作。",
+      "status": "satisfied",
+      "necessaryEvidence": "各依赖记录版本/来源依据，不能确认的字段明确保留调查动作；不要求已确认全部发行身份。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0023",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/dependency-summary.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0024",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/dependency-summary.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0025",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/embedded-dependency-investigation-actions.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0044",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/features.json"
+        }
+      ],
+      "provenScope": "202/202记录有versionBasis/sourcePath/sourceHash/recommendedIntegration/unresolved；17/17内嵌候选有来源/建议及各5类调查动作，自报与实际发行版本分列。",
+      "missingClosureConditions": "本条登记义务满足。71根声明未锁实际安装版本、17发行身份未确认、修改/native与必要调用闭包仍影响阶段3/6，不能据此宣称依赖可直接采用。",
+      "nextSpecificSafeInvestigation": "从现有17项行动中选择一个已被保留功能使用的wrapper，只读比较其已保存来源声明、修改范围和适配接口，不联网取得或执行库。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0023",
+        "COMPLETION-REFRESH-0024",
+        "COMPLETION-REFRESH-0025",
+        "COMPLETION-REFRESH-0044"
+      ]
+    },
+    {
+      "id": "AC-06",
+      "requirement": "原生、Wasm、辅助程序、定制运行时和私有服务均有独立记录。",
+      "status": "satisfied",
+      "necessaryEvidence": "已发现native/Wasm/helper/custom runtime/private服务类别各自有记录与身份范围。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0026",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/native-runtime.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0027",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/runtime-api-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0028",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/runtime-node-version-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0029",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/runtime-adapter-options.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0044",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/features.json"
+        }
+      ],
+      "provenScope": "native记录分49归档工件、112磁盘runtime/helper、8外部Wasm、5runtime metadata、16plist及756source inputs；Owl和私有边界有独立合同。",
+      "missingClosureConditions": "本条独立记录义务满足；不证明源码取得、完整native调用闭包、实际Node查询、Electron/ABI或替代方案成功。",
+      "nextSpecificSafeInvestigation": "把已登记Owl四类特殊能力各自连接到明确保留功能/进程合同，列取得性、接口和行为未知；保留静态24.19.0与真实查询/传统ABI的区别。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0026",
+        "COMPLETION-REFRESH-0027",
+        "COMPLETION-REFRESH-0028",
+        "COMPLETION-REFRESH-0029",
+        "COMPLETION-REFRESH-0044"
+      ]
+    },
+    {
+      "id": "AC-07",
+      "requirement": "Source map 覆盖、构建输入缺失、REA 解析限制和动态关系均有说明。",
+      "status": "satisfied",
+      "necessaryEvidence": "说明source-map扫描覆盖、缺失build inputs、REA限制及未解析动态关系。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0030",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/source-map-validation.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0031",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/build-inputs.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0032",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0033",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/report.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0016",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json"
+        }
+      ],
+      "provenScope": "17848限定输入的map范围说明、30缺失build-input occurrences、REA partial/truncated及226389 semantic unknown均保留。",
+      "missingClosureConditions": "本条要求解释范围和限制，已满足；不能升级为map全域不存在、动态关系已解析或构建缺口关闭。",
+      "nextSpecificSafeInvestigation": "在已保留的一个链路中优先追踪一个有明确caller来源的动态receiver，记录选定parse单位、预算和未覆盖的赋值域，不重跑全REA。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0030",
+        "COMPLETION-REFRESH-0031",
+        "COMPLETION-REFRESH-0032",
+        "COMPLETION-REFRESH-0033",
+        "COMPLETION-REFRESH-0016"
+      ]
+    },
+    {
+      "id": "AC-08",
+      "requirement": "主要行为与静态结论已对照，未验证项有明确触发条件。",
+      "status": "partial",
+      "necessaryEvidence": "主要功能正常/失败/取消/恢复的静态与行为对照；未验证项有精确触发条件，暂不可触发的功能仍保留。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0034",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/behavior-checks.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0035",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/behavior-checks.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0036",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/behavior-checks.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0037",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/analysis-state.json"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0021",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0022",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0044",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/features.json"
+        }
+      ],
+      "provenScope": "30观察、一个授权README样例、已完成任务重启重新打开、5命令与11纯代码样例分列。project条件补充给出一个静态gate/capability/identity/data条件。",
+      "missingClosureConditions": "36/36功能conditions仍generic，feature runtime-pending；主要失败/取消/审批/文件写入/PTY/执行中断恢复没有逐功能场景和条件闭合。一条局部条件不升级全部功能。",
+      "nextSpecificSafeInvestigation": "只读建立task cancel/approval/interrupted-recovery三类场景卡，关联现有功能候选、静态边界、前置条件与预期后效；本次不触发任何UI、模型或写入行为。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0034",
+        "COMPLETION-REFRESH-0035",
+        "COMPLETION-REFRESH-0036",
+        "COMPLETION-REFRESH-0037",
+        "COMPLETION-REFRESH-0021",
+        "COMPLETION-REFRESH-0022",
+        "COMPLETION-REFRESH-0044"
+      ]
+    },
+    {
+      "id": "AC-09",
+      "requirement": "项目结构建议、恢复顺序和验收条件能够引用分析证据。",
+      "status": "partial",
+      "necessaryEvidence": "结构建议、具体恢复先后依赖与验收条件均可引用分析来源；本轮不要求客户端已实现。",
+      "currentAuthority": [
+        {
+          "evidenceId": "COMPLETION-REFRESH-0038",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/implementation-plan.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0039",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/implementation-plan.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0040",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/implementation-plan.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0041",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/implementation-plan.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0020",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/application-network-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0019",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/app-host-context-summary.md"
+        },
+        {
+          "evidenceId": "COMPLETION-REFRESH-0022",
+          "source": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition-summary.md"
+        }
+      ],
+      "provenScope": "已有11局部维护建议/138范围映射；实施草案新增context、network和project条件的保留理由，恢复阶段的启动门槛已说明。",
+      "missingClosureConditions": "全保留功能→具体任务依赖→精确场景/预期后效的来源关系尚未形成；局部建议和模板阶段不能当完整目录/包/功能验收表。",
+      "nextSpecificSafeInvestigation": "为一个已有证据的app-host链填写第一方模块职责、外部依赖、前后任务依据与精确契约验收卡；未取得的Owl和私有服务保持门槛。",
+      "evidenceRefs": [
+        "COMPLETION-REFRESH-0038",
+        "COMPLETION-REFRESH-0039",
+        "COMPLETION-REFRESH-0040",
+        "COMPLETION-REFRESH-0041",
+        "COMPLETION-REFRESH-0020",
+        "COMPLETION-REFRESH-0019",
+        "COMPLETION-REFRESH-0022"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "STAGE-01",
+      "title": "第一阶段 固定输入与文件清单",
+      "requiredDelivery": "基线清单、文件清单、source map 覆盖情况和初始构建缺口。发布归档作为分析证据保留，不进入最终客户端恢复源码目录。",
+      "status": "satisfied",
+      "necessaryEvidence": "版本、摘要、归档内外关联、文件类型、map和构建输入范围记录。",
+      "provenScope": "固定输入、清单、限定map覆盖与构建缺口的输入层交付齐备。",
+      "missingClosureConditions": "没有新增输入层缺口；运行时实际兼容/ABI不由输入层完成证明。",
+      "nextSpecificSafeInvestigation": "在既有固定基线中维护明确的外部版本身份隔离。",
+      "currentAuthority": [
+        "COMPLETION-REFRESH-0002",
+        "COMPLETION-REFRESH-0005",
+        "COMPLETION-REFRESH-0006",
+        "COMPLETION-REFRESH-0007",
+        "COMPLETION-REFRESH-0016",
+        "COMPLETION-REFRESH-0030",
+        "COMPLETION-REFRESH-0031",
+        "COMPLETION-REFRESH-0032",
+        "COMPLETION-REFRESH-0033",
+        "COMPLETION-REFRESH-0043"
+      ],
+      "criterionDependencies": [
+        "AC-01",
+        "AC-07"
+      ]
+    },
+    {
+      "id": "STAGE-02",
+      "title": "第二阶段 功能范围盘点",
+      "requiredDelivery": "功能范围清单和模式边界图；每个排除项都有理由，每个保留项都有可追踪的入口或使用路径。",
+      "status": "partial",
+      "necessaryEvidence": "各入口/实例/后台事件到功能候选的来源登记、模式理由及触发条件。",
+      "provenScope": "限定入口候选和unknown模式登记存在，未形成完整功能域及排除/保留图。",
+      "missingClosureConditions": "旧台账与增量登记全局对齐、功能粒度、条件与共享闭包未证明。",
+      "nextSpecificSafeInvestigation": "只读补一个发现域的登记reconciliation，再追一个unknown候选的实际consumer。",
+      "currentAuthority": [
+        "COMPLETION-REFRESH-0004",
+        "COMPLETION-REFRESH-0008",
+        "COMPLETION-REFRESH-0009",
+        "COMPLETION-REFRESH-0011",
+        "COMPLETION-REFRESH-0012",
+        "COMPLETION-REFRESH-0013",
+        "COMPLETION-REFRESH-0014",
+        "COMPLETION-REFRESH-0021",
+        "COMPLETION-REFRESH-0022",
+        "COMPLETION-REFRESH-0034",
+        "COMPLETION-REFRESH-0035",
+        "COMPLETION-REFRESH-0036",
+        "COMPLETION-REFRESH-0037",
+        "COMPLETION-REFRESH-0042",
+        "COMPLETION-REFRESH-0044"
+      ],
+      "criterionDependencies": [
+        "AC-02",
+        "AC-03",
+        "AC-08"
+      ]
+    },
+    {
+      "id": "STAGE-03",
+      "title": "第三阶段 第三方依赖识别",
+      "requiredDelivery": "第三方依赖清单、第一方与第三方归属表、版本和来源未解决清单。最终工程不生成第三方实现副本；临时分析副本与最终维护源码分开管理。",
+      "status": "partial",
+      "necessaryEvidence": "混合第一方/第三方范围、实际调用方、多版本/修改/私有/native/Wasm处理可行性。",
+      "provenScope": "202依赖和17嵌入线索的依据/调查动作满足记录条款。",
+      "missingClosureConditions": "记录未知并非阶段失败原因；必要调用闭包、修改范围和具体引入决定仍不完整。",
+      "nextSpecificSafeInvestigation": "按已保留功能选一个wrapper，界定第一方与库实现边界和已有依赖方案条件。",
+      "currentAuthority": [
+        "COMPLETION-REFRESH-0023",
+        "COMPLETION-REFRESH-0024",
+        "COMPLETION-REFRESH-0025",
+        "COMPLETION-REFRESH-0026",
+        "COMPLETION-REFRESH-0027",
+        "COMPLETION-REFRESH-0028",
+        "COMPLETION-REFRESH-0029",
+        "COMPLETION-REFRESH-0044"
+      ],
+      "criterionDependencies": [
+        "AC-05",
+        "AC-06"
+      ]
+    },
+    {
+      "id": "STAGE-04",
+      "title": "第四阶段 REA 架构与调用链分析",
+      "requiredDelivery": "进程和模块图、IPC 契约、状态与数据流、后台能力差异，以及带来源的模块归属清单。",
+      "status": "partial",
+      "necessaryEvidence": "进程/模块/IPC/状态/存储和后台差异的逐保留功能证据。",
+      "provenScope": "选定静态HTTP/context/network与项目条件进一步完善，REA仍partial。",
+      "missingClosureConditions": "全功能映射、原外层绑定、动态实例/receiver、状态持久化及共享闭包不完整。",
+      "nextSpecificSafeInvestigation": "围绕一个feature candidate补发送方、接收方、状态和后效的矩阵。",
+      "currentAuthority": [
+        "COMPLETION-REFRESH-0010",
+        "COMPLETION-REFRESH-0015",
+        "COMPLETION-REFRESH-0016",
+        "COMPLETION-REFRESH-0017",
+        "COMPLETION-REFRESH-0018",
+        "COMPLETION-REFRESH-0019",
+        "COMPLETION-REFRESH-0020",
+        "COMPLETION-REFRESH-0030",
+        "COMPLETION-REFRESH-0031",
+        "COMPLETION-REFRESH-0032",
+        "COMPLETION-REFRESH-0033",
+        "COMPLETION-REFRESH-0044"
+      ],
+      "criterionDependencies": [
+        "AC-04",
+        "AC-07"
+      ]
+    },
+    {
+      "id": "STAGE-05",
+      "title": "第五阶段 行为与依赖验证",
+      "requiredDelivery": "行为验证记录、可用于后续回归验证的场景，以及静态与运行结果的差异清单。",
+      "status": "partial",
+      "necessaryEvidence": "主要normal/error/cancel/restart场景及条件、步骤、预期/实测和静态差异。",
+      "provenScope": "有限样例与既有失败历史分开保留，未提升全部功能行为覆盖。",
+      "missingClosureConditions": "主要行为及不可触发条件未逐功能对照；已完成恢复不是中断恢复。",
+      "nextSpecificSafeInvestigation": "仅编制三类待验证场景卡与静态依据，不执行目标或模型。",
+      "currentAuthority": [
+        "COMPLETION-REFRESH-0021",
+        "COMPLETION-REFRESH-0022",
+        "COMPLETION-REFRESH-0034",
+        "COMPLETION-REFRESH-0035",
+        "COMPLETION-REFRESH-0036",
+        "COMPLETION-REFRESH-0037",
+        "COMPLETION-REFRESH-0044"
+      ],
+      "criterionDependencies": [
+        "AC-08"
+      ]
+    },
+    {
+      "id": "STAGE-06",
+      "title": "第六阶段 形成实施依据",
+      "requiredDelivery": "分析报告和逆向实施计划草案。构建工具与客户端目录在此阶段确定，避免用预设目录解释未知代码。",
+      "status": "partial",
+      "necessaryEvidence": "结构/范围映射、剥离闭包、依赖/runtime/build决定、任务顺序和全功能验收关联。",
+      "provenScope": "报告与带局部依据的实施草案存在；目标仍完整Codex。",
+      "missingClosureConditions": "完整模块/任务/场景验收表与工程决定未齐备；未实现最终客户端不是本轮扣项。",
+      "nextSpecificSafeInvestigation": "编制一个完整有来源的模块/任务/契约验收条目作为模板并保留所有未解决门槛。",
+      "currentAuthority": [
+        "COMPLETION-REFRESH-0008",
+        "COMPLETION-REFRESH-0010",
+        "COMPLETION-REFRESH-0011",
+        "COMPLETION-REFRESH-0013",
+        "COMPLETION-REFRESH-0014",
+        "COMPLETION-REFRESH-0015",
+        "COMPLETION-REFRESH-0016",
+        "COMPLETION-REFRESH-0017",
+        "COMPLETION-REFRESH-0018",
+        "COMPLETION-REFRESH-0019",
+        "COMPLETION-REFRESH-0020",
+        "COMPLETION-REFRESH-0021",
+        "COMPLETION-REFRESH-0022",
+        "COMPLETION-REFRESH-0023",
+        "COMPLETION-REFRESH-0024",
+        "COMPLETION-REFRESH-0025",
+        "COMPLETION-REFRESH-0026",
+        "COMPLETION-REFRESH-0027",
+        "COMPLETION-REFRESH-0028",
+        "COMPLETION-REFRESH-0029",
+        "COMPLETION-REFRESH-0038",
+        "COMPLETION-REFRESH-0039",
+        "COMPLETION-REFRESH-0040",
+        "COMPLETION-REFRESH-0041",
+        "COMPLETION-REFRESH-0044"
+      ],
+      "criterionDependencies": [
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-09"
+      ]
+    }
+  ],
+  "interpretationGuards": [
+    "已发现候选登记 completeness与全功能分母建立是不同问题；本审计未证明存在实际漏登记候选。AC-02的partial是当前全球登记对齐尚无证明，不以功能分母unknown或0功能映射单独扣项。",
+    "unknown已是一种有效分类；unknown不授权排除，不要求为了完成分类而猜测全部模式。AC-03的缺口在实际模式/排除理由与保留依赖闭包。",
+    "来源span/hash/parse/validation通过只证明对应工件一致性，不自动证明成员语义、动态行为、功能等价或运行完成。",
+    "行为记录数、入口数、合同数、发布模块数、源码范围数和功能数各有不同分母，不相加或互换。",
+    "本轮分析完成标准不任意增加最终客户端实施/打包验收；完整Codex目标、共享依赖和条件不可触发项继续保留。"
+  ]
+}

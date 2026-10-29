@@ -1,0 +1,143 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "publicTag": "rust-v0.162.0",
+  "publicCommit": "c1382380de69521303b416720a52f42d51af6248",
+  "recordedAtUtc": "2026-10-13T08:59:24.904206+00:00",
+  "releaseMetadataSha256": "3399cc470b7bcbdab0aefb5907435f23292caad857b170baf1d061c0995f8e69",
+  "asset": {
+    "id": 622695697,
+    "name": "codex-x86_64-apple-darwin.tar.gz",
+    "size": 106843279,
+    "digest": "sha256:3caf648404cb5d2917f6e88f0addb3533584f8b05a1dd5835dd76f1c43eeb26b",
+    "browser_download_url": "https://github.com/openai/codex/releases/download/rust-v0.162.0/codex-x86_64-apple-darwin.tar.gz"
+  },
+  "archivePath": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/codex-x86_64-apple-darwin.tar.gz",
+  "downloadEvidenceDirectory": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli",
+  "runs": [],
+  "method": "official-release-cli-schema-generation",
+  "status": "failed",
+  "limitations": [
+    "Only --version and app-server generate-json-schema are invoked.",
+    "No app-server service, login, model call or runtime handler is exercised.",
+    "Public release is a comparison candidate, not an identical desktop CLI build."
+  ],
+  "downloadRuns": {
+    "recordedAtUtc": "2026-10-13T08:59:21.646254+00:00",
+    "runs": [
+      {
+        "label": "download",
+        "command": [
+          "curl",
+          "--fail",
+          "--location",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--connect-timeout",
+          "20",
+          "--max-time",
+          "180",
+          "--output",
+          "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/codex-x86_64-apple-darwin.tar.gz",
+          "--write-out",
+          "%{http_code} %{size_download} %{time_total}\\n",
+          "https://github.com/openai/codex/releases/download/rust-v0.162.0/codex-x86_64-apple-darwin.tar.gz"
+        ],
+        "exitCode": 28,
+        "failure": "curl operation timeout; official asset incomplete",
+        "url": "https://github.com/openai/codex/releases/download/rust-v0.162.0/codex-x86_64-apple-darwin.tar.gz",
+        "output": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/codex-x86_64-apple-darwin.tar.gz",
+        "receivedBytes": 1871562,
+        "receivedSha256": "1dafb7072b2f545b26447f05e466ee09626c1e487d581eb4f5ef2107e388e03b",
+        "expectedBytes": 106843279,
+        "expectedSha256": "3caf648404cb5d2917f6e88f0addb3533584f8b05a1dd5835dd76f1c43eeb26b",
+        "stdout": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/download.stdout",
+        "stdoutSha256": "fdffa46054ecc6c43166de32d1874b616221baf57d2257e1f92fb7deb3117bd2",
+        "stdoutMetrics": "200 1871562 180.035942",
+        "stderr": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/download.stderr",
+        "stderrSha256": "8cde772549675b031e13031cb0c7297fda2f92e3af5c75089bc5a1009386bb01",
+        "canExecute": false
+      },
+      {
+        "label": "download-api",
+        "command": [
+          "curl",
+          "--fail",
+          "--location",
+          "--proto",
+          "=https",
+          "--proto-redir",
+          "=https",
+          "--connect-timeout",
+          "20",
+          "--max-time",
+          "120",
+          "--header",
+          "Accept: application/octet-stream",
+          "--header",
+          "X-GitHub-Api-Version: 2022-11-28",
+          "--output",
+          "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/codex-x86_64-apple-darwin.api.tar.gz",
+          "--write-out",
+          "%{http_code} %{size_download} %{time_total}\\n",
+          "https://api.github.com/repos/openai/codex/releases/assets/622695697"
+        ],
+        "exitCode": 28,
+        "failure": "curl operation timeout; official asset incomplete",
+        "url": "https://api.github.com/repos/openai/codex/releases/assets/622695697",
+        "output": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/codex-x86_64-apple-darwin.api.tar.gz",
+        "receivedBytes": 2195684,
+        "receivedSha256": "11e5182b0baf8aab0faa0a42f76ad2d5442aaa0b59ed728e3be798e4f5d67ea8",
+        "expectedBytes": 106843279,
+        "expectedSha256": "3caf648404cb5d2917f6e88f0addb3533584f8b05a1dd5835dd76f1c43eeb26b",
+        "stdout": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/download-api.stdout",
+        "stdoutSha256": "521f5da5bcabf220d05075b5891c6f8e95be1eb5e7fbe27eb4948a3332e28a39",
+        "stdoutMetrics": "200 2195684 120.280032",
+        "stderr": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/download-api.stderr",
+        "stderrSha256": "31846cf935a1c7851bf2cd72877df288a5c0951154d01411ef8a98f5eb288453",
+        "canExecute": false
+      }
+    ]
+  },
+  "archiveSha256": "1dafb7072b2f545b26447f05e466ee09626c1e487d581eb4f5ef2107e388e03b",
+  "archiveBytes": 1871562,
+  "failure": "downloaded asset does not match fixed official release size/digest",
+  "endedAtUtc": "2026-10-13T08:59:24.919824+00:00",
+  "verificationCommand": [
+    "python3",
+    "scripts/analysis/public_cli_protocol.py"
+  ],
+  "verificationExitCode": 1,
+  "scriptSha256": "6316bfbac8398b0fc148dc91190cb34dd1fc394a7efca37dbbfc1360992894c7",
+  "cliExecuted": false,
+  "schemaGenerationAttempted": false,
+  "allowedArgumentsIfVerified": [
+    [
+      "--version"
+    ],
+    [
+      "app-server",
+      "generate-json-schema",
+      "--out",
+      "<independent stable directory>"
+    ],
+    [
+      "app-server",
+      "generate-json-schema",
+      "--out",
+      "<independent experimental directory>",
+      "--experimental"
+    ]
+  ],
+  "verificationStdout": {
+    "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/verify.stdout",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "verificationStderr": {
+    "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli/verify.stderr",
+    "sha256": "de173623e330f955a6a3079a147c23c8d3a00cbf4ab3d80f6423d047953b16fb",
+    "bytes": 445
+  }
+}

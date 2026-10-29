@@ -1,0 +1,93 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "observedAtUtc": "2026-10-13T09:18:27.409697+00:00",
+  "runName": "public-npm-manifest-snapshot",
+  "method": "actual-public-npm-app-server-stdio-owned-command-fixture",
+  "command": [
+    "/Users/nallylin/Documents/code/ccodex/.analysis-local/public-cli-npm/codex-26.1007.30912-c5b273322a83/0.162.0-darwin-x64/bin/codex",
+    "-c",
+    "cli_auth_credentials_store=\"file\"",
+    "-c",
+    "features.secret_auth_storage=false",
+    "app-server",
+    "--listen",
+    "stdio://"
+  ],
+  "cliSource": "public-npm",
+  "cliSha256": "fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d",
+  "codexHome": "/private/tmp/ccodex-behavior/command-runs/public-npm-manifest-snapshot/codex-home",
+  "userHome": "/private/tmp/ccodex-behavior/command-runs/public-npm-manifest-snapshot/user-home",
+  "environmentPolicy": "allowlist-with-dedicated-home-and-codex-home",
+  "cliProvenance": {
+    "path": "raw/command-protocol/public-npm-manifest-snapshot/cli-generation.json",
+    "originalPath": "public-protocol-generation-npm.json",
+    "sha256": "8eb9383db2c1a4540300b69a14e33ea7557167cf4182309875082a497749ccc6"
+  },
+  "runner": {
+    "path": "scripts/analysis/check_command_protocol.py",
+    "snapshotPath": "raw/command-protocol/public-npm-manifest-snapshot/runner-source.py",
+    "sha256": "42624794fc93cd1131adc5f4c8edbca704dac96aebbeee6cb4e1731870e54a05"
+  },
+  "serverPid": 94199,
+  "serverExitCode": 0,
+  "checks": [
+    {
+      "id": "initialize",
+      "passed": true
+    },
+    {
+      "id": "command-completion",
+      "passed": true,
+      "observed": {
+        "exitCode": 0,
+        "stdout": "ccodex-command-fixture\n",
+        "stderr": ""
+      },
+      "responseHasError": false
+    },
+    {
+      "id": "command-nonzero-exit",
+      "passed": true,
+      "observed": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": ""
+      },
+      "responseHasError": false
+    },
+    {
+      "id": "command-input-validation",
+      "passed": true,
+      "observedErrorCode": -32600
+    },
+    {
+      "id": "command-stream-and-terminate",
+      "passed": true,
+      "elapsedSeconds": 0.06520399200000027,
+      "terminationResponse": {
+        "id": 6,
+        "result": {}
+      },
+      "streamOutputMatchesFixture": true,
+      "finalResponse": {
+        "id": 5,
+        "result": {
+          "exitCode": 137,
+          "stdout": "",
+          "stderr": ""
+        }
+      }
+    }
+  ],
+  "error": null,
+  "rawObservations": {
+    "path": "raw/command-protocol/public-npm-manifest-snapshot/observations.jsonl",
+    "sha256": "66dc19159bed3f75c18423b8c353044cc86c5533f8cdd27b8ba153986d97b2c1"
+  },
+  "limitations": [
+    "No desktop UI, terminal PTY, model turn, approval or thread recovery was tested.",
+    "These five command contracts do not establish compatibility of the complete backend.",
+    "File credential configuration was supplied; prevention of native credential migration was not established.",
+    "Only owned printf/false/sleep command fixtures were requested."
+  ]
+}

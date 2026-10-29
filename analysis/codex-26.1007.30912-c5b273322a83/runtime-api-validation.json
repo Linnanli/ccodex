@@ -1,0 +1,90 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "archiveSha256": "c5b273322a833ce5165429d468021cc6289a11cc68d075b80ae773bd7fb6731f",
+  "observedAtUtc": "2026-10-13T11:27:08.922866+00:00",
+  "action": "read-only-frozen-runtime-api-metadata-validation",
+  "method": "independent-Python-reference-count-inventory-source-and-byte-span-SHA256-validation",
+  "status": "passed",
+  "errors": [],
+  "observations": {
+    "evidenceRecords": 11512,
+    "uniqueEvidenceIds": 11512,
+    "fullyHashedSourceFilesIncludingAuxiliary": 12,
+    "sourceAndByteSpansRehashed": 11512,
+    "referenceOccurrencesChecked": {
+      "RUNTIME-REVIEW": 18,
+      "RUNTIME-API": 22302,
+      "DOC": 84,
+      "RUNTIME-SURFACE": 229,
+      "RUNTIME-CALL": 2484
+    },
+    "scope": {
+      "selection": "Fixed 10 entry/main/bootstrap/preload/network files; mixed published bundles, not recovered modules or full app coverage",
+      "selectedSourceFiles": 10,
+      "parsedSourceFiles": 10,
+      "auxiliaryHelperFiles": 1,
+      "totalCoreBytes": 5379973,
+      "allCallAndConstructorExpressions": 90246,
+      "sourceConfirmedElectronDerivedCallSites": 1242,
+      "electronDerivedMemberReferences": 241,
+      "unresolvedNameOnlyCandidateCalls": 4293,
+      "unknownCandidateSelection": "Unknown member call with method name overlapping confirmed API tails or fixed window/IPC names; possible non-runtime false positives. Not exhaustive unknown receiver denominator.",
+      "distinctElectronDerivedCalleePaths": 229,
+      "derivedJavaScriptBindCalls": 6,
+      "resolutionBudgetHits": 34,
+      "supplementaryReviewedFunctionOrObjectAnchors": 11,
+      "supplementaryReviewedSchemaOrNameBindings": 3,
+      "documentReferences": 23,
+      "evidenceCount": 11512
+    },
+    "documentationStatuses": {
+      "not-found-in-current-public-reference": 5,
+      "unknown; per-member public documentation not reviewed": 176,
+      "documented-public-surface": 47,
+      "documented-public-experimental-surface": 1
+    }
+  },
+  "artifacts": [
+    {
+      "path": ".analysis-local/runtime-api-work/runtime-api-contracts.json",
+      "bytes": 3913933,
+      "sha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363"
+    },
+    {
+      "path": ".analysis-local/runtime-api-work/evidence.jsonl",
+      "bytes": 9171882,
+      "sha256": "d79a1af263047b4f5146df99455f1579ae696d54daa41ca0b2cc1a68fe1723b5"
+    },
+    {
+      "path": ".analysis-local/runtime-api-work/summary.md",
+      "bytes": 5598,
+      "sha256": "d1f2130a0932cab2021ddb42a910b3c98dcabea4e901f81183616fc8dfbb4c73"
+    },
+    {
+      "path": ".analysis-local/runtime-api-work/runtime-api-static.json",
+      "bytes": 3983960,
+      "sha256": "ae038799f51d13cb1ab61a104cb3d02b870dda91e6d96ea9daa1aac94eff2910"
+    },
+    {
+      "path": ".analysis-local/runtime-api-work/scan-runtime-api.cjs",
+      "bytes": 30539,
+      "sha256": "fd1862325d6afce63a3ff0b8ad7dcd73819806d726d0d909193bb0a684d81dd1"
+    },
+    {
+      "path": ".analysis-local/runtime-api-work/review-runtime-api.cjs",
+      "bytes": 31195,
+      "sha256": "c61e44f6a6375f2b786ffa55a109b3774b9971a3b4d775080ec13b99cd761a1d"
+    },
+    {
+      "path": ".analysis-local/runtime-api-work/validate-runtime-api.py",
+      "bytes": 8685,
+      "sha256": "8cb77a1eacc32011538b1a7744e0e66f9a69ced6647021459c4109d0512c7f75"
+    }
+  ],
+  "limitations": [
+    "Metadata/reference/hash consistency only; no target source evaluated, UI/model execution, personal history or credentials read.",
+    "Hash agreement does not prove static receiver inference soundness, runtime equivalence, ABI, rebuildability or behavior coverage.",
+    "The fixed ten-file denominator and 4,293 name-only unknown candidates are not whole-application or first-party implementation coverage.",
+    "The independent agent reviewed three representative source spans and resolver-budget behavior; that sample is not an exhaustive semantic audit."
+  ]
+}

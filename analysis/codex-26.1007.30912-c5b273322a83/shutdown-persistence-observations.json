@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "node": "v22.23.2",
+  "observationCommands": 1,
+  "isolatedScenarios": 17,
+  "cases": [
+    {
+      "id": "Q01",
+      "name": "initial allSettled has no enclosing five-second deadline",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "prevent.will-quit",
+        "hotkey.dispose",
+        "dictation.dispose",
+        "global.flush",
+        "settings.flush",
+        "micro.stop",
+        "trace.flush",
+        "context.dispose",
+        "outer.dispose",
+        "app.quit"
+      ],
+      "scheduledTimers": [
+        {
+          "id": 1,
+          "delay": 5000,
+          "at": 5000
+        }
+      ],
+      "initialWaitAtLeastSyntheticMs": 5000
+    },
+    {
+      "id": "Q02",
+      "name": "skip branch still flushes global state and reentry avoids duplicate drain",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "prevent.will-quit",
+        "hotkey.dispose",
+        "dictation.dispose",
+        "global.flush",
+        "micro.stop",
+        "trace.flush",
+        "context.dispose",
+        "outer.dispose",
+        "app.quit"
+      ],
+      "secondPrevented": false
+    },
+    {
+      "id": "Q03",
+      "name": "async group and context failures still reach final quit",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "prevent.will-quit",
+        "hotkey.dispose",
+        "dictation.dispose",
+        "global.flush",
+        "settings.flush",
+        "micro.stop",
+        "trace.flush",
+        "context.dispose",
+        "outer.dispose",
+        "app.quit"
+      ]
+    },
+    {
+      "id": "Q04",
+      "name": "sync flush error escapes after reentry latch and skips later group calls",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "prevent.will-quit",
+        "hotkey.dispose",
+        "dictation.dispose",
+        "global.flush"
+      ],
+      "error": "synthetic synchronous flush"
+    },
+    {
+      "id": "Q05",
+      "name": "u7 timeout fulfills while callback remains able to complete later",
+      "passed": true,
+      "timeoutFulfilledBeforeCallbackCompletion": true,
+      "lateCallbackCompletion": true
+    },
+    {
+      "id": "Q06",
+      "name": "u7 sync callback throw rejects and leaves its timer pending",
+      "passed": true,
+      "error": "synthetic sync context",
+      "pendingTimersBeforeAdvance": 1
+    },
+    {
+      "id": "Q07",
+      "name": "u7 nonthenable result rejects rather than running fulfillment continuation",
+      "passed": true,
+      "rejectedType": "TypeError",
+      "pendingTimers": 1
+    },
+    {
+      "id": "Q08",
+      "name": "ZXe selects twelve-second timer",
+      "passed": true,
+      "timer": {
+        "id": 1,
+        "delay": 12000,
+        "at": 0
+      },
+      "fulfilledAfterSyntheticMs": 12000
+    },
+    {
+      "id": "Q09",
+      "name": "XXe disposes managers then limits context wait to five seconds",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "hotkey.dispose",
+        "dictation.dispose",
+        "separate.context",
+        "outer.dispose"
+      ],
+      "timer": {
+        "id": 1,
+        "delay": 5000,
+        "at": 0
+      }
+    },
+    {
+      "id": "Q10",
+      "name": "privacy query substitute prevents quit before activity/dialog checks",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "prevent.before-quit",
+        "menu.refresh"
+      ]
+    },
+    {
+      "id": "Q11",
+      "name": "cancel dialog keeps activation enabled",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "dialog",
+        "prevent.before-quit",
+        "menu.refresh"
+      ]
+    },
+    {
+      "id": "Q12",
+      "name": "approved dialog marks quit and suppresses activation",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "dialog",
+        "markQuitApproved",
+        "markAppQuitting"
+      ]
+    },
+    {
+      "id": "Q13",
+      "name": "pending noncreated worktree prompts while failed/created entries do not",
+      "passed": true,
+      "promptTrace": [
+        "native-observer-substitute",
+        "dialog",
+        "prevent.before-quit"
+      ],
+      "excludedTrace": [
+        "native-observer-substitute",
+        "markAppQuitting"
+      ]
+    },
+    {
+      "id": "Q14",
+      "name": "facade finally flushes logger after host rejection and skips session",
+      "passed": true,
+      "trace": [
+        "native-observer-substitute",
+        "network.unsubscribe",
+        "host.dispose",
+        "logger.flush"
+      ]
+    },
+    {
+      "id": "Q15",
+      "name": "facade pretry failure skips logger; successful sequence awaits session",
+      "passed": true,
+      "failureTrace": [
+        "native-observer-substitute",
+        "network.unsubscribe"
+      ],
+      "successTrace": [
+        "native-observer-substitute",
+        "network.unsubscribe",
+        "host.dispose",
+        "session.dispose",
+        "logger.flush"
+      ]
+    },
+    {
+      "id": "Q16",
+      "name": "host dispose completes ordered registry and IPC cleanup",
+      "passed": true,
+      "trace": [
+        "remote.dispose",
+        "archives.stop",
+        "hosts.dispose",
+        "assignments.flush",
+        "hostIds",
+        "tabs.dispose",
+        "messages.dispose",
+        "terminal.dispose",
+        "disposables.dispose",
+        "connection.dispose",
+        "connection.remove",
+        "execution.remove",
+        "windows.clear",
+        "windowEvents.dispose",
+        "views.clear",
+        "downloads.dispose",
+        "ready.clear",
+        "ipc.dispose",
+        "ipc.clear"
+      ]
+    },
+    {
+      "id": "Q17",
+      "name": "host assignment or terminal failure cuts off later cleanup",
+      "passed": true,
+      "assignmentFailureTrace": [
+        "remote.dispose",
+        "archives.stop",
+        "hosts.dispose",
+        "assignments.flush"
+      ],
+      "terminalFailureTrace": [
+        "remote.dispose",
+        "archives.stop",
+        "hosts.dispose",
+        "assignments.flush",
+        "hostIds",
+        "tabs.dispose",
+        "messages.dispose",
+        "terminal.dispose"
+      ]
+    }
+  ],
+  "loadedSourceUnits": [
+    {
+      "name": "eZe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3387428,
+        "endExclusive": 3389584
+      },
+      "utf16Range": {
+        "start": 3382558,
+        "endExclusive": 3384714
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "f271e072265bdb215edc17461cae20ed90d8017a6c31ac6fc5fc7522ff92357b",
+      "bytes": 2156,
+      "sha256": "f271e072265bdb215edc17461cae20ed90d8017a6c31ac6fc5fc7522ff92357b",
+      "completeAstNode": true,
+      "localSourceFilename": "001--main-CqEoQDOU.js--eZe.txt"
+    },
+    {
+      "name": "u7",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3379291,
+        "endExclusive": 3379397
+      },
+      "utf16Range": {
+        "start": 3374421,
+        "endExclusive": 3374527
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "96b27b4bc002c5ab15d60dffd9b5196fc60f660a2ae56750461e74f78b894170",
+      "bytes": 106,
+      "sha256": "96b27b4bc002c5ab15d60dffd9b5196fc60f660a2ae56750461e74f78b894170",
+      "completeAstNode": true,
+      "localSourceFilename": "002--main-CqEoQDOU.js--u7.txt"
+    },
+    {
+      "name": "XXe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3379081,
+        "endExclusive": 3379258
+      },
+      "utf16Range": {
+        "start": 3374211,
+        "endExclusive": 3374388
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "625af0575fc14c68244cd1d66753b06e730fb17411c4abb4f7adae59fd287ade",
+      "bytes": 177,
+      "sha256": "625af0575fc14c68244cd1d66753b06e730fb17411c4abb4f7adae59fd287ade",
+      "completeAstNode": true,
+      "localSourceFilename": "003--main-CqEoQDOU.js--XXe.txt"
+    },
+    {
+      "name": "ZXe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3379258,
+        "endExclusive": 3379291
+      },
+      "utf16Range": {
+        "start": 3374388,
+        "endExclusive": 3374421
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "a23ed98c37c5f98e1162daa34e320a9ad49aeb472c6c7ff7d22135170dc01304",
+      "bytes": 33,
+      "sha256": "a23ed98c37c5f98e1162daa34e320a9ad49aeb472c6c7ff7d22135170dc01304",
+      "completeAstNode": true,
+      "localSourceFilename": "004--main-CqEoQDOU.js--ZXe.txt"
+    },
+    {
+      "name": "JXe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3378986,
+        "endExclusive": 3378994
+      },
+      "utf16Range": {
+        "start": 3374116,
+        "endExclusive": 3374124
+      },
+      "nodeType": "VariableDeclarator",
+      "spanHash": "c3d2bc3ea8c31d01916e45236fe1aa1272d66f4eae364f21dc1706b5284a0b82",
+      "bytes": 8,
+      "sha256": "c3d2bc3ea8c31d01916e45236fe1aa1272d66f4eae364f21dc1706b5284a0b82",
+      "completeAstNode": true,
+      "localSourceFilename": "005--main-CqEoQDOU.js--JXe.txt"
+    },
+    {
+      "name": "l7",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3378995,
+        "endExclusive": 3379001
+      },
+      "utf16Range": {
+        "start": 3374125,
+        "endExclusive": 3374131
+      },
+      "nodeType": "VariableDeclarator",
+      "spanHash": "6a98da705757e6216051f7d759e1a38a797b55b4edff7610b8b1aa3204e56c08",
+      "bytes": 6,
+      "sha256": "6a98da705757e6216051f7d759e1a38a797b55b4edff7610b8b1aa3204e56c08",
+      "completeAstNode": true,
+      "localSourceFilename": "006--main-CqEoQDOU.js--l7.txt"
+    },
+    {
+      "name": "facadeFlush",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3366575,
+        "endExclusive": 3366658
+      },
+      "utf16Range": {
+        "start": 3361707,
+        "endExclusive": 3361790
+      },
+      "nodeType": "ArrowFunctionExpression",
+      "spanHash": "3daf28349148303520c7b44813a8a14fa73bcaf27c0feea352ac3d28e2c55ca0",
+      "bytes": 83,
+      "sha256": "3daf28349148303520c7b44813a8a14fa73bcaf27c0feea352ac3d28e2c55ca0",
+      "completeAstNode": true,
+      "localSourceFilename": "013--main-CqEoQDOU.js--facadeFlush.txt"
+    },
+    {
+      "name": "hostDispose",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3349471,
+        "endExclusive": 3350310
+      },
+      "utf16Range": {
+        "start": 3344603,
+        "endExclusive": 3345442
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "144da9075d6d3596e6183a1a26013c70b44665fe1215661099de0c5022df5402",
+      "bytes": 839,
+      "sha256": "144da9075d6d3596e6183a1a26013c70b44665fe1215661099de0c5022df5402",
+      "completeAstNode": true,
+      "localSourceFilename": "017--main-CqEoQDOU.js--hostDispose.txt"
+    }
+  ],
+  "loadedSourceBytes": 3408,
+  "substitutes": [
+    "Explicit fake timer scheduler (no elapsed-time/platform claim)",
+    "Electron app/dialog/events/windows replaced with synthetic objects; handlers invoked directly",
+    "globalState/settingsStore/backend/tracing/context/logger are controlled callbacks/Promises",
+    "jXe, hd, Poe, tZe, i.Ln and i18n return controlled values; no native module loaded",
+    "host dispose is selected method in an otherwise empty synthetic class with supplied fields"
+  ],
+  "realLocalFileIo": false,
+  "originalClientRunsAdded": 0,
+  "originalStorageInstanceRunsAdded": 0,
+  "nativeModuleLoads": 0,
+  "modelSubmissionsAdded": 0,
+  "targetRuntimeParityEstablished": false,
+  "fullAnalysisCompleted": false
+}

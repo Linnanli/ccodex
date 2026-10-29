@@ -1,0 +1,2110 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T18:00:07.231032+00:00",
+  "scope": "Fixed 12 retained associations and 3 overlap reviews from feature v27; no new feature discovery.",
+  "status": "bounded-source-relation-decisions; analysis-in-progress",
+  "plan": {
+    "path": "docs/reverse-engineering/analysis-plan.md",
+    "bytes": 16461,
+    "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+  },
+  "records": [
+    {
+      "id": "AO-A01",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/0"
+      },
+      "operationId": "operation:general:GENERAL-OP-017",
+      "classification": "read-only-facet; business-parent-unresolved",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "Ks 是 General 的只读 Managed 更新策略行，只有 p(wr) 的显示条件，没有更新动作或偏好写入。把呈现交给 T01；保存的证据不足以将其归到某个已有更新业务功能，不能把它算作独立用户操作。",
+      "featureIds": [],
+      "parentFeatureStatus": "exact-unresolved-business-parent",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+          "bytes": 316778,
+          "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+          "jsonPointer": "/operationContracts/16"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/general-settings-65e65871cdcd.js",
+          "sourceHash": "f33572c6e595282128f80cfcbfc255d3edd6ed63613665e96b15251664d89982",
+          "byteRange": {
+            "start": 109528,
+            "endExclusive": 110442
+          },
+          "spanHash": "768831d5995232495eb8022933f34b9d719cb6d570a8e4ae4cc3d57c0d834e6f",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+            "bytes": 316778,
+            "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+            "jsonPointer": "/operationContracts/16/sourceCoordinates"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T01",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/0"
+          },
+          "relationship": "只读更新策略行的呈现与条件",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/settings/general/managed-update-policy.tsx"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "准确未闭合边界是 wr 所代表策略的实际 provider 与更新业务消费者；不以行标题推定父功能。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A02",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/1"
+      },
+      "operationId": "operation:general:GENERAL-OP-031",
+      "classification": "read-only-facet; business-parent-unresolved",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "Eo 接收 access 并显示摘要/tooltip；Co/wo/To 的模型或账户读取与显示分流不构成启用动作。呈现归 T01，保留 access 输入边界；没有证据证明它就是 FSC-0280 或其他账户能力功能。",
+      "featureIds": [],
+      "parentFeatureStatus": "exact-unresolved-business-parent",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+          "bytes": 316778,
+          "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+          "jsonPointer": "/operationContracts/30"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/general-settings-65e65871cdcd.js",
+          "sourceHash": "f33572c6e595282128f80cfcbfc255d3edd6ed63613665e96b15251664d89982",
+          "byteRange": {
+            "start": 72969,
+            "endExclusive": 76237
+          },
+          "spanHash": "bdc06c4179867caf451ef6e96dc8b66aec979732a719ba2b6c0c5ce93178c345",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+            "bytes": 316778,
+            "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+            "jsonPointer": "/operationContracts/30/sourceCoordinates"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T01",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/0"
+          },
+          "relationship": "访问摘要与 tooltip 的呈现",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/settings/general/access-summary.tsx"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "实际 access provider、账户匹配结果及其业务父功能未闭合；不从 Daybreak 标签推定共享模式或权益。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A03",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/2"
+      },
+      "operationId": "operation:general:GENERAL-OP-032",
+      "classification": "composite-split; project-action-and-connection-navigation",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "保留 FSC-0045 为 connected host 的远程建项目动作；非 connected host 的 ps 链接目标精确为 /settings/connections/wsl，导航职责接 T19。无 host 只是安装说明。三种分支不合并成一个创建操作，链接到页面不证明页面内连接操作已执行。",
+      "featureIds": [
+        "FSC-0045"
+      ],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/6"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/general-settings-65e65871cdcd.js",
+          "sourceHash": "f33572c6e595282128f80cfcbfc255d3edd6ed63613665e96b15251664d89982",
+          "byteRange": {
+            "start": 90283,
+            "endExclusive": 92062
+          },
+          "spanHash": "35c725147e771b0637ad35afcc64344744445418380dffefa61c08507a7b04d4",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+            "bytes": 60672,
+            "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+            "jsonPointer": "/sourceUnits/wsl-card"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/general-settings-65e65871cdcd.js",
+          "sourceHash": "f33572c6e595282128f80cfcbfc255d3edd6ed63613665e96b15251664d89982",
+          "byteRange": {
+            "start": 92062,
+            "endExclusive": 92199
+          },
+          "spanHash": "42e05672e4522ef46b8e10c4131f8aa51a787bcee27da00aba3e93a0c0788c91",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+            "bytes": 60672,
+            "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+            "jsonPointer": "/sourceUnits/connections-link"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882545,
+            "endExclusive": 3882672
+          },
+          "spanHash": "36139ea72ce2beead772f4c8e80bc82834012c5d3009da74e699f97f36c393a0",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+            "bytes": 60672,
+            "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+            "jsonPointer": "/sourceUnits/open-modal-sender"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T01",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/0"
+          },
+          "relationship": "WSL 提示卡与条件",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "T05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/4"
+          },
+          "relationship": "FSC-0045 远程建项目入口",
+          "status": "existing-feature-task-membership",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "T19",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/18"
+          },
+          "relationship": "接收 /settings/connections/wsl 导航的页面职责",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-BOUNDARY-STRUCT-RWC-PROJECTS",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/6"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/projects/open-remote-project.ts",
+          "apps/desktop/src/renderer/features/connections/wsl-entry.tsx"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "Wuc 的动态门槛、消息真实送达、ht provider 和保存/重开未验证；没有把导航等同连接成功。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A04",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/3"
+      },
+      "operationId": "operation:ttc:TTC-OP-thread-start",
+      "classification": "supporting-mcp-auxiliary-session; distinct-from-composer-start",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "旧 TTC-OP-thread-start 与 MCP queryFn 是同一冻结范围，带 ephemeral:true、read-only 权限及 mcp_extension_host 来源。作为按 host/account/user 管理的 MCP 辅助会话保留；不关联为普通 composer 的 FSC-0048，也不增加用户功能。",
+      "featureIds": [],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+          "jsonPointer": "/oldVariantRelationship"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+          "jsonPointer": "/facts/12"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+          "jsonPointer": "/facts/13"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+          "jsonPointer": "/facts/14"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1396493,
+            "endExclusive": 1397478
+          },
+          "spanHash": "647834eb2b0a6a8d245bb0193be7ff8d934b94311c6e2f38216987d1d561f36e",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+            "bytes": 40523,
+            "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+            "jsonPointer": "/sourceUnits/initial-01~1exact-1396493-1397478"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T16",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/15"
+          },
+          "relationship": "MCP 辅助会话生命周期的设计归属；完整 MCP 消费者未穷尽",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "请求、订阅与退休接口支撑",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/mcp/auxiliary-session.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "pending requests/drain、完整 MCP 消费者、实际 ephemeral 与 unsubscribe 后效仍未闭合；本地 retire/abort 检查不证明服务端取消。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A05",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/4"
+      },
+      "operationId": "operation:ttc:TTC-OP-thread-resume",
+      "classification": "supporting-raw-resume; distinct-from-page-hydration",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "用较新的 resume-provider-resolution 纠正旧 backlog 的 unresolved-user-entry：raw resumeThread 已有环境恢复 draft 调用者，参数、返回和状态更新与页面 resumeConversation/hydration 不同。保留为支撑，旧操作排队为0，不新建用户功能或把两接口合并。",
+      "featureIds": [],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/resume-provider-resolution.json",
+          "bytes": 189103,
+          "sha256": "3912752f825ee59309dbb29a4f1a34868fa6ce1dcf6bc2d13d80af7afffe41b5",
+          "jsonPointer": "/operationDisposition"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/resume-provider-resolution.json",
+          "bytes": 189103,
+          "sha256": "3912752f825ee59309dbb29a4f1a34868fa6ce1dcf6bc2d13d80af7afffe41b5",
+          "jsonPointer": "/sourceFacts/5"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/resume-provider-resolution.json",
+          "bytes": 189103,
+          "sha256": "3912752f825ee59309dbb29a4f1a34868fa6ce1dcf6bc2d13d80af7afffe41b5",
+          "jsonPointer": "/sourceFacts/10"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/resume-provider-resolution.json",
+          "bytes": 189103,
+          "sha256": "3912752f825ee59309dbb29a4f1a34868fa6ce1dcf6bc2d13d80af7afffe41b5",
+          "jsonPointer": "/sourceFacts/11"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "byteRange": {
+            "start": 975470,
+            "endExclusive": 975641
+          },
+          "spanHash": "292ed2087af65abbe87f4d7b02748b270dca0e698fdd681ec8b05948b21bab1d",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/resume-provider-resolution.json",
+            "bytes": 189103,
+            "sha256": "3912752f825ee59309dbb29a4f1a34868fa6ce1dcf6bc2d13d80af7afffe41b5",
+            "jsonPointer": "/sourceUnits/manager-focus-01-class-method-kM-resumeThread"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/publish-actions-c0626be2877a.js",
+          "sourceHash": "5690b62643c1172db5396b0e41fef8022af6b97941fe1580248b5d138770243b",
+          "byteRange": {
+            "start": 18414,
+            "endExclusive": 22011
+          },
+          "spanHash": "e6261f23129088df4370ec10120abaa52ec7402072c4cac12f37f2fca71b70a4",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/resume-provider-resolution.json",
+            "bytes": 189103,
+            "sha256": "3912752f825ee59309dbb29a4f1a34868fa6ce1dcf6bc2d13d80af7afffe41b5",
+            "jsonPointer": "/sourceUnits/publish-02-binding-It"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T03",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/2"
+          },
+          "relationship": "环境恢复与会话协调的支撑合同；不宣称全部调用者归属",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "保留 raw API 与协调接口的区别",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-PROVIDER-host-rpc-selector",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/25"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        },
+        {
+          "ownerId": "LM-PROVIDER-domain-host-registry",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/26"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "packages/app-server-client/src/raw-thread-api.ts",
+          "apps/desktop/src/renderer/features/tasks/environment-recovery.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "KI 实际选择实例、完整 raw API 消费者、服务/通知/持久化及 draft 展示未验证。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A06",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/5"
+      },
+      "operationId": "operation:ttc:TTC-OP-thread-fork",
+      "classification": "existing-user-operation; scoped-fork-association",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "旧 fork 调用保留到已定义 FSC-0047/T03 的源码关联。header/sidebar 经各自条件选择本地或 worktree 分支，创建身份、同步、placement 与导航分别失败；不能把设置后失败当作未创建并自动重试，也不与普通 start 合并。",
+      "featureIds": [
+        "FSC-0047"
+      ],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+          "bytes": 40095,
+          "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+          "jsonPointer": "/oldVariantQualification"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+          "bytes": 40095,
+          "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+          "jsonPointer": "/facts/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+          "bytes": 40095,
+          "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+          "jsonPointer": "/facts/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+          "bytes": 40095,
+          "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+          "jsonPointer": "/facts/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+          "bytes": 40095,
+          "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+          "jsonPointer": "/implementationDecisions"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/thread-overflow-menu-95b62ccc8390.js",
+          "sourceHash": "e838629b682913c714355f054ed1dc13cacfe711041197a199679d89ff116ef2",
+          "byteRange": {
+            "start": 3717,
+            "endExclusive": 17047
+          },
+          "spanHash": "b714f8f047b9070e9d1db087255808a6b3e6fb21c40d9dbfb1b6e41ec4117b60",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+            "bytes": 40095,
+            "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+            "jsonPointer": "/sourceUnits/header-01~1definition-hn"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5473746,
+            "endExclusive": 5475421
+          },
+          "spanHash": "0986a057923d2a4260a9cc30f0256cc2f93fb883067de12ac706b6575e9ff5e7",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+            "bytes": 40095,
+            "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+            "jsonPointer": "/sourceUnits/actions-01~1definition-Zda"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 5475421,
+            "endExclusive": 5476705
+          },
+          "spanHash": "afd79a980875c887ab8b67336ddcabfdbf452b3b476efeaf1dd7c6f005a1944d",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+            "bytes": 40095,
+            "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401",
+            "jsonPointer": "/sourceUnits/actions-01~1definition-Qda"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T03",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/2"
+          },
+          "relationship": "FSC-0047 分支操作",
+          "status": "existing-feature-task-membership",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "分支请求/身份与协调接口",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-PROVIDER-host-rpc-selector",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/25"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/tasks/fork-thread.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "实际 KI/RPC 到 manager、worktree 创建、client ID 对账、持久 placement/pane 与重启未验收；target-turn 的具体 UI 入口仍未闭合。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A07",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/6"
+      },
+      "operationId": "operation:ttc:TTC-OP-thread-archive",
+      "classification": "supporting-prewarm-cleanup; distinct-from-user-archive",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "旧 archive 箭头作为 Dfn constructor 注入 Pdn 的 archiveThread；discardPrewarmedThread 对 cloud 与其他预热走不同清理，失败被吞掉。职责归 T03 的预热生命周期；明确不把它当成用户 FSC-0046 归档入口。",
+      "featureIds": [],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-archive-entry-contracts.json",
+          "bytes": 57846,
+          "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93",
+          "jsonPointer": "/facts/16"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-archive-entry-contracts.json",
+          "bytes": 57846,
+          "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93",
+          "jsonPointer": "/oldCandidateRoleCorrection"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3202551,
+            "endExclusive": 3213517
+          },
+          "spanHash": "4484d0b39570cccdb711fc2a391ec06b5c270026bc9cf999c8e4b3c6df3f64b1",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-archive-entry-contracts.json",
+            "bytes": 57846,
+            "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93",
+            "jsonPointer": "/sourceUnits/manager-constructor"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3125210,
+            "endExclusive": 3125282
+          },
+          "spanHash": "580ee1148ff46808ff789875ecddb3545057817bc06b4d640d167fa61d461cd6",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-archive-entry-contracts.json",
+            "bytes": 57846,
+            "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93",
+            "jsonPointer": "/sourceUnits/prewarm-constructor"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3127854,
+            "endExclusive": 3128119
+          },
+          "spanHash": "357fdb3799847d46e730dcb4795e40ef30f35f937f6cca3039bcfaa70cf2785d",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-archive-entry-contracts.json",
+            "bytes": 57846,
+            "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93",
+            "jsonPointer": "/sourceUnits/prewarm-discard"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T03",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/2"
+          },
+          "relationship": "预热会话的失效与清理支撑",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "保留清理请求及错误边界",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "packages/app-server-client/src/prewarm-lifecycle.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "实际 prewarm 实例、cloud 标志和启动/失效调度仍未知；吞错不构成服务清理成功证明。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A08",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/7"
+      },
+      "operationId": "operation:notification:1",
+      "classification": "shared-lifecycle-state-support; bounded-lexical-chain",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "thread/started 归 T03 会话/turn 状态支撑。较新的 Program binding 证据确认 Dfn.onNotification→Vnn 及 Vnn→unn/Rnn，替换旧记录中这几条同名边未确认的描述。unn 调 upsertConversationFromThread(thread,live) 并广播；所选 T7t upsert 区分更新元数据与新建 needs_resume 会话，不能视为已完整 hydrate turns。",
+      "featureIds": [],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/reductions/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/routing"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/0"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/remainingUnknowns"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2882573,
+            "endExclusive": 2885852
+          },
+          "spanHash": "1a02013cf22779ac1d343b9f8827c1ffb0a1e8ae305f805a437b712942d1b626",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/1"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2868951,
+            "endExclusive": 2871702
+          },
+          "spanHash": "a60673a68b0c25be3c2819dfd9bdb3c25811f47356dec3069a5c2f015174f635",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/3"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T03",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/2"
+          },
+          "relationship": "thread/started 状态归约与通知消费的设计归属",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "保留通知路由、buffer 与 manager 接口",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-PROVIDER-domain-host-registry",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/26"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "packages/app-server-client/src/notifications/router.ts",
+          "packages/app-server-client/src/notifications/reducers.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "已确认的词法边不覆盖所有 helper、动态 receiver 或初始化。准确剩余边界为 transport ingress/manager 实例、注入的状态/存储、UI 订阅者、实际到达/回放与持久化。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A09",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/8"
+      },
+      "operationId": "operation:notification:2",
+      "classification": "shared-lifecycle-state-support; bounded-lexical-chain",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "turn/started 归 T03 会话/turn 状态支撑。较新的 Program binding 证据确认 Dfn.onNotification→Vnn 及 Vnn→unn/Rnn，替换旧记录中这几条同名边未确认的描述。Rnn 处理不存在的 conversation、匹配 turn/current placeholder、新建 turn 和既有终态保护；不能仅因收到 started 名称就无条件覆盖终态。",
+      "featureIds": [],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/reductions/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/routing"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/remainingUnknowns"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2882573,
+            "endExclusive": 2885852
+          },
+          "spanHash": "1a02013cf22779ac1d343b9f8827c1ffb0a1e8ae305f805a437b712942d1b626",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/1"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2877494,
+            "endExclusive": 2882465
+          },
+          "spanHash": "d278a6e34f0d700ce7571c559dac16639bb68051a5d4276a383e80969409ae52",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/4"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T03",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/2"
+          },
+          "relationship": "turn/started 状态归约与通知消费的设计归属",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "保留通知路由、buffer 与 manager 接口",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-PROVIDER-domain-host-registry",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/26"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "packages/app-server-client/src/notifications/router.ts",
+          "packages/app-server-client/src/notifications/reducers.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "已确认的词法边不覆盖所有 helper、动态 receiver 或初始化。准确剩余边界为 transport ingress/manager 实例、注入的状态/存储、UI 订阅者、实际到达/回放与持久化。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A10",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/9"
+      },
+      "operationId": "operation:notification:3",
+      "classification": "shared-lifecycle-state-support; bounded-lexical-chain",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "turn/completed 归 T03 会话/turn 状态支撑。较新的 Program binding 证据确认 Dfn.onNotification→Vnn 及 Vnn→unn/Rnn，替换旧记录中这几条同名边未确认的描述。Rnn 先检查 drainBefore；unknown conversation、input buffer 清理、turn 状态/时长和 unread/事件有分别的条件。回放回调不证明真实回放顺序或持久化成功。",
+      "featureIds": [],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/reductions/2"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/routing"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/remainingUnknowns"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2882573,
+            "endExclusive": 2885852
+          },
+          "spanHash": "1a02013cf22779ac1d343b9f8827c1ffb0a1e8ae305f805a437b712942d1b626",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/1"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2877494,
+            "endExclusive": 2882465
+          },
+          "spanHash": "d278a6e34f0d700ce7571c559dac16639bb68051a5d4276a383e80969409ae52",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/4"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T03",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/2"
+          },
+          "relationship": "turn/completed 状态归约与通知消费的设计归属",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "保留通知路由、buffer 与 manager 接口",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-PROVIDER-domain-host-registry",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/26"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "packages/app-server-client/src/notifications/router.ts",
+          "packages/app-server-client/src/notifications/reducers.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "已确认的词法边不覆盖所有 helper、动态 receiver 或初始化。准确剩余边界为 transport ingress/manager 实例、注入的状态/存储、UI 订阅者、实际到达/回放与持久化。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A11",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/10"
+      },
+      "operationId": "operation:notification:4",
+      "classification": "shared-lifecycle-state-support; bounded-lexical-chain",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "error 归 T03 会话/turn 状态支撑。较新的 Program binding 证据确认 Dfn.onNotification→Vnn 及 Vnn→unn/Rnn，替换旧记录中这几条同名边未确认的描述。Rnn 的 error 分支添加带 willRetry/codexErrorInfo 的错误项，没有直接写 status=failed；它与 turn/completed 中的 failed 终态保持不同。",
+      "featureIds": [],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/reductions/3"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+          "bytes": 1595020,
+          "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+          "jsonPointer": "/findings/routing"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/4"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/edges/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+          "bytes": 29223,
+          "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a",
+          "jsonPointer": "/remainingUnknowns"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2882573,
+            "endExclusive": 2885852
+          },
+          "spanHash": "1a02013cf22779ac1d343b9f8827c1ffb0a1e8ae305f805a437b712942d1b626",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/1"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2877494,
+            "endExclusive": 2882465
+          },
+          "spanHash": "d278a6e34f0d700ce7571c559dac16639bb68051a5d4276a383e80969409ae52",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+            "bytes": 1595020,
+            "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db",
+            "jsonPointer": "/analyses/4"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T03",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/2"
+          },
+          "relationship": "error 状态归约与通知消费的设计归属",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/4"
+          },
+          "relationship": "保留通知路由、buffer 与 manager 接口",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-PROVIDER-domain-host-registry",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/26"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "packages/app-server-client/src/notifications/router.ts",
+          "packages/app-server-client/src/notifications/reducers.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "已确认的词法边不覆盖所有 helper、动态 receiver 或初始化。准确剩余边界为 transport ingress/manager 实例、注入的状态/存储、UI 订阅者、实际到达/回放与持久化。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-A12",
+      "family": "association",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/retainedAssociationBacklog/11"
+      },
+      "operationId": "operation:project-condition:local-project-capability",
+      "classification": "derived-capability-support; business-parent-unresolved",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "保留五条件派生 predicate：gate 真值、projectChatGptProvisioning/projects 存在、identity 与 local-projects query data 非空。已连接的读取者是 chatgpt-project-settings-dialog 的 c(rt)，不能把它改写成已确认的 Codex 项目动作、禁用条件或仅凭文件名排除。设计上置于 W06 项目能力接口，实际父功能仍未确定。",
+      "featureIds": [],
+      "parentFeatureStatus": "exact-unresolved-business-parent",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+          "bytes": 120060,
+          "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3",
+          "jsonPointer": "/savedSettingsBinding"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+          "bytes": 120060,
+          "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3",
+          "jsonPointer": "/derivedStateContract"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+          "bytes": 120060,
+          "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3",
+          "jsonPointer": "/conditions"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+          "bytes": 120060,
+          "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3",
+          "jsonPointer": "/claims"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/local-folders-section-6f4091076c76.js",
+          "sourceHash": "ab8b8601116f076d36667d66224109db27b325cd2e99a5e080e3e962bbf2cf23",
+          "byteRange": {
+            "start": 457,
+            "endExclusive": 645
+          },
+          "spanHash": "0877102885678a6fc57fb74fd939bac046ce602417287728e2b40f853155913c",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+            "bytes": 120060,
+            "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3",
+            "jsonPointer": "/selectedOriginalRanges/0"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/local-folders-section-6f4091076c76.js",
+          "sourceHash": "ab8b8601116f076d36667d66224109db27b325cd2e99a5e080e3e962bbf2cf23",
+          "byteRange": {
+            "start": 515,
+            "endExclusive": 638
+          },
+          "spanHash": "066553d17c408cfb685366b9050ca1d5b0d7be8c0bbd0ce37494c621a0dfd4c3",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+            "bytes": 120060,
+            "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3",
+            "jsonPointer": "/selectedOriginalRanges/3"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/chatgpt-project-settings-dialog-8af3e5dc9374.js",
+          "sourceHash": "71fced71a57cb1c80bf802544ee8f2ce071788e8f18a8319798ec8434eb9b0d3",
+          "byteRange": {
+            "start": 30624,
+            "endExclusive": 30629
+          },
+          "spanHash": "77ee8746c7f08b85d15ab18fb277840c8380c48dd4f2af8696275b01e15b3cde",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+            "bytes": 120060,
+            "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3",
+            "jsonPointer": "/selectedOriginalRanges/32"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "W06",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/5"
+          },
+          "relationship": "项目能力 predicate 的接口设计；尚无已证实的父用户功能",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-BOUNDARY-STRUCT-RWC-PROJECTS",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/6"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "packages/projects/src/local-project-capability.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "准确未闭合边界是该 s 值的实际 action/visibility 消费者及 Codex/shared 保留用途；当前37-owner中 Project domain 仅为设计协作，不证明消费者身份。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-O01",
+      "family": "overlap",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/crossFeatureOverlapReviews/0"
+      },
+      "operationId": null,
+      "classification": "related-command; distinct-api-contracts-equivalence-unresolved",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "FSC-0023 用注入 hotkeyWindowHotkeys.setHotkey(value/null)，处理 success/error/state；FSC-0068 是 commandId 参数化的 set-codex-command-keybinding，支持 set/append/replace/remove/reset/clear。两处均涉及 hotkeyWindow 和 keymap 缓存协调，但不足以证明 setHotkey 的实现等同该 RPC。保留两个目标与各自错误/捕获合同，抽取缓存协调接口；不按标题合并定义。",
+      "featureIds": [
+        "FSC-0023",
+        "FSC-0068"
+      ],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+          "bytes": 316778,
+          "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+          "jsonPointer": "/operationContracts/24"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-02.json",
+          "bytes": 62468,
+          "sha256": "5ef9ef48b4ddd813bffbd1c302fdcf51fcfd8b2416867e4bc786f20df29b0539",
+          "jsonPointer": "/operationContracts/9"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-02.json",
+          "bytes": 62468,
+          "sha256": "5ef9ef48b4ddd813bffbd1c302fdcf51fcfd8b2416867e4bc786f20df29b0539",
+          "jsonPointer": "/overlapReviews/0"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/general-settings-65e65871cdcd.js",
+          "sourceHash": "f33572c6e595282128f80cfcbfc255d3edd6ed63613665e96b15251664d89982",
+          "byteRange": {
+            "start": 113734,
+            "endExclusive": 116959
+          },
+          "spanHash": "591f77800bc1746246f951f1fb6803070c4d1eca09185850773c9d3b4ca780bf",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+            "bytes": 316778,
+            "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f",
+            "jsonPointer": "/operationContracts/24/sourceCoordinates"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/keyboard-shortcuts-settings-bae6922f5c0c.js",
+          "sourceHash": "473bb495c7b4a9a199b7eb05d15cd233572ef7e136f4a07c4fdb9f41f3cfaa18",
+          "byteRange": {
+            "start": 10430,
+            "endExclusive": 21456
+          },
+          "spanHash": "8b194fe00c9cc4be1f478b2a4c88a4185dcb2f62e959170018915108c4594c76",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/settings-operation-batch-02/analysis/keyboard-01/source-contracts.json",
+            "bytes": 952799,
+            "sha256": "636e08e000de9192f462c686ba1b3bac261c7b85b0ae32fb97803ca4ebfe641a",
+            "jsonPointer": "/units/0"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T01",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/0"
+          },
+          "relationship": "FSC-0023 专用 General 捕获入口",
+          "status": "existing-feature-task-membership",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "T08",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/7"
+          },
+          "relationship": "FSC-0068 参数化命令编辑器",
+          "status": "existing-feature-task-membership",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/shortcuts/command-keybindings.ts",
+          "apps/desktop/src/renderer/features/settings/general/popout-hotkey.tsx"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "准确等价边界为注入的 hotkeyWindowHotkeys.setHotkey provider 与 command RPC 后端注册/保存实现；原生 registration、持久化及冲突行为未观察。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-O02",
+      "family": "overlap",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/crossFeatureOverlapReviews/1"
+      },
+      "operationId": "operation:settings-batch-04:OP-002",
+      "classification": "shared-remote-entry-subset; distinct-local-picker",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "FSC-0105 的 Ut: y!=local 时 qe({hostId:y})，local 时 Ke(scope)。完整 import 把 qe→k$t、Ke→j$t；导出把 k$t→B0r。与 FSC-0045 的 General Kr→k$t→B0r 为同一远程弹窗发送者，两入口均不传 setActive。可共用远程 open helper；FSC-0105 的本地 j$t→z0r→目录 picker 路径仍独立，不能据共享子分支合并整个功能。",
+      "featureIds": [
+        "FSC-0105",
+        "FSC-0045"
+      ],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-04.json",
+          "bytes": 54253,
+          "sha256": "0619c4a1b4913750db834d10d91647f5a6a012fa7c01c152b83eaab8313605e8",
+          "jsonPointer": "/operationContracts/1"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/project-local-delegation-v1.json",
+          "bytes": 22687,
+          "sha256": "ce2e0cdc6dc982ea665107c45da9fdc91453b6156f20510872971e7e35c35151",
+          "jsonPointer": "/facts"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/2"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/6"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/local-environments-settings-content-399f96d641e1.js",
+          "sourceHash": "01a16d0b5a619c7a5ecaa7bc1e070dfbb0bd65f0d0f01ac322bb63d9f5eb3424",
+          "byteRange": {
+            "start": 20170,
+            "endExclusive": 27546
+          },
+          "spanHash": "bc503e9dc620e189b073e7819a17c5559b3782527782e333204ce20b3ed3f553",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/restoration-plan-v7/local-content-01/source-contracts.json",
+            "bytes": 1015781,
+            "sha256": "53f2157d96c6d632117cc0ad4a1e5de0fd703a57dc5dd8efca26356d08716216",
+            "jsonPointer": "/units/0"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/local-environments-settings-content-399f96d641e1.js",
+          "sourceHash": "01a16d0b5a619c7a5ecaa7bc1e070dfbb0bd65f0d0f01ac322bb63d9f5eb3424",
+          "byteRange": {
+            "start": 661,
+            "endExclusive": 1044
+          },
+          "spanHash": "03eb381935eb87e2d9a25307cf6a4f342add6ccda9304237c0c0a460fdfb834c",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/restoration-plan-v7/local-content-01/source-contracts.json",
+            "bytes": 1015781,
+            "sha256": "53f2157d96c6d632117cc0ad4a1e5de0fd703a57dc5dd8efca26356d08716216",
+            "jsonPointer": "/imports/2"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 11408646,
+            "endExclusive": 11408656
+          },
+          "spanHash": "fac250ab7fe44af0b8d7a8f68b378a4be5797a36dd9c19e99e34a8e1c701e67f",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/project-local-delegation-v1.json",
+            "bytes": 22687,
+            "sha256": "ce2e0cdc6dc982ea665107c45da9fdc91453b6156f20510872971e7e35c35151",
+            "jsonPointer": "/selectedSource/6"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882545,
+            "endExclusive": 3882672
+          },
+          "spanHash": "36139ea72ce2beead772f4c8e80bc82834012c5d3009da74e699f97f36c393a0",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/project-local-delegation-v1.json",
+            "bytes": 22687,
+            "sha256": "ce2e0cdc6dc982ea665107c45da9fdc91453b6156f20510872971e7e35c35151",
+            "jsonPointer": "/selectedSource/7"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T14",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/13"
+          },
+          "relationship": "FSC-0105 本地环境双分支入口",
+          "status": "existing-feature-task-membership",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "T05",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/4"
+          },
+          "relationship": "FSC-0045 共用远程发送者",
+          "status": "existing-feature-task-membership",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W06",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/5"
+          },
+          "relationship": "共享项目合同与 main picker 服务",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-BOUNDARY-STRUCT-RWC-PROJECTS",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/6"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/projects/open-remote-project.ts",
+          "apps/desktop/src/main/projects/project-folder-picker.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "共享发送者不证明 Wuc 门槛通过、弹窗挂载、项目创建或相同实际 host。local picker 的注入 manager/provider 与远程 createRemote 仍分开；保存和重开未验证。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    },
+    {
+      "id": "AO-O03",
+      "family": "overlap",
+      "originalItem": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+        "bytes": 2065758,
+        "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899",
+        "jsonPointer": "/crossFeatureOverlapReviews/2"
+      },
+      "operationId": "operation:settings-batch-05:OP-034",
+      "classification": "distinct-ssh-deeplink-workflow; shared-domain-interface-candidate",
+      "status": "source-relation-review-decided; integration-limits-retained",
+      "decision": "FSC-0154 的 ssh/add 深链先检查 name/alias、绝对 project path、connect，再登记/等待连接和登录，可复用缓存项目，createRemote 传 reuseExisting:true，最后选择并导航到 Codex composer。WSL/环境 Add project 经 B0r 打开交互弹窗。保留 SSH 工作流与其 abort/部分完成语义；createRemote 同名接口只支持项目域协作建议，不证明实际 provider 相同或整个操作重复。",
+      "featureIds": [
+        "FSC-0154",
+        "FSC-0045",
+        "FSC-0105"
+      ],
+      "parentFeatureStatus": "bounded-source-relation",
+      "evidenceRefs": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-05.json",
+          "bytes": 101918,
+          "sha256": "ee0e65143be0f4c2c8c344a864a0c7ff9267cb432aacd0d506c07bcf74038bba",
+          "jsonPointer": "/operationContracts/33"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/7"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/10"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+          "bytes": 60672,
+          "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0",
+          "jsonPointer": "/facts/11"
+        }
+      ],
+      "sourceEvidence": [
+        {
+          "sourcePath": "app.asar/webview/assets/remote-connections-settings-5fcec56d1e17.js",
+          "sourceHash": "23cb62811c9fcaffa90e6dee9529badc681c8d73530765a51d2296f3642eb30a",
+          "byteRange": {
+            "start": 132695,
+            "endExclusive": 164611
+          },
+          "spanHash": "d6415c33d589e19ba24c8a7ccdd7780ce6645829e5826d655260a770935afaf8",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/settings-operation-batch-05/connections/source-contracts.json",
+            "bytes": 4807827,
+            "sha256": "0b4331fd8646fb81ff0ec426ddbcc7fc5c1ecd94c815add9881df117240f4fd8",
+            "jsonPointer": "/units/0"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/remote-connections-settings-5fcec56d1e17.js",
+          "sourceHash": "23cb62811c9fcaffa90e6dee9529badc681c8d73530765a51d2296f3642eb30a",
+          "byteRange": {
+            "start": 166598,
+            "endExclusive": 166797
+          },
+          "spanHash": "40e234fc065ea4e788e4487ebb734e9dcf919afbad4f9e5168ee630c4e444dbd",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/settings-operation-batch-05/connections/source-contracts.json",
+            "bytes": 4807827,
+            "sha256": "0b4331fd8646fb81ff0ec426ddbcc7fc5c1ecd94c815add9881df117240f4fd8",
+            "jsonPointer": "/units/14"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/remote-connections-settings-5fcec56d1e17.js",
+          "sourceHash": "23cb62811c9fcaffa90e6dee9529badc681c8d73530765a51d2296f3642eb30a",
+          "byteRange": {
+            "start": 131739,
+            "endExclusive": 132308
+          },
+          "spanHash": "aa24344d9aefc673e72168b45c0b63f3e9c2fe51aa6f359629ac55cb14b8d485",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/settings-operation-batch-05/connections/source-contracts.json",
+            "bytes": 4807827,
+            "sha256": "0b4331fd8646fb81ff0ec426ddbcc7fc5c1ecd94c815add9881df117240f4fd8",
+            "jsonPointer": "/units/39"
+          }
+        },
+        {
+          "sourcePath": "app.asar/webview/assets/remote-connections-settings-5fcec56d1e17.js",
+          "sourceHash": "23cb62811c9fcaffa90e6dee9529badc681c8d73530765a51d2296f3642eb30a",
+          "byteRange": {
+            "start": 132308,
+            "endExclusive": 132622
+          },
+          "spanHash": "4959e8237cc3242ce6380593b52dd671a195ac5f7f657d3dac8261d1afc565d7",
+          "origin": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/settings-operation-batch-05/connections/source-contracts.json",
+            "bytes": 4807827,
+            "sha256": "0b4331fd8646fb81ff0ec426ddbcc7fc5c1ecd94c815add9881df117240f4fd8",
+            "jsonPointer": "/units/79"
+          }
+        }
+      ],
+      "taskJoins": [
+        {
+          "taskId": "T19",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+            "bytes": 1171222,
+            "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512",
+            "jsonPointer": "/taskGroups/18"
+          },
+          "relationship": "FSC-0154 SSH 深链协调",
+          "status": "existing-feature-task-membership",
+          "actualConsumerClosureClaimed": false
+        },
+        {
+          "taskId": "W06",
+          "task": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+            "bytes": 279783,
+            "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624",
+            "jsonPointer": "/foundationTasks/5"
+          },
+          "relationship": "项目服务接口协作，实际 provider 身份待确认",
+          "status": "inferred-design-assignment",
+          "actualConsumerClosureClaimed": false
+        }
+      ],
+      "existingOwnerSupport": [
+        {
+          "ownerId": "LM-BOUNDARY-STRUCT-RWC-PROJECTS",
+          "owner": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+            "bytes": 174049,
+            "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd",
+            "jsonPointer": "/responsibilityOwners/6"
+          },
+          "relationship": "bounded design support; does not assign every original consumer"
+        }
+      ],
+      "maintenanceDecision": {
+        "proposedPaths": [
+          "apps/desktop/src/renderer/features/connections/ssh-add-deeplink.ts",
+          "packages/projects/src/contracts.ts"
+        ],
+        "pathInterpretation": "new maintenance responsibility proposal; original directory is not recovered",
+        "thirdPartyImplementations": "Keep imported framework/query/state helpers as dependencies; preserve first-party inputs, ordering, guards and cleanup."
+      },
+      "remainingBoundaries": [
+        "projects.createRemote 的实际注入对象、连接服务、缓存/持久化和重开未验证。abort 抑制后续工作不回滚已经创建的 host/project。",
+        "实际 host/account/平台/gate 值、模式和产品表现未观察；源码关系决定不充抵实际行为验证。"
+      ],
+      "mode": "unknown",
+      "retainInScope": true,
+      "allConsumersAssigned": false,
+      "actualUiChainObserved": false,
+      "fullIntegrationCompleted": false,
+      "wholeFeatureEquivalenceClaimed": false
+    }
+  ],
+  "counts": {
+    "associationReviewDecisions": 12,
+    "overlapReviewDecisions": 3,
+    "unreviewedItemsInFixed15": 0,
+    "unresolvedBusinessParentItems": 3,
+    "recordsRetainingIntegrationLimits": 15,
+    "sharedRemoteSenderSubsetsConfirmed": 1,
+    "staleResumeRoleCorrected": 1,
+    "notificationAssociationsUsingNewerLexicalEvidence": 4,
+    "newFeatureDefinitions": 0,
+    "featureModesChanged": 0,
+    "newModuleOwnersClaimed": 0,
+    "newReaRuns": 0,
+    "newFullProgramParses": 0,
+    "newModelSubmissions": 0,
+    "newClientLaunches": 0,
+    "newServiceCalls": 0,
+    "newProductScenarioPasses": 0,
+    "newClientImplementation": 0
+  },
+  "interpretation": [
+    "A reviewed source relation is separate from business-parent identity and actual integration. A01/A02/A12 retain exact unresolved business parents.",
+    "Task and proposed path assignments are design decisions, except explicitly verified existing feature/task membership. They do not assert actual provider identity or all-consumer closure.",
+    "The immutable feature v27, task v18 and scenario v24 definitions remain unchanged. Current state supplements old backlog review statuses through this overlay.",
+    "No mode/exclusion conclusion follows from filenames, method names, empty data, shared cache keys or a source fallback.",
+    "Keep first-party ordering, guards, lifecycle and error boundaries; import third-party implementations instead of generating them.",
+    "The fixed source-review queue is decided; all original integration, mode and full-analysis obligations remain visible."
+  ],
+  "nextAction": {
+    "issueId": "SD-02",
+    "question": "Decide the independent runtime/source/build or adapter route for retained Owl capabilities using existing capability and distribution evidence.",
+    "fixedInput": "runtime-distribution.json, runtime-capability-decisions.json, runtime-surface-disposition.json, browser-ownership-contracts.json and existing dependency investigation actions. Reuse existing probes; do not repeat interface existence enumeration.",
+    "closure": "Per retained capability group: identify source/distribution, build/ABI inputs and provider, or an exact missing external prerequisite; distinguish source preparation from full-runtime acceptance. Preserve all retained capability requirements.",
+    "authorization": "Saved/frozen evidence and read-only public primary sources only; no client/model/service invocation or personal data."
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+      "bytes": 2065758,
+      "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-general-page-contracts.json",
+      "bytes": 316778,
+      "sha256": "b428b6776741f7380b873084be1fc92610ccf89991c48fb6784e0c21cb28bd2f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+      "bytes": 1171222,
+      "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/wsl-project-actions-contracts.json",
+      "bytes": 60672,
+      "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/logical-module-ownership-v1.json",
+      "bytes": 174049,
+      "sha256": "b8ef41c8d85f2bcc51d59efc26bae381e84fe9e23f7e952bc7b92e7592f4ebfd"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+      "bytes": 40523,
+      "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-milestones-v9.json",
+      "bytes": 279783,
+      "sha256": "1c9b319bcd5499b8ce375f6371c983f7a5d2f944f4f38028246731055c17a624"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/resume-provider-resolution.json",
+      "bytes": 189103,
+      "sha256": "3912752f825ee59309dbb29a4f1a34868fa6ce1dcf6bc2d13d80af7afffe41b5"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-fork-entry-contracts.json",
+      "bytes": 40095,
+      "sha256": "0e63a27f9420ed23428540da81fd9a4a93b66d31d22d4f7a0d59ab200f55c401"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-archive-entry-contracts.json",
+      "bytes": 57846,
+      "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-state.json",
+      "bytes": 1595020,
+      "sha256": "efc2218d0ef44b71b85ca89296213c3268db944e1a3c7cdc1c06d1f4b16957db"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/turn-notification-bindings.json",
+      "bytes": 29223,
+      "sha256": "a50d659b63b44a1980d8e8c5dabdbbc11888b24c0e71ca9b64077a9e282fa21a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/project-feature-condition.json",
+      "bytes": 120060,
+      "sha256": "94892bc42237f8c7a9d7ebd6a96edb93249eef4726880f8e508361bd768b90b3"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/settings-operation-batch-02/analysis/keyboard-01/source-contracts.json",
+      "bytes": 952799,
+      "sha256": "636e08e000de9192f462c686ba1b3bac261c7b85b0ae32fb97803ca4ebfe641a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-02.json",
+      "bytes": 62468,
+      "sha256": "5ef9ef48b4ddd813bffbd1c302fdcf51fcfd8b2416867e4bc786f20df29b0539"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/restoration-plan-v7/local-content-01/source-contracts.json",
+      "bytes": 1015781,
+      "sha256": "53f2157d96c6d632117cc0ad4a1e5de0fd703a57dc5dd8efca26356d08716216"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/project-local-delegation-v1.json",
+      "bytes": 22687,
+      "sha256": "ce2e0cdc6dc982ea665107c45da9fdc91453b6156f20510872971e7e35c35151"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-04.json",
+      "bytes": 54253,
+      "sha256": "0619c4a1b4913750db834d10d91647f5a6a012fa7c01c152b83eaab8313605e8"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/settings-operation-batch-05/connections/source-contracts.json",
+      "bytes": 4807827,
+      "sha256": "0b4331fd8646fb81ff0ec426ddbcc7fc5c1ecd94c815add9881df117240f4fd8"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-05.json",
+      "bytes": 101918,
+      "sha256": "ee0e65143be0f4c2c8c344a864a0c7ff9267cb432aacd0d506c07bcf74038bba"
+    },
+    {
+      "path": "scripts/analysis/publish_association_overlap_decisions.py",
+      "bytes": 29828,
+      "sha256": "144bebd103bcb397b182b9819e59f0cab44856f3a351a18c7a4b0a2b33cf9d19"
+    }
+  ],
+  "fullAnalysisCompleted": false,
+  "implementationReady": false
+}

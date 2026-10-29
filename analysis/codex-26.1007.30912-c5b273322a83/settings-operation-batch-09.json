@@ -1,0 +1,1363 @@
+{
+  "schemaVersion": "settings-operation-batch/1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T10:29:23.489850+00:00",
+  "scope": "代码审查与云环境：用户操作和服务边界",
+  "entries": [
+    {
+      "slug": "code-review",
+      "page": "Code review",
+      "taskId": "T29",
+      "surfaceId": "SETTINGS-SURFACE-028",
+      "factoryId": "SETTINGS-PAGE-FACTORY-028",
+      "factoryRef": {
+        "path": "settings-registry-contracts.json",
+        "bytes": 1474203,
+        "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+        "jsonPointer": "/pageFactoryContracts/27"
+      },
+      "routeInstanceRef": {
+        "path": "settings-registry-contracts.json",
+        "bytes": 1474203,
+        "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+        "jsonPointer": "/routeInstances/22"
+      },
+      "staticRouteInstance": 22,
+      "accessFamily": null,
+      "availableInReducedHostList": false,
+      "priorDispositionRef": {
+        "path": "settings-section-dispositions.json",
+        "bytes": 174851,
+        "sha256": "af00cf24d11bdcbdfc24bf7eefa381aa67dcdfc64155aa0903904f57650e7f13",
+        "jsonPointer": "/entries/41"
+      },
+      "outerConditionRef": {
+        "path": "settings-feature-entry-conditions.json",
+        "bytes": 200971,
+        "sha256": "2a730bce88aef7dcb04daa9cd7be45e7429bfe244cea46f48898d1f77040a807",
+        "jsonPointer": "/commonEntryCondition"
+      },
+      "visibilityRef": {
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/41"
+      },
+      "sectionRef": {
+        "path": "settings-registry-contracts.json",
+        "bytes": 1474203,
+        "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+        "jsonPointer": "/sectionDataflowContracts/23"
+      },
+      "conditions": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "mode": "unknown",
+      "actualMountObserved": false,
+      "confirmedExclusion": false,
+      "scopeQualification": "Finite local controls and explicitly retained imported/delegated families; not full-page/service/mode closure."
+    },
+    {
+      "slug": "codex-cloud",
+      "page": "Codex Cloud",
+      "taskId": "T30",
+      "surfaceId": "SETTINGS-SURFACE-030",
+      "factoryId": "SETTINGS-PAGE-FACTORY-030",
+      "factoryRef": {
+        "path": "settings-registry-contracts.json",
+        "bytes": 1474203,
+        "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+        "jsonPointer": "/pageFactoryContracts/29"
+      },
+      "routeInstanceRef": {
+        "path": "settings-registry-contracts.json",
+        "bytes": 1474203,
+        "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+        "jsonPointer": "/routeInstances/20"
+      },
+      "staticRouteInstance": 20,
+      "accessFamily": null,
+      "availableInReducedHostList": false,
+      "priorDispositionRef": {
+        "path": "settings-section-dispositions.json",
+        "bytes": 174851,
+        "sha256": "af00cf24d11bdcbdfc24bf7eefa381aa67dcdfc64155aa0903904f57650e7f13",
+        "jsonPointer": "/entries/43"
+      },
+      "outerConditionRef": {
+        "path": "settings-feature-entry-conditions.json",
+        "bytes": 200971,
+        "sha256": "2a730bce88aef7dcb04daa9cd7be45e7429bfe244cea46f48898d1f77040a807",
+        "jsonPointer": "/commonEntryCondition"
+      },
+      "visibilityRef": {
+        "path": "settings-mode-boundary-contracts.json",
+        "bytes": 477440,
+        "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b",
+        "jsonPointer": "/settingsSectionReviews/43"
+      },
+      "sectionRef": {
+        "path": "settings-registry-contracts.json",
+        "bytes": 1474203,
+        "sha256": "47a7f93aabaa6db9c893eac2c2e27deee1210b7898b7b09746ea6fc194736834",
+        "jsonPointer": "/sectionDataflowContracts/21"
+      },
+      "conditions": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "mode": "unknown",
+      "actualMountObserved": false,
+      "confirmedExclusion": false,
+      "scopeQualification": "Finite local controls and explicitly retained imported/delegated families; not full-page/service/mode closure."
+    }
+  ],
+  "operationContracts": [
+    {
+      "operationId": "operation:settings-batch-09:OP-001",
+      "featureId": "FSC-0238",
+      "pageIndex": 0,
+      "name": "切换代码审查设置范围与托管平台",
+      "effect": "Use separate app/cloud access results, app/cloud URL tabs and github/gitlab provider selection. The app surface embeds server code-review/tool pull_requests.settings with app lifetime and the selected host; its tool internals remain delegated.",
+      "failureAndCancellation": "Do not expose a repository detail when cloud access is absent. Access loading/error is separate from an empty repository list; URL provider validation falls back to the supplied provider.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/3"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/17"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-001"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-002",
+      "featureId": "FSC-0239",
+      "pageIndex": 0,
+      "name": "选择桌面审查插件使用的托管实例",
+      "effect": "Choose default or a connected GitHub/GitLab instance through the distinct githubConnection/gitlabConnectorId preference writers; retain the GitHub feature gate and effective-provider selector.",
+      "failureAndCancellation": "Loading or save-pending disables selection. A disappeared saved connection shows unavailable; failed save displays its toast and finally releases pending.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/43"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/91"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/44"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/96"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-001",
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-003",
+      "featureId": "FSC-0240",
+      "pageIndex": 0,
+      "name": "管理 GitHub 应用的仓库访问范围",
+      "effect": "Open the default installation URL or query the selected enterprise connection/link installation URL, then request external-browser navigation.",
+      "failureAndCancellation": "Missing installation URL offers refetch; opening the provider page does not prove repository access changed.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/43"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/92"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-001",
+        "operation:settings-batch-09:SUPPORT-002"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-004",
+      "featureId": "FSC-0241",
+      "pageIndex": 0,
+      "name": "查找并打开云端仓库审查设置",
+      "effect": "Filter eligible linked connectors, preserve current/preferred/first valid selection, debounce search 200ms, paginate eight rows and open repository detail. Exact repository lookup falls back only on HTTP 400/403/404; GitHub search excludes archived repositories and caps at page 125.",
+      "failureAndCancellation": "Abort or identity change rejects connector results. Loading/error/no connections/no repositories remain distinct. Detail is read-only without admin/push; refreshing an error does not retry a save.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/14"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/38"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/128"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/71"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/109"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/46"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-001",
+        "operation:settings-batch-09:SUPPORT-002"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-005",
+      "featureId": "FSC-0242",
+      "pageIndex": 0,
+      "name": "设置仓库自动代码审查策略",
+      "effect": "Parameterize automatic enablement, everyone/team/personal scope, trigger and exhaustive review. Personal trigger/exhaustive maps to null; mutations carry repository, current review preference and funding generation.",
+      "failureAndCancellation": "Pending/fetch/load-error/no-write permission disables controls. A 409 refreshes detail and requires reviewing fresh state; no automatic resubmission.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/26"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/51"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/47"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-002",
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-006",
+      "featureId": "FSC-0243",
+      "pageIndex": 0,
+      "name": "重新授权仓库审查使用工作区额度",
+      "effect": "When funding_authorization_required is returned, require the explicit Allow action to submit authorize_funding true with the current repository generation.",
+      "failureAndCancellation": "A conflict with funding still required shows the funding-specific error and omits the refresh CTA; ordinary refresh must never reconnect funding.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/25"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/47"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-002",
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-007",
+      "featureId": "FSC-0244",
+      "pageIndex": 0,
+      "name": "设置仓库自动安全审查与触发方式",
+      "effect": "When security_review exists, use an independent security policy and trigger; smart_detect is offered when enabled by its flag or already selected.",
+      "failureAndCancellation": "Absent security_review does not create one. Disabled repository state blocks updates; automatic off retains the manual @codex notice.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/27"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/51"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-002",
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-008",
+      "featureId": "FSC-0245",
+      "pageIndex": 0,
+      "name": "设置安全审查威胁模型来源与文件",
+      "effect": "Choose threat-model source and edit a repository-relative path. Submit trims the path, maps empty to null and sets repository_file; cancel restores the saved draft.",
+      "failureAndCancellation": "Unchanged trimmed text or disabled editor does not submit. Source trimming does not prove path existence or path validation by the server.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/27"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/58"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-009",
+      "featureId": "FSC-0246",
+      "pageIndex": 0,
+      "name": "设置仓库安全发现的报告严重程度",
+      "effect": "Select separate automatic and manual reporting thresholds from critical/high/medium/low and send only the changed field.",
+      "failureAndCancellation": "Reporting thresholds are independent from the GitHub blocking threshold; server rejection remains a save failure.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/27"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/100"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-010",
+      "featureId": "FSC-0247",
+      "pageIndex": 0,
+      "name": "设置 GitHub 安全审查合并保护",
+      "effect": "Show merge protection only under its feature flag for non-GitLab repositories. Only repository admins can edit it; enabling requires the blocking severity to be at least the automatic reporting severity.",
+      "failureAndCancellation": "An already-enabled gate can still be disabled when severity ordering prevents enabling. Publishing a failing check does not itself configure GitHub required checks.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/27"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/100"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-002",
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-011",
+      "featureId": "FSC-0248",
+      "pageIndex": 0,
+      "name": "维护仓库路径的安全报告覆盖规则",
+      "effect": "Add trimmed path-prefix rules with null auto/manual overrides, update a selected rule by index, remove by index and map inherit to null.",
+      "failureAndCancellation": "Add editor closes on successful mutation callback; a failed save keeps the draft. No source-side deduplication or path-existence claim is introduced.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/27"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/58"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/62"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/126"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-012",
+      "featureId": "FSC-0249",
+      "pageIndex": 0,
+      "name": "设置个人代码审查偏好",
+      "effect": "Set personal always/repo_default, pr_open/every_push/smart_detect trigger and exhaustive review through /wham/settings/user; repository policy takes precedence.",
+      "failureAndCancellation": "Missing preferences shows loading/error and retry. Mutation failure shows a save-error toast; localized ChatGPT wording is not a mode exclusion.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/15"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/cloud-preferences/source-contracts.json",
+          "bytes": 56774,
+          "sha256": "b43b2a0ffd96d89c2e4ae88843b434834334826d1a6f3e3c57b7a97d9335d7b2",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/cloud-preferences/source-contracts.json",
+          "bytes": 56774,
+          "sha256": "b43b2a0ffd96d89c2e4ae88843b434834334826d1a6f3e3c57b7a97d9335d7b2",
+          "jsonPointer": "/units/1"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-013",
+      "featureId": "FSC-0250",
+      "pageIndex": 0,
+      "name": "设置个人安全审查偏好",
+      "effect": "When personal security preferences exist, set automatic preference, trigger and independent automatic/manual severities as nested security_review changes.",
+      "failureAndCancellation": "Smart-detect and allowance visibility retain source conditions; no security preferences are fabricated when absent.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/15"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/42"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/cloud-preferences/source-contracts.json",
+          "bytes": 56774,
+          "sha256": "b43b2a0ffd96d89c2e4ae88843b434834334826d1a6f3e3c57b7a97d9335d7b2",
+          "jsonPointer": "/units/1"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-014",
+      "featureId": "FSC-0251",
+      "pageIndex": 0,
+      "name": "配置代码与安全审查的信用额度使用",
+      "effect": "Keep allow_credits_for_code_reviews and allow_credits_for_security_reviews separate. Respect credit-management permission and source security conditions; retain usage/pricing links and flag/date-controlled billing notice.",
+      "failureAndCancellation": "Viewing a notice or pricing link does not authorize funding. Saving credit preference is separate from repository authorize_funding.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/15"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/42"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/13"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-001",
+        "operation:settings-batch-09:SUPPORT-003"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-015",
+      "featureId": "FSC-0252",
+      "pageIndex": 0,
+      "name": "打开仓库审查说明文件",
+      "effect": "Build AGENTS.md link from an HTTP(S) clone URL and default branch, preserving origin and repository path; use GitLab -/blob and encode the branch segment.",
+      "failureAndCancellation": "Missing branch, invalid URL or non-HTTP(S) URL omits the link; opening the link neither creates nor edits instructions.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/28"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/64"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-001"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-016",
+      "featureId": "FSC-0253",
+      "pageIndex": 1,
+      "name": "浏览与搜索已保存云环境",
+      "effect": "Gate the page by the cloud capability, search names and resolved repository names locally, and use a 300ms empty-result refresh. Keep signed-out/loading/error/empty/no-match states distinct; show sharing and unpublished status.",
+      "failureAndCancellation": "Editor/delete selection is identity keyed; stale selections are ignored after account/user changes. Repository-name loading/inaccessible uses its fallback rather than exposing absent metadata.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/22"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/9"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/42"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-004"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-017",
+      "featureId": "FSC-0254",
+      "pageIndex": 1,
+      "name": "从云环境列表进入创建流程",
+      "effect": "The signed-in Create action delegates to imported It(scope), sharing the existing environment creation flow.",
+      "failureAndCancellation": "This entry does not submit a model task or establish draft, publish, runtime or repository-selection implementation.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/4"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-004"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-018",
+      "featureId": "FSC-0255",
+      "pageIndex": 1,
+      "name": "创建独立云环境编辑草稿并打开任务",
+      "effect": "Under edit permission, POST environmentConfigs.createDraft with account/user/configId, recheck authentication after the response, attach returned draft/environment metadata and open the returned task with openEnvironmentSetup true.",
+      "failureAndCancellation": "Null/uncertain/5xx responses produce xn and disable repeat Edit to prevent duplicate tasks; 404 uses a distinct not-found error. Missing thread_id fails. Title-setting failure is a warning after successful creation.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/21"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/46"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-004",
+        "operation:settings-batch-09:SUPPORT-005"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-019",
+      "featureId": "FSC-0256",
+      "pageIndex": 1,
+      "name": "查看无编辑权限的云环境配置",
+      "effect": "Offer View when editing is unavailable; load environmentConfigs.request GET into an identity-keyed detail editor and apply read-only permission throughout.",
+      "failureAndCancellation": "Unavailable receiver/load failure offers retry/cancel. Opening View does not grant edit/delete permission; delete policy also depends on RBAC/ownership.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/10"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/17"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-004",
+        "operation:settings-batch-09:SUPPORT-005",
+        "operation:settings-batch-09:SUPPORT-006"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-020",
+      "featureId": "FSC-0257",
+      "pageIndex": 1,
+      "name": "修改并保存云环境配置",
+      "effect": "Maintain a local draft for name/access/repositories/network/setup/skills and delegated editor fields. Save combines normalized changes with a pending valid VPN editor save; cancel is disabled while saving.",
+      "failureAndCancellation": "Require edit permission and matching account/user. Client/server field validation gates submit; conflict refreshes the current config and preserves diagnostics. Successful save updates detail cache and linked task metadata only for current identity.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/10"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/17"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-005",
+        "operation:settings-batch-09:SUPPORT-006"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-021",
+      "featureId": "FSC-0258",
+      "pageIndex": 1,
+      "name": "编辑云环境变量与密钥草稿",
+      "effect": "Track variable removals and account/user owner; secrets use replace mode with owner, trimmed nonempty names and source-specific validation. Existing secret rows are represented with blank values and explicit injection targets.",
+      "failureAndCancellation": "Do not infer secret retrieval from metadata. Invalid source/value state blocks save; identity change must not reuse another owner draft.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/17"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/29"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/31"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/35"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/36"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-006"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-022",
+      "featureId": "FSC-0259",
+      "pageIndex": 1,
+      "name": "删除已保存云环境",
+      "effect": "Confirm DELETE through environmentConfigs.delete; on successful same-identity response cancel pending queries, recheck identity, clear matching selection/detail/cache entries and refresh config families.",
+      "failureAndCancellation": "Close and duplicate submit are blocked while pending. HTTP 403/404/405 are terminal with Close; recoverable errors allow retry. Existing tasks/running environments are explicitly outside this deletion action.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/11"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/19"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-004",
+        "operation:settings-batch-09:SUPPORT-005"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    },
+    {
+      "operationId": "operation:settings-batch-09:OP-023",
+      "featureId": "FSC-0260",
+      "pageIndex": 1,
+      "name": "进入个人密钥库设置",
+      "effect": "personal-vault tab lazy-loads PersonalVaultSettings from its separate factory, with account-aware loading and explicit module-load failure fallback.",
+      "failureAndCancellation": "The delegated vault module remains a separate pending settings container; this entry establishes no vault read/write/delete behavior.",
+      "trigger": "Use the source-defined control under the pinned account/user/host/flag/eligibility conditions.",
+      "guard": [
+        "Preserve outer host/access/loading/error/redirect precedence and every operation-specific identity/account/flag/eligibility guard.",
+        "Actual account/user/platform/flag values and selected product mode remain unobserved."
+      ],
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/7"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/14"
+        }
+      ],
+      "supportOperationIds": [
+        "operation:settings-batch-09:SUPPORT-001",
+        "operation:settings-batch-09:SUPPORT-006"
+      ],
+      "method": "static-source-contract;qualified-isolated-helper-and-callback-replay",
+      "verificationStatus": "source-contract;product-scenarios-not-executed",
+      "completeChainProven": false
+    }
+  ],
+  "mechanisms": [
+    {
+      "operationId": "operation:settings-batch-09:SUPPORT-001",
+      "name": "Review access, provider and delegated UI",
+      "claim": "Separate app/cloud access and effective provider from authentication method; preserve embedded tool and external-link contracts.",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review-access/source-contracts.json",
+          "bytes": 111015,
+          "sha256": "8b4722d19563c0e1015f8737d084f90a5e7ae8b590b5e6d5cc4d4c180ab43279",
+          "jsonPointer": "/units/0"
+        }
+      ],
+      "featureIds": [
+        "FSC-0238",
+        "FSC-0239",
+        "FSC-0240",
+        "FSC-0241",
+        "FSC-0251",
+        "FSC-0252",
+        "FSC-0260"
+      ],
+      "qualification": "Support mechanism; actual injected receiver, authorization, durable effects and full consumer closure remain unproved."
+    },
+    {
+      "operationId": "operation:settings-batch-09:SUPPORT-002",
+      "name": "Connector and repository query identity",
+      "claim": "Filter eligible linked connectors with abort/current-identity checks; preserve exact lookup/search fallback, pagination, permissions and concurrency refresh.",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/71"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/109"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/46"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/47"
+        }
+      ],
+      "featureIds": [
+        "FSC-0240",
+        "FSC-0241",
+        "FSC-0242",
+        "FSC-0243",
+        "FSC-0244",
+        "FSC-0247"
+      ],
+      "qualification": "Support mechanism; actual injected receiver, authorization, durable effects and full consumer closure remain unproved."
+    },
+    {
+      "operationId": "operation:settings-batch-09:SUPPORT-003",
+      "name": "Personal, plugin and repository preference receivers",
+      "claim": "Keep user-keyed /wham/settings/user preferences, account/user config preferences, desktop provider preferences and repository patch policy distinct.",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/cloud-preferences/source-contracts.json",
+          "bytes": 56774,
+          "sha256": "b43b2a0ffd96d89c2e4ae88843b434834334826d1a6f3e3c57b7a97d9335d7b2",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/cloud-preferences/source-contracts.json",
+          "bytes": 56774,
+          "sha256": "b43b2a0ffd96d89c2e4ae88843b434834334826d1a6f3e3c57b7a97d9335d7b2",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/cloud-preferences/source-contracts.json",
+          "bytes": 56774,
+          "sha256": "b43b2a0ffd96d89c2e4ae88843b434834334826d1a6f3e3c57b7a97d9335d7b2",
+          "jsonPointer": "/units/1"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/cloud-preferences/source-contracts.json",
+          "bytes": 56774,
+          "sha256": "b43b2a0ffd96d89c2e4ae88843b434834334826d1a6f3e3c57b7a97d9335d7b2",
+          "jsonPointer": "/units/5"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/code-review/source-contracts.json",
+          "bytes": 1937795,
+          "sha256": "917c0f32ff2ba72ea06e210b3510729238bb9fc21929869d82077517183aac14",
+          "jsonPointer": "/units/47"
+        }
+      ],
+      "featureIds": [
+        "FSC-0239",
+        "FSC-0242",
+        "FSC-0243",
+        "FSC-0244",
+        "FSC-0245",
+        "FSC-0246",
+        "FSC-0247",
+        "FSC-0248",
+        "FSC-0249",
+        "FSC-0250",
+        "FSC-0251"
+      ],
+      "qualification": "Support mechanism; actual injected receiver, authorization, durable effects and full consumer closure remain unproved."
+    },
+    {
+      "operationId": "operation:settings-batch-09:SUPPORT-004",
+      "name": "Cloud catalog identity and delegated creation",
+      "claim": "Catalog query/search/sharing and creation entry are not the delegated environment creation or personal-vault implementation.",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/9"
+        }
+      ],
+      "featureIds": [
+        "FSC-0253",
+        "FSC-0254",
+        "FSC-0255",
+        "FSC-0256",
+        "FSC-0259"
+      ],
+      "qualification": "Support mechanism; actual injected receiver, authorization, durable effects and full consumer closure remain unproved."
+    },
+    {
+      "operationId": "operation:settings-batch-09:SUPPORT-005",
+      "name": "Environment config draft/read/delete adapter",
+      "claim": "environmentConfigs is an explicit runtime/service adapter with current-identity, permission, uncertain-response and cache reconciliation policy retained in first party.",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/46"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/10"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/11"
+        }
+      ],
+      "featureIds": [
+        "FSC-0255",
+        "FSC-0256",
+        "FSC-0257",
+        "FSC-0259"
+      ],
+      "qualification": "Support mechanism; actual injected receiver, authorization, durable effects and full consumer closure remain unproved."
+    },
+    {
+      "operationId": "operation:settings-batch-09:SUPPORT-006",
+      "name": "Cloud editor and secret ownership",
+      "claim": "Preserve normalized drafts, conflict/field diagnostics, VPN pending validation and credential owner/blank-value policy; editor/vault/service internals remain delegated.",
+      "sourceRefs": [
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/17"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/29"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/31"
+        },
+        {
+          "path": "raw/settings-operation-batch-09/codex-cloud/source-contracts.json",
+          "bytes": 1148770,
+          "sha256": "17ff77e4931fbb4a3bf3ad009ac218ed1aeb0bce72ecc5b5905cdcb00ac0dbb4",
+          "jsonPointer": "/units/7"
+        }
+      ],
+      "featureIds": [
+        "FSC-0256",
+        "FSC-0257",
+        "FSC-0258",
+        "FSC-0260"
+      ],
+      "qualification": "Support mechanism; actual injected receiver, authorization, durable effects and full consumer closure remain unproved."
+    }
+  ],
+  "sharedGoalConsumers": [],
+  "knownGapsByPage": [
+    [
+      "Embedded pull_requests.settings tool, connection catalogs, effective provider/desktop preference writer, allowance evaluator and review API implementations remain assigned interfaces.",
+      "Actual Codex/shared mount, access/auth/account state, repository provider policy, review scheduling, funding and durable service effects."
+    ],
+    [
+      "Imported environment-creation/config editor/save/validation/VPN/repository-query helpers and PersonalVaultSettings remain assigned interfaces; vault operations are still a pending container.",
+      "Actual environmentConfigs runtime/service, account/RBAC transitions, task creation/navigation, config/secret persistence and conflict/deletion behavior."
+    ]
+  ],
+  "isolatedObservation": {
+    "path": "raw/settings-operation-batch-09/isolated-observations.json",
+    "bytes": 39131,
+    "sha256": "0e56de4e52db1cfd7851c76bc93456bbb74e286d7c6c1c09f4d06558c6210542"
+  },
+  "selectionQualification": {
+    "path": "raw/settings-operation-batch-09/selection-qualification.json",
+    "bytes": 432,
+    "sha256": "a08dd81b771c65bc8f5872129c0809b891e4aa75515268e5fae0dbf7fe0229f5"
+  },
+  "modeDecision": {
+    "status": "retain-pending-mode-review",
+    "confirmedExclusion": false,
+    "reason": "Review access uses separate app/cloud decisions and auth/plan/workspace eligibility; cloud settings has capability and identity gates. Neither authMethod chatgpt nor localized ChatGPT strings establishes a ChatGPT-only product mode; selected-mode/shared closure remains unresolved."
+  },
+  "dependencyBoundary": {
+    "thirdPartyImplementationGenerated": false,
+    "keepFirstParty": [
+      "review scope/provider and repository policy",
+      "repository concurrency/funding/permission rules",
+      "personal preference and billing visibility",
+      "cloud catalog/search/action policy",
+      "draft uncertain-result and identity guards",
+      "editor/conflict/secret-owner and delete cache reconciliation"
+    ],
+    "externalize": [
+      "React/query/UI/schema packages",
+      "existing embedded tool, connection and preference adapters",
+      "review REST service",
+      "environmentConfigs runtime/service adapter",
+      "shared config editor/validation/VPN, task and vault interfaces"
+    ],
+    "versionAuthority": "Existing dependency-import/embedded inventories; no versions inferred from aliases."
+  },
+  "moduleDecisions": [
+    {
+      "taskId": "T29",
+      "page": "Code review",
+      "proposalOnly": true,
+      "decision": "Separate desktop review tool/provider preferences from cloud repository policy and personal user preferences. Keep first-party policy, concurrency/funding/permission guards; externalize third-party UI/query packages and connect REST/host adapters."
+    },
+    {
+      "taskId": "T30",
+      "page": "Codex Cloud",
+      "proposalOnly": true,
+      "decision": "Keep cloud catalog/editor policy in renderer, assign request/createDraft/delete to environmentConfigs, reuse existing environment creation/task/vault adapters, and preserve identity/credential/uncertain-result rules before implementation."
+    }
+  ],
+  "counts": {
+    "newCatalogPageSurfaces": 2,
+    "userGoals": 23,
+    "supportOperations": 6,
+    "newProductScenarioSpecifications": 69,
+    "newlyPublishedCompleteProgramSelections": 4,
+    "newIsolatedSourceCasesPassed": 23,
+    "productScenariosExecuted": 0,
+    "modelSubmissionsAdded": 0,
+    "originalClientRunsAdded": 0,
+    "confirmedChatGptExclusionsAdded": 0
+  },
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false
+}

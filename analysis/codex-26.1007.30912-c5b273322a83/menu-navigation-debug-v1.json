@@ -1,0 +1,2726 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T23:06:58.986415+00:00",
+  "scope": "SQ-02-menu-navigation-debug-05 fixed records76..85; ten CZe schemas.",
+  "goals": [
+    {
+      "id": "MND-GOAL-01",
+      "featureId": "FSC-0411",
+      "name": "在当前列表中切换相邻线程",
+      "newDefinition": false,
+      "disposition": "additional-operation-and-explicit-name-amendment",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:068fae50439a370269f4d571",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3413708,
+            "endExclusive": 3413821
+          },
+          "spanHash": "78f282af02bcdbebeeeb1d0ec79486aa4850894ad3804b3c727dbf0985103edb",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/76"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/43"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:2a13db22785165c7da961f91",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3413846,
+            "endExclusive": 3414000
+          },
+          "spanHash": "837afb5d0da85cece7f09aab3b9a5813bf4b3ed6e4358d2aec9d7b26f28ee40b",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/77"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/44"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:068fae50439a370269f4d571",
+        "native-menu-schema:2a13db22785165c7da961f91"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:next-thread",
+          "operationType": "menu-user-goal",
+          "trigger": "next-thread"
+        }
+      ],
+      "behavior": [
+        "CZe nextThread primary and hidden alternate accelerators use the same _e/qe mechanism already analyzed for previousThread. Native accelerator metadata, default mapped nextTab key and navigation lock determine allowAppShellTabShortcut.",
+        "Previously saved JQa registers both directions through Pw. Next first conditionally attempts nextTab via Mw/KQa, then uses getTargets() or supplied targets and selects current index+1, or first target when no current target. Missing target/index or out-of-range successor gives no onSelect.",
+        "Amend existing FSC-0411 name from previous-thread-only to adjacent-thread navigation and add one forward operation; preserve its prior backward operation/scenarios. Target order and onSelect remain injected."
+      ],
+      "conditions": [
+        "Same mounted registration/isActive/priority, target list/current id, keymap and captured command context as prior JQa contract."
+      ],
+      "failureAndCancellation": [
+        "Empty list, invalid current id and last target must not invent wrap. Actual navigation and preference writes are unobserved."
+      ],
+      "knownGaps": [
+        "Injected targets/onSelect and command winner, real route selection, tab interception and shortcut preference durability."
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Same complete JQa callback owns nextThread and previousThread with direction parameter; extend FSC-0411 instead of inventing another feature for direction or alternate binding."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MTA-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0411:MND:1",
+          "featureId": "FSC-0411",
+          "operationId": "operation:menu-navigation-debug:next-thread",
+          "kind": "selection",
+          "preconditions": "ordered targets/current id and prior interception varied",
+          "trigger": "invoke nextThread",
+          "expectedEffect": "try permitted nextTab first; otherwise select successor, or first if current id absent",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0411:MND:2",
+          "featureId": "FSC-0411",
+          "operationId": "operation:menu-navigation-debug:next-thread",
+          "kind": "boundary",
+          "preconditions": "empty targets, missing current index, or last entry",
+          "trigger": "invoke forward",
+          "expectedEffect": "no onSelect when computed target absent; no unconditional wrap",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0411:MND:3",
+          "featureId": "FSC-0411",
+          "operationId": "operation:menu-navigation-debug:next-thread",
+          "kind": "alias",
+          "preconditions": "primary/alternate accelerators, ordinary click and lock varied",
+          "trigger": "invoke once",
+          "expectedEffect": "same forward operation; preserve accelerator flag and context tracking guards",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "priorGoalRef": {
+        "path": "menu-navigation-actions-v1.json",
+        "bytes": 83830,
+        "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937",
+        "jsonPointer": "/goals/5"
+      },
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/threads/thread-command-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MND-E038",
+        "MND-E039"
+      ],
+      "deduplicationEvidenceId": "MND-E040"
+    },
+    {
+      "id": "MND-GOAL-02",
+      "featureId": "FSC-0412",
+      "name": "显示或隐藏应用调试面板",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:504b80e36d251371ad6c1afe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414004,
+            "endExclusive": 3414235
+          },
+          "spanHash": "09cd13358a5a9c5d1f5bc1eeff411c8104f84472a17a24f47200c1bc8be2eae9",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/78"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/45"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:504b80e36d251371ad6c1afe"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:toggle-debug-panel",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-debug-panel"
+        }
+      ],
+      "behavior": [
+        "CZe includes this schema in Developer only with supplied allowDebugMenu; click awaits M then sends toggle-debug-modal.",
+        "Abc captures Cu.allowDebugMenu(Lo()), registers toggleDebugModal command with enabled gate and subscribes to the native message with its own gate.",
+        "q3a(scope) tests Ym(scope,I3a): active delegates yd close then returns, otherwise delegates K3a open. Abc separately mounts vbc(n) effect. Effective modal provider/mount is not proven here."
+      ],
+      "conditions": [
+        "Injected main gate and renderer build policy, valid focused/fallback window, mounted Abc and current modal state."
+      ],
+      "failureAndCancellation": [
+        "No window or false renderer gate does not toggle. Open/close delegate failures and runtime transport remain unknown."
+      ],
+      "knownGaps": [
+        "I3a/Ym/yd/K3a modal ownership, actual vbc lifecycle, focus/close and IPC delivery."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MND-SOURCE-010",
+          "name": "Abc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9904950,
+            "endExclusive": 9905555
+          },
+          "spanHash": "d933ca6c835d5567978ec9d6b992b29c930b030ab7648b07aa0335b120733bdf",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-010-Abc.txt"
+        },
+        {
+          "id": "MND-SOURCE-017",
+          "name": "q3a",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 6337081,
+            "endExclusive": 6337135
+          },
+          "spanHash": "a0e800c2ebc940ef32c5487eedd742e4c95e4a018cf5cb7e3a7ea5f08aa21bfc",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-017-q3a.txt"
+        }
+      ],
+      "deduplication": [
+        "Application debug panel is separate from Browser Use trusted chrome diagnostic-page setting/policy. Debug naming does not establish ChatGPT-only ownership."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MND-M01",
+        "MND-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0412:MND:1",
+          "featureId": "FSC-0412",
+          "operationId": "operation:menu-navigation-debug:toggle-debug-panel",
+          "kind": "toggle",
+          "preconditions": "eligible mounted scope with modal active/inactive",
+          "trigger": "invoke toggle",
+          "expectedEffect": "close active I3a via yd or open via K3a",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0412:MND:2",
+          "featureId": "FSC-0412",
+          "operationId": "operation:menu-navigation-debug:toggle-debug-panel",
+          "kind": "gate",
+          "preconditions": "supplied menu gate/renderer build permission false or no window",
+          "trigger": "construct or deliver",
+          "expectedEffect": "preserve menu and receiver gates; no forced modal",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0412:MND:3",
+          "featureId": "FSC-0412",
+          "operationId": "operation:menu-navigation-debug:toggle-debug-panel",
+          "kind": "delivery",
+          "preconditions": "command registration versus native message",
+          "trigger": "invoke each allowed route",
+          "expectedEffect": "both delegate q3a when eligible; actual winning registration/focus tested separately",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/diagnostics/debug-menu-adapter.ts",
+        "apps/desktop/src/renderer/features/diagnostics/debug-tools-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MND-E041"
+      ],
+      "deduplicationEvidenceId": "MND-E042"
+    },
+    {
+      "id": "MND-GOAL-03",
+      "featureId": "FSC-0413",
+      "name": "从剪贴板打开应用深链接",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:1942aae59cf49dd207cf1dfa",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414239,
+            "endExclusive": 3414512
+          },
+          "spanHash": "4c075787dac068f8534139053db5e52972ffb7e8314f29dca53c004e3d2e8d49",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/79"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/46"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:1942aae59cf49dd207cf1dfa"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:open-clipboard-deeplink",
+          "operationType": "menu-user-goal",
+          "trigger": "open-clipboard-deeplink"
+        }
+      ],
+      "behavior": [
+        "CZe includes schema under supplied allowDebugMenu. Callback reads clipboard text, trims it and calls injected queueCodexDeepLinkUrl v synchronously.",
+        "A falsy immediate result opens Invalid Deeplink info dialog; truthy result suppresses that dialog. Promise truthiness is not successful navigation or awaited validation.",
+        "No read of real clipboard or invocation of queue/dialog was performed. Accepted URL syntax, queuing and actual navigation remain at injected v boundary."
+      ],
+      "conditions": [
+        "Supplied debug gate, clipboard availability, injected synchronous v return semantics."
+      ],
+      "failureAndCancellation": [
+        "Read/trim/v throws before fallback dialog and has no local catch; dialog failure remains unobserved."
+      ],
+      "knownGaps": [
+        "Effective deep-link queue/parser/receiver, accepted URL forms, native clipboard/dialog results and final route."
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "FSC-0398 copies a thread link; this consumes a clipboard URL. Queue acceptance is not open success."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MND-M01"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0413:MND:1",
+          "featureId": "FSC-0413",
+          "operationId": "operation:menu-navigation-debug:open-clipboard-deeplink",
+          "kind": "input",
+          "preconditions": "controlled synthetic clipboard text",
+          "trigger": "invoke callback",
+          "expectedEffect": "trim before passing exact string to v",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0413:MND:2",
+          "featureId": "FSC-0413",
+          "operationId": "operation:menu-navigation-debug:open-clipboard-deeplink",
+          "kind": "fallback",
+          "preconditions": "v returns falsy versus truthy",
+          "trigger": "invoke once",
+          "expectedEffect": "show recorded invalid-link info only for falsy immediate result",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0413:MND:3",
+          "featureId": "FSC-0413",
+          "operationId": "operation:menu-navigation-debug:open-clipboard-deeplink",
+          "kind": "failure",
+          "preconditions": "synthetic clipboard or v throws/rejects",
+          "trigger": "observe controlled contract",
+          "expectedEffect": "preserve synchronous exception/Promise distinction; do not claim navigation completed",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/diagnostics/debug-menu-adapter.ts"
+      ],
+      "evidenceIds": [
+        "MND-E043"
+      ],
+      "deduplicationEvidenceId": "MND-E044"
+    },
+    {
+      "id": "MND-GOAL-04",
+      "featureId": "FSC-0414",
+      "name": "复制当前认证用户标识",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:76897740fecf2af33be4eaf5",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414516,
+            "endExclusive": 3414605
+          },
+          "spanHash": "86ea9480266897d763228b70bc1be5a79bcec3606558e5edece2754e0ddecad1",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/80"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/47"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:76897740fecf2af33be4eaf5"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:copy-user-id",
+          "operationType": "menu-user-goal",
+          "trigger": "copy-user-id"
+        }
+      ],
+      "behavior": [
+        "CZe includes schema with supplied allowDebugMenu. Callback awaits injected getAuthenticatedUserId h, then writes clipboard only when result is not null/undefined.",
+        "It uses e!=null rather than a nonempty-string guard: an empty string would still reach writeText; source does not invent a local fallback identity or success toast."
+      ],
+      "conditions": [
+        "Supplied debug gate, effective authenticated-user provider and clipboard."
+      ],
+      "failureAndCancellation": [
+        "Rejected provider prevents write; clipboard errors propagate at selected callback without local catch."
+      ],
+      "knownGaps": [
+        "Effective auth/user-id provider, ownership/privacy context and actual clipboard/failure handling."
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Account settings and thread-link copying are distinct goals; this diagnostics action only copies supplied user identity."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MND-M01"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0414:MND:1",
+          "featureId": "FSC-0414",
+          "operationId": "operation:menu-navigation-debug:copy-user-id",
+          "kind": "value",
+          "preconditions": "h resolves controlled id or empty string",
+          "trigger": "invoke copy",
+          "expectedEffect": "write the resolved non-null value without invented toast",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0414:MND:2",
+          "featureId": "FSC-0414",
+          "operationId": "operation:menu-navigation-debug:copy-user-id",
+          "kind": "absence",
+          "preconditions": "h returns null or undefined",
+          "trigger": "invoke copy",
+          "expectedEffect": "leave clipboard untouched",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0414:MND:3",
+          "featureId": "FSC-0414",
+          "operationId": "operation:menu-navigation-debug:copy-user-id",
+          "kind": "error",
+          "preconditions": "h rejects or writeText fails",
+          "trigger": "invoke controlled callback",
+          "expectedEffect": "preserve no write before successful provider result and local error propagation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/diagnostics/debug-menu-adapter.ts"
+      ],
+      "evidenceIds": [
+        "MND-E045"
+      ],
+      "deduplicationEvidenceId": "MND-E046"
+    },
+    {
+      "id": "MND-GOAL-05",
+      "featureId": "FSC-0415",
+      "name": "显示或隐藏侧栏 RAM 使用指示器",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:eb3094dee36063efb8f35b2e",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414609,
+            "endExclusive": 3414825
+          },
+          "spanHash": "20e6a043f7837cd39121b9c789b6d47068f72cb98ca90101dca79c8c94b50e46",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/81"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/48"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:eb3094dee36063efb8f35b2e"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:toggle-ram-indicator",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-ram-indicator"
+        }
+      ],
+      "behavior": [
+        "CZe includes schema under supplied allowDebugMenu and sends toggle-ram-usage-indicator to M window.",
+        "NNo captures Cu.allowDebugMenu(Lo()), subscribes via xs and, when allowed, calls scope.set(BNo,PNo); PNo returns logical negation.",
+        "Rendering requires policy allowed, current BNo truthy and Pd.processMemory non-null, then supplies that provider to INo. BNo declaration without initialization does not prove persistence or measurement implementation."
+      ],
+      "conditions": [
+        "Main and renderer debug permission, mounted NNo, BNo state and processMemory provider."
+      ],
+      "failureAndCancellation": [
+        "Missing processMemory yields no indicator even with toggled state. Sampling/errors/resources remain provider responsibilities."
+      ],
+      "knownGaps": [
+        "BNo initializer/lifetime, INo measurement/rendering, native processMemory sampling and resource cleanup."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MND-SOURCE-002",
+          "name": "NNo",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 7229586,
+            "endExclusive": 7230034
+          },
+          "spanHash": "1fb5794950d109c805a411eaac74989866b28cddf0954b5ad98cd7ea0064a9bd",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-002-NNo.txt"
+        },
+        {
+          "id": "MND-SOURCE-019",
+          "name": "PNo",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 7230034,
+            "endExclusive": 7230059
+          },
+          "spanHash": "d5379bacda5cadfb3f241075c747e703c9f842bfbdc6b288b32316042b2dbef4",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-019-PNo.txt"
+        },
+        {
+          "id": "MND-SOURCE-018",
+          "name": "BNo",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 7235530,
+            "endExclusive": 7235533
+          },
+          "spanHash": "3f4d9530402435c70c1410b4942e3e6ee8dd0b58891ec93f335594ca212d8c2f",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MND-SOURCE-018-BNo.txt"
+        }
+      ],
+      "deduplication": [
+        "Diagnostic visibility is separate from memory measurement provider capability; no copied native implementation follows from this toggle."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MND-M01",
+        "MND-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0415:MND:1",
+          "featureId": "FSC-0415",
+          "operationId": "operation:menu-navigation-debug:toggle-ram-indicator",
+          "kind": "toggle",
+          "preconditions": "allowed receiver and known BNo state",
+          "trigger": "deliver message twice",
+          "expectedEffect": "invert BNo per invocation through PNo",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0415:MND:2",
+          "featureId": "FSC-0415",
+          "operationId": "operation:menu-navigation-debug:toggle-ram-indicator",
+          "kind": "visibility",
+          "preconditions": "permission/state/processMemory varied",
+          "trigger": "render NNo",
+          "expectedEffect": "show INo only when all three requirements hold",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0415:MND:3",
+          "featureId": "FSC-0415",
+          "operationId": "operation:menu-navigation-debug:toggle-ram-indicator",
+          "kind": "guard",
+          "preconditions": "permission false or no native target window",
+          "trigger": "invoke or deliver",
+          "expectedEffect": "do not change BNo or send respectively; no sampling success inferred",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/diagnostics/debug-menu-adapter.ts",
+        "apps/desktop/src/renderer/features/diagnostics/debug-tools-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MND-E047"
+      ],
+      "deduplicationEvidenceId": "MND-E048"
+    },
+    {
+      "id": "MND-GOAL-06",
+      "featureId": "FSC-0416",
+      "name": "显示或隐藏查询状态调试工具",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:3bb7fdb92d124f1562a4b642",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414829,
+            "endExclusive": 3414982
+          },
+          "spanHash": "2c85f56ef533c4d35c8996741cacd5369dd25403734381d9a68d7e939f796f58",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/82"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/49"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:3bb7fdb92d124f1562a4b642"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:toggle-query-devtools",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-query-devtools"
+        }
+      ],
+      "behavior": [
+        "CZe includes St using r.It({buildFlavor,isDev:false}), independently of allowDevtools/allowDebugMenu variables. CJS It explicitly exports cd, whose policy is isDev||R.isInternal(buildFlavor).",
+        "WNc subscribes to toggle-query-devtools and toggles local React isOpen using JNc; this subscription callback is not itself visibility-gated.",
+        "WNc renders FNc only when e_() is truthy and Tfe({buildFlavor:Lo(),isDev:false}) permits it. Tfe explicitly imports N6t=dkt; initialized FM build policy is reused from prior analysis.",
+        "FNc returns null when closed, otherwise creates a bottom portal with resizable height and delegated NNc UI. Its pointer-down handler installs move/up listeners and removes them on pointer-up. Third-party UI identity/version remains unqualified."
+      ],
+      "conditions": [
+        "Effective main buildFlavor and renderer bridge/build flavor, e_() environment gate, mounted query provider, isOpen state."
+      ],
+      "failureAndCancellation": [
+        "Open state may toggle while UI remains gated off; do not equate message receipt with visible tools. Pointer cleanup on unmount or cancelled pointer is not established by selected code."
+      ],
+      "knownGaps": [
+        "e_ environment identity, NNc library origin/version and independent package import, actual query client, portal/resize accessibility and cleanup."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MND-SOURCE-012",
+          "name": "WNc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 10181946,
+            "endExclusive": 10183003
+          },
+          "spanHash": "86c12d59318f2c43f25e7aa8d967e8fa5210c43a422faf483c02e32ebb6517b3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-012-WNc.txt"
+        },
+        {
+          "id": "MND-SOURCE-020",
+          "name": "JNc",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 10183365,
+            "endExclusive": 10183390
+          },
+          "spanHash": "55fd3b276321c2a537c18490f7c8738903221813ff80a79908c6fb94f2d8218d",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-020-JNc.txt"
+        },
+        {
+          "id": "MND-SOURCE-021",
+          "name": "FNc",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 10180683,
+            "endExclusive": 10181767
+          },
+          "spanHash": "b2b71a9dbd151d8de10941d03015614ef5ae17707d9a3d51276a5e01775d874b",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-021-FNc.txt"
+        },
+        {
+          "id": "MND-SOURCE-023",
+          "name": "dkt",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 2003861,
+            "endExclusive": 2003926
+          },
+          "spanHash": "61a713cd91b260a3f6f363492f243a301fb8c0a9e03efade1097e5a9bb425b89",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-023-dkt.txt"
+        },
+        {
+          "id": "MND-SOURCE-032",
+          "name": "cd",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+          "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+          "byteRange": {
+            "start": 119947,
+            "endExclusive": 120010
+          },
+          "spanHash": "46ecd89e07a761dc2eca1b8f37dbb387cac2b6aa7e695bae240ff89dd1948eb2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-032-cd.txt"
+        },
+        {
+          "id": "MND-SOURCE-033",
+          "name": "R",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+          "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+          "byteRange": {
+            "start": 46627,
+            "endExclusive": 46900
+          },
+          "spanHash": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MND-SOURCE-033-R.txt"
+        },
+        {
+          "id": "MND-SOURCE-034",
+          "name": "Hi",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+          "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+          "byteRange": {
+            "start": 46582,
+            "endExclusive": 46626
+          },
+          "spanHash": "258db61dd9d0a79bc4dac7d55daf9511d3de9affd46745e8e6884b04419c23af",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MND-SOURCE-034-Hi.txt"
+        },
+        {
+          "id": "MND-SOURCE-036",
+          "name": "exports-It",
+          "role": "complete CJS getter export descriptor",
+          "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+          "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+          "byteRange": {
+            "start": 178073,
+            "endExclusive": 178150
+          },
+          "spanHash": "1d85d6c0fcb1a60431cbf70d37d9bafc4606a90c98a43a099475536ffcd43c23",
+          "nodeType": "CallExpression",
+          "savedPath": "source/MND-SOURCE-036-exports-It.txt"
+        },
+        {
+          "id": "MND-SOURCE-027",
+          "name": "xG",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3477890,
+            "endExclusive": 3477961
+          },
+          "spanHash": "b303028b1bb9a5cae25eadd9400f48a2ae9db4bccf6fb89357442ee0015a8722",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-027-xG.txt"
+        }
+      ],
+      "deduplication": [
+        "Query-state developer panel is distinct from application Debug Panel, React Scan and trusted browser chrome diagnostics."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MND-M01",
+        "MND-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0416:MND:1",
+          "featureId": "FSC-0416",
+          "operationId": "operation:menu-navigation-debug:toggle-query-devtools",
+          "kind": "policy",
+          "preconditions": "build flavor/internal status and e_ gate varied",
+          "trigger": "construct menu/render",
+          "expectedEffect": "preserve distinct menu policy and renderer environment+policy gating",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0416:MND:2",
+          "featureId": "FSC-0416",
+          "operationId": "operation:menu-navigation-debug:toggle-query-devtools",
+          "kind": "state",
+          "preconditions": "mounted WNc; visibility gate false/true",
+          "trigger": "deliver message",
+          "expectedEffect": "invert local isOpen regardless of visibility; render FNc only when eligibility holds",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0416:MND:3",
+          "featureId": "FSC-0416",
+          "operationId": "operation:menu-navigation-debug:toggle-query-devtools",
+          "kind": "panel",
+          "preconditions": "eligible isOpen true; controlled primary-button drag",
+          "trigger": "render/drag",
+          "expectedEffect": "create bottom portal, clamp height and remove move/up listeners on pointer-up; do not infer broader cleanup",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/diagnostics/debug-menu-adapter.ts",
+        "apps/desktop/src/renderer/features/diagnostics/debug-tools-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MND-E049"
+      ],
+      "deduplicationEvidenceId": "MND-E050"
+    },
+    {
+      "id": "MND-GOAL-07",
+      "featureId": "FSC-0417",
+      "name": "请求切换 React Scan 调试工具",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:a407d650e1fbb7a37ac8ba5f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414986,
+            "endExclusive": 3415101
+          },
+          "spanHash": "25b8a72dcf49cc894a6574c2f14e1c2fe077c8409c4aa3d31d8914ad71338945",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/83"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/50"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:a407d650e1fbb7a37ac8ba5f"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:toggle-react-scan",
+          "operationType": "menu-user-goal",
+          "trigger": "toggle-react-scan"
+        }
+      ],
+      "behavior": [
+        "CZe includes Ct only when allowDevtools&&p.t.supportsReactScan(buildFlavor). Inherited policy permits dev/agent/nightly, excluding internal-alpha even though it is internal for other policies.",
+        "Callback awaits M and sends toggle-react-scan. Selected Fsc dispatcher label is a no-op; an effective dedicated recipient is not resolved in this bounded source set.",
+        "Retain action intent and exact availability, without claiming that the tool starts/stops or generating a guessed third-party implementation."
+      ],
+      "conditions": [
+        "Injected allowDevtools, supported build flavor, valid M window and effective recipient if present."
+      ],
+      "failureAndCancellation": [
+        "No window means no send. Missing/unknown receiver, tool loading failures and lifecycle remain open."
+      ],
+      "knownGaps": [
+        "Actual React Scan subscriber/load path, package/version provenance, state/lifecycle and measured runtime behavior."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MND-SOURCE-005",
+          "name": "Fsc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9626640,
+            "endExclusive": 9651792
+          },
+          "spanHash": "41c172f42fc053658827635051d20cb866ff48be1dbee8cbf19fc95b4da6cbcb",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-005-Fsc.txt"
+        },
+        {
+          "id": "MND-SOURCE-033",
+          "name": "R",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+          "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+          "byteRange": {
+            "start": 46627,
+            "endExclusive": 46900
+          },
+          "spanHash": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/MND-SOURCE-033-R.txt"
+        }
+      ],
+      "deduplication": [
+        "Separate diagnostic tool intent; a no-op in one dispatcher neither proves implementation absence nor tool behavior."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MND-M01",
+        "MND-M02"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0417:MND:1",
+          "featureId": "FSC-0417",
+          "operationId": "operation:menu-navigation-debug:toggle-react-scan",
+          "kind": "gate",
+          "preconditions": "allowDevtools varied across six build flavors",
+          "trigger": "construct menu",
+          "expectedEffect": "include only when both allowDevtools and supportsReactScan permit",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0417:MND:2",
+          "featureId": "FSC-0417",
+          "operationId": "operation:menu-navigation-debug:toggle-react-scan",
+          "kind": "dispatch",
+          "preconditions": "live window or no window",
+          "trigger": "click eligible entry",
+          "expectedEffect": "send exact toggle-react-scan request only with window",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0417:MND:3",
+          "featureId": "FSC-0417",
+          "operationId": "operation:menu-navigation-debug:toggle-react-scan",
+          "kind": "boundary",
+          "preconditions": "selected dispatcher has no-op label; dedicated recipient unproven",
+          "trigger": "assess recovery",
+          "expectedEffect": "retain unresolved tool provider; do not count request dispatch as visible tool success",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/diagnostics/debug-menu-adapter.ts",
+        "apps/desktop/src/renderer/features/diagnostics/debug-tools-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MND-E051"
+      ],
+      "deduplicationEvidenceId": "MND-E052"
+    },
+    {
+      "id": "MND-GOAL-08",
+      "featureId": "FSC-0418",
+      "name": "在应用路由历史中后退或前进",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:3fbc71f523eb77246ab6e80a",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3415463,
+            "endExclusive": 3415569
+          },
+          "spanHash": "5dcdf068a3b78063b10b7082edcc2e09785c998980e5efa0f3a3177077ef6155",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/84"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/51"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:f97a4b74ffc06e4e18fab574",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3415573,
+            "endExclusive": 3415730
+          },
+          "spanHash": "0b8567c156eff96dac03530fdd732afd4fca3b2a04d724c103f0d1b12d24916c",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/85"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/52"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:3fbc71f523eb77246ab6e80a",
+        "native-menu-schema:f97a4b74ffc06e4e18fab574"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-navigation-debug:navigate-back",
+          "operationType": "menu-user-goal",
+          "trigger": "navigate-back"
+        },
+        {
+          "operationId": "operation:menu-navigation-debug:navigate-forward",
+          "operationType": "menu-user-goal",
+          "trigger": "navigate-forward"
+        }
+      ],
+      "behavior": [
+        "CZe schemas send navigate-back/navigate-forward to M window. Native forward accelerator is assigned on macOS only; metadata/availability still comes from N().",
+        "gcc subscribes to both messages. Captured gm() truthy disables both. Back from settings with tracked dirty-state set asks window.confirm and returns when declined.",
+        "Back from /checkout/web or /workspace-settings/web navigates to / with replace:true; ordinary eligible back calls router navigate(-1) inside flushSync. Eligible forward calls navigate(1) inside flushSync.",
+        "Nw and register-app-actions expose outbound messages, while Fsc labels are no-ops. gcc contains other checkout/mode/navigation behavior, outside these two selected callbacks; no whole-component mode exclusion follows."
+      ],
+      "conditions": [
+        "Mounted gcc, effective captured gm flag, current route, tracked dirty settings, confirm response and router history."
+      ],
+      "failureAndCancellation": [
+        "Cancelled settings confirmation prevents back. Actual history availability, unsaved changes outside selected guard, route effects and native dispatch are unobserved."
+      ],
+      "knownGaps": [
+        "gm feature/environment identity, tracked settings-change ownership, router history/provider and actual navigation/focus across platforms."
+      ],
+      "sourceUnits": [
+        {
+          "id": "MND-SOURCE-006",
+          "name": "gcc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9655879,
+            "endExclusive": 9660712
+          },
+          "spanHash": "805286c83744dde9ea14bb5f79c4506db5e43dc494f2815c6f581e27cb5051bd",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-006-gcc.txt"
+        },
+        {
+          "id": "MND-SOURCE-001",
+          "name": "Nw",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1498604,
+            "endExclusive": 1501107
+          },
+          "spanHash": "b9e6a2ed449e6e09276e4fc842d61d170f260123285a8dcd33797ae8f3bde888",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-001-Nw.txt"
+        },
+        {
+          "id": "MND-SOURCE-014",
+          "name": "Jt",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/register-app-actions-4b8b92c62fa1.js",
+          "sourceHash": "ece788ffac1f1468e3e4c5f211f8c4125c7e61091098cd228dae4a6ec7a153b9",
+          "byteRange": {
+            "start": 13125,
+            "endExclusive": 13295
+          },
+          "spanHash": "d734ad766ad4bf3b02be9a2b6186ea0cf872b32f3751629fd399e5d66bab7edb",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-014-Jt.txt"
+        },
+        {
+          "id": "MND-SOURCE-015",
+          "name": "Zt",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/register-app-actions-4b8b92c62fa1.js",
+          "sourceHash": "ece788ffac1f1468e3e4c5f211f8c4125c7e61091098cd228dae4a6ec7a153b9",
+          "byteRange": {
+            "start": 13305,
+            "endExclusive": 13481
+          },
+          "spanHash": "52208b93c82b77cc2c6b2e8d2bebe9fa875ec18eaad28a5713cfdc5be735f7e0",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-015-Zt.txt"
+        },
+        {
+          "id": "MND-SOURCE-005",
+          "name": "Fsc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9626640,
+            "endExclusive": 9651792
+          },
+          "spanHash": "41c172f42fc053658827635051d20cb866ff48be1dbee8cbf19fc95b4da6cbcb",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-005-Fsc.txt"
+        },
+        {
+          "id": "MND-SOURCE-029",
+          "name": "cbn",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 3402082,
+            "endExclusive": 3402115
+          },
+          "spanHash": "468336618c2662e671fe329d5eb7d0dfc1d3e51bf0d81584119dda3db6dc3f5e",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-029-cbn.txt"
+        }
+      ],
+      "deduplication": [
+        "Application router history differs from previous/next thread target lists and Browser Back/Forward native page commands."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Build flavor and contextual availability do not establish Codex/ChatGPT ownership; retain pending complete mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "MND-M03"
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0418:MND:1",
+          "featureId": "FSC-0418",
+          "operationId": "operation:menu-navigation-debug:navigate-back",
+          "kind": "history",
+          "preconditions": "gm false and ordinary route with prior history",
+          "trigger": "invoke back",
+          "expectedEffect": "flushSync router navigate(-1), without browser page go-back substitution",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0418:MND:2",
+          "featureId": "FSC-0418",
+          "operationId": "operation:menu-navigation-debug:navigate-back",
+          "kind": "guard",
+          "preconditions": "settings dirty state or special checkout/workspace route",
+          "trigger": "invoke back",
+          "expectedEffect": "respect confirmation; special paths replace with / when eligible",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0418:MND:3",
+          "featureId": "FSC-0418",
+          "operationId": "operation:menu-navigation-debug:navigate-forward",
+          "kind": "forward",
+          "preconditions": "gm false/true, platform/keymap varied",
+          "trigger": "invoke forward",
+          "expectedEffect": "navigate(1) only when enabled by handler; native accelerator remains macOS-only",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0418:MND:4",
+          "featureId": "FSC-0418",
+          "operationId": "operation:menu-navigation-debug:navigate-forward",
+          "kind": "context",
+          "preconditions": "other route branches share gcc component",
+          "trigger": "classify retained source",
+          "expectedEffect": "retain these callbacks and their conditions; do not classify entire navigation component as ChatGPT-only",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static boundary specification; no actual UI/native/provider/durable-state observation."
+        }
+      ],
+      "consumerModules": [
+        "apps/desktop/src/renderer/features/navigation/app-history-adapter.tsx"
+      ],
+      "evidenceIds": [
+        "MND-E053",
+        "MND-E054"
+      ],
+      "deduplicationEvidenceId": "MND-E055"
+    }
+  ],
+  "additionalMaintenanceProposals": [
+    {
+      "id": "MND-M01",
+      "responsibility": "菜单调试门控、剪贴板与诊断消息的主进程适配",
+      "environment": "main",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "entryId": "native-menu-schema:504b80e36d251371ad6c1afe",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414004,
+            "endExclusive": 3414235
+          },
+          "spanHash": "09cd13358a5a9c5d1f5bc1eeff411c8104f84472a17a24f47200c1bc8be2eae9",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/78"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/45"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:1942aae59cf49dd207cf1dfa",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414239,
+            "endExclusive": 3414512
+          },
+          "spanHash": "4c075787dac068f8534139053db5e52972ffb7e8314f29dca53c004e3d2e8d49",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/79"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/46"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:76897740fecf2af33be4eaf5",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414516,
+            "endExclusive": 3414605
+          },
+          "spanHash": "86ea9480266897d763228b70bc1be5a79bcec3606558e5edece2754e0ddecad1",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/80"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/47"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:eb3094dee36063efb8f35b2e",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414609,
+            "endExclusive": 3414825
+          },
+          "spanHash": "20e6a043f7837cd39121b9c789b6d47068f72cb98ca90101dca79c8c94b50e46",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/81"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/48"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:3bb7fdb92d124f1562a4b642",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414829,
+            "endExclusive": 3414982
+          },
+          "spanHash": "2c85f56ef533c4d35c8996741cacd5369dd25403734381d9a68d7e939f796f58",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/82"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/49"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:a407d650e1fbb7a37ac8ba5f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3414986,
+            "endExclusive": 3415101
+          },
+          "spanHash": "25b8a72dcf49cc894a6574c2f14e1c2fe077c8409c4aa3d31d8914ad71338945",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/83"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/50"
+          }
+        }
+      ],
+      "imports": [
+        "injected allowDebugMenu/allowDevtools/buildFlavor",
+        "authenticated-user/deep-link services",
+        "window manager and runtime clipboard/dialog"
+      ],
+      "exports": [
+        "guarded diagnostic/clipboard menu actions"
+      ],
+      "sharedState": [
+        "focused/fallback window and supplied build policy"
+      ],
+      "sideEffects": [
+        "read/write clipboard; dialog; send diagnostics requests"
+      ],
+      "thirdPartyDependencies": [
+        "OWL/Electron-compatible runtime APIs through dependencies; no copied implementation"
+      ],
+      "proposedPath": "apps/desktop/src/main/diagnostics/debug-menu-adapter.ts",
+      "assignment": "Inferred maintenance boundary; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MND-E056"
+    },
+    {
+      "id": "MND-M02",
+      "responsibility": "调试面板、RAM与查询工具的上下文订阅与显示",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MND-SOURCE-010",
+          "name": "Abc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9904950,
+            "endExclusive": 9905555
+          },
+          "spanHash": "d933ca6c835d5567978ec9d6b992b29c930b030ab7648b07aa0335b120733bdf",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-010-Abc.txt"
+        },
+        {
+          "id": "MND-SOURCE-017",
+          "name": "q3a",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 6337081,
+            "endExclusive": 6337135
+          },
+          "spanHash": "a0e800c2ebc940ef32c5487eedd742e4c95e4a018cf5cb7e3a7ea5f08aa21bfc",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-017-q3a.txt"
+        },
+        {
+          "id": "MND-SOURCE-002",
+          "name": "NNo",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 7229586,
+            "endExclusive": 7230034
+          },
+          "spanHash": "1fb5794950d109c805a411eaac74989866b28cddf0954b5ad98cd7ea0064a9bd",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-002-NNo.txt"
+        },
+        {
+          "id": "MND-SOURCE-012",
+          "name": "WNc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 10181946,
+            "endExclusive": 10183003
+          },
+          "spanHash": "86c12d59318f2c43f25e7aa8d967e8fa5210c43a422faf483c02e32ebb6517b3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-012-WNc.txt"
+        },
+        {
+          "id": "MND-SOURCE-021",
+          "name": "FNc",
+          "role": "complete supporting original declaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 10180683,
+            "endExclusive": 10181767
+          },
+          "spanHash": "b2b71a9dbd151d8de10941d03015614ef5ae17707d9a3d51276a5e01775d874b",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-021-FNc.txt"
+        }
+      ],
+      "imports": [
+        "message/command subscriptions",
+        "build-flavor policy",
+        "modal/state/processMemory/query providers"
+      ],
+      "exports": [
+        "diagnostic toggle receivers and query portal presentation"
+      ],
+      "sharedState": [
+        "modal state, RAM indicator flag, query isOpen/height"
+      ],
+      "sideEffects": [
+        "subscriptions/effects, scoped state writes, portal/pointer listeners and delegated native sampling"
+      ],
+      "thirdPartyDependencies": [
+        "React/state/router/query tooling via identified dependencies; NNc and React Scan provenance remain unresolved; no generated third-party implementation"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/diagnostics/debug-tools-adapter.tsx",
+      "assignment": "Inferred maintenance boundary; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MND-E057"
+    },
+    {
+      "id": "MND-M03",
+      "responsibility": "带未保存设置守卫的应用路由历史导航",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "MND-SOURCE-006",
+          "name": "gcc",
+          "role": "complete enclosing FunctionDeclaration",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9655879,
+            "endExclusive": 9660712
+          },
+          "spanHash": "805286c83744dde9ea14bb5f79c4506db5e43dc494f2815c6f581e27cb5051bd",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MND-SOURCE-006-gcc.txt"
+        }
+      ],
+      "imports": [
+        "router navigate/location",
+        "tracked settings state",
+        "environment flag and confirmation/flush adapter"
+      ],
+      "exports": [
+        "navigate-back/navigate-forward handlers"
+      ],
+      "sharedState": [
+        "router history, current path, dirty settings and captured enable flag"
+      ],
+      "sideEffects": [
+        "confirmation and route transition within flushSync"
+      ],
+      "thirdPartyDependencies": [
+        "React/router dependencies; window.confirm platform adapter"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/navigation/app-history-adapter.tsx",
+      "assignment": "Inferred maintenance boundary; pending SQ-03 unified ownership.",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "MND-E058"
+    }
+  ],
+  "reusedMaintenanceUnits": [
+    {
+      "id": "MENU-UNIT-application-menu",
+      "ref": {
+        "path": "native-menu-roles-v1.json",
+        "bytes": 866774,
+        "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+        "jsonPointer": "/maintenanceUnits/0"
+      }
+    },
+    {
+      "id": "MTA-M02",
+      "ref": {
+        "path": "menu-thread-actions-v1.json",
+        "bytes": 117163,
+        "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+        "jsonPointer": "/additionalMaintenanceProposals/1"
+      }
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "MND-SOURCE-001",
+      "name": "Nw",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1498604,
+        "endExclusive": 1501107
+      },
+      "spanHash": "b9e6a2ed449e6e09276e4fc842d61d170f260123285a8dcd33797ae8f3bde888",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-001-Nw.txt",
+      "evidenceId": "MND-E001"
+    },
+    {
+      "id": "MND-SOURCE-002",
+      "name": "NNo",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 7229586,
+        "endExclusive": 7230034
+      },
+      "spanHash": "1fb5794950d109c805a411eaac74989866b28cddf0954b5ad98cd7ea0064a9bd",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-002-NNo.txt",
+      "evidenceId": "MND-E002"
+    },
+    {
+      "id": "MND-SOURCE-003",
+      "name": "registration-toggle-ram-usage-indicator",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 7229825,
+        "endExclusive": 7229861
+      },
+      "spanHash": "4db2810f5c6244fada7b440793ed7154f454ec5fcfa1a467a68647ac2ce0d92e",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MND-SOURCE-003-registration-toggle-ram-usage-indicator.txt",
+      "evidenceId": "MND-E003"
+    },
+    {
+      "id": "MND-SOURCE-004",
+      "name": "import-xs",
+      "role": "complete explicit import declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 95660,
+        "endExclusive": 136889
+      },
+      "spanHash": "1be551b2878597d55352877c0f2caeeb354161f8b815eccd831da6daff82db62",
+      "nodeType": "ImportDeclaration",
+      "savedPath": "source/MND-SOURCE-004-import-xs.txt",
+      "evidenceId": "MND-E004"
+    },
+    {
+      "id": "MND-SOURCE-005",
+      "name": "Fsc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9626640,
+        "endExclusive": 9651792
+      },
+      "spanHash": "41c172f42fc053658827635051d20cb866ff48be1dbee8cbf19fc95b4da6cbcb",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-005-Fsc.txt",
+      "evidenceId": "MND-E005"
+    },
+    {
+      "id": "MND-SOURCE-006",
+      "name": "gcc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9655879,
+        "endExclusive": 9660712
+      },
+      "spanHash": "805286c83744dde9ea14bb5f79c4506db5e43dc494f2815c6f581e27cb5051bd",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-006-gcc.txt",
+      "evidenceId": "MND-E006"
+    },
+    {
+      "id": "MND-SOURCE-007",
+      "name": "registration-navigate-back",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9659852,
+        "endExclusive": 9659873
+      },
+      "spanHash": "ed8d5116f9568d1e3154101df48f0bc90144ab2b8f61279b41c741ebfb72295d",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MND-SOURCE-007-registration-navigate-back.txt",
+      "evidenceId": "MND-E007"
+    },
+    {
+      "id": "MND-SOURCE-008",
+      "name": "registration-navigate-forward",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9659956,
+        "endExclusive": 9659980
+      },
+      "spanHash": "1a2b63ce4e5461eeb2c6cf3443b474a5a67806a401a3129d99aabdc2dd038a8b",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MND-SOURCE-008-registration-navigate-forward.txt",
+      "evidenceId": "MND-E008"
+    },
+    {
+      "id": "MND-SOURCE-009",
+      "name": "Wmc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9796800,
+        "endExclusive": 9797134
+      },
+      "spanHash": "bd80f306643d21b3b0ae74d758c45adedcd4d59a64a9c5688e502e8940df126f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-009-Wmc.txt",
+      "evidenceId": "MND-E009"
+    },
+    {
+      "id": "MND-SOURCE-010",
+      "name": "Abc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9904950,
+        "endExclusive": 9905555
+      },
+      "spanHash": "d933ca6c835d5567978ec9d6b992b29c930b030ab7648b07aa0335b120733bdf",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-010-Abc.txt",
+      "evidenceId": "MND-E010"
+    },
+    {
+      "id": "MND-SOURCE-011",
+      "name": "registration-toggle-debug-modal",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9905438,
+        "endExclusive": 9905466
+      },
+      "spanHash": "51ef62c06037778d42ec99a126f6cdd5670bdc188aeb0f212ff07bbbae7610a7",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MND-SOURCE-011-registration-toggle-debug-modal.txt",
+      "evidenceId": "MND-E011"
+    },
+    {
+      "id": "MND-SOURCE-012",
+      "name": "WNc",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10181946,
+        "endExclusive": 10183003
+      },
+      "spanHash": "86c12d59318f2c43f25e7aa8d967e8fa5210c43a422faf483c02e32ebb6517b3",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-012-WNc.txt",
+      "evidenceId": "MND-E012"
+    },
+    {
+      "id": "MND-SOURCE-013",
+      "name": "registration-toggle-query-devtools",
+      "role": "literal first argument call candidate",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10182213,
+        "endExclusive": 10182244
+      },
+      "spanHash": "ae79959e90f706ef00304cc48084316baf8170445aab1911d0d2101f7bf2ac46",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MND-SOURCE-013-registration-toggle-query-devtools.txt",
+      "evidenceId": "MND-E013"
+    },
+    {
+      "id": "MND-SOURCE-014",
+      "name": "Jt",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/register-app-actions-4b8b92c62fa1.js",
+      "sourceHash": "ece788ffac1f1468e3e4c5f211f8c4125c7e61091098cd228dae4a6ec7a153b9",
+      "byteRange": {
+        "start": 13125,
+        "endExclusive": 13295
+      },
+      "spanHash": "d734ad766ad4bf3b02be9a2b6186ea0cf872b32f3751629fd399e5d66bab7edb",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-014-Jt.txt",
+      "evidenceId": "MND-E014"
+    },
+    {
+      "id": "MND-SOURCE-015",
+      "name": "Zt",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/register-app-actions-4b8b92c62fa1.js",
+      "sourceHash": "ece788ffac1f1468e3e4c5f211f8c4125c7e61091098cd228dae4a6ec7a153b9",
+      "byteRange": {
+        "start": 13305,
+        "endExclusive": 13481
+      },
+      "spanHash": "52208b93c82b77cc2c6b2e8d2bebe9fa875ec18eaad28a5713cfdc5be735f7e0",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-015-Zt.txt",
+      "evidenceId": "MND-E015"
+    },
+    {
+      "id": "MND-SOURCE-016",
+      "name": "Rn",
+      "role": "complete enclosing FunctionDeclaration",
+      "sourcePath": "app.asar/webview/assets/site-preview-197a621b0e56.js",
+      "sourceHash": "c2e47706f3a5226cbb67af69cf18ae94124fba4eb49bd6d356bba355ae8c2a27",
+      "byteRange": {
+        "start": 9237,
+        "endExclusive": 12308
+      },
+      "spanHash": "bc321646a2a4882055271afe773527e75b1b9239f8e3703f548c7f4e38055097",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-016-Rn.txt",
+      "evidenceId": "MND-E016"
+    },
+    {
+      "id": "MND-SOURCE-017",
+      "name": "q3a",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6337081,
+        "endExclusive": 6337135
+      },
+      "spanHash": "a0e800c2ebc940ef32c5487eedd742e4c95e4a018cf5cb7e3a7ea5f08aa21bfc",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-017-q3a.txt",
+      "evidenceId": "MND-E017"
+    },
+    {
+      "id": "MND-SOURCE-018",
+      "name": "BNo",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 7235530,
+        "endExclusive": 7235533
+      },
+      "spanHash": "3f4d9530402435c70c1410b4942e3e6ee8dd0b58891ec93f335594ca212d8c2f",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MND-SOURCE-018-BNo.txt",
+      "evidenceId": "MND-E018"
+    },
+    {
+      "id": "MND-SOURCE-019",
+      "name": "PNo",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 7230034,
+        "endExclusive": 7230059
+      },
+      "spanHash": "d5379bacda5cadfb3f241075c747e703c9f842bfbdc6b288b32316042b2dbef4",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-019-PNo.txt",
+      "evidenceId": "MND-E019"
+    },
+    {
+      "id": "MND-SOURCE-020",
+      "name": "JNc",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10183365,
+        "endExclusive": 10183390
+      },
+      "spanHash": "55fd3b276321c2a537c18490f7c8738903221813ff80a79908c6fb94f2d8218d",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-020-JNc.txt",
+      "evidenceId": "MND-E020"
+    },
+    {
+      "id": "MND-SOURCE-021",
+      "name": "FNc",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 10180683,
+        "endExclusive": 10181767
+      },
+      "spanHash": "b2b71a9dbd151d8de10941d03015614ef5ae17707d9a3d51276a5e01775d874b",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-021-FNc.txt",
+      "evidenceId": "MND-E021"
+    },
+    {
+      "id": "MND-SOURCE-022",
+      "name": "export-N6t",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8112636,
+        "endExclusive": 8112646
+      },
+      "spanHash": "b1627a4e061ece138d0e69ba22f510a40bbfda2a01b8098bf112b323afdd6e86",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MND-SOURCE-022-export-N6t.txt",
+      "evidenceId": "MND-E022"
+    },
+    {
+      "id": "MND-SOURCE-023",
+      "name": "dkt",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2003861,
+        "endExclusive": 2003926
+      },
+      "spanHash": "61a713cd91b260a3f6f363492f243a301fb8c0a9e03efade1097e5a9bb425b89",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-023-dkt.txt",
+      "evidenceId": "MND-E023"
+    },
+    {
+      "id": "MND-SOURCE-024",
+      "name": "export-aen",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8135436,
+        "endExclusive": 8135445
+      },
+      "spanHash": "9151324f46eb4f0d090f19f332317831166d5cfbaa63f6cded2ea31d4f025512",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MND-SOURCE-024-export-aen.txt",
+      "evidenceId": "MND-E024"
+    },
+    {
+      "id": "MND-SOURCE-025",
+      "name": "FM",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1904850,
+        "endExclusive": 1904852
+      },
+      "spanHash": "dc72daa266582fba62836575af00ade547932927416128dbb80734e9fb39395a",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MND-SOURCE-025-FM.txt",
+      "evidenceId": "MND-E025"
+    },
+    {
+      "id": "MND-SOURCE-026",
+      "name": "export-NNt",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8112991,
+        "endExclusive": 8113000
+      },
+      "spanHash": "c456075c39b5b3090825acc49e59ca5dc4e6c8fac57173fa6e721c77c3917900",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MND-SOURCE-026-export-NNt.txt",
+      "evidenceId": "MND-E026"
+    },
+    {
+      "id": "MND-SOURCE-027",
+      "name": "xG",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3477890,
+        "endExclusive": 3477961
+      },
+      "spanHash": "b303028b1bb9a5cae25eadd9400f48a2ae9db4bccf6fb89357442ee0015a8722",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-027-xG.txt",
+      "evidenceId": "MND-E027"
+    },
+    {
+      "id": "MND-SOURCE-028",
+      "name": "export-pIt",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8158580,
+        "endExclusive": 8158590
+      },
+      "spanHash": "6e83197ebdf5b53df5456f127854eab574fdb42fd0a9f07d240465cecf258d47",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MND-SOURCE-028-export-pIt.txt",
+      "evidenceId": "MND-E028"
+    },
+    {
+      "id": "MND-SOURCE-029",
+      "name": "cbn",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402082,
+        "endExclusive": 3402115
+      },
+      "spanHash": "468336618c2662e671fe329d5eb7d0dfc1d3e51bf0d81584119dda3db6dc3f5e",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-029-cbn.txt",
+      "evidenceId": "MND-E029"
+    },
+    {
+      "id": "MND-SOURCE-030",
+      "name": "export-vSt",
+      "role": "explicit supporting export specifier",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8168271,
+        "endExclusive": 8168281
+      },
+      "spanHash": "3201010658eb521d7b705f689f70f951e01dff866c339079ed7f682664e406bc",
+      "nodeType": "ExportSpecifier",
+      "savedPath": "source/MND-SOURCE-030-export-vSt.txt",
+      "evidenceId": "MND-E030"
+    },
+    {
+      "id": "MND-SOURCE-031",
+      "name": "rUn",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3761220,
+        "endExclusive": 3761253
+      },
+      "spanHash": "1378c61f6bf276259238ec59cd49b231b0d3b2930d88d65b94a952f147aed947",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-031-rUn.txt",
+      "evidenceId": "MND-E031"
+    },
+    {
+      "id": "MND-SOURCE-032",
+      "name": "cd",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 119947,
+        "endExclusive": 120010
+      },
+      "spanHash": "46ecd89e07a761dc2eca1b8f37dbb387cac2b6aa7e695bae240ff89dd1948eb2",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/MND-SOURCE-032-cd.txt",
+      "evidenceId": "MND-E032"
+    },
+    {
+      "id": "MND-SOURCE-033",
+      "name": "R",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 46627,
+        "endExclusive": 46900
+      },
+      "spanHash": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MND-SOURCE-033-R.txt",
+      "evidenceId": "MND-E033"
+    },
+    {
+      "id": "MND-SOURCE-034",
+      "name": "Hi",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 46582,
+        "endExclusive": 46626
+      },
+      "spanHash": "258db61dd9d0a79bc4dac7d55daf9511d3de9affd46745e8e6884b04419c23af",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MND-SOURCE-034-Hi.txt",
+      "evidenceId": "MND-E034"
+    },
+    {
+      "id": "MND-SOURCE-035",
+      "name": "m",
+      "role": "complete supporting original declaration",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 1340,
+        "endExclusive": 3650
+      },
+      "spanHash": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/MND-SOURCE-035-m.txt",
+      "evidenceId": "MND-E035"
+    },
+    {
+      "id": "MND-SOURCE-036",
+      "name": "exports-It",
+      "role": "complete CJS getter export descriptor",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 178073,
+        "endExclusive": 178150
+      },
+      "spanHash": "1d85d6c0fcb1a60431cbf70d37d9bafc4606a90c98a43a099475536ffcd43c23",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MND-SOURCE-036-exports-It.txt",
+      "evidenceId": "MND-E036"
+    },
+    {
+      "id": "MND-SOURCE-037",
+      "name": "exports-wi",
+      "role": "complete CJS getter export descriptor",
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 201564,
+        "endExclusive": 201640
+      },
+      "spanHash": "7f36c706a0e943284054f9662d743b95f0bd6b61b469d3e80257880457071104",
+      "nodeType": "CallExpression",
+      "savedPath": "source/MND-SOURCE-037-exports-wi.txt",
+      "evidenceId": "MND-E037"
+    }
+  ],
+  "reusedSourceUnits": [
+    {
+      "ref": {
+        "path": "menu-navigation-actions-v1.json",
+        "bytes": 83830,
+        "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937",
+        "jsonPointer": "/sourceUnits/1"
+      },
+      "sourceUnit": {
+        "id": "MNA-SOURCE-002",
+        "name": "CZe",
+        "role": "complete original top-level function",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3401957,
+          "endExclusive": 3422782
+        },
+        "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MNA-SOURCE-002-CZe.txt",
+        "evidenceId": "MNA-E002"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-navigation-actions-v1.json",
+        "bytes": 83830,
+        "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937",
+        "jsonPointer": "/sourceUnits/14"
+      },
+      "sourceUnit": {
+        "id": "MNA-SOURCE-015",
+        "name": "JQa",
+        "role": "complete enclosing FunctionDeclaration",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "byteRange": {
+          "start": 6244841,
+          "endExclusive": 6246567
+        },
+        "spanHash": "46fdca0e9e0883b7c89a0d1f2497f7d086b98e39a3ed87f036b70e45daad4c57",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MNA-SOURCE-015-JQa.txt",
+        "evidenceId": "MNA-E015"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-thread-actions-v1.json",
+        "bytes": 117163,
+        "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+        "jsonPointer": "/sourceUnits/37"
+      },
+      "sourceUnit": {
+        "id": "MTA-SOURCE-038",
+        "name": "export-Pvn",
+        "role": "explicit ESM export specifier",
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "byteRange": {
+          "start": 8117067,
+          "endExclusive": 8117077
+        },
+        "spanHash": "fda0fac4c3504c12024238f2cef7b258a4386366719bf4d2432294dbe79dc8fb",
+        "nodeType": "ExportSpecifier",
+        "savedPath": "source/MTA-SOURCE-038-export-Pvn.txt",
+        "evidenceId": "MTA-E038"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-thread-actions-v1.json",
+        "bytes": 117163,
+        "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+        "jsonPointer": "/sourceUnits/36"
+      },
+      "sourceUnit": {
+        "id": "MTA-SOURCE-037",
+        "name": "hre",
+        "role": "original Program declaration",
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "byteRange": {
+          "start": 295513,
+          "endExclusive": 295919
+        },
+        "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MTA-SOURCE-037-hre.txt",
+        "evidenceId": "MTA-E037"
+      }
+    },
+    {
+      "ref": {
+        "path": "menu-panel-actions-v1.json",
+        "bytes": 148002,
+        "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9",
+        "jsonPointer": "/sourceUnits/67"
+      },
+      "sourceUnit": {
+        "id": "MPA-SOURCE-068",
+        "name": "Pw",
+        "role": "complete exported original declaration",
+        "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+        "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+        "byteRange": {
+          "start": 1501107,
+          "endExclusive": 1501954
+        },
+        "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MPA-SOURCE-068-Pw.txt",
+        "evidenceId": "MPA-E068"
+      }
+    },
+    {
+      "ref": {
+        "path": "debug-chrome-policy-owner-v1.json",
+        "bytes": 79617,
+        "sha256": "a6329f61d0aeec48b4b02f229171a9f2a2d1eda551ce8a6bee1ad298dbb5c214",
+        "jsonPointer": "/sourceUnits/0"
+      },
+      "sourceUnit": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 136,
+          "endExclusive": 166
+        },
+        "spanHash": "1f943f2a0aa26c81cc49da3d0f43f146ce1b5bee58eab44ce1d916ff38486565",
+        "nodeType": "VariableDeclarator",
+        "labels": [
+          "binding-r"
+        ],
+        "id": "DCP-SOURCE-01",
+        "kind": "main",
+        "selection": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/01.js.txt",
+          "bytes": 30,
+          "sha256": "1f943f2a0aa26c81cc49da3d0f43f146ce1b5bee58eab44ce1d916ff38486565"
+        }
+      }
+    },
+    {
+      "ref": {
+        "path": "debug-chrome-policy-owner-v1.json",
+        "bytes": 79617,
+        "sha256": "a6329f61d0aeec48b4b02f229171a9f2a2d1eda551ce8a6bee1ad298dbb5c214",
+        "jsonPointer": "/sourceUnits/1"
+      },
+      "sourceUnit": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 556,
+          "endExclusive": 595
+        },
+        "spanHash": "f950e1232c77a26a2124da1f341fe702e89958a60b21bb27d4a3ebf17fd877b5",
+        "nodeType": "VariableDeclarator",
+        "labels": [
+          "binding-p"
+        ],
+        "id": "DCP-SOURCE-02",
+        "kind": "main",
+        "selection": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/02.js.txt",
+          "bytes": 39,
+          "sha256": "f950e1232c77a26a2124da1f341fe702e89958a60b21bb27d4a3ebf17fd877b5"
+        }
+      }
+    },
+    {
+      "ref": {
+        "path": "debug-chrome-policy-owner-v1.json",
+        "bytes": 79617,
+        "sha256": "a6329f61d0aeec48b4b02f229171a9f2a2d1eda551ce8a6bee1ad298dbb5c214",
+        "jsonPointer": "/sourceUnits/42"
+      },
+      "sourceUnit": {
+        "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+        "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+        "byteRange": {
+          "start": 3727,
+          "endExclusive": 3802
+        },
+        "spanHash": "28635a96255c2e5973157af520945b091dbfb4a409f74a285a124b123605c788",
+        "nodeType": "CallExpression",
+        "labels": [
+          "export-t"
+        ],
+        "id": "DCP-SOURCE-43",
+        "kind": "flavor",
+        "selection": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/43.js.txt",
+          "bytes": 75,
+          "sha256": "28635a96255c2e5973157af520945b091dbfb4a409f74a285a124b123605c788"
+        }
+      }
+    },
+    {
+      "ref": {
+        "path": "debug-chrome-policy-owner-v1.json",
+        "bytes": 79617,
+        "sha256": "a6329f61d0aeec48b4b02f229171a9f2a2d1eda551ce8a6bee1ad298dbb5c214",
+        "jsonPointer": "/sourceUnits/60"
+      },
+      "sourceUnit": {
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "byteRange": {
+          "start": 1904853,
+          "endExclusive": 1905363
+        },
+        "spanHash": "5f56a1574fc1e729eb14ecfd0988962e736b780a3493626c85ab702a5c1d4060",
+        "nodeType": "FunctionDeclaration",
+        "labels": [
+          "binding-IM"
+        ],
+        "id": "DCP-SOURCE-61",
+        "kind": "rendererShared",
+        "selection": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/debug-chrome-policy-owner/61.js.txt",
+          "bytes": 510,
+          "sha256": "5f56a1574fc1e729eb14ecfd0988962e736b780a3493626c85ab702a5c1d4060"
+        }
+      }
+    }
+  ],
+  "sourceJoins": [
+    {
+      "consumerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "local": "Tfe",
+      "imported": "N6t",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MND-SOURCE-004",
+      "exportUnit": "MND-SOURCE-022",
+      "exportedLocal": "dkt",
+      "definitionUnit": "MND-SOURCE-023",
+      "providerSourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "local": "Cu",
+      "imported": "aen",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MND-SOURCE-004",
+      "exportUnit": "MND-SOURCE-024",
+      "exportedLocal": "FM",
+      "definitionUnit": "MND-SOURCE-025",
+      "providerSourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "local": "Lo",
+      "imported": "NNt",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MND-SOURCE-004",
+      "exportUnit": "MND-SOURCE-026",
+      "exportedLocal": "xG",
+      "definitionUnit": "MND-SOURCE-027",
+      "providerSourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "local": "gm",
+      "imported": "pIt",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MND-SOURCE-004",
+      "exportUnit": "MND-SOURCE-028",
+      "exportedLocal": "cbn",
+      "definitionUnit": "MND-SOURCE-029",
+      "providerSourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js"
+    },
+    {
+      "consumerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "local": "KXe",
+      "imported": "vSt",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MND-SOURCE-004",
+      "exportUnit": "MND-SOURCE-030",
+      "exportedLocal": "rUn",
+      "definitionUnit": "MND-SOURCE-031",
+      "providerSourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js"
+    },
+    {
+      "local": "xs",
+      "imported": "Pvn",
+      "module": "./app-shared-8bd9d0399038.js",
+      "sourceUnit": "MND-SOURCE-004",
+      "consumerSourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "reusedExport": {
+        "ref": {
+          "path": "menu-thread-actions-v1.json",
+          "bytes": 117163,
+          "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+          "jsonPointer": "/sourceUnits/37"
+        },
+        "sourceUnit": {
+          "id": "MTA-SOURCE-038",
+          "name": "export-Pvn",
+          "role": "explicit ESM export specifier",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 8117067,
+            "endExclusive": 8117077
+          },
+          "spanHash": "fda0fac4c3504c12024238f2cef7b258a4386366719bf4d2432294dbe79dc8fb",
+          "nodeType": "ExportSpecifier",
+          "savedPath": "source/MTA-SOURCE-038-export-Pvn.txt",
+          "evidenceId": "MTA-E038"
+        }
+      },
+      "reusedDefinition": {
+        "ref": {
+          "path": "menu-thread-actions-v1.json",
+          "bytes": 117163,
+          "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7",
+          "jsonPointer": "/sourceUnits/36"
+        },
+        "sourceUnit": {
+          "id": "MTA-SOURCE-037",
+          "name": "hre",
+          "role": "original Program declaration",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 295513,
+            "endExclusive": 295919
+          },
+          "spanHash": "18eea76c8c64058b1397c104a4b2ab4dbff905e5b51034afa7f9b0ad2088d897",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/MTA-SOURCE-037-hre.txt",
+          "evidenceId": "MTA-E037"
+        }
+      },
+      "qualification": "Explicit Pvn import; reuse saved hre subscription provider identity; delivery unproven."
+    }
+  ],
+  "policyJoins": [
+    {
+      "nativePolicyExport": {
+        "id": "MND-SOURCE-036",
+        "name": "exports-It",
+        "role": "complete CJS getter export descriptor",
+        "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+        "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+        "byteRange": {
+          "start": 178073,
+          "endExclusive": 178150
+        },
+        "spanHash": "1d85d6c0fcb1a60431cbf70d37d9bafc4606a90c98a43a099475536ffcd43c23",
+        "nodeType": "CallExpression",
+        "savedPath": "source/MND-SOURCE-036-exports-It.txt",
+        "evidenceId": "MND-E036"
+      },
+      "nativePolicy": {
+        "id": "MND-SOURCE-032",
+        "name": "cd",
+        "role": "complete supporting original declaration",
+        "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+        "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+        "byteRange": {
+          "start": 119947,
+          "endExclusive": 120010
+        },
+        "spanHash": "46ecd89e07a761dc2eca1b8f37dbb387cac2b6aa7e695bae240ff89dd1948eb2",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MND-SOURCE-032-cd.txt",
+        "evidenceId": "MND-E032"
+      },
+      "nativeBuildObject": {
+        "id": "MND-SOURCE-033",
+        "name": "R",
+        "role": "complete supporting original declaration",
+        "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+        "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+        "byteRange": {
+          "start": 46627,
+          "endExclusive": 46900
+        },
+        "spanHash": "fc661bcb014cf67ec65678cbce018b663a1709e5788a45d939d2b56c89688be9",
+        "nodeType": "VariableDeclarator",
+        "savedPath": "source/MND-SOURCE-033-R.txt",
+        "evidenceId": "MND-E033"
+      },
+      "inheritedReactScanPolicy": {
+        "id": "MND-SOURCE-035",
+        "name": "m",
+        "role": "complete supporting original declaration",
+        "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+        "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+        "byteRange": {
+          "start": 1340,
+          "endExclusive": 3650
+        },
+        "spanHash": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c",
+        "nodeType": "VariableDeclarator",
+        "savedPath": "source/MND-SOURCE-035-m.txt",
+        "evidenceId": "MND-E035"
+      },
+      "rendererPolicy": {
+        "id": "MND-SOURCE-023",
+        "name": "dkt",
+        "role": "complete supporting original declaration",
+        "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+        "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+        "byteRange": {
+          "start": 2003861,
+          "endExclusive": 2003926
+        },
+        "spanHash": "61a713cd91b260a3f6f363492f243a301fb8c0a9e03efade1097e5a9bb425b89",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MND-SOURCE-023-dkt.txt",
+        "evidenceId": "MND-E023"
+      },
+      "rendererBuildInitializer": {
+        "path": "debug-chrome-policy-owner-v1.json",
+        "bytes": 79617,
+        "sha256": "a6329f61d0aeec48b4b02f229171a9f2a2d1eda551ce8a6bee1ad298dbb5c214",
+        "jsonPointer": "/sourceUnits/60"
+      },
+      "qualification": "CJS It->cd and explicit renderer N6t->dkt identities; supplied/effective runtime flags remain unobserved."
+    }
+  ],
+  "sourceQuery": {
+    "path": "raw/menu-navigation-debug-v1/source-query.json",
+    "bytes": 33706,
+    "sha256": "2b7a9d39dab4eb991c9f39c5c3c588d043f27e660f860ffa0f7150210931c66f"
+  },
+  "inputPins": [
+    {
+      "path": "feature-scope-v32.json",
+      "bytes": 2248419,
+      "sha256": "bcb57e0341f54e004e7d01c58b2d20d192489fae7d372a1d378a2686f0e16077"
+    },
+    {
+      "path": "feature-scope-v29-scenarios.json",
+      "bytes": 2056345,
+      "sha256": "f93bdbb18e71ad9c45a4598361444175d5efbc3d008ed5799784e5f57de45079"
+    },
+    {
+      "path": "restoration-coverage-v23.json",
+      "bytes": 1259520,
+      "sha256": "380af715965688c46a711171a7dc8ba70fe8bb7d4326cfc94b0ee4c8fc01cc7c"
+    },
+    {
+      "path": "legacy-entry-dispositions-v10.json",
+      "bytes": 1420844,
+      "sha256": "c2fe4fce141ed2b79e7f31a95d7dc851ebaf3511e55ba1daf05fb6765fc2a262"
+    },
+    {
+      "path": "native-menu-roles-v1.json",
+      "bytes": 866774,
+      "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+    },
+    {
+      "path": "menu-command-contracts.json",
+      "bytes": 10630684,
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf"
+    },
+    {
+      "path": "menu-navigation-actions-v1.json",
+      "bytes": 83830,
+      "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937"
+    },
+    {
+      "path": "menu-thread-actions-v1.json",
+      "bytes": 117163,
+      "sha256": "5ce4755694d6cf7f185bf885ac18b92001f9877ebdc8cad1ec6c19a88c6f2fe7"
+    },
+    {
+      "path": "menu-panel-actions-v1.json",
+      "bytes": 148002,
+      "sha256": "0de706816fe46183f51c4175267b06b18cd988a00c4768a7b41a6b6a69c286d9"
+    },
+    {
+      "path": "debug-chrome-policy-owner-v1.json",
+      "bytes": 79617,
+      "sha256": "a6329f61d0aeec48b4b02f229171a9f2a2d1eda551ce8a6bee1ad298dbb5c214"
+    },
+    {
+      "path": "chat-branch-decisions.json",
+      "bytes": 12041,
+      "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+    },
+    {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    }
+  ],
+  "counts": {
+    "selectedSourceRecords": 10,
+    "selectedMenuSchemas": 10,
+    "selectedGeneratorOptions": 0,
+    "distinctUserGoals": 8,
+    "newFiniteDefinitions": 7,
+    "reusedFiniteDefinitions": 1,
+    "newUserOperations": 9,
+    "newScenarioSpecifications": 25,
+    "newPartialSourceAssociations": 10,
+    "alreadyPublishedSourceAssociations": 0,
+    "explicitEsmJoins": 6,
+    "savedSourceSelections": 37,
+    "distinctFullOriginalProgramsParsed": 6,
+    "additionalMaintenanceProposals": 3,
+    "existingUnifiedResponsibilityOwnersUnchanged": 37,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0,
+    "newProductScenarioPasses": 0
+  },
+  "dependencyPolicy": {
+    "implementationCopiesGenerated": 0,
+    "catalog": {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    "qualification": "First-party menus/context adapters retained. React/query tooling/native providers are dependencies; NNc/React Scan identity and source provenance are explicit gaps, not implementation copies."
+  },
+  "completedBatch": "SQ-02-menu-navigation-debug-05",
+  "questionCompleted": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limits": [
+    "Ten fixed sources close at necessary callback/injected-provider boundaries, without actual menu/clipboard/tool execution.",
+    "Debug gates differ between tools and do not establish mode ownership.",
+    "React Scan recipient remains unresolved; a no-op Fsc case is not a full consumer census.",
+    "Query state toggle differs from visible UI, with unresolved delegated UI provenance.",
+    "Application route history is separate from browser page history and ordered thread navigation.",
+    "No product/native/build acceptance or new whole-feature exclusion."
+  ]
+}

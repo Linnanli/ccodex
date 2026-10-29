@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "reviewer": "/root/preload_app_host",
+  "reviewedAtUtc": "2026-10-13T17:51:14.760021+00:00",
+  "status": "passed-independent-artifact-only-output-peer-review",
+  "priorInputReview": {
+    "path": ".analysis-local/request-entry-reconciliation-work/peer-input-check.json",
+    "bytes": 15229,
+    "sha256": "f690e7ce3c8dd2411908a6c8c6cdc769ec7001314752ccf2fb066cc44381796c"
+  },
+  "finalProducts": [
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/reconciliation.json",
+      "bytes": 2291957,
+      "sha256": "4a3384ed73d30e3be0a23eaf071f8e3905263d95700dfe164d629fbb4bf9c391"
+    },
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/journal.jsonl",
+      "bytes": 1546912,
+      "sha256": "427976886a8041c65e28564d5dc09da072f6ee32e23c802b8a87e7b09e453232"
+    },
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/summary.md",
+      "bytes": 2250,
+      "sha256": "5141d7f1079066e05d7b99d62554dcc015bee441d6617c48399c551b4667392d"
+    },
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/source-receipts.json",
+      "bytes": 31395,
+      "sha256": "c4e71afe7f01a92936a6e3036fd54c5a448fbbbd45e7727cfcbf658bb77ecb3e"
+    },
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/input-receipts.json",
+      "bytes": 20532,
+      "sha256": "3c64330cdd8984c4730c58a11b4060020d0f9e9086663865bde9357dcba128cf"
+    }
+  ],
+  "validationPin": {
+    "path": ".analysis-local/request-entry-reconciliation-work/validation.json",
+    "bytes": 1850,
+    "sha256": "2391486a559ef24c7d33cc9764eaa3ef9d8a0b4e650dae7dc00ee96b86ea0d0f"
+  },
+  "runReceiptPins": [
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/attempts/v1/run.json",
+      "bytes": 3582,
+      "sha256": "a0e4b07e69af70fb614c1b48ae376c4c87a7196a62390c708a72ee11993013cd"
+    },
+    {
+      "path": ".analysis-local/request-entry-reconciliation-work/attempts/v1/verification-run.json",
+      "bytes": 1586,
+      "sha256": "13666cacbc8aa5d6cb32974270ee802a2d02dd13934d7bfb11bac9255c67fd48"
+    }
+  ],
+  "scope": "Independent saved JSON/JSONL/summary and snapshot hash, ID, pointer, journal-line and coordinate reconciliation checks only. No original target source bytes, AST, runtime or feature completeness review.",
+  "independentReviewCounts": {
+    "snapshottedInputsWithOriginBytesHashEquality": 27,
+    "savedArtifactWitnessesChecked": 2135,
+    "newJournalRecordsChecked": 375,
+    "explicitOldDeferredAssociationsChecked": 337,
+    "savedSourceInventoryMetadataReceiptsChecked": 37,
+    "unalignedProjectionRowsChecked": 38,
+    "annotationProjectionRowsChecked": 95,
+    "ledgerCoordinateOccurrencesIndependentlyRecounted": 5513,
+    "wholeCallRangeEqualOldCoordinateOccurrences": 0,
+    "twoWayQualifiedContainmentRelationshipsIndependentlyRecounted": 337,
+    "extra38OtherCoordinateRelationships": 0
+  },
+  "results": [
+    "Main/journal/summary/receipt final pins match validation.finalProducts exactly; validation is passed with 8744 checks and zero errors.",
+    "All 27 snapshotted analysis artifacts match their current original artifact bytes and recorded hashes. Main inputs match input-receipts. No snapshotted original target implementation is read in this review.",
+    "Every new journal row resolves to its main candidate and exact saved original wrapper call evidence ID/range/sourcePath/sourceHash/retained span hash; referenced original journal raw-line hashes and artifact pins match.",
+    "All 337 saved old candidateLink/FEATURE IDs, ledger rows, old lexical source-artifact pointers and original old journal witnesses agree. Their range relation is containment with different spans; same span/operation/feature identity is explicitly false.",
+    "375 AST calls retain their separate 353 literal/22 dynamic denominator. The 38 unaligned projections consist of 16 literal/22 dynamic candidates and match the selected main records by ID, witness pointer and source fields.",
+    "95 annotation-review projections match the saved non-unresolved old candidates and retain the old deferred role. 242 saved old candidates remain unresolved. No legacy feature/mode/protocol/runtime assignment is promoted.",
+    "Independent recursive recount within entries968/support176/deferred337 gives 5513 saved coordinate occurrences. Qualified full-call range equality is zero; two-way containment yields the same 337 relationships and none for the extra38. These bounded spatial results do not prove omission.",
+    "37 source receipts agree with the saved inventory metadata witnesses, without reading target source bytes or freshly rehashing target spans.",
+    "confirmedOmissionCandidates remains empty, newFeaturesClaimed is zero, feature census denominator is unknown and whole-client coverage is not claimed.",
+    "Unlocated standalone wrapper validation/manifest and unclaimed current publication-run wrapper coverage are explicitly retained."
+  ],
+  "manualClaimBoundaryReview": [
+    "Read full summary and representative linked/unlinked main records with all source/ledger/journal witnesses and spatial context fields.",
+    "Names and methodDisplayOnly remain consistency/display metadata. Accepted associations use qualified pinned IDs, JSON pointers and ranges.",
+    "Journal confirmed confidence is scoped to saved-artifact identity/coordinate reconciliation; it does not add original-source or runtime verification."
+  ],
+  "findings": [],
+  "reviewDiagnostics": [
+    {
+      "type": "inapplicable-reviewer-schema-expectation",
+      "detail": "The initial peer full-object equality check assumed notAlignedCandidatesForReview held full candidate copies. It actually holds explicit projections. Replaced that expectation with all38 projected ID/pointer/source/classification field checks; all passed, no product defect."
+    },
+    {
+      "type": "additional-peer-unavailable",
+      "detail": "An attempted read-only subsidiary semantic reviewer could not start due agent thread limit. The independent review reported here was completed by this peer; no extra-agent review is claimed and this is not a product execution blocker."
+    }
+  ],
+  "existingIndependentValidation": {
+    "status": "passed",
+    "checks": 8744,
+    "errors": [],
+    "peerReranProducer": false,
+    "peerReranExistingVerifier": false
+  },
+  "limitations": [
+    "Source/span hashes are retained prior evidence metadata; original target source bytes were neither read nor rehashed.",
+    "No broader client feature census, absent feature proof, mode exclusion, successful runtime registration or first-party/third-party ownership follows.",
+    "Actual run receipts were read as pinned saved JSON metadata; this peer did not rerun their scripts or assert runtime product behavior.",
+    "Freeze manifest completion is the producing agent responsibility after adding this final peer receipt."
+  ],
+  "actions": {
+    "originalTargetSourceRead": false,
+    "targetSourceParsedOrEvaluated": false,
+    "targetOrCliExecuted": false,
+    "uiUsed": false,
+    "networkUsed": false,
+    "modelInvoked": false,
+    "credentialsRead": false,
+    "environmentValuesRead": false,
+    "personalHistoryRead": false,
+    "oldArtifactsModified": false,
+    "priorPeerInputReceiptModified": false,
+    "onlyNewFileWritten": ".analysis-local/request-entry-reconciliation-work/peer-review.json"
+  }
+}

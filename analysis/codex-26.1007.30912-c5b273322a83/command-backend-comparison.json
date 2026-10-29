@@ -1,0 +1,176 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-13T09:18:32.573330+00:00",
+  "status": "compared",
+  "scope": "five owned readOnly/no-network non-model command fixtures",
+  "runs": {
+    "frozen": {
+      "record": "command-protocol-frozen-home-normal-host.json",
+      "sha256": "4c8224d67a795d95425aa0836c9764f9cb6479e1defe34a54c53b832c7b980fc",
+      "cliSha256": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8",
+      "contracts": {
+        "initialize": {
+          "returnedKeys": [
+            "codexHome",
+            "platformFamily",
+            "platformOs",
+            "userAgent"
+          ]
+        },
+        "command-completion": {
+          "exitCode": 0,
+          "stdout": "ccodex-command-fixture\n",
+          "stderr": ""
+        },
+        "command-nonzero-exit": {
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": ""
+        },
+        "command-input-validation": {
+          "errorCode": -32600
+        },
+        "command-stream-and-terminate": {
+          "terminationResult": {},
+          "finalResult": {
+            "exitCode": 137,
+            "stdout": "",
+            "stderr": ""
+          },
+          "streamOutputMatchesFixture": true
+        }
+      },
+      "environmentPolicy": "allowlist-with-dedicated-home-and-codex-home",
+      "allChecksPassed": true
+    },
+    "public-npm": {
+      "record": "command-protocol-public-npm-manifest-snapshot.json",
+      "sha256": "10203b3f8b1bec8e77b11db23cac5a7bb822df291998a0ae197ac9407dd589ba",
+      "cliSha256": "fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d",
+      "contracts": {
+        "initialize": {
+          "returnedKeys": [
+            "codexHome",
+            "platformFamily",
+            "platformOs",
+            "userAgent"
+          ]
+        },
+        "command-completion": {
+          "exitCode": 0,
+          "stdout": "ccodex-command-fixture\n",
+          "stderr": ""
+        },
+        "command-nonzero-exit": {
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": ""
+        },
+        "command-input-validation": {
+          "errorCode": -32600
+        },
+        "command-stream-and-terminate": {
+          "terminationResult": {},
+          "finalResult": {
+            "exitCode": 137,
+            "stdout": "",
+            "stderr": ""
+          },
+          "streamOutputMatchesFixture": true
+        }
+      },
+      "environmentPolicy": "allowlist-with-dedicated-home-and-codex-home",
+      "allChecksPassed": true
+    }
+  },
+  "comparisons": [
+    {
+      "id": "initialize",
+      "equal": true,
+      "frozen": {
+        "returnedKeys": [
+          "codexHome",
+          "platformFamily",
+          "platformOs",
+          "userAgent"
+        ]
+      },
+      "public": {
+        "returnedKeys": [
+          "codexHome",
+          "platformFamily",
+          "platformOs",
+          "userAgent"
+        ]
+      }
+    },
+    {
+      "id": "command-completion",
+      "equal": true,
+      "frozen": {
+        "exitCode": 0,
+        "stdout": "ccodex-command-fixture\n",
+        "stderr": ""
+      },
+      "public": {
+        "exitCode": 0,
+        "stdout": "ccodex-command-fixture\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "command-nonzero-exit",
+      "equal": true,
+      "frozen": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": ""
+      },
+      "public": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "command-input-validation",
+      "equal": true,
+      "frozen": {
+        "errorCode": -32600
+      },
+      "public": {
+        "errorCode": -32600
+      }
+    },
+    {
+      "id": "command-stream-and-terminate",
+      "equal": true,
+      "frozen": {
+        "terminationResult": {},
+        "finalResult": {
+          "exitCode": 137,
+          "stdout": "",
+          "stderr": ""
+        },
+        "streamOutputMatchesFixture": true
+      },
+      "public": {
+        "terminationResult": {},
+        "finalResult": {
+          "exitCode": 137,
+          "stdout": "",
+          "stderr": ""
+        },
+        "streamOutputMatchesFixture": true
+      }
+    }
+  ],
+  "equalContracts": 5,
+  "limitations": [
+    "Initialization values were excluded; only response keys were compared.",
+    "Fixture outputs, error codes and terminate results are compared; timestamps and timing are not.",
+    "The frozen CLI hash identifies its shell entry wrapper; the public CLI hash identifies its native executable.",
+    "No desktop UI, model turn, approval, terminal PTY, submitted-thread recovery or complete backend compatibility is established.",
+    "The npm release source relationship to the pinned public Rust commit remains unknown."
+  ]
+}

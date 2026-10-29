@@ -1,0 +1,659 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T22:43:23.121153+00:00",
+  "facts": [
+    {
+      "id": "BSP-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "两处固定公开URL均取得HTTP200且正文未截断；请求未加应用凭据、不跟随redirect。默认sandbox的DNS失败不表示远端对象缺席；经网络访问后分别取得精确commit和npm attestation正文。本批只有两个成功HTTP响应。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/http-receipts.json",
+      "sourceHash": "7b0ca5cf163685e941767b70d735c33ea95163070c140bb6c86f3f400b65274e",
+      "locator": {
+        "jsonPointer": ""
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification",
+      "relatedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/sandbox-dns-failures.json",
+          "bytes": 916,
+          "sha256": "5feb9e38693d077b7e835c44ba6c9c569de1c8b62cab92fdbc6b02fdbd4f76a3"
+        }
+      ]
+    },
+    {
+      "id": "BSP-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "GitHub的openai/codex精确提交740e5af33c71225640e0c1c1555c514c2c93ab74可公开读取：tree=8d3f62d2b7cf4bbc92d226542c397fa007f74c49，parent=4e37bbe344d974db0e61727fdb4bfa1232c1ec9d；API中的Cargo.toml补丁把workspace版本改为0.162.0-alpha.17.2，与桌面声明版本对应。当前只有提交元数据和单文件补丁，未取得源码checkout。API的Git签名状态为unsigned，不写成已验证签名提交。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/desktop-commit.json",
+      "sourceHash": "651bdedfecee8e51c6a6fbea5f74a8785561a0987b939df607fce90d98f40f8c",
+      "locator": {
+        "jsonPointer": "/commit"
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification",
+      "relatedEvidence": [
+        {
+          "pointer": "/files/0",
+          "source": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/desktop-commit.json",
+            "bytes": 4243,
+            "sha256": "651bdedfecee8e51c6a6fbea5f74a8785561a0987b939df607fce90d98f40f8c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "BSP-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "npm响应包含publish/v0.1及SLSA provenance/v1两份DSSE statement。两者subject都是pkg:npm/%40openai/codex@0.162.0-darwin-x64，其SHA512与已保存并重新计算的实际npm tar内容一致；不是只按包名或版本比对。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/provenance-statement.json",
+      "sourceHash": "7dae23aea182b00da47559914d9beaee6af7f0fcb942bf7859bf965a89d80f96",
+      "locator": {
+        "jsonPointer": "/subject"
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification",
+      "relatedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/publish-statement.json",
+          "bytes": 452,
+          "sha256": "603d3e64eed1d0a0090386e2c191f2a6efcba3c835e454de361a3f1b31bd150a"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/source-verification.json",
+          "bytes": 2295,
+          "sha256": "ae0c9e57d199aaf0a37c67e1a6c8a2631d728ef4c0e1829dd778b8edaded3733"
+        }
+      ]
+    },
+    {
+      "id": "BSP-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "签名SLSA payload声明源码为openai/codex的refs/tags/rust-v0.162.0、gitCommit=c1382380de69521303b416720a52f42d51af6248，workflow=.github/workflows/rust-release.yml，builder=https://github.com/actions/runner/github-hosted；这些值与预期公开候选对应。签名证明记录了构建声明，不等于本地重建得到相同二进制。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/provenance-statement.json",
+      "sourceHash": "7dae23aea182b00da47559914d9beaee6af7f0fcb942bf7859bf965a89d80f96",
+      "locator": {
+        "jsonPointer": "/predicate"
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification"
+    },
+    {
+      "id": "BSP-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "SLSA证书身份匹配openai/codex rust-release.yml@refs/tags/rust-v0.162.0，issuer匹配https://token.actions.githubusercontent.com；用固定npm seed的Fulcio/CT/Rekor材料通过证书链、SCT、SET、Merkle inclusion、signed checkpoint及DSSE签名检查，CT/tlog阈值均保持1。没有在线TUF更新或日志跨checkpoint一致性验证。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/attestation-verification.json",
+      "sourceHash": "9a36fc7f16efab3e1e11a9df0eb4a49aca193508c016c2de27bb0be8653b61ac",
+      "locator": {
+        "jsonPointer": "/trust"
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification",
+      "relatedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/trusted-root.json",
+          "bytes": 4537,
+          "sha256": "f44a1b88128e55ebfb62189becbc0fa48d4ec9915c65ac54ba0e46a008b12d5b"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/verify-attestations.cjs",
+          "bytes": 6783,
+          "sha256": "db60c3b1ff9e2528f061a00258bf870c3d558cef15cb97c9422dcb014f17aadd"
+        }
+      ]
+    },
+    {
+      "id": "BSP-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "npm publish证明按固定seed中的npm:attestations keyId选择ECDSA公钥，通过签名和透明日志检查；另用Node crypto按DSSE PAE直接复核两份签名。修改payload后两种检查均拒绝，错误workflow身份也被拒绝。npm key hint作为已固定公钥的查找标识处理，不臆定其DER摘要派生方式。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/source-verification.json",
+      "sourceHash": "ae0c9e57d199aaf0a37c67e1a6c8a2631d728ef4c0e1829dd778b8edaded3733",
+      "locator": {
+        "jsonPointer": "/checks"
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification",
+      "relatedEvidence": [
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/npm-keys.json",
+          "bytes": 2121,
+          "sha256": "160677eb6e1c7083c89b166b20f8fe4e837fb71181506aff1991b80b89184f7d"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/attestation-verification.json",
+          "bytes": 6830,
+          "sha256": "9a36fc7f16efab3e1e11a9df0eb4a49aca193508c016c2de27bb0be8653b61ac"
+        },
+        {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/verify-source.cjs",
+          "bytes": 6867,
+          "sha256": "cb7fb1408bd1f5c5e6e069fa5109a75d5543cd21492ab7a0a8407444e7eb88a2"
+        }
+      ]
+    },
+    {
+      "id": "BSP-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "后台来源决定前进为：公开npm实际包摘要经离线签名provenance绑定到c1382380…，桌面声明740e5af3…的精确GitHub提交元数据可获取。两者继续分列；桌面manifest/native摘要差异原因、精确源树内容及源码构建结果仍未解决，不能据此改用公开候选并删除缺失桌面能力。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/source-verification.json",
+      "sourceHash": "ae0c9e57d199aaf0a37c67e1a6c8a2631d728ef4c0e1829dd778b8edaded3733",
+      "locator": {
+        "jsonPointer": "/signedProvenance"
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "inferred",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification"
+    },
+    {
+      "id": "BSP-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "本批没有取得完整源树或构建产物，没有观察prediction成功、通知后效或实际decoder/receiver，也没有新增客户端/native/model运行。现有三条运行路线/15组能力及11项协议差异继续保留；下一项证据是740e5af3…固定版本的锁/协议类型/接收处理源码。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/source-verification.json",
+      "sourceHash": "ae0c9e57d199aaf0a37c67e1a6c8a2631d728ef4c0e1829dd778b8edaded3733",
+      "locator": {
+        "jsonPointer": "/sourceBuildVerified"
+      },
+      "method": "Unauthenticated HTTPS exact-target acquisition; digest/DSSE checks and offline Sigstore certificate/SCT/SET/Merkle/checkpoint verification against pinned installed npm seed; direct crypto signature cross-check.",
+      "confidence": "unresolved",
+      "verificationStatus": "selected-public-source/provenance-evidence; no exact-source checkout/build or actual backend behavior qualification"
+    }
+  ],
+  "rawEvidence": {
+    "desktop-commit.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/desktop-commit.json",
+      "bytes": 4243,
+      "sha256": "651bdedfecee8e51c6a6fbea5f74a8785561a0987b939df607fce90d98f40f8c"
+    },
+    "npm-attestations.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/npm-attestations.json",
+      "bytes": 14253,
+      "sha256": "9706b0288b30a247adad67a8371560ddda1cb81fc4da93a8b77586ba206cc9be"
+    },
+    "http-receipts.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/http-receipts.json",
+      "bytes": 1470,
+      "sha256": "7b0ca5cf163685e941767b70d735c33ea95163070c140bb6c86f3f400b65274e"
+    },
+    "sandbox-dns-failures.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/sandbox-dns-failures.json",
+      "bytes": 916,
+      "sha256": "5feb9e38693d077b7e835c44ba6c9c569de1c8b62cab92fdbc6b02fdbd4f76a3"
+    },
+    "trusted-root.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/trusted-root.json",
+      "bytes": 4537,
+      "sha256": "f44a1b88128e55ebfb62189becbc0fa48d4ec9915c65ac54ba0e46a008b12d5b"
+    },
+    "npm-keys.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/npm-keys.json",
+      "bytes": 2121,
+      "sha256": "160677eb6e1c7083c89b166b20f8fe4e837fb71181506aff1991b80b89184f7d"
+    },
+    "publish-statement.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/publish-statement.json",
+      "bytes": 452,
+      "sha256": "603d3e64eed1d0a0090386e2c191f2a6efcba3c835e454de361a3f1b31bd150a"
+    },
+    "provenance-statement.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/provenance-statement.json",
+      "bytes": 1043,
+      "sha256": "7dae23aea182b00da47559914d9beaee6af7f0fcb942bf7859bf965a89d80f96"
+    },
+    "attestation-verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/attestation-verification.json",
+      "bytes": 6830,
+      "sha256": "9a36fc7f16efab3e1e11a9df0eb4a49aca193508c016c2de27bb0be8653b61ac"
+    },
+    "source-verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/source-verification.json",
+      "bytes": 2295,
+      "sha256": "ae0c9e57d199aaf0a37c67e1a6c8a2631d728ef4c0e1829dd778b8edaded3733"
+    },
+    "fetch_public.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/fetch_public.py",
+      "bytes": 2809,
+      "sha256": "8fa79e65004622c2e4cd70fc131cf4f5c6d8aa464772f1e531123c3005184eed"
+    },
+    "verify-attestations.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/verify-attestations.cjs",
+      "bytes": 6783,
+      "sha256": "db60c3b1ff9e2528f061a00258bf870c3d558cef15cb97c9422dcb014f17aadd"
+    },
+    "verify-source.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/verify-source.cjs",
+      "bytes": 6867,
+      "sha256": "cb7fb1408bd1f5c5e6e069fa5109a75d5543cd21492ab7a0a8407444e7eb88a2"
+    },
+    "publish.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-source-provenance-v1/publish.py",
+      "bytes": 16769,
+      "sha256": "849a016e0b08792fbd98192ad6e6907c80692dd3f37b41a21a86af7ace83d638"
+    }
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-build-identity-v1.json",
+      "bytes": 24624,
+      "sha256": "1421b0d468129a4147436fe2d15d0363c177c2fada28fa4064c5a486c8568de4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+      "bytes": 169129,
+      "sha256": "8eb9383db2c1a4540300b69a14e33ea7557167cf4182309875082a497749ccc6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/public-protocol-source.json",
+      "bytes": 7557,
+      "sha256": "391a3cd072656ea4f45c3c8d9c2202bef8a422d01bc0af5b1360a6a82df3a0bb"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/protocol-delta-adoption-v1.json",
+      "bytes": 50808,
+      "sha256": "95b28c89373abbff9a61f7dacb9a5c83f5dc44a09621884f71e90ac428b77028"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/independent-build-feasibility-v1.json",
+      "bytes": 228841,
+      "sha256": "84166ba8bdf713204ab708663ef7767018dff524c47742d432fadfa21a168aa5"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "trustQualification": {
+    "seedFile": {
+      "path": "/Users/nallylin/.nvm/versions/node/v22.23.2/lib/node_modules/npm/node_modules/@sigstore/tuf/seeds.json",
+      "bytes": 16226,
+      "sha256": "c56b8197671679123d26b9ec70bf6411e8f04d10c58cb9581a2b1238254ba71b"
+    },
+    "trustedRootSha256": "f44a1b88128e55ebfb62189becbc0fa48d4ec9915c65ac54ba0e46a008b12d5b",
+    "npmAttestationKeysSha256": "160677eb6e1c7083c89b166b20f8fe4e837fb71181506aff1991b80b89184f7d",
+    "anchorPolicy": "Locally installed npm Sigstore bootstrap seed pinned by hash; no online TUF update or freshness claim.",
+    "thresholds": {
+      "ctlogThreshold": 1,
+      "tlogThreshold": 1,
+      "tsaThreshold": 0
+    },
+    "certificatePolicy": {
+      "subjectAlternativeName": "https://github.com/openai/codex/.github/workflows/rust-release.yml@refs/tags/rust-v0.162.0",
+      "extensions": {
+        "issuer": "https://token.actions.githubusercontent.com"
+      }
+    },
+    "onlineTufUpdated": false,
+    "onlineLogConsistencyVerified": false
+  },
+  "verification": {
+    "sigstore": {
+      "status": "passed",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "checks": [
+        {
+          "id": "verified-saved-archive-sha256",
+          "status": "passed"
+        },
+        {
+          "id": "two-expected-attestations",
+          "status": "passed"
+        },
+        {
+          "id": "subject-and-artifact-sha512-0",
+          "status": "passed"
+        },
+        {
+          "id": "predicate-type-0",
+          "status": "passed"
+        },
+        {
+          "id": "signature-certificate-tlog-checks-0",
+          "status": "passed"
+        },
+        {
+          "id": "tampered-payload-rejected-0",
+          "status": "passed"
+        },
+        {
+          "id": "subject-and-artifact-sha512-1",
+          "status": "passed"
+        },
+        {
+          "id": "predicate-type-1",
+          "status": "passed"
+        },
+        {
+          "id": "signature-certificate-tlog-checks-1",
+          "status": "passed"
+        },
+        {
+          "id": "provenance-source-workflow-and-commit",
+          "status": "passed"
+        },
+        {
+          "id": "provenance-builder",
+          "status": "passed"
+        },
+        {
+          "id": "tampered-payload-rejected-1",
+          "status": "passed"
+        },
+        {
+          "id": "unexpected-workflow-identity-rejected",
+          "status": "passed"
+        }
+      ],
+      "attestations": [
+        {
+          "index": 0,
+          "predicateType": "https://github.com/npm/attestation/tree/main/specs/publish/v0.1",
+          "statement": {
+            "_type": "https://in-toto.io/Statement/v0.1",
+            "subject": [
+              {
+                "name": "pkg:npm/%40openai/codex@0.162.0-darwin-x64",
+                "digest": {
+                  "sha512": "e17cc25098040c37667ba5560c42af6d60c0e9ffb8ef4778c61868ad852034167063c0eae4d62abd690edf7ae7735be3c64a928fe4b0932987c513312fa87508"
+                }
+              }
+            ],
+            "predicateType": "https://github.com/npm/attestation/tree/main/specs/publish/v0.1",
+            "predicate": {
+              "name": "@openai/codex",
+              "version": "0.162.0-darwin-x64",
+              "registry": "https://registry.npmjs.org"
+            }
+          },
+          "signatureAndTransparencyVerifiedAgainstPinnedSeed": true,
+          "signerIdentity": null,
+          "tamperFailure": {
+            "code": "TLOG_BODY_ERROR",
+            "message": "DSSE payload hash mismatch"
+          },
+          "tlogEntries": [
+            {
+              "logIndex": "3151102225",
+              "integratedTime": "1791486148",
+              "logId": {
+                "keyId": "wNI9atQGlz+VWfO6LRygH4QUfY/8W4RFwiT5i5WRgB0="
+              },
+              "inclusionPromisePresent": true,
+              "inclusionProofPresent": true
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "statement": {
+            "_type": "https://in-toto.io/Statement/v1",
+            "subject": [
+              {
+                "name": "pkg:npm/%40openai/codex@0.162.0-darwin-x64",
+                "digest": {
+                  "sha512": "e17cc25098040c37667ba5560c42af6d60c0e9ffb8ef4778c61868ad852034167063c0eae4d62abd690edf7ae7735be3c64a928fe4b0932987c513312fa87508"
+                }
+              }
+            ],
+            "predicateType": "https://slsa.dev/provenance/v1",
+            "predicate": {
+              "buildDefinition": {
+                "buildType": "https://slsa-framework.github.io/github-actions-buildtypes/workflow/v1",
+                "externalParameters": {
+                  "workflow": {
+                    "ref": "refs/tags/rust-v0.162.0",
+                    "repository": "https://github.com/openai/codex",
+                    "path": ".github/workflows/rust-release.yml"
+                  }
+                },
+                "internalParameters": {
+                  "github": {
+                    "event_name": "push",
+                    "repository_id": "965415649",
+                    "repository_owner_id": "14957082"
+                  }
+                },
+                "resolvedDependencies": [
+                  {
+                    "uri": "git+https://github.com/openai/codex@refs/tags/rust-v0.162.0",
+                    "digest": {
+                      "gitCommit": "c1382380de69521303b416720a52f42d51af6248"
+                    }
+                  }
+                ]
+              },
+              "runDetails": {
+                "builder": {
+                  "id": "https://github.com/actions/runner/github-hosted"
+                },
+                "metadata": {
+                  "invocationId": "https://github.com/openai/codex/actions/runs/37812662295/attempts/4"
+                }
+              }
+            }
+          },
+          "signatureAndTransparencyVerifiedAgainstPinnedSeed": true,
+          "signerIdentity": {
+            "extensions": {
+              "issuer": "https://token.actions.githubusercontent.com"
+            },
+            "subjectAlternativeName": "https://github.com/openai/codex/.github/workflows/rust-release.yml@refs/tags/rust-v0.162.0"
+          },
+          "tamperFailure": {
+            "code": "TLOG_BODY_ERROR",
+            "message": "DSSE payload hash mismatch"
+          },
+          "identityFailure": {
+            "code": "UNTRUSTED_SIGNER_ERROR",
+            "message": "certificate identity error - expected https://github.com/example/wrong/.github/workflows/release.yml@refs/tags/wrong, got https://github.com/openai/codex/.github/workflows/rust-release.yml@refs/tags/rust-v0.162.0"
+          },
+          "tlogEntries": [
+            {
+              "logIndex": "3151095432",
+              "integratedTime": "1791485890",
+              "logId": {
+                "keyId": "wNI9atQGlz+VWfO6LRygH4QUfY/8W4RFwiT5i5WRgB0="
+              },
+              "inclusionPromisePresent": true,
+              "inclusionProofPresent": true
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "node": "v22.23.2",
+        "installedPackageVersions": {
+          "@sigstore/verify": "2.1.1",
+          "@sigstore/bundle": "3.1.0",
+          "@sigstore/tuf": "3.1.1",
+          "@sigstore/protobuf-specs": "0.4.3"
+        }
+      },
+      "trust": {
+        "seedFile": {
+          "path": "/Users/nallylin/.nvm/versions/node/v22.23.2/lib/node_modules/npm/node_modules/@sigstore/tuf/seeds.json",
+          "bytes": 16226,
+          "sha256": "c56b8197671679123d26b9ec70bf6411e8f04d10c58cb9581a2b1238254ba71b"
+        },
+        "trustedRootSha256": "f44a1b88128e55ebfb62189becbc0fa48d4ec9915c65ac54ba0e46a008b12d5b",
+        "npmAttestationKeysSha256": "160677eb6e1c7083c89b166b20f8fe4e837fb71181506aff1991b80b89184f7d",
+        "anchorPolicy": "Locally installed npm Sigstore bootstrap seed pinned by hash; no online TUF update or freshness claim.",
+        "thresholds": {
+          "ctlogThreshold": 1,
+          "tlogThreshold": 1,
+          "tsaThreshold": 0
+        },
+        "certificatePolicy": {
+          "subjectAlternativeName": "https://github.com/openai/codex/.github/workflows/rust-release.yml@refs/tags/rust-v0.162.0",
+          "extensions": {
+            "issuer": "https://token.actions.githubusercontent.com"
+          }
+        },
+        "onlineTufUpdated": false,
+        "onlineLogConsistencyVerified": false
+      },
+      "newExecution": {
+        "targetExecutions": 0,
+        "modelSubmissions": 0,
+        "clientLaunches": 0,
+        "sourceBuilds": 0,
+        "verificationNetworkRequests": 0
+      },
+      "reproducibleBuildVerified": false,
+      "exactDesktopBackendBuilt": false
+    },
+    "independent": {
+      "status": "passed",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "checks": [
+        {
+          "id": "successful-response-integrity-desktop-commit",
+          "status": "passed"
+        },
+        {
+          "id": "successful-response-integrity-npm-attestations",
+          "status": "passed"
+        },
+        {
+          "id": "exact-desktop-commit-tree-and-parent",
+          "status": "passed"
+        },
+        {
+          "id": "exact-desktop-version-change-and-signature-qualification",
+          "status": "passed"
+        },
+        {
+          "id": "saved-archive-and-metadata-digests",
+          "status": "passed"
+        },
+        {
+          "id": "subject-matches-actual-archive-0",
+          "status": "passed"
+        },
+        {
+          "id": "npm-key-hint-selects-pinned-ecdsa-key",
+          "status": "passed"
+        },
+        {
+          "id": "independent-dsse-signature-0",
+          "status": "passed"
+        },
+        {
+          "id": "independent-tampered-signature-rejection-0",
+          "status": "passed"
+        },
+        {
+          "id": "subject-matches-actual-archive-1",
+          "status": "passed"
+        },
+        {
+          "id": "certificate-workflow-and-integrated-time",
+          "status": "passed"
+        },
+        {
+          "id": "independent-dsse-signature-1",
+          "status": "passed"
+        },
+        {
+          "id": "independent-tampered-signature-rejection-1",
+          "status": "passed"
+        },
+        {
+          "id": "signed-source-revision-equals-prior-public-candidate",
+          "status": "passed"
+        },
+        {
+          "id": "sigstore-full-offline-checks-retain-default-thresholds",
+          "status": "passed"
+        }
+      ],
+      "sigstoreChecks": 13,
+      "fetchedCommitMetadata": {
+        "commit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+        "tree": "8d3f62d2b7cf4bbc92d226542c397fa007f74c49",
+        "parent": "4e37bbe344d974db0e61727fdb4bfa1232c1ec9d",
+        "apiGitSignatureVerified": false
+      },
+      "signedProvenance": {
+        "subjectSha512": "e17cc25098040c37667ba5560c42af6d60c0e9ffb8ef4778c61868ad852034167063c0eae4d62abd690edf7ae7735be3c64a928fe4b0932987c513312fa87508",
+        "sourceCommit": "c1382380de69521303b416720a52f42d51af6248",
+        "builder": "https://github.com/actions/runner/github-hosted",
+        "offlinePinnedSeedVerificationPassed": true
+      },
+      "canonicalFeatureOrSourceCountsChanged": false,
+      "sourceCheckoutAcquired": false,
+      "sourceBuildVerified": false,
+      "actualBackendSemanticsVerified": false
+    }
+  },
+  "publicSource": {
+    "commit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+    "tree": "8d3f62d2b7cf4bbc92d226542c397fa007f74c49",
+    "parent": "4e37bbe344d974db0e61727fdb4bfa1232c1ec9d",
+    "gitSignatureVerified": false,
+    "commitMetadataPubliclyAvailable": true,
+    "exactSourceCheckoutAcquired": false
+  },
+  "npmProvenance": {
+    "actualSavedArchiveSubjectMatched": true,
+    "sourceCommit": "c1382380de69521303b416720a52f42d51af6248",
+    "offlineSignedProvenanceVerifiedAgainstPinnedSeed": true,
+    "onlineTufFreshnessVerified": false,
+    "reproducibleSourceBuildVerified": false
+  },
+  "toolSeedPolicy": "Installed npm bootstrap seed pinned by SHA256. Signatures validated under these anchors, not a claim that online trust metadata was refreshed.",
+  "previousSourceIdentity": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-build-identity-v1.json",
+    "bytes": 24624,
+    "sha256": "1421b0d468129a4147436fe2d15d0363c177c2fada28fa4064c5a486c8568de4"
+  },
+  "remaining": [
+    "740e5af3…精确源码内容、锁、构建输入和实际接收端行为。",
+    "桌面voice manifest中的native摘要差异原因及构建/打包来源链。",
+    "独立Owl/provider/ABI/构建路线以及保留能力的实际行为资格。",
+    "离线信任锚之外的TUF freshness、在线日志一致性与可重复源码构建未验证。"
+  ],
+  "nextExactSourceBatch": {
+    "targets": [
+      "https://raw.githubusercontent.com/openai/codex/740e5af33c71225640e0c1c1555c514c2c93ab74/codex-rs/Cargo.toml",
+      "https://raw.githubusercontent.com/openai/codex/740e5af33c71225640e0c1c1555c514c2c93ab74/codex-rs/Cargo.lock",
+      "https://raw.githubusercontent.com/openai/codex/740e5af33c71225640e0c1c1555c514c2c93ab74/codex-rs/app-server-protocol/src/protocol/v2.rs",
+      "https://raw.githubusercontent.com/openai/codex/740e5af33c71225640e0c1c1555c514c2c93ab74/codex-rs/app-server/src/codex_message_processor.rs"
+    ],
+    "modelRequired": false,
+    "scope": "Version and lock identity plus fork/prediction protocol/receiver comparison to the frozen desktop contract.",
+    "stopCondition": "Only four pinned files. Preserve missing files or exact external references; do not expand to unrelated revisions or run/build backend code."
+  },
+  "counts": {
+    "facts": 8,
+    "sigstoreChecks": 13,
+    "independentChecks": 15,
+    "successfulHttpResponses": 2,
+    "scriptRequestAttempts": 4,
+    "webOpenAttempts": 2,
+    "canonicalCountChanges": 0
+  },
+  "developmentQualification": "Independent first draft incorrectly derived npm key hint from DER SHA256; corrected to pinned keyId lookup plus direct signature verification. No trust/signature/transparency check relaxed; first draft and failure receipt preserved locally.",
+  "newExecution": {
+    "reaRuns": 0,
+    "targetExecutions": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "privateServiceCalls": 0,
+    "publicHttpResponses": 2,
+    "sourceBuilds": 0,
+    "clientImplementation": 0
+  },
+  "selectedSourceProvenanceBatchClosed": true,
+  "fullBackendQualified": false,
+  "fullAnalysisCompleted": false,
+  "actualBackendBehaviorVerified": false
+}

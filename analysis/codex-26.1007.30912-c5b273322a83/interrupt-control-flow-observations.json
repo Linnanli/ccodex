@@ -1,0 +1,1458 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "node": {
+    "path": "/Users/nallylin/.nvm/versions/node/v22.23.2/bin/node",
+    "version": "v22.23.2"
+  },
+  "observationCommands": 1,
+  "isolatedScenarios": 34,
+  "cases": [
+    {
+      "id": "C01",
+      "name": "explicit turn guard rejects stale or non-running snapshot before any cleanup",
+      "passed": true,
+      "staleTrace": [],
+      "completedTrace": []
+    },
+    {
+      "id": "C02",
+      "name": "inactive fallback attempts terminal cleanup and swallows its failure after warning",
+      "passed": true,
+      "trace": [
+        [
+          "cleanTerminals"
+        ],
+        [
+          "warning",
+          "Failed to clean background terminals after interrupt fallback",
+          {
+            "conversationId": "ui-thread"
+          },
+          "synthetic clean"
+        ]
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "latest identified completed turn prevents interrupting an earlier running turn",
+      "passed": true,
+      "trace": [
+        [
+          "cleanTerminals"
+        ]
+      ],
+      "turns": [
+        [
+          "earlier",
+          "inProgress"
+        ],
+        [
+          "last",
+          "completed"
+        ]
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "unqualified success starts cleanup before request and updates only after fulfillment",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ],
+      "turns": [
+        [
+          "old",
+          "interrupted"
+        ]
+      ]
+    },
+    {
+      "id": "C05",
+      "name": "qualified success starts cleanup after state update rather than before request",
+      "passed": true,
+      "trace": [
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ]
+      ]
+    },
+    {
+      "id": "C06",
+      "name": "background cleanup leaves its Promise pending after helper return",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "schedule",
+          10000
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "disposeTimer",
+          1
+        ]
+      ],
+      "returnedBeforeCleanupSettlement": true
+    },
+    {
+      "id": "C07",
+      "name": "foreground cleanup keeps the helper pending until the cleanup result settles",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "schedule",
+          10000
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "disposeTimer",
+          1
+        ]
+      ],
+      "stateUpdatedBeforeReturn": true
+    },
+    {
+      "id": "C08",
+      "name": "unknown request rejection propagates without an interrupted state write",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ]
+      ],
+      "error": "synthetic request failure"
+    },
+    {
+      "id": "C09",
+      "name": "mismatch retry success marks the original turn while returning the reported actual ID",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "wire-thread",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "kill",
+          "wire-thread",
+          "actual"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "actual"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ],
+      "turns": [
+        [
+          "actual",
+          "inProgress"
+        ],
+        [
+          "old",
+          "interrupted"
+        ]
+      ],
+      "limit": "The second success branch has no local write marking the reported actual turn interrupted."
+    },
+    {
+      "id": "C10",
+      "name": "qualified mismatch to a different ID returns null without retry or cleanup",
+      "passed": true,
+      "trace": [
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ]
+      ]
+    },
+    {
+      "id": "C11",
+      "name": "retry no-active-turn error marks reported and original running turns",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "ui-thread",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "ui-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "kill",
+          "ui-thread",
+          "actual"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "ui-thread",
+            "turnId": "actual"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ],
+      "turns": [
+        [
+          "actual",
+          "interrupted"
+        ],
+        [
+          "old",
+          "interrupted"
+        ]
+      ]
+    },
+    {
+      "id": "C12",
+      "name": "unrecognized retry error propagates before either local state write",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "kill",
+          "session",
+          "actual"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "actual"
+          },
+          null
+        ]
+      ],
+      "error": "synthetic retry failure"
+    },
+    {
+      "id": "C13",
+      "name": "exact no-active-turn error has different qualified and unqualified outcomes",
+      "passed": true,
+      "unqualifiedTrace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ],
+      "qualifiedTrace": [
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ]
+      ]
+    },
+    {
+      "id": "C14",
+      "name": "request fulfillment does not overwrite a turn that completed while awaiting it",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ],
+      "turns": [
+        [
+          "old",
+          "completed"
+        ]
+      ]
+    },
+    {
+      "id": "C15",
+      "name": "classifiers retain exact phrase and Error/object/string normalization rules",
+      "passed": true,
+      "matchedFormats": 2,
+      "nearMatchNoActiveAccepted": false,
+      "undefinedPenThrows": "TypeError"
+    },
+    {
+      "id": "Z01",
+      "name": "missing kill handle exits cleanup without creating a timer",
+      "passed": true,
+      "trace": []
+    },
+    {
+      "id": "Z02",
+      "name": "synchronous kill failure is logged and swallowed",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "warning",
+          "Failed to kill active node_repl execs",
+          {
+            "conversationId": "ui-thread"
+          },
+          "synthetic kill failure"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ]
+    },
+    {
+      "id": "Z03",
+      "name": "cleanup failure count logs warning and disposes scheduled timeout",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "schedule",
+          10000
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "warning",
+          "Failed to kill some active node_repl execs",
+          {
+            "conversationId": "ui-thread",
+            "failedCount": 2
+          },
+          null
+        ],
+        [
+          "disposeTimer",
+          1
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ]
+    },
+    {
+      "id": "Z04",
+      "name": "synthetic ten-second cleanup timeout calls cancel and permits helper completion",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "schedule",
+          10000
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "warning",
+          "Timed out killing active node_repl execs",
+          {
+            "conversationId": "ui-thread"
+          },
+          null
+        ],
+        [
+          "disposeTimer",
+          1
+        ]
+      ],
+      "syntheticTimeoutMs": 10000,
+      "cancelCalls": 1
+    },
+    {
+      "id": "Z05",
+      "name": "cleanup result rejection is logged and swallowed",
+      "passed": true,
+      "trace": [
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "schedule",
+          10000
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "warning",
+          "Failed to kill active node_repl execs",
+          {
+            "conversationId": "ui-thread"
+          },
+          "synthetic cleanup reject"
+        ],
+        [
+          "disposeTimer",
+          1
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ]
+    },
+    {
+      "id": "M01",
+      "name": "follower reply returns without local interrupt or goal pause",
+      "passed": true,
+      "trace": [
+        [
+          "followerRequest",
+          "follower",
+          "thread-follower-interrupt-turn",
+          {
+            "conversationId": "ui-thread",
+            "mode": "user-stop"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "selected follower-unavailable errors mark resume and fall back to local interrupt",
+      "passed": true,
+      "variants": [
+        {
+          "reason": "timeout",
+          "trace": [
+            [
+              "followerRequest",
+              "follower",
+              "thread-follower-interrupt-turn",
+              {
+                "conversationId": "ui-thread",
+                "mode": "user-stop"
+              }
+            ],
+            [
+              "needsResume",
+              "ui-thread",
+              "owner"
+            ],
+            [
+              "warning",
+              "Falling back to local interrupt after follower owner became unavailable",
+              {
+                "conversationId": "ui-thread",
+                "reason": "timeout"
+              },
+              null
+            ],
+            [
+              "recordBeforeInterrupt",
+              "ui-thread"
+            ],
+            [
+              "interruptStarted",
+              "ui-thread"
+            ],
+            [
+              "kill",
+              "session",
+              "old"
+            ],
+            [
+              "request",
+              "turn/interrupt",
+              {
+                "threadId": "wire-thread",
+                "turnId": "old"
+              },
+              null
+            ],
+            [
+              "updateState",
+              "ui-thread"
+            ]
+          ]
+        },
+        {
+          "reason": "request-version-mismatch",
+          "trace": [
+            [
+              "followerRequest",
+              "follower",
+              "thread-follower-interrupt-turn",
+              {
+                "conversationId": "ui-thread",
+                "mode": "user-stop"
+              }
+            ],
+            [
+              "needsResume",
+              "ui-thread",
+              "owner"
+            ],
+            [
+              "warning",
+              "Falling back to local interrupt after follower owner became unavailable",
+              {
+                "conversationId": "ui-thread",
+                "reason": "request-version-mismatch"
+              },
+              null
+            ],
+            [
+              "recordBeforeInterrupt",
+              "ui-thread"
+            ],
+            [
+              "interruptStarted",
+              "ui-thread"
+            ],
+            [
+              "kill",
+              "session",
+              "old"
+            ],
+            [
+              "request",
+              "turn/interrupt",
+              {
+                "threadId": "wire-thread",
+                "turnId": "old"
+              },
+              null
+            ],
+            [
+              "updateState",
+              "ui-thread"
+            ]
+          ]
+        },
+        {
+          "reason": "no-client-found",
+          "trace": [
+            [
+              "followerRequest",
+              "follower",
+              "thread-follower-interrupt-turn",
+              {
+                "conversationId": "ui-thread",
+                "mode": "user-stop"
+              }
+            ],
+            [
+              "needsResume",
+              "ui-thread",
+              "owner"
+            ],
+            [
+              "warning",
+              "Falling back to local interrupt after follower owner became unavailable",
+              {
+                "conversationId": "ui-thread",
+                "reason": "no-client-found"
+              },
+              null
+            ],
+            [
+              "recordBeforeInterrupt",
+              "ui-thread"
+            ],
+            [
+              "interruptStarted",
+              "ui-thread"
+            ],
+            [
+              "kill",
+              "session",
+              "old"
+            ],
+            [
+              "request",
+              "turn/interrupt",
+              {
+                "threadId": "wire-thread",
+                "turnId": "old"
+              },
+              null
+            ],
+            [
+              "updateState",
+              "ui-thread"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M03",
+      "name": "timeout without follower role and unrecognized follower error do not fall back",
+      "passed": true,
+      "variants": [
+        [
+          [
+            "followerRequest",
+            null,
+            "thread-follower-interrupt-turn",
+            {
+              "conversationId": "ui-thread",
+              "mode": "user-stop"
+            }
+          ]
+        ],
+        [
+          [
+            "followerRequest",
+            "follower",
+            "thread-follower-interrupt-turn",
+            {
+              "conversationId": "ui-thread",
+              "mode": "user-stop"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "M04",
+      "name": "explicit expected ID bypasses active-goal pause and preparatory hook",
+      "passed": true,
+      "trace": [
+        [
+          "followerRequest",
+          null,
+          "thread-follower-interrupt-turn",
+          {
+            "conversationId": "ui-thread",
+            "mode": "user-stop",
+            "expectedTurnId": "old"
+          }
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "ui-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "ui-thread",
+          "old"
+        ]
+      ]
+    },
+    {
+      "id": "M05",
+      "name": "system goal-pause rejection prevents local interruption",
+      "passed": true,
+      "trace": [
+        [
+          "followerRequest",
+          null,
+          "thread-follower-interrupt-turn",
+          {
+            "conversationId": "ui-thread",
+            "mode": "system"
+          }
+        ],
+        [
+          "request",
+          "thread/goal/set",
+          {
+            "threadId": "ui-thread",
+            "status": "paused"
+          },
+          null
+        ]
+      ]
+    },
+    {
+      "id": "M06",
+      "name": "user goal-pause rejection still interrupts and renderer records the attached turn before rethrow",
+      "passed": true,
+      "trace": [
+        [
+          "lookupHost",
+          "synthetic-host-key",
+          "ui-thread"
+        ],
+        [
+          "selectClient",
+          "synthetic-host"
+        ],
+        [
+          "followerRequest",
+          null,
+          "thread-follower-interrupt-turn",
+          {
+            "conversationId": "ui-thread",
+            "mode": "user-stop"
+          }
+        ],
+        [
+          "request",
+          "thread/goal/set",
+          {
+            "threadId": "ui-thread",
+            "status": "paused"
+          },
+          {
+            "priority": "critical",
+            "timeoutMs": 500
+          }
+        ],
+        [
+          "warning",
+          "Failed to pause thread goal before interrupt",
+          {
+            "conversationId": "ui-thread"
+          },
+          "synthetic pause failure"
+        ],
+        [
+          "recordBeforeInterrupt",
+          "ui-thread"
+        ],
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "ui-thread",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "ui-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "descendantsBackground",
+          "ui-thread"
+        ],
+        [
+          "localInterruptResult",
+          "ui-thread",
+          "old"
+        ]
+      ],
+      "turns": [
+        [
+          "old",
+          "interrupted"
+        ]
+      ],
+      "limit": "timeoutMs is an option sent to a substitute; no real 500 ms deadline observed."
+    },
+    {
+      "id": "M07",
+      "name": "descendant-cleanup pauses active goal after interrupt and swallows pause rejection",
+      "passed": true,
+      "trace": [
+        [
+          "followerRequest",
+          null,
+          "thread-follower-interrupt-turn",
+          {
+            "conversationId": "ui-thread",
+            "mode": "descendant-cleanup"
+          }
+        ],
+        [
+          "recordBeforeInterrupt",
+          "ui-thread"
+        ],
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "ui-thread",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "ui-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "request",
+          "thread/goal/set",
+          {
+            "threadId": "ui-thread",
+            "status": "paused"
+          },
+          null
+        ],
+        [
+          "warning",
+          "Failed to pause thread goal after interrupt",
+          {
+            "conversationId": "ui-thread"
+          },
+          "synthetic late pause"
+        ]
+      ]
+    },
+    {
+      "id": "M08",
+      "name": "successful goal pause stores the returned goal and clears resume confirmation",
+      "passed": true,
+      "trace": [
+        [
+          "followerRequest",
+          null,
+          "thread-follower-interrupt-turn",
+          {
+            "conversationId": "ui-thread",
+            "mode": "system"
+          }
+        ],
+        [
+          "request",
+          "thread/goal/set",
+          {
+            "threadId": "ui-thread",
+            "status": "paused"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "recordBeforeInterrupt",
+          "ui-thread"
+        ],
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "ui-thread",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "ui-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ]
+      ]
+    },
+    {
+      "id": "W01",
+      "name": "manager finally awaits descendants after self failure and descendant failure can replace it",
+      "passed": true,
+      "trace": [
+        [
+          "descendantsAwaited",
+          "ui-thread"
+        ]
+      ],
+      "observedError": "synthetic descendants"
+    },
+    {
+      "id": "W02",
+      "name": "qualified null result suppresses descendants while unqualified null still invokes them",
+      "passed": true,
+      "qualifiedTrace": [],
+      "unqualifiedTrace": [
+        [
+          "descendantsAwaited",
+          "ui-thread"
+        ]
+      ]
+    },
+    {
+      "id": "W03",
+      "name": "follower and descendant-cleanup modes suppress descendant recursion",
+      "passed": true,
+      "variants": [
+        [],
+        []
+      ]
+    },
+    {
+      "id": "R01",
+      "name": "explicit client avoids host lookup and system initiation omits renderer result update",
+      "passed": true,
+      "clientArgs": [
+        "ui-thread",
+        "system",
+        "old"
+      ],
+      "trace": []
+    },
+    {
+      "id": "R02",
+      "name": "user renderer resolves undefined after recording a successful non-null manager result",
+      "passed": true,
+      "trace": [
+        [
+          "lookupHost",
+          "synthetic-host-key",
+          "ui-thread"
+        ],
+        [
+          "selectClient",
+          "synthetic-host"
+        ],
+        [
+          "followerRequest",
+          null,
+          "thread-follower-interrupt-turn",
+          {
+            "conversationId": "ui-thread",
+            "mode": "user-stop"
+          }
+        ],
+        [
+          "recordBeforeInterrupt",
+          "ui-thread"
+        ],
+        [
+          "interruptStarted",
+          "ui-thread"
+        ],
+        [
+          "kill",
+          "session",
+          "old"
+        ],
+        [
+          "request",
+          "turn/interrupt",
+          {
+            "threadId": "wire-thread",
+            "turnId": "old"
+          },
+          null
+        ],
+        [
+          "updateState",
+          "ui-thread"
+        ],
+        [
+          "descendantsBackground",
+          "ui-thread"
+        ],
+        [
+          "localInterruptResult",
+          "ui-thread",
+          "old"
+        ]
+      ]
+    },
+    {
+      "id": "R03",
+      "name": "only Error with string interruptedTurnId triggers the renderer error-side update",
+      "passed": true,
+      "variants": [
+        {
+          "errorKind": "Error",
+          "idType": "string",
+          "trace": [
+            [
+              "localInterruptResult",
+              "ui-thread",
+              "old"
+            ]
+          ]
+        },
+        {
+          "errorKind": "object",
+          "idType": "string",
+          "trace": []
+        },
+        {
+          "errorKind": "Error",
+          "idType": "number",
+          "trace": []
+        }
+      ]
+    }
+  ],
+  "loadedSourceUnits": [
+    {
+      "name": "Ien",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2834333,
+        "endExclusive": 2835615
+      },
+      "utf16Range": {
+        "start": 2797263,
+        "endExclusive": 2798545
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "9a17f3c202bb30a654878c4b544c3c4815eb83f8f386b8f28d9c0b3e0d321009",
+      "bytes": 1282,
+      "sha256": "9a17f3c202bb30a654878c4b544c3c4815eb83f8f386b8f28d9c0b3e0d321009",
+      "completeAstNode": true,
+      "localSourceFilename": "001-Ien.txt"
+    },
+    {
+      "name": "zen",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2835814,
+        "endExclusive": 2836420
+      },
+      "utf16Range": {
+        "start": 2798744,
+        "endExclusive": 2799350
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "37c13d1ee4016076607049c756299bc6bac3a6f3886583e32cefa015725f9cef",
+      "bytes": 606,
+      "sha256": "37c13d1ee4016076607049c756299bc6bac3a6f3886583e32cefa015725f9cef",
+      "completeAstNode": true,
+      "localSourceFilename": "002-zen.txt"
+    },
+    {
+      "name": "Len",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2835615,
+        "endExclusive": 2835753
+      },
+      "utf16Range": {
+        "start": 2798545,
+        "endExclusive": 2798683
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "cc883f86003323af928e6ae5b38c6aba29cf68189475b426cb8165c538ff1e03",
+      "bytes": 138,
+      "sha256": "cc883f86003323af928e6ae5b38c6aba29cf68189475b426cb8165c538ff1e03",
+      "completeAstNode": true,
+      "localSourceFilename": "003-Len.txt"
+    },
+    {
+      "name": "Pen",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2834108,
+        "endExclusive": 2834292
+      },
+      "utf16Range": {
+        "start": 2797038,
+        "endExclusive": 2797222
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "cc5b7a1ef4eccf52989fa178d7188abd7768d7781a01f8d6f5aace554fcd62e3",
+      "bytes": 184,
+      "sha256": "cc5b7a1ef4eccf52989fa178d7188abd7768d7781a01f8d6f5aace554fcd62e3",
+      "completeAstNode": true,
+      "localSourceFilename": "004-Pen.txt"
+    },
+    {
+      "name": "Ren",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2835753,
+        "endExclusive": 2835814
+      },
+      "utf16Range": {
+        "start": 2798683,
+        "endExclusive": 2798744
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "a6069143c00c48d80cd04d9b4e23bf20a378e4bdd9fb77fcdcded849612ba3ce",
+      "bytes": 61,
+      "sha256": "a6069143c00c48d80cd04d9b4e23bf20a378e4bdd9fb77fcdcded849612ba3ce",
+      "completeAstNode": true,
+      "localSourceFilename": "005-Ren.txt"
+    },
+    {
+      "name": "IN",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1977323,
+        "endExclusive": 1977561
+      },
+      "utf16Range": {
+        "start": 1940267,
+        "endExclusive": 1940505
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "253f5718f731ee21bdd4ea386033f1d7f156739776be19e2fe0fd29a7feb9d0c",
+      "bytes": 238,
+      "sha256": "253f5718f731ee21bdd4ea386033f1d7f156739776be19e2fe0fd29a7feb9d0c",
+      "completeAstNode": true,
+      "localSourceFilename": "006-IN.txt"
+    },
+    {
+      "name": "Dfn.interruptConversation",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3239876,
+        "endExclusive": 3240197
+      },
+      "utf16Range": {
+        "start": 3202800,
+        "endExclusive": 3203121
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "f8d63a1408c64ac8bbd30e0e9481fed0c4ab169a934ec8614d627bfd9fb344f4",
+      "bytes": 321,
+      "sha256": "f8d63a1408c64ac8bbd30e0e9481fed0c4ab169a934ec8614d627bfd9fb344f4",
+      "completeAstNode": true,
+      "localSourceFilename": "008-Dfn_interruptConversation.txt"
+    },
+    {
+      "name": "Dfn.interruptConversationSelf",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3241475,
+        "endExclusive": 3243540
+      },
+      "utf16Range": {
+        "start": 3204399,
+        "endExclusive": 3206464
+      },
+      "nodeType": "ClassMethod",
+      "spanHash": "18db819b261b3d4a4fb19583bacac108b9828da2cc3dca749c34e6e35428001f",
+      "bytes": 2065,
+      "sha256": "18db819b261b3d4a4fb19583bacac108b9828da2cc3dca749c34e6e35428001f",
+      "completeAstNode": true,
+      "localSourceFilename": "009-Dfn_interruptConversationSelf.txt"
+    },
+    {
+      "name": "yda",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5453540,
+        "endExclusive": 5453904
+      },
+      "spanHash": "e8d6b280c909821f7f482ca03a66c224848f9a998acbb9b0e0b53a680e86b130",
+      "bytes": 364,
+      "sha256": "e8d6b280c909821f7f482ca03a66c224848f9a998acbb9b0e0b53a680e86b130",
+      "nodeType": "FunctionDeclaration",
+      "completeAstNode": true,
+      "localSourceFilename": "012-yda.txt",
+      "originalProgramParsingThisBatch": false,
+      "inheritedUnitRef": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/task-composer-entry-contracts.json",
+        "bytes": 446181,
+        "sha256": "e4e0128e6cd0e5b826f850bff233e7eb100a22e2f356679c86a7311c6bd63abb",
+        "jsonPointer": "/completeUnits/10"
+      }
+    }
+  ],
+  "executedSavedSourceBytes": 5259,
+  "substitutes": [
+    "Fresh synthetic class for the two selected Dfn methods; manager constructor, fields, transport, follower, scheduler, logger, state/store, descendants and events are controlled values or callbacks.",
+    "Ben.default is replaced by an Array.findLast-based boundary; mz and ah use a synthetic turns array. Canonical turnHistory semantics and the original third-party search implementation are not executed.",
+    "jg/Gl/$Ve and $7t/Hz are controlled recorder boundaries; actual provider selection, renderer stores and preparation hook are unobserved.",
+    "Fake ten-second scheduler is advanced explicitly. No wall-clock timeout or transport timeout enforcement is claimed.",
+    "Host standard Error and Promise are injected into each VM to make synthetic error identity explicit. No original module initializer runs."
+  ],
+  "executedAssembledSourcePath": "yda → selected Dfn wrapper/self methods → original Program-bound Ien/zen/Len/Pen/Ren/IN, with all listed substitution boundaries",
+  "realFileIoInsideVm": false,
+  "originalClientRunsAdded": 0,
+  "nativeModuleLoads": 0,
+  "modelSubmissionsAdded": 0,
+  "modeAssignmentsAdded": 0,
+  "newActualCancelClicks": 0,
+  "targetRuntimeParityEstablished": false,
+  "fullAnalysisCompleted": false
+}

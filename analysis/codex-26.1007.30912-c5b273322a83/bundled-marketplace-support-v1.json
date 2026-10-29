@@ -1,0 +1,913 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T21:40:58.524682+00:00",
+  "scope": "Three exact backend support-purpose decisions and retained bundled-marketplace lifecycle contracts.",
+  "inputs": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v39.json",
+      "bytes": 1624074,
+      "sha256": "f84815eb89689d3fb51887edcf155aa063da29b22e908b6e6b273ad79ebfd3dd"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v23.json",
+      "bytes": 509614,
+      "sha256": "a02703d6e1cf528f7af68ff3c421043d3a2a6afc9506805ed9b2a03f3f9a6b3d"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/entry-family-map.json",
+      "bytes": 3217503,
+      "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/bundled-marketplace-refresh-purpose-v1.json",
+      "bytes": 7680,
+      "sha256": "a23a39579561672c53ff1005b3669691c503bcf7e6c79eb28ccb27a6520d518c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/settings-operation-batch-05.json",
+      "bytes": 101918,
+      "sha256": "ee0e65143be0f4c2c8c344a864a0c7ff9267cb432aacd0d506c07bcf74038bba"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "rawEvidence": {
+    "caller-extraction.json.gz": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/bundled-marketplace-support-v1/caller-extraction.json.gz",
+      "bytes": 19839,
+      "sha256": "387f92d432fe893ea9626835decd485dcf8dd086a6d77fec488132d74868b117"
+    },
+    "extract-callers.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/bundled-marketplace-support-v1/extract-callers.cjs",
+      "bytes": 10923,
+      "sha256": "6e50963ee4365610d9b33dbed44550f4c4d079e8028f77ebfb512429994c03e2"
+    },
+    "verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/bundled-marketplace-support-v1/verification.json",
+      "bytes": 47007,
+      "sha256": "4c87497a7d7f1f11bfe965a3279fb642ee1114a447d5a3b39bc894ca0274dbd4"
+    },
+    "verify.cjs": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/bundled-marketplace-support-v1/verify.cjs",
+      "bytes": 8896,
+      "sha256": "e1e33ae609e397b40be0b8d22c807f3b8b2868fbef617d3b5ce733aa1f266f18"
+    },
+    "publish.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/bundled-marketplace-support-v1/publish.py",
+      "bytes": 21009,
+      "sha256": "f3ce14f50724c8a62175f5542a1b1ea3c92cbbddf2015ad4ebd29669abf33e0d"
+    }
+  },
+  "facts": [
+    {
+      "id": "BMS-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Kne在marketplaceName不是openai-bundled时立即返回。它列出local市场，按Dne/Sa筛选六个旧内置市场名并逐项请求marketplace/remove；列出失败会记录warning并保留空列表，单项移除失败会记录warning后继续。之后仍尝试qne目录清理。此为自动兼容清理，不是FSC-0136设置页先卸载插件再删除市场的用户流程。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 146577,
+          "endExclusive": 147381
+        },
+        "spanHash": "0984eaeb3a22a8069c72538187700b2bb37c1303e0980201796b047c3d08c0ac",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 114786,
+            "endExclusive": 114801
+          },
+          "spanHash": "a74192b371f135fe28fcaaf1248bfd68b83a49d90fb6fc78da2ac43ea813b653",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 98381,
+            "endExclusive": 98520
+          },
+          "spanHash": "42352920a0a2621510ac3227e7b58acf516026bc7835208fdb0bc3c138002be6",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 98332,
+            "endExclusive": 98363
+          },
+          "spanHash": "ca36bd23abc06507ec98ba7d65906a9e74e708d64d8d9804aff44263dcb08f0c",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 147381,
+            "endExclusive": 147670
+          },
+          "spanHash": "25afa5a8d97bf75c2e6bbe1646c7eb04cbb9d6a141421fd7943ea0ce818e3803",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "qne逐个处理Sa中的市场，依次委托ds清理codexHome/plugins/cache/<name>与codexHome/.tmp/bundled-marketplaces/<name>。ds使用主进程path.join/existsSync及fs.rm(recursive:true,force:true)，删除异常记录两条warning后继续。后台marketplace/remove和目录删除没有统一事务/回滚；实际home与文件效果未观察。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 147381,
+          "endExclusive": 147670
+        },
+        "spanHash": "25afa5a8d97bf75c2e6bbe1646c7eb04cbb9d6a141421fd7943ea0ce818e3803",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 147670,
+            "endExclusive": 148307
+          },
+          "spanHash": "88ccfcf48daf174a86daf48b018ebffe68e2fa0ea28a4ffd35fa46c7159eb227",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 98381,
+            "endExclusive": 98520
+          },
+          "spanHash": "42352920a0a2621510ac3227e7b58acf516026bc7835208fdb0bc3c138002be6",
+          "nodeType": "VariableDeclarator"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 146577,
+            "endExclusive": 147381
+          },
+          "spanHash": "0984eaeb3a22a8069c72538187700b2bb37c1303e0980201796b047c3d08c0ac",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "sie中的本地协调P读取getLocalAppServerConnection，并在Agent/Dev/InternalAlpha/Nightly/PublicBeta分支await Kne；Prod分支无此调用。相同工厂还有Dev早返回路径，不能忽略外层准入或把枚举名当产品模式。这里只确认源码调用和分支，不声明本次安装的实际buildFlavor或真实调用已发生。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 254075,
+          "endExclusive": 266041
+        },
+        "spanHash": "6f2a5f3f324f701fc45222a40e2d88dc769ecbf415c57f66dd57bafcc731e3d9",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 146577,
+            "endExclusive": 147381
+          },
+          "spanHash": "0984eaeb3a22a8069c72538187700b2bb37c1303e0980201796b047c3d08c0ac",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Jne是plugin enabled配置写入适配器：config/batchWrite的edits只有plugins.<pluginId>.enabled、upsert和传入enabled，reloadUserConfig:true，并透传可选beforeSendRequest额外参数。选定Program唯一绑定引用来自Une；它在实际重装分支末尾、原状态不是missing且原插件enabled=false时写false，保留重装前禁用状态，不是用户点击启用开关的来源证据。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 148307,
+          "endExclusive": 148558
+        },
+        "spanHash": "261ee0d1711cf1303868fb66bba866e05f45ad1d113e23113caf62a74b090cb7",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 138971,
+            "endExclusive": 145462
+          },
+          "spanHash": "b74caa6dfff154311465b5c8cc627728d7aa0f48b703ad7e616ecf03195dcc99",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Une先检查/准备所选插件，随后顺序协调；安装完成后的原禁用配置恢复也在该插件try内。异常记录当前installPhase并只保留首次失败，然后继续后续插件；源码没有补偿先前安装、配置或native-host操作。Go按throwOnReconcileFailure选择抛出或返回hadReconcileFailure，Jo按failOnError选择抛出或返回hadReadFailure。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 138971,
+          "endExclusive": 145462
+        },
+        "spanHash": "b74caa6dfff154311465b5c8cc627728d7aa0f48b703ad7e616ecf03195dcc99",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 124143,
+            "endExclusive": 127171
+          },
+          "spanHash": "e0af5fab685f0319357256acc47def10a170b15e52bdd458338a157a0c2ac924",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 128055,
+            "endExclusive": 128501
+          },
+          "spanHash": "58ee447a1c7581978513889aca2fd7c577278ef791d6dacc1f1dcd55543c1676",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 148307,
+            "endExclusive": 148558
+          },
+          "spanHash": "261ee0d1711cf1303868fb66bba866e05f45ad1d113e23113caf62a74b090cb7",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "ys通过参数给定appServerConnection请求fs/readFile({path})，把dataBase64解码为UTF8字符串，未自行读取本机目标文件。四个选定绑定引用分别来自Nne一次、Xne两次和vs一次；用于内容摘要标记、visualize的SKILL.md内容比较，以及plugin.json的JSON/schema读取。不能凭fs/readFile名把它关联到用户文件浏览功能。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 152481,
+          "endExclusive": 152646
+        },
+        "spanHash": "d6a7eb2d238e347a55798b2feb2aa68d6ce683dcde8dfc18b1bafc44f700d775",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 122255,
+            "endExclusive": 123783
+          },
+          "spanHash": "67b5b566c4185d2890dcb7d24718df57a2c9f7d7d4ac3972c71f2365c495a0ff",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 149100,
+            "endExclusive": 151105
+          },
+          "spanHash": "01b37c641496fe4c154292685b8a035421a497c5d3575b44f062631b6c9412e9",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 152298,
+            "endExclusive": 152481
+          },
+          "spanHash": "12cc27982303f66b41c7058b96094137b0ec9042404418ab13d023b31c7b43d4",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Nne按路径排序待物化内容，以路径、NUL、字节长度、NUL及内容构造SHA256标记；ys读取的旧标记相同时跳过。只把包含三类缺失文件文字的读取异常视作可重建，其他读取错误重抛。重建先remove整个目标root，再创建目录、写内容，最后写标记；不是临时目录交换或跨步骤事务，失败可留下部分内容。实际appServer filesystem port仍为外部边界。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 122255,
+          "endExclusive": 123783
+        },
+        "spanHash": "67b5b566c4185d2890dcb7d24718df57a2c9f7d7d4ac3972c71f2365c495a0ff",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 152481,
+            "endExclusive": 152646
+          },
+          "spanHash": "d6a7eb2d238e347a55798b2feb2aa68d6ce683dcde8dfc18b1bafc44f700d775",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 120867,
+            "endExclusive": 122255
+          },
+          "spanHash": "61425815b4348808cd1be584c8c756975c436416cdb0d443b9cda923bf8821af",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Mne在sie的远程协调D中有选定绑定调用：从syncToRemoteSshHosts=true描述符计算插件名，用参数提供的远程SSH连接列表并在b队列中Promise.allSettled。rejected与fulfilled:false均导致失败warning，至少一个fulfilled:true才触发该分支onSkillsMayHaveChanged。Mne仍在us后且hadReconcileFailure为假时刷新skills；该源码调用补充上一批机制，不增加功能或操作。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 254075,
+          "endExclusive": 266041
+        },
+        "spanHash": "6f2a5f3f324f701fc45222a40e2d88dc769ecbf415c57f66dd57bafcc731e3d9",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 120867,
+            "endExclusive": 122255
+          },
+          "spanHash": "61425815b4348808cd1be584c8c756975c436416cdb0d443b9cda923bf8821af",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 146065,
+            "endExclusive": 146577
+          },
+          "spanHash": "cac961184c6d08f7021608f3e55727f3cb507aa2f72fa9c276f54c32ba85808e",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 124143,
+            "endExclusive": 127171
+          },
+          "spanHash": "e0af5fab685f0319357256acc47def10a170b15e52bdd458338a157a0c2ac924",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    },
+    {
+      "id": "BMS-F09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Mne的Nne/Go/us使用同一参数连接，但本地rs读取用于物化的发布市场文件，cs仅按给定名字筛选plugins。us逐个先委托原生宿主清理i.en、再uninstallPlugin、再可选清除managed标记；外部失败可中断剩余卸载。来源文件和目标host filesystem职责需要分离，第三方JSON/schema、Node API与app-server以既有依赖/接口接入。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 120867,
+          "endExclusive": 122255
+        },
+        "spanHash": "61425815b4348808cd1be584c8c756975c436416cdb0d443b9cda923bf8821af",
+        "nodeType": "FunctionDeclaration"
+      },
+      "relatedSourceAnchors": [
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 122255,
+            "endExclusive": 123783
+          },
+          "spanHash": "67b5b566c4185d2890dcb7d24718df57a2c9f7d7d4ac3972c71f2365c495a0ff",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 137131,
+            "endExclusive": 137239
+          },
+          "spanHash": "12caeae6bd020c54dee2e2bfe82329be3fc0bae0d600ee593f2b205a5d85f63c",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 138836,
+            "endExclusive": 138971
+          },
+          "spanHash": "eedec5010edc6b6c993fa2492ecd98c72833670f4cea7eabbdb5418fb1474745",
+          "nodeType": "FunctionDeclaration"
+        },
+        {
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 146065,
+            "endExclusive": 146577
+          },
+          "spanHash": "cac961184c6d08f7021608f3e55727f3cb507aa2f72fa9c276f54c32ba85808e",
+          "nodeType": "FunctionDeclaration"
+        }
+      ],
+      "method": "complete frozen Program AST with lexical binding identities; independent selected-unit parse and UTF8 span readback; manual control-flow review",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-source-confirmed; effective host/provider, runtime and durable effects unverified"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "BMS-D01",
+      "entryId": "app-server-direct-call-lexical-candidate:5169106bc6470918574df6b1",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/828"
+      },
+      "disposition": "explicit-stale-bundled-marketplace-cleanup-mechanism",
+      "explicitMechanism": true,
+      "featureIds": [],
+      "factIds": [
+        "BMS-F01"
+      ],
+      "reason": "旧内置市场自动清理与设置页市场移除不是同一路径；保留市场名/build分支、逐项容错及独立目录清理。",
+      "remainingWork": "实际manager调用/host/build条件、appServerConnection/transport、服务接受和持久化仍需受控验证；具名Node/原生/schema接口保持依赖边界。",
+      "actualRuntimeVerified": false,
+      "productMode": "unknown",
+      "functionalEntryFullyResolved": false
+    },
+    {
+      "id": "BMS-D02",
+      "entryId": "app-server-direct-call-lexical-candidate:ca18b8c94b788b12d664b757",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/829"
+      },
+      "disposition": "explicit-reinstalled-plugin-disabled-state-restore-mechanism",
+      "explicitMechanism": true,
+      "featureIds": [],
+      "factIds": [
+        "BMS-F04"
+      ],
+      "reason": "重装后恢复原禁用配置的支撑适配器；不依据config/batchWrite名称关联为用户启用开关。",
+      "remainingWork": "实际manager调用/host/build条件、appServerConnection/transport、服务接受和持久化仍需受控验证；具名Node/原生/schema接口保持依赖边界。",
+      "actualRuntimeVerified": false,
+      "productMode": "unknown",
+      "functionalEntryFullyResolved": false
+    },
+    {
+      "id": "BMS-D03",
+      "entryId": "app-server-direct-call-lexical-candidate:df5271f6fa574c32874e8eea",
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/830"
+      },
+      "disposition": "explicit-bundled-plugin-utf8-read-adapter-mechanism",
+      "explicitMechanism": true,
+      "featureIds": [],
+      "factIds": [
+        "BMS-F06"
+      ],
+      "reason": "为物化标记、版本内容和manifest提供UTF8读取；保持目标连接参数，不当作本机文件浏览入口。",
+      "remainingWork": "实际manager调用/host/build条件、appServerConnection/transport、服务接受和持久化仍需受控验证；具名Node/原生/schema接口保持依赖边界。",
+      "actualRuntimeVerified": false,
+      "productMode": "unknown",
+      "functionalEntryFullyResolved": false
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "BMS-S001",
+      "binding": "Mne",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 120867,
+        "endExclusive": 122255
+      },
+      "spanHash": "61425815b4348808cd1be584c8c756975c436416cdb0d443b9cda923bf8821af",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S002",
+      "binding": "Kne",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 146577,
+        "endExclusive": 147381
+      },
+      "spanHash": "0984eaeb3a22a8069c72538187700b2bb37c1303e0980201796b047c3d08c0ac",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S003",
+      "binding": "Jne",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 148307,
+        "endExclusive": 148558
+      },
+      "spanHash": "261ee0d1711cf1303868fb66bba866e05f45ad1d113e23113caf62a74b090cb7",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S004",
+      "binding": "ys",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 152481,
+        "endExclusive": 152646
+      },
+      "spanHash": "d6a7eb2d238e347a55798b2feb2aa68d6ce683dcde8dfc18b1bafc44f700d775",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S005",
+      "binding": "Nne",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 122255,
+        "endExclusive": 123783
+      },
+      "spanHash": "67b5b566c4185d2890dcb7d24718df57a2c9f7d7d4ac3972c71f2365c495a0ff",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S006",
+      "binding": "Go",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 124143,
+        "endExclusive": 127171
+      },
+      "spanHash": "e0af5fab685f0319357256acc47def10a170b15e52bdd458338a157a0c2ac924",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S007",
+      "binding": "us",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 146065,
+        "endExclusive": 146577
+      },
+      "spanHash": "cac961184c6d08f7021608f3e55727f3cb507aa2f72fa9c276f54c32ba85808e",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S008",
+      "binding": "Jo",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 128055,
+        "endExclusive": 128501
+      },
+      "spanHash": "58ee447a1c7581978513889aca2fd7c577278ef791d6dacc1f1dcd55543c1676",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S009",
+      "binding": "rs",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 137131,
+        "endExclusive": 137239
+      },
+      "spanHash": "12caeae6bd020c54dee2e2bfe82329be3fc0bae0d600ee593f2b205a5d85f63c",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S010",
+      "binding": "cs",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 138836,
+        "endExclusive": 138971
+      },
+      "spanHash": "eedec5010edc6b6c993fa2492ecd98c72833670f4cea7eabbdb5418fb1474745",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S011",
+      "binding": "Dne",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 114786,
+        "endExclusive": 114801
+      },
+      "spanHash": "a74192b371f135fe28fcaaf1248bfd68b83a49d90fb6fc78da2ac43ea813b653",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "BMS-S012",
+      "binding": "qne",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 147381,
+        "endExclusive": 147670
+      },
+      "spanHash": "25afa5a8d97bf75c2e6bbe1646c7eb04cbb9d6a141421fd7943ea0ce818e3803",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S013",
+      "binding": "xa",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 98332,
+        "endExclusive": 98363
+      },
+      "spanHash": "ca36bd23abc06507ec98ba7d65906a9e74e708d64d8d9804aff44263dcb08f0c",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "BMS-S014",
+      "binding": "Sa",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 98381,
+        "endExclusive": 98520
+      },
+      "spanHash": "42352920a0a2621510ac3227e7b58acf516026bc7835208fdb0bc3c138002be6",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "BMS-S015",
+      "binding": "ds",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 147670,
+        "endExclusive": 148307
+      },
+      "spanHash": "88ccfcf48daf174a86daf48b018ebffe68e2fa0ea28a4ffd35fa46c7159eb227",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S016",
+      "binding": "Une",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 138971,
+        "endExclusive": 145462
+      },
+      "spanHash": "b74caa6dfff154311465b5c8cc627728d7aa0f48b703ad7e616ecf03195dcc99",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S017",
+      "binding": "Xne",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 149100,
+        "endExclusive": 151105
+      },
+      "spanHash": "01b37c641496fe4c154292685b8a035421a497c5d3575b44f062631b6c9412e9",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S018",
+      "binding": "vs",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 152298,
+        "endExclusive": 152481
+      },
+      "spanHash": "12cc27982303f66b41c7058b96094137b0ec9042404418ab13d023b31c7b43d4",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "BMS-S019",
+      "binding": "sie",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 254075,
+        "endExclusive": 266041
+      },
+      "spanHash": "6f2a5f3f324f701fc45222a40e2d88dc769ecbf415c57f66dd57bafcc731e3d9",
+      "nodeType": "FunctionDeclaration"
+    }
+  ],
+  "semanticChecks": [
+    {
+      "id": "cleanup-is-not-user-marketplace-removal",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "stale-set-and-two-directory-kinds",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "cleanup-caller-has-build-flavor-guard",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "disabled-config-adapter-payload",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "disabled-config-is-restored-after-reinstall",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "utf8-reader-and-four-retained-references",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "materialization-is-hash-qualified-not-transactional",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "remote-caller-is-queued-and-outcomes-are-distinct",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    },
+    {
+      "id": "reconcile-error-policies-and-sequential-cleanup",
+      "status": "passed",
+      "qualification": "Independent static/source assertion, without target execution or runtime acceptance."
+    }
+  ],
+  "existingMechanismSupplement": {
+    "entryId": "app-server-direct-call-lexical-candidate:1084110b7a8a0478e8af9c2d",
+    "previousContract": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/bundled-marketplace-refresh-purpose-v1.json",
+      "bytes": 7680,
+      "sha256": "a23a39579561672c53ff1005b3669691c503bcf7e6c79eb28ccb27a6520d518c"
+    },
+    "factIds": [
+      "BMS-F08"
+    ],
+    "newFeature": false,
+    "newOperation": false
+  },
+  "nonEquivalenceDecisions": [
+    {
+      "existingFeatureId": "FSC-0136",
+      "reason": "Kne compatibility cleanup does not implement the settings removal dialog/serial uninstall workflow."
+    },
+    {
+      "existingFeatureIds": [
+        "FSC-0140",
+        "FSC-0137",
+        "FSC-0138"
+      ],
+      "reason": "Restore-disabled and internal UTF8/cache refresh helpers do not prove those UI callers."
+    }
+  ],
+  "reconstructionResponsibilities": [
+    {
+      "responsibility": "Main-process bundled lifecycle coordinator",
+      "inputs": "feature/build guards, local and remote connections, selected plugin descriptors, explicit callbacks",
+      "outputs": "structured reconcile failure/read-failure/unknown-sync results; callbacks only on stated conditions",
+      "sharedState": "sie local/remote queues, feature snapshots and managed IDs; effective physical globalState unresolved",
+      "effects": "materialization, install/uninstall, native-host delegates and stale local directory cleanup",
+      "boundary": "Keep separate from user-facing marketplace removal; do not add a new user goal for each RPC."
+    },
+    {
+      "responsibility": "Injected backend filesystem/config ports",
+      "inputs": "explicit host path, pluginId, enabled and beforeSendRequest",
+      "outputs": "UTF8 content or propagated read error; configuration receiver result",
+      "boundary": "Retain first-party adapters, use package-managed Node/schema/runtime dependencies; do not copy third-party implementations or replace host reads with local fs."
+    }
+  ],
+  "runtimeObservationsRequired": [
+    "受控旧市场列表失败与单项删除失败，核对仍继续目录清理及后续协调。",
+    "在非missing且原禁用插件重装后，核对enabled=false配置、写失败及后续插件继续。",
+    "标记相同、读取缺失、读取非缺失错误、写入中断和下次启动重建分别核对。",
+    "多远程连接的成功、false及拒绝混合，核对队列和onSkillsMayHaveChanged条件。"
+  ],
+  "runtimeObservationStatus": "not-executed; requirements only, not new canonical scenarios or execution authorization",
+  "counts": {
+    "distinctCompletePrograms": 1,
+    "completeAstNodesIncludingFile": 958315,
+    "selectedSourceUnitParses": 23,
+    "sourceSpanOccurrences": 136,
+    "uniqueSourceSpans": 116,
+    "semanticChecks": 9,
+    "newSourcePurposeDecisions": 3,
+    "facts": 9,
+    "sourceUnits": 19,
+    "newFeatures": 0,
+    "newOperations": 0,
+    "newCanonicalScenarios": 0,
+    "newModeClassifications": 0,
+    "newRuntimePasses": 0
+  },
+  "retainedBoundaries": [
+    "sie工厂定义及返回API不是实际安装/调用证明；有效连接、buildFlavor、门控及模式未观察。",
+    "listPlugins/install/uninstall/addMarketplace、Node/schema和原生宿主以具名接口保留，不递归重开已明提供方。",
+    "目录/配置/安装多步骤无全局事务；真实取消、失败恢复、隔离与独立构建未验收。"
+  ],
+  "newExecution": {
+    "reaRuns": 0,
+    "targetEvaluations": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "serviceCalls": 0,
+    "implementation": 0
+  },
+  "selectedSourceBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "actualRuntimeVerified": false,
+  "qualification": "Source-purpose and lifecycle refinement only. Three supporting source identities settled; no user feature association, product-mode decision, implementation or behavior pass.",
+  "developmentQualification": "Initial verifier expected an inline failOnError if-test; actual Jo logs via a SequenceExpression before testing failOnError. Corrected to inspect the actual AST guard and throw branch; no target parse failure."
+}

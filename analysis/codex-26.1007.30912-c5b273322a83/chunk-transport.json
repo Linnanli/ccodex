@@ -1,0 +1,781 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "baselineArchiveSha256": "c5b273322a833ce5165429d468021cc6289a11cc68d075b80ae773bd7fb6731f",
+  "status": "supplemental-static-contract-review; runtime-unverified",
+  "createdAtUtc": "2026-10-13T07:52:28.578147+00:00",
+  "reviewScope": "Host-to-view chunk transport generator, sender, Electron wrapper/ack/preload bridge, renderer receiver/assembler and size helper bindings from frozen files only. App-host RPC, worker schemas and feature coverage are separate investigations.",
+  "sourceFiles": [
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "bytes": 1591361
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "bytes": 3824411
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "bytes": 6909
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "bytes": 8175575
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "bytes": 290566
+    }
+  ],
+  "rangeConventions": {
+    "start": "inclusive UTF-8 byte offset in original frozen source",
+    "endExclusive": "exclusive UTF-8 byte offset",
+    "boundsMethod": "Babel parse AST functions/classes and small complete declaration/export spans located from exact original bytes; never formatted-code line numbers"
+  },
+  "relatedExistingEvidence": [
+    "FEATURE-E04972",
+    "FEATURE-E04987",
+    "FEATURE-E04986"
+  ],
+  "existingEvidenceLimit": "Earlier short locations establish bridge/channel presence. They are not complete function evidence for tokenizer, sender backpressure or reconstruction state machine; use new spans for these narrower claims.",
+  "evidence": [
+    {
+      "id": "REVIEW-CHUNK-E001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3498,
+        "endExclusive": 3537
+      },
+      "spanSha256": "4bd80d479c9718b398b4dfe9189dc67af71949dff1e1925baa98551a3b0242e4",
+      "symbol": "le",
+      "locatorScope": "complete-declaration",
+      "claim": "Frame marker is codex-host-chunked-message-v1.",
+      "claimScope": "Only this transport marker; not an app-server protocol version.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1342705,
+        "endExclusive": 1342721
+      },
+      "spanSha256": "112609962a8586ddca0c203bdda80159b90864c7eb51916fc9d8fe58790c192a",
+      "symbol": "vG/yG",
+      "locatorScope": "complete-declaration",
+      "claim": "Token cost constants are 64 plus string UTF-16 length times 2 or 16 for non-string values.",
+      "claimScope": "Estimation parameters, not exact serialized/network byte counts.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1342721,
+        "endExclusive": 1343231
+      },
+      "spanSha256": "d7f80ae9c988347144c5b6b2a188581c8c8d5fe96840082dac387a55367446fc",
+      "symbol": "bG",
+      "locatorScope": "complete-function",
+      "claim": "Frame generator emits start at sequence 0, token batches with increasing sequence, and a final end. String segment target is max(1,floor(batchTargetBytes/4)); batching may exceed target for a single token.",
+      "claimScope": "Generator output only; depends on tokenizer and caller-supplied transferId/batchTargetBytes.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1343231,
+        "endExclusive": 1344423
+      },
+      "spanSha256": "2b3984c260b19f412dc598f1241679a43101f9d5b3735ade7ba263f2b421a216",
+      "symbol": "xG",
+      "locatorScope": "complete-function",
+      "claim": "Tokenizer supports null/undefined/numbers/booleans/strings, arrays, recognized chunked arrays, and enumerable object entries. It rejects functions/bigints/symbols and cyclic values on the active traversal path; repeated non-cyclic references are traversed again.",
+      "claimScope": "Tokenized branch only; not all inline Electron structured-clone semantics. Unsupported object classes are not explicitly type rejected: their enumerable entries are traversed.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1344423,
+        "endExclusive": 1344666
+      },
+      "spanSha256": "be62a5cfa54317fad10b4da5d5a83a2df7e339d03fa1e5670a70185b1e3927b4",
+      "symbol": "SG",
+      "locatorScope": "complete-function",
+      "claim": "Short strings/keys emit a single value/key token; long strings emit string-start, UTF-16 slice string-chunks, string-end.",
+      "claimScope": "Tokenized string/key path; final assembler concatenates slices. Boundary slices may divide a surrogate pair.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1344666,
+        "endExclusive": 1344809
+      },
+      "spanSha256": "837ec220935c70cc2c3c834bd1072bb987f35478afdb85814f10e181208adc0f",
+      "symbol": "CG",
+      "locatorScope": "complete-function",
+      "claim": "Batch cost is 64 plus string UTF-16 length times 2 or 16.",
+      "claimScope": "Approximate per-token cost; not byte-exact framing size.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1344809,
+        "endExclusive": 1344854
+      },
+      "spanSha256": "aa4ef9c0d5e9cf9ce413576b3a449c12a47d0f066e5ab9ef6b9712b5851bcdb1",
+      "symbol": "wG",
+      "locatorScope": "complete-function",
+      "claim": "Recognized chunked arrays are flattened by iterating each chunk.",
+      "claimScope": "Recognition is delegated to imported o.w; does not apply to arbitrary objects with a chunks property.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1344854,
+        "endExclusive": 1344879
+      },
+      "spanSha256": "060ec91dd7f535049d5af2db6906eb21b190438aafe7c1aba959354888a03174",
+      "symbol": "TG/EG",
+      "locatorScope": "complete-variable-declarators",
+      "claim": "Defaults are inline threshold 4194304 and batch target 2097152.",
+      "claimScope": "Defaults only; constructor options can override both.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1344880,
+        "endExclusive": 1349491
+      },
+      "spanSha256": "ec48245998bf64fc1f851b482d49d7f17464d19065cb967329573c12b4e37891",
+      "symbol": "DG",
+      "locatorScope": "complete-function",
+      "claim": "Per-target sender keeps ordinary and critical queues with at most one chunk transfer active. It advances only after an ack matches current target/transferId/sequence and the part is marked delivered. Nonchunked critical messages may bypass a noncritical transfer. Loading requeues an in-progress transfer; destroyed/unavailable targets clean up. Deliver errors optionally retry; cleanup clears queues, transfer and subscriptions.",
+      "claimScope": "Complete sender class. No explicit missing-ack deadline is present in this class; absence of a timer elsewhere is not established. Ordering guarantees apply per target and reviewed queue path.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 269357,
+        "endExclusive": 269364
+      },
+      "spanSha256": "eb5c31b3284f2dfee1a48cd5aa51a1e54fcff78cd911d0a9fa17b22bac9003ed",
+      "symbol": "mie",
+      "locatorScope": "complete-variable-declarator",
+      "claim": "Electron sender wrapper supplies retry delay 1000 ms.",
+      "claimScope": "Delivery-error retry only, not an acknowledgement deadline.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 269365,
+        "endExclusive": 270378
+      },
+      "spanSha256": "8e2ccbd388adc092f0f50fd2c1203cae79ada0d2ea83eb06264c54f7251a5cd0",
+      "symbol": "hie",
+      "locatorScope": "complete-variable-declarator-with-class",
+      "claim": "Electron wrapper sends frame or inline payload on original channel, uses webContents destruction/loading availability, listens destroyed/did-start-loading/did-stop-loading, and removes lifecycle listeners on cleanup.",
+      "claimScope": "This Electron webContents integration; not browser/other-host transport implementations.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 270379,
+        "endExclusive": 270407
+      },
+      "spanSha256": "d4eed7fa7680787f32f82b89fbf6b175a3c41f1810860cc3713581be4ea2d2ac",
+      "symbol": "gie",
+      "locatorScope": "complete-variable-declarator",
+      "claim": "Ack handler validates [transferId,sequence] as a string and integer tuple.",
+      "claimScope": "Shape validation only; sender further checks current transfer and sequence.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E013",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 270408,
+        "endExclusive": 270585
+      },
+      "spanSha256": "3f678f2db526893599856968e437e39e10615b29d3a4983fd15665ea2398915b",
+      "symbol": "_ie",
+      "locatorScope": "complete-function",
+      "claim": "Main receives ack on imported g.pt channel only from trusted IPC events, parses the tuple, then acknowledges using event.sender as target.",
+      "claimScope": "Trust predicate and g.pt channel resolution are supplied by surrounding setup; this function does not define origin trust itself.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E014",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1002,
+        "endExclusive": 1367
+      },
+      "spanSha256": "4fea026355ea304eb6f015d8747d090733eee7caf0cef3df7ff11fe8799466b4",
+      "symbol": "i",
+      "locatorScope": "complete-function",
+      "claim": "Preload frame recognizer checks marker, string transferId, safe-integer sequence and kind; chunk frames require an array of valid tokens.",
+      "claimScope": "Recognition used to distinguish chunk frames before shared-object side effects. It does not reconstruct messages.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E015",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1367,
+        "endExclusive": 1812
+      },
+      "spanSha256": "d2dd3f9d93e04de91ecd46142ec5ca86d7f99da53e18e5e6b9a549e141888d56",
+      "symbol": "a",
+      "locatorScope": "complete-function",
+      "claim": "Preload token validator recognizes container/key/value/string tokens and the primitive value shape. A value token without a value property is accepted.",
+      "claimScope": "Structural shape only; logical token ordering is handled by renderer assembler.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E016",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 1816,
+        "endExclusive": 1853
+      },
+      "spanSha256": "db6e6e506494038ec79c0bf818cff95c58964d74e5edd0975cd8bc1ef74b1db8",
+      "symbol": "o",
+      "locatorScope": "complete-variable-declarator",
+      "claim": "Ack channel string is codex_desktop:chunked-message-ack.",
+      "claimScope": "Constant used by preload acknowledgeChunkedMessage.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E017",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3341,
+        "endExclusive": 3401
+      },
+      "spanSha256": "bb0f3cf15298906bec20f8cf5f1f6442c0783cf19e940d273d07f71c937ccd5b",
+      "symbol": "z.acknowledgeChunkedMessage",
+      "locatorScope": "complete-object-property-function",
+      "claim": "Bridge ack API performs ipcRenderer.send(channel,transferId,sequence).",
+      "claimScope": "Complete property function; no delivery Promise or retry provided by this API.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E018",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4768,
+        "endExclusive": 5123
+      },
+      "spanSha256": "8550e1b83e6a2280be69c03cbd436d6859b87cfd26035640cd0df5a7cc9c990b",
+      "symbol": "ipcRenderer.on(D)",
+      "locatorScope": "complete-call-with-listener",
+      "claim": "Main host messages are dispatched to renderer as MessageEvent(message,{data:payload}). Recognized chunk frames skip the nonchunk shared-object cache/video-layout side effects.",
+      "claimScope": "Complete listener callback. Final chunked shared-object handling, if needed, must be traced in renderer; preload does not apply cache side effects to assembled chunk messages.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E019",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 9473,
+        "endExclusive": 10283
+      },
+      "spanSha256": "2101da173e180ab496a5b62dc06aa54e960634f52b7a396cf3d0bb2ae9e2704a",
+      "symbol": "l/u",
+      "locatorScope": "complete-functions",
+      "claim": "Renderer recognizes the same frame marker and token shapes as preload.",
+      "claimScope": "Complete paired validators; logical ordering is delegated to receiver/assembler.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E020",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 10320,
+        "endExclusive": 10386
+      },
+      "spanSha256": "5a0070bcdebb95d20ee10b34c08eb10891b997be6a8978c703d8ca10861f006d",
+      "symbol": "f",
+      "locatorScope": "complete-function",
+      "claim": "Ack payload is only transferId and sequence.",
+      "claimScope": "For validated/pending/complete frames.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E021",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 10396,
+        "endExclusive": 12823
+      },
+      "spanSha256": "4a664e07f63321d0a19ab15bb3c14be11a428ecf785c4535785dba41d4e24c3a",
+      "symbol": "g (m receiver and h assembler)",
+      "locatorScope": "complete-function",
+      "claim": "Start clears previous transfers and creates an assembler with nextSequence=start.sequence+1. Missing transfer or sequence mismatch deletes that transfer and returns pending with no ack. Valid chunk consumes tokens and yields ack. End deletes transfer, requires a complete value, and returns assembled message plus ack. Assembler rejects unmatched end/key placement/nested string chunks/missing string boundaries/incomplete or multiple roots. Object keys are assigned with Object.defineProperty.",
+      "claimScope": "Complete lazy initializer containing both classes. No assembler exception recovery is present within these classes; behavior at upstream exception boundaries remains unverified.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E022",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 294735,
+        "endExclusive": 295161
+      },
+      "spanSha256": "3000125b5b86e1f37ac31b8a4b700bb8717295ede10b69c0fdbb5762d9ac5a4b",
+      "symbol": "sre",
+      "locatorScope": "complete-function",
+      "claim": "Window-message gate rejects foreign non-null source and incompatible same-window origin. Chunk receiver ack is sent before returning a completed typed message; pending transfers do not dispatch. Complete messages must be nonnull objects with string type.",
+      "claimScope": "Complete function. Synthetic events with source=null are accepted, matching preload dispatch. Listener ownership/disposal and shared-buffer consumers need separate tracing.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E023",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 226035,
+        "endExclusive": 226104
+      },
+      "spanSha256": "af32996afd1f86769a106f36a6d9a72d38961dab1949bc0fdbe152a768457c68",
+      "symbol": "$o",
+      "locatorScope": "complete-variable-declarator-with-class",
+      "claim": "Chunked array representation is a class with chunks and length; o.w resolves to instance check ts.",
+      "claimScope": "Static representation, not generic array-like values.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E024",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 226651,
+        "endExclusive": 226689
+      },
+      "spanSha256": "07145e7931b3fb2a05dfe86657ba81888600bd521b47e2f7ad3e402c1437a456",
+      "symbol": "ts",
+      "locatorScope": "complete-function",
+      "claim": "o.w predicate resolves to ts(e), an instanceof $o test.",
+      "claimScope": "Imported helper binding must be preserved or replaced with an equivalent explicit representation.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E025",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 227032,
+        "endExclusive": 227872
+      },
+      "spanSha256": "02c26748d18021e72da35f4d1612b22c6c9b9d64586702090201e3364a1e7eba",
+      "symbol": "is/as",
+      "locatorScope": "complete-functions",
+      "claim": "o.T computes an estimated traversal size and compares it strictly greater than threshold. Strings count UTF-16 units times 2; primitive/object/key constants are counted; encountering a recognized chunked array makes the early-check estimate infinite.",
+      "claimScope": "Complete estimate functions, not JSON byte measurement; source getter/proxy/enumeration side effects not runtime tested.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E026",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 227872,
+        "endExclusive": 227917
+      },
+      "spanSha256": "acad62e263bc8e44da2241c823f3df5e6f8c13c75259ecf7cb30ce9e3ff31743",
+      "symbol": "os",
+      "locatorScope": "complete-function",
+      "claim": "Size traversal flattens recognized chunked-array chunks.",
+      "claimScope": "Same special representation as tokenizer wG.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E027",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 227921,
+        "endExclusive": 227997
+      },
+      "spanSha256": "4e2e4e0b63b9442254d18e91d48b5a389d63c232184b1c1d886afc69e5ea8bdb",
+      "symbol": "ss/cs/ls",
+      "locatorScope": "complete-declaration-and-functions",
+      "claim": "o.C reads size from a WeakMap populated by cs. Sender can select a cached size on message/result/params before fallback traversal.",
+      "claimScope": "Cache lookup only; callsites that populate this cache and their accuracy still require tracing.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E028",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 289881,
+        "endExclusive": 289957
+      },
+      "spanSha256": "02fe0b24d92c8aa9df79255311c3351231d956eef12ed1b024e9b75668764580",
+      "symbol": "o.w -> ts",
+      "locatorScope": "complete-export-binding",
+      "claim": "Export binding resolves imported helper used by sender.",
+      "claimScope": "Static export getter mapping.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E029",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 284461,
+        "endExclusive": 284537
+      },
+      "spanSha256": "8139d0ed3887ea7f413872d7cfe3140b81b360e8723abc2b56769b5a1af15018",
+      "symbol": "o.T -> is",
+      "locatorScope": "complete-export-binding",
+      "claim": "Export binding resolves imported helper used by sender.",
+      "claimScope": "Static export getter mapping.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    },
+    {
+      "id": "REVIEW-CHUNK-E030",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "locator": {
+        "kind": "byte-range",
+        "start": 281829,
+        "endExclusive": 281905
+      },
+      "spanSha256": "9bb43c61cb9516b01049d27c8bbb6cee7f5411247b43cb4431d990c864d690c6",
+      "symbol": "o.C -> ls",
+      "locatorScope": "complete-export-binding",
+      "claim": "Export binding resolves imported helper used by sender.",
+      "claimScope": "Static export getter mapping.",
+      "method": "frozen-source-read-with-Babel-AST-bounds",
+      "confidence": "confirmed",
+      "verificationStatus": "static-confirmed; runtime-not-executed"
+    }
+  ],
+  "staticContractSummary": {
+    "protocolMarker": "codex-host-chunked-message-v1",
+    "ackChannel": "codex_desktop:chunked-message-ack",
+    "frameKinds": [
+      "start",
+      "chunk",
+      "end"
+    ],
+    "flowControl": "One active chunk transfer per target; valid current ack gates each next frame.",
+    "defaults": {
+      "inlineThresholdEstimatedBytes": 4194304,
+      "batchTargetEstimatedBytes": 2097152,
+      "electronDeliveryErrorRetryDelayMs": 1000
+    },
+    "serialization": "Explicit token tree plus string segments; not JSON text chunks.",
+    "runtimeVerification": "None performed by this review.",
+    "featureCoverage": "No feature denominator or runtime coverage inferred from these contracts."
+  },
+  "unverifiedBoundaries": [
+    {
+      "id": "CHUNK-G01",
+      "question": "Missing-ack deadline, abort and recovery policy outside sender class",
+      "evidenceIds": [
+        "REVIEW-CHUNK-E009"
+      ],
+      "nextAction": "Trace class callers and window-message error boundaries; use independent fault-injection fixture before choosing retry/abort semantics.",
+      "impact": "A successfully delivered part without ack may block that target indefinitely unless another lifecycle path resets it."
+    },
+    {
+      "id": "CHUNK-G02",
+      "question": "Exception boundary when renderer assembler consume/finish throws",
+      "evidenceIds": [
+        "REVIEW-CHUNK-E021",
+        "REVIEW-CHUNK-E022"
+      ],
+      "nextAction": "Trace message listener caller chain, logging and cleanup; verify fault path in fixture.",
+      "impact": "An exception can prevent acknowledgement and stall sender."
+    },
+    {
+      "id": "CHUNK-G03",
+      "question": "Chunked shared-object cache update parity",
+      "evidenceIds": [
+        "REVIEW-CHUNK-E018",
+        "REVIEW-CHUNK-E022"
+      ],
+      "nextAction": "Trace assembled shared-object-updated handlers and all getSharedObjectSnapshotValue users; verify inline versus chunked cache contract.",
+      "impact": "Preload cache is updated before dispatch only for nonchunk host messages."
+    },
+    {
+      "id": "CHUNK-G04",
+      "question": "Size-cache creation provenance and argument contract",
+      "evidenceIds": [
+        "REVIEW-CHUNK-E009",
+        "REVIEW-CHUNK-E027"
+      ],
+      "nextAction": "Find callers of exported cached-size setters and chunked-array constructors; correlate parent message/result/params paths.",
+      "impact": "Threshold selection uses estimates/cached values and may differ from raw payload bytes."
+    },
+    {
+      "id": "CHUNK-G05",
+      "question": "Cross-window sender trust and complete listener disposal",
+      "evidenceIds": [
+        "REVIEW-CHUNK-E013",
+        "REVIEW-CHUNK-E022"
+      ],
+      "nextAction": "Trace isTrustedIpcEvent setup, window types, frame allowlist and renderer subscription disposal.",
+      "impact": "Shape and current-transfer checks alone do not establish sender authorization or all lifecycle ownership."
+    },
+    {
+      "id": "CHUNK-G06",
+      "question": "Domain caller coverage, transfer sizes and queue growth",
+      "evidenceIds": [
+        "REVIEW-CHUNK-E009"
+      ],
+      "nextAction": "Map send/sendInline/sendCritical callers and getPayload structures by feature; add realistic large thread/diff fixtures.",
+      "impact": "Transport is confirmed but individual Codex feature coverage/maximum memory use remains unproven."
+    },
+    {
+      "id": "CHUNK-G07",
+      "question": "Runtime parity with Electron/Owl structured clone and custom data representations",
+      "evidenceIds": [
+        "REVIEW-CHUNK-E004",
+        "REVIEW-CHUNK-E023",
+        "REVIEW-CHUNK-E025"
+      ],
+      "nextAction": "Define supported serialization types and test both inline/chunk paths in intended independent runtime, after runtime choice.",
+      "impact": "Blind replacement by JSON.stringify changes undefined, special-array, identity and nonplain-object handling."
+    }
+  ],
+  "reproducibleValidationScenarios": [
+    {
+      "id": "CHUNK-S01",
+      "name": "Inline boundary and forced chunk path",
+      "setup": "Use reconstructed pure transport fixtures with ordinary typed payloads; record size-estimator result, not JSON byte length.",
+      "actions": "Exercise estimates below/equal/above configured threshold and constructor overrides.",
+      "expected": "Strict > selects tokenization; equal stays inline unless special representation/cache changes selection. Both routes reconstruct domain payload as intended.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S02",
+      "name": "Large strings, keys, arrays and primitive preservation",
+      "setup": "Independent fixtures with long keys/string values including emoji at slice boundaries, null/undefined/false/zero/empty string, nested arrays and objects, special chunked arrays.",
+      "actions": "Generate frames and feed receiver; ack every accepted frame.",
+      "expected": "start/chunk/end sequence monotonic; no domain message before end; exactly one final typed message; UTF-16 slices rejoin; undefined and special-array semantics match chosen contract.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S03",
+      "name": "Acknowledgement backpressure and invalid ack",
+      "setup": "Fake deliver target records frames; controllable acknowledgement.",
+      "actions": "Delay ack; send wrong target/id/sequence, duplicate/stale ack, then correct ack.",
+      "expected": "No next part before valid ack; invalid/stale acknowledgements do not advance; end ack releases transfer and resumes target queue. Missing-ack timeout must be explicitly decided because none exists in reviewed sender class.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S04",
+      "name": "Per-target order and critical priority",
+      "setup": "Two fake targets; regular large transfer A, queued inline B and critical inline C; also critical chunk D.",
+      "actions": "Ack A gradually while adding all messages on target 1 and send ordinary message to target 2.",
+      "expected": "Critical inline can be delivered while noncritical A waits; ordinary B queues; critical chunk waits until transfer slot; target 2 progresses independently. Record exact observed order as contract.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S05",
+      "name": "Loading restart and target destruction",
+      "setup": "Fake lifecycle hooks implement onLoading/onLoaded/onDestroyed/isAvailable.",
+      "actions": "Enter loading midway through transfer; reload, accept a new start; destroy target or mark unavailable.",
+      "expected": "Interrupted message requeues and restarts with a new transfer id; receiver start clears old transfer; destroy cleans queues/listeners/retry timer and sends no further parts.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S06",
+      "name": "Delivery exception versus lost ack",
+      "setup": "Fake delivery fails first inline/frame send; retryDelayMs=1000 with controllable clock.",
+      "actions": "Advance timer and allow successful delivery; separately lose a successfully delivered part ack.",
+      "expected": "Delivery exception schedules retry and preserves pending work; delivered-but-unacknowledged transfer remains waiting in reviewed class, exposing recovery decision. Test retryDelayMs absent cleanup path separately.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S07",
+      "name": "Receiver corruption and competing start",
+      "setup": "Synthetic validated frames in pure receiver harness.",
+      "actions": "Missing/duplicate/out-of-order sequence; new start before old end; malformed token ordering; premature end; missing string/container end; nested string tokens.",
+      "expected": "Out-of-sequence state is deleted without ack; new start clears prior state; logical token errors throw. Specify host recovery/error reporting without counting a guessed behavior as baseline.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S08",
+      "name": "Origin gate and dispatch/cache side effects",
+      "setup": "Independent renderer/preload bridge harness with fake window and shared-object snapshot.",
+      "actions": "Pass foreign source, wrong same-window origin, null-source preload events; compare inline and chunked shared-object-updated flows.",
+      "expected": "Gate rejects foreign/wrong-origin events; source-null synthetic host events are accepted; no dispatch for pending frames. Determine whether assembled chunk updates preload cache through another path.",
+      "status": "proposed; not executed"
+    },
+    {
+      "id": "CHUNK-S09",
+      "name": "Unsupported inputs and identity",
+      "setup": "Pure fixtures with repeated references, cycles, bigint/function/symbol values, dates/typed arrays/nonplain objects.",
+      "actions": "Compare inline and forced-token branches.",
+      "expected": "Token cycles/unsupported primitive types fail as static code specifies; repeated references are duplicated. Nonplain-object/inline semantic differences must be recorded rather than normalized silently.",
+      "status": "proposed; not executed"
+    }
+  ],
+  "suggestedImplementationBoundary": "First-party host-message-codec + queued chunk sender/receiver contract in a shared transport package; Electron/preload IPC adapters separate. Preserve or explicitly replace special chunked-array and size-cache helper contracts. Do not merge app-host RPC or worker request buses into this protocol."
+}

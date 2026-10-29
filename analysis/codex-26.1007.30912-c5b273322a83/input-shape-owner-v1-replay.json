@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "scope": "Selected source methods and field initializer in isolated VM; window/native/process doubles only.",
+  "cases": [
+    {
+      "name": "unsupported capability skips native shape",
+      "status": "passed"
+    },
+    {
+      "name": "null shape skips native shape",
+      "status": "passed"
+    },
+    {
+      "name": "native shape maps left/top to x/y and preserves dimensions",
+      "status": "passed"
+    },
+    {
+      "name": "empty shape is passed through rather than skipped",
+      "status": "passed"
+    },
+    {
+      "name": "forwarding is disabled before native call and exact return retained",
+      "status": "passed"
+    },
+    {
+      "name": "native exception propagates after forwarding state reset",
+      "status": "passed"
+    },
+    {
+      "name": "visible native success bypasses whole-window forwarding",
+      "status": "passed"
+    },
+    {
+      "name": "visible native false falls back to forwarding",
+      "status": "passed"
+    },
+    {
+      "name": "interactive fallback disables forwarding and refreshes cursor",
+      "status": "passed"
+    },
+    {
+      "name": "hidden Windows disabled shortcut performs no ignore call",
+      "status": "passed"
+    },
+    {
+      "name": "hidden macOS forces ignore without forwarding",
+      "status": "passed"
+    },
+    {
+      "name": "destroyed window resets bookkeeping without native effects",
+      "status": "passed"
+    },
+    {
+      "name": "mismatched sender leaves shape and policy unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "matching sender replaces region arrays before policy",
+      "status": "passed"
+    },
+    {
+      "name": "capability field executes once per constructed manager",
+      "status": "passed"
+    },
+    {
+      "name": "missing capability method throws at construction before fallback",
+      "status": "passed"
+    }
+  ],
+  "casesPassed": 16,
+  "originalClientRuns": 0,
+  "modelSubmissions": 0,
+  "realNativeCalls": 0,
+  "productScenariosExecuted": 0,
+  "limitations": [
+    "No window, platform bridge, pointer event delivery, DOM rendering or target runtime was exercised.",
+    "Method replay does not prove native capability, native return convention, hit testing or full UI/service integration."
+  ]
+}

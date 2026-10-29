@@ -1,0 +1,31 @@
+id,input,script,obligationId,decisionClass,decision,qualification,replacementImplemented
+BUILD-001,./scripts/ensure-owl-electron-types.mjs,compile,BFO-01,runtime-types,author-after-provider-contract,类型可以重新编写，但必须描述实际 provider；声明文件不能制造缺失方法。,False
+BUILD-002,../cli/run-package-typescript.mjs,compile,BFO-02,workspace-tooling,authorable-tooling,原 monorepo 相对脚本无需恢复原名；按新的 workspace 编译/lint/dev 职责编写。,False
+BUILD-003,./scripts/ensure-owl-electron-types.mjs,tsc,BFO-01,runtime-types,author-after-provider-contract,类型可以重新编写，但必须描述实际 provider；声明文件不能制造缺失方法。,False
+BUILD-004,../cli/run-package-typescript.mjs,tsc,BFO-02,workspace-tooling,authorable-tooling,原 monorepo 相对脚本无需恢复原名；按新的 workspace 编译/lint/dev 职责编写。,False
+BUILD-005,./scripts/prepare-dev.mjs,prepare:owl,BFO-03,runtime-driver,external-provider-input-required,driver 可编写，独立 runtime 来源/锁定/hash/headers/SDK 必须实际取得，路径改写不补足它们。,False
+BUILD-006,./scripts/owl-shell.mjs,owl,BFO-03,runtime-driver,external-provider-input-required,driver 可编写，独立 runtime 来源/锁定/hash/headers/SDK 必须实际取得，路径改写不补足它们。,False
+BUILD-007,./scripts/build-dev-vite.mjs,build:dev-vite,BFO-02,workspace-tooling,authorable-tooling,原 monorepo 相对脚本无需恢复原名；按新的 workspace 编译/lint/dev 职责编写。,False
+BUILD-008,../app-server-types/generate-types.mjs,forge:make,BFO-04,contract-generator,author-after-fixed-schema,从选定固定 schema 和桌面扩展生成；成功生成类型不证明真实服务覆盖。,False
+BUILD-009,../app-server-types/generate-types.mjs,forge:make:owl-shell,BFO-04,contract-generator,author-after-fixed-schema,从选定固定 schema 和桌面扩展生成；成功生成类型不证明真实服务覆盖。,False
+BUILD-010,../app-server-types/generate-types.mjs,forge:publish,BFO-04,contract-generator,author-after-fixed-schema,从选定固定 schema 和桌面扩展生成；成功生成类型不证明真实服务覆盖。,False
+BUILD-011,./scripts/owl-shell.mjs,owl:ensure,BFO-03,runtime-driver,external-provider-input-required,driver 可编写，独立 runtime 来源/锁定/hash/headers/SDK 必须实际取得，路径改写不补足它们。,False
+BUILD-012,./scripts/package.mjs,package,BFO-05,packaging-metadata,authorable-with-runtime-layout,应用标识、资源和版本布局重新定义；最终需与所选 runtime/helpers 一起验收。,False
+BUILD-013,./scripts/ensure-owl-electron-types.mjs,lint,BFO-01,runtime-types,author-after-provider-contract,类型可以重新编写，但必须描述实际 provider；声明文件不能制造缺失方法。,False
+BUILD-014,../scripts/run-package-oxlint.mjs,lint,BFO-02,workspace-tooling,authorable-tooling,原 monorepo 相对脚本无需恢复原名；按新的 workspace 编译/lint/dev 职责编写。,False
+BUILD-015,./scripts/ensure-owl-electron-types.mjs,lint:fix,BFO-01,runtime-types,author-after-provider-contract,类型可以重新编写，但必须描述实际 provider；声明文件不能制造缺失方法。,False
+BUILD-016,../scripts/run-package-oxlint.mjs,lint:fix,BFO-02,workspace-tooling,authorable-tooling,原 monorepo 相对脚本无需恢复原名；按新的 workspace 编译/lint/dev 职责编写。,False
+BUILD-017,./scripts/dev-metadata.ts,metadata-path,BFO-05,packaging-metadata,authorable-with-runtime-layout,应用标识、资源和版本布局重新定义；最终需与所选 runtime/helpers 一起验收。,False
+BUILD-018,./scripts/analyze-heap-snapshot.mjs,memory:analyze-snapshot,BFO-06,diagnostic-tool,authorable-diagnostic-tool,heap 分析脚本不是产品启动前置；RAM-05 产品 Task Manager 继续完整保留。,False
+BUILD-019,./scripts/computer-use-native-pipe-e2e.mjs,e2e:computer-use-native-pipe,BFO-07,verification-tool,authorable-verification-harness,自有样例/native-pipe/CDP 检查重新编写；测试 harness 不是待复刻产品能力的替代。,False
+BUILD-020,./scripts/playwright-electron-agent-cdp.mjs,playwright:agent:repl,BFO-07,verification-tool,authorable-verification-harness,自有样例/native-pipe/CDP 检查重新编写；测试 harness 不是待复刻产品能力的替代。,False
+BUILD-021,./scripts/owl-shell.mjs,rebuild:native-modules,BFO-03,runtime-driver,external-provider-input-required,driver 可编写，独立 runtime 来源/锁定/hash/headers/SDK 必须实际取得，路径改写不补足它们。,False
+BUILD-022,pnpm-lock.yaml,,BFO-08,new-project-lock,generate-one-new-lock,三种锁文件名是替代选项；所提 pnpm workspace 只生成一个准确新锁，不能回填为原锁。,False
+BUILD-023,package-lock.json,,BFO-08,new-project-lock,generate-one-new-lock,三种锁文件名是替代选项；所提 pnpm workspace 只生成一个准确新锁，不能回填为原锁。,False
+BUILD-024,yarn.lock,,BFO-08,new-project-lock,generate-one-new-lock,三种锁文件名是替代选项；所提 pnpm workspace 只生成一个准确新锁，不能回填为原锁。,False
+BUILD-025,pnpm-workspace.yaml,,BFO-09,workspace-config,authorable-workspace-config,按已提出包边界配置成员；不依赖原作者 workspace 文件。,False
+BUILD-026,tsconfig.json,,BFO-10,typescript-config,authorable-with-runtime-types,分离进程类型环境和编译目标；此项不独自覆盖 native ABI/编译配方。,False
+BUILD-027,forge.config.ts,,BFO-11,packager-config,author-one-packager-config,ts/js 名为替代选项，选一个配置；最终需独立 runtime、native ABI、resources、签名与更新通道。,False
+BUILD-028,forge.config.js,,BFO-11,packager-config,author-one-packager-config,ts/js 名为替代选项，选一个配置；最终需独立 runtime、native ABI、resources、签名与更新通道。,False
+BUILD-029,vite.config.ts,,BFO-12,bundler-config,author-one-bundler-config,ts/js 名为替代选项，分 main/preload/renderer/worker 入口并外置第三方/native。,False
+BUILD-030,vite.config.js,,BFO-12,bundler-config,author-one-bundler-config,ts/js 名为替代选项，分 main/preload/renderer/worker 入口并外置第三方/native。,False

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "status": "selected-static-interface",
+  "terminalHostService": {
+    "sourceBoundary": "qli returned services.terminal -> yGt -> manager.hostService",
+    "requiredCalls": {
+      "subscribe": [
+        "callback(event)"
+      ],
+      "unsubscribe": [],
+      "create": [
+        "params:remaining fields including conversationId/conversationTitle/hostId/environmentId/cwd/cols/rows, sessionId selected by manager, optional trace; workspaceRoot excluded"
+      ],
+      "write": [
+        "sessionId",
+        "data"
+      ],
+      "resize": [
+        "sessionId",
+        "cols",
+        "rows",
+        "force"
+      ],
+      "close": [
+        "sessionId"
+      ],
+      "attach": [
+        "params:sessionId/conversationId/hostId/environmentId/... (workspaceRoot removed locally)"
+      ],
+      "getShellCwd": [
+        "sessionId",
+        "second argument forwarded unchanged"
+      ],
+      "runAction": [
+        "sessionId",
+        "cwd",
+        "command"
+      ]
+    },
+    "createArgumentLayers": {
+      "panelToManager": [
+        "conversationId",
+        "conversationTitle",
+        "hostId",
+        "environmentId",
+        "cwd",
+        "workspaceRoot",
+        "optional sessionId",
+        "deferred cols/rows"
+      ],
+      "managerTransform": [
+        "destructure workspaceRoot into local e",
+        "bindSessionToWorkspace uses local workspaceRoot",
+        "choose sessionId via remainingParams.sessionId??makeId",
+        "forward remaining params, chosen sessionId and optional trace"
+      ],
+      "managerToHostService": "create({...remainingParams,sessionId,optional trace}); workspaceRoot absent; conversationTitle retained",
+      "scope": "selected source parameters only; dynamic values and input domain unknown"
+    },
+    "eventBranches": [
+      "input-status",
+      "data",
+      "exit",
+      "error",
+      "init-log",
+      "attached"
+    ],
+    "dispose": "Selected tR invokes Symbol.dispose only for an object with a callable method; completion/cancellation semantics unknown.",
+    "implementation": "unresolved main/native service; no PTY identity claim"
+  },
+  "stateOwner": "Selected TGt Map/Set manager; larger persistence and live object identity unknown",
+  "rendererBoundary": {
+    "module": "./renderer-70b0dfdae916.js",
+    "imported": "t as fe",
+    "managerAdditionalDynamicRenderer": "./renderer-72cfb580b20a.js",
+    "selectedAPIs": [
+      "terminal",
+      "ready",
+      "write",
+      "replaceOutput",
+      "getRenderedOutput",
+      "dispose",
+      "resetInputPreview",
+      "setInputPreviewEnabled",
+      "handleInput"
+    ],
+    "managerAPIs": [
+      {
+        "receiver": "imported shared manager",
+        "methods": [
+          "recordUserInteraction",
+          "preserveAlternateScreen",
+          "getPreservedAlternateScreenMode"
+        ],
+        "limits": "These are manager calls; not renderer APIs."
+      }
+    ],
+    "thirdPartyDecision": "Keep external renderer/addon dependencies behind an adapter; exact package/version/exports need separate evidence."
+  },
+  "proposedModules": [
+    {
+      "path": "terminal/views",
+      "role": "React panel/tab/status and background output views",
+      "status": "proposal"
+    },
+    {
+      "path": "terminal/session-manager",
+      "role": "application-owned state, queues, event reduction and cleanup ownership",
+      "status": "proposal"
+    },
+    {
+      "path": "terminal/host-client",
+      "role": "typed terminal service/event adapter over shared app-host transport",
+      "status": "proposal"
+    },
+    {
+      "path": "terminal/renderer-adapter",
+      "role": "declared renderer/addon dependency facade",
+      "status": "proposal"
+    }
+  ],
+  "contractIds": [
+    "TERMINAL-CONTRACT-0001",
+    "TERMINAL-CONTRACT-0002",
+    "TERMINAL-CONTRACT-0003",
+    "TERMINAL-CONTRACT-0004",
+    "TERMINAL-CONTRACT-0005",
+    "TERMINAL-CONTRACT-0006",
+    "TERMINAL-CONTRACT-0007",
+    "TERMINAL-CONTRACT-0008",
+    "TERMINAL-CONTRACT-0009",
+    "TERMINAL-CONTRACT-0010",
+    "TERMINAL-CONTRACT-0011",
+    "TERMINAL-CONTRACT-0012",
+    "TERMINAL-CONTRACT-0013",
+    "TERMINAL-CONTRACT-0014",
+    "TERMINAL-CONTRACT-0015",
+    "TERMINAL-CONTRACT-0016",
+    "TERMINAL-CONTRACT-0017",
+    "TERMINAL-CONTRACT-0018",
+    "TERMINAL-CONTRACT-0019",
+    "TERMINAL-CONTRACT-0020",
+    "TERMINAL-CONTRACT-0021",
+    "TERMINAL-CONTRACT-0022",
+    "TERMINAL-CONTRACT-0023",
+    "TERMINAL-CONTRACT-0024",
+    "TERMINAL-CONTRACT-0025",
+    "TERMINAL-CONTRACT-0026",
+    "TERMINAL-CONTRACT-0027",
+    "TERMINAL-CONTRACT-0028",
+    "TERMINAL-CONTRACT-0029",
+    "TERMINAL-CONTRACT-0030",
+    "TERMINAL-CONTRACT-0031",
+    "TERMINAL-CONTRACT-0032",
+    "TERMINAL-CONTRACT-0033",
+    "TERMINAL-CONTRACT-0034",
+    "TERMINAL-CONTRACT-0035"
+  ],
+  "runtimeVerified": false,
+  "modeExclusionVerified": false
+}

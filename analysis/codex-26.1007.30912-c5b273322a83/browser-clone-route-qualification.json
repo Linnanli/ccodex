@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "browser-clone-route/1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T11:04:18.653344+00:00",
+  "inputPins": [
+    {
+      "path": "implementation-milestones-v8.json",
+      "bytes": 207512,
+      "sha256": "c3befc729e009653886f94e9669cde2e907dc5c7a8964492fffc04ecfc685490"
+    },
+    {
+      "path": "browser-ownership-contracts.json",
+      "bytes": 17166,
+      "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+    },
+    {
+      "path": "runtime-capability-decisions.json",
+      "bytes": 18241,
+      "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7"
+    },
+    {
+      "path": "public-runtime-comparison.json",
+      "bytes": 7231,
+      "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+    }
+  ],
+  "selectedSourceRefs": [
+    {
+      "path": "raw/runtime-decisions/source-01/main-CqEoQDOU/source-contracts.json",
+      "bytes": 92221,
+      "sha256": "9e432a9f0db5b73fbbd25c0634263cd36914a797aefdbcfb88a6bd2ceb010577",
+      "jsonPointer": "/units/0"
+    },
+    {
+      "path": "raw/runtime-decisions/source-01/main-CqEoQDOU/source-contracts.json",
+      "bytes": 92221,
+      "sha256": "9e432a9f0db5b73fbbd25c0634263cd36914a797aefdbcfb88a6bd2ceb010577",
+      "jsonPointer": "/units/1"
+    },
+    {
+      "path": "raw/runtime-decisions/source-01/main-CqEoQDOU/source-contracts.json",
+      "bytes": 92221,
+      "sha256": "9e432a9f0db5b73fbbd25c0634263cd36914a797aefdbcfb88a6bd2ceb010577",
+      "jsonPointer": "/units/10"
+    }
+  ],
+  "observations": {
+    "path": "raw/browser-clone-route/isolated-observations.json",
+    "bytes": 7069,
+    "sha256": "ab01121bce4fa42bf33bd2854efa0abe2538a8af3d98809f99a0478d26965dc3"
+  },
+  "probeScript": {
+    "path": "raw/browser-clone-route/probe_browser_clone_contract.cjs",
+    "bytes": 9622,
+    "sha256": "bfbe04b128e09e1991756d94f0d81790c10c38da062d45ec5f7f3834410cc50b"
+  },
+  "requirements": [
+    {
+      "id": "CLONE-R01",
+      "requirement": "Same-owner command context, source navigation eligibility and history-clone admission must pass before clone.",
+      "evidence": [
+        "BC-01",
+        "BC-02",
+        "BC-03",
+        "BC-04"
+      ],
+      "status": "source-guard-confirmed"
+    },
+    {
+      "id": "CLONE-R02",
+      "requirement": "A live source follows clone and adoption into a newly generated browserTabId; the original source page is not explicitly destroyed by this callable.",
+      "evidence": [
+        "BC-05",
+        "BC-12"
+      ],
+      "status": "source-orchestration-confirmed; actual-native-independence-unverified"
+    },
+    {
+      "id": "CLONE-R03",
+      "requirement": "The destination is announced with clone WebContents ID and lease; requested back/forward/reload is deferred through initialHistoryNavigation.",
+      "evidence": [
+        "BC-05",
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b",
+          "factId": "BA-08"
+        }
+      ],
+      "status": "source-sequence-confirmed; native-navigation-unverified"
+    },
+    {
+      "id": "CLONE-R04",
+      "requirement": "Destroyed or unadoptable destinations and invalid leases must not produce successful destination messages; close/destroy and pending cleanup follow the saved branches.",
+      "evidence": [
+        "BC-06",
+        "BC-07",
+        "BC-08"
+      ],
+      "status": "selected-source-failure-paths-confirmed"
+    },
+    {
+      "id": "CLONE-R05",
+      "requirement": "Only an absent live source plus reload can take the saved cold-restore/fresh path; back/forward cannot silently use it.",
+      "evidence": [
+        "BC-09",
+        "BC-10",
+        "BC-11"
+      ],
+      "status": "source-branch-condition-confirmed"
+    },
+    {
+      "id": "CLONE-R06",
+      "requirement": "Route/host generation, session partition, preload/security preferences, navigation owner and lifecycle admission must remain consistent across the real host.",
+      "evidence": [
+        "browser-ownership-contracts.json"
+      ],
+      "status": "saved-static-requirements; candidate-end-to-end-unverified"
+    },
+    {
+      "id": "CLONE-R07",
+      "requirement": "Source and destination history, back/forward/reload behavior, form state, loading/error behavior and post-clone independence need a candidate-runtime test and an original-behavior comparison where unavailable.",
+      "evidence": [
+        "public-runtime-comparison.json",
+        "browser-ownership-contracts.json"
+      ],
+      "status": "partially-observed-public-primitives; equivalence-unverified"
+    },
+    {
+      "id": "CLONE-R08",
+      "requirement": "Whether Owl native clone copies JS heap, renderer process state or additional session state is unknown from these first-party source units.",
+      "evidence": [
+        "BC-05"
+      ],
+      "status": "unknown-native-property; not-an-established-source-guarantee",
+      "restriction": "A synthetic clone and absence of caller reads do not prove native absence. Public history losing an edited heap value alone neither proves nor disproves required equivalence."
+    }
+  ],
+  "routes": [
+    {
+      "id": "CLONE-ROUTE-01",
+      "route": "Unmodified public Electron used as a drop-in Owl runtime",
+      "disposition": "rejected-as-drop-in",
+      "reason": "Fixed probe lacks clone and Owl adoption lease APIs; existing renderer/native calls cannot run unchanged.",
+      "evidence": [
+        {
+          "path": "public-runtime-comparison.json",
+          "bytes": 7231,
+          "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+        }
+      ]
+    },
+    {
+      "id": "CLONE-ROUTE-02",
+      "route": "Move one retained public WebContentsView between owned windows",
+      "disposition": "limited-transfer-primitive; insufficient-for-duplication",
+      "reason": "The existing positive probe moves the same live WebContents; it does not create the second tab/history required by the clone path.",
+      "evidence": [
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+        }
+      ]
+    },
+    {
+      "id": "CLONE-ROUTE-03",
+      "route": "First-party ownership/controller plus a second public WebContents and restored navigation history",
+      "disposition": "retain-for-bounded-feasibility; equivalence-not-proven",
+      "supports": "Existing public probe restored two entries at index zero and an edited form value. First-party source can own message/identity/lifecycle adaptation.",
+      "residual": [
+        "Back/forward/reload and source/destination independence on owned fixtures",
+        "Session/partition/security and real ownership protocol",
+        "Loading/error/form behavior and any additional original native guarantees",
+        "Full browser settings/services and other Owl capabilities remain separate"
+      ],
+      "rule": "Do not discard solely because the public history probe lost an edited JS heap value; do not accept solely because it restored a form.",
+      "evidence": [
+        {
+          "path": "public-runtime-comparison.json",
+          "bytes": 7231,
+          "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+        },
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+        }
+      ]
+    },
+    {
+      "id": "CLONE-ROUTE-04",
+      "route": "Independently obtainable Owl-compatible runtime or maintained native runtime changes",
+      "disposition": "unqualified-source-and-build-route",
+      "reason": "Independent distribution/source, target ABI and exact behavior are still unproven; the original installed runtime is not a qualified independent input.",
+      "evidence": [
+        {
+          "path": "runtime-capability-decisions.json",
+          "bytes": 18241,
+          "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7"
+        }
+      ]
+    }
+  ],
+  "publicHistoryObservation": {
+    "id": "public-navigation-history-restore",
+    "status": "resolved",
+    "entryCount": 2,
+    "entryKeys": [
+      "pageState",
+      "title",
+      "url"
+    ],
+    "restoredIndex": 0,
+    "restoredUrlMatchesSyntheticA": true,
+    "restoredState": {
+      "input": "edited-owned-fixture",
+      "heap": "owned-memory-only",
+      "title": "CCODEX_PUBLIC_A"
+    },
+    "limitation": "Public primitive observation only; no Owl clone/adoption or full functional equivalence tested."
+  },
+  "decision": "Retain a bounded public-history adapter feasibility route while rejecting drop-in API compatibility and same-view transfer as a clone. Native Owl heap semantics remain unknown; no product equivalence or full runtime selection is claimed.",
+  "owner": "W03",
+  "affectedSourceOwner": "W04",
+  "fullRuntimeRouteSelected": false,
+  "counts": {
+    "selectedExactUnits": 3,
+    "sourceCasesPassed": 12,
+    "newProgramParses": 0,
+    "newNativeRuns": 0,
+    "productScenarioPassesAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "originalClientRunsAdded": 0,
+    "clientImplementationAdded": 0
+  },
+  "nextAction": {
+    "question": "Can the fixed public runtime's owned duplicate-history candidate preserve source independence and back/forward/reload behavior?",
+    "limits": "Only synthetic local pages and the already acquired public runtime; no original-client launch, personal data, network service or model submission.",
+    "closure": "Record entry/index/URL/form state in both source and destination before and after each navigation, ownership cleanup and failure. Keep unknown original native semantics explicit."
+  },
+  "fullAnalysisCompleted": false
+}

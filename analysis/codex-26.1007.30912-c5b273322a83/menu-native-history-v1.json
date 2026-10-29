@@ -1,0 +1,1082 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T23:18:19.394845+00:00",
+  "scope": "固定records87..96的10条CZe来源：quit/services/hide/hideOthers/unhide五项运行时role，File/appMenu/View三容器，两条浏览器历史快捷键生成选项；跳过已交付record86更新检查。",
+  "goals": [
+    {
+      "id": "MNH-GOAL-01",
+      "featureId": "FSC-0419",
+      "name": "请求退出客户端应用",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:0bf64ffa9faacf14baf6f7d4",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3416289,
+            "endExclusive": 3416430
+          },
+          "spanHash": "a17d89809721c6e037f5f5277c62017dce4dca7291d238acc0355258d70009b2",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/87"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/54"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:0bf64ffa9faacf14baf6f7d4"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-native-history:quit-application",
+          "operationType": "menu-user-goal",
+          "trigger": "quit-application"
+        }
+      ],
+      "behavior": [
+        "CZe defines At with localized Quit appName and role:quit. It supplies At through jt/appMenu on isMacOS; on other platforms it appends an At copy with Ctrl+Q to File only when its submenu was obtained.",
+        "No click implementation is present in At: dispatch of the native quit role is a runtime dependency. The already-published eZe lifecycle contract is reused for first-party before-quit/will-quit handling, without asserting that a native menu activation delivered these events.",
+        "eZe first applies its native privacy guard, then activity/platform/confirmation conditions. A cancelled confirmation prevents quitting. The ordinary and skip-drain branches differ in settingsStore.flush; neither source promises durable completion of every provider.",
+        "The initial Promise.allSettled group has no overall timeout. Only subsequent context cleanup uses the saved five-second u7 contract; synchronous failures, pending promises and the reentry latch retain the published behavior."
+      ],
+      "conditions": [
+        "Supplied isMacOS, successful runtime menu construction and File submenu lookup; lifecycle registration, injected activity predicates, confirmation preference and native privacy guard."
+      ],
+      "failureAndCancellation": [
+        "The menu schema alone cannot prove OS exit, window closure, backend completion or persistence. Lifecycle rejection/throw/hang distinctions remain as recorded in shutdown-persistence.json."
+      ],
+      "knownGaps": [
+        "Native quit-role event delivery and actual process exit; real activity/confirmation state; provider cleanup, timeout and durability effects; standalone runtime qualification."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0419:MNH:1",
+          "featureId": "FSC-0419",
+          "operationId": "operation:menu-native-history:quit-application",
+          "kind": "placement",
+          "preconditions": "isMacOS varied and File submenu lookup present/absent",
+          "trigger": "construct source template",
+          "expectedEffect": "Mac appMenu contains At; non-Mac File appends Ctrl+Q copy only when submenu exists",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0419:MNH:2",
+          "featureId": "FSC-0419",
+          "operationId": "operation:menu-native-history:quit-application",
+          "kind": "confirmation",
+          "preconditions": "controlled lifecycle guard/activity/confirmation combinations",
+          "trigger": "request quit in future controlled environment",
+          "expectedEffect": "native guard or declined applicable confirmation prevents exit; reuse published eZe branch contract",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0419:MNH:3",
+          "featureId": "FSC-0419",
+          "operationId": "operation:menu-native-history:quit-application",
+          "kind": "cleanup",
+          "preconditions": "controlled ordinary/skip-drain and failing/pending providers",
+          "trigger": "allow controlled quit",
+          "expectedEffect": "preserve branch-specific flush set, reentry latch and initial-group versus later timeout distinction; assert actual process/storage outcome separately",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        }
+      ],
+      "deduplication": [
+        "Application exit differs from FSC-0390 account logout and window/tab closing. A native role is an invocation boundary, not a third-party implementation to regenerate."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform placement and native role names do not establish complete Codex/ChatGPT ownership; retain pending mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "apps/desktop/src/main/lifecycle/quit-coordinator.ts"
+      ],
+      "relatedContracts": [
+        {
+          "path": "shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+        },
+        {
+          "path": "shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+          "jsonPointer": "/maintenanceProposal"
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "MNH-E012"
+      ],
+      "deduplicationEvidenceId": "MNH-E013"
+    },
+    {
+      "id": "MNH-GOAL-02",
+      "featureId": "FSC-0420",
+      "name": "控制应用及其他应用的可见性",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:119893ebfad4ccfb3e91264a",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3416624,
+            "endExclusive": 3416765
+          },
+          "spanHash": "a2184de3573df0e4186ed388b3ee2e39383d667b6b027a0b80650d7f482c02ad",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/89"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/56"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:11a8f01f94f068ce437cb998",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3416766,
+            "endExclusive": 3416883
+          },
+          "spanHash": "673a1637179f311cb6755ff8d3fb029995041b2d2f250030a93d231d96643775",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/90"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/57"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:a22b8a05870c4d8afb3e280f",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3416884,
+            "endExclusive": 3416991
+          },
+          "spanHash": "f5d63aee7d0277c731a6f53d9bcf9f1d40ad450dd1a4064998330f8cac9364a0",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/91"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/58"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-schema:119893ebfad4ccfb3e91264a",
+        "native-menu-schema:11a8f01f94f068ce437cb998",
+        "native-menu-schema:a22b8a05870c4d8afb3e280f"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-native-history:hide-application",
+          "operationType": "menu-user-goal",
+          "trigger": "hide-application"
+        },
+        {
+          "operationId": "operation:menu-native-history:hide-other-applications",
+          "operationType": "menu-user-goal",
+          "trigger": "hide-other-applications"
+        },
+        {
+          "operationId": "operation:menu-native-history:show-all-applications",
+          "operationType": "menu-user-goal",
+          "trigger": "show-all-applications"
+        }
+      ],
+      "behavior": [
+        "CZe supplies Hide appName/Hide Others/Show All descriptors with native roles hide/hideOthers/unhide inside jt. Nt consumes jt as an appMenu submenu; Ut includes Nt only when supplied isMacOS is true.",
+        "These three intents form one OS application-visibility goal with three operations. No first-party click handler, hidden-window registry or visibility-state persistence is defined by these descriptors.",
+        "The labels and role strings identify requested actions; effective process/window scope, OS permissions and resulting visibility remain native runtime contracts to verify."
+      ],
+      "conditions": [
+        "Supplied isMacOS and runtime acceptance of appMenu/visibility roles."
+      ],
+      "failureAndCancellation": [
+        "Unsupported role behavior, actual hidden applications, focus restoration and OS errors are unobserved. No local fallback or state write is evidenced in the selected descriptors."
+      ],
+      "knownGaps": [
+        "Owl/native role implementation and distribution; actual Hide/Hide Others/Show All effects and focus; platform restrictions."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0420:MNH:1",
+          "featureId": "FSC-0420",
+          "operationId": "operation:menu-native-history:hide-application",
+          "kind": "role",
+          "preconditions": "Mac-eligible menu and controlled owned windows",
+          "trigger": "invoke Hide in future runtime test",
+          "expectedEffect": "delegate role:hide and observe native application visibility; do not substitute sidebar or panel state",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0420:MNH:2",
+          "featureId": "FSC-0420",
+          "operationId": "operation:menu-native-history:hide-other-applications",
+          "kind": "role",
+          "preconditions": "Mac-eligible menu and controlled application set",
+          "trigger": "invoke Hide Others in future runtime test",
+          "expectedEffect": "delegate role:hideOthers; verify native scope and resulting visibility separately",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0420:MNH:3",
+          "featureId": "FSC-0420",
+          "operationId": "operation:menu-native-history:show-all-applications",
+          "kind": "role",
+          "preconditions": "Mac-eligible menu and controlled hidden applications",
+          "trigger": "invoke Show All in future runtime test",
+          "expectedEffect": "delegate role:unhide; verify native effects separately",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0420:MNH:4",
+          "featureId": "FSC-0420",
+          "operationId": "operation:menu-native-history:hide-application",
+          "kind": "platform",
+          "preconditions": "supplied isMacOS false/true",
+          "trigger": "construct menu",
+          "expectedEffect": "jt visibility descriptors enter Ut through Nt only for isMacOS; do not infer equivalent non-Mac actions",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        }
+      ],
+      "deduplication": [
+        "Group the three related OS visibility operations; keep them separate from FSC-0400 sidebar, FSC-0401 bottom panel and diagnostic visibility goals."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform placement and native role names do not establish complete Codex/ChatGPT ownership; retain pending mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [],
+      "relatedContracts": [],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "MNH-E014",
+        "MNH-E015",
+        "MNH-E016"
+      ],
+      "deduplicationEvidenceId": "MNH-E017"
+    },
+    {
+      "id": "MNH-GOAL-03",
+      "featureId": "FSC-0421",
+      "name": "在浏览器页面历史中后退或前进",
+      "newDefinition": true,
+      "disposition": "new-goal",
+      "menuEntries": [
+        {
+          "entryId": "native-menu-generator-options:222e4cf39d8f552d325fe4a7",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3417267,
+            "endExclusive": 3417361
+          },
+          "spanHash": "41a355b14aaae150598bb00f2f2550ea51e80758f65219b730157518556c9114",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/95"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/62"
+          }
+        },
+        {
+          "entryId": "native-menu-generator-options:647a285f2b33ae8a4671a874",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3417368,
+            "endExclusive": 3417471
+          },
+          "spanHash": "e2298c8fc261b2f4c3a062ade77f374004ab802541dc267359ce73a49c96f34e",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/96"
+          },
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/63"
+          }
+        }
+      ],
+      "entryIds": [
+        "native-menu-generator-options:222e4cf39d8f552d325fe4a7",
+        "native-menu-generator-options:647a285f2b33ae8a4671a874"
+      ],
+      "operations": [
+        {
+          "operationId": "operation:menu-native-history:browser-history-back",
+          "operationType": "menu-user-goal",
+          "trigger": "browser-history-back"
+        },
+        {
+          "operationId": "operation:menu-native-history:browser-history-forward",
+          "operationType": "menu-user-goal",
+          "trigger": "browser-history-forward"
+        }
+      ],
+      "behavior": [
+        "Ft contains two I generator calls using te(navigateBrowserBack/Forward) and callbacks that invoke Ve with go-back/go-forward. Ft is inserted in the Browser submenu only under u.browserPane.",
+        "te applies F to the selected keymap bindings; F rejects space-containing accelerators, values for which i.Lt returns true, and normalized protected keys in P. I creates one hidden item per retained accelerator with acceleratorWorksWhenHidden:true and the same callback. Empty or multiple retained bindings therefore produce zero or multiple items, not fixed cardinality.",
+        "Ve returns false immediately if getFocusedWebContents is null. It uses only a valid non-destroyed focused BrowserWindow when one exists, otherwise all windows; destroyed windows are skipped.",
+        "G(window) obtains the injected handler browserHostManager. Ve delegates runFocusedVisiblePageCommand(window,focusedWebContents,command), stopping .some only for exact true. Missing manager or non-true result does not establish handling.",
+        "Both callbacks discard the Ve return. They neither await it nor invoke ensurePrimaryWindowVisible, renderer app history or thread-list navigation as fallback. History-stack availability and page navigation execution remain at the injected native manager boundary."
+      ],
+      "conditions": [
+        "u.browserPane; effective keymap/protected-accelerator filtering; focused webContents, window lifetime and injected browserHostManager."
+      ],
+      "failureAndCancellation": [
+        "No focused webContents returns false. Missing manager/non-true result may leave command unhandled; manager throws escape the selected callback. No menu enabled predicate based on canGoBack/canGoForward is supplied by these two option objects."
+      ],
+      "knownGaps": [
+        "Effective browserHostManager/native page history implementation; history stack, focused-visible-page selection, failed navigation and actual shortcuts; independent runtime qualification."
+      ],
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0421:MNH:1",
+          "featureId": "FSC-0421",
+          "operationId": "operation:menu-native-history:browser-history-back",
+          "kind": "dispatch",
+          "preconditions": "focused webContents and valid focused window with controlled manager",
+          "trigger": "invoke Back binding",
+          "expectedEffect": "pass go-back to that window manager; exact true is handling; no app-router fallback",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0421:MNH:2",
+          "featureId": "FSC-0421",
+          "operationId": "operation:menu-native-history:browser-history-forward",
+          "kind": "dispatch",
+          "preconditions": "focused webContents; no valid focused window; controlled window managers",
+          "trigger": "invoke Forward binding",
+          "expectedEffect": "try non-destroyed windows until exact true; pass go-forward and the same captured focused webContents",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0421:MNH:3",
+          "featureId": "FSC-0421",
+          "operationId": "operation:menu-native-history:browser-history-back",
+          "kind": "absence-or-error",
+          "preconditions": "no webContents, absent manager, non-true result or throwing manager",
+          "trigger": "invoke controlled Back callback",
+          "expectedEffect": "preserve early false, optional delegation and exception distinction; callback discards boolean without renderer navigation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        },
+        {
+          "scenarioId": "FSC-0421:MNH:4",
+          "featureId": "FSC-0421",
+          "operationId": "operation:menu-native-history:browser-history-forward",
+          "kind": "generation",
+          "preconditions": "browserPane and keymap/protected bindings varied",
+          "trigger": "construct template",
+          "expectedEffect": "browserPane false omits Ft; otherwise I emits zero-to-many hidden accelerator items sharing forward callback; no invented history-enabled predicate",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "Static source/dependency-boundary specification; no actual native/menu/browser/lifecycle or durable-state observation."
+        }
+      ],
+      "deduplication": [
+        "FSC-0418 operates the application router; FSC-0411 selects adjacent thread targets. Browser page go-back/go-forward is a separate goal, with two directions and variable accelerator aliases."
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Platform placement and native role names do not establish complete Codex/ChatGPT ownership; retain pending mode review.",
+      "retentionStatus": "retain-pending-mode-and-integration-review",
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [],
+      "relatedContracts": [
+        {
+          "path": "menu-navigation-actions-v1.json",
+          "bytes": 83830,
+          "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937",
+          "jsonPointer": "/sourceUnits/1"
+        },
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+        },
+        {
+          "path": "runtime-adoption-matrix-v1.json",
+          "bytes": 54887,
+          "sha256": "a52d4b415dbef9ae6bdd0c084a64bfd2c4f5589a4be2ecd3d4149ec939d323bd"
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "MNH-E018",
+        "MNH-E019"
+      ],
+      "deduplicationEvidenceId": "MNH-E020"
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "MNH-MECHANISM-01",
+      "name": "Services",
+      "kind": "runtime-integration",
+      "menuEntry": {
+        "entryId": "native-menu-schema:7e252eed41c30b7500134cb8",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3416494,
+          "endExclusive": 3416604
+        },
+        "spanHash": "508967610f00e199c054c72fd90c86d9c03ebeb01f750c24483e8682fdfecff6",
+        "roleRef": {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+          "jsonPointer": "/records/88"
+        },
+        "contractRef": {
+          "path": "menu-command-contracts.json",
+          "bytes": 10630684,
+          "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/nativeMenuItems/55"
+        }
+      },
+      "entryId": "native-menu-schema:7e252eed41c30b7500134cb8",
+      "disposition": "native-menu-mechanism",
+      "behavior": "role:services is a descriptor in jt, reachable through Mac-only Nt. It delegates native service-menu integration; no enumerated service action or callback is defined here.",
+      "knownGap": "Actual service list, eligibility and invocation are native dependencies; no individual service feature is invented.",
+      "featureIds": [],
+      "operations": [],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "nonUserGoalInSelectedDescriptor": true,
+      "scopeQualification": "Classifies only this integration/container descriptor, not all child or OS service capabilities.",
+      "actualRuntimeVerified": false,
+      "evidenceId": "MNH-E021"
+    },
+    {
+      "id": "MNH-MECHANISM-02",
+      "name": "File",
+      "kind": "composition-container",
+      "menuEntry": {
+        "entryId": "native-menu-schema:76e8c21eb83a6eb9582026fd",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3417018,
+          "endExclusive": 3417120
+        },
+        "spanHash": "508485f58ae862a67c3118fb6185fd276d365b39806bc64ed3d5ed9d4973ed9d",
+        "roleRef": {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+          "jsonPointer": "/records/92"
+        },
+        "contractRef": {
+          "path": "menu-command-contracts.json",
+          "bytes": 10630684,
+          "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/nativeMenuItems/59"
+        }
+      },
+      "entryId": "native-menu-schema:76e8c21eb83a6eb9582026fd",
+      "disposition": "native-menu-mechanism",
+      "behavior": "Mt initially has id:st.file and empty submenu; it enters Ut on both branches, then Wt lookup supplies Kt for conditional insertion/append. The container itself has no click.",
+      "knownGap": "Dynamic children retain their individual contracts; runtime menu lookup/construction remains unobserved.",
+      "featureIds": [],
+      "operations": [],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "nonUserGoalInSelectedDescriptor": true,
+      "scopeQualification": "Classifies only this integration/container descriptor, not all child or OS service capabilities.",
+      "actualRuntimeVerified": false,
+      "evidenceId": "MNH-E022"
+    },
+    {
+      "id": "MNH-MECHANISM-03",
+      "name": "Application menu",
+      "kind": "composition-container",
+      "menuEntry": {
+        "entryId": "native-menu-schema:205d9d2d824d56c08b8464a1",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3417124,
+          "endExclusive": 3417151
+        },
+        "spanHash": "383695d30f81746f6dc4a2af2cc4b485fe5145a6d16db2a105f00e1974c8873e",
+        "roleRef": {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+          "jsonPointer": "/records/93"
+        },
+        "contractRef": {
+          "path": "menu-command-contracts.json",
+          "bytes": 10630684,
+          "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/nativeMenuItems/60"
+        }
+      },
+      "entryId": "native-menu-schema:205d9d2d824d56c08b8464a1",
+      "disposition": "native-menu-mechanism",
+      "behavior": "Nt has role:appMenu and submenu:jt, and appears in Ut only under supplied isMacOS. Its role/hierarchy is composition, distinct from child actions.",
+      "knownGap": "Native placement/role behavior remains runtime qualification; do not treat appMenu itself as a user operation.",
+      "featureIds": [],
+      "operations": [],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "nonUserGoalInSelectedDescriptor": true,
+      "scopeQualification": "Classifies only this integration/container descriptor, not all child or OS service capabilities.",
+      "actualRuntimeVerified": false,
+      "evidenceId": "MNH-E023"
+    },
+    {
+      "id": "MNH-MECHANISM-04",
+      "name": "View",
+      "kind": "composition-container",
+      "menuEntry": {
+        "entryId": "native-menu-schema:b7b94ede26383b61774257b3",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3417155,
+          "endExclusive": 3417257
+        },
+        "spanHash": "a812cbf3f85324a506f348b385abce762c0b10e4a31edcb6dec3b55297f5d57d",
+        "roleRef": {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+          "jsonPointer": "/records/94"
+        },
+        "contractRef": {
+          "path": "menu-command-contracts.json",
+          "bytes": 10630684,
+          "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+          "jsonPointer": "/nativeMenuItems/61"
+        }
+      },
+      "entryId": "native-menu-schema:b7b94ede26383b61774257b3",
+      "disposition": "native-menu-mechanism",
+      "behavior": "Pt initially has id:st.view and empty submenu; Pt.submenu is assigned It before buildFromTemplate. The container has no own click.",
+      "knownGap": "Children have separate conditions/actions and are not counted again as a container feature.",
+      "featureIds": [],
+      "operations": [],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "nonUserGoalInSelectedDescriptor": true,
+      "scopeQualification": "Classifies only this integration/container descriptor, not all child or OS service capabilities.",
+      "actualRuntimeVerified": false,
+      "evidenceId": "MNH-E024"
+    }
+  ],
+  "additionalMaintenanceProposals": [],
+  "reusedMaintenanceUnits": [
+    {
+      "id": "MENU-UNIT-application-menu",
+      "ref": {
+        "path": "native-menu-roles-v1.json",
+        "bytes": 866774,
+        "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+        "jsonPointer": "/maintenanceUnits/0"
+      }
+    }
+  ],
+  "reusedSourceUnits": [
+    {
+      "ref": {
+        "path": "menu-navigation-actions-v1.json",
+        "bytes": 83830,
+        "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937",
+        "jsonPointer": "/sourceUnits/1"
+      },
+      "sourceUnit": {
+        "id": "MNA-SOURCE-002",
+        "name": "CZe",
+        "role": "complete original top-level function",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 3401957,
+          "endExclusive": 3422782
+        },
+        "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+        "nodeType": "FunctionDeclaration",
+        "savedPath": "source/MNA-SOURCE-002-CZe.txt",
+        "evidenceId": "MNA-E002"
+      }
+    }
+  ],
+  "reusedShutdownRecords": [
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/0"
+      },
+      "record": {
+        "id": "SHUTDOWN-001",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "registration",
+        "claim": "The selected Program-bound eZe caller injects globalState and settingsStore from the same local startup result V, whose initializer is await g.U(...). It injects the vXe facade cleanup and a locally declared stop helper. This proves a source wiring, not an observed Electron quit.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3816471,
+          "endExclusive": 3817218
+        },
+        "spanHash": "d8815d70c429a715adb3a0525cd055ac4befefc64ae1577dfb025da67129d7e7",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/1"
+      },
+      "record": {
+        "id": "SHUTDOWN-002",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "beforePrivacy",
+        "claim": "before-quit first calls hd(); a truthy result prevents the event immediately, before checking active work or prompting. The native privacy-query implementation is not executed.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3387881,
+          "endExclusive": 3388715
+        },
+        "spanHash": "9b0115ddb7a6a287360f8d64706d5307a9a69def5fde7ea175a7860a37397ab2",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/2"
+      },
+      "record": {
+        "id": "SHUTDOWN-003",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "beforeConditions",
+        "claim": "The local-running predicate, non-failed/non-created pending-worktree predicate, and ACTIVE automation predicate are computed. Windows, approved temporary quit, disabled confirmation, or absence of all three activity classes marks app quitting without a dialog.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3387881,
+          "endExclusive": 3388715
+        },
+        "spanHash": "9b0115ddb7a6a287360f8d64706d5307a9a69def5fde7ea175a7860a37397ab2",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/3"
+      },
+      "record": {
+        "id": "SHUTDOWN-004",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "beforeDecision",
+        "claim": "For the remaining branch, showMessageBoxSync result other than zero prevents quitting. Zero calls markQuitApproved and markAppQuitting. Dialog and localization internals are external to this selected behavior scope.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3387881,
+          "endExclusive": 3388715
+        },
+        "spanHash": "9b0115ddb7a6a287360f8d64706d5307a9a69def5fde7ea175a7860a37397ab2",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/4"
+      },
+      "record": {
+        "id": "SHUTDOWN-005",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "activateGuard",
+        "claim": "The captured S flag prevents activation handling after an allowed before-quit or any will-quit. Canceled/privacy-prevented before-quit does not set S in those selected branches.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3388737,
+          "endExclusive": 3389044
+        },
+        "spanHash": "f3d7bc66dc46aa14218ee13308356036052225c8ce1db4ae416306561a2ef8b6",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/5"
+      },
+      "record": {
+        "id": "SHUTDOWN-006",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "willReentry",
+        "claim": "will-quit sets S true, and returns immediately if captured x is already true. The first handled invocation sets x true after preventDefault and before disposing both lifecycle managers; a later invocation does not repeat the drain.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3389234,
+          "endExclusive": 3389582
+        },
+        "spanHash": "df749cf946186f56e108ecb3a2f7d3deb005ca775fc400512309e6e106fe37f0",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/6"
+      },
+      "record": {
+        "id": "SHUTDOWN-007",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "normalGroup",
+        "claim": "The ordinary will-quit branch disposes hotkey then dictation, invokes globalState.flush, settingsStore.flush, stopCodexMicro, and flushTracingBeforeQuit in array evaluation order, and waits on Promise.allSettled. The Promises may run concurrently after invocation.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3389234,
+          "endExclusive": 3389582
+        },
+        "spanHash": "df749cf946186f56e108ecb3a2f7d3deb005ca775fc400512309e6e106fe37f0",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/7"
+      },
+      "record": {
+        "id": "SHUTDOWN-008",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "skipGroup",
+        "claim": "shouldSkipDrainBeforeQuit selects a group that still invokes globalState.flush, stopCodexMicro and flushTracingBeforeQuit, but omits settingsStore.flush. It retains both lifecycle disposals and the later context cleanup.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3389234,
+          "endExclusive": 3389582
+        },
+        "spanHash": "df749cf946186f56e108ecb3a2f7d3deb005ca775fc400512309e6e106fe37f0",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/8"
+      },
+      "record": {
+        "id": "SHUTDOWN-009",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "groupFailures",
+        "claim": "Promise rejections in the initial allSettled group do not prevent its fulfillment continuation. Synchronous throws during manager disposal or array construction escape this event callback, skipping subsequent calls; x has already been latched.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3389234,
+          "endExclusive": 3389582
+        },
+        "spanHash": "df749cf946186f56e108ecb3a2f7d3deb005ca775fc400512309e6e106fe37f0",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/9"
+      },
+      "record": {
+        "id": "SHUTDOWN-010",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "groupTimeout",
+        "claim": "No timeout wraps the initial allSettled group in this function. Only after that group settles does the continuation invoke u7(flushAndDisposeContext,l7), then dispose the outer disposables and call app.quit on fulfillment. l7 is 5000 milliseconds.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3389234,
+          "endExclusive": 3389582
+        },
+        "spanHash": "df749cf946186f56e108ecb3a2f7d3deb005ca775fc400512309e6e106fe37f0",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/10"
+      },
+      "record": {
+        "id": "SHUTDOWN-011",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "contextFulfillment",
+        "claim": "The continuation uses a fulfillment-only .then after u7. u7 synchronous callback errors become rejection and do not take that fulfillment path; a synchronous outer disposables.dispose error also prevents the following app.quit call.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3389234,
+          "endExclusive": 3389582
+        },
+        "spanHash": "df749cf946186f56e108ecb3a2f7d3deb005ca775fc400512309e6e106fe37f0",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    },
+    {
+      "ref": {
+        "path": "shutdown-persistence.json",
+        "bytes": 54306,
+        "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+        "jsonPointer": "/records/11"
+      },
+      "record": {
+        "id": "SHUTDOWN-012",
+        "baselineId": "codex-26.1007.30912-c5b273322a83",
+        "unit": "u7",
+        "claim": "u7 sets a timeout before invoking the callback, then attaches the same fulfillment resolver to both fulfillment and rejection of its returned Promise. Async rejection is converted to fulfillment; timeout fulfills without canceling ongoing callback work. A synchronous callback throw or non-thenable .then access rejects the outer Promise and leaves the timer scheduled.",
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "locator": {
+          "kind": "byte-range",
+          "start": 3379291,
+          "endExclusive": 3379397
+        },
+        "spanHash": "96b27b4bc002c5ab15d60dffd9b5196fc60f660a2ae56750461e74f78b894170",
+        "method": "static-code",
+        "confidence": "confirmed",
+        "verificationStatus": "source-only/not-executed"
+      }
+    }
+  ],
+  "sourceQuery": {
+    "path": "raw/menu-native-history-v1/source-reuse-query.json",
+    "bytes": 21222,
+    "sha256": "abb14633ed7c82ef56ed0cf05cb122568406c958c7f87edc7aadcef9f81fc600"
+  },
+  "inputPins": [
+    {
+      "path": "feature-scope-v33.json",
+      "bytes": 2283250,
+      "sha256": "15d82fe87927ab95b14365930f6b4b97b4f1486e3513828f6236052170348c76"
+    },
+    {
+      "path": "feature-scope-v30-scenarios.json",
+      "bytes": 2076883,
+      "sha256": "bac29c0681d55d53b6f4941e8a6bbffcf9f59aa25dd13852f0e403aaea83665e"
+    },
+    {
+      "path": "restoration-coverage-v24.json",
+      "bytes": 1276540,
+      "sha256": "614ab2833ef55405ec7e89f4a9dbe89e942c8ee058b76eb942209a99ca60dd61"
+    },
+    {
+      "path": "legacy-entry-dispositions-v11.json",
+      "bytes": 1423690,
+      "sha256": "55a6ee71a4b3e3a3a2706e896863932458fa79ce6cf0ec339835962fcfc826d8"
+    },
+    {
+      "path": "native-menu-roles-v1.json",
+      "bytes": 866774,
+      "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+    },
+    {
+      "path": "menu-command-contracts.json",
+      "bytes": 10630684,
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf"
+    },
+    {
+      "path": "menu-navigation-actions-v1.json",
+      "bytes": 83830,
+      "sha256": "e0c2776273b1bf24e3d739c7bb159379319061f1fab57bf5755e53b896562937"
+    },
+    {
+      "path": "shutdown-persistence.json",
+      "bytes": 54306,
+      "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+    },
+    {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    {
+      "path": "runtime-adoption-matrix-v1.json",
+      "bytes": 54887,
+      "sha256": "a52d4b415dbef9ae6bdd0c084a64bfd2c4f5589a4be2ecd3d4149ec939d323bd"
+    }
+  ],
+  "counts": {
+    "selectedSourceRecords": 10,
+    "selectedMenuSchemas": 8,
+    "selectedGeneratorOptions": 2,
+    "distinctUserGoals": 3,
+    "newFiniteDefinitions": 3,
+    "newUserOperations": 6,
+    "newScenarioSpecifications": 11,
+    "newPartialSourceAssociations": 6,
+    "newMechanismDispositions": 4,
+    "alreadyPublishedSourceAssociations": 0,
+    "additionalMaintenanceProposals": 0,
+    "existingUnifiedResponsibilityOwnersUnchanged": 37,
+    "newFullOriginalProgramParses": 0,
+    "newReaRuns": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0,
+    "newProductScenarioPasses": 0
+  },
+  "dependencyPolicy": {
+    "catalog": {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    "implementationCopiesGenerated": 0,
+    "qualification": "Native menu roles, lifecycle event delivery and page-history manager remain dependencies. First-party template/guard/delegation source is retained; no native implementation is copied or assumed equivalent to public Electron."
+  },
+  "completedBatch": "SQ-02-menu-native-history-06",
+  "questionCompleted": false,
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limits": [
+    "Native role names prove descriptors and requested intent; actual OS/window/lifecycle/history effects remain unobserved.",
+    "Existing shutdown source/fixture evidence is reused, not repeated or promoted to product exit/durability verification.",
+    "Browser page history, application router history and adjacent-thread selection have different owners and contracts.",
+    "Four integration/container records receive mechanism dispositions without invented user or support operations.",
+    "The three new goals have unknown mode ownership; no whole-feature exclusion or standalone runtime/build acceptance is established."
+  ]
+}

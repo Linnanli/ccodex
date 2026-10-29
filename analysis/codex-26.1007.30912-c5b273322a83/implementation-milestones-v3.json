@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 2,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T03:21:39.030813+00:00",
+  "scope": "Full fixed-baseline Codex client; ChatGPT-only excluded by evidence; third-party implementations externalized",
+  "currentAuthorizationScope": "analysis and behavior verification only; no client implementation begun",
+  "analysisMilestones": [
+    {
+      "id": "A1",
+      "name": "功能范围与模式",
+      "dependsOn": [],
+      "gapIds": [
+        "GAP-02",
+        "GAP-03"
+      ],
+      "status": "in-progress",
+      "deliverables": [
+        "入口到功能/支撑/排除/待定的逐项关联",
+        "模式与共享依赖理由",
+        "完整分母与未解决分母"
+      ],
+      "exitCriteria": [
+        "每个发现入口被登记并有归属状态",
+        "导航与展示不机械计为用户功能",
+        "仅证据充分的 ChatGPT-only 分支进入排除表"
+      ],
+      "evidencePaths": [
+        "functional-entry-ledger.json",
+        "feature-scope-v4.json",
+        "thread-archive-entry-contracts.json",
+        "chatgpt-mode-boundary-summary.md"
+      ],
+      "currentUnresolved": {
+        "pendingUserEntryCandidates": 3,
+        "retainedAssociationOrIntegrationItemsFromOldQueue": 12,
+        "featuresWithConditionalAssociationToOneSettingsContainer": 42,
+        "featuresAwaitingLegacyEntryIdentity": 4,
+        "fullyResolvedOldEntries": 0,
+        "oldEntriesUnmappedInFiniteView": 967,
+        "unknownModeFeatures": 46
+      }
+    },
+    {
+      "id": "A2",
+      "name": "运行时与依赖决定",
+      "dependsOn": [],
+      "gapIds": [
+        "GAP-07",
+        "GAP-08",
+        "GAP-09",
+        "GAP-10",
+        "GAP-12"
+      ],
+      "status": "in-progress",
+      "deliverables": [
+        "逐依赖的来源/版本/引入方式",
+        "运行时能力和 ABI 决定",
+        "缺失构建输入处理"
+      ],
+      "exitCriteria": [
+        "独立构建输入可取得或有可验证替代路线",
+        "第三方修改、私有和 native/Wasm 分开处理",
+        "失败能力关联受影响功能"
+      ],
+      "evidencePaths": [
+        "dependencies.csv",
+        "dependency-import-decisions.md",
+        "runtime-adapter-options.json",
+        "runtime-distribution.json"
+      ]
+    },
+    {
+      "id": "A3",
+      "name": "关键链路与源码映射",
+      "dependsOn": [],
+      "gapIds": [
+        "GAP-01",
+        "GAP-04",
+        "GAP-10",
+        "GAP-11"
+      ],
+      "status": "in-progress",
+      "deliverables": [
+        "入口到 receiver/状态/存储的映射",
+        "原范围到拟恢复模块的映射",
+        "动态边界的行为触发条件"
+      ],
+      "exitCriteria": [
+        "每个保留功能有足以指导实现的契约",
+        "错误/取消/清理按真实分支保留",
+        "模块归属与依赖来源可追溯"
+      ],
+      "evidencePaths": [
+        "boundaries.json",
+        "ipc.json",
+        "modules.json",
+        "thread-turn-feature-contracts-summary.md",
+        "wsl-project-actions-contracts.json",
+        "thread-archive-entry-contracts.json"
+      ]
+    },
+    {
+      "id": "A4",
+      "name": "行为对照与实施验收",
+      "dependsOn": [
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "gapIds": [
+        "GAP-04",
+        "GAP-05",
+        "GAP-06"
+      ],
+      "status": "in-progress",
+      "deliverables": [
+        "正常/失败/取消/重开对照",
+        "静态与运行差异",
+        "原九项分析标准复核"
+      ],
+      "exitCriteria": [
+        "已执行与未执行严格分列",
+        "未触发条件保留在完整范围",
+        "证据范围覆盖结论后再声明完成"
+      ],
+      "evidencePaths": [
+        "behavior-checks.md",
+        "behavior-stop-restart-summary.md",
+        "thread-archive-isolated-observations.json",
+        "implementation-plan-v3.md"
+      ]
+    }
+  ],
+  "implementationMilestones": [
+    {
+      "id": "M1",
+      "name": "独立工程与运行时",
+      "dependsOn": [],
+      "startConditions": [
+        "独立运行时来源、构建输入和目标平台明确"
+      ],
+      "status": "future-not-started",
+      "deliverables": [
+        "workspace",
+        "exact dependency lock",
+        "build/package configuration",
+        "independent app and data identities"
+      ],
+      "exitCriteria": [
+        "干净构建、安装、启动均不读取原应用路径",
+        "所有存储位置和认证来源明确"
+      ],
+      "failureAction": "能力/ABI 失败则重开运行时决定"
+    },
+    {
+      "id": "M2",
+      "name": "传输与后台适配",
+      "dependsOn": [
+        "M1"
+      ],
+      "startConditions": [
+        "所用协议/provider/端口/信任条件明确"
+      ],
+      "status": "future-not-started",
+      "deliverables": [
+        "contracts",
+        "preload adapter",
+        "app-host adapter",
+        "backend adapter"
+      ],
+      "exitCriteria": [
+        "请求/响应/通知/超时/异常/断连/销毁/能力释放逐项通过",
+        "公开后台差异逐项适配且不静默删除字段"
+      ],
+      "failureAction": "保留失败契约并重开对应 adapter 决定"
+    },
+    {
+      "id": "M3",
+      "name": "状态与基础界面",
+      "dependsOn": [
+        "M2"
+      ],
+      "startConditions": [
+        "各功能的模式条件、状态所有者和存储契约明确"
+      ],
+      "status": "future-not-started",
+      "deliverables": [
+        "routing",
+        "windows",
+        "projects",
+        "settings",
+        "draft and storage modules"
+      ],
+      "exitCriteria": [
+        "初始化、并发写、错误和重开符合基线",
+        "迁移失败可恢复备份"
+      ],
+      "failureAction": "恢复备份并保留原数据，内存成功不算落盘"
+    },
+    {
+      "id": "M4",
+      "name": "任务生命周期",
+      "dependsOn": [
+        "M2",
+        "M3"
+      ],
+      "startConditions": [
+        "提交/事件/审批/中断合同可驱动真实链路"
+      ],
+      "status": "future-not-started",
+      "deliverables": [
+        "submit and streaming UI",
+        "approval UI",
+        "completion/failure/cancel/recovery"
+      ],
+      "exitCriteria": [
+        "后台接受、终态与界面分别证明",
+        "取消和重启恢复不靠本地改状态或重发冒充"
+      ],
+      "failureAction": "重开失败场景，不据错误提示自动重发任务"
+    },
+    {
+      "id": "M5",
+      "name": "其余 Codex 能力",
+      "dependsOn": [
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "startConditions": [
+        "每项功能的平台依赖、条件和契约明确"
+      ],
+      "status": "future-not-started",
+      "deliverables": [
+        "files and changes",
+        "terminal",
+        "remote and cloud",
+        "system integrations"
+      ],
+      "exitCriteria": [
+        "核对真实 worker/Git/PTY/remote/权限",
+        "全部实际发现功能均在完整表中"
+      ],
+      "failureAction": "平台不可用与未实现分别列出，不缩小目标"
+    },
+    {
+      "id": "M6",
+      "name": "剥离与升级",
+      "dependsOn": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "startConditions": [
+        "模式、共享依赖、依赖版本与数据格式有证据"
+      ],
+      "status": "future-not-started",
+      "deliverables": [
+        "exclusion ledger",
+        "dependency audit",
+        "baseline diff",
+        "data migration/backup/rollback"
+      ],
+      "exitCriteria": [
+        "无误删共享能力且维护源码无第三方实现副本",
+        "新基线差分定位模块和回归场景"
+      ],
+      "failureAction": "停止该版本迁移并恢复备份/旧版本"
+    },
+    {
+      "id": "M7",
+      "name": "完整验收",
+      "dependsOn": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "startConditions": [
+        "完整功能分母及所有未通过项可枚举"
+      ],
+      "status": "future-not-started",
+      "deliverables": [
+        "full behavior report",
+        "clean build package",
+        "upgrade and rollback results"
+      ],
+      "exitCriteria": [
+        "每个保留功能有实际结果",
+        "mock/占位/未决服务/未通过项不算完成"
+      ],
+      "failureAction": "失败项返回所属里程碑"
+    }
+  ],
+  "nextAnalysisActions": [
+    {
+      "id": "A1-05",
+      "action": "区分具体打开入口、后台 resume 与任务重新执行；确定参数与状态结果",
+      "input": "feature-scope-v4.json#/operationReviewQueue/1",
+      "decisionChangingDeliverable": "同一入口的调用、恢复状态与是否新建 turn 的合同"
+    },
+    {
+      "id": "A1-06",
+      "action": "分别追普通/MCP start 和 fork 的入口、参数与结果导航",
+      "input": "feature-scope-v4.json#/operationReviewQueue"
+    },
+    {
+      "id": "A1-04b",
+      "action": "归档剩余实际 RPC/provider、存储、通知、重开及模式验证；入口不重复调查",
+      "input": "thread-archive-entry-contracts.json#/pendingDecisions"
+    },
+    {
+      "id": "A1-07",
+      "action": "补四项旧入口身份、设置实际挂载、模式及共享闭包；保留12项关联待办",
+      "input": "feature-scope-v4.json#/retainedAssociationBacklog"
+    }
+  ],
+  "sourceMappingRequiredFields": [
+    "baselineId",
+    "sourcePath",
+    "sourceHash",
+    "range",
+    "transformation",
+    "responsibility",
+    "runtimeEnvironment",
+    "imports",
+    "exports",
+    "sideEffects",
+    "dependencies",
+    "proposedPath",
+    "scenarioRefs"
+  ],
+  "investigationRule": "Resolve an identified gap or change a named implementation decision; auxiliary traces require an effect on inputs/state/errors/dependency/platform semantics",
+  "behaviorAuthorization": {
+    "maximum": 2,
+    "consumed": 2,
+    "remaining": 0,
+    "source": "behavior-stop-restart.json",
+    "staticAnalysisRemainsAvailable": true
+  },
+  "currentFeatureScope": {
+    "baselineId": "codex-26.1007.30912-c5b273322a83",
+    "snapshotVersion": 4,
+    "scope": "Finite reviewed view; 71 original roots plus one new concrete user entry; split leaves separate.",
+    "ledger": {
+      "path": "feature-scope-v4.json",
+      "bytes": 348818,
+      "sha256": "b8cf36d4025975f5c337a0d142da8e818ee3baca075ef7ca42ebc29cce29d20a"
+    },
+    "csv": {
+      "path": "feature-scope-v4.csv",
+      "bytes": 4245,
+      "sha256": "a3944f3294f4c995efc904f26bb19b75ca28081e75ff4d2dfab41d10588cfbb2"
+    },
+    "scenarios": {
+      "path": "feature-scope-v4-scenarios.json",
+      "bytes": 568418,
+      "sha256": "59b48fd57ee3b5e9185aa906a6eb87b985971bf167a461cfe6d9b4ffae586bec"
+    },
+    "reconciliationKind": "source-qualified-archive-entry-and-prewarm-role-correction",
+    "reconciliationArtifact": {
+      "path": "thread-archive-entry-contracts.json",
+      "bytes": 57846,
+      "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93"
+    },
+    "previousLedger": {
+      "path": "feature-scope-v3.json",
+      "bytes": 342717,
+      "sha256": "1c6d8799f21b0bcac7f3bd7529bd7213d6a2bf03a618781fac6ad6f73d3f40ef"
+    },
+    "counts": {
+      "scopedFeatureDefinitions": 46,
+      "assignedUserOperations": 50,
+      "supportOperations": 21,
+      "queuedOperations": 3,
+      "allKnownOperationCandidatesAccountedFor": 72,
+      "unexecutedScenarioSpecifications": 200,
+      "fullyResolvedLegacyEntries": 0,
+      "partiallyMappedLegacyContainers": 1,
+      "legacyEntriesUnmappedInThisLedger": 967,
+      "modeCounts": {
+        "unknown": 46,
+        "codex": 0,
+        "chatgpt": 0,
+        "shared": 0
+      },
+      "completeFeatureDenominator": null,
+      "originalOperationCandidates": 71,
+      "normalizedBehaviorLeaves": 74,
+      "compositeSourceContainers": 1,
+      "rootCandidateDispositionCounts": {
+        "user": 49,
+        "support": 19,
+        "pending": 3,
+        "composite": 1
+      },
+      "retainedUnresolvedAssociationItemsFromReviewedQueue": 12,
+      "featuresConditionallyAssociatedWithLegacyContainers": 42,
+      "featuresAwaitingLegacyEntryIdentity": 4,
+      "additionalDiscoveredRootCandidates": 1,
+      "originalRootCandidateDispositionCounts": {
+        "user": 48,
+        "support": 19,
+        "pending": 3,
+        "composite": 1
+      }
+    },
+    "fullAnalysisCompleted": false
+  },
+  "newWslContract": {
+    "path": "wsl-project-actions-contracts.json",
+    "bytes": 60672,
+    "sha256": "c26ed6e3abfd0a9e77fc95e39c25a0ab792afefd622052ae7a1a8df225405ee0"
+  },
+  "originalAnalysisCriteria": [
+    {
+      "id": "C1",
+      "requirement": "输入版本和哈希固定且不混版",
+      "milestones": [
+        "A2",
+        "A4"
+      ],
+      "proofRequired": "baseline.json and frozen input manifest"
+    },
+    {
+      "id": "C2",
+      "requirement": "所有发现文件/入口/功能登记并说明覆盖",
+      "milestones": [
+        "A1"
+      ],
+      "proofRequired": "files, entry reconciliation and feature denominators"
+    },
+    {
+      "id": "C3",
+      "requirement": "模式归属与排除理由可追溯",
+      "milestones": [
+        "A1"
+      ],
+      "proofRequired": "per-branch mode and shared dependency closure"
+    },
+    {
+      "id": "C4",
+      "requirement": "保留功能的职责和关键边界可解释",
+      "milestones": [
+        "A3"
+      ],
+      "proofRequired": "feature-to-module/receiver/state contract mapping"
+    },
+    {
+      "id": "C5",
+      "requirement": "第三方版本/来源有据，未知项有行动",
+      "milestones": [
+        "A2"
+      ],
+      "proofRequired": "dependency provenance and adoption decisions"
+    },
+    {
+      "id": "C6",
+      "requirement": "native/Wasm/helper/runtime/private 单列",
+      "milestones": [
+        "A2"
+      ],
+      "proofRequired": "platform and build provenance records"
+    },
+    {
+      "id": "C7",
+      "requirement": "map、缺失输入、REA限制和动态关系有说明",
+      "milestones": [
+        "A2",
+        "A3"
+      ],
+      "proofRequired": "source-map/build-input/parser/dynamic limitation records"
+    },
+    {
+      "id": "C8",
+      "requirement": "主要行为与静态结论对照，未验有条件",
+      "milestones": [
+        "A4"
+      ],
+      "proofRequired": "actual behavior and scoped unexecuted scenarios"
+    },
+    {
+      "id": "C9",
+      "requirement": "结构、顺序和验收引用分析证据",
+      "milestones": [
+        "A3",
+        "A4"
+      ],
+      "proofRequired": "source mapping, milestone dependencies and acceptance coverage"
+    }
+  ],
+  "fullAnalysisCompleted": false,
+  "implementationCompleted": false,
+  "previousSnapshot": {
+    "path": "implementation-milestones-v2.json",
+    "bytes": 14838,
+    "sha256": "5c56f725ce011eebe107e7e32b84ad5887e44c0f10c4d00527fee004755734b6"
+  },
+  "operationRoleReview": {
+    "path": "operation-queue-review.json",
+    "bytes": 52241,
+    "sha256": "9352989cfba40a2a4f15c5ce68f141a50f7093d694e249e12bedd7477481d940"
+  },
+  "threadArchiveEntryContracts": {
+    "path": "thread-archive-entry-contracts.json",
+    "bytes": 57846,
+    "sha256": "9ecd381dcddfdd80630390795dea07763497b9e5f1bd932c49f0e91c13d01f93"
+  },
+  "threadArchiveIsolatedObservations": {
+    "path": "thread-archive-isolated-observations.json",
+    "bytes": 33189,
+    "sha256": "cf0c91f8eaccfc55e3827bae2e70cd1e74d5ae2e083f060491212c7a88e762a2"
+  }
+}

@@ -1,0 +1,3579 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "purpose": "Bounded automations entry contract review and generic native-menu factory disposition",
+  "status": "source-reviewed; global-ledger-integration-pending",
+  "scope": {
+    "staticOnly": true,
+    "fullAnalysisCompleted": false,
+    "globalFeatureCountsChanged": false,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0,
+    "newProductScenarioPasses": 0
+  },
+  "inheritedInputs": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v35.json",
+      "bytes": 2336138,
+      "sha256": "f6dca697ab53f27b8fdbf47b3a2b359d15a8a0e5d8030b7228c2f223401f8772"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v13.json",
+      "bytes": 1431727,
+      "sha256": "55d731bc704822f390af3995a044bf04a932a400e055cdd4d5a6ff6e420bae2f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/storage-feature-ownership-v1.json",
+      "bytes": 250844,
+      "sha256": "5dd35fcf61b621ea699120074c8c9c5323469b9466270c025a3b0b83e144938c"
+    }
+  ],
+  "facts": [
+    {
+      "factId": "AIEC-FACT-01",
+      "title": "入口路由与能力条件",
+      "claim": "ZIs 的 /scheduled 与 /automations 路由都渲染 iFs；/inbox replace 到 /automations。iFs 在 Ec 为真且 pathname=/automations 时保留 search/hash/state、replace 到 /scheduled；能力 loading 返回 null，两种 automations capability 均不可用才 replace 到 /。Ec 为真时 view/manage、shared_task、share_dialog 和 create 条件还决定列表或创建对话框。",
+      "sourceIds": [
+        "AIEC-SOURCE-d70715302253fd45",
+        "AIEC-SOURCE-b4073f24083a73d4",
+        "AIEC-SOURCE-a4a6b0cc688a3024",
+        "AIEC-SOURCE-8c2b40037a9df777"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-01-E01",
+        "AIEC-FACT-01-E02",
+        "AIEC-FACT-01-E03",
+        "AIEC-FACT-01-E04"
+      ],
+      "remainingBoundary": "Ec 的完整产品模式含义和真实 capability/provider/mount 未验证；路由声明不证明整个页面可达。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-02",
+      "title": "真实页面导入与列表数据",
+      "claim": "E2r 动态导入 automations-page-aa8b83be2225.js 的 AutomationsLayoutPage；该 wrapper 初始化 58e351b49373 模块并重导出 Gs。Gs 在 create-dialog 不加载列表；本地与云端按各自 capability 加载，云端列表仅在响应 accountId 等于当前非空 accountId 时采用。list-automations 查询采用一分钟 stale/refetch。",
+      "sourceIds": [
+        "AIEC-SOURCE-15e6220068f886b4",
+        "AIEC-SOURCE-546def74305bbeb0",
+        "AIEC-SOURCE-b5eb6dbb951e04a6",
+        "AIEC-SOURCE-197a299c89a4db35"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-02-E01",
+        "AIEC-FACT-02-E02",
+        "AIEC-FACT-02-E03",
+        "AIEC-FACT-02-E04"
+      ],
+      "remainingBoundary": "运行时按需加载、网络、服务身份和实际账户隔离没有观察。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-03",
+      "title": "manageTasks 是创建状态入口",
+      "claim": "Ks 挂载时 br(manageTasks,kr)。kr 请求 reset；Xo 在有未保存更改时只记录 pending transition，否则执行 Er。reset 路径重置草稿、清理临时会话和旧种子，再设置 automationMode=create。",
+      "sourceIds": [
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-5804ff505a19a8ef",
+        "AIEC-SOURCE-c2602c48ec00a903",
+        "AIEC-SOURCE-be72fa6fa90a13fb",
+        "AIEC-SOURCE-7f11735d2a0086cd"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-03-E01",
+        "AIEC-FACT-03-E02",
+        "AIEC-FACT-03-E03",
+        "AIEC-FACT-03-E04",
+        "AIEC-FACT-03-E05"
+      ],
+      "remainingBoundary": "只确认该注册消费者；未挂载时的命令赢家、其他作用域和全局回退未知。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-04",
+      "title": "草稿校验与创建载荷",
+      "claim": "校验区分本地 heartbeat 的目标线程、本地 cron 的执行环境和模型、云端 webhook 参数，以及名称/指令和 schedule。新建时可由非空 prompt 压缩得到最多80字符名称；已有 ID 的空名称不能这样补齐。cgi 的 cron 创建载荷显式 executionEnvironment=local、localEnvironmentConfigPath=null；sgi 更新保留提供的执行环境/配置路径。team、一次日期、untilDate 或 webhook 可强制 cloud 位置。",
+      "sourceIds": [
+        "AIEC-SOURCE-fa23626d998bddd0",
+        "AIEC-SOURCE-f29854271ac57618",
+        "AIEC-SOURCE-c68f346b081e67c5",
+        "AIEC-SOURCE-423ae060e838ae17",
+        "AIEC-SOURCE-1a8e067ca4f32268",
+        "AIEC-SOURCE-d886d10b1087315e",
+        "AIEC-SOURCE-dacc5985aec48de3"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-04-E01",
+        "AIEC-FACT-04-E02",
+        "AIEC-FACT-04-E03",
+        "AIEC-FACT-04-E04",
+        "AIEC-FACT-04-E05",
+        "AIEC-FACT-04-E06",
+        "AIEC-FACT-04-E07"
+      ],
+      "remainingBoundary": "schedule 编解码和模型/权限提供者按已记录源边界处理；日期解析通过不等于调度器可执行。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-05",
+      "title": "创建后续步骤和取消清理",
+      "claim": "Br 在校验/请求 pending/saving 保护后区分云端、本地既有 ID 和新建；新 heartbeat 无目标线程时先 wi 创建会话，检查 outcome-unknown/错误，再构造 automation-create。已取消时不提交自动化并请求归档已获 ID 的临时会话。创建成功若是该临时 heartbeat，会发送 scheduled_task_setup 消息；消息失败提示 task saved but setup message failed，自动命名 Bo 也有独立失败吞掉路径。",
+      "sourceIds": [
+        "AIEC-SOURCE-71561cf9a901bd00",
+        "AIEC-SOURCE-dcc72b520c1b060e",
+        "AIEC-SOURCE-d1e4aa020bccd578",
+        "AIEC-SOURCE-7db73f428fbefbcc",
+        "AIEC-SOURCE-bb3b8870a04c6dd9"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-05-E01",
+        "AIEC-FACT-05-E02",
+        "AIEC-FACT-05-E03",
+        "AIEC-FACT-05-E04",
+        "AIEC-FACT-05-E05"
+      ],
+      "remainingBoundary": "没有调用任何会话、模型或自动化服务；保存、设置消息、自动命名和执行成功是不同结果。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-06",
+      "title": "本地编辑、自动保存与失败恢复",
+      "claim": "本地更新 onMutate 保存旧列表/草稿状态并做条件乐观更新；成功用返回 item 替换并失效查询，失败恢复缓存和适用草稿 status、保存失败快照并清理离开动作。非 configuration 模式可在600ms debounce、有效/确有变化/无请求/非失败快照等条件后自动保存；失败快照禁止同一更改自动重试，提供显式 retry。ni 可等待保存后动作，Fr 在保存期间更改内容时继续提交最新 update。",
+      "sourceIds": [
+        "AIEC-SOURCE-34b7a0c408efe046",
+        "AIEC-SOURCE-47126c14ab9989e5",
+        "AIEC-SOURCE-578177fead54b0de",
+        "AIEC-SOURCE-698d4e68f40d0f41",
+        "AIEC-SOURCE-4a8a3a494d42ff96",
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-37138ab46538d9ab",
+        "AIEC-SOURCE-91041c283e5454a0"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-06-E01",
+        "AIEC-FACT-06-E02",
+        "AIEC-FACT-06-E03",
+        "AIEC-FACT-06-E04",
+        "AIEC-FACT-06-E05",
+        "AIEC-FACT-06-E06",
+        "AIEC-FACT-06-E07",
+        "AIEC-FACT-06-E08"
+      ],
+      "remainingBoundary": "缓存回滚不撤销已在服务端发生的写入；依赖库回调时序和真实持久化仍未验证。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-07",
+      "title": "暂停、恢复与删除",
+      "claim": "本地暂停/恢复通过 automation-update，云端经 isEnabled 载荷；本地删除收到 response 后仍检查 success，false 时保留列表并显示失败。成功才移除缓存行并关闭当前项。云端删除用独立 remove mutation。确认对话框 pending 时阻止关闭/取消重复提交。",
+      "sourceIds": [
+        "AIEC-SOURCE-95186c537ebabaed",
+        "AIEC-SOURCE-6a04529c48157d85",
+        "AIEC-SOURCE-c29e73e6d43caf62",
+        "AIEC-SOURCE-c3711d9d0868097e",
+        "AIEC-SOURCE-afee4565296cb7ee",
+        "AIEC-SOURCE-9c75caaa74cb8eb3",
+        "AIEC-SOURCE-17f6397da41c0e77"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-07-E01",
+        "AIEC-FACT-07-E02",
+        "AIEC-FACT-07-E03",
+        "AIEC-FACT-07-E04",
+        "AIEC-FACT-07-E05",
+        "AIEC-FACT-07-E06",
+        "AIEC-FACT-07-E07"
+      ],
+      "remainingBoundary": "删除 message/RPC 正常返回不等于成功；底层 not_found、SQL/文件/runs 非事务边界复用 SFO-FACT-12。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-08",
+      "title": "云端权限、服务与账户缓存",
+      "claim": "Sgi 缺少 current_user_role 时采用 owner，owner/editor 可管理，can_delete 明确值优先，否则 owner 可删。云端 status/save/remove/run 分别调用 /automations/set_status、/automations/save、/automations/remove、/automation/{automation_id}/run。team save 检查 account 与 team capability；部分成功缓存更新有当前账户条件。",
+      "sourceIds": [
+        "AIEC-SOURCE-cf7b951c0dfefdbc",
+        "AIEC-SOURCE-1cf92f22a6bb70ea",
+        "AIEC-SOURCE-b7cf512521c35f8e",
+        "AIEC-SOURCE-7bec6bbd53a18e91",
+        "AIEC-SOURCE-cf774849c291a6ef",
+        "AIEC-SOURCE-4a0d9ce18ca83a23"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-08-E01",
+        "AIEC-FACT-08-E02",
+        "AIEC-FACT-08-E03",
+        "AIEC-FACT-08-E04",
+        "AIEC-FACT-08-E05",
+        "AIEC-FACT-08-E06"
+      ],
+      "remainingBoundary": "各 mutation 的账户处理不同，不能泛化为所有响应均已隔离；FW 的有效认证/服务端授权、存储和幂等性未验证，也不能仅凭相同 URL 与主进程 ppe 合并所有权。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-09",
+      "title": "本地立即运行",
+      "claim": "本地 run-now 在 heartbeat 线程加载完成后取得 collaborationMode 与 permissions，调用 automation-run-now；未取得 ID 返回 success:false。选定 callback 只按返回 success 显示失败或导航；只有 heartbeat 且 locationKey 未变化才导航到对应线程。",
+      "sourceIds": [
+        "AIEC-SOURCE-deadf3ffd2aee856",
+        "AIEC-SOURCE-fbe89c44c73f486b",
+        "AIEC-SOURCE-d8d209476ffbce47"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-09-E01",
+        "AIEC-FACT-09-E02",
+        "AIEC-FACT-09-E03"
+      ],
+      "remainingBoundary": "受理成功不等于任务或模型执行完成；实际 host runner、权限、通知与执行结果未知。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-10",
+      "title": "云端运行协调",
+      "claim": "云端协调器为同一实例合并并发请求，记录 requestId/requestedAt/previousRunIds；team 请求 run endpoint，个人路径委托会话创建。已知拒绝可清除状态，其他不确定失败标 unconfirmed，并在30秒或刷新后的匹配 run 到来时协调。页面列表直接 run 分支还使用独立幂等 key，executor=local 时不提供该云端 run 动作。",
+      "sourceIds": [
+        "AIEC-SOURCE-fbe89c44c73f486b",
+        "AIEC-SOURCE-ae7ba92fea485b09",
+        "AIEC-SOURCE-4a0d9ce18ca83a23",
+        "AIEC-SOURCE-808da366e2e84987"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-10-E01",
+        "AIEC-FACT-10-E02",
+        "AIEC-FACT-10-E03",
+        "AIEC-FACT-10-E04"
+      ],
+      "remainingBoundary": "协调器、列表动作和 detail 动作是不同调用路径；没有真实 run、会话或服务调用。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-11",
+      "title": "云端编辑及保存后运行",
+      "claim": "云端 editor 按 canManage、completed、changed/valid/pending 与 AbortController 限制保存；trim 后的 name/prompt、schedule 和附加校验参与可保存判断。Save and run now 先等待保存，再在未取消/仍挂载/账户相同条件下启动 run；保存异常阻止后续 run。requestClose、beforeunload 和 discard 仅在各自条件下阻止离开。",
+      "sourceIds": [
+        "AIEC-SOURCE-53944253666c9190",
+        "AIEC-SOURCE-c52a704d58ebbcfe",
+        "AIEC-SOURCE-b7cf512521c35f8e",
+        "AIEC-SOURCE-4a0d9ce18ca83a23"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-11-E01",
+        "AIEC-FACT-11-E02",
+        "AIEC-FACT-11-E03",
+        "AIEC-FACT-11-E04"
+      ],
+      "remainingBoundary": "source 里有些 schedule-only 修改不触发 name/prompt 的 I 离开守卫；保留实际谓词，不替换为理想化的全部修改保护。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-12",
+      "title": "搜索、排序、来源与所有权",
+      "claim": "列表按规范化大小写/空白后的文本查找，过滤 status；先 unread，再非 paused，再 nextRunAt，再名称排序。云端中与本地 ID 重复的行被过滤；该去重不证明两个对象等价。团队/个人过滤来自 ownership 参数，cloud 行的 teamId 分组；个人与团队排序另有 source 规则。",
+      "sourceIds": [
+        "AIEC-SOURCE-808da366e2e84987",
+        "AIEC-SOURCE-bc56f82e5acf182d",
+        "AIEC-SOURCE-38d34c94e9dbd330",
+        "AIEC-SOURCE-af09b94e7dffa8f9",
+        "AIEC-SOURCE-ccad996fc4358552"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-12-E01",
+        "AIEC-FACT-12-E02",
+        "AIEC-FACT-12-E03",
+        "AIEC-FACT-12-E04",
+        "AIEC-FACT-12-E05"
+      ],
+      "remainingBoundary": "local/cloud/executor 和 ownership 不是 Codex/ChatGPT 模式证明；查询仍需保留能力和账户条件。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-13",
+      "title": "历史已读与主进程边界",
+      "claim": "历史按 automationId 过滤与时间排序，detail 模式可自动将最新未读记录标已读，展开旧记录也可标读。markAllRead 先改缓存中选定 statuses 的 readAt 并将 unreadRunCounts 清零，再 dispatch inbox-automation-runs-mark-all-read；选定回调没有等待主进程持久化确认或回滚。主进程 case 只在 inboxManager 存在时调用 markAllAutomationRunsRead。",
+      "sourceIds": [
+        "AIEC-SOURCE-15cd790dffabf766",
+        "AIEC-SOURCE-62592ef1daa7bd12",
+        "AIEC-SOURCE-93ff322de0cd2b2f",
+        "AIEC-SOURCE-0390a5e830b9aaf0",
+        "AIEC-SOURCE-b57a3e84d5c9b387",
+        "AIEC-SOURCE-1ff12aee2aba8302"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-13-E01",
+        "AIEC-FACT-13-E02",
+        "AIEC-FACT-13-E03",
+        "AIEC-FACT-13-E04",
+        "AIEC-FACT-13-E05",
+        "AIEC-FACT-13-E06"
+      ],
+      "remainingBoundary": "缓存已读、消息送达、manager 修改和跨重启持久化是不同阶段；limit:200 查询不是无限历史全集。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-14",
+      "title": "历史归档与恢复的局部失败",
+      "claim": "批量只选非 ARCHIVED/IN_PROGRESS 且 threadId 非空的记录，逐项 archive、捕获并统计成功/失败；不去重相同 threadId。单项成功后失效历史查询；unarchive 先等待 manager 再等待查询失效。复用已有本地线程归档目标，新增历史入口和批量/恢复操作，不宣称与旧 undo 操作完全等价。",
+      "sourceIds": [
+        "AIEC-SOURCE-faef0d8f1ae25357",
+        "AIEC-SOURCE-d68dad6ebc892baa",
+        "AIEC-SOURCE-f99dcaecbb8a1f2c",
+        "AIEC-SOURCE-15cd790dffabf766",
+        "AIEC-SOURCE-62592ef1daa7bd12"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-14-E01",
+        "AIEC-FACT-14-E02",
+        "AIEC-FACT-14-E03",
+        "AIEC-FACT-14-E04",
+        "AIEC-FACT-14-E05"
+      ],
+      "remainingBoundary": "可能部分成功；查询失效失败会进入错误反馈，即使 manager 已完成恢复。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-15",
+      "title": "OAuth 草稿恢复和存储委托",
+      "claim": "OAuth return helper 生成 draft ID，保存 accountId/userId、draft/initialDraft 与一小时 expiresAt，并把 ID 放入相对 return URL。恢复同时匹配草稿/目标 ID、create/edit 路由、draft ID、账户、用户及未过期时间，随后做兼容转换。key=scheduled-task-oauth-draft-v1 使用 FJ persisted-atom facade；清理也先检查身份/路由匹配。",
+      "sourceIds": [
+        "AIEC-SOURCE-112187066c506a57",
+        "AIEC-SOURCE-86310d5882c17aa2",
+        "AIEC-SOURCE-80f33dda4898081c",
+        "AIEC-SOURCE-363befc4d36e023c",
+        "AIEC-SOURCE-b500adc788e54fbe",
+        "AIEC-SOURCE-3ed9f3567b985252"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-15-E01",
+        "AIEC-FACT-15-E02",
+        "AIEC-FACT-15-E03",
+        "AIEC-FACT-15-E04",
+        "AIEC-FACT-15-E05",
+        "AIEC-FACT-15-E06"
+      ],
+      "remainingBoundary": "FJ 进一步委托 scoped provider/publisher；没有新建真实草稿、访问个人配置或证明实际落盘/namespace/重启隔离。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-16",
+      "title": "同步选择的重新打开",
+      "claim": "重新打开按钮需要当前 account/user、migration 状态和 gate/consent 条件，并只将该 account/user 的 visibility 设为 open。状态查询委托 automations.getState；complete 时失效本地列表，unavailable 在 gate 下且 query dataUpdateCount<15 时，每1000ms refetch。",
+      "sourceIds": [
+        "AIEC-SOURCE-204cf8cd825758e2",
+        "AIEC-SOURCE-d4e09fd8d6c219e4"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-16-E01",
+        "AIEC-FACT-16-E02"
+      ],
+      "remainingBoundary": "只证明重新打开选择和状态查询合同；没有执行同意、上传、迁移或清理。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-17",
+      "title": "模板和对话入口",
+      "claim": "模板选择构建 cron 草稿并记录 pluginTemplateId；reset 预览替换 name/prompt/schedule，取消只关闭预览。configuration 模式确认后发 update，旧模式先改草稿。对话入口仅调用 startNewConversation，附带创建自动化的合成预填请求；Create with Codex/ChatGPT 的标签由注入条件决定，不证明自动化已创建。",
+      "sourceIds": [
+        "AIEC-SOURCE-10775706e68b9a3e",
+        "AIEC-SOURCE-249e040ddbce50ea",
+        "AIEC-SOURCE-008e3fb6dcfd163e",
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-e10a242348160b21",
+        "AIEC-SOURCE-faa90ddbb404a284"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-17-E01",
+        "AIEC-FACT-17-E02",
+        "AIEC-FACT-17-E03",
+        "AIEC-FACT-17-E04",
+        "AIEC-FACT-17-E05",
+        "AIEC-FACT-17-E06"
+      ],
+      "remainingBoundary": "模板可用性、真实对话提供者、后续模型创建自动化和完整产品模式仍未验证。",
+      "runtimeVerified": false
+    },
+    {
+      "factId": "AIEC-FACT-18",
+      "title": "通用菜单生成器",
+      "claim": "CZe record33 是局部 I 工厂的结果对象；I 为每个传入 accelerator 生成一个 hidden 项，透传 label/enabled/click。10个同绑定调用已分别关联 FSC-0408/0421/0400/0405/0422/0424。该 schema 本身登记为支撑机制，不再当作一个未识别用户功能。",
+      "sourceIds": [
+        "AIEC-SOURCE-8054038f76837dab",
+        "AIEC-SOURCE-439db21e733939f4",
+        "AIEC-SOURCE-e900392ab3eeb31b",
+        "AIEC-SOURCE-3dabf3acffca0a15",
+        "AIEC-SOURCE-872b5f32d9935e24",
+        "AIEC-SOURCE-b84e264b3ad17484",
+        "AIEC-SOURCE-fed7a4409125523c",
+        "AIEC-SOURCE-06cbdb5f50f063d9",
+        "AIEC-SOURCE-abc6ce6beb0ca467",
+        "AIEC-SOURCE-04e5b436ccc7ac2a",
+        "AIEC-SOURCE-a892af047c7a6fe7"
+      ],
+      "evidenceIds": [
+        "AIEC-FACT-18-E01",
+        "AIEC-FACT-18-E02",
+        "AIEC-FACT-18-E03",
+        "AIEC-FACT-18-E04",
+        "AIEC-FACT-18-E05",
+        "AIEC-FACT-18-E06",
+        "AIEC-FACT-18-E07",
+        "AIEC-FACT-18-E08",
+        "AIEC-FACT-18-E09",
+        "AIEC-FACT-18-E10",
+        "AIEC-FACT-18-E11"
+      ],
+      "remainingBoundary": "按键过滤、调用方条件和实际 native dispatch 复用既有合同；工厂证明不增加实际菜单行为通过。",
+      "runtimeVerified": false
+    }
+  ],
+  "featureContractProposals": [
+    {
+      "proposedFeatureId": "FSC-0427",
+      "name": "浏览、搜索和筛选计划任务",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0427-browse-query",
+          "slug": "browse-query"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-d70715302253fd45",
+        "AIEC-SOURCE-b5eb6dbb951e04a6",
+        "AIEC-SOURCE-808da366e2e84987",
+        "AIEC-SOURCE-38d34c94e9dbd330",
+        "AIEC-SOURCE-af09b94e7dffa8f9"
+      ],
+      "factIds": [
+        "AIEC-FACT-01",
+        "AIEC-FACT-02",
+        "AIEC-FACT-12"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0427-SC01",
+        "AIEC-FSC-0427-SC02",
+        "AIEC-FSC-0427-SC03"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0428",
+      "name": "创建本地或云端计划任务",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0428-create-manual",
+          "slug": "create-manual"
+        },
+        {
+          "operationId": "AIEC-FSC-0428-create-from-template",
+          "slug": "create-from-template"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-71561cf9a901bd00",
+        "AIEC-SOURCE-dcc72b520c1b060e",
+        "AIEC-SOURCE-249e040ddbce50ea",
+        "AIEC-SOURCE-423ae060e838ae17"
+      ],
+      "factIds": [
+        "AIEC-FACT-03",
+        "AIEC-FACT-04",
+        "AIEC-FACT-05",
+        "AIEC-FACT-17"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0428-SC01",
+        "AIEC-FSC-0428-SC02",
+        "AIEC-FSC-0428-SC03",
+        "AIEC-FSC-0428-SC04"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0429",
+      "name": "编辑和保存计划任务配置",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0429-save-local",
+          "slug": "save-local"
+        },
+        {
+          "operationId": "AIEC-FSC-0429-save-cloud",
+          "slug": "save-cloud"
+        },
+        {
+          "operationId": "AIEC-FSC-0429-reset-template",
+          "slug": "reset-template"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-34b7a0c408efe046",
+        "AIEC-SOURCE-578177fead54b0de",
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-53944253666c9190",
+        "AIEC-SOURCE-10775706e68b9a3e"
+      ],
+      "factIds": [
+        "AIEC-FACT-06",
+        "AIEC-FACT-11",
+        "AIEC-FACT-17"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0429-SC01",
+        "AIEC-FSC-0429-SC02",
+        "AIEC-FSC-0429-SC03",
+        "AIEC-FSC-0429-SC04"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0430",
+      "name": "暂停或恢复计划任务",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0430-pause",
+          "slug": "pause"
+        },
+        {
+          "operationId": "AIEC-FSC-0430-resume",
+          "slug": "resume"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-95186c537ebabaed",
+        "AIEC-SOURCE-6a04529c48157d85",
+        "AIEC-SOURCE-c29e73e6d43caf62",
+        "AIEC-SOURCE-1cf92f22a6bb70ea"
+      ],
+      "factIds": [
+        "AIEC-FACT-06",
+        "AIEC-FACT-07",
+        "AIEC-FACT-08"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0430-SC01",
+        "AIEC-FSC-0430-SC02"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0431",
+      "name": "确认删除计划任务",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0431-delete",
+          "slug": "delete"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-c3711d9d0868097e",
+        "AIEC-SOURCE-afee4565296cb7ee",
+        "AIEC-SOURCE-9c75caaa74cb8eb3",
+        "AIEC-SOURCE-7bec6bbd53a18e91"
+      ],
+      "factIds": [
+        "AIEC-FACT-07",
+        "AIEC-FACT-08"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0431-SC01",
+        "AIEC-FSC-0431-SC02",
+        "AIEC-FSC-0431-SC03"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0432",
+      "name": "立即运行计划任务",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0432-run-now",
+          "slug": "run-now"
+        },
+        {
+          "operationId": "AIEC-FSC-0432-save-and-run",
+          "slug": "save-and-run"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-d8d209476ffbce47",
+        "AIEC-SOURCE-808da366e2e84987",
+        "AIEC-SOURCE-deadf3ffd2aee856",
+        "AIEC-SOURCE-fbe89c44c73f486b",
+        "AIEC-SOURCE-c52a704d58ebbcfe",
+        "AIEC-SOURCE-4a0d9ce18ca83a23"
+      ],
+      "factIds": [
+        "AIEC-FACT-09",
+        "AIEC-FACT-10",
+        "AIEC-FACT-11"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0432-SC01",
+        "AIEC-FSC-0432-SC02",
+        "AIEC-FSC-0432-SC03"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0433",
+      "name": "查看计划任务详情和执行历史",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0433-open-details",
+          "slug": "open-details"
+        },
+        {
+          "operationId": "AIEC-FSC-0433-open-run",
+          "slug": "open-run"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-15cd790dffabf766",
+        "AIEC-SOURCE-8c07b911b417ebae",
+        "AIEC-SOURCE-53944253666c9190"
+      ],
+      "factIds": [
+        "AIEC-FACT-01",
+        "AIEC-FACT-12",
+        "AIEC-FACT-13"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0433-SC01",
+        "AIEC-FSC-0433-SC02"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0434",
+      "name": "设置计划任务执行记录的已读状态",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0434-mark-read",
+          "slug": "mark-read"
+        },
+        {
+          "operationId": "AIEC-FSC-0434-mark-unread",
+          "slug": "mark-unread"
+        },
+        {
+          "operationId": "AIEC-FSC-0434-mark-all-read",
+          "slug": "mark-all-read"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-15cd790dffabf766",
+        "AIEC-SOURCE-62592ef1daa7bd12",
+        "AIEC-SOURCE-93ff322de0cd2b2f",
+        "AIEC-SOURCE-0390a5e830b9aaf0"
+      ],
+      "factIds": [
+        "AIEC-FACT-13"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0434-SC01",
+        "AIEC-FSC-0434-SC02",
+        "AIEC-FSC-0434-SC03"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0435",
+      "name": "恢复 OAuth 返回后的计划任务草稿",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0435-resume-oauth-draft",
+          "slug": "resume-oauth-draft"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-112187066c506a57",
+        "AIEC-SOURCE-86310d5882c17aa2",
+        "AIEC-SOURCE-363befc4d36e023c",
+        "AIEC-SOURCE-80f33dda4898081c",
+        "AIEC-SOURCE-b500adc788e54fbe"
+      ],
+      "factIds": [
+        "AIEC-FACT-15"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0435-SC01",
+        "AIEC-FSC-0435-SC02"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0436",
+      "name": "重新打开本地任务同步选择",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0436-reopen-consent",
+          "slug": "reopen-consent"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-204cf8cd825758e2",
+        "AIEC-SOURCE-d4e09fd8d6c219e4"
+      ],
+      "factIds": [
+        "AIEC-FACT-16"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0436-SC01",
+        "AIEC-FSC-0436-SC02"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0437",
+      "name": "通过对话开始配置计划任务",
+      "newDefinitionProposed": true,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0437-start-assistant-prefill",
+          "slug": "start-assistant-prefill"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-008e3fb6dcfd163e",
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-21733d18728fc214"
+      ],
+      "factIds": [
+        "AIEC-FACT-17"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0437-SC01",
+        "AIEC-FSC-0437-SC02"
+      ],
+      "runtimeVerified": false
+    },
+    {
+      "proposedFeatureId": "FSC-0046",
+      "name": "归档本地线程并撤销归档",
+      "newDefinitionProposed": false,
+      "status": "source-reviewed-contract; pending-global-ledger-integration",
+      "operationProposals": [
+        {
+          "operationId": "AIEC-FSC-0046-archive-automation-run",
+          "slug": "archive-automation-run"
+        },
+        {
+          "operationId": "AIEC-FSC-0046-archive-automation-runs",
+          "slug": "archive-automation-runs"
+        },
+        {
+          "operationId": "AIEC-FSC-0046-unarchive-automation-run",
+          "slug": "unarchive-automation-run"
+        }
+      ],
+      "sourceIds": [
+        "AIEC-SOURCE-15cd790dffabf766",
+        "AIEC-SOURCE-d68dad6ebc892baa",
+        "AIEC-SOURCE-faef0d8f1ae25357",
+        "AIEC-SOURCE-f99dcaecbb8a1f2c"
+      ],
+      "factIds": [
+        "AIEC-FACT-14"
+      ],
+      "mode": "unknown",
+      "modeQualification": "local/cloud, capability flags and assistant labels do not establish Codex/ChatGPT ownership.",
+      "scenarioIds": [
+        "AIEC-FSC-0046-SC01",
+        "AIEC-FSC-0046-SC02",
+        "AIEC-FSC-0046-SC03"
+      ],
+      "runtimeVerified": false
+    }
+  ],
+  "moduleProposals": [
+    {
+      "moduleId": "AUT-M01",
+      "responsibility": "计划任务页面、路由和列表协调",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "AIEC-SOURCE-b5eb6dbb951e04a6",
+        "AIEC-SOURCE-726bfd4e10010bff",
+        "AIEC-SOURCE-808da366e2e84987",
+        "AIEC-SOURCE-38d34c94e9dbd330",
+        "AIEC-SOURCE-d70715302253fd45"
+      ],
+      "imports": {
+        "status": "partial",
+        "knownBoundary": "Existing source import/export relations retained in raw joins; complete proposed-module import surface unresolved."
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "计划任务页面、路由和列表协调",
+        "qualification": "Maintenance boundary; original source tree and public module API not recovered."
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "FSC-0427",
+          "FSC-0428",
+          "FSC-0430",
+          "FSC-0431",
+          "FSC-0433",
+          "FSC-0436",
+          "FSC-0437"
+        ],
+        "qualification": "Query cache, draft and scoped state contracts described by linked facts; physical store authority remains qualified."
+      },
+      "sideEffects": {
+        "status": "source-reviewed",
+        "qualification": "UI, bridge and service effects are specified by linked source facts, not executed."
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; no generated third-party implementation",
+        "completeVersionedSet": "unresolved"
+      },
+      "proposedPath": "apps/desktop/src/renderer/automations/automation-page.tsx",
+      "featureProposals": [
+        "FSC-0427",
+        "FSC-0428",
+        "FSC-0430",
+        "FSC-0431",
+        "FSC-0433",
+        "FSC-0436",
+        "FSC-0437"
+      ],
+      "implementationStarted": false
+    },
+    {
+      "moduleId": "AUT-M02",
+      "responsibility": "任务草稿校验、模板和载荷转换",
+      "environment": "shared-domain",
+      "mode": "unknown",
+      "sourceRanges": [
+        "AIEC-SOURCE-fa23626d998bddd0",
+        "AIEC-SOURCE-f29854271ac57618",
+        "AIEC-SOURCE-c68f346b081e67c5",
+        "AIEC-SOURCE-423ae060e838ae17",
+        "AIEC-SOURCE-1a8e067ca4f32268",
+        "AIEC-SOURCE-770622b47e908899",
+        "AIEC-SOURCE-f6a468b54d6500b7",
+        "AIEC-SOURCE-f8e217c5e70399f5",
+        "AIEC-SOURCE-e10a242348160b21",
+        "AIEC-SOURCE-faa90ddbb404a284"
+      ],
+      "imports": {
+        "status": "partial",
+        "knownBoundary": "Existing source import/export relations retained in raw joins; complete proposed-module import surface unresolved."
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "任务草稿校验、模板和载荷转换",
+        "qualification": "Maintenance boundary; original source tree and public module API not recovered."
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "FSC-0428",
+          "FSC-0429"
+        ],
+        "qualification": "Query cache, draft and scoped state contracts described by linked facts; physical store authority remains qualified."
+      },
+      "sideEffects": {
+        "status": "source-reviewed",
+        "qualification": "UI, bridge and service effects are specified by linked source facts, not executed."
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; no generated third-party implementation",
+        "completeVersionedSet": "unresolved"
+      },
+      "proposedPath": "packages/automation-domain/src/draft.ts",
+      "featureProposals": [
+        "FSC-0428",
+        "FSC-0429"
+      ],
+      "implementationStarted": false
+    },
+    {
+      "moduleId": "AUT-M03",
+      "responsibility": "历史记录展示、已读和归档适配",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "AIEC-SOURCE-15cd790dffabf766",
+        "AIEC-SOURCE-62592ef1daa7bd12",
+        "AIEC-SOURCE-d68dad6ebc892baa",
+        "AIEC-SOURCE-f99dcaecbb8a1f2c",
+        "AIEC-SOURCE-93ff322de0cd2b2f",
+        "AIEC-SOURCE-0390a5e830b9aaf0"
+      ],
+      "imports": {
+        "status": "partial",
+        "knownBoundary": "Existing source import/export relations retained in raw joins; complete proposed-module import surface unresolved."
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "历史记录展示、已读和归档适配",
+        "qualification": "Maintenance boundary; original source tree and public module API not recovered."
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "FSC-0433",
+          "FSC-0434",
+          "FSC-0046"
+        ],
+        "qualification": "Query cache, draft and scoped state contracts described by linked facts; physical store authority remains qualified."
+      },
+      "sideEffects": {
+        "status": "source-reviewed",
+        "qualification": "UI, bridge and service effects are specified by linked source facts, not executed."
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; no generated third-party implementation",
+        "completeVersionedSet": "unresolved"
+      },
+      "proposedPath": "apps/desktop/src/renderer/automations/run-history.tsx",
+      "featureProposals": [
+        "FSC-0046",
+        "FSC-0433",
+        "FSC-0434"
+      ],
+      "implementationStarted": false
+    },
+    {
+      "moduleId": "AUT-M04",
+      "responsibility": "立即运行的状态、去重和导航协调",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "AIEC-SOURCE-deadf3ffd2aee856",
+        "AIEC-SOURCE-ae7ba92fea485b09",
+        "AIEC-SOURCE-fbe89c44c73f486b",
+        "AIEC-SOURCE-4a0d9ce18ca83a23"
+      ],
+      "imports": {
+        "status": "partial",
+        "knownBoundary": "Existing source import/export relations retained in raw joins; complete proposed-module import surface unresolved."
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "立即运行的状态、去重和导航协调",
+        "qualification": "Maintenance boundary; original source tree and public module API not recovered."
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "FSC-0432"
+        ],
+        "qualification": "Query cache, draft and scoped state contracts described by linked facts; physical store authority remains qualified."
+      },
+      "sideEffects": {
+        "status": "source-reviewed",
+        "qualification": "UI, bridge and service effects are specified by linked source facts, not executed."
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; no generated third-party implementation",
+        "completeVersionedSet": "unresolved"
+      },
+      "proposedPath": "apps/desktop/src/renderer/automations/run-now.ts",
+      "featureProposals": [
+        "FSC-0432"
+      ],
+      "implementationStarted": false
+    },
+    {
+      "moduleId": "AUT-M05",
+      "responsibility": "OAuth 草稿身份、有效期和离开保护",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "AIEC-SOURCE-112187066c506a57",
+        "AIEC-SOURCE-86310d5882c17aa2",
+        "AIEC-SOURCE-363befc4d36e023c",
+        "AIEC-SOURCE-afb275c37037e64f",
+        "AIEC-SOURCE-276789aa56aa6247",
+        "AIEC-SOURCE-b500adc788e54fbe"
+      ],
+      "imports": {
+        "status": "partial",
+        "knownBoundary": "Existing source import/export relations retained in raw joins; complete proposed-module import surface unresolved."
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "OAuth 草稿身份、有效期和离开保护",
+        "qualification": "Maintenance boundary; original source tree and public module API not recovered."
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "FSC-0435"
+        ],
+        "qualification": "Query cache, draft and scoped state contracts described by linked facts; physical store authority remains qualified."
+      },
+      "sideEffects": {
+        "status": "source-reviewed",
+        "qualification": "UI, bridge and service effects are specified by linked source facts, not executed."
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; no generated third-party implementation",
+        "completeVersionedSet": "unresolved"
+      },
+      "proposedPath": "apps/desktop/src/renderer/automations/editor-session.ts",
+      "featureProposals": [
+        "FSC-0435"
+      ],
+      "implementationStarted": false
+    },
+    {
+      "moduleId": "AUT-M06",
+      "responsibility": "云任务编辑、保存和请求取消协调",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        "AIEC-SOURCE-53944253666c9190",
+        "AIEC-SOURCE-c52a704d58ebbcfe",
+        "AIEC-SOURCE-b7cf512521c35f8e",
+        "AIEC-SOURCE-1cf92f22a6bb70ea",
+        "AIEC-SOURCE-7bec6bbd53a18e91"
+      ],
+      "imports": {
+        "status": "partial",
+        "knownBoundary": "Existing source import/export relations retained in raw joins; complete proposed-module import surface unresolved."
+      },
+      "exports": {
+        "status": "proposed",
+        "surface": "云任务编辑、保存和请求取消协调",
+        "qualification": "Maintenance boundary; original source tree and public module API not recovered."
+      },
+      "sharedState": {
+        "status": "partial",
+        "sourceContracts": [
+          "FSC-0429",
+          "FSC-0430",
+          "FSC-0431",
+          "FSC-0432",
+          "FSC-0433"
+        ],
+        "qualification": "Query cache, draft and scoped state contracts described by linked facts; physical store authority remains qualified."
+      },
+      "sideEffects": {
+        "status": "source-reviewed",
+        "qualification": "UI, bridge and service effects are specified by linked source facts, not executed."
+      },
+      "thirdPartyDependencies": {
+        "policy": "package imports only; no generated third-party implementation",
+        "completeVersionedSet": "unresolved"
+      },
+      "proposedPath": "apps/desktop/src/renderer/automations/cloud-editor.tsx",
+      "featureProposals": [
+        "FSC-0429",
+        "FSC-0430",
+        "FSC-0431",
+        "FSC-0432",
+        "FSC-0433"
+      ],
+      "implementationStarted": false
+    }
+  ],
+  "scenarioSpecifications": [
+    {
+      "scenarioId": "AIEC-FSC-0427-SC01",
+      "proposedFeatureId": "FSC-0427",
+      "operationId": "AIEC-FSC-0427-browse-query",
+      "kind": "availability",
+      "precondition": "两种 capability loading/false/true 及 Ec 分支分别配置",
+      "trigger": "打开三个入口路由",
+      "expectedEffect": "保留 loading/redirect/view 参数和懒加载边界",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0427-SC02",
+      "proposedFeatureId": "FSC-0427",
+      "operationId": "AIEC-FSC-0427-browse-query",
+      "kind": "filter-sort",
+      "precondition": "可控 local/cloud/team/unread/paused/重复ID 数据集",
+      "trigger": "改变搜索/status/ownership",
+      "expectedEffect": "匹配规范化搜索、来源去重、分组和原排序；不把 ID 相同当对象等价",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0427-SC03",
+      "proposedFeatureId": "FSC-0427",
+      "operationId": "AIEC-FSC-0427-browse-query",
+      "kind": "account-error",
+      "precondition": "云列表响应账户变化或失败",
+      "trigger": "刷新列表",
+      "expectedEffect": "不显示 accountId 不匹配响应；保留错误和 retry",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0428-SC01",
+      "proposedFeatureId": "FSC-0428",
+      "operationId": "AIEC-FSC-0428-create-manual",
+      "kind": "validation",
+      "precondition": "新建/既有ID、heartbeat/cron、local/cloud、team/webhook 输入变化",
+      "trigger": "提交草稿",
+      "expectedEffect": "遵守各自必填项和 team/schedule 约束；重复 pending 不再提交",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0428-SC02",
+      "proposedFeatureId": "FSC-0428",
+      "operationId": "AIEC-FSC-0428-create-manual",
+      "kind": "heartbeat-cancel",
+      "precondition": "新建 heartbeat 无 target，创建会话结果迟到",
+      "trigger": "取消或离开后返回会话结果",
+      "expectedEffect": "取消后不提交 automation-create；对已取得的临时会话执行条件清理",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0428-SC03",
+      "proposedFeatureId": "FSC-0428",
+      "operationId": "AIEC-FSC-0428-create-manual",
+      "kind": "partial-success",
+      "precondition": "自动化保存成功，设置消息或自动命名失败",
+      "trigger": "完成创建回调",
+      "expectedEffect": "显示对应局部失败并保留任务已保存的事实",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0428-SC04",
+      "proposedFeatureId": "FSC-0428",
+      "operationId": "AIEC-FSC-0428-create-from-template",
+      "kind": "template",
+      "precondition": "可用模板与已有自定义草稿",
+      "trigger": "选择并提交模板",
+      "expectedEffect": "保留 pluginTemplateId，经过离开/未保存保护，调用同一创建合同",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0429-SC01",
+      "proposedFeatureId": "FSC-0429",
+      "operationId": "AIEC-FSC-0429-save-local",
+      "kind": "autosave",
+      "precondition": "旧模式编辑/600ms/有效且变化/失败快照等条件变化",
+      "trigger": "等待 debounce 或显式 retry",
+      "expectedEffect": "仅满足完整源条件才自动提交；同一失败更改不循环重试",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0429-SC02",
+      "proposedFeatureId": "FSC-0429",
+      "operationId": "AIEC-FSC-0429-save-local",
+      "kind": "failure-leave",
+      "precondition": "更新失败或保存期间草稿再次变化",
+      "trigger": "保存并请求离开",
+      "expectedEffect": "恢复适用缓存/status，按 Fr/ni 协调后续动作；不声称撤回服务写入",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0429-SC03",
+      "proposedFeatureId": "FSC-0429",
+      "operationId": "AIEC-FSC-0429-save-cloud",
+      "kind": "save-permission",
+      "precondition": "owner/editor/reader、completed、invalid 和 account 变化",
+      "trigger": "保存云端编辑",
+      "expectedEffect": "遵守 canManage、有效性、pending/abort/account 边界",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0429-SC04",
+      "proposedFeatureId": "FSC-0429",
+      "operationId": "AIEC-FSC-0429-reset-template",
+      "kind": "confirm-cancel",
+      "precondition": "已修改插件模板草稿",
+      "trigger": "预览后取消或确认 Reset",
+      "expectedEffect": "取消不覆盖；确认按 configuration 模式选择立即 update 或仅修改草稿",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0430-SC01",
+      "proposedFeatureId": "FSC-0430",
+      "operationId": "AIEC-FSC-0430-pause",
+      "kind": "local",
+      "precondition": "选中/未选中的现存本地任务，修改/请求 pending",
+      "trigger": "暂停",
+      "expectedEffect": "发 PAUSED，保留草稿/缓存差异；失败回滚按源执行",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0430-SC02",
+      "proposedFeatureId": "FSC-0430",
+      "operationId": "AIEC-FSC-0430-resume",
+      "kind": "cloud",
+      "precondition": "云端 canManage、状态与账户条件变化",
+      "trigger": "恢复",
+      "expectedEffect": "发 is_enabled:true，采用匹配账户的成功缓存规则；不证明后台已开始调度",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0431-SC01",
+      "proposedFeatureId": "FSC-0431",
+      "operationId": "AIEC-FSC-0431-delete",
+      "kind": "cancel-pending",
+      "precondition": "确认对话框未提交或请求 pending",
+      "trigger": "取消/关闭/重复确认",
+      "expectedEffect": "普通取消不提交；pending 阻止源定义的关闭和重复确认",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0431-SC02",
+      "proposedFeatureId": "FSC-0431",
+      "operationId": "AIEC-FSC-0431-delete",
+      "kind": "local-result",
+      "precondition": "桥接正常返回 success:false 或 deleted/not_found 成功",
+      "trigger": "确认本地删除",
+      "expectedEffect": "按 success 决定缓存移除和关闭；保留存储局部失败边界",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0431-SC03",
+      "proposedFeatureId": "FSC-0431",
+      "operationId": "AIEC-FSC-0431-delete",
+      "kind": "cloud-error",
+      "precondition": "云 remove 失败或当前项变化",
+      "trigger": "确认云删除",
+      "expectedEffect": "保留独立 remove mutation 与错误反馈，不误报原子清理",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0432-SC01",
+      "proposedFeatureId": "FSC-0432",
+      "operationId": "AIEC-FSC-0432-run-now",
+      "kind": "local",
+      "precondition": "heartbeat 加载/无ID/返回 success 或位置变化",
+      "trigger": "Run now",
+      "expectedEffect": "取得 permissions/collaborationMode 后请求；只在指定 heartbeat/location 条件导航",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0432-SC02",
+      "proposedFeatureId": "FSC-0432",
+      "operationId": "AIEC-FSC-0432-run-now",
+      "kind": "cloud-concurrency",
+      "precondition": "team/personal 路径、重复请求、已知拒绝与不确定失败",
+      "trigger": "Run now",
+      "expectedEffect": "协调 requestId/run/conversation，保留 clear/unconfirmed 和30秒匹配行为",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0432-SC03",
+      "proposedFeatureId": "FSC-0432",
+      "operationId": "AIEC-FSC-0432-save-and-run",
+      "kind": "save-first",
+      "precondition": "云端有未保存更改，保存失败/取消/换账户",
+      "trigger": "Save and run now",
+      "expectedEffect": "先等待保存；失败或失效条件阻止后续 run，受理不计执行完成",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0433-SC01",
+      "proposedFeatureId": "FSC-0433",
+      "operationId": "AIEC-FSC-0433-open-details",
+      "kind": "route-state",
+      "precondition": "automationId/source、403/404/410、普通网络错误与 loading",
+      "trigger": "打开详情",
+      "expectedEffect": "分别保留 missing/cloud-error/loading、本地编辑和云详情分支",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0433-SC02",
+      "proposedFeatureId": "FSC-0433",
+      "operationId": "AIEC-FSC-0433-open-run",
+      "kind": "history",
+      "precondition": "无 runs/最新运行/历史展开/受限历史查询",
+      "trigger": "打开或展开一次执行",
+      "expectedEffect": "保留最新结果、已读副作用、run/chat 导航与 limit:200 边界",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0434-SC01",
+      "proposedFeatureId": "FSC-0434",
+      "operationId": "AIEC-FSC-0434-mark-read",
+      "kind": "read",
+      "precondition": "未读历史行、自动展开最新/旧记录",
+      "trigger": "标记已读",
+      "expectedEffect": "按源更新单项状态，自动读取只是另一个触发路径",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0434-SC02",
+      "proposedFeatureId": "FSC-0434",
+      "operationId": "AIEC-FSC-0434-mark-unread",
+      "kind": "unread",
+      "precondition": "已读记录",
+      "trigger": "标为未读",
+      "expectedEffect": "发送 false 路径；真实持久化需单独观察",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0434-SC03",
+      "proposedFeatureId": "FSC-0434",
+      "operationId": "AIEC-FSC-0434-mark-all-read",
+      "kind": "optimistic",
+      "precondition": "不同 status/readAt 缓存与缺失 inboxManager",
+      "trigger": "全部已读",
+      "expectedEffect": "先乐观改选定缓存并发消息；不把无 receiver 或无确认算落盘成功",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0435-SC01",
+      "proposedFeatureId": "FSC-0435",
+      "operationId": "AIEC-FSC-0435-resume-oauth-draft",
+      "kind": "round-trip",
+      "precondition": "匹配账户/用户/ID/路由且未过期的合成草稿",
+      "trigger": "生成 return URL 并恢复",
+      "expectedEffect": "恢复 draft/initialDraft 与兼容字段，保持相对 URL 和 ID",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0435-SC02",
+      "proposedFeatureId": "FSC-0435",
+      "operationId": "AIEC-FSC-0435-resume-oauth-draft",
+      "kind": "identity-expiry",
+      "precondition": "错误账户/用户/ID、过期或错 create/edit 路由",
+      "trigger": "尝试恢复及清理",
+      "expectedEffect": "返回 null，不能清理另一身份或不匹配记录；实际 backing store 仍独立验收",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0436-SC01",
+      "proposedFeatureId": "FSC-0436",
+      "operationId": "AIEC-FSC-0436-reopen-consent",
+      "kind": "gate",
+      "precondition": "account/user/gate/status/consent/visibility 变化",
+      "trigger": "查看并点击同步入口",
+      "expectedEffect": "只在源条件下出现并设置相同身份 visibility=open",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0436-SC02",
+      "proposedFeatureId": "FSC-0436",
+      "operationId": "AIEC-FSC-0436-reopen-consent",
+      "kind": "query-boundary",
+      "precondition": "unavailable/complete 状态的受控替身",
+      "trigger": "刷新状态",
+      "expectedEffect": "遵守 dataUpdateCount<15 的每1000ms refetch 条件与本地列表失效；不能计实际迁移成功",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0437-SC01",
+      "proposedFeatureId": "FSC-0437",
+      "operationId": "AIEC-FSC-0437-start-assistant-prefill",
+      "kind": "unsaved",
+      "precondition": "未保存草稿与不同 assistant 标签条件",
+      "trigger": "Create with assistant",
+      "expectedEffect": "经过 transition 保护后调用注入 startNewConversation，预填创建请求",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0437-SC02",
+      "proposedFeatureId": "FSC-0437",
+      "operationId": "AIEC-FSC-0437-start-assistant-prefill",
+      "kind": "boundary",
+      "precondition": "注入会话提供者失败或未完成后续模型交互",
+      "trigger": "开始配置",
+      "expectedEffect": "保留会话/模型边界，不报告任务已创建，也不按 ChatGPT 字符串删除共享入口",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0046-SC01",
+      "proposedFeatureId": "FSC-0046",
+      "operationId": "AIEC-FSC-0046-archive-automation-run",
+      "kind": "single",
+      "precondition": "有 threadId 的可归档历史",
+      "trigger": "归档一项",
+      "expectedEffect": "等待 manager，再失效历史缓存，保留错误反馈",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0046-SC02",
+      "proposedFeatureId": "FSC-0046",
+      "operationId": "AIEC-FSC-0046-archive-automation-runs",
+      "kind": "partial",
+      "precondition": "混合 ARCHIVED/IN_PROGRESS/无线程/重复线程和一项失败",
+      "trigger": "确认 Archive all",
+      "expectedEffect": "筛选后逐项尝试、分别统计成功与失败；不声称事务或去重",
+      "status": "UNEXECUTED",
+      "productPass": false
+    },
+    {
+      "scenarioId": "AIEC-FSC-0046-SC03",
+      "proposedFeatureId": "FSC-0046",
+      "operationId": "AIEC-FSC-0046-unarchive-automation-run",
+      "kind": "restore",
+      "precondition": "manager 恢复成功但缓存失效失败",
+      "trigger": "Unarchive",
+      "expectedEffect": "恢复请求先于失效；后者失败仍可能显示错误，不推出 manager 回滚",
+      "status": "UNEXECUTED",
+      "productPass": false
+    }
+  ],
+  "sourceUnits": [
+    {
+      "sourceId": "AIEC-SOURCE-d70715302253fd45",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 8900144,
+          "endExclusive": 8902256
+        },
+        "spanHash": "866688b4c5c4824bcd817b0336dc4d875290048f90d5812c0442f804969a65ad",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-d70715302253fd45.txt",
+      "bytes": 2112,
+      "aliases": [
+        "I:iFs"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-b4073f24083a73d4",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 8952415,
+          "endExclusive": 8966261
+        },
+        "spanHash": "cd61263e1a24b2727f1f1ed9713aa986f4e3ac981d8ca254f36b04948bbaacbc",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-b4073f24083a73d4.txt",
+      "bytes": 13846,
+      "aliases": [
+        "I:ZIs"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-a4a6b0cc688a3024",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 1374694,
+          "endExclusive": 1374730
+        },
+        "spanHash": "3a5f63b8b92cd2db660f2b1e0c8e907b5242eeb0081186d21a8230ce9601ff1f",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-a4a6b0cc688a3024.txt",
+      "bytes": 36,
+      "aliases": [
+        "I:Lzt"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-8c2b40037a9df777",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 1374730,
+          "endExclusive": 1374870
+        },
+        "spanHash": "6ca50a16cc49a4d370d53d207d9e78287e357102456efae3d968862398b71eff",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-8c2b40037a9df777.txt",
+      "bytes": 140,
+      "aliases": [
+        "I:Rzt"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-15e6220068f886b4",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 3888664,
+          "endExclusive": 3889833
+        },
+        "spanHash": "0a69bfff24099c324381d376ca415c3f9379ecced6c977cfe4c472d3f0383ffe",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-15e6220068f886b4.txt",
+      "bytes": 1169,
+      "aliases": [
+        "I:E2r="
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-546def74305bbeb0",
+      "sourcePath": "app.asar/webview/assets/automations-page-aa8b83be2225.js",
+      "sourceHash": "3bc313016f0f11d638c131965e6a2b2573538095259c4cbe356d7be63fafa602",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 133
+        },
+        "spanHash": "3bc313016f0f11d638c131965e6a2b2573538095259c4cbe356d7be63fafa602",
+        "nodeType": "Program"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-546def74305bbeb0.txt",
+      "bytes": 133,
+      "aliases": [
+        "W:program"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-b5eb6dbb951e04a6",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 48679,
+          "endExclusive": 50797
+        },
+        "spanHash": "e569d88e43e1af5c65ac2893a799ef1e6ccfa8fda5e7fbfb942fdb1459ddd00a",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-b5eb6dbb951e04a6.txt",
+      "bytes": 2118,
+      "aliases": [
+        "A:Gs"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-197a299c89a4db35",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 2793049,
+          "endExclusive": 2793145
+        },
+        "spanHash": "33e8b0f91e8215d680421ebcf22104c3e46b2051051dccf9ba40f1f56614fea4",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-197a299c89a4db35.txt",
+      "bytes": 96,
+      "aliases": [
+        "I:$7n="
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-726bfd4e10010bff",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 50797,
+          "endExclusive": 78827
+        },
+        "spanHash": "1d3522d93bf9ccd337b12ddbbc692493b42ec466e19e4dcb5518350c5b39b72b",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-726bfd4e10010bff.txt",
+      "bytes": 28030,
+      "aliases": [
+        "A:Ks"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-5804ff505a19a8ef",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 59809,
+          "endExclusive": 59836
+        },
+        "spanHash": "7cba3ffda182bd0ec6907fce26ea9be2250bc1c0f908d12904cddd56ee47c942",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-5804ff505a19a8ef.txt",
+      "bytes": 27,
+      "aliases": [
+        "A:kr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-c2602c48ec00a903",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 59732,
+          "endExclusive": 59808
+        },
+        "spanHash": "af3b0bdd02bbbc69f47946fefbf7a657efbce19b8274b23a4d6044b6400368c7",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-c2602c48ec00a903.txt",
+      "bytes": 76,
+      "aliases": [
+        "A:Or"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-be72fa6fa90a13fb",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 59231,
+          "endExclusive": 59731
+        },
+        "spanHash": "c3ebd19a8f69a348581fa97c1a7effade5fe0208b4891be88795effc3ec0c3f8",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-be72fa6fa90a13fb.txt",
+      "bytes": 500,
+      "aliases": [
+        "A:Er"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-7f11735d2a0086cd",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 21708,
+          "endExclusive": 21802
+        },
+        "spanHash": "10870b95d6e0e5c4ceff3cd6c18d76e687b1dc2ce7fee0613b58d9e6b8ecf92c",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-7f11735d2a0086cd.txt",
+      "bytes": 94,
+      "aliases": [
+        "A:Xo"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-fa23626d998bddd0",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5858489,
+          "endExclusive": 5859282
+        },
+        "spanHash": "a48e24c7515e719aaa0204c73c91b1998d55d46f1fa3c3bedceb7fb2becd10a8",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-fa23626d998bddd0.txt",
+      "bytes": 793,
+      "aliases": [
+        "S:Khi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-f29854271ac57618",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5841510,
+          "endExclusive": 5841866
+        },
+        "spanHash": "60a4250728e1e89ab9219932778cf47e0b902c1076f97fb76d8a3e61adf458fc",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-f29854271ac57618.txt",
+      "bytes": 356,
+      "aliases": [
+        "S:Vmi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-c68f346b081e67c5",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5859430,
+          "endExclusive": 5859513
+        },
+        "spanHash": "9b7f844442bd342cb18c2588557c54255cea56a6fd26749b55b43603ee9a28c3",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-c68f346b081e67c5.txt",
+      "bytes": 83,
+      "aliases": [
+        "S:Jhi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-423ae060e838ae17",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5865633,
+          "endExclusive": 5866452
+        },
+        "spanHash": "1e61cfa5ce3b2775140edfbfe11e1718e1fe2f93007d449f625f1dae1b72311a",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-423ae060e838ae17.txt",
+      "bytes": 819,
+      "aliases": [
+        "S:cgi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-1a8e067ca4f32268",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5864828,
+          "endExclusive": 5865633
+        },
+        "spanHash": "e7859a64b1545f15b30796fd31c322ffda58859c7e7a46af920fcc744fae5e8e",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-1a8e067ca4f32268.txt",
+      "bytes": 805,
+      "aliases": [
+        "S:sgi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-d886d10b1087315e",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 44813,
+          "endExclusive": 45016
+        },
+        "spanHash": "31c70d2247fe853b1514fbf2bdedde39ea93304ee675f3c0dc3baafa72d015e3",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-d886d10b1087315e.txt",
+      "bytes": 203,
+      "aliases": [
+        "A:Ps"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-dacc5985aec48de3",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 45016,
+          "endExclusive": 45193
+        },
+        "spanHash": "383bcd8a5f40ef6a66f1c95eccd8884becf23bcc8012dfc59ba8eaa298409220",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-dacc5985aec48de3.txt",
+      "bytes": 177,
+      "aliases": [
+        "A:Fs"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-71561cf9a901bd00",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 66050,
+          "endExclusive": 69167
+        },
+        "spanHash": "d5d7029c31b047a5ff50ca3d75abb8e8b528dd9b946072f375d20461e9421113",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-71561cf9a901bd00.txt",
+      "bytes": 3117,
+      "aliases": [
+        "A:Br"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-dcc72b520c1b060e",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 60048,
+          "endExclusive": 62380
+        },
+        "spanHash": "88fc2203c2a73e22137e7015793128a412ca8cfa67b55bb73bf07a6950a1d5f3",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-dcc72b520c1b060e.txt",
+      "bytes": 2332,
+      "aliases": [
+        "A:Pr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-d1e4aa020bccd578",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 48577,
+          "endExclusive": 48679
+        },
+        "spanHash": "2f21c9b0873b857395267124efe225baef32b9b5b6130acc95ae67ac34b434ce",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-d1e4aa020bccd578.txt",
+      "bytes": 102,
+      "aliases": [
+        "A:Ws"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-7db73f428fbefbcc",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 48359,
+          "endExclusive": 48577
+        },
+        "spanHash": "d4f9076f23b8eb3229a8ccec72a4a407013f2b12c295ab966e3d984f37fae70a",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-7db73f428fbefbcc.txt",
+      "bytes": 218,
+      "aliases": [
+        "A:Us"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-bb3b8870a04c6dd9",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 17828,
+          "endExclusive": 18815
+        },
+        "spanHash": "e88e194f705cd6d86a30bb8d128fa6cf37379622f380c8481f77023988ba2f7c",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-bb3b8870a04c6dd9.txt",
+      "bytes": 987,
+      "aliases": [
+        "A:Bo"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-34b7a0c408efe046",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 62511,
+          "endExclusive": 64659
+        },
+        "spanHash": "d670745dc4ad0b830eb1eb2552daf993637feb8c3735038cb576ea8c2dee288b",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-34b7a0c408efe046.txt",
+      "bytes": 2148,
+      "aliases": [
+        "A:q"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-47126c14ab9989e5",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 62381,
+          "endExclusive": 62510
+        },
+        "spanHash": "b63fab170ab99a03bd2a8716a5e91c4c20911620211215c273f1044866e5b52e",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-47126c14ab9989e5.txt",
+      "bytes": 129,
+      "aliases": [
+        "A:Fr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-578177fead54b0de",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 71195,
+          "endExclusive": 71344
+        },
+        "spanHash": "5c1ce337ac99575bf6dbfe7d11cf280b861cbd7340138653cb463888fb5eeb02",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-578177fead54b0de.txt",
+      "bytes": 149,
+      "aliases": [
+        "A:ni"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-698d4e68f40d0f41",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 71137,
+          "endExclusive": 71194
+        },
+        "spanHash": "08ab341a83e01ac5f071bb8ebe23c28ded030f313ee7a8b7904158dd32a8cc7f",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-698d4e68f40d0f41.txt",
+      "bytes": 57,
+      "aliases": [
+        "A:ti"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-4a8a3a494d42ff96",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 57287,
+          "endExclusive": 57398
+        },
+        "spanHash": "4209f75b08fadd29528a9a209ede7e64006d12f9e8f57009c90f284c8462ee77",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-4a8a3a494d42ff96.txt",
+      "bytes": 111,
+      "aliases": [
+        "A:cr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-37138ab46538d9ab",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 3522232,
+          "endExclusive": 3522480
+        },
+        "spanHash": "282788a468841bca5e7280f6c13ee5ef979a5b88b6af2db71584373060ed693b",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-37138ab46538d9ab.txt",
+      "bytes": 248,
+      "aliases": [
+        "I:MB"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-91041c283e5454a0",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5867770,
+          "endExclusive": 5867840
+        },
+        "spanHash": "afb5b2c639d70e1c4e53511ae20a93b6b6dff57e1bec49b03ca424adc0e3c3ff",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-91041c283e5454a0.txt",
+      "bytes": 70,
+      "aliases": [
+        "S:fgi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-95186c537ebabaed",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 69351,
+          "endExclusive": 69510
+        },
+        "spanHash": "3bf450248eff1ba1d2320ea86c8b4bf2a093372ef24ff5b40622beba19aa1eb6",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-95186c537ebabaed.txt",
+      "bytes": 159,
+      "aliases": [
+        "A:Wr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-6a04529c48157d85",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 69511,
+          "endExclusive": 69570
+        },
+        "spanHash": "3fd6c9070d4bffe70e57cf8bf012e2329a4449ffd728053ae26d01fadbfeac29",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-6a04529c48157d85.txt",
+      "bytes": 59,
+      "aliases": [
+        "A:Gr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-c29e73e6d43caf62",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 69894,
+          "endExclusive": 69971
+        },
+        "spanHash": "9b0af4ba29304d46d64d89269509946507197ee813445d0f1dc40b540078324a",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-c29e73e6d43caf62.txt",
+      "bytes": 77,
+      "aliases": [
+        "A:qr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-c3711d9d0868097e",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 64660,
+          "endExclusive": 66040
+        },
+        "spanHash": "c1cc6c3b8b75cacd05c6cb1147e1926125e26ec9ae699c2b007a19a7337f3e49",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-c3711d9d0868097e.txt",
+      "bytes": 1380,
+      "aliases": [
+        "A:Ir"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-afee4565296cb7ee",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 69972,
+          "endExclusive": 70515
+        },
+        "spanHash": "0f64b11d0ad482904276ad1c8668823337e22e3aa26dfad66d6e7db177dc9a87",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-afee4565296cb7ee.txt",
+      "bytes": 543,
+      "aliases": [
+        "A:Jr"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-9c75caaa74cb8eb3",
+      "sourcePath": "app.asar/webview/assets/automation-delete-confirmation-dialog-9610b52e088e.js",
+      "sourceHash": "064ce9072539cb9e9f2b3c50cb916a276a8465cd1b70b5cb4c026881e2e50922",
+      "locator": {
+        "byteRange": {
+          "start": 221,
+          "endExclusive": 2400
+        },
+        "spanHash": "dff0b53e3c8157811b23964d85d1abf3190974dcc709b7702ff0c6bbb3d636ba",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-9c75caaa74cb8eb3.txt",
+      "bytes": 2179,
+      "aliases": [
+        "D:g"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-17f6397da41c0e77",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 101596,
+          "endExclusive": 102314
+        },
+        "spanHash": "89a7718bb1bb5fd99bb8f51543667b226e542b22844d6781c3d59908a1e29366",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-17f6397da41c0e77.txt",
+      "bytes": 718,
+      "aliases": [
+        "A:sc"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-cf7b951c0dfefdbc",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5868917,
+          "endExclusive": 5869048
+        },
+        "spanHash": "c479003fe842bb314c758386e1e0da6d0f52f30a5fe85aba14137d30659c132e",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-cf7b951c0dfefdbc.txt",
+      "bytes": 131,
+      "aliases": [
+        "S:Sgi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-1cf92f22a6bb70ea",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5897870,
+          "endExclusive": 5898282
+        },
+        "spanHash": "9063834e73a101ed1377a311517b582413f273073bacb50910e3129d0504fb74",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-1cf92f22a6bb70ea.txt",
+      "bytes": 412,
+      "aliases": [
+        "S:L_i="
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-b7cf512521c35f8e",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5898707,
+          "endExclusive": 5899780
+        },
+        "spanHash": "5fd379d157008b41fe34b48c236673a81d94414d89f21afd88be156cc264e4de",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-b7cf512521c35f8e.txt",
+      "bytes": 1073,
+      "aliases": [
+        "S:B_i="
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-7bec6bbd53a18e91",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5899781,
+          "endExclusive": 5900009
+        },
+        "spanHash": "f145118c545741ec5c2eeba271f40881d9fc077af0069747123464b5a176ea0b",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-7bec6bbd53a18e91.txt",
+      "bytes": 228,
+      "aliases": [
+        "S:V_i="
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-cf774849c291a6ef",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5893993,
+          "endExclusive": 5894503
+        },
+        "spanHash": "a27567d959d0a2d4e066dfc39009ce460f35b8d8476e025b615d53031fbbab7e",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-cf774849c291a6ef.txt",
+      "bytes": 510,
+      "aliases": [
+        "S:J8="
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-4a0d9ce18ca83a23",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5897078,
+          "endExclusive": 5897869
+        },
+        "spanHash": "96901605947135a38ea530293da0c0d10836c7e24d99fd248be746ae96d4ba7a",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-4a0d9ce18ca83a23.txt",
+      "bytes": 791,
+      "aliases": [
+        "S:I_i="
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-deadf3ffd2aee856",
+      "sourcePath": "app.asar/webview/assets/run-now-11e55df28c95.js",
+      "sourceHash": "213747aeddb0bf2e93f81a383c57a57b1b3f4f65d45d5caf57bc64a68fb8457c",
+      "locator": {
+        "byteRange": {
+          "start": 677,
+          "endExclusive": 984
+        },
+        "spanHash": "c0f8f01a9f0343070851b1cbdb834364dc273952142ade6a03654b4f5e737497",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-deadf3ffd2aee856.txt",
+      "bytes": 307,
+      "aliases": [
+        "R:K"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-fbe89c44c73f486b",
+      "sourcePath": "app.asar/webview/assets/run-now-11e55df28c95.js",
+      "sourceHash": "213747aeddb0bf2e93f81a383c57a57b1b3f4f65d45d5caf57bc64a68fb8457c",
+      "locator": {
+        "byteRange": {
+          "start": 1409,
+          "endExclusive": 4840
+        },
+        "spanHash": "51fb9ed82e35712519d2320efad9e288026768a247a53bcbc3337fb61452d01e",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-fbe89c44c73f486b.txt",
+      "bytes": 3431,
+      "aliases": [
+        "R:$"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-d8d209476ffbce47",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 70599,
+          "endExclusive": 71136
+        },
+        "spanHash": "1198a85c0bb105a0cdfb5cbf7f8bc117e7220da67414f2783784c94504d008f4",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-d8d209476ffbce47.txt",
+      "bytes": 537,
+      "aliases": [
+        "A:ei"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-ae7ba92fea485b09",
+      "sourcePath": "app.asar/webview/assets/run-now-11e55df28c95.js",
+      "sourceHash": "213747aeddb0bf2e93f81a383c57a57b1b3f4f65d45d5caf57bc64a68fb8457c",
+      "locator": {
+        "byteRange": {
+          "start": 1037,
+          "endExclusive": 1336
+        },
+        "spanHash": "dc8aa79a531c2959625f863fd9d9d15ad6f711fab0fc446c8589f61d3c5be455",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-ae7ba92fea485b09.txt",
+      "bytes": 299,
+      "aliases": [
+        "R:J"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-808da366e2e84987",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 33850,
+          "endExclusive": 44133
+        },
+        "spanHash": "b553a47b359b1a3651d7242e2493d27740d84cf5d7a4b7250dd2b79f7428161a",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-808da366e2e84987.txt",
+      "bytes": 10283,
+      "aliases": [
+        "A:Es"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-53944253666c9190",
+      "sourcePath": "app.asar/webview/assets/cloud-automation-detail-panel-308825b67688.js",
+      "sourceHash": "096dc58d0db9d008f7bf77242c314e3389ea901649334784f42235fef9984ae6",
+      "locator": {
+        "byteRange": {
+          "start": 21161,
+          "endExclusive": 34993
+        },
+        "spanHash": "eee97bbfc791df9452d737953a1ff76f0f564781d394135b83afefd37aeb45dd",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-53944253666c9190.txt",
+      "bytes": 13832,
+      "aliases": [
+        "C:Ft"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-c52a704d58ebbcfe",
+      "sourcePath": "app.asar/webview/assets/cloud-automation-detail-panel-308825b67688.js",
+      "sourceHash": "096dc58d0db9d008f7bf77242c314e3389ea901649334784f42235fef9984ae6",
+      "locator": {
+        "byteRange": {
+          "start": 23726,
+          "endExclusive": 24548
+        },
+        "spanHash": "16bf024471c35086d1f17d81586c06735b68e44442ae8f39c165a3e5460fd513",
+        "nodeType": "AssignmentExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-c52a704d58ebbcfe.txt",
+      "bytes": 822,
+      "aliases": [
+        "C:at"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-bc56f82e5acf182d",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 44197,
+          "endExclusive": 44571
+        },
+        "spanHash": "de200f17d2ec840ee26d26d3a6e92cf8349835317062aa9ab43a7311572931b8",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-bc56f82e5acf182d.txt",
+      "bytes": 374,
+      "aliases": [
+        "A:ks"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-38d34c94e9dbd330",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 29567,
+          "endExclusive": 32968
+        },
+        "spanHash": "af2da31c82f3a2a0817ec5985faa53e50295af911b1232525acd555c4f4f9b63",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-38d34c94e9dbd330.txt",
+      "bytes": 3401,
+      "aliases": [
+        "A:vs"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-af09b94e7dffa8f9",
+      "sourcePath": "app.asar/webview/assets/automation-search-aa8a2f802e9c.js",
+      "sourceHash": "643ce14bc42724272fb4497b89f822652844416daa4809e5337fdfaa4d740465",
+      "locator": {
+        "byteRange": {
+          "start": 55,
+          "endExclusive": 130
+        },
+        "spanHash": "e155b5a13d7aa82ba196a7d5c83ee06e10d6d0a5da1c541218e862e6a26c6f61",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-af09b94e7dffa8f9.txt",
+      "bytes": 75,
+      "aliases": [
+        "Q:t"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-ccad996fc4358552",
+      "sourcePath": "app.asar/webview/assets/automation-search-aa8a2f802e9c.js",
+      "sourceHash": "643ce14bc42724272fb4497b89f822652844416daa4809e5337fdfaa4d740465",
+      "locator": {
+        "byteRange": {
+          "start": 130,
+          "endExclusive": 200
+        },
+        "spanHash": "8bea4af869bb0c69901763451a355d6c05041a808763cccedde0bbe4ef42d653",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-ccad996fc4358552.txt",
+      "bytes": 70,
+      "aliases": [
+        "Q:n"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-15cd790dffabf766",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 90225,
+          "endExclusive": 95994
+        },
+        "spanHash": "d9c788ce26c7e6fe5b52a502c3fea26d915d96f9bccdffb7b5fbdd54f4d0b6ee",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-15cd790dffabf766.txt",
+      "bytes": 5769,
+      "aliases": [
+        "A:tc"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-62592ef1daa7bd12",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 20713,
+          "endExclusive": 21618
+        },
+        "spanHash": "a000fef2dcf795d90fc3f104569964fbc623753cc483bf6b4a16c29ef34dd5fb",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-62592ef1daa7bd12.txt",
+      "bytes": 905,
+      "aliases": [
+        "A:qo"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-93ff322de0cd2b2f",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4022878,
+          "endExclusive": 4024143
+        },
+        "spanHash": "89996dd1183ecd9505533fb3398a974193d5bb160e97da07a0e593fdac008b20",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-93ff322de0cd2b2f.txt",
+      "bytes": 1265,
+      "aliases": [
+        "I:q7r"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-0390a5e830b9aaf0",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "byteRange": {
+          "start": 4022640,
+          "endExclusive": 4022878
+        },
+        "spanHash": "636dd497c8e32c3e7d4739ab41b234a18d04f50237f139bbc3c424e75f133adb",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-0390a5e830b9aaf0.txt",
+      "bytes": 238,
+      "aliases": [
+        "I:K7r"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-b57a3e84d5c9b387",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 2081027,
+          "endExclusive": 2081130
+        },
+        "spanHash": "122e645b52d9170518152c7a6c8a1efb842f06e9aa97f7ba04ab52ae62cc6d3e",
+        "nodeType": "SwitchCase"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-b57a3e84d5c9b387.txt",
+      "bytes": 103,
+      "aliases": [
+        "N:mark-all-read"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-1ff12aee2aba8302",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 96031,
+          "endExclusive": 96079
+        },
+        "spanHash": "bbbc49f15c938034780440411a771493dc0575ad00e3b88d00b8edb2b9df4925",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-1ff12aee2aba8302.txt",
+      "bytes": 48,
+      "aliases": [
+        "A:rc"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-faef0d8f1ae25357",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 5151,
+          "endExclusive": 5239
+        },
+        "spanHash": "b46bdf8116b5dc11f5c7c148853ae0879e6635a7a940a58b3c8c9f7610e07a1c",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-faef0d8f1ae25357.txt",
+      "bytes": 88,
+      "aliases": [
+        "A:vo"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-d68dad6ebc892baa",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 5239,
+          "endExclusive": 5569
+        },
+        "spanHash": "a2dcedcc79ffec76ed4d3a25937956ab49691f6947ce5609d8ce68cbff6e5abc",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-d68dad6ebc892baa.txt",
+      "bytes": 330,
+      "aliases": [
+        "A:yo"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-f99dcaecbb8a1f2c",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 48101,
+          "endExclusive": 48296
+        },
+        "spanHash": "b179330aa5d9fd5b5774fc650656c88bb25db21bdbda905b33ae1b04b7b02f86",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-f99dcaecbb8a1f2c.txt",
+      "bytes": 195,
+      "aliases": [
+        "A:Vs"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-112187066c506a57",
+      "sourcePath": "app.asar/webview/assets/editor-dialog-21b6b4f99a69.js",
+      "sourceHash": "1a02209ea4476b9d72900c785b6e1a0a9487a16da7e2ac3b4c16d85dcf32def9",
+      "locator": {
+        "byteRange": {
+          "start": 16958,
+          "endExclusive": 17296
+        },
+        "spanHash": "f7ef91b359e8f01c38841e063a4acaf7858cc537e25b9116decd361f100d67b4",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-112187066c506a57.txt",
+      "bytes": 338,
+      "aliases": [
+        "E:sn"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-86310d5882c17aa2",
+      "sourcePath": "app.asar/webview/assets/editor-dialog-21b6b4f99a69.js",
+      "sourceHash": "1a02209ea4476b9d72900c785b6e1a0a9487a16da7e2ac3b4c16d85dcf32def9",
+      "locator": {
+        "byteRange": {
+          "start": 16386,
+          "endExclusive": 16958
+        },
+        "spanHash": "2e26d9f3921e17ef40f5683e8b7388d1578850d49b817cb3de8044848de45b2c",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-86310d5882c17aa2.txt",
+      "bytes": 572,
+      "aliases": [
+        "E:on"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-80f33dda4898081c",
+      "sourcePath": "app.asar/webview/assets/editor-dialog-21b6b4f99a69.js",
+      "sourceHash": "1a02209ea4476b9d72900c785b6e1a0a9487a16da7e2ac3b4c16d85dcf32def9",
+      "locator": {
+        "byteRange": {
+          "start": 17359,
+          "endExclusive": 17455
+        },
+        "spanHash": "cac6a3b37b6fedfe1abcdf5a6e52d27a446e9ca53f20789e1b8fbbb6e3c25f60",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-80f33dda4898081c.txt",
+      "bytes": 96,
+      "aliases": [
+        "E:un"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-363befc4d36e023c",
+      "sourcePath": "app.asar/webview/assets/editor-dialog-21b6b4f99a69.js",
+      "sourceHash": "1a02209ea4476b9d72900c785b6e1a0a9487a16da7e2ac3b4c16d85dcf32def9",
+      "locator": {
+        "byteRange": {
+          "start": 17296,
+          "endExclusive": 17352
+        },
+        "spanHash": "22d041ccabb8d0a0da581d097f31cd8ba3e9cb1fd7c2aa9c4894b18a8108320e",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-363befc4d36e023c.txt",
+      "bytes": 56,
+      "aliases": [
+        "E:cn"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-b500adc788e54fbe",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 3668391,
+          "endExclusive": 3668877
+        },
+        "spanHash": "d2dd724484771110b77f42e4771f87241d5bfbd6a3e6b91fe177fbe44b16e71b",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-b500adc788e54fbe.txt",
+      "bytes": 486,
+      "aliases": [
+        "S:FJ"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-3ed9f3567b985252",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5857618,
+          "endExclusive": 5857822
+        },
+        "spanHash": "027f99e718b9ffd780c518c96de7b2e7c29353049f3b32de78962a3fd59373fc",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-3ed9f3567b985252.txt",
+      "bytes": 204,
+      "aliases": [
+        "S:Bhi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-204cf8cd825758e2",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 79126,
+          "endExclusive": 79924
+        },
+        "spanHash": "c3722c343d6b0b44b2e0966ab230a71078ec16c01d4b5df3104c20e920d5a7f9",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-204cf8cd825758e2.txt",
+      "bytes": 798,
+      "aliases": [
+        "A:Ys"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-d4e09fd8d6c219e4",
+      "sourcePath": "app.asar/webview/assets/habitat-automation-migration-state-2d2fb955528f.js",
+      "sourceHash": "210a6ae3021dc4a8763edc276d0686414b90afd95e62c19e5a08d128af566d44",
+      "locator": {
+        "byteRange": {
+          "start": 247,
+          "endExclusive": 836
+        },
+        "spanHash": "58f035365a1897c9d95581f5fb62473dd211e8c69ee3d59503327d42bffcafe3",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-d4e09fd8d6c219e4.txt",
+      "bytes": 589,
+      "aliases": [
+        "M:y"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-10775706e68b9a3e",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 12871,
+          "endExclusive": 15633
+        },
+        "spanHash": "98f4f9167840c38b57ba42af467368b9184603fdda656381debb18b74f8def0d",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-10775706e68b9a3e.txt",
+      "bytes": 2762,
+      "aliases": [
+        "A:Fo"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-249e040ddbce50ea",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 84016,
+          "endExclusive": 90210
+        },
+        "spanHash": "d34aad7cde0febd709a16080b1a94423a25c643041251db2f36129f6b4702441",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-249e040ddbce50ea.txt",
+      "bytes": 6194,
+      "aliases": [
+        "A:$s"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-008e3fb6dcfd163e",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 18898,
+          "endExclusive": 19309
+        },
+        "spanHash": "12a20bc2bf0969be8fb68cf18ca0b04af284255e61078b5b941b9070c13b4426",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-008e3fb6dcfd163e.txt",
+      "bytes": 411,
+      "aliases": [
+        "A:Ho"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-e10a242348160b21",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5858279,
+          "endExclusive": 5858410
+        },
+        "spanHash": "117dac32366021eb61d75323f19fa8ee9c023df91a11b481fdc6937c1256b7e7",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-e10a242348160b21.txt",
+      "bytes": 131,
+      "aliases": [
+        "S:Whi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-faa90ddbb404a284",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5859513,
+          "endExclusive": 5859728
+        },
+        "spanHash": "fb5cf70ce63631a6ee62e3ddde03d99c7fdb405317fc1aa1b78bb5675fc10eee",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-faa90ddbb404a284.txt",
+      "bytes": 215,
+      "aliases": [
+        "S:Yhi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-8054038f76837dab",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3403599,
+          "endExclusive": 3403741
+        },
+        "spanHash": "adbd2cd0355e9d46380f9efe2cc2a45df09ed6091a4c8393ed0fd6f0160af509",
+        "nodeType": "VariableDeclarator"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-8054038f76837dab.txt",
+      "bytes": 142,
+      "aliases": [
+        "N:I"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-439db21e733939f4",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3411604,
+          "endExclusive": 3411718
+        },
+        "spanHash": "5d821d9b0613866aba8d94c39a724d493378e0a7073c26881297083f64e97f62",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-439db21e733939f4.txt",
+      "bytes": 114,
+      "aliases": [
+        "N:I2"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-e900392ab3eeb31b",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3411890,
+          "endExclusive": 3412016
+        },
+        "spanHash": "f04ce76671ce60bc0a858a19169c68ac919c159ca6f51fc25909c48109b7e7e9",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-e900392ab3eeb31b.txt",
+      "bytes": 126,
+      "aliases": [
+        "N:I3"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-3dabf3acffca0a15",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3417265,
+          "endExclusive": 3417362
+        },
+        "spanHash": "ad1a40bfa3fe9b77e51239809c0381e32a3c2f496e6cefbaee001c0774c2e7cc",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-3dabf3acffca0a15.txt",
+      "bytes": 97,
+      "aliases": [
+        "N:I4"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-872b5f32d9935e24",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3417366,
+          "endExclusive": 3417472
+        },
+        "spanHash": "a9f370525490f1496298909309528baa49a93f8e03d95b2a6aa7c85d060b5913",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-872b5f32d9935e24.txt",
+      "bytes": 106,
+      "aliases": [
+        "N:I5"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-b84e264b3ad17484",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3417508,
+          "endExclusive": 3417615
+        },
+        "spanHash": "4523ba35b90d94c8f3ae396fc33a22321d0e97de629aa0268a5474c7b3d5156b",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-b84e264b3ad17484.txt",
+      "bytes": 107,
+      "aliases": [
+        "N:I6"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-fed7a4409125523c",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3417653,
+          "endExclusive": 3417832
+        },
+        "spanHash": "4e69486c63ea2e7285a7d2330d32eb3e05de6e15e4e79b3206ee47bd24f37aed",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-fed7a4409125523c.txt",
+      "bytes": 179,
+      "aliases": [
+        "N:I7"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-06cbdb5f50f063d9",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3418037,
+          "endExclusive": 3418120
+        },
+        "spanHash": "77c844927e364179a81ed301c563b5c1f520b2fcb2fd4cc806e34d3a70090ff4",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-06cbdb5f50f063d9.txt",
+      "bytes": 83,
+      "aliases": [
+        "N:I8"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-abc6ce6beb0ca467",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3418951,
+          "endExclusive": 3419051
+        },
+        "spanHash": "b058d9111b1e30179e084f12b934a5efbf2ec36744ba3719f7b7c933fe05b958",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-abc6ce6beb0ca467.txt",
+      "bytes": 100,
+      "aliases": [
+        "N:I9"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-04e5b436ccc7ac2a",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3419055,
+          "endExclusive": 3419157
+        },
+        "spanHash": "a0e03c165da30c71c1da6bc2fef4acdf843d1bfaaa0666c8e0fef99361182981",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-04e5b436ccc7ac2a.txt",
+      "bytes": 102,
+      "aliases": [
+        "N:I10"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-a892af047c7a6fe7",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "byteRange": {
+          "start": 3419161,
+          "endExclusive": 3419256
+        },
+        "spanHash": "0e2ca8f4d0517a0cb9ada522649a2cd8c46042f4260774e65312fee459831e1a",
+        "nodeType": "CallExpression"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-a892af047c7a6fe7.txt",
+      "bytes": 95,
+      "aliases": [
+        "N:I11"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-8c07b911b417ebae",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 96079,
+          "endExclusive": 101151
+        },
+        "spanHash": "9d8da2b34619a03b9a0514adebb3b5881443f870bca82ade82b5b079532377f5",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-8c07b911b417ebae.txt",
+      "bytes": 5072,
+      "aliases": [
+        "A:ic"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-21733d18728fc214",
+      "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+      "locator": {
+        "byteRange": {
+          "start": 5612,
+          "endExclusive": 7868
+        },
+        "spanHash": "022fab4f00396d2fc5514a086dc80b7958eb7ab06023b3371ca2ce5d12fde816",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-21733d18728fc214.txt",
+      "bytes": 2256,
+      "aliases": [
+        "A:xo"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-770622b47e908899",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5859835,
+          "endExclusive": 5860642
+        },
+        "spanHash": "7bf23697bf527f7d1107d5da545491e7b597462d4072d2dfdf068f104dc04912",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-770622b47e908899.txt",
+      "bytes": 807,
+      "aliases": [
+        "S:Zhi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-f6a468b54d6500b7",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5871273,
+          "endExclusive": 5871890
+        },
+        "spanHash": "d3bf855e05fc51977c3973af92fdf19809601b9a8537b7b4d4b5d0a82a49ff88",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-f6a468b54d6500b7.txt",
+      "bytes": 617,
+      "aliases": [
+        "S:Ogi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-f8e217c5e70399f5",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "byteRange": {
+          "start": 5864545,
+          "endExclusive": 5864828
+        },
+        "spanHash": "c8b069a6107d64b06e8f746a45b696d71dbd023cdb6f1f2f135685b359c7686f",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-f8e217c5e70399f5.txt",
+      "bytes": 283,
+      "aliases": [
+        "S:ogi"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-afb275c37037e64f",
+      "sourcePath": "app.asar/webview/assets/editor-dialog-21b6b4f99a69.js",
+      "sourceHash": "1a02209ea4476b9d72900c785b6e1a0a9487a16da7e2ac3b4c16d85dcf32def9",
+      "locator": {
+        "byteRange": {
+          "start": 42007,
+          "endExclusive": 42301
+        },
+        "spanHash": "bb02a4f590311ad7a43bd455d729afd9743d8b515c45b6c3e8a5a8fd8253bdfc",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-afb275c37037e64f.txt",
+      "bytes": 294,
+      "aliases": [
+        "E:En"
+      ]
+    },
+    {
+      "sourceId": "AIEC-SOURCE-276789aa56aa6247",
+      "sourcePath": "app.asar/webview/assets/editor-dialog-21b6b4f99a69.js",
+      "sourceHash": "1a02209ea4476b9d72900c785b6e1a0a9487a16da7e2ac3b4c16d85dcf32def9",
+      "locator": {
+        "byteRange": {
+          "start": 42301,
+          "endExclusive": 44558
+        },
+        "spanHash": "055a74e5557ee08870c8a8eb2f042e90bcf7b83a7b2424fae9be4c28d03954cf",
+        "nodeType": "FunctionDeclaration"
+      },
+      "savedSource": "raw/automations-entry-contracts-v1/source-units/AIEC-SOURCE-276789aa56aa6247.txt",
+      "bytes": 2257,
+      "aliases": [
+        "E:Dn"
+      ]
+    }
+  ],
+  "literalBindingJoins": [
+    {
+      "consumerFile": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "consumerImport": {
+        "local": "ce",
+        "imported": "Lj",
+        "module": "./app-shared-8bd9d0399038.js",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 481,
+            "endExclusive": 489
+          },
+          "spanHash": "ee26b12e8cc11acd0688cab7e1265be0c630e0064b09c2b02bfa05dba1bf8c75",
+          "nodeType": "ImportSpecifier"
+        },
+        "declaration": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 62,
+            "endExclusive": 2057
+          },
+          "spanHash": "4210a38e489d3b8ae575b10785013c9f2e1bfe108cb493ebae71a7d3aab3f32f",
+          "nodeType": "ImportDeclaration"
+        }
+      },
+      "providerFile": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "providerExport": {
+        "local": "Khi",
+        "exported": "Lj",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 8110416,
+            "endExclusive": 8110425
+          },
+          "spanHash": "ac8ea4d5d770b23d27d55be482eeee3b72ee0900b94b5ba0cda76e131fb4b69c",
+          "nodeType": "ExportSpecifier"
+        }
+      },
+      "verifiedExportBinding": "Khi",
+      "method": "literal import/export join from original Program AST"
+    },
+    {
+      "consumerFile": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "consumerImport": {
+        "local": "N",
+        "imported": "Ej",
+        "module": "./app-shared-8bd9d0399038.js",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 339,
+            "endExclusive": 346
+          },
+          "spanHash": "0253323332cb22ef19a27277be5dbc7c997add8fad11b09af61ead8495fcbaef",
+          "nodeType": "ImportSpecifier"
+        },
+        "declaration": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 62,
+            "endExclusive": 2057
+          },
+          "spanHash": "4210a38e489d3b8ae575b10785013c9f2e1bfe108cb493ebae71a7d3aab3f32f",
+          "nodeType": "ImportDeclaration"
+        }
+      },
+      "providerFile": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "providerExport": {
+        "local": "cgi",
+        "exported": "Ej",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 8099435,
+            "endExclusive": 8099444
+          },
+          "spanHash": "d6c197e4ea152410504d30643df7eeb9eafd39c5944f3c5fd3389027576493ea",
+          "nodeType": "ExportSpecifier"
+        }
+      },
+      "verifiedExportBinding": "cgi",
+      "method": "literal import/export join from original Program AST"
+    },
+    {
+      "consumerFile": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "consumerImport": {
+        "local": "me",
+        "imported": "Mj",
+        "module": "./app-shared-8bd9d0399038.js",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 539,
+            "endExclusive": 547
+          },
+          "spanHash": "aab91c0ab08007780bf47ecf2bf9173967056fff5c1ee3bb6f39e8c1270bba87",
+          "nodeType": "ImportSpecifier"
+        },
+        "declaration": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 62,
+            "endExclusive": 2057
+          },
+          "spanHash": "4210a38e489d3b8ae575b10785013c9f2e1bfe108cb493ebae71a7d3aab3f32f",
+          "nodeType": "ImportDeclaration"
+        }
+      },
+      "providerFile": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "providerExport": {
+        "local": "sgi",
+        "exported": "Mj",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 8111992,
+            "endExclusive": 8112001
+          },
+          "spanHash": "bbdf86253469efea64853e9236628b4b9aff9b5e268e9229ce9767d50c2b0951",
+          "nodeType": "ExportSpecifier"
+        }
+      },
+      "verifiedExportBinding": "sgi",
+      "method": "literal import/export join from original Program AST"
+    },
+    {
+      "consumerFile": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "consumerImport": {
+        "local": "W",
+        "imported": "dj",
+        "module": "./app-shared-8bd9d0399038.js",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 1245,
+            "endExclusive": 1252
+          },
+          "spanHash": "ae8786a98e5716f55adf11ff17e6bfe16c7bab98e5572ffe45ea8b365c95e511",
+          "nodeType": "ImportSpecifier"
+        },
+        "declaration": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 62,
+            "endExclusive": 2057
+          },
+          "spanHash": "4210a38e489d3b8ae575b10785013c9f2e1bfe108cb493ebae71a7d3aab3f32f",
+          "nodeType": "ImportDeclaration"
+        }
+      },
+      "providerFile": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "providerExport": {
+        "local": "Sgi",
+        "exported": "dj",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 8140307,
+            "endExclusive": 8140316
+          },
+          "spanHash": "521273fec5ec81d973e4cebd3eb6951d3cdf049c4eef8e9b5d109e2766966bab",
+          "nodeType": "ExportSpecifier"
+        }
+      },
+      "verifiedExportBinding": "Sgi",
+      "method": "literal import/export join from original Program AST"
+    },
+    {
+      "consumerFile": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "consumerImport": {
+        "local": "Pn",
+        "imported": "tj",
+        "module": "./app-shared-8bd9d0399038.js",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 1763,
+            "endExclusive": 1771
+          },
+          "spanHash": "fe6360dbbf9daecb0f79ecdc46061251e944790f404619bab6aba04ddfed5e1c",
+          "nodeType": "ImportSpecifier"
+        },
+        "declaration": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 62,
+            "endExclusive": 2057
+          },
+          "spanHash": "4210a38e489d3b8ae575b10785013c9f2e1bfe108cb493ebae71a7d3aab3f32f",
+          "nodeType": "ImportDeclaration"
+        }
+      },
+      "providerFile": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "providerExport": {
+        "local": "Ogi",
+        "exported": "tj",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 8165568,
+            "endExclusive": 8165577
+          },
+          "spanHash": "7aa3c4d0d24ba6cbd2349007d73a3d872db4a85cff1a8aca470fbb1081d59b87",
+          "nodeType": "ExportSpecifier"
+        }
+      },
+      "verifiedExportBinding": "Ogi",
+      "method": "literal import/export join from original Program AST"
+    },
+    {
+      "consumerFile": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "consumerImport": {
+        "local": "Qn",
+        "imported": "xj",
+        "module": "./app-shared-8bd9d0399038.js",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 1934,
+            "endExclusive": 1942
+          },
+          "spanHash": "669a53f790497eba04a8a263152f82e3b73898dccc94d242d6e8bce21c011703",
+          "nodeType": "ImportSpecifier"
+        },
+        "declaration": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 62,
+            "endExclusive": 2057
+          },
+          "spanHash": "4210a38e489d3b8ae575b10785013c9f2e1bfe108cb493ebae71a7d3aab3f32f",
+          "nodeType": "ImportDeclaration"
+        }
+      },
+      "providerFile": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "providerExport": {
+        "local": "ogi",
+        "exported": "xj",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "byteRange": {
+            "start": 8171896,
+            "endExclusive": 8171905
+          },
+          "spanHash": "11fc4cd5ecd1abc18f2765dbc5b539039dc047ea320dd8dbbcedc7e73cbaffbc",
+          "nodeType": "ExportSpecifier"
+        }
+      },
+      "verifiedExportBinding": "ogi",
+      "method": "literal import/export join from original Program AST"
+    },
+    {
+      "consumerFile": "app.asar/webview/assets/automations-page-aa8b83be2225.js",
+      "consumerImport": {
+        "local": "t",
+        "imported": "t",
+        "module": "./automations-page-58e351b49373.js",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-aa8b83be2225.js",
+          "sourceHash": "3bc313016f0f11d638c131965e6a2b2573538095259c4cbe356d7be63fafa602",
+          "byteRange": {
+            "start": 51,
+            "endExclusive": 52
+          },
+          "spanHash": "e3b98a4da31a127d4bde6e43033f66ba274cab0eb7eb1c70ec41402bf6273dd8",
+          "nodeType": "ImportSpecifier"
+        },
+        "declaration": {
+          "sourcePath": "app.asar/webview/assets/automations-page-aa8b83be2225.js",
+          "sourceHash": "3bc313016f0f11d638c131965e6a2b2573538095259c4cbe356d7be63fafa602",
+          "byteRange": {
+            "start": 37,
+            "endExclusive": 94
+          },
+          "spanHash": "984ebc562426b9965b959b43c8f4a6759d656baf618ec77761532542c3148ad3",
+          "nodeType": "ImportDeclaration"
+        }
+      },
+      "providerFile": "app.asar/webview/assets/automations-page-58e351b49373.js",
+      "providerExport": {
+        "local": "Gs",
+        "exported": "t",
+        "reference": {
+          "sourcePath": "app.asar/webview/assets/automations-page-58e351b49373.js",
+          "sourceHash": "5f9e93861ef90205acce1ad63e478ff17731b92d06f54dcc25f5bd9e9fb3ef34",
+          "byteRange": {
+            "start": 103076,
+            "endExclusive": 103083
+          },
+          "spanHash": "210df9b97f670ae232d4d319150c46651704e53c70d075ea302ae641acbeeb42",
+          "nodeType": "ExportSpecifier"
+        }
+      },
+      "verifiedExportBinding": "Gs",
+      "method": "literal import/export join from original Program AST"
+    }
+  ],
+  "storageQualification": {
+    "rendererCloudApi": "Distinct service boundary; identical endpoint paths do not prove shared main-process credentials or backing store.",
+    "oauthDraft": "FJ persisted-atom facade only; physical namespace, actual storage and restart durability unresolved."
+  },
+  "mechanismDisposition": {
+    "entry": "native-menu-schema:a43c47f15fd65a4dc7702e0c",
+    "classification": "generic hidden accelerator item factory",
+    "sourceIds": [
+      "AIEC-SOURCE-8054038f76837dab",
+      "AIEC-SOURCE-439db21e733939f4",
+      "AIEC-SOURCE-e900392ab3eeb31b",
+      "AIEC-SOURCE-3dabf3acffca0a15",
+      "AIEC-SOURCE-872b5f32d9935e24",
+      "AIEC-SOURCE-b84e264b3ad17484",
+      "AIEC-SOURCE-fed7a4409125523c",
+      "AIEC-SOURCE-06cbdb5f50f063d9",
+      "AIEC-SOURCE-abc6ce6beb0ca467",
+      "AIEC-SOURCE-04e5b436ccc7ac2a",
+      "AIEC-SOURCE-a892af047c7a6fe7"
+    ],
+    "callerFeatureIds": [
+      "FSC-0408",
+      "FSC-0421",
+      "FSC-0400",
+      "FSC-0405",
+      "FSC-0422",
+      "FSC-0424"
+    ],
+    "qualification": "Proposed source disposition; legacy ledger not changed by this package."
+  },
+  "remainingWork": [
+    "Integrate the eleven proposed definitions and history operations with existing feature and entry ledgers after overlap review.",
+    "Retained entry owners and per-feature storage coverage remain open; use existing contracts rather than recursively re-auditing providers.",
+    "Runtime, service, native and build acceptance require their own evidence; static review is not a substitute."
+  ],
+  "counts": {
+    "sourceFacts": 18,
+    "sourceUnits": 96,
+    "literalBindingJoins": 7,
+    "newFeatureProposals": 11,
+    "reusedFeatureProposals": 1,
+    "newOperationProposals": 22,
+    "unexecutedScenarioSpecifications": 33,
+    "maintenanceBoundaryProposals": 6,
+    "mechanismDispositionsProposed": 1,
+    "globalFeaturesUnchanged": 426,
+    "globalUnexecutedScenariosUnchanged": 1407
+  }
+}

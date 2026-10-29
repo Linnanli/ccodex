@@ -1,0 +1,59 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T18:16:57.357329+00:00",
+  "kind": "authored-primary-source-review; not an upstream byte snapshot",
+  "hashMeaning": "A local hash identifies this review record only. No upstream source archive or binary was acquired by this review.",
+  "observations": [
+    {
+      "id": "PUB-01",
+      "url": "https://github.com/electron/electron/releases/tag/v42.3.0",
+      "supportingUrl": "https://github.com/electron/electron/commit/e0127e99aeaa66bb580538fc7409831b5248cccb",
+      "locator": "release commit link; commit full URL",
+      "finding": "The v42.3.0 release links to the full Electron commit recorded below.",
+      "sourceCommit": "e0127e99aeaa66bb580538fc7409831b5248cccb",
+      "relationToOwl": "unproven",
+      "checkoutAcquired": false
+    },
+    {
+      "id": "PUB-02",
+      "url": "https://github.com/electron/electron/commit/e0127e99aeaa66bb580538fc7409831b5248cccb",
+      "locator": "DEPS diff, context lines 6-7",
+      "finding": "The selected commit shows node_version v24.15.0. This is source metadata, not a measured Node version of a running Electron binary.",
+      "nodeVersionInDeps": "24.15.0"
+    },
+    {
+      "id": "PUB-03",
+      "url": "https://nodejs.org/download/release/v24.19.0/docs/api/permissions.html",
+      "locator": "Permission Model and Permission Model constraints",
+      "finding": "The fixed document enumerates filesystem, process, worker, addon, WASI and inspector restrictions. It does not document the required scoped IPC and network policy."
+    },
+    {
+      "id": "PUB-04",
+      "url": "https://nodejs.org/download/release/v24.19.0/docs/api/cli.html",
+      "locator": "full rendered document searches for --allow-ipc and --allow-net",
+      "finding": "Neither flag name was found in this fixed CLI document. This is a bounded documentation observation, not proof about all Node versions or forks."
+    },
+    {
+      "id": "PUB-05",
+      "url": "https://raw.githubusercontent.com/sparkle-project/Sparkle/2.9.1/Package.swift",
+      "locator": "version/tag/checksum declarations and targets.binaryTarget",
+      "finding": "The Sparkle 2.9.1 Swift package consumes a binary target; using this package is a precompiled dependency route, not evidence of building Sparkle from source.",
+      "version": "2.9.1",
+      "binaryTargetChecksum": "9fec2b888e6e2940b1bfbd5d3d010b9f67076b52170923549095cbb74132403b"
+    }
+  ],
+  "earlierAcquisitionLimits": [
+    {
+      "url": "https://github.com/electron/electron/tree/v42.3.0",
+      "result": "web cache miss in preceding investigation; not a repository absence finding"
+    },
+    {
+      "url": "https://github.com/electron/electron/blob/e0127e99aeaa66bb580538fc7409831b5248cccb/docs/development/build-instructions-macos.md",
+      "result": "web cache miss in preceding investigation; build recipe not acquired"
+    },
+    {
+      "url": "https://github.com/electron/electron/blob/e0127e99aeaa66bb580538fc7409831b5248cccb/docs/development/build-instructions-gn.md",
+      "result": "web cache miss in preceding investigation; build recipe not acquired"
+    }
+  ]
+}

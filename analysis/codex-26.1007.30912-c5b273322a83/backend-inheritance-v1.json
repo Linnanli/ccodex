@@ -1,0 +1,799 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T23:10:19.173741+00:00",
+  "commit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+  "facts": [
+    {
+      "id": "BI-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "core导出所选ThreadManager、CodexThread及Overrides；父查找读live registry，仅返回非internal线程，否则ThreadNotFound。因此此入口的loaded parent不等于任意已存储历史或内部会话。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+      "sourceHash": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d",
+      "locator": {
+        "byteRange": {
+          "start": 66915,
+          "endExclusive": 67279
+        },
+        "spanHash": "cfca3f4c708ba027460dc44039d4a0f02ed2480e404bc8ff051a1561bf9a3f11"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance",
+      "relatedEvidence": [
+        "core-exports"
+      ]
+    },
+    {
+      "id": "BI-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "fork_options_from_parent取得父Session::fork_config结果，显式传history_mode、环境requests、独立live环境快照、client MCP extensions、disabled plugins、reasoning pin及turn extension数据；另返回collaboration_mode和windows_sandbox_level两个显式恢复覆盖。不能把它改成只复制model/cwd。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+      "sourceHash": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d",
+      "locator": {
+        "byteRange": {
+          "start": 57334,
+          "endExclusive": 58664
+        },
+        "spanHash": "ac347120c0d1f72027043424e2358afe01d7dbe6e21401fcc5dec99a031b9e3a"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance"
+    },
+    {
+      "id": "BI-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Session::fork_config在state锁内复制session_configuration、snapshot_now环境及reasoning pin；释放该锁后物化配置并可能await模型信息，再返回配置、快照、沙箱级别、环境和pin。它没有连同调用方先前读取的持久化历史做一笔全流程原子快照。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+      "sourceHash": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438",
+      "locator": {
+        "byteRange": {
+          "start": 83829,
+          "endExclusive": 85517
+        },
+        "spanHash": "dfafe063c05782f90c8e17d1e97302133dacc93076f2583ec91e8930207ab36a"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance"
+    },
+    {
+      "id": "BI-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "父ReasoningEffortOverride关闭时，fork_config使用配置effort或模型default重新计算Active pin；两者均缺失时保留已捕获pin。调用方稍后在child启用该feature，故pin传递是独立语义，不能仅复制feature布尔值。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+      "sourceHash": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438",
+      "locator": {
+        "byteRange": {
+          "start": 83829,
+          "endExclusive": 85517
+        },
+        "spanHash": "dfafe063c05782f90c8e17d1e97302133dacc93076f2583ec91e8930207ab36a"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance",
+      "relatedEvidence": [
+        "caller-fork-guards-and-inheritance"
+      ]
+    },
+    {
+      "id": "BI-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "StartThreadOptions::new默认dynamic_tools为空、thread_instructions_provider为None。Session启动在dynamic_tools为空时从conversation_history.get_dynamic_tools取spec；这是历史元数据恢复路径，不等于深拷贝所有实时工具/MCP管理器。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+      "sourceHash": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438",
+      "locator": {
+        "byteRange": {
+          "start": 32413,
+          "endExclusive": 32694
+        },
+        "spanHash": "a39bccf2245a6a2e99da4e8dfb250f8b67d459ad8434a650823da6a8e0bf7a72"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance",
+      "relatedEvidence": [
+        "options-and-defaults"
+      ]
+    },
+    {
+      "id": "BI-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "fork_thread_with_initial_history在后续启动查找前捕获已应用instructions，保留fork自己的provider；之后应用fork history snapshot并spawn。源任务绑定回调不会作为新root provider继承。相关源码测试描述源在线程启动途中卸载后的instructions保留，但本批未运行。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+      "sourceHash": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d",
+      "locator": {
+        "byteRange": {
+          "start": 61948,
+          "endExclusive": 64295
+        },
+        "spanHash": "391744eb51005a17f6142d4374721542b8849da53a34b1d5bf045ec268967bc9"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance",
+      "relatedEvidence": [
+        "test-live-instructions"
+      ]
+    },
+    {
+      "id": "BI-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "CodexThread::restore_thread_settings先把Overrides映射为SessionSettingsUpdate，直接await Session::update_settings并丢弃commit快照；它不同于经Op::ThreadSettings和oneshot等待的公开queued update入口。映射保留collaboration、权限、环境及其他可选字段，未设置字段不是强制重置。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/codex-thread.response",
+      "sourceHash": "33a87f94277d0c2ba8f3c54955e606cd549a793ef616450a9a320e765d44ae83",
+      "locator": {
+        "byteRange": {
+          "start": 27683,
+          "endExclusive": 27952
+        },
+        "spanHash": "eb79a18b4d963862475c89e428d2a1496b39e532dd2ac9f91b0118b922976298"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance",
+      "relatedEvidence": [
+        "restore-field-mapping",
+        "queued-settings-entry"
+      ]
+    },
+    {
+      "id": "BI-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Session::update_settings_if在state锁内apply/validate候选并判断predicate，拒绝路径在配置赋值前返回；接受路径先标记需要的MCP dirty、发布新配置与commit快照，锁外再通知config contributors、刷新权限代理及安排MCP prewarm。此处调用顺序不证明外部刷新已经可用。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+      "sourceHash": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438",
+      "locator": {
+        "byteRange": {
+          "start": 76971,
+          "endExclusive": 81110
+        },
+        "spanHash": "c44b09086823012ae26d4411e50655061661d0b41f25532c5bbc1056defdeae2"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance"
+    },
+    {
+      "id": "BI-F09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "该直接restore链不调用thread_settings persistence permit或emit_applied。另一个standalone/checkpoint路径显式持有permit、append/flush或发ThreadSettingsApplied；不能据restore返回Ok就宣称持久化完成或通知送达。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-thread-settings.response",
+      "sourceHash": "7d7307a9d1c15dcf570ec8a4409e96afdb51928eebaefb867687edb112dda9d0",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 4858
+        },
+        "spanHash": "7d7307a9d1c15dcf570ec8a4409e96afdb51928eebaefb867687edb112dda9d0"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance",
+      "relatedEvidence": [
+        "restore-entry",
+        "session-update"
+      ]
+    },
+    {
+      "id": "BI-F10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "spawn成功路径先finalize并将CodexThread插入registry，然后返回NewThread；app-server随后restore设置。restore约束失败会由调用方转成invalid_request，而所选handler没有在这个分支显式撤销已登记child。错误响应不能直接解释为没有创建线程；全局后续清理和实际可观察结果仍未验证。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+      "sourceHash": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d",
+      "locator": {
+        "byteRange": {
+          "start": 98796,
+          "endExclusive": 101583
+        },
+        "spanHash": "ef45e131ce22e9b48b6eea686c42955ccd58bafb0fd990afff2b162c73bfbfb0"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance",
+      "relatedEvidence": [
+        "caller-fork-creation-and-restore"
+      ]
+    },
+    {
+      "id": "BI-F11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "已有resume_and_fork_do_not_restore_thread_environments_from_rollout测试针对普通冷恢复/历史fork，预期采用默认cwd而非旧rollout环境。它不能替代显式携带live环境快照的预测fork证据。所读thread_manager_tests中没有直接调用fork_options_from_parent或restore_thread_settings；不据此断言其他文件无测试。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager-tests.response",
+      "sourceHash": "60ea0ce7136fcc193c216449bfb570e0e5c7ecbd53a706101cd6355559aff8ce",
+      "locator": {
+        "byteRange": {
+          "start": 74060,
+          "endExclusive": 79068
+        },
+        "spanHash": "15af97c71d74ccce854e59f76960a6893bc6617308b2ae3d8800ff27801c0889"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "confirmed",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance"
+    },
+    {
+      "id": "BI-F12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "两条命名核心边界已追踪到直接会话实现和调用方顺序；effective config物化细节、环境/provider/MCP后效、实际工具继承、成功预测及清理仍以明确边界保留。本批只读10个同提交HTTP响应，未运行这些Rust测试、后台、客户端或模型。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+      "sourceHash": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d",
+      "locator": {
+        "byteRange": {
+          "start": 57334,
+          "endExclusive": 58664
+        },
+        "spanHash": "ac347120c0d1f72027043424e2358afe01d7dbe6e21401fcc5dec99a031b9e3a"
+      },
+      "method": "Exact-commit public source acquisition and complete selected Rust method/caller inspection; existing test source read without execution.",
+      "confidence": "inferred",
+      "verificationStatus": "static-contract-only; no compiled backend, live inheritance, model success or durability acceptance"
+    }
+  ],
+  "sourceUnits": {
+    "core-exports": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/core-lib.response",
+        "bytes": 8868,
+        "sha256": "2b4800fd9721d66e95ed0aef111c8f1586e1c5f3f75f1a8e7ae7ad94c55ddaa3"
+      },
+      "byteRange": {
+        "start": 1915,
+        "endExclusive": 5345
+      },
+      "spanHash": "555fbe4afc4305dcc569c19dbe12b24c5804e403fd304995d4335a63b5e42497",
+      "startLine": 50
+    },
+    "parent-options": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+        "bytes": 111860,
+        "sha256": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d"
+      },
+      "byteRange": {
+        "start": 57334,
+        "endExclusive": 58664
+      },
+      "spanHash": "ac347120c0d1f72027043424e2358afe01d7dbe6e21401fcc5dec99a031b9e3a",
+      "startLine": 1438
+    },
+    "options-and-defaults": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+        "bytes": 111860,
+        "sha256": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d"
+      },
+      "byteRange": {
+        "start": 10017,
+        "endExclusive": 13306
+      },
+      "spanHash": "76986929ee6ead7e0811475a878293c9f857b6626796aa8a0e5f4b1740d99879",
+      "startLine": 262
+    },
+    "parent-lookup": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+        "bytes": 111860,
+        "sha256": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d"
+      },
+      "byteRange": {
+        "start": 66915,
+        "endExclusive": 67279
+      },
+      "spanHash": "cfca3f4c708ba027460dc44039d4a0f02ed2480e404bc8ff051a1561bf9a3f11",
+      "startLine": 1694
+    },
+    "fork-history-and-instructions": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+        "bytes": 111860,
+        "sha256": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d"
+      },
+      "byteRange": {
+        "start": 61948,
+        "endExclusive": 64295
+      },
+      "spanHash": "391744eb51005a17f6142d4374721542b8849da53a34b1d5bf045ec268967bc9",
+      "startLine": 1558
+    },
+    "spawn-registration": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+        "bytes": 111860,
+        "sha256": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d"
+      },
+      "byteRange": {
+        "start": 98796,
+        "endExclusive": 101583
+      },
+      "spanHash": "ef45e131ce22e9b48b6eea686c42955ccd58bafb0fd990afff2b162c73bfbfb0",
+      "startLine": 2445
+    },
+    "session-fork-config": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+        "bytes": 209320,
+        "sha256": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438"
+      },
+      "byteRange": {
+        "start": 83829,
+        "endExclusive": 85517
+      },
+      "spanHash": "dfafe063c05782f90c8e17d1e97302133dacc93076f2583ec91e8930207ab36a",
+      "startLine": 2066
+    },
+    "session-update": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+        "bytes": 209320,
+        "sha256": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438"
+      },
+      "byteRange": {
+        "start": 76971,
+        "endExclusive": 81110
+      },
+      "spanHash": "c44b09086823012ae26d4411e50655061661d0b41f25532c5bbc1056defdeae2",
+      "startLine": 1899
+    },
+    "dynamic-tools-from-history": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+        "bytes": 209320,
+        "sha256": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438"
+      },
+      "byteRange": {
+        "start": 32413,
+        "endExclusive": 32694
+      },
+      "spanHash": "a39bccf2245a6a2e99da4e8dfb250f8b67d459ad8434a650823da6a8e0bf7a72",
+      "startLine": 772
+    },
+    "restore-entry": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/codex-thread.response",
+        "bytes": 47980,
+        "sha256": "33a87f94277d0c2ba8f3c54955e606cd549a793ef616450a9a320e765d44ae83"
+      },
+      "byteRange": {
+        "start": 27683,
+        "endExclusive": 27952
+      },
+      "spanHash": "eb79a18b4d963862475c89e428d2a1496b39e532dd2ac9f91b0118b922976298",
+      "startLine": 702
+    },
+    "restore-field-mapping": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/codex-thread.response",
+        "bytes": 47980,
+        "sha256": "33a87f94277d0c2ba8f3c54955e606cd549a793ef616450a9a320e765d44ae83"
+      },
+      "byteRange": {
+        "start": 28259,
+        "endExclusive": 29738
+      },
+      "spanHash": "0ab88745049e05dc18cb525c7a9d7bc01ec5a95d901a640585257a0370d89c77",
+      "startLine": 717
+    },
+    "queued-settings-entry": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/codex-thread.response",
+        "bytes": 47980,
+        "sha256": "33a87f94277d0c2ba8f3c54955e606cd549a793ef616450a9a320e765d44ae83"
+      },
+      "byteRange": {
+        "start": 26719,
+        "endExclusive": 27426
+      },
+      "spanHash": "9cdb9db2c45f1b9e9c09b1e5e95ebcca242e31d43cb68a415954c9e0d4b48525",
+      "startLine": 677
+    },
+    "settings-persistence-and-events": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-thread-settings.response",
+        "bytes": 4858,
+        "sha256": "7d7307a9d1c15dcf570ec8a4409e96afdb51928eebaefb867687edb112dda9d0"
+      },
+      "byteRange": {
+        "start": 0,
+        "endExclusive": 4858
+      },
+      "spanHash": "7d7307a9d1c15dcf570ec8a4409e96afdb51928eebaefb867687edb112dda9d0",
+      "startLine": 1
+    },
+    "test-live-instructions": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager-tests.response",
+        "bytes": 123175,
+        "sha256": "60ea0ce7136fcc193c216449bfb570e0e5c7ecbd53a706101cd6355559aff8ce"
+      },
+      "byteRange": {
+        "start": 3233,
+        "endExclusive": 6331
+      },
+      "spanHash": "0cc32411dfc66f39e0e6fcec7a4847efcb955414011866ccae8054fe593cedc4",
+      "startLine": 78
+    },
+    "test-cold-environments": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager-tests.response",
+        "bytes": 123175,
+        "sha256": "60ea0ce7136fcc193c216449bfb570e0e5c7ecbd53a706101cd6355559aff8ce"
+      },
+      "byteRange": {
+        "start": 74060,
+        "endExclusive": 79068
+      },
+      "spanHash": "15af97c71d74ccce854e59f76960a6893bc6617308b2ae3d8800ff27801c0889",
+      "startLine": 1963
+    },
+    "caller-fork-guards-and-inheritance": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 195354,
+        "endExclusive": 198961
+      },
+      "spanHash": "50ba00beca9b4bf96ee2ee0ca45ebb272bf3dec7ca0d7076e16f46b1601c283e",
+      "startLine": 4876,
+      "endLine": 4969,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    },
+    "caller-fork-creation-and-restore": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 211693,
+        "endExclusive": 213742
+      },
+      "spanHash": "6f92df022e49a084b120c7ed16e5b379e91dae33fd15f59bfcfc573bc5e18a1f",
+      "startLine": 5255,
+      "endLine": 5306,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    },
+    "caller-fork-response-and-notification": {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-exact-source-v1/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      },
+      "byteRange": {
+        "start": 220486,
+        "endExclusive": 221671
+      },
+      "spanHash": "042a29e14abdf3d29ecd2493e7c5ba10a05ac896c3e35beaefa99c17e8b7a1c6",
+      "startLine": 5468,
+      "endLine": 5496,
+      "originalSource": {
+        "path": ".analysis-local/backend-exact-source-work/selected-20261025T224849449485Z/thread-processor.response",
+        "bytes": 255556,
+        "sha256": "9bfda8956f0034bc385bef9902765b59fe257f067556370107fc4d378f78d417"
+      }
+    }
+  },
+  "inheritanceMatrix": [
+    {
+      "item": "Config",
+      "path": "Session::fork_config -> build_effective_session_config -> StartThreadOptions::new",
+      "qualification": "Materializer called on captured configuration; full materializer implementation outside this batch."
+    },
+    {
+      "item": "Environment requests and live bindings",
+      "path": "settings.environments.into_requests + inherited_environments snapshot",
+      "qualification": "Two values are carried separately; ordinary cold/history fork is not equivalent."
+    },
+    {
+      "item": "History mode, plugin selection and client MCP extensions",
+      "path": "Explicit StartThreadOptions fields",
+      "qualification": "No claim that the parent MCP runtime manager is deep-cloned."
+    },
+    {
+      "item": "Reasoning effort and host extension data",
+      "path": "ReasoningEffortPin in thread_extension_init; turn_extension_init from captured settings",
+      "qualification": "Parent baseline pin may be recomputed when override feature is off; host turn data is not a persisted settings guarantee."
+    },
+    {
+      "item": "Collaboration mode and Windows sandbox level",
+      "path": "CodexThreadSettingsOverrides -> post-creation restore_thread_settings",
+      "qualification": "These are the two explicit overrides returned by this capture method, not all fields of the override type."
+    },
+    {
+      "item": "Dynamic tool specs",
+      "path": "Empty StartThreadOptions.dynamic_tools -> conversation_history.get_dynamic_tools during startup",
+      "qualification": "History metadata path; not proof that all live tool/MCP/provider state is copied."
+    },
+    {
+      "item": "History and instructions",
+      "path": "Handler supplied persisted history; fork_thread_with_initial_history snapshots applied instructions before startup",
+      "qualification": "Task-bound source callback is not inherited; snapshot capture is not atomic with all earlier history reads."
+    }
+  ],
+  "regressionObservations": [
+    {
+      "id": "BI-V01",
+      "name": "loaded-parent",
+      "setup": "Loaded public parent versus absent/internal parent",
+      "observation": "Record success or ThreadNotFound mapping without ordinary-fork fallback.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V02",
+      "name": "reasoning-pin",
+      "setup": "Parent override feature on/off and selected/default effort",
+      "observation": "Compare captured pin, child collaboration model and first-turn effort.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V03",
+      "name": "live-environments",
+      "setup": "Live environment selections differ from saved rollout",
+      "observation": "Compare carried requests and live bindings; do not substitute a cold-history fork.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V04",
+      "name": "tools",
+      "setup": "Persisted dynamic tools plus client MCP extensions",
+      "observation": "Observe child tool inventory; distinguish specs, live MCP runtime and providers.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V05",
+      "name": "host-data",
+      "setup": "Disabled plugins and host turn extension data",
+      "observation": "Check child future-turn data separately from persisted settings.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V06",
+      "name": "source-unload",
+      "setup": "Unload source after applied instruction capture",
+      "observation": "Check snapshot survival and source task-bound callback ownership.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V07",
+      "name": "restore-rejection",
+      "setup": "Reject post-creation settings restoration",
+      "observation": "Observe RPC error, registered child, metadata and cleanup responsibility.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V08",
+      "name": "restore-commit",
+      "setup": "Accept settings restore with MCP/permission changes",
+      "observation": "Observe in-memory state, scheduled refresh and separate event/durability behavior.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    },
+    {
+      "id": "BI-V09",
+      "name": "cancel-window",
+      "setup": "Cancel between child creation and response",
+      "observation": "Determine child ownership and cleanup without assuming atomic rollback.",
+      "status": "specified-not-executed",
+      "modelAuthorizationAvailable": false
+    }
+  ],
+  "existingTestsExecuted": false,
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-exact-source-v1.json",
+      "bytes": 53000,
+      "sha256": "4bb07545dbb3e0254a511148c1df581b130a2d700437df2813f7adaa042ebdf9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/backend-source-provenance-v1.json",
+      "bytes": 31022,
+      "sha256": "e8e3398255976215a512e84670e639b2acf2553987b4807c4d41d992449f5c4d"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/independent-build-feasibility-v1.json",
+      "bytes": 228841,
+      "sha256": "84166ba8bdf713204ab708663ef7767018dff524c47742d432fadfa21a168aa5"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    },
+    {
+      "path": ".analysis-local/backend-exact-source-work/fetch_selected.py",
+      "bytes": 2440,
+      "sha256": "2c62bf3ef01b81dfa2f39025302a9bc29cf5e7efd790efc6785636be0e4157af"
+    }
+  ],
+  "rawEvidence": {
+    "http-group-1.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/http-group-1.json",
+      "bytes": 920,
+      "sha256": "bae345118ed2841f66fd3df40260b76abf70181c67317fc849205096cc17f179"
+    },
+    "core-src-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/core-src-directory.response",
+      "bytes": 493234,
+      "sha256": "948bde14508acf69f0e4999e506c7a8f3c4918382af10fb8f6036722ffbf1cb1"
+    },
+    "http-group-2.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/http-group-2.json",
+      "bytes": 3547,
+      "sha256": "6f80cea4a1c3b28c7cb9bcc7ec5506a7e4bf7e80a202627abac9a0924ce48f5b"
+    },
+    "thread-manager.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager.response",
+      "bytes": 111860,
+      "sha256": "cbe3e23075b1b9692ef86bd87228c7d47c51c80c1731724822a12a569758418d"
+    },
+    "codex-thread.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/codex-thread.response",
+      "bytes": 47980,
+      "sha256": "33a87f94277d0c2ba8f3c54955e606cd549a793ef616450a9a320e765d44ae83"
+    },
+    "core-lib.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/core-lib.response",
+      "bytes": 8868,
+      "sha256": "2b4800fd9721d66e95ed0aef111c8f1586e1c5f3f75f1a8e7ae7ad94c55ddaa3"
+    },
+    "thread-manager-tests.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/thread-manager-tests.response",
+      "bytes": 123175,
+      "sha256": "60ea0ce7136fcc193c216449bfb570e0e5c7ecbd53a706101cd6355559aff8ce"
+    },
+    "http-group-3.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/http-group-3.json",
+      "bytes": 946,
+      "sha256": "f2b116a7c2f9636d6edee003a5a8b54ac7ce3e37722ba8431572854a1be1487d"
+    },
+    "session-directory.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-directory.response",
+      "bytes": 398146,
+      "sha256": "18152dbbd06a0f3a0118020b0b9a6db0a6f0d2e2225520859132dd73e6bde787"
+    },
+    "http-group-4.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/http-group-4.json",
+      "bytes": 1911,
+      "sha256": "bc13442e58d41c6b269d87e7af083d9e2641e4c71be6ee085ed5877ccdc0acdd"
+    },
+    "session-implementation.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-implementation.response",
+      "bytes": 96822,
+      "sha256": "0fe60864b8c9d8c1715fc0e426fb6a0750c323a59e9366c783d123305501899b"
+    },
+    "session-thread-settings.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-thread-settings.response",
+      "bytes": 4858,
+      "sha256": "7d7307a9d1c15dcf570ec8a4409e96afdb51928eebaefb867687edb112dda9d0"
+    },
+    "http-group-5.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/http-group-5.json",
+      "bytes": 1847,
+      "sha256": "5145094bda60455da913e4122ddecc72eb952d5e74924357f229b19c786be5b7"
+    },
+    "session-step-settings.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-step-settings.response",
+      "bytes": 13393,
+      "sha256": "90bcaecf14cb2b4794321feb11d367cd55fdf74437a692c1a2ed556079764673"
+    },
+    "session-mod.response": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-mod.response",
+      "bytes": 209320,
+      "sha256": "da059e92ebd182fba45be661c516114f5276167bb339a69f78403e32887f3438"
+    },
+    "http-receipts.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/http-receipts.json",
+      "bytes": 13966,
+      "sha256": "aa75d9cd1461a7c4e77689fe591f6b3f73e83987565c0e9c2570c82bd10dca92"
+    },
+    "directory-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/directory-plan.json",
+      "bytes": 529,
+      "sha256": "0c4d9d9dfe4e9707c39efd8524f043d288a3c3a8831444673a9ff69e0ec58273"
+    },
+    "core-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/core-plan.json",
+      "bytes": 1363,
+      "sha256": "31e829b7494e73eae53934af238576bcc6a8826d34287e67e41b25f83ed566c4"
+    },
+    "session-directory-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-directory-plan.json",
+      "bytes": 569,
+      "sha256": "dc7ec3da38aad3ebd86b3eedf56a0bc341bcf508ccd164e3af4493ea82d51b2a"
+    },
+    "session-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/session-plan.json",
+      "bytes": 921,
+      "sha256": "cbf30041696088ae7576efef00862544ffe33841dce2794b74f006467c96bd12"
+    },
+    "settings-plan.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/settings-plan.json",
+      "bytes": 852,
+      "sha256": "c372712030236d8c42cb4953afa68f61147ed3b11d8f7f56d533772b8e8d5485"
+    },
+    "core-directory.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/core-directory.json",
+      "bytes": 21742,
+      "sha256": "c6a17c14b13ff4179e8e6d4af86403b04fcdcc4d918e71daa858348ad58c70ba"
+    },
+    "build.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/build.py",
+      "bytes": 23904,
+      "sha256": "cbf08b31233276313a0fa7d2bfccee6a53d712e7a10299073ce2ee5d97d75b95"
+    },
+    "source-units.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/source-units.json",
+      "bytes": 9026,
+      "sha256": "e7445578a64bf640d1d7a2b71c88a1568df3ed7dfe06206720e955741e6f099a"
+    },
+    "inheritance-matrix.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/inheritance-matrix.json",
+      "bytes": 1887,
+      "sha256": "f2358bb767cf4e5848bcf0627267bd3d2c2b85163ce3a7b60143977786d5f976"
+    },
+    "verification-observations.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-inheritance-v1/verification-observations.json",
+      "bytes": 2707,
+      "sha256": "a99875cb9e975cbc7818d1a207b5dfbf89da324a33d599679cf8aa84cd9d8902"
+    }
+  },
+  "namedCoreBoundariesStaticallyTraced": true,
+  "remaining": [
+    "Effective configuration materializer and external environment/MCP/network/provider effects.",
+    "Successful prediction, instruction/tool/cache behavior and actual event/durability observations.",
+    "Post-creation restore error/cancellation cleanup, full exact-source build and native provenance."
+  ],
+  "nextBoundedStep": {
+    "scope": "Resolve the exact desktop revision release version/lock treatment and required build-input identity using its own directory and release workflow evidence.",
+    "deliverable": "A bounded backend build-input decision covering toolchain/target/features and the Cargo workspace alpha version versus 0.0.0 lock records.",
+    "stopCondition": "Only same-revision directory-confirmed build/toolchain/release files, at most six source files. No backend execution, dependency installation or repeated general Owl/15-group feasibility audit.",
+    "newModelRequired": false,
+    "requiresReadOnlyPublicAcquisition": true,
+    "globalCompletionCriteriaChanged": false
+  },
+  "counts": {
+    "facts": 12,
+    "sourceUnits": 18,
+    "publicHttpResponses": 10,
+    "sameCommitSourceBodies": 8,
+    "sameCommitDirectoryBodies": 2,
+    "existingTestBodiesRead": 1,
+    "existingTestsExecuted": 0,
+    "newBackendObservationSpecifications": 9,
+    "canonicalProductScenarioCountChanges": 0
+  },
+  "newExecution": {
+    "reaRuns": 0,
+    "targetExecutions": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "privateServiceCalls": 0,
+    "sourceBuilds": 0,
+    "clientImplementation": 0,
+    "publicHttpRequests": 10
+  },
+  "selectedInheritanceBatchClosed": true,
+  "fullAnalysisCompleted": false,
+  "fullBackendQualified": false,
+  "actualInheritanceOrRestoreVerified": false
+}

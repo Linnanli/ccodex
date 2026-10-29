@@ -1,0 +1,1501 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T13:22:19.618300+00:00",
+  "scope": "Read/list/count and notification invalidation for existing FSC-0434/AUT-M03; selected source only.",
+  "existingFeatureLink": {
+    "featureId": "FSC-0434",
+    "moduleProposalId": "AUT-M03",
+    "createsNewFeature": false
+  },
+  "facts": [
+    {
+      "id": "IQR-F01",
+      "title": "主进程查询适配",
+      "claim": "$L.handlers的inbox-items处理器返回items:i.C(limit??200,threadId)和unreadRunCounts:i.S()。main的i引入src-BJv5Mk7n.js，其C/S getter分别指向Z$/Q$；threadId和limit只传给列表。",
+      "sourceIds": [
+        "IQR-S002",
+        "IQR-S090",
+        "IQR-S005",
+        "IQR-S006"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F01-E01"
+    },
+    {
+      "id": "IQR-F02",
+      "title": "条件实例与URI接收",
+      "claim": "选定hXe构造器创建$L并将this.fetchHandler传给new Ude；Ude以vscode://codex/前缀处理请求，切出名称、解析非空body并await handleVSCodeRequest；后者分派this.handlers[type]。选定成功路径返回JSON响应，catch构造错误响应；实际网络实例和交付未观察。",
+      "sourceIds": [
+        "IQR-S088",
+        "IQR-S089",
+        "IQR-S086",
+        "IQR-S085",
+        "IQR-S083"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F02-E01"
+    },
+    {
+      "id": "IQR-F03",
+      "title": "列表状态与排序",
+      "claim": "Z$查询automation_runs JOIN automations，包含IN_PROGRESS、PENDING_REVIEW、ACCEPTED、ARCHIVED；按IN_PROGRESS优先、PENDING_REVIEW其次、created_at降序，再LIMIT。threadId非null才加线程筛选；q返回空时为[]。",
+      "sourceIds": [
+        "IQR-S005",
+        "IQR-S027"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F03-E01"
+    },
+    {
+      "id": "IQR-F04",
+      "title": "标题摘要投影",
+      "claim": "列表title依次取automations.name、非空inbox_title、thread_title；description依次取非空inbox_summary、归档assistant消息、归档user消息、automations.prompt。该投影不能扩展为所有收件项来源。",
+      "sourceIds": [
+        "IQR-S005"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F04-E01"
+    },
+    {
+      "id": "IQR-F05",
+      "title": "身份筛选来源",
+      "claim": "列表和未读统计都插入同一CF身份谓词并调用wF构造参数；CF允许指定flag的旧三身份均NULL记录，或三身份字段逐项匹配。实际身份值、q的有效home和原生数据库效果沿用写侧合同的外部条件。",
+      "sourceIds": [
+        "IQR-S028",
+        "IQR-S005",
+        "IQR-S006"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F05-E01"
+    },
+    {
+      "id": "IQR-F06",
+      "title": "未读统计独立分母",
+      "claim": "Q$只统计read_at IS NULL且状态为PENDING_REVIEW或ACCEPTED的身份范围行；没有列表的LIMIT或threadId条件。返回total行数、去重automationIds和原始unreadRuns；q为空返回三项空值。ARCHIVED在列表中但不进入此未读分母。",
+      "sourceIds": [
+        "IQR-S006",
+        "IQR-S005"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F06-E01"
+    },
+    {
+      "id": "IQR-F07",
+      "title": "查询注册配置",
+      "claim": "r9n经Xre=共享导出FMt对应的ZG→_Dn注册inbox-items，enabled为true、params.limit为200、refetchInterval和staleTime均引用ONE_MINUTE=60000。_Dn将配置传给Qk并生成queryFn/queryKey；配置不证明真实计时或重取已发生。",
+      "sourceIds": [
+        "IQR-S010",
+        "IQR-S034",
+        "IQR-S053",
+        "IQR-S037"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F07-E01"
+    },
+    {
+      "id": "IQR-F08",
+      "title": "查询键与发送边界",
+      "claim": "XG在CDn=vscode后添加类型、可选cacheKey及JSON.stringify(params)。选定参数生成vscode/inbox-items/{\"limit\":200}键；Io(inbox-items)生成两元素前缀。yDn经AW.getInstance().post发送vscode://codex/${type}和JSON参数，接收body并可选select；AW真实实例和传输效果仍未验证。",
+      "sourceIds": [
+        "IQR-S064",
+        "IQR-S081",
+        "IQR-S065",
+        "IQR-S053"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F08-E01"
+    },
+    {
+      "id": "IQR-F09",
+      "title": "通知字面身份",
+      "claim": "main的r引用src-CP7XXlpZ.js，po getter对应it.CHANGED=inbox-items-changed；renderer共享Nht.CHANGED同值，导出Frn绑定为initial中的Aie。该静态连接与已有写侧广播合同对应，不证明窗口收到通知。",
+      "sourceIds": [
+        "IQR-S001",
+        "IQR-S030",
+        "IQR-S036",
+        "IQR-S039",
+        "IQR-S058"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F09-E01"
+    },
+    {
+      "id": "IQR-F10",
+      "title": "消息预筛选与失效请求",
+      "claim": "Fsc选定async回调以Usc预筛选realtime-voice-launch-state-changed；固定inbox通知不满足该谓词。在Aie.CHANGED分支，缓存的m为假时调用inbox-items及list-automations前缀invalidateQueries，分支没有await其完成。",
+      "sourceIds": [
+        "IQR-S087",
+        "IQR-S068",
+        "IQR-S061"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F10-E01"
+    },
+    {
+      "id": "IQR-F11",
+      "title": "缓存的窗口路由条件",
+      "claim": "Fsc将gm()结果保存在React memo槽并赋给m。gm导入pIt对应cbn→sbn(dbn())：avatar-overlay通过pathname或initialRoute分支，其他列出的spotlight、dictation和hotkey路径交给wA匹配。dbn读取窗口URL的pathname/initialRoute；本批未读取真实URL。这个谓词是窗口路由条件，不能作为产品模式排除依据。",
+      "sourceIds": [
+        "IQR-S062",
+        "IQR-S063",
+        "IQR-S073",
+        "IQR-S075",
+        "IQR-S074",
+        "IQR-S072",
+        "IQR-S079",
+        "IQR-S080"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F11-E01"
+    },
+    {
+      "id": "IQR-F12",
+      "title": "监听器与验证边界",
+      "claim": "选定Fsc通过effect登记window message监听器，经Nie解码再分派到所选回调；清理移除监听器。源码登记不能证明实际组件挂载、解码接受、消息送达、SQLite查询、缓存一致性或重启耐久性。",
+      "sourceIds": [
+        "IQR-S062",
+        "IQR-S061"
+      ],
+      "runtimeVerified": false,
+      "evidenceId": "IQR-F12-E01"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 136,
+        "endExclusive": 166
+      },
+      "spanHash": "1f943f2a0aa26c81cc49da3d0f43f146ce1b5bee58eab44ce1d916ff38486565",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S001",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1414086,
+        "endExclusive": 1414174
+      },
+      "spanHash": "d2ade1de607fbb19ee892810b655cf577e6ae7b136c52796edc90dead00637cc",
+      "nodeType": "ObjectProperty",
+      "id": "IQR-S002",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1573203,
+        "endExclusive": 1573279
+      },
+      "spanHash": "a7dbcc60403c0b4d2a16250e6fd8ea90ff8a841d6c2ab0c112b66a1965ad6253",
+      "nodeType": "CallExpression",
+      "id": "IQR-S003",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1578489,
+        "endExclusive": 1578565
+      },
+      "spanHash": "fdf682077f391abd87ab518c722b4a9cf64ae6bf251c73de16a5a7261180c987",
+      "nodeType": "CallExpression",
+      "id": "IQR-S004",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1519636,
+        "endExclusive": 1521035
+      },
+      "spanHash": "20a70c471426ada54bedfb62f6d7cee1f28103b78c3f358e4f2ec8d07992b0aa",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S005",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1521035,
+        "endExclusive": 1521500
+      },
+      "spanHash": "28939d2fcfad04df4c97553565667f0df044e775d19a012ec5c724fed7fc9b1d",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S006",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2792990,
+        "endExclusive": 2792993
+      },
+      "spanHash": "e783148a4d8a8a016708e77ba3e31b0f24dd276702dcae1ab8124d54da096060",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S007",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2792994,
+        "endExclusive": 2793542
+      },
+      "spanHash": "516e4222c617dd190c244855a42b0ec66193c10dfac5d8aa373723d85fa88acd",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S008",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2793015,
+        "endExclusive": 2793538
+      },
+      "spanHash": "0cf579e6a73a4793789828f77cc419ee185875cb0779edc6613b386433517f7b",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S009",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 2793425,
+        "endExclusive": 2793535
+      },
+      "spanHash": "cb88cb6f78c07d01e6afc7bc3f39d32b06fc04a5b1ec5e16a98494430a6f6c13",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S010",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 95591,
+        "endExclusive": 95597
+      },
+      "spanHash": "bc2b388f7a8fed1ae99b67f0a96de3d725cd504608fe14e2ae8a7733a2785dcd",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S011",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 97280,
+        "endExclusive": 97289
+      },
+      "spanHash": "76cb7dfaad9959ca24d1570fff9ab30f3c10bd242dcfe27db4374f2f6ea538a6",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S012",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 100577,
+        "endExclusive": 100587
+      },
+      "spanHash": "faded18e7a04ac37ac3cb429c1d342690bc4460ef9fc462984579be258a45ddc",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S013",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 101869,
+        "endExclusive": 101877
+      },
+      "spanHash": "4a8a6327a647891bcd33216a22ba18186c49542db432b64994fbe987740ddddd",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S014",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 102426,
+        "endExclusive": 102436
+      },
+      "spanHash": "e9141dcff9103b825deb5bb09da95515efa2b5b77a50aeb5532bfc2f5490541d",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S015",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 102811,
+        "endExclusive": 102820
+      },
+      "spanHash": "92d8145ad5cb866c40938fbc32e1e7495ce5a82dd33fa639355363ddaa875524",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S016",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 106962,
+        "endExclusive": 106970
+      },
+      "spanHash": "82e86a15f5e74536b06a8fff4580008c4a080953e9e7ff612468a17f02d32f69",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S017",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 107197,
+        "endExclusive": 107206
+      },
+      "spanHash": "e161717acc5efc77108f2547146bce9a4b03d2f2056048c8098a7c3015651b87",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S018",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 111934,
+        "endExclusive": 111942
+      },
+      "spanHash": "493cdecfd9aa45c074ccee0c9399383bec6ab3b4e8bcb81ed777bbdc3135a024",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S019",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 117825,
+        "endExclusive": 117834
+      },
+      "spanHash": "5d2784cedc03679c746ae51c30f0fa0f5837cfe9dea5b6a67f3cbc053e1f1f86",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S020",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 129695,
+        "endExclusive": 129704
+      },
+      "spanHash": "b4afeee0c5e1f2198cd6b20bf46535d751e79401c6ebf6397c367eb557599628",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S021",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 132082,
+        "endExclusive": 132091
+      },
+      "spanHash": "2732ddaae526abd8281b4e48c733915f5db23f655f40c93aee1042aaef8c2853",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S022",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 134762,
+        "endExclusive": 134771
+      },
+      "spanHash": "20a5f730ac1bb29b3d8ab4a4c59d985f1eab893203afc3310f43eb88a661e673",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S023",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 136317,
+        "endExclusive": 136326
+      },
+      "spanHash": "3d3118b7b509c2d7b80177dc50291f93f046d09c4da9be9ad2a80f2e82ece479",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S024",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11340971,
+        "endExclusive": 11340980
+      },
+      "spanHash": "90a11083fea1501fc373c7526211b03b48612cf73db8d7325dd5fd17112532c3",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S025",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 11372503,
+        "endExclusive": 11372513
+      },
+      "spanHash": "1361871f90837bfcf2b02e3f31d251705704b2efaf2f65236999992b1b97d9aa",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S026",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 112695,
+        "endExclusive": 112795
+      },
+      "spanHash": "2ab787d027557b3ca6083bdcb7e3e0922c5fef31fc413f95a763cf8e5c633150",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S027",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1064377,
+        "endExclusive": 1064594
+      },
+      "spanHash": "25d4dd743de7a4ff1521dc62e96ea2deeff5a08d3d8af7e834f56399fc7d34e8",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S028",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 197444,
+        "endExclusive": 197521
+      },
+      "spanHash": "c453ea639e20d0db5bfb995199ea12c9701d20482078232dc42ed617b0c84e44",
+      "nodeType": "CallExpression",
+      "id": "IQR-S029",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-CP7XXlpZ.js",
+      "sourceHash": "79623d50989f9efbcb8e5752c56b3cc608a0f5993c05112e03e11b718ac7a586",
+      "byteRange": {
+        "start": 13816,
+        "endExclusive": 13850
+      },
+      "spanHash": "a67bea8c526024319b0c9ae607cf57edd95e24d8d4fecb3284c95c7be772cd1c",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S030",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295938,
+        "endExclusive": 295940
+      },
+      "spanHash": "ef72e26f165f3646c566f53d14ee9f31b03be502fbaae99dbf73231e0aacca2d",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S031",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1865572,
+        "endExclusive": 1865575
+      },
+      "spanHash": "6494b8e3ba4f0e8d0320600aaf6b19e86b204f2b5854082243478ec2f8aa9d03",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S032",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3412205,
+        "endExclusive": 3412207
+      },
+      "spanHash": "668005a76c76c96bd9fef9eb9e3e4b2f97e7a5547800719f23620ca9fb290cae",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S033",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3513167,
+        "endExclusive": 3513209
+      },
+      "spanHash": "d7073102744b6c47f41462d61a031657bd32efe4f7dc95b7a831b323eb077f2b",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S034",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 297915,
+        "endExclusive": 297934
+      },
+      "spanHash": "1a693c0300abfb2572c6e26312f207037f129165ccf2ed57a00c5fa296cad600",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S035",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1865668,
+        "endExclusive": 1865703
+      },
+      "spanHash": "99b3f6c5a61f6c7bac788d5356a401e8707a1eb2c82c08e44ab74add135381db",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S036",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3412240,
+        "endExclusive": 3412392
+      },
+      "spanHash": "40038589cb4b202c6d456757c531a8a339418ace28391f081e9d0c616fb66d6c",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S037",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8100410,
+        "endExclusive": 8100419
+      },
+      "spanHash": "faebdde83b3e3387eda2cdc9359b613dff33a424b4b37cd0215891c8bf2c17ad",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S038",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8101234,
+        "endExclusive": 8101244
+      },
+      "spanHash": "01f2ae288fd18c43c186014ec1121a0bf6d358bf1f08028e82b0fe6bb2380d2a",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S039",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8113918,
+        "endExclusive": 8113927
+      },
+      "spanHash": "d0f05cd59f3bf60c86a0777245ec733b240750916d2683e185ef5a73373cb581",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S040",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8174306,
+        "endExclusive": 8174315
+      },
+      "spanHash": "6d189585d29ea976d5ef277404bf181ce7979ddd910bf94e789e2f560e6df007",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S041",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1865668,
+        "endExclusive": 1865671
+      },
+      "spanHash": "6494b8e3ba4f0e8d0320600aaf6b19e86b204f2b5854082243478ec2f8aa9d03",
+      "nodeType": "Identifier",
+      "id": "IQR-S042",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 1865623,
+        "endExclusive": 1865815
+      },
+      "spanHash": "4dd1f2bd729d2ea497f26d9c1b2e3dad9792438db19378b6bf1570dedb3f7f70",
+      "nodeType": "ArrowFunctionExpression",
+      "id": "IQR-S043",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8101234,
+        "endExclusive": 8101237
+      },
+      "spanHash": "6494b8e3ba4f0e8d0320600aaf6b19e86b204f2b5854082243478ec2f8aa9d03",
+      "nodeType": "Identifier",
+      "id": "IQR-S044",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8113527,
+        "endExclusive": 8113530
+      },
+      "spanHash": "6494b8e3ba4f0e8d0320600aaf6b19e86b204f2b5854082243478ec2f8aa9d03",
+      "nodeType": "Identifier",
+      "id": "IQR-S045",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8113520,
+        "endExclusive": 8113530
+      },
+      "spanHash": "d626449258a5704ebc5dffe0101b9a70817cd7ebd8df9932a9478fa0628378c4",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S046",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1393932,
+        "endExclusive": 1439575
+      },
+      "spanHash": "7f59d583a6d004a319d2300675e9de96d61945e3139adff6e158e437b69df8c2",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S047",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1393932,
+        "endExclusive": 1393934
+      },
+      "spanHash": "e448320504140919966ee071a90e5234500ec49c6a8abc94ad583e7b3ecc9ab9",
+      "nodeType": "Identifier",
+      "id": "IQR-S048",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3318568,
+        "endExclusive": 3318570
+      },
+      "spanHash": "e448320504140919966ee071a90e5234500ec49c6a8abc94ad583e7b3ecc9ab9",
+      "nodeType": "Identifier",
+      "id": "IQR-S049",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3318564,
+        "endExclusive": 3320292
+      },
+      "spanHash": "1c92a2675a6ad2d62a3971eb11b7b7a540e64a3b40690e94b8b63ea29bb2bcc9",
+      "nodeType": "NewExpression",
+      "id": "IQR-S050",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3304353,
+        "endExclusive": 3329810
+      },
+      "spanHash": "85df69ea6eac25df395e89228807c7bf7c845df49fae884246db2945044ce4f6",
+      "nodeType": "ClassMethod",
+      "id": "IQR-S051",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 295935,
+        "endExclusive": 295937
+      },
+      "spanHash": "cc35689ec4eeb6912cdcf8ad3606769ae45bb6c03fb17fddee06425a5d094a90",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S052",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3513209,
+        "endExclusive": 3513386
+      },
+      "spanHash": "228eb734c77cb5fb2ba403bbebc63088281eb9e517ae330afa6f16204d4bd5ea",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S053",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 296096,
+        "endExclusive": 297914
+      },
+      "spanHash": "59a8e0cdd5435cc3ea6a80204912619e79b99f96ef0dd060a1491aae6c9ec30c",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S054",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8150139,
+        "endExclusive": 8150148
+      },
+      "spanHash": "e0bcd020a3a621e02043634f897f60ba7ffe79487b5e2956c77493ce440490a1",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S055",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 106809,
+        "endExclusive": 106818
+      },
+      "spanHash": "32d7a9da61ed2672e97e466c096e54ad86a98db43f6b47cda5f97eb359608152",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S056",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 100996,
+        "endExclusive": 100999
+      },
+      "spanHash": "358928e812d2fb478f14c01588d494a0a25da0a297cc05a087a08ba9e92176f0",
+      "nodeType": "Identifier",
+      "id": "IQR-S057",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 100989,
+        "endExclusive": 100999
+      },
+      "spanHash": "44c8528b49949648a97ca4b777c3ecd7e9237fc2d6f0151cd705b7e0381b92b9",
+      "nodeType": "ImportSpecifier",
+      "id": "IQR-S058",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9640605,
+        "endExclusive": 9640608
+      },
+      "spanHash": "358928e812d2fb478f14c01588d494a0a25da0a297cc05a087a08ba9e92176f0",
+      "nodeType": "Identifier",
+      "id": "IQR-S059",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9640605,
+        "endExclusive": 9640616
+      },
+      "spanHash": "ed63087612e111b4fbd31c11d4e4c35deec7d6252dfb633323283123db3a340d",
+      "nodeType": "MemberExpression",
+      "id": "IQR-S060",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9633192,
+        "endExclusive": 9650694
+      },
+      "spanHash": "ad5323187ac2ee84320588715425bde1da6c450d5a4d8446e308355171ff5e83",
+      "nodeType": "ArrowFunctionExpression",
+      "id": "IQR-S061",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9626640,
+        "endExclusive": 9651792
+      },
+      "spanHash": "41c172f42fc053658827635051d20cb866ff48be1dbee8cbf19fc95b4da6cbcb",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S062",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402082,
+        "endExclusive": 3402115
+      },
+      "spanHash": "468336618c2662e671fe329d5eb7d0dfc1d3e51bf0d81584119dda3db6dc3f5e",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S063",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3513048,
+        "endExclusive": 3513167
+      },
+      "spanHash": "8dace7668a227658cfa8c5f3554043e9ffb182e3dbf076d652fe5ca74c3ef390",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S064",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3515000,
+        "endExclusive": 3515141
+      },
+      "spanHash": "618d8d17c304e75b7da13225d2d492266f6b8f8ba8ed54c872dd4631532f3949",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S065",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8112971,
+        "endExclusive": 8112980
+      },
+      "spanHash": "ccf96482efd29dc0b40aa35f460827e642161dcc87c2204c94cdc6b24851c130",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S066",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8158580,
+        "endExclusive": 8158590
+      },
+      "spanHash": "6e83197ebdf5b53df5456f127854eab574fdb42fd0a9f07d240465cecf258d47",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S067",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9652140,
+        "endExclusive": 9652210
+      },
+      "spanHash": "21970f12938924ac28f02f3b1ab7174c37af90bc654b5de35122cf9aeb6ac136",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S068",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9633206,
+        "endExclusive": 9633209
+      },
+      "spanHash": "4d15275618731cc38b677a4c0b7ad7af1638bd3cf98a97e3181e5f36bd3aa5af",
+      "nodeType": "Identifier",
+      "id": "IQR-S069",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9633206,
+        "endExclusive": 9633212
+      },
+      "spanHash": "e9a6004f607fe961f7e9365a0c2b2b178390176bd6cb102f16684f8363a918f3",
+      "nodeType": "CallExpression",
+      "id": "IQR-S070",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9652149,
+        "endExclusive": 9652152
+      },
+      "spanHash": "4d15275618731cc38b677a4c0b7ad7af1638bd3cf98a97e3181e5f36bd3aa5af",
+      "nodeType": "Identifier",
+      "id": "IQR-S071",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3401915,
+        "endExclusive": 3401984
+      },
+      "spanHash": "6b8b36f51da1a645fbca1918ce74ba436688ae964ceb454f7181592ffa44ef7d",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S072",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3401984,
+        "endExclusive": 3402082
+      },
+      "spanHash": "8b024a4c045a52310ac54827afdaab1cc495a3e9b6c41243ee4c773de3a46961",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S073",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402115,
+        "endExclusive": 3402196
+      },
+      "spanHash": "e13db885f54542e88b1e415cdbd96476ceb7c735f6996fbab23e68c3d1be7cfb",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S074",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402302,
+        "endExclusive": 3402488
+      },
+      "spanHash": "2030cc4dcc193445f00a832e2803e8f1f0fda02e0d5317339a5c790da1458440",
+      "nodeType": "FunctionDeclaration",
+      "id": "IQR-S075",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402492,
+        "endExclusive": 3402495
+      },
+      "spanHash": "a8c1cee1472cbced3630a498117bdc7dc8fca4ed4b73b56a6ac399919534ab92",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S076",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402496,
+        "endExclusive": 3402499
+      },
+      "spanHash": "58e8327b4b7e992f03ce204d9bf0188e41026184cff505a2a7a40f0b67f38e91",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S077",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3515497,
+        "endExclusive": 3515500
+      },
+      "spanHash": "fede6f90a033b8936149a8e309ae09b2c84950dfb8f65cb8a8c951738d3490cc",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S078",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402542,
+        "endExclusive": 3402563
+      },
+      "spanHash": "a6e8d030cd8fde59bed83fa0a7fbbc4001bfa2dbb96a1a4493cc8feb676921f6",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S079",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3402564,
+        "endExclusive": 3402660
+      },
+      "spanHash": "3d0b14b803496d7454908d3772c7ac8878cba31cdc794240bce6917dbae61700",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S080",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 3515571,
+        "endExclusive": 3515583
+      },
+      "spanHash": "5cffc911c38aaa124878c800d9fea455a952991ff41b4117403b6d6583a726b9",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S081",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8149190,
+        "endExclusive": 8149200
+      },
+      "spanHash": "a2ec4ed7826b9dbce6566a409f436f7069b296e07f1bf21e13a59e0533b72d9e",
+      "nodeType": "ExportSpecifier",
+      "id": "IQR-S082",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 688035,
+        "endExclusive": 688056
+      },
+      "spanHash": "8992a8f6e7f4438dabcda339eb89f6243060b24c14be4385985045963eba2f5c",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S083",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 688174,
+        "endExclusive": 705451
+      },
+      "spanHash": "ec7e1e0ef7049b1511f269282df3fb6703d0d71f58a49e937ad266754a974999",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S084",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1439124,
+        "endExclusive": 1439574
+      },
+      "spanHash": "be6360401c28da1a5bba2595d806e93cb0a58631abb9ee6bebaa8b83d24c73fd",
+      "nodeType": "ClassMethod",
+      "id": "IQR-S085",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 703582,
+        "endExclusive": 704434
+      },
+      "spanHash": "1426e113ebbaafacc34afb027743abfda75d91443c1787a22dc6ea59b3fb42c8",
+      "nodeType": "ClassMethod",
+      "id": "IQR-S086",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9640600,
+        "endExclusive": 9640739
+      },
+      "spanHash": "ec8219cfd88f2eea248a801e9f1612d97cbfcada6a2caf08f07c82bc840c3d19",
+      "nodeType": "SwitchCase",
+      "id": "IQR-S087",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3318546,
+        "endExclusive": 3320292
+      },
+      "spanHash": "e00171fd717967d133d7a1e9a7f7d54970ec3f7ec64f50e676d16c6e62188e29",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S088",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3322384,
+        "endExclusive": 3323014
+      },
+      "spanHash": "84d2daf9afbfadef1f8f0a0716fbf6e207108511dae3233f735ba9c164fe2148",
+      "nodeType": "AssignmentExpression",
+      "id": "IQR-S089",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 167,
+        "endExclusive": 197
+      },
+      "spanHash": "cf815fe75a69294594c51db78f94e51483676ccb4bbb8c714fd82271c99035bb",
+      "nodeType": "VariableDeclarator",
+      "id": "IQR-S090",
+      "sourceText": "Raw source-selection archive; frozen byte range is authoritative."
+    }
+  ],
+  "selectedProjections": {
+    "hostQuery": "IQR-S002",
+    "hostRequest": "IQR-S085",
+    "hostVsCodeRoute": "IQR-S086",
+    "notificationCase": "IQR-S087",
+    "hostHandlerWiring": "IQR-S088",
+    "hostWrapperWiring": "IQR-S089"
+  },
+  "readExports": {
+    "C": "Z$",
+    "S": "Q$"
+  },
+  "sql": {
+    "Z$": {
+      "parts": [
+        "SELECT\n      automation_runs.thread_id as id,\n      automation_runs.automation_id as automationId,\n      automations.name as automationName,\n      COALESCE(\n        automations.name,\n        NULLIF(automation_runs.inbox_title, ''),\n        automation_runs.thread_title\n      ) as title,\n      COALESCE(\n        NULLIF(automation_runs.inbox_summary, ''),\n        automation_runs.archived_assistant_message,\n        automation_runs.archived_user_message,\n        automations.prompt\n      ) as description,\n      automation_runs.archived_assistant_message as archivedAssistantMessage,\n      automation_runs.archived_user_message as archivedUserMessage,\n      automation_runs.archived_reason as archivedReason,\n      automation_runs.source_cwd as sourceCwd,\n      automation_runs.thread_id as threadId,\n      automation_runs.read_at as readAt,\n      automation_runs.created_at as createdAt,\n      automation_runs.status as status\n    FROM automation_runs\n    JOIN automations\n      ON automations.id = automation_runs.automation_id\n    WHERE automation_runs.status IN ",
+        "\n      AND ",
+        "\n      ",
+        "\n    ORDER BY\n      automation_runs.status = 'IN_PROGRESS' DESC,\n      automation_runs.status = 'PENDING_REVIEW' DESC,\n      automation_runs.created_at DESC\n    LIMIT ?"
+      ],
+      "interpolations": [
+        "ra",
+        "CF",
+        "ConditionalExpression"
+      ],
+      "sourceId": "RP-S0003"
+    },
+    "Q$": {
+      "parts": [
+        "SELECT automation_id as automationId, thread_id as threadId\n      FROM automation_runs\n      JOIN automations ON automations.id = automation_runs.automation_id\n      WHERE read_at IS NULL AND automation_runs.status IN ('PENDING_REVIEW', 'ACCEPTED')\n        AND ",
+        ""
+      ],
+      "interpolations": [
+        "CF"
+      ],
+      "sourceId": "RP-S0004"
+    }
+  },
+  "identitySql": "((? = 1 AND automations.account_id IS NULL AND automations.user_id IS NULL AND automations.installation_id IS NULL) OR (automations.account_id = ? AND automations.user_id = ? AND automations.installation_id = ?))",
+  "sourceSelectionArchive": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/inbox-query-refresh-v1/source-selections.json.gz",
+    "bytes": 840513,
+    "sha256": "50e8c3d86ed37d371886dc337613b731e4f8bca59a34be41d3679c7259e811b4"
+  },
+  "declarationCaches": [
+    {
+      "receipt": "initial-guard",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "declarations": 31666,
+      "qualification": "Mechanical Program declaration/import index only; duplicate names, caller scope, dynamic values and semantics require separate inspection."
+    },
+    {
+      "receipt": "window-predicate",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "declarations": 20926,
+      "qualification": "Mechanical Program declaration/import index only; duplicate names, caller scope, dynamic values and semantics require separate inspection."
+    },
+    {
+      "receipt": "vscode-prefix",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "declarations": 6479,
+      "qualification": "Mechanical Program declaration/import index only; duplicate names, caller scope, dynamic values and semantics require separate inspection."
+    }
+  ],
+  "evidence": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/inbox-query-refresh-v1-evidence.jsonl",
+    "bytes": 11474,
+    "sha256": "8aee1a577816d670605a9e8f3bdaf61f380d72bc0893a38d43c4d84dde8d7d0a"
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/inbox-storage-authority-v1.json",
+      "bytes": 182411,
+      "sha256": "c4b59e28d57a0f25c56ce19243488ec5c4f76f2afbcc7440cca632971196c006"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/automations-entry-contracts-v1.json",
+      "bytes": 135245,
+      "sha256": "fc689405ff1eb0c9a1a95040ddf03838112934ae8893473bc7ea6645461414b7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-http-service.json",
+      "bytes": 50003,
+      "sha256": "bb80c0893b60c13e47436dadade706585e50d23afb28c300b2560eee4e2481df"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v18.json",
+      "bytes": 8560856,
+      "sha256": "6b000f0c8a5e50596906f1cb40b557b8d5b8e3bf6f30f56151d0be6c7e483600"
+    }
+  ],
+  "engineeringDecisions": [
+    {
+      "responsibility": "AUT-M03 query and invalidation adapter",
+      "result": "Keep list and unread selectors separate; preserve source query keys, timing configuration and window condition. Use managed query-library dependency and a main SQL adapter, without generating third-party implementation code."
+    },
+    {
+      "responsibility": "Main inbox query adapter",
+      "result": "Return both independently scoped projections; preserve endpoint default200 and storage helper default100. Native SQL execution remains behind the already named store boundary."
+    }
+  ],
+  "unexecutedSupplementaryScenarios": [
+    {
+      "id": "IQR-SC01",
+      "title": "列表与统计分母",
+      "expected": "列表超过200行或指定threadId时，统计仍按完整身份范围的未读SQL决定。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC02",
+      "title": "状态差异",
+      "expected": "ARCHIVED可在列表出现，但不进入Q$未读统计；IN_PROGRESS排序优先。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC03",
+      "title": "标题摘要回退",
+      "expected": "按COALESCE顺序核对空字符串和NULL，不将二者混同。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC04",
+      "title": "身份条件",
+      "expected": "核对旧NULL身份分支与三身份匹配分支，保持wF参数顺序。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC05",
+      "title": "空数据库",
+      "expected": "q为空时返回[]及空未读统计，不推断本机是否存在数据库。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC06",
+      "title": "默认限制",
+      "expected": "端点未给limit用200；直接调用Z$未给参数用100。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC07",
+      "title": "查询配置",
+      "expected": "注册时保留60000毫秒的两项配置；真实调度另验。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC08",
+      "title": "查询键",
+      "expected": "limit200实例带序列化参数，通知按类型前缀失效。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC09",
+      "title": "通知预筛选",
+      "expected": "固定inbox-items-changed不会被Usc的voice字面判断排除。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC10",
+      "title": "窗口缓存条件",
+      "expected": "分别验证普通与列出的特殊窗口，保持memo时序；不将窗口条件当作产品模式。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC11",
+      "title": "URI成功失败",
+      "expected": "在独立环境核对body解析、处理器分派、JSON响应及错误分支。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    },
+    {
+      "id": "IQR-SC12",
+      "title": "交付与重启",
+      "expected": "另行满足运行条件后核对挂载、消息送达、重取、有效身份及重启耐久性。",
+      "status": "unexecuted-source-derived-supplement",
+      "canonicalScenarioAdded": false
+    }
+  ],
+  "remainingBoundaries": [
+    "Actual Fsc mount and decoder acceptance.",
+    "Actual AW/native transport, response and window message delivery.",
+    "Effective home/identity, native ABI/migration, cache coherence and restart durability.",
+    "Global mode classification and complete automation coverage."
+  ],
+  "assumptions": [
+    "Selected lazy module initializers have established their source-declared constants.",
+    "Message types and standard built-ins have ordinary semantics."
+  ],
+  "counts": {
+    "fullProgramParsePasses": 13,
+    "distinctSourcePrograms": 5,
+    "fullProgramAstNodes": 20604300,
+    "distinctSelectedUnits": 84,
+    "boundedParses": 25,
+    "sourceProjections": 6,
+    "mechanicalDeclarationCaches": 3,
+    "newTargetExecutions": 0,
+    "newClientRuns": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newProductPasses": 0,
+    "sourceFacts": 12,
+    "sourceWitnesses": 90,
+    "frozenFilesRechecked": 5,
+    "unexecutedSupplementaryScenarios": 12,
+    "newCanonicalFeatures": 0,
+    "newCanonicalScenarios": 0,
+    "newClientImplementation": 0
+  },
+  "unchangedCanonicalCounts": {
+    "finiteFeatureDefinitions": 509,
+    "userOperations": 582,
+    "supportOperations": 125,
+    "productScenarioSpecifications": 1844,
+    "owningTaskGroupsWithFiniteDefinitions": 51,
+    "additionalSourceContractTaskGroups": 0,
+    "pendingSettingsPages": 0,
+    "featuresImplemented": 0,
+    "newProductScenarioPasses": 0,
+    "confirmedChatGptExclusions": 0,
+    "modeCounts": {
+      "unknown": 505,
+      "shared": 4
+    },
+    "qualifiedResponsibilityRecords": 115,
+    "coarseWorkflowFacades": 48,
+    "sourceWitnesses": 2874,
+    "sharedWitnessDispositions": 34,
+    "runtimeCapabilityGroups": 15,
+    "storageDomains": 11,
+    "selectedStorageBoundaries": 16,
+    "dependencyRecords": 202,
+    "buildInputOccurrences": 30,
+    "fullRuntimeRoutesQualified": 0,
+    "modelSubmissionsRemaining": 0,
+    "savedLegacyEntriesWithoutFeatureMapping": 709,
+    "remainingCommandGoalAssociations": 20,
+    "explicitMechanisms": 141,
+    "sourceEntriesRequiringGoalOrMechanismDecision": 568
+  },
+  "selectedReadSourceBoundaryClosed": true,
+  "actualRuntimeVerified": false,
+  "fullAnalysisCompleted": false
+}

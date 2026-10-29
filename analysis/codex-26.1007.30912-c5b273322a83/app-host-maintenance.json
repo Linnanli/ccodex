@@ -1,0 +1,3103 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "archiveSha256": "c5b273322a833ce5165429d468021cc6289a11cc68d075b80ae773bd7fb6731f",
+  "recordedAtUtc": "2026-10-13T16:54:54.903135+00:00",
+  "status": "bounded-maintenance-proposals; inferred-not-recovered-architecture",
+  "method": "Read/hash four frozen main/journal/summary/validation/manifest/primary-producer artifact groups, reuse selected original journal bytes and inherited source pins; no target reads, AST parse or existing producer execution.",
+  "scope": {
+    "frozenArtifactGroups": 4,
+    "directFrozenArtifactPins": 24,
+    "originalPrimaryProducerPins": 4,
+    "inheritedTargetSourcePins": 7,
+    "targetSourceFilesNewlyRead": 0,
+    "newSourceASTUnits": 0,
+    "freshSourceEvidence": 0,
+    "reusedOriginalEvidenceRecords": 71,
+    "proposedModules": 8,
+    "proposedInterfaces": 6,
+    "proposedDependencyBoundaries": 5,
+    "proposedMigrationValidations": 7,
+    "totalProposals": 26,
+    "directoryRecovery": "not claimed; proposed paths are new organizational choices",
+    "globalClientCoverage": "not attempted",
+    "thirdPartyImplementationsGenerated": false,
+    "targetExecuted": false,
+    "uiUsed": false,
+    "networkRequests": 0,
+    "modelTasksSubmitted": 0,
+    "credentialsRead": false,
+    "personalHistoryRead": false,
+    "futureMigrationChecksExecuted": 0,
+    "runtimeStatus": "unverified",
+    "mode": "unknown",
+    "confirmedChatGPTOnlyExclusions": 0,
+    "historicalIndirectInputPinDriftResolved": false
+  },
+  "sourceArtifacts": [
+    {
+      "path": ".analysis-local/preload-app-host-work/preload-app-host.json",
+      "bytes": 115244,
+      "sha256": "36dd5008715b488bfb739ca65cd29b05a75175ae5c250549a59270ea235e1dcc",
+      "key": "preload.main",
+      "role": "main",
+      "group": "preload"
+    },
+    {
+      "path": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "bytes": 33510,
+      "sha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "key": "preload.journal",
+      "role": "journal",
+      "group": "preload"
+    },
+    {
+      "path": ".analysis-local/preload-app-host-work/summary.md",
+      "bytes": 2259,
+      "sha256": "5201e786fd07f36db160c7550278c4fdedc35560fa22005612d50c507eb09258",
+      "key": "preload.summary",
+      "role": "summary",
+      "group": "preload"
+    },
+    {
+      "path": ".analysis-local/preload-app-host-work/validation.json",
+      "bytes": 107245,
+      "sha256": "de200dd1a4854d1ccc7d918f47ef8e7c8fe76812cab11308d86cf64499a2ed20",
+      "key": "preload.validation",
+      "role": "validation",
+      "group": "preload"
+    },
+    {
+      "path": ".analysis-local/preload-app-host-work/frozen-manifest.json",
+      "bytes": 6927,
+      "sha256": "8ddb515f846bbcb70c0c9b3645774174957c48e0cfbdb5b56303c28690fd03b0",
+      "key": "preload.manifest",
+      "role": "manifest",
+      "group": "preload"
+    },
+    {
+      "path": ".analysis-local/preload-app-host-work/trace_preload_app_host.mjs",
+      "bytes": 29212,
+      "sha256": "a32f4478c95f170bcc47841749385fb36f60744b1df881d28242883e82d9f7d9",
+      "key": "preload.producer",
+      "role": "producer",
+      "group": "preload"
+    },
+    {
+      "path": ".analysis-local/host-http-service-work/host-http-service.json",
+      "bytes": 50003,
+      "sha256": "bb80c0893b60c13e47436dadade706585e50d23afb28c300b2560eee4e2481df",
+      "key": "hostHttp.main",
+      "role": "main",
+      "group": "hostHttp"
+    },
+    {
+      "path": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "bytes": 94501,
+      "sha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "key": "hostHttp.journal",
+      "role": "journal",
+      "group": "hostHttp"
+    },
+    {
+      "path": ".analysis-local/host-http-service-work/summary.md",
+      "bytes": 2681,
+      "sha256": "d7d35aff4093829a091b08e61b724563aa80e30cc7913afedecb7823e179aee5",
+      "key": "hostHttp.summary",
+      "role": "summary",
+      "group": "hostHttp"
+    },
+    {
+      "path": ".analysis-local/host-http-service-work/validation.json",
+      "bytes": 3192,
+      "sha256": "dc81fc52dea618fd1f94a344df35a6fb4396244453207cc6b058fd9d3ccc2e60",
+      "key": "hostHttp.validation",
+      "role": "validation",
+      "group": "hostHttp"
+    },
+    {
+      "path": ".analysis-local/host-http-service-work/frozen-manifest.json",
+      "bytes": 5870,
+      "sha256": "ec6634614ba87524c756b4a34902e549ad5b13db1a5a7779497d9f84421f33c1",
+      "key": "hostHttp.manifest",
+      "role": "manifest",
+      "group": "hostHttp"
+    },
+    {
+      "path": ".analysis-local/host-http-service-work/trace_host_http.cjs",
+      "bytes": 36307,
+      "sha256": "3c6ca68d80906d83fea24d5db2d0ecd1fd62b8cc869ba1b467a9d2fb13243222",
+      "key": "hostHttp.producer",
+      "role": "producer",
+      "group": "hostHttp"
+    },
+    {
+      "path": ".analysis-local/app-host-context-work/app-host-context.json",
+      "bytes": 36925,
+      "sha256": "d0162158aca6e23bcf03779340f9285a7ad176dfcc6fa42d2fedf730e2113ab6",
+      "key": "context.main",
+      "role": "main",
+      "group": "context"
+    },
+    {
+      "path": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "bytes": 37402,
+      "sha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "key": "context.journal",
+      "role": "journal",
+      "group": "context"
+    },
+    {
+      "path": ".analysis-local/app-host-context-work/summary.md",
+      "bytes": 2784,
+      "sha256": "6150c354360f5f5bb253e2da74ed831362c696054ca651ffb7ba899dbee6f475",
+      "key": "context.summary",
+      "role": "summary",
+      "group": "context"
+    },
+    {
+      "path": ".analysis-local/app-host-context-work/validation.json",
+      "bytes": 4149,
+      "sha256": "d6c8b81f9cdf8a26298f0fa0b06c6aa9231fc331f0409a2a6b926804d639517e",
+      "key": "context.validation",
+      "role": "validation",
+      "group": "context"
+    },
+    {
+      "path": ".analysis-local/app-host-context-work/frozen-manifest.json",
+      "bytes": 8380,
+      "sha256": "1ac5bbd5c41601720bae9bff2acc2eb370bcd8ebda39f516a4a307e62c9657cc",
+      "key": "context.manifest",
+      "role": "manifest",
+      "group": "context"
+    },
+    {
+      "path": ".analysis-local/app-host-context-work/trace_app_host_context.cjs",
+      "bytes": 24900,
+      "sha256": "5ad45f28e26eadab0603cfbc28bde683f89058c12d51c0ed26f3f498fdb64929",
+      "key": "context.producer",
+      "role": "producer",
+      "group": "context"
+    },
+    {
+      "path": ".analysis-local/application-network-work/application-network.json",
+      "bytes": 47733,
+      "sha256": "99a82d2a4c588c6c66399a4be02a03e0bf03872b99f3a1b740a309ef1163e06a",
+      "key": "network.main",
+      "role": "main",
+      "group": "network"
+    },
+    {
+      "path": ".analysis-local/application-network-work/evidence.jsonl",
+      "bytes": 64433,
+      "sha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "key": "network.journal",
+      "role": "journal",
+      "group": "network"
+    },
+    {
+      "path": ".analysis-local/application-network-work/summary.md",
+      "bytes": 2879,
+      "sha256": "9785d1e4b105f435f6e1fb859823ee45e5fa2c1ae773592ce8821541b2234060",
+      "key": "network.summary",
+      "role": "summary",
+      "group": "network"
+    },
+    {
+      "path": ".analysis-local/application-network-work/validation.json",
+      "bytes": 1514,
+      "sha256": "30b5ac6ea8fe1db8f0fbba46f9b4fcead9dda60490daa2b21a0948b5cf598f0f",
+      "key": "network.validation",
+      "role": "validation",
+      "group": "network"
+    },
+    {
+      "path": ".analysis-local/application-network-work/frozen-manifest.json",
+      "bytes": 12679,
+      "sha256": "e4591ac8649c75b79c8a34051146ba0604134c26f6f7986295f25b46e13e0f25",
+      "key": "network.manifest",
+      "role": "manifest",
+      "group": "network"
+    },
+    {
+      "path": ".analysis-local/application-network-work/trace_application_network.cjs",
+      "bytes": 35098,
+      "sha256": "ed14fe324d536997ff12249d35c8ee3b38a99d086925631ec51b996a6af6ab89",
+      "key": "network.producer",
+      "role": "producer",
+      "group": "network"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/preload.js",
+      "bytes": 6909,
+      "sha256": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "identityStatus": "Inherited exact frozen metadata; target source not reread or rehashed by this proposal",
+      "inheritedFrom": [
+        {
+          "group": "preload",
+          "path": ".analysis-local/preload-app-host-work/preload-app-host.json",
+          "sha256": "36dd5008715b488bfb739ca65cd29b05a75175ae5c250549a59270ea235e1dcc",
+          "jsonPointer": "/sourceInputs/0"
+        }
+      ]
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/bootstrap-CooIJpZm.js",
+      "bytes": 461537,
+      "sha256": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "identityStatus": "Inherited exact frozen metadata; target source not reread or rehashed by this proposal",
+      "inheritedFrom": [
+        {
+          "group": "hostHttp",
+          "path": ".analysis-local/host-http-service-work/host-http-service.json",
+          "sha256": "bb80c0893b60c13e47436dadade706585e50d23afb28c300b2560eee4e2481df",
+          "jsonPointer": "/sourceInputs/0"
+        },
+        {
+          "group": "network",
+          "path": ".analysis-local/application-network-work/application-network.json",
+          "sha256": "99a82d2a4c588c6c66399a4be02a03e0bf03872b99f3a1b740a309ef1163e06a",
+          "jsonPointer": "/sourceInputs/0"
+        }
+      ]
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/main-CqEoQDOU.js",
+      "bytes": 3824411,
+      "sha256": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "identityStatus": "Inherited exact frozen metadata; target source not reread or rehashed by this proposal",
+      "inheritedFrom": [
+        {
+          "group": "hostHttp",
+          "path": ".analysis-local/host-http-service-work/host-http-service.json",
+          "sha256": "bb80c0893b60c13e47436dadade706585e50d23afb28c300b2560eee4e2481df",
+          "jsonPointer": "/sourceInputs/1"
+        },
+        {
+          "group": "context",
+          "path": ".analysis-local/app-host-context-work/app-host-context.json",
+          "sha256": "d0162158aca6e23bcf03779340f9285a7ad176dfcc6fa42d2fedf730e2113ab6",
+          "jsonPointer": "/sourceInputs/0"
+        },
+        {
+          "group": "network",
+          "path": ".analysis-local/application-network-work/application-network.json",
+          "sha256": "99a82d2a4c588c6c66399a4be02a03e0bf03872b99f3a1b740a309ef1163e06a",
+          "jsonPointer": "/sourceInputs/1"
+        }
+      ]
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/src-BJv5Mk7n.js",
+      "bytes": 1591361,
+      "sha256": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "identityStatus": "Inherited exact frozen metadata; target source not reread or rehashed by this proposal",
+      "inheritedFrom": [
+        {
+          "group": "hostHttp",
+          "path": ".analysis-local/host-http-service-work/host-http-service.json",
+          "sha256": "bb80c0893b60c13e47436dadade706585e50d23afb28c300b2560eee4e2481df",
+          "jsonPointer": "/sourceInputs/2"
+        }
+      ]
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/application-network-startup-CfAQmSYg.js",
+      "bytes": 290566,
+      "sha256": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "identityStatus": "Inherited exact frozen metadata; target source not reread or rehashed by this proposal",
+      "inheritedFrom": [
+        {
+          "group": "network",
+          "path": ".analysis-local/application-network-work/application-network.json",
+          "sha256": "99a82d2a4c588c6c66399a4be02a03e0bf03872b99f3a1b740a309ef1163e06a",
+          "jsonPointer": "/sourceInputs/2"
+        }
+      ]
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/.vite/build/startup-requirements-C6B1x9gL.js",
+      "bytes": 115575,
+      "sha256": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "identityStatus": "Inherited exact frozen metadata; target source not reread or rehashed by this proposal",
+      "inheritedFrom": [
+        {
+          "group": "network",
+          "path": ".analysis-local/application-network-work/application-network.json",
+          "sha256": "99a82d2a4c588c6c66399a4be02a03e0bf03872b99f3a1b740a309ef1163e06a",
+          "jsonPointer": "/sourceInputs/3"
+        }
+      ]
+    },
+    {
+      "sourcePath": "app.asar/package.json",
+      "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/extracted/package.json",
+      "bytes": 5758,
+      "sha256": "7688f53fdb60bb06d82a760f87b70968f03273d93d36fc33cf112e2b287e3146",
+      "identityStatus": "Inherited exact frozen metadata; target source not reread or rehashed by this proposal",
+      "inheritedFrom": [
+        {
+          "group": "network",
+          "path": ".analysis-local/application-network-work/application-network.json",
+          "sha256": "99a82d2a4c588c6c66399a4be02a03e0bf03872b99f3a1b740a309ef1163e06a",
+          "jsonPointer": "/sourceInputs/4"
+        }
+      ]
+    }
+  ],
+  "sourceProducerPins": [
+    {
+      "path": ".analysis-local/preload-app-host-work/trace_preload_app_host.mjs",
+      "bytes": 29212,
+      "sha256": "a32f4478c95f170bcc47841749385fb36f60744b1df881d28242883e82d9f7d9",
+      "group": "preload",
+      "identityStatus": "Exact current original primary producer bytes also included in its frozen manifest; not executed or copied",
+      "executionStatus": "not-run"
+    },
+    {
+      "path": ".analysis-local/host-http-service-work/trace_host_http.cjs",
+      "bytes": 36307,
+      "sha256": "3c6ca68d80906d83fea24d5db2d0ecd1fd62b8cc869ba1b467a9d2fb13243222",
+      "group": "hostHttp",
+      "identityStatus": "Exact current original primary producer bytes also included in its frozen manifest; not executed or copied",
+      "executionStatus": "not-run"
+    },
+    {
+      "path": ".analysis-local/app-host-context-work/trace_app_host_context.cjs",
+      "bytes": 24900,
+      "sha256": "5ad45f28e26eadab0603cfbc28bde683f89058c12d51c0ed26f3f498fdb64929",
+      "group": "context",
+      "identityStatus": "Exact current original primary producer bytes also included in its frozen manifest; not executed or copied",
+      "executionStatus": "not-run"
+    },
+    {
+      "path": ".analysis-local/application-network-work/trace_application_network.cjs",
+      "bytes": 35098,
+      "sha256": "ed14fe324d536997ff12249d35c8ee3b38a99d086925631ec51b996a6af6ab89",
+      "group": "network",
+      "identityStatus": "Exact current original primary producer bytes also included in its frozen manifest; not executed or copied",
+      "executionStatus": "not-run"
+    }
+  ],
+  "sourceSnapshots": {
+    "preload": {
+      "mainPin": {
+        "path": ".analysis-local/preload-app-host-work/preload-app-host.json",
+        "bytes": 115244,
+        "sha256": "36dd5008715b488bfb739ca65cd29b05a75175ae5c250549a59270ea235e1dcc",
+        "key": "preload.main",
+        "role": "main",
+        "group": "preload"
+      },
+      "manifestPin": {
+        "path": ".analysis-local/preload-app-host-work/frozen-manifest.json",
+        "bytes": 6927,
+        "sha256": "8ddb515f846bbcb70c0c9b3645774174957c48e0cfbdb5b56303c28690fd03b0",
+        "key": "preload.manifest",
+        "role": "manifest",
+        "group": "preload"
+      },
+      "sourceStatus": "scoped-small-program-static-lexical-forwarding; runtime-and-mode-unverified",
+      "sourceScope": {
+        "sourceFilesReadAndHashed": 1,
+        "completeSmallPreloadProgramParsed": true,
+        "completePreloadBytes": 6909,
+        "topLevelStatements": 22,
+        "astNodes": 1813,
+        "sourceCoordinateUnit": "UTF-8 byte offsets; source is ASCII, equal to parser character offsets",
+        "selectedOriginalRanges": 21,
+        "selectedRangeBytesIncludingOverlaps": 1559,
+        "selectedRangeUniqueBytes": 783,
+        "wholeLargeBundleAST": false,
+        "targetCodeExecuted": false,
+        "uiUsed": false,
+        "networkRequests": 0,
+        "modelTasksSubmitted": 0,
+        "credentialsRead": false,
+        "personalHistoryRead": false,
+        "externalRequireReturnIdentityVerified": false,
+        "windowSenderIdentityVerified": false,
+        "crossProcessPortDeliveryVerified": false,
+        "runtimeStatus": "unverified",
+        "mode": "unknown",
+        "confirmedChatGPTOnlyExclusions": 0,
+        "newEvidenceRecords": 32
+      },
+      "sourceLimitations": [
+        "This supplement parses the complete 6909-byte small preload, not any large main/renderer bundle. Complete Program parsing and coordinates do not imply semantic review of every unrelated preload feature.",
+        "Program binding identity is a source lexical fact. Actual require(\"electron\") return object, ipcRenderer property identity, global window identity, callback dispatch, transfer validation, MessagePort delivery and main-process receiver behavior remain unverified.",
+        "The source direct-write scan cannot establish absence of external object mutation or runtime effects. It records observed syntax only.",
+        "No product mode or ChatGPT-only exclusion is inferred from the generic connect-app-host/channel names. Confirmed exclusions remain zero.",
+        "Only selected first-party declaration/callback/argument source snippets are retained; the full source and external Electron/Babel implementations are not generated. Existing baseline and older artifacts are unchanged."
+      ],
+      "sourceRuntimeStatus": "unverified",
+      "sourceMode": "unknown",
+      "originalIndirectInputChains": "not revalidated or upgraded"
+    },
+    "hostHttp": {
+      "mainPin": {
+        "path": ".analysis-local/host-http-service-work/host-http-service.json",
+        "bytes": 50003,
+        "sha256": "bb80c0893b60c13e47436dadade706585e50d23afb28c300b2560eee4e2481df",
+        "key": "hostHttp.main",
+        "role": "main",
+        "group": "hostHttp"
+      },
+      "manifestPin": {
+        "path": ".analysis-local/host-http-service-work/frozen-manifest.json",
+        "bytes": 5870,
+        "sha256": "ec6634614ba87524c756b4a34902e549ad5b13db1a5a7779497d9f84421f33c1",
+        "key": "hostHttp.manifest",
+        "role": "manifest",
+        "group": "hostHttp"
+      },
+      "sourceStatus": "static-host-http-candidate-contract; runtime/mode/outer-bindings unknown",
+      "sourceScope": {
+        "sourceFilesReadAndHashed": 3,
+        "selectedParseUnits": 43,
+        "selectedParseUnitBytesIncludingOverlaps": 90332,
+        "selectedCompleteClasses": 6,
+        "selectedClassMembers": 31,
+        "newEvidenceRecords": 87,
+        "reusedOriginalJournalRecords": 4,
+        "wholeBundleAST": false,
+        "targetCodeExecuted": false,
+        "uiUsed": false,
+        "networkRequests": 0,
+        "modelTasksSubmitted": 0,
+        "credentialsRead": false,
+        "personalHistoryRead": false,
+        "originalWholeModuleOuterBindingVerified": false,
+        "contextResolverInstanceVerified": false,
+        "actualTrustImplementationVerified": false,
+        "rpcBaseAndNetworkImplementationVerified": false,
+        "runtimeStatus": "unverified",
+        "mode": "unknown"
+      },
+      "sourceLimitations": [
+        "No full bundle AST or whole module lexical reaching-definition/reassignment closure. Unique text markers select finite complete source nodes only.",
+        "The passed getContextForWebContents/isTrustedIpcEvent functions, actual context instance, port peer, initializer order and live sender/frame checks were not executed or independently traced.",
+        "Required base/RPC implementations in startup-requirements, applicationNetwork implementation, imported header/token/error/stream helpers and global runtime builtins remain external/third-party-or-first-party-unknown boundaries. No third-party implementation is copied.",
+        "Complete hXe and Ude class locators preserve exact context but only listed members and specifically identified assignments/registration nodes were semantically reviewed.",
+        "No environment values, credentials, account data or personal history were accessed; no target/UI/model/network was executed. Request/header/auth strings describe static code contracts only.",
+        "Prior shared-origin journal spans are reused exactly from frozen records; only matching current selected main spans are freshly checked against target source. Prior failures and indirect pin drift remain historical and unresolved.",
+        "Mode remains unknown. Provider/channel/window/header names and auth guard presence are not mode evidence and do not justify deleting guards or reducing complete feature goals."
+      ],
+      "sourceRuntimeStatus": "unverified",
+      "sourceMode": "unknown",
+      "originalIndirectInputChains": "not revalidated or upgraded"
+    },
+    "context": {
+      "mainPin": {
+        "path": ".analysis-local/app-host-context-work/app-host-context.json",
+        "bytes": 36925,
+        "sha256": "d0162158aca6e23bcf03779340f9285a7ad176dfcc6fa42d2fedf730e2113ab6",
+        "key": "context.main",
+        "role": "main",
+        "group": "context"
+      },
+      "manifestPin": {
+        "path": ".analysis-local/app-host-context-work/frozen-manifest.json",
+        "bytes": 8380,
+        "sha256": "1ac5bbd5c41601720bae9bff2acc2eb370bcd8ebda39f516a4a307e62c9657cc",
+        "key": "context.manifest",
+        "role": "manifest",
+        "group": "context"
+      },
+      "sourceStatus": "static-caller-options-context-trust-candidate; runtime/mode/outer bindings unknown",
+      "sourceScope": {
+        "sourceFilesReadAndHashed": 1,
+        "newParentCompleteFunctions": 3,
+        "parentSelectedParseUnits": 3,
+        "parentSelectedSourceBytes": 40897,
+        "trustSelectedParseUnits": 10,
+        "trustSelectedSourceBytes": 983,
+        "selectedParseUnits": 13,
+        "selectedSourceBytesIncludingOverlaps": 41880,
+        "newParentEvidenceRecords": 22,
+        "newTrustEvidenceRecords": 10,
+        "newEvidenceRecords": 32,
+        "reusedOriginalJournalRecords": 5,
+        "wholeBundleAST": false,
+        "wholeWindowManagerClassAST": false,
+        "targetCodeExecuted": false,
+        "uiUsed": false,
+        "networkRequests": 0,
+        "modelTasksSubmitted": 0,
+        "credentialsRead": false,
+        "personalHistoryRead": false,
+        "environmentValuesRead": false,
+        "originalWholeModuleOuterBindingVerified": false,
+        "dynamicRegistryPopulationVerified": false,
+        "actualContextInstanceVerified": false,
+        "runtimeStatus": "unverified",
+        "mode": "unknown"
+      },
+      "sourceLimitations": [
+        "Complete original u0e/M1e/vXe source locators do not mean all other startup/service functionality was semantically reviewed. Only listed bindings/options/construction/setter/getter nodes are claimed.",
+        "No complete original Program lexical reaching-definition/reassignment proof or complete y1e/window registration closure was added. Source-qualified local chains are conditional candidates.",
+        "The getter is conditional on live registry membership; R starts null. Source call order/construction/setter expressions are not proof of successful startup, a live hXe instance, membership population or later mutation/lifetime.",
+        "Trust functions use actual sender/frame/URL/registry candidates; runtime inputs, imported/native/helper effects and successful connection/HTTP behavior remain unobserved. No broad trust-bypass or validated-request claim is made.",
+        "Previous host-HTTP unknowns/failures describe their historical frozen scope and are not rewritten or automatically upgraded by this independent supplement.",
+        "Source JS is sourcePath/hash/span metadata only; no third-party implementation is copied. No target, UI, network/model task, credential/account/personal-history or environment value was accessed.",
+        "Mode remains unknown. Source function/property names do not establish product mode or justify removing guards/reducing complete feature targets."
+      ],
+      "sourceRuntimeStatus": "unverified",
+      "sourceMode": "unknown",
+      "originalIndirectInputChains": "not revalidated or upgraded"
+    },
+    "network": {
+      "mainPin": {
+        "path": ".analysis-local/application-network-work/application-network.json",
+        "bytes": 47733,
+        "sha256": "99a82d2a4c588c6c66399a4be02a03e0bf03872b99f3a1b740a309ef1163e06a",
+        "key": "network.main",
+        "role": "main",
+        "group": "network"
+      },
+      "manifestPin": {
+        "path": ".analysis-local/application-network-work/frozen-manifest.json",
+        "bytes": 12679,
+        "sha256": "e4591ac8649c75b79c8a34051146ba0604134c26f6f7986295f25b46e13e0f25",
+        "key": "network.manifest",
+        "role": "manifest",
+        "group": "network"
+      },
+      "sourceStatus": "bounded-static-application-network-contract; runtime/mode/outer-binding closure unknown",
+      "sourceScope": {
+        "sourceFilesReadAndHashed": 5,
+        "newParseUnits": 36,
+        "newParseUnitBytesIncludingOverlaps": 53549,
+        "selectedClassMembers": 24,
+        "newEvidenceRecords": 70,
+        "reusedHostJournalRecords": 6,
+        "wholeBundleAST": false,
+        "wholeNetworkStartupAST": false,
+        "targetCodeExecuted": false,
+        "uiUsed": false,
+        "networkRequests": 0,
+        "modelTasksSubmitted": 0,
+        "credentialsRead": false,
+        "personalHistoryRead": false,
+        "wholeModuleOuterBindingVerified": false,
+        "actualInstanceVerified": false,
+        "nativeApiImplementationVerified": false,
+        "runtimeStatus": "unverified",
+        "mode": "unknown"
+      },
+      "sourceLimitations": [
+        "The import symbol or chunk title is not instance evidence. Identity is source-qualified and scope-limited; selected local identity chain is conditional and runtime unverified.",
+        "No full main/bootstrap/networkStartup/requirements bundle AST or whole-module reassignment closure. Complete u0e/vXe/oE locators are parsed for selected identity nodes only; unrelated bodies are not semantically reviewed.",
+        "No native/runtime implementation or official public API compatibility was validated. Declared electron42.3.0/zod version specifications are not installed versions. Owl permission activation indicates a runtime-sensitive boundary needing separate source/contract investigation.",
+        "NetworkStartup.Xc transport/message parser, imported version/schema/deferred/interop/origin helpers remain opaque; no third-party implementation copied or generated.",
+        "No target code/application/UI/network/model/credential/history action was performed; restricted-source policy strings are static descriptions only.",
+        "Mode unknown: this source does not prove ChatGPT-only or establish an exclusion. The full independently maintainable client remains incomplete pending other functional/native/runtime/behavior evidence.",
+        "One failed read-only Python scout used an unescaped regex literal; attempts/failed-text-scout.json retains this history and is not used as evidence."
+      ],
+      "sourceRuntimeStatus": "unverified",
+      "sourceMode": "unknown",
+      "originalIndirectInputChains": "not revalidated or upgraded"
+    }
+  },
+  "evidenceReferences": [
+    {
+      "id": "PRELOAD-APP-HOST-E0004",
+      "group": "preload",
+      "journalPath": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "journalSha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "journalBytes": 33510,
+      "line": 4,
+      "recordByteRange": {
+        "start": 3156,
+        "endExclusive": 4207
+      },
+      "recordSha256": "513d7c4b2a6db003c2b8c69492d0a6bcb9a5c13cea310bdc67fef522eddfc54b",
+      "recordBytes": 1051,
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 2286,
+        "endExclusive": 2320
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "producer-source-coordinate-and-lexical-check-passed; independent-review-pending",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "a9649e7b2087cfd74929c2a196a989d5f56ef4247c1c3f267af65c57b47c692b"
+    },
+    {
+      "id": "PRELOAD-APP-HOST-E0006",
+      "group": "preload",
+      "journalPath": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "journalSha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "journalBytes": 33510,
+      "line": 6,
+      "recordByteRange": {
+        "start": 5251,
+        "endExclusive": 6299
+      },
+      "recordSha256": "30690b52d1bbfedc14ec6849b63baeac0e9f7d6b923c9b16c258df256ee591da",
+      "recordBytes": 1048,
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 6692,
+        "endExclusive": 6872
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "producer-source-coordinate-and-lexical-check-passed; independent-review-pending",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "81e0c346b0f0974f454c38c093fd512e3f3a9b3a2503e6cf6213daea62d484f3"
+    },
+    {
+      "id": "PRELOAD-APP-HOST-E0010",
+      "group": "preload",
+      "journalPath": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "journalSha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "journalBytes": 33510,
+      "line": 10,
+      "recordByteRange": {
+        "start": 9431,
+        "endExclusive": 10469
+      },
+      "recordSha256": "70eb383036664343b2d80f1c96a4eb80bfba8c5e6af3d5a0f41f246c8e9fae08",
+      "recordBytes": 1038,
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 6745,
+        "endExclusive": 6871
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "producer-source-coordinate-and-lexical-check-passed; independent-review-pending",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "28453eea086580e7fa6ff021eb9153a18edae5890910f6a290b17a64c7e3c349"
+    },
+    {
+      "id": "PRELOAD-APP-HOST-E0012",
+      "group": "preload",
+      "journalPath": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "journalSha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "journalBytes": 33510,
+      "line": 12,
+      "recordByteRange": {
+        "start": 11508,
+        "endExclusive": 12528
+      },
+      "recordSha256": "2171b496aa4871291df48ca1ec62d39ff2bfe95e2061f43b85aca07d620616ea",
+      "recordBytes": 1020,
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 6749,
+        "endExclusive": 6812
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "producer-source-coordinate-and-lexical-check-passed; independent-review-pending",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "88dda460c2221273ee2d7330ad370d644da815f341fbabe4628dd436d4fc79f7"
+    },
+    {
+      "id": "PRELOAD-APP-HOST-E0017",
+      "group": "preload",
+      "journalPath": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "journalSha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "journalBytes": 33510,
+      "line": 17,
+      "recordByteRange": {
+        "start": 16706,
+        "endExclusive": 17749
+      },
+      "recordSha256": "1390f52cf72cf8f2818b922094e1cee37c468d388c952db845bed03b517a5455",
+      "recordBytes": 1043,
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 6831,
+        "endExclusive": 6870
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "producer-source-coordinate-and-lexical-check-passed; independent-review-pending",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "af34b60cb27f5326864ddd1669ba6ded0275d96334bfe1b8e54ecede10622a15"
+    },
+    {
+      "id": "PRELOAD-APP-HOST-E0021",
+      "group": "preload",
+      "journalPath": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "journalSha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "journalBytes": 33510,
+      "line": 21,
+      "recordByteRange": {
+        "start": 20889,
+        "endExclusive": 21927
+      },
+      "recordSha256": "ee0a270b05e82d0cbfa050ea3224970865b18b5e09249ec989be7ff98e0b7719",
+      "recordBytes": 1038,
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 6866,
+        "endExclusive": 6869
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "producer-source-coordinate-and-lexical-check-passed; independent-review-pending",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "b3ee312d8f94b5bf5c3dc8049e1cb83dfffb9125f08a47607a2e553026963b8c"
+    },
+    {
+      "id": "HOST-HTTP-E0009",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 9,
+      "recordByteRange": {
+        "start": 8717,
+        "endExclusive": 9842
+      },
+      "recordSha256": "f7809c181df9c89966483a5c0a781217afc472d94c7b182e4cf7bfa1bb2a2f95",
+      "recordBytes": 1125,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3370227,
+        "endExclusive": 3370303
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "b77620cacfe2b36926a8e810b67156948a4aae1e2d68dc747d0af9454e7358aa"
+    },
+    {
+      "id": "HOST-HTTP-E0010",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 10,
+      "recordByteRange": {
+        "start": 9843,
+        "endExclusive": 10934
+      },
+      "recordSha256": "78d451949f111ea040d0794529460401d7c7a974a64d03afae12aace963c0304",
+      "recordBytes": 1091,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3370311,
+        "endExclusive": 3371002
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "e3c24756430eb0133367bac49166b15408a2877ca6ffc196618b7c9efff95e2b"
+    },
+    {
+      "id": "HOST-HTTP-E0018",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 18,
+      "recordByteRange": {
+        "start": 18540,
+        "endExclusive": 19618
+      },
+      "recordSha256": "7aaa8a90afad6f0c1af92e013a0f21feb892e0274560c312bd5f94fe67d2974c",
+      "recordBytes": 1078,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3341646,
+        "endExclusive": 3342571
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "48f033ae41a9eb01b7c623aa460fd071c6361a99e843d9e4b7ca584e0e0b1590"
+    },
+    {
+      "id": "HOST-HTTP-E0076",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 76,
+      "recordByteRange": {
+        "start": 81062,
+        "endExclusive": 82197
+      },
+      "recordSha256": "d9c9e6801b4d30e902255f9731b7c4df41aae6ce36077a467ebeeee2a1c1939c",
+      "recordBytes": 1135,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3379425,
+        "endExclusive": 3380221
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "9c45e976fab6039487756a4b1b78082cf5e827f5a19376e9d45af1f4ee65f480"
+    },
+    {
+      "id": "HOST-HTTP-E0078",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 78,
+      "recordByteRange": {
+        "start": 83249,
+        "endExclusive": 84397
+      },
+      "recordSha256": "2725a3c31e7caae98319e49af14ab4dc213d498a0ac3418e79626d9661a1b1a3",
+      "recordBytes": 1148,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3386320,
+        "endExclusive": 3386539
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "c752cf92dba164079938f717c55807ff638ea3c4498318fbc51a13e58c5c1b1c"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0006",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 6,
+      "recordByteRange": {
+        "start": 5910,
+        "endExclusive": 7040
+      },
+      "recordSha256": "bab8d2c17a015092dadb19fb3889ffc27cfe7046415484f524b4be9f48d1e9c7",
+      "recordBytes": 1130,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3814620,
+        "endExclusive": 3816301
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "09cdff12013440350317c53c369add0e7182277bfee93d9c488ad667d0f87d48"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0008",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 8,
+      "recordByteRange": {
+        "start": 8198,
+        "endExclusive": 9327
+      },
+      "recordSha256": "ca3bfc16160525cac61797d8285e148246a3423fcb8dd355ab544bdaa33dca7b",
+      "recordBytes": 1129,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3814971,
+        "endExclusive": 3815022
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "4401ec05a478da2668d9eb91c074e1a6c60c465ad03cfe8757f254e981e77c54"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0009",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 9,
+      "recordByteRange": {
+        "start": 9328,
+        "endExclusive": 10426
+      },
+      "recordSha256": "7a6ce61bd16e845e750749d84fd12a559fd26422bbea2c2496ed6153e43f9835",
+      "recordBytes": 1098,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3816279,
+        "endExclusive": 3816299
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "87589853d7f63db87ccf7a04bad23a34e2a1701c534bd49c9b5f6cbf7c870834"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0004",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 4,
+      "recordByteRange": {
+        "start": 3664,
+        "endExclusive": 4769
+      },
+      "recordSha256": "dbd3ee29fd5770b30c8ad494a68dcfff97d178547307b5ca1b5efe6a9ad3bae6",
+      "recordBytes": 1105,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3797666,
+        "endExclusive": 3798121
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "be504cf8ab23ce4b780b2887a8a9faef8d45db462a4bea427dfbb60fabc11a1f"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0005",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 5,
+      "recordByteRange": {
+        "start": 4770,
+        "endExclusive": 5909
+      },
+      "recordSha256": "e5beceb1cc407bc10354fe3ed29f6da04a566cee755f8690efda7646c0c337fe",
+      "recordBytes": 1139,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3798935,
+        "endExclusive": 3798991
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "1a3da4ac799bd33da90a212bcbdb79082010529e9d456d20c5229ab3c29a7567"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0013",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 13,
+      "recordByteRange": {
+        "start": 13799,
+        "endExclusive": 14852
+      },
+      "recordSha256": "fa3e01be7787aa5c140bf450b721064c29d83e68761571669b0994bc4b0d5519",
+      "recordBytes": 1053,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3760442,
+        "endExclusive": 3760448
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "6cd2b6bdfdb01f4cd26956030f604926d9005b254fd7734407d74779c73f0ef4"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0015",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 15,
+      "recordByteRange": {
+        "start": 15984,
+        "endExclusive": 17109
+      },
+      "recordSha256": "eebb87dd9c271725ec0cdb1b2900da4a75b049981e7ccfe82ac046349e96fd72",
+      "recordBytes": 1125,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3764079,
+        "endExclusive": 3764143
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "94706281d29d34de205ddf9a624181cdcd321150a15c39c997ab1cfd580c7dcf"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0016",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 16,
+      "recordByteRange": {
+        "start": 17110,
+        "endExclusive": 18243
+      },
+      "recordSha256": "4bca59b393f58228cd1306db5b83136206bbaf305a497f2aab774677adf6d729",
+      "recordBytes": 1133,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3763071,
+        "endExclusive": 3763204
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "3e2383ad9117712126e3752eeb83e8675dc9515b0d240fbdc7cffcc427ab6700"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0017",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 17,
+      "recordByteRange": {
+        "start": 18244,
+        "endExclusive": 19345
+      },
+      "recordSha256": "33e76fe694aa043b784431b8b4ee94996c39aef5189a7d1ddbb8ecacbe89e59d",
+      "recordBytes": 1101,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3763092,
+        "endExclusive": 3763095
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "2d9f61c51ae580619087764c56801ab0ad57ae7c9eda2e4f8e86601b91336a70"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0018",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 18,
+      "recordByteRange": {
+        "start": 19346,
+        "endExclusive": 20458
+      },
+      "recordSha256": "43ec1f605c86187e5cc75514922eb15c1c79fd6007c68c0d6289a32176152bc3",
+      "recordBytes": 1112,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3763801,
+        "endExclusive": 3763848
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "7a7a898c1c6242901d075fdf26bcff11014913c4d3955d979e5c6182c473169c"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0020",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 20,
+      "recordByteRange": {
+        "start": 21601,
+        "endExclusive": 22779
+      },
+      "recordSha256": "ad26a362fc4f21bb2e4519b426291bcbacc5b5ae36abaf7e2c624297035667de",
+      "recordBytes": 1178,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3363414,
+        "endExclusive": 3364988
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "a183abcae1b58b985a4b9c11a0ec630fc809d5e36d34f85ee26de39523db54f6"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0021",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 21,
+      "recordByteRange": {
+        "start": 22780,
+        "endExclusive": 23876
+      },
+      "recordSha256": "225f16ac918957cbd218cabf1a1803a4e921ac02f60996f4d061406e1c8f2acc",
+      "recordBytes": 1096,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3366109,
+        "endExclusive": 3366131
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "31882a1ecde48f8578452b602489abb5a63706cb9af31dbb856953fe9b12242a"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-TRUST-E0001",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 23,
+      "recordByteRange": {
+        "start": 24978,
+        "endExclusive": 26458
+      },
+      "recordSha256": "115768215f61b1f56e703906723a24a9cb625fbc3a5043c5fe1f5592c7a5953d",
+      "recordBytes": 1480,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3734430,
+        "endExclusive": 3734580
+      },
+      "originConfidence": "confirmed-static-local-source",
+      "originVerificationStatus": "static-source-confirmed; outer-bindings-registry-runtime-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "89d77e2563a53457062e6ecd7ca0a0ab8ce8f0864fc9b603269a3149aae63cc9"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-TRUST-E0002",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 24,
+      "recordByteRange": {
+        "start": 26459,
+        "endExclusive": 27884
+      },
+      "recordSha256": "fa7ae57443da9b354ac7df1271f1aa12c18a1360232232ceae44c380a2441c30",
+      "recordBytes": 1425,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3732967,
+        "endExclusive": 3733042
+      },
+      "originConfidence": "confirmed-static-local-source",
+      "originVerificationStatus": "static-source-confirmed; outer-bindings-registry-runtime-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "79cf056c4de964f0288b6dfed0473bf45bb90928d2f054d24ddb5c4ee97e43ba"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-TRUST-E0003",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 25,
+      "recordByteRange": {
+        "start": 27885,
+        "endExclusive": 29117
+      },
+      "recordSha256": "6e498a60f108f52a6b94dc05865415fd0683b209dce8727dbf7e8fc94006ba2e",
+      "recordBytes": 1232,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3753925,
+        "endExclusive": 3754038
+      },
+      "originConfidence": "confirmed-static-local-source",
+      "originVerificationStatus": "static-source-confirmed; outer-bindings-registry-runtime-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "4090dc31a7248a625cd1402c98a8d89dcc32dbb31b2f7b2c685752eef5e47239"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-TRUST-E0004",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 26,
+      "recordByteRange": {
+        "start": 29118,
+        "endExclusive": 30380
+      },
+      "recordSha256": "432eaf1e0e8f8478e911dc01f1bedc03bacfb2d7adc96fa07f3fe055ca355306",
+      "recordBytes": 1262,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3754168,
+        "endExclusive": 3754326
+      },
+      "originConfidence": "confirmed-static-local-source",
+      "originVerificationStatus": "static-source-confirmed; outer-bindings-registry-runtime-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "3cf0adb53dd976d378d4dd15ec6bf57090c328cde4e1c3c226a467db6821860d"
+    },
+    {
+      "id": "HOST-HTTP-E0019",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 19,
+      "recordByteRange": {
+        "start": 19619,
+        "endExclusive": 20806
+      },
+      "recordSha256": "4e92e953917c88a2cbf78a9ff2773dc1eef7a59d9b83f294f40096d34ed86bcf",
+      "recordBytes": 1187,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 713057,
+        "endExclusive": 713196
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "571772594cc4ce2e87360d486ebc889a370f23d796e8ae740effb2a7b9d01b07"
+    },
+    {
+      "id": "HOST-HTTP-E0080",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 80,
+      "recordByteRange": {
+        "start": 85520,
+        "endExclusive": 86624
+      },
+      "recordSha256": "9e7cfc121f231a4c2d33272c55ef0df8072836e880ad1d795473736ef9779b78",
+      "recordBytes": 1104,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3332252,
+        "endExclusive": 3341400
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "e343a18852098cb4304ae087a43dc7d2bb139dd8b153fa379c8486ea7db98e6a"
+    },
+    {
+      "id": "HOST-HTTP-E0081",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 81,
+      "recordByteRange": {
+        "start": 86625,
+        "endExclusive": 87736
+      },
+      "recordSha256": "b338558a5d387fc5e650fe9c87f1c0dbb23ac2b839493af88765c8ea9da1dd83",
+      "recordBytes": 1111,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3332330,
+        "endExclusive": 3332341
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "05cbfc9e4fd6e923bfb2581a56fa902a4b6a4f823d99b43b10bf0c3ecf03503c"
+    },
+    {
+      "id": "HOST-HTTP-E0082",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 82,
+      "recordByteRange": {
+        "start": 87737,
+        "endExclusive": 88831
+      },
+      "recordSha256": "47d288b90895f4bbf4d117bbb10bbb2cdab4ca549ffa2cac3876d1b0671dcc96",
+      "recordBytes": 1094,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3331322,
+        "endExclusive": 3331425
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "7b754c9d17e361d3be9d28033e5d40b19594c9d885c79fc6d54f2d69f7cbebfc"
+    },
+    {
+      "id": "HOST-HTTP-E0083",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 83,
+      "recordByteRange": {
+        "start": 88832,
+        "endExclusive": 89964
+      },
+      "recordSha256": "7f285c5e0e42927014bde8657a20a642ae2a677ff2a288e479a47b5573f89e22",
+      "recordBytes": 1132,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3331333,
+        "endExclusive": 3331424
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "ad3e92958add3dee9766a3f58b8ec8be466a0fac74865cc66d32e805fe755b8f"
+    },
+    {
+      "id": "HOST-HTTP-E0084",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 84,
+      "recordByteRange": {
+        "start": 89965,
+        "endExclusive": 91071
+      },
+      "recordSha256": "a2c5c56bbd584007fe1af9aef7c64ae22469563de4e918662b6d18fe11a16c6e",
+      "recordBytes": 1106,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3331426,
+        "endExclusive": 3331469
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "973ea411e8a427759118617c2e99258478427b9b42d81f0a415775f551033ec5"
+    },
+    {
+      "id": "HOST-HTTP-E0068",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 68,
+      "recordByteRange": {
+        "start": 72420,
+        "endExclusive": 73557
+      },
+      "recordSha256": "2075d82de18504b40aae66308fd39138b1cc222711cecbab51580bd37a979ef2",
+      "recordBytes": 1137,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 10490,
+        "endExclusive": 10886
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "3d39fa62b42108f76137459c27a30e4387ae73b2db893b1e1f8ab95f8a1f4319"
+    },
+    {
+      "id": "HOST-HTTP-E0069",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 69,
+      "recordByteRange": {
+        "start": 73558,
+        "endExclusive": 74626
+      },
+      "recordSha256": "c19ad61774a66f450350efcc44984ff61cfcab92ffc872f2952fbfaaf0214dc3",
+      "recordBytes": 1068,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 10523,
+        "endExclusive": 10556
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "783ec8150d85b6e86d672c06af8869030ec9e13766bc383dc0174664cf04b246"
+    },
+    {
+      "id": "HOST-HTTP-E0070",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 70,
+      "recordByteRange": {
+        "start": 74627,
+        "endExclusive": 75689
+      },
+      "recordSha256": "723481a4394c2f4dfb0fc4238e8478140964dce0bd609c5e97ce14ec7845348d",
+      "recordBytes": 1062,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 10556,
+        "endExclusive": 10776
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "f00c7b8c691b1afbeceda133b63779e03a30772c17301622961d643758f54ae9"
+    },
+    {
+      "id": "HOST-HTTP-E0071",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 71,
+      "recordByteRange": {
+        "start": 75690,
+        "endExclusive": 76753
+      },
+      "recordSha256": "63159002d060cf62b19013f00950817485609fe70fa7ee22b03b688715b6ad1d",
+      "recordBytes": 1063,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 10776,
+        "endExclusive": 10810
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "c046c73e42a591cc95d3bbc86dccaff329cb7d1aafee56125d059bfc12f1ea53"
+    },
+    {
+      "id": "HOST-HTTP-E0072",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 72,
+      "recordByteRange": {
+        "start": 76754,
+        "endExclusive": 77821
+      },
+      "recordSha256": "8c7f3d1f43ace0a3d7d10693c99ac1302a60a3535b96ca3876b234515a50c8fb",
+      "recordBytes": 1067,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 10810,
+        "endExclusive": 10885
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "5e5d16db94d52eb7e9ac5fdd9e39533d165c19013f451dbf2443e1f078373870"
+    },
+    {
+      "id": "HOST-HTTP-E0073",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 73,
+      "recordByteRange": {
+        "start": 77822,
+        "endExclusive": 78975
+      },
+      "recordSha256": "6d5213f41a9b5bf2d7c98a865b5a0d110771e567312d594e9642bc4ed83c9878",
+      "recordBytes": 1153,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 10252,
+        "endExclusive": 10483
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "0f1416519ade963f839d2d548e5e6b371fc77d9841dd52e57faf368918e70b52"
+    },
+    {
+      "id": "HOST-HTTP-E0025",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 25,
+      "recordByteRange": {
+        "start": 26340,
+        "endExclusive": 27410
+      },
+      "recordSha256": "3db6361f5ec643f46202bfb68895f677225a7ee2ef1bb8c2ce7e9a917207dd3e",
+      "recordBytes": 1070,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 691823,
+        "endExclusive": 694116
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "d08a43368dd9e92e19b373c687d2ccee66fd7a3176866f8ef34dbf0491576dd2"
+    },
+    {
+      "id": "HOST-HTTP-E0026",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 26,
+      "recordByteRange": {
+        "start": 27411,
+        "endExclusive": 28491
+      },
+      "recordSha256": "e34bb881bc95b8b117a466c308165b62ec8c203fb626fef79a2e8f4280143e31",
+      "recordBytes": 1080,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 694261,
+        "endExclusive": 699846
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "a695eb7f647640907fe0ea341481f377990972f02d46b7bd64736d15ed4a69f2"
+    },
+    {
+      "id": "HOST-HTTP-E0027",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 27,
+      "recordByteRange": {
+        "start": 28492,
+        "endExclusive": 29575
+      },
+      "recordSha256": "007300550d5a97f5a13aaee50de63dc3fa566214ac54aac871d111e46a832f4e",
+      "recordBytes": 1083,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 699846,
+        "endExclusive": 700887
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "72d35f0ea5ae922d17e2685d8ae8e1d30549f18aea7443483c4327fc867d429a"
+    },
+    {
+      "id": "HOST-HTTP-E0039",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 39,
+      "recordByteRange": {
+        "start": 41454,
+        "endExclusive": 42538
+      },
+      "recordSha256": "2f428bad7cb0d820fd7efdf8c42328d3a943d356a6d62f3ebdc83c5ba3927ecc",
+      "recordBytes": 1084,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 702958,
+        "endExclusive": 703533
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "fdedf3bb46a19a905ed8859e13bd824acd86b0905d6154fbcbb844449ff21b3d"
+    },
+    {
+      "id": "HOST-HTTP-E0040",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 40,
+      "recordByteRange": {
+        "start": 42539,
+        "endExclusive": 43683
+      },
+      "recordSha256": "9077655ee246b813c9a9225260ed3cb5a83aa0019d41b7c70f013370ea813fdb",
+      "recordBytes": 1144,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 655311,
+        "endExclusive": 655429
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "67dac37f0faa49dec01fc3b6ec84eef5b101528cdd3ced50927e8f236d545c62"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0018",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 18,
+      "recordByteRange": {
+        "start": 15391,
+        "endExclusive": 16289
+      },
+      "recordSha256": "678978dff24b1224519939601830bf7c688b12d52ef54949df9f4be1b9ece77c",
+      "recordBytes": 898,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 64734,
+        "endExclusive": 64802
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "a2bee2499776b6dc1fd4c89948ff49886be8c0158df76f7bafa1c7a830f1338a"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0019",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 19,
+      "recordByteRange": {
+        "start": 16290,
+        "endExclusive": 17192
+      },
+      "recordSha256": "177f44e7f6e6ce30732a3dfe9c801c7f2ed38320bada835fb0a018fec16b5995",
+      "recordBytes": 902,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 64802,
+        "endExclusive": 65088
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "b71d81b7a6f3a126b111ed2907264131f17ebd9e299017a8322fab4740733f35"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0021",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 21,
+      "recordByteRange": {
+        "start": 18100,
+        "endExclusive": 18996
+      },
+      "recordSha256": "dbcac22619bec77b428d5217469d6643629d1ec46b5fb6bf69e8a0537a511c7d",
+      "recordBytes": 896,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 65462,
+        "endExclusive": 65598
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "3b9e0e46fabfa1efa240e33280673d8912426cba23bafd39cf3260a923f4bfd3"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0023",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 23,
+      "recordByteRange": {
+        "start": 19904,
+        "endExclusive": 20797
+      },
+      "recordSha256": "65c0ff25c1cec1fcbcfbb9802cdee9386a86c7e3d8199dc7c1946ea4fba7dc7f",
+      "recordBytes": 893,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 66286,
+        "endExclusive": 66554
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "2a07ebebe4e0bb926fc4d5d52331308fbc7f3fa8189923ec3caac71e60b4c48c"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0024",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 24,
+      "recordByteRange": {
+        "start": 20798,
+        "endExclusive": 21698
+      },
+      "recordSha256": "ac72a89ed9a2f74f8466fcd3d94b789a9a7c877c621314f313a31162c4a13867",
+      "recordBytes": 900,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 66554,
+        "endExclusive": 66660
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "5f9d5919bfa02b2f66dd162fc94516477a7c2c2d2ac51fee02bab691e1475f6e"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0025",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 25,
+      "recordByteRange": {
+        "start": 21699,
+        "endExclusive": 22591
+      },
+      "recordSha256": "4896cadf3f751cbd361c7d04f5d97e27fd3ae9e3afca7880575a955232c77b02",
+      "recordBytes": 892,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 66660,
+        "endExclusive": 66806
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "76b1258205244bb002beae90311fbf89dfa9b2765e781cbac90afb348404c335"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0027",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 27,
+      "recordByteRange": {
+        "start": 23509,
+        "endExclusive": 24403
+      },
+      "recordSha256": "26852ddb5f689b4c95f1f730404a5c376f20b494e50a97a32a4b12a5a37ca8b6",
+      "recordBytes": 894,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 67579,
+        "endExclusive": 67640
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "674f95272c32efc7a50eb067ec11c51a7d092afd6c87818bdb7d67fb499c8e8d"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0028",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 28,
+      "recordByteRange": {
+        "start": 24404,
+        "endExclusive": 25312
+      },
+      "recordSha256": "083186a590a36273ef2c9194bf818ba919b57a40dfd8999edf11bbed72063836",
+      "recordBytes": 908,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 67640,
+        "endExclusive": 67757
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "f4b3f43a94322dbddaf2b6ede022cdcc3db57c8533a1d68942a88e665d783e91"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0030",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 30,
+      "recordByteRange": {
+        "start": 26208,
+        "endExclusive": 27105
+      },
+      "recordSha256": "876970d10e485b96acb9d386d34ece97a39822b2b55d302bc2e825ed005bfd19",
+      "recordBytes": 897,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 68234,
+        "endExclusive": 68354
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "6c39f094868e8aeb4c113214ef13f3e57a1d3e21685c5c8c41e4b9a4f944705f"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0031",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 31,
+      "recordByteRange": {
+        "start": 27106,
+        "endExclusive": 28020
+      },
+      "recordSha256": "22ddc795ec25c387736273241f43325e0f9fbd7024cf47e91faab0b752baea7c",
+      "recordBytes": 914,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 68354,
+        "endExclusive": 68521
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "0b50e882c1dd02dd2dde0cd9f4d397712ed16b25dee7ea9096afd07571c6d997"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0032",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 32,
+      "recordByteRange": {
+        "start": 28021,
+        "endExclusive": 28922
+      },
+      "recordSha256": "593477346882e052154fa9b05d75a82c6fabba5703ca65163ae2ebab9c66a0b1",
+      "recordBytes": 901,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 68521,
+        "endExclusive": 69036
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "0c6f79fc21669838f60e607a4b743fe4775902377bc93e52a0a5258788966c2a"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0037",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 37,
+      "recordByteRange": {
+        "start": 32660,
+        "endExclusive": 33627
+      },
+      "recordSha256": "68ca4e85d56f06ce03e5dac6d14015a7a740b819cebcf0bf166721049af9421b",
+      "recordBytes": 967,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 103293,
+        "endExclusive": 103910
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "295d139ffd608e3f7f53a7e5e8904710cacf6565adaa0bdd4e782a9db3c49144"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0038",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 38,
+      "recordByteRange": {
+        "start": 33628,
+        "endExclusive": 34595
+      },
+      "recordSha256": "57be1b41bbb75540a3af8f477cfe12d5897b66f50069d5dca4ebd3c6223a8b45",
+      "recordBytes": 967,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 103910,
+        "endExclusive": 104208
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "0b813a2056ca8bf82d3cbb4cdfcd487df307de70f1fdec211bdb61ff6fc7921e"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0039",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 39,
+      "recordByteRange": {
+        "start": 34596,
+        "endExclusive": 35563
+      },
+      "recordSha256": "71a37164168021f549d1a28e3c29b97054af56e86d73c5b3b18fa138d5956f55",
+      "recordBytes": 967,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 102103,
+        "endExclusive": 102632
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "19ba1c4b09a0f4bc444b07f39bc340e1cbfb0e8bbbf97afb4e406becdde49d7c"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0040",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 40,
+      "recordByteRange": {
+        "start": 35564,
+        "endExclusive": 36531
+      },
+      "recordSha256": "cd131d56c4dd4e536ac9c45978a56e780ad46a782686e84e953f8e2d637813a9",
+      "recordBytes": 967,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 102632,
+        "endExclusive": 102869
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "1a377f799aab41b34c0c99e40f475beece463d14648657c7f0de4daf8bf25b4e"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0041",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 41,
+      "recordByteRange": {
+        "start": 36532,
+        "endExclusive": 37499
+      },
+      "recordSha256": "8f0ab82875d55f60313b55656ed3b83a55f63ca45dac304c282fef40cafaaf3a",
+      "recordBytes": 967,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 102869,
+        "endExclusive": 103005
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "40314e0f9df9e90ff44a18ca62cadd812632e4bd0c7122100f4db17954569573"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0043",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 43,
+      "recordByteRange": {
+        "start": 38468,
+        "endExclusive": 39435
+      },
+      "recordSha256": "c3b2444e2114de15968121fe8198540713bd1a4eb74fcbf8a1128282f1abf3f3",
+      "recordBytes": 967,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 105926,
+        "endExclusive": 108156
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "ceca8d80a70e4d72c182204554f302be68ba8c45e63d7033cd106c8e1fc3210c"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0056",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 56,
+      "recordByteRange": {
+        "start": 50505,
+        "endExclusive": 51509
+      },
+      "recordSha256": "95ac22f1efbefa845570d5756b54e09ee8ba8a5a967e2000b012b3dba1105322",
+      "recordBytes": 1004,
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 278382,
+        "endExclusive": 280875
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "ede885818fb9d1718b2e27bf374073f00b2bd58aa5daa765f673922fec176a5d"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0057",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 57,
+      "recordByteRange": {
+        "start": 51510,
+        "endExclusive": 52406
+      },
+      "recordSha256": "2194d8b0f462400e8d19288b1e837fe32b39d7e8e5219b66dd26cac8475424b8",
+      "recordBytes": 896,
+      "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 285699,
+        "endExclusive": 285775
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "03ab07c24d3bd9ef661881a0bd7bf0ae6e6cb4633f9477863014ee1fc37c70af"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0070",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 70,
+      "recordByteRange": {
+        "start": 63746,
+        "endExclusive": 64432
+      },
+      "recordSha256": "295ca514de33e4f5964cc4d69df46f31f8a6001de921dff9fc2e1d191fd0883d",
+      "recordBytes": 686,
+      "sourcePath": "app.asar/package.json",
+      "sourceHash": "7688f53fdb60bb06d82a760f87b70968f03273d93d36fc33cf112e2b287e3146",
+      "sourceLocator": {
+        "kind": "json-pointers",
+        "pointers": [
+          "/name",
+          "/version",
+          "/main",
+          "/devDependencies/electron",
+          "/scripts/compile",
+          "/scripts/owl",
+          "/scripts/rebuild:native-modules"
+        ]
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged"
+    },
+    {
+      "id": "PRELOAD-APP-HOST-E0001",
+      "group": "preload",
+      "journalPath": ".analysis-local/preload-app-host-work/evidence.jsonl",
+      "journalSha256": "f400142ac2057c4e1d635e0385f493f37fb46931811ab5a1fdc0c36c2da94e0b",
+      "journalBytes": 33510,
+      "line": 1,
+      "recordByteRange": {
+        "start": 0,
+        "endExclusive": 1051
+      },
+      "recordSha256": "bf90e3d5794c0339f6ceea162ceaae41f67854e16fb0869f75ce190bd0e0881a",
+      "recordBytes": 1051,
+      "sourcePath": "app.asar/.vite/build/preload.js",
+      "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 0,
+        "endExclusive": 26
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "producer-source-coordinate-and-lexical-check-passed; independent-review-pending",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "1203bc203a3a8c03da4fd73e6561dac4f5d4c0d916d7af839658861ae71818c5"
+    },
+    {
+      "id": "HOST-HTTP-E0002",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 2,
+      "recordByteRange": {
+        "start": 1091,
+        "endExclusive": 2140
+      },
+      "recordSha256": "e2d5c25bac493e3b6e26c68e61f7b7a037e92041ea91c3c845f0e944b85eef9a",
+      "recordBytes": 1049,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 715,
+        "endExclusive": 752
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "42cafaf56508e50dc854a7997294308d119323efd49113dc35eabd631b782215"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0005",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 5,
+      "recordByteRange": {
+        "start": 3552,
+        "endExclusive": 4401
+      },
+      "recordSha256": "bc2c39e5704e9a01630011502e97d54fa21a7cf52f315cd85d8ba24b2e7727bb",
+      "recordBytes": 849,
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 503,
+        "endExclusive": 529
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "1b04e44d93e975154a19dacf4522167704de4b54f7ad8d5cfcdc67d2c28ad2ae"
+    },
+    {
+      "id": "HOST-HTTP-E0005",
+      "group": "hostHttp",
+      "journalPath": ".analysis-local/host-http-service-work/evidence.jsonl",
+      "journalSha256": "c313480e58c51d27f64ac81ba4e040cacd1fd14f34a5a3059796103c8bbb52d4",
+      "journalBytes": 94501,
+      "line": 5,
+      "recordByteRange": {
+        "start": 4312,
+        "endExclusive": 5437
+      },
+      "recordSha256": "1643f310249e06c5aeff0a7254a693a180063819c6bbdf0125d9cee4e7481905",
+      "recordBytes": 1125,
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 0,
+        "endExclusive": 502
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "d2fa1234230d8e92ca6becf1abaaa3c4ccc91a828c25b501ef00c5f32bb27d45"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0004",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 4,
+      "recordByteRange": {
+        "start": 2659,
+        "endExclusive": 3551
+      },
+      "recordSha256": "a865772d816ef8c59ca2326279d297ec6aca3e9cc5d6ddac4d887b69f7487855",
+      "recordBytes": 892,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 0,
+        "endExclusive": 347
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "d4d97cf1f35e01ef979e6f52c678bcb79093aae30a04b88e20a401220234335b"
+    },
+    {
+      "id": "APPLICATION-NETWORK-E0044",
+      "group": "network",
+      "journalPath": ".analysis-local/application-network-work/evidence.jsonl",
+      "journalSha256": "c368bfe234d2ab9663e214c22e40245bf7a222c5239b6e98087b67d861fa6e4e",
+      "journalBytes": 64433,
+      "line": 44,
+      "recordByteRange": {
+        "start": 39436,
+        "endExclusive": 40389
+      },
+      "recordSha256": "72768faa613c9487af311f2861ed613dda870b28f24d22cecddbd726f2b27993",
+      "recordBytes": 953,
+      "sourcePath": "app.asar/.vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 103005,
+        "endExclusive": 103293
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "confirmed",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "1400bf643ffd06fd20538963e8ed6604208990faed6f5f19c35f9ccc8e9f944d"
+    },
+    {
+      "id": "APP-HOST-CONTEXT-E0007",
+      "group": "context",
+      "journalPath": ".analysis-local/app-host-context-work/evidence.jsonl",
+      "journalSha256": "d3308ba553a821f5b107a5e5139ae7b209beb214376474f96bf8835107342d49",
+      "journalBytes": 37402,
+      "line": 7,
+      "recordByteRange": {
+        "start": 7041,
+        "endExclusive": 8197
+      },
+      "recordSha256": "b88782f9aa22068b447fe11afb248b4b9c8f7965bab54283ff6873b0309d1070",
+      "recordBytes": 1156,
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "sourceLocator": {
+        "kind": "byte-range",
+        "start": 3814624,
+        "endExclusive": 3816300
+      },
+      "originConfidence": "confirmed",
+      "originVerificationStatus": "static-source-confirmed; runtime-and-mode-unverified",
+      "identityStatus": "Exact preserved existing evidence record; original source claim scope and runtime/mode limits unchanged",
+      "sourceSpanSha256": "c70c97ad29f6524e5315dddc842f0dce93a416a5beae20528ff9b629e7cf1fa7"
+    }
+  ],
+  "modules": [
+    {
+      "id": "AH-M01",
+      "category": "module",
+      "name": "Preload app-host bridge",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "PRELOAD-APP-HOST-E0004",
+        "PRELOAD-APP-HOST-E0006",
+        "PRELOAD-APP-HOST-E0010",
+        "PRELOAD-APP-HOST-E0012",
+        "PRELOAD-APP-HOST-E0017",
+        "PRELOAD-APP-HOST-E0021"
+      ],
+      "proposedPath": "src/preload/app-host-bridge.ts",
+      "responsibility": "接收窗口 message，并通过注入 IPC adapter 转发所选 port；将 channel/envelope 和 transfer list 合同集中管理。",
+      "observedBasis": "冻结小 preload 中的 source/window/type guard 与 postMessage(_,void 0,[n])，仅源码与词法关系。",
+      "dependsOn": [
+        "AH-I01",
+        "AH-B01"
+      ],
+      "preserve": "保留选定 source/type guard 的顺序和消息值/transfer list。新类型接口不代表旧源码已验证 port 类型或送达。",
+      "unresolved": "require 返回对象、sender、MessagePort 身份和跨进程送达未知。"
+    },
+    {
+      "id": "AH-M02",
+      "category": "module",
+      "name": "Main connection and remote view lifecycle",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0009",
+        "HOST-HTTP-E0010",
+        "HOST-HTTP-E0018",
+        "HOST-HTTP-E0076",
+        "HOST-HTTP-E0078",
+        "APP-HOST-CONTEXT-E0006",
+        "APP-HOST-CONTEXT-E0008",
+        "APP-HOST-CONTEXT-E0009"
+      ],
+      "proposedPath": "src/main/app-host/connection-handler.ts",
+      "responsibility": "组装注入的 event predicate、context resolver、port/RPC adapter 和 remote view 生命周期，保持连接入口独立。",
+      "observedBasis": "选定 QXe 先检查 F，再取 event.ports[0]、可选 createAppHost、连接并 registerAppView；caller options 的实际表达式已存证。",
+      "dependsOn": [
+        "AH-I01",
+        "AH-I02",
+        "AH-I03",
+        "AH-B03"
+      ],
+      "preserve": "保留 host target 与 remote view peer 的方向差异；记录 missing context 时的 undefined target/仍调用连接 factory 候选，不自行补写既有 port guard。",
+      "unresolved": "RPC/base 实现、实际 peer、端口与 context 实例未知；并非完整 wire protocol 恢复。"
+    },
+    {
+      "id": "AH-M03",
+      "category": "module",
+      "name": "Window context registry and sender predicate",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APP-HOST-CONTEXT-E0004",
+        "APP-HOST-CONTEXT-E0005",
+        "APP-HOST-CONTEXT-E0013",
+        "APP-HOST-CONTEXT-E0015",
+        "APP-HOST-CONTEXT-E0016",
+        "APP-HOST-CONTEXT-E0017",
+        "APP-HOST-CONTEXT-E0018",
+        "APP-HOST-CONTEXT-E0020",
+        "APP-HOST-CONTEXT-E0021",
+        "APP-HOST-CONTEXT-TRUST-E0001",
+        "APP-HOST-CONTEXT-TRUST-E0002",
+        "APP-HOST-CONTEXT-TRUST-E0003",
+        "APP-HOST-CONTEXT-TRUST-E0004"
+      ],
+      "proposedPath": "src/main/window-services/context-registry.ts",
+      "responsibility": "分别管理 context slot/窗口注册生命周期与 sender/frame predicate，并通过 WindowServices 注入连接入口。",
+      "observedBasis": "冻结 M1e slot 初 null；条件 getter 依赖 hasRegisteredWebContents；setter 的完整所选节点与 setWindowContext 调用已保留。",
+      "dependsOn": [
+        "AH-I02"
+      ],
+      "preserve": "setter 的已有未销毁窗口注册副作用须作为独立生命周期合同调查并保留；不能把 setter 简化为纯赋值，也不能合并 membership 与 sender predicate。",
+      "unresolved": "全 registry populate/unregister closure、实时 frame/URL/slot 值未知；所选 file URL 前缀比较不是精确 pathname 相等。"
+    },
+    {
+      "id": "AH-M04",
+      "category": "module",
+      "name": "App-host service assembly",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0019",
+        "HOST-HTTP-E0080",
+        "HOST-HTTP-E0081",
+        "HOST-HTTP-E0082",
+        "HOST-HTTP-E0083",
+        "HOST-HTTP-E0084"
+      ],
+      "proposedPath": "src/main/app-host/service-assembly.ts",
+      "responsibility": "仅在 composition root 创建所需 provider 并显式组装 host services，将依赖与 disposal hook 注入。",
+      "observedBasis": "hXe.createAppHost 所选 provider callback、httpFetch:x 明示服务项、Zde getter 和 origin destroyed disposal hook 已存证。",
+      "dependsOn": [
+        "AH-I03",
+        "AH-I04",
+        "AH-M05",
+        "AH-M06"
+      ],
+      "preserve": "保留 provider callback 的 id/request/signal/progress 与 response observer 边界；host services 与 remote view services 使用不同接口。",
+      "unresolved": "其他服务集合、spread helper 全外层绑定、实际创建顺序与实例身份未知。"
+    },
+    {
+      "id": "AH-M05",
+      "category": "module",
+      "name": "HTTP provider request lifecycle",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0068",
+        "HOST-HTTP-E0069",
+        "HOST-HTTP-E0070",
+        "HOST-HTTP-E0071",
+        "HOST-HTTP-E0072",
+        "HOST-HTTP-E0073"
+      ],
+      "proposedPath": "src/main/http/http-provider.ts",
+      "responsibility": "管理 request id 到 AbortController 的映射、cancel/dispose、callback 调用与 Response bridge 清理。",
+      "observedBasis": "选定 Ue/He 节点描述 fetch/cancel/disposal/空 body 清理或 signal 管道 finally cleanup。",
+      "dependsOn": [
+        "AH-I04",
+        "AH-B03",
+        "AH-B05"
+      ],
+      "preserve": "cancel 当前 mapped id 时只 abort；清理按 id 删除。重复 id、callback 返回对象及 stream completion 的有效性不设为已证实前提。",
+      "unresolved": "request-id 唯一性、base lifecycle、RPC serialization 和 native streams 未验证。"
+    },
+    {
+      "id": "AH-M06",
+      "category": "module",
+      "name": "Desktop HTTP orchestration",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0025",
+        "HOST-HTTP-E0026",
+        "HOST-HTTP-E0027",
+        "HOST-HTTP-E0039",
+        "HOST-HTTP-E0040"
+      ],
+      "proposedPath": "src/main/http/desktop-fetch.ts",
+      "responsibility": "集中 URL/body/header、destination guards、auth/workspace/retry、response/error normalization；网络与身份/helper 通过依赖注入。",
+      "observedBasis": "冻结 Ude.fetchHttp/performDesktopFetch/progress request 的有限成员合同。",
+      "dependsOn": [
+        "AH-I05",
+        "AH-B02",
+        "AH-B05"
+      ],
+      "preserve": "URL/log/timing 预处理在 try 外；普通 body 与 progress Buffer.concat 分支分开。认证与错误 helper 保持 opaque，不能声称端到端流式。",
+      "unresolved": "实际凭据、response observer、helper 语义、目的地值和网络结果未知。"
+    },
+    {
+      "id": "AH-M07",
+      "category": "module",
+      "name": "Application network policy and native adapter",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0018",
+        "APPLICATION-NETWORK-E0019",
+        "APPLICATION-NETWORK-E0021",
+        "APPLICATION-NETWORK-E0023",
+        "APPLICATION-NETWORK-E0024",
+        "APPLICATION-NETWORK-E0025",
+        "APPLICATION-NETWORK-E0027",
+        "APPLICATION-NETWORK-E0028",
+        "APPLICATION-NETWORK-E0030",
+        "APPLICATION-NETWORK-E0031",
+        "APPLICATION-NETWORK-E0032",
+        "APPLICATION-NETWORK-E0037",
+        "APPLICATION-NETWORK-E0038"
+      ],
+      "proposedPath": "src/main/network/application-network.ts",
+      "responsibility": "围绕显式 policy state 管理 readiness/generation/refresh/session restrictions，再把 fetch/request 委托给 native runtime adapter。",
+      "observedBasis": "冻结 tr 的 policy/lifecycle、oa/sa 与 net.fetch/net.request 候选边界。",
+      "dependsOn": [
+        "AH-I05",
+        "AH-I06",
+        "AH-B02",
+        "AH-B04"
+      ],
+      "preserve": "保持 loading/ready/failed、stale generation、redirect/session/dispose；pre-ready仅dev origin或helper-local协议候选，其余null policy拒绝；restricted为https/wss和去尾点hostname精确匹配，不能改为后缀通配。dev origin实际值未知。",
+      "unresolved": "实际 requirements/session/allowlist、外层 binding、native API 与真实实例未知。"
+    },
+    {
+      "id": "AH-M08",
+      "category": "module",
+      "name": "Requirements startup and runtime capability adapter",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0039",
+        "APPLICATION-NETWORK-E0040",
+        "APPLICATION-NETWORK-E0041",
+        "APPLICATION-NETWORK-E0043",
+        "APPLICATION-NETWORK-E0056",
+        "APPLICATION-NETWORK-E0057",
+        "APPLICATION-NETWORK-E0070"
+      ],
+      "proposedPath": "src/main/network/runtime-startup.ts",
+      "responsibility": "分开 requirements/config 获取、临时 transport lifecycle、schema boundary 与 Node permission/relaunch capability，以 adapter 限制运行时耦合。",
+      "observedBasis": "冻结 Xc 与 requirements da/ta/na 的选定初始化/read/finally-close 和 permission/relaunch 候选。",
+      "dependsOn": [
+        "AH-I06",
+        "AH-B02",
+        "AH-B03",
+        "AH-B04"
+      ],
+      "preserve": "临时 transport 初始化与 read 顺序、finally close 作为待迁移合同；声明 electron 42.3.0 不作为 stock runtime 兼容结论。",
+      "unresolved": "Us/eo/Lr 与 parser/helpers 归属、backend 结果、Owl/native 实现与兼容性未知。"
+    }
+  ],
+  "interfaces": [
+    {
+      "id": "AH-I01",
+      "category": "interface",
+      "name": "Window port and connection adapter",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "PRELOAD-APP-HOST-E0010",
+        "PRELOAD-APP-HOST-E0012",
+        "PRELOAD-APP-HOST-E0017",
+        "PRELOAD-APP-HOST-E0021",
+        "HOST-HTTP-E0076",
+        "HOST-HTTP-E0078"
+      ],
+      "proposedContract": [
+        "forwardSelectedPort(windowEnvelope): void",
+        "acceptConnection(ipcEvent, dependencies): opaque connection result"
+      ],
+      "semantics": "用 opaque envelope/event/port 类型隔离 window/IPC/native 对象；明确 selected port、void 0 message 和 transfer list，而不把完整 schema/握手当作已恢复。",
+      "nonGuarantees": [
+        "实际 window sender 身份",
+        "port 数量或类型验证",
+        "跨进程交付",
+        "wire serialization"
+      ]
+    },
+    {
+      "id": "AH-I02",
+      "category": "interface",
+      "name": "WindowServices registry and sender contract",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APP-HOST-CONTEXT-E0005",
+        "APP-HOST-CONTEXT-E0015",
+        "APP-HOST-CONTEXT-E0016",
+        "APP-HOST-CONTEXT-E0017",
+        "APP-HOST-CONTEXT-E0018",
+        "APP-HOST-CONTEXT-E0021",
+        "APP-HOST-CONTEXT-TRUST-E0001",
+        "APP-HOST-CONTEXT-TRUST-E0002",
+        "APP-HOST-CONTEXT-TRUST-E0003",
+        "APP-HOST-CONTEXT-TRUST-E0004"
+      ],
+      "proposedContract": [
+        "getContextForWebContents(input): context-or-null candidate",
+        "setWindowContext(context): lifecycle operation",
+        "isTrustedIpcSender(sender, frame): boolean-shaped candidate"
+      ],
+      "semantics": "拆开 membership、context slot 与 sender/frame/URL predicate。setWindowContext 含注册副作用调查项；保留 null/id/mainFrame/file-prefix 源码区别。",
+      "nonGuarantees": [
+        "完整 registry lifecycle",
+        "真实 sender 被认可",
+        "完整 runtime predicate",
+        "frame/URL/env 值"
+      ]
+    },
+    {
+      "id": "AH-I03",
+      "category": "interface",
+      "name": "Directional host and remote view capabilities",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0018",
+        "HOST-HTTP-E0019",
+        "HOST-HTTP-E0080",
+        "HOST-HTTP-E0083",
+        "HOST-HTTP-E0084"
+      ],
+      "proposedContract": [
+        "HostTarget.services: opaque host service collection with selected httpFetch",
+        "RemoteViewPeer.services: independently resolved remote collection",
+        "disposeOriginProvider(): void-shaped lifecycle hook"
+      ],
+      "semantics": "HostTarget 与 RemoteViewPeer 分接口和测试 fixture；所选 httpFetch provider 由 assembly 层注入，不从同名 services 推断共同身份。",
+      "nonGuarantees": [
+        "全部服务字段",
+        "remote capability population",
+        "实际远端身份",
+        "生命周期执行"
+      ]
+    },
+    {
+      "id": "AH-I04",
+      "category": "interface",
+      "name": "HTTP provider legacy result adapter",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0025",
+        "HOST-HTTP-E0068",
+        "HOST-HTTP-E0070",
+        "HOST-HTTP-E0071",
+        "HOST-HTTP-E0072",
+        "HOST-HTTP-E0073",
+        "HOST-HTTP-E0083"
+      ],
+      "proposedContract": [
+        "fetch(requestId, request, opaqueOptions): promise-shaped LegacyResult",
+        "cancel(requestId): current-controller abort",
+        "dispose(): mapped-controller abort and map clear"
+      ],
+      "semantics": "LegacyResult 与 opaqueOptions 先保留边界，再逐个补充新类型；Response body bridge 有 empty-body 与 pipe/finally cleanup 两条路径。",
+      "nonGuarantees": [
+        "完整 error/RPC wire schema",
+        "第三参类型验证",
+        "request-id 唯一性",
+        "stream completion"
+      ]
+    },
+    {
+      "id": "AH-I05",
+      "category": "interface",
+      "name": "ApplicationNetwork and ClientRequest runtime seam",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0023",
+        "APPLICATION-NETWORK-E0024",
+        "APPLICATION-NETWORK-E0025",
+        "APPLICATION-NETWORK-E0027",
+        "HOST-HTTP-E0026",
+        "HOST-HTTP-E0027"
+      ],
+      "proposedContract": [
+        "assertAllowed(url)",
+        "whenReady(): promise-shaped readiness",
+        "fetch(input, init): Response-shaped runtime result",
+        "request(options): opaque evented ClientRequest-shaped result",
+        "dispose(): lifecycle operation"
+      ],
+      "semantics": "将 fetch 与 request 两条 native API 显式分开；progress consumer 仅需求 getUploadProgress/events/end(body)/abort 的所选 surface，返回前有 response buffering。",
+      "nonGuarantees": [
+        "原始接口完整性",
+        "public/native API 兼容",
+        "事件时序",
+        "网络与端到端流式结果"
+      ]
+    },
+    {
+      "id": "AH-I06",
+      "category": "interface",
+      "name": "Requirements and runtime startup ports",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0037",
+        "APPLICATION-NETWORK-E0038",
+        "APPLICATION-NETWORK-E0039",
+        "APPLICATION-NETWORK-E0040",
+        "APPLICATION-NETWORK-E0043",
+        "APPLICATION-NETWORK-E0056",
+        "APPLICATION-NETWORK-E0057"
+      ],
+      "proposedContract": [
+        "readRequirementsAndConfig(): opaque startup results",
+        "decodePolicy(opaqueResults): policy candidate",
+        "applyRuntimePermissionPolicy(policy): capability outcome candidate",
+        "closeTemporaryTransport(): lifecycle operation"
+      ],
+      "semantics": "读取、解析、policy 和 permission 激活通过不同 ports 注入；不把未追踪 transport/parser 实现生成到新工程。",
+      "nonGuarantees": [
+        "真实 backend 响应",
+        "third-party/helper 归属",
+        "permission switches 的运行兼容",
+        "native source availability"
+      ]
+    }
+  ],
+  "dependencyBoundaries": [
+    {
+      "id": "AH-B01",
+      "category": "dependency-boundary",
+      "name": "Electron IPC and native port boundary",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "PRELOAD-APP-HOST-E0001",
+        "PRELOAD-APP-HOST-E0017",
+        "HOST-HTTP-E0002",
+        "HOST-HTTP-E0009",
+        "HOST-HTTP-E0010"
+      ],
+      "proposedAction": "仅重建有限桥接 glue；Electron/native MessagePort 由 runtime dependency 或 adapter 提供。建立声明版本与实测兼容记录。",
+      "ownership": "named external runtime API boundary; actual objects and compatibility unknown",
+      "implementationGenerated": false
+    },
+    {
+      "id": "AH-B02",
+      "category": "dependency-boundary",
+      "name": "Native network/session and Owl permission boundary",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0005",
+        "APPLICATION-NETWORK-E0025",
+        "APPLICATION-NETWORK-E0027",
+        "APPLICATION-NETWORK-E0032",
+        "APPLICATION-NETWORK-E0039",
+        "APPLICATION-NETWORK-E0040",
+        "APPLICATION-NETWORK-E0043",
+        "APPLICATION-NETWORK-E0070"
+      ],
+      "proposedAction": "保留 net/session 运行时 adapter；permission/relaunch 单列能力探测与迁移调查项。不能按 package 声明自动宣布 stock Electron 等价。",
+      "ownership": "named Electron API plus private/custom-runtime candidate; concrete native implementation unknown",
+      "implementationGenerated": false
+    },
+    {
+      "id": "AH-B03",
+      "category": "dependency-boundary",
+      "name": "RPC/base/temporary transport unresolved ownership",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0005",
+        "HOST-HTTP-E0009",
+        "HOST-HTTP-E0068",
+        "APPLICATION-NETWORK-E0056"
+      ],
+      "proposedAction": "保留 opaque RPC connector/provider base/temporary transport 接缝；先定位协议与库 provenance，再决定是否作为外部依赖。",
+      "ownership": "unknown; do not classify all required helpers as third party",
+      "implementationGenerated": false
+    },
+    {
+      "id": "AH-B04",
+      "category": "dependency-boundary",
+      "name": "Schema and version helper boundary",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0004",
+        "APPLICATION-NETWORK-E0037",
+        "APPLICATION-NETWORK-E0044",
+        "APPLICATION-NETWORK-E0056"
+      ],
+      "proposedAction": "将解析与 version helpers 放在窄 adapter；记录已声明依赖与未知 bundled modification，后续独立核对 package/API 合同。",
+      "ownership": "named/opaque required library helpers; installed versions and upstream modification unknown",
+      "implementationGenerated": false
+    },
+    {
+      "id": "AH-B05",
+      "category": "dependency-boundary",
+      "name": "Auth/header/error/abort and stream helper seams",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0025",
+        "HOST-HTTP-E0026",
+        "HOST-HTTP-E0027",
+        "HOST-HTTP-E0039",
+        "HOST-HTTP-E0040",
+        "HOST-HTTP-E0068",
+        "HOST-HTTP-E0073"
+      ],
+      "proposedAction": "用身份上下文、header/error adapter 和 runtime stream primitives 注入 HTTP 层；只生成应用 glue，未知 provenance 不按文件名剥除。",
+      "ownership": "mixed runtime and imported helper boundary; full helper ownership/implementation unknown",
+      "implementationGenerated": false
+    }
+  ],
+  "migrationValidation": [
+    {
+      "id": "AH-V01",
+      "category": "migration-validation",
+      "name": "Keep a versioned finite contract ledger",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "PRELOAD-APP-HOST-E0017",
+        "HOST-HTTP-E0078",
+        "HOST-HTTP-E0083",
+        "APP-HOST-CONTEXT-E0007",
+        "APP-HOST-CONTEXT-E0015",
+        "APPLICATION-NETWORK-E0025",
+        "APPLICATION-NETWORK-E0027",
+        "APPLICATION-NETWORK-E0070"
+      ],
+      "executionStatus": "not-run",
+      "phase": "before implementation",
+      "suggestedCheck": "将本基线 source hash、record span/JSON pointer、producer 原字节 pin 与拟定接口一起版本化；升级时只比较所选合同的变化，再决定下一轮定向调查。",
+      "acceptance": "可逐条定位建议来源；未恢复的协议/native/模式项仍明确 unknown。该建议不声称完整升级兼容。"
+    },
+    {
+      "id": "AH-V02",
+      "category": "migration-validation",
+      "name": "Synthetic port and directional service fixtures",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "PRELOAD-APP-HOST-E0010",
+        "PRELOAD-APP-HOST-E0012",
+        "PRELOAD-APP-HOST-E0017",
+        "PRELOAD-APP-HOST-E0021",
+        "HOST-HTTP-E0018",
+        "HOST-HTTP-E0076",
+        "HOST-HTTP-E0078",
+        "APP-HOST-CONTEXT-E0005",
+        "APP-HOST-CONTEXT-E0008",
+        "APP-HOST-CONTEXT-E0009"
+      ],
+      "executionStatus": "not-run",
+      "phase": "offline tests of newly authored code",
+      "suggestedCheck": "使用自建 envelope/IPC/port/RPC fakes 检查所选 source/type guard、first-port 选择、missing-context 候选路径、host/remote capability 方向及 hook 调用。",
+      "acceptance": "fixture 能区分拒绝、转发与两个 services 方向；native sender/送达结果不因 mock 通过而升级。"
+    },
+    {
+      "id": "AH-V03",
+      "category": "migration-validation",
+      "name": "Context and sender lifecycle fixtures",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APP-HOST-CONTEXT-E0013",
+        "APP-HOST-CONTEXT-E0015",
+        "APP-HOST-CONTEXT-E0016",
+        "APP-HOST-CONTEXT-E0017",
+        "APP-HOST-CONTEXT-E0018",
+        "APP-HOST-CONTEXT-E0021",
+        "APP-HOST-CONTEXT-TRUST-E0001",
+        "APP-HOST-CONTEXT-TRUST-E0002",
+        "APP-HOST-CONTEXT-TRUST-E0003",
+        "APP-HOST-CONTEXT-TRUST-E0004"
+      ],
+      "executionStatus": "not-run",
+      "phase": "offline tests of newly authored code",
+      "suggestedCheck": "用显式 registry/slot/fake frame/URL 参数覆盖未注册/已注册、setter 注册副作用、mainFrame/null-id 分支及 file URL prefix；完整 unregister/populate 未闭合部分另列调查。",
+      "acceptance": "保留所选分支区别，不把 file prefix 改写为精确 pathname 或把 null sender id 写成必然拒绝。"
+    },
+    {
+      "id": "AH-V04",
+      "category": "migration-validation",
+      "name": "Provider cancellation and cleanup fixtures",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0068",
+        "HOST-HTTP-E0070",
+        "HOST-HTTP-E0071",
+        "HOST-HTTP-E0072",
+        "HOST-HTTP-E0073",
+        "HOST-HTTP-E0084"
+      ],
+      "executionStatus": "not-run",
+      "phase": "offline tests of newly authored code",
+      "suggestedCheck": "用 synthetic callback/body/signal 观察 fetch throw、empty body、pipe completion、cancel、origin disposal 和重复 id 场景；把 collision 结果记录为待决策合同。",
+      "acceptance": "清理与 abort 时间边界可独立断言；不能预设旧源码已有 id uniqueness 或完整 RPC stream completion 保证。"
+    },
+    {
+      "id": "AH-V05",
+      "category": "migration-validation",
+      "name": "HTTP response/error and progress fixtures",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "HOST-HTTP-E0025",
+        "HOST-HTTP-E0026",
+        "HOST-HTTP-E0027",
+        "HOST-HTTP-E0039",
+        "HOST-HTTP-E0040",
+        "HOST-HTTP-E0070",
+        "HOST-HTTP-E0073"
+      ],
+      "executionStatus": "not-run",
+      "phase": "offline tests of newly authored code",
+      "suggestedCheck": "用 synthetic transport 覆盖 ok/304/returnErrorResponse 候选、try 内 error mapping、try 前 URL/log/timing throw 与 provider cleanup；普通 body 与 progress 全量 Buffer.concat 分别验证。",
+      "acceptance": "新代码合同清楚区分异常范围与 buffered progress；不声称真实 token、完整 error wire schema 或端到端流式已验证。"
+    },
+    {
+      "id": "AH-V06",
+      "category": "migration-validation",
+      "name": "Network readiness and generation fixtures",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0018",
+        "APPLICATION-NETWORK-E0019",
+        "APPLICATION-NETWORK-E0021",
+        "APPLICATION-NETWORK-E0023",
+        "APPLICATION-NETWORK-E0024",
+        "APPLICATION-NETWORK-E0028",
+        "APPLICATION-NETWORK-E0030",
+        "APPLICATION-NETWORK-E0031",
+        "APPLICATION-NETWORK-E0032",
+        "APPLICATION-NETWORK-E0037",
+        "APPLICATION-NETWORK-E0038"
+      ],
+      "executionStatus": "not-run",
+      "phase": "offline tests of newly authored code",
+      "suggestedCheck": "注入 synthetic requirements/dev origin/session/clock，覆盖loading等待与failed抛error、stale/disposed refresh、prior deferred完成、pre-ready null policy、restricted精确hostname/协议和unrestricted有效URL/disposed guard，以及redirect/session cancellation。",
+      "acceptance": "状态与 generation 迁移可观察，allowlist 来自 fixture 参数；实际账户/backend/session 值保持未知。"
+    },
+    {
+      "id": "AH-V07",
+      "category": "migration-validation",
+      "name": "Deferred native and opaque RPC compatibility matrix",
+      "status": "proposal",
+      "confidence": "inferred",
+      "runtimeStatus": "unverified",
+      "mode": "unknown",
+      "evidenceIds": [
+        "APPLICATION-NETWORK-E0025",
+        "APPLICATION-NETWORK-E0027",
+        "APPLICATION-NETWORK-E0039",
+        "APPLICATION-NETWORK-E0040",
+        "APPLICATION-NETWORK-E0043",
+        "APPLICATION-NETWORK-E0056",
+        "APPLICATION-NETWORK-E0070",
+        "HOST-HTTP-E0009",
+        "HOST-HTTP-E0068",
+        "HOST-HTTP-E0073"
+      ],
+      "executionStatus": "not-run",
+      "phase": "future separately scoped runtime work",
+      "suggestedCheck": "针对自建项目/合成请求，在明确 runtime 与 RPC dependency 版本上验证 IPC/port、net fetch/request events/abort、Response stream、permission/relaunch 与 startup close；先查清未知库 provenance。",
+      "acceptance": "替换依赖的兼容结论需要实际对应合同证据；当前静态提案不授予或代表运行测试完成，不读取真实凭据/history。"
+    }
+  ],
+  "scripts": [
+    {
+      "path": ".analysis-local/app-host-maintenance-work/build_app_host_maintenance.py",
+      "bytes": 30694,
+      "sha256": "3fba1ddf5002e71130df63ece21c6806394758c7648fda0e34736434c2888777"
+    }
+  ],
+  "toolRuntime": {
+    "path": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "bytes": 102352,
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+    "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+    "scope": "analysis host Python standard library only; not target runtime"
+  },
+  "limitations": [
+    "All 26 records are proposals with inferred confidence; suggested paths/interfaces are new design choices, not recovered original directories/types.",
+    "This scope is the finite app-host/HTTP/network chain represented by four frozen studies, not full client functionality or all callers/consumers.",
+    "Original journal records are reused unchanged. Source byte coordinates/JSON pointers and source hashes are inherited; this proposal does not reread target code or upgrade source, outer-binding, registry, runtime or mode claims.",
+    "Only four frozen primary producers have their original bytes pinned; they are not executed or copied. Auxiliary producer/dependency chains and historic indirect pin drift are not revalidated.",
+    "RPC/base/helper provenance and custom/native compatibility remain unknown. A required module, chunk label or declared Electron specification cannot justify removing implementation or asserting stock runtime parity.",
+    "All migration checks are future, not-run suggestions. Mock/fixture results would not prove native delivery, real account/backend/session values, end-to-end streaming or product mode.",
+    "No credentials, environment values or personal history are used. No third-party implementation is generated; Babel and prior host runtimes remain analysis-tool metadata, not application dependencies."
+  ]
+}

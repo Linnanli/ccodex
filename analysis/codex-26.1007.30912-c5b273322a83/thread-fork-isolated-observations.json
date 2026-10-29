@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "scope": "Selected source with memory-only providers; no application modules imported",
+  "executedSourceUnits": [
+    {
+      "name": "definition-San",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2954164,
+        "endExclusive": 2954771
+      },
+      "utf16Range": {
+        "start": 2917092,
+        "endExclusive": 2917699
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "9ad6581060d1f8c58aab72f0cfcf543eeaaedd78624471751fdc62517716e0ea",
+      "localSourceFilename": "003-definition-San.txt",
+      "completeAstNode": true
+    },
+    {
+      "name": "definition-xan",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2951312,
+        "endExclusive": 2954164
+      },
+      "utf16Range": {
+        "start": 2914240,
+        "endExclusive": 2917092
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "9eb2b4c780d612e64a82e12c02bf9580c515a700eae41056a4cc8defc8ff5e62",
+      "localSourceFilename": "001-definition-xan.txt",
+      "completeAstNode": true
+    },
+    {
+      "name": "definition-Zda",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5473746,
+        "endExclusive": 5475421
+      },
+      "utf16Range": {
+        "start": 5462233,
+        "endExclusive": 5463906
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "0986a057923d2a4260a9cc30f0256cc2f93fb883067de12ac706b6575e9ff5e7",
+      "localSourceFilename": "003-definition-Zda.txt",
+      "completeAstNode": true
+    },
+    {
+      "name": "definition-N9t",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2796249,
+        "endExclusive": 2798315
+      },
+      "utf16Range": {
+        "start": 2759179,
+        "endExclusive": 2761245
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "b5607e5fef1856c8d7b5dcb7d4cb2c838c6adf51f171d2a285d1fda72eb3280e",
+      "localSourceFilename": "006-definition-N9t.txt",
+      "completeAstNode": true
+    },
+    {
+      "name": "definition-Qda",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5475421,
+        "endExclusive": 5476705
+      },
+      "utf16Range": {
+        "start": 5463906,
+        "endExclusive": 5465190
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "afd79a980875c887ab8b67336ddcabfdbf452b3b476efeaf1dd7c6f005a1944d",
+      "localSourceFilename": "004-definition-Qda.txt",
+      "completeAstNode": true
+    }
+  ],
+  "scenarioCount": 21,
+  "passed": 21,
+  "scenarios": [
+    {
+      "id": "FORK-ISO-01",
+      "description": "Request failure before an accepted identity rejects without a created result",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-02",
+      "description": "Failure in deferral identity callback is caught by outer xan and preserves accepted ID",
+      "status": "passed",
+      "observed": {
+        "status": "created",
+        "conversationId": "forked",
+        "synchronization": {
+          "status": "failed",
+          "message": "synthetic identity failure"
+        },
+        "projectAssignment": null,
+        "sourceConversation": {
+          "id": "source",
+          "title": "Synthetic",
+          "historyMode": "complete"
+        }
+      }
+    },
+    {
+      "id": "FORK-ISO-03",
+      "description": "Failure in afterConversationCreated preserves ID, skips resume, and still commits placement",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-04",
+      "description": "Preparation not-ready returns without sending a fork request",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-05",
+      "description": "An unexpected rejection after acceptance in synchronization still preserves ID",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-06",
+      "description": "Trace callback error is swallowed and successful fork has no source mutation or compensating request",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-07",
+      "description": "Assignment lookup occurs before request and its rejection does not fabricate a created ID",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-08",
+      "description": "Mapping failure after backend acceptance preserves ID and skips resume",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-09",
+      "description": "San continues assignment and placement after resume not-ready",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-10",
+      "description": "San attempts every phase and last failure message replaces earlier failure",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-11",
+      "description": "Local action returns accepted ID despite failed synchronization warning",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-12",
+      "description": "Local action tolerates title failure and returns accepted ID",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-13",
+      "description": "Local pane-copy failure returns null after fork already returned a created ID",
+      "status": "passed",
+      "observed": {
+        "managerResult": "created:forked",
+        "uiActionResult": null,
+        "automaticNavigation": "caller requires a non-null ID"
+      }
+    },
+    {
+      "id": "FORK-ISO-14",
+      "description": "Duplicate local fork is suppressed by source ID without another request",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-15",
+      "description": "Supported before-target fork sends beforeTurnId without rollback",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-16",
+      "description": "Paginated non-before fork sends lastTurnId without rollback",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-17",
+      "description": "Legacy fallback rolls back the new thread, retaining source and before/after counts",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-18",
+      "description": "Rollback failure returns created with new ID and failed synchronization",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-19",
+      "description": "New-worktree action returns a pending client identity and schedules fork launch mode",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-20",
+      "description": "Missing repository rejects worktree fork before scheduling",
+      "status": "passed"
+    },
+    {
+      "id": "FORK-ISO-21",
+      "description": "Pane caching may throw after pending worktree scheduling without returning its client identity",
+      "status": "passed"
+    }
+  ],
+  "substitutions": [
+    "xan product and state mapper are memory substitutes; real San runs",
+    "IN substitutes Error.message; structured/non-Error extraction not validated",
+    "Zda Hoa/Uoa/Nha and all React/toast/selector providers are substitutes",
+    "N9t uses synthetic capability/version providers and in-memory manager",
+    "Qda Git origins, environment, worktree scheduling and pane cache are substitutes"
+  ],
+  "targetCodeExecuted": true,
+  "fullOriginalModuleExecuted": false,
+  "newReaRuns": 0,
+  "originalClientRunsAdded": 0,
+  "modelSubmissionsAdded": 0,
+  "actualIpcMessagesAdded": 0,
+  "actualThreadForksAdded": 0,
+  "actualStorageWritesAdded": 0,
+  "actualProjectsModified": 0,
+  "actualUiScenariosExecuted": 0,
+  "actualWorktreesCreated": 0,
+  "fullAnalysisCompleted": false
+}

@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T08:26:02.536210+00:00",
+  "status": "response-envelope-and-source-receiver-dispositioned; actual-delivery-pending",
+  "sourceContracts": [
+    {
+      "id": "AW-C01",
+      "contract": "Pvn 发送 mcp-response，载荷为 hostId/threadId/response；只有 n6 返回跟踪对象时才增加 requestMethod/trace。dispatch 返回的 Promise 不会被等待；同步 throw 会调用 finish(error) 后继续抛出。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/0"
+        }
+      ],
+      "probeIds": [
+        "AW-01",
+        "AW-02",
+        "AW-03"
+      ]
+    },
+    {
+      "id": "AW-C02",
+      "contract": "MMe 的 mcp-response case 先调用 dynamicAppToolResponses.route；命中则停止，未命中则按 hostId 查连接并 await handleClientResponse(response,threadId)。只有 trace 与 requestMethod 同时存在才进入 c.rn 跟踪包装。Uv 用含 ID 类型的键定位 pending，命中后先删除，再 resolve/reject。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/1"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/6"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/10"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/4"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/5"
+        }
+      ],
+      "probeIds": [
+        "AW-04",
+        "AW-05",
+        "AW-06",
+        "AW-07",
+        "AW-08",
+        "AW-09"
+      ]
+    },
+    {
+      "id": "AW-C03",
+      "contract": "保存的主机构造链中，hXe 创建 tee 并登记 createAppServerConnection 的本地主机结果；同一 registry 作为 MMe 的第7个实参，由构造器 c 参数保存。hXe.handleMessage 委托该 messageHandler。createAppServerConnection 构造 i.pn；i 的 require 指向 src-BJv5Mk7n.js，pn 的 getter 返回 mB。mB 构造 MR 作为 messageDelivery。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/7"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/8"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/9"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/3"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/2"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/18"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/12"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/14"
+        }
+      ],
+      "probeIds": [],
+      "verification": "static constructor/injection/export join; constructors not executed",
+      "condition": "不证明实际启动采用该实例，也不证明 registry 中所有动态替换项都属于 mB。原生 messageChannel 注册、renderer bridge 实例和实际交付仍沿用既有局部边界。"
+    },
+    {
+      "id": "AW-C04",
+      "contract": "mB.handleClientResponse 在 ensureReady 前移除 userVerification、记录 turnCwds 响应并停止自动提问跟踪。ensureReady 失败时广播 fatal error 后直接返回；admission callback 返回 false 时不发送。随后发送的 trace 来自当前上下文，threadId 作为独立参数传给 delivery。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/11"
+        }
+      ],
+      "probeIds": [
+        "AW-10",
+        "AW-11",
+        "AW-12",
+        "AW-13",
+        "AW-14"
+      ]
+    },
+    {
+      "id": "AW-C05",
+      "contract": "MR.sendMessage 对普通 host 将变换/规范化后的响应 JSON.stringify 后传给 connection.send。response 不触发 $L 的 thread/list 参数补充；没有自动添加新的 method 或 jsonrpc 字段。durable 走独立 n.sa 编码，满足 shared 条件时增加 threadId/threadAccess，不能用普通 host 分支覆盖它。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/13"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/15"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/16"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/17"
+        }
+      ],
+      "probeIds": [
+        "AW-15",
+        "AW-16",
+        "AW-17",
+        "AW-18",
+        "AW-19"
+      ],
+      "condition": "transformOutgoingMessage 可改变响应；durable 编码器内部和真实传输 framing 未在本批验证。"
+    },
+    {
+      "id": "AW-C06",
+      "contract": "MR 不等待 connection.send 的返回值，mB 也不等待 delivery 的返回值。底层同步 throw 可使主进程等待的 mB Promise 拒绝；但 readiness 失败被转换为广播并正常返回。即使串联返回也只到本地调用边界，不能当作后台授权或审批确认。",
+      "evidence": [
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/0"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/1"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/11"
+        },
+        {
+          "path": "raw/approval-response-wire/probe/observations.json",
+          "jsonPointer": "/units/13"
+        }
+      ],
+      "probeIds": [
+        "AW-02",
+        "AW-07",
+        "AW-10",
+        "AW-13",
+        "AW-14",
+        "AW-17",
+        "AW-18",
+        "AW-20"
+      ]
+    }
+  ],
+  "protocolComparisons": [
+    {
+      "mode": "stable",
+      "responseRef": {
+        "path": "exported-protocol-comparison.json",
+        "jsonPointer": "/comparisons/stable/fileComparisons/27"
+      },
+      "serverRequestRef": {
+        "path": "exported-protocol-comparison.json",
+        "jsonPointer": "/comparisons/stable/variantContracts/115"
+      },
+      "responseFileBytesEqual": true,
+      "effectiveRequestContract": "equal"
+    },
+    {
+      "mode": "experimental",
+      "responseRef": {
+        "path": "exported-protocol-comparison.json",
+        "jsonPointer": "/comparisons/experimental/fileComparisons/35"
+      },
+      "serverRequestRef": {
+        "path": "exported-protocol-comparison.json",
+        "jsonPointer": "/comparisons/experimental/variantContracts/181"
+      },
+      "responseFileBytesEqual": true,
+      "effectiveRequestContract": "equal"
+    }
+  ],
+  "protocolSource": {
+    "path": "exported-protocol-comparison.json",
+    "bytes": 1393221,
+    "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+  },
+  "schemaFiles": [
+    {
+      "path": "raw/approval-response-wire/schema/stable-public-McpServerElicitationRequestResponse.json",
+      "bytes": 741,
+      "sha256": "792a012fdfe53ac211575a6c37ffbd492be848d15cb313d1bb4b534ade1f54ac"
+    },
+    {
+      "path": "raw/approval-response-wire/schema/stable-frozen-McpServerElicitationRequestResponse.json",
+      "bytes": 741,
+      "sha256": "792a012fdfe53ac211575a6c37ffbd492be848d15cb313d1bb4b534ade1f54ac"
+    },
+    {
+      "path": "raw/approval-response-wire/schema/experimental-public-McpServerElicitationRequestResponse.json",
+      "bytes": 741,
+      "sha256": "792a012fdfe53ac211575a6c37ffbd492be848d15cb313d1bb4b534ade1f54ac"
+    },
+    {
+      "path": "raw/approval-response-wire/schema/experimental-frozen-McpServerElicitationRequestResponse.json",
+      "bytes": 741,
+      "sha256": "792a012fdfe53ac211575a6c37ffbd492be848d15cb313d1bb4b534ade1f54ac"
+    }
+  ],
+  "sourceSelection": {
+    "path": "raw/approval-response-wire/probe/observations.json",
+    "bytes": 16603,
+    "sha256": "2b7dcd00a2023d507d9860ea78b92c01948e234ffab332ae1674bbb59d8d0361"
+  },
+  "extractionNote": "Main/connection Programs were selected once. The initial utility omitted TemplateLiteral switch labels; the probe reuses the older published complete dispatcher AST case locator. Archived utility includes the later selector correction; no full main reparse was performed.",
+  "sourceInstanceJoins": {
+    "path": "raw/approval-response-wire/source-instance-joins.json",
+    "bytes": 8275,
+    "sha256": "736923624b768c1381f1d43de1738e92df2fbb79d64284e8c5086e43be97b210"
+  },
+  "restorationDecision": {
+    "id": "AW-D01",
+    "status": "source-design-supported; actual-backend-acceptance-pending",
+    "owner": "packages/backend-adapter/src/approvals",
+    "existingTaskIds": [
+      "T03",
+      "T04"
+    ],
+    "responsibilities": [
+      "Expose a server-request reply operation keyed by the original request ID; do not send a new client request named mcpServer/elicitation/request.",
+      "Keep desktop host/thread/method/tracing wrapper separate from the backend result body and preserve optional content/_meta.",
+      "Preserve dynamic-tool response routing before normal backend delivery and keep ordinary/durable transport branches distinct.",
+      "Report local call completion, transport outcome and backend resolution separately; preserve observed ready-failure broadcasts and synchronous-error paths."
+    ],
+    "protocolFinding": "The frozen and pinned public codex-cli0.162.0 response schemas are byte-equal in stable and experimental exports; action is required, content/_meta optional. This supports body-shape reuse only.",
+    "acceptanceConditions": [
+      "Correlate an actual pending request ID across renderer, chosen manager, main receiver, transport and serverRequest/resolved or equivalent observable outcome.",
+      "Verify actual bridge registration, host/connection identity and framing/write behavior with owned fixtures.",
+      "Observe readiness failure, synchronous transport failure and unknown asynchronous delivery independently from UI settlement.",
+      "Verify durable encoder/account/shared-thread behavior before claiming that host path is supported."
+    ],
+    "fullPublicBackendCompatibility": false,
+    "clientImplementationStarted": false
+  },
+  "localGaps": [
+    "Actual bridge registration and receiver/manager identity",
+    "Real transport framing/write acceptance and backend resolution",
+    "Durable encoder and account/shared-thread path",
+    "Complete approval kinds/schema safety/mode closure",
+    "UI and persistence/restart"
+  ],
+  "counts": {
+    "sourceContracts": 6,
+    "protocolComparisons": 2,
+    "restorationDecisions": 1,
+    "selectedSourceUnits": 19,
+    "isolatedCasesPassed": 20,
+    "newFullProgramParses": 3,
+    "productAcceptanceRunsAdded": 0,
+    "modelSubmissionsAdded": 0,
+    "originalClientRunsAdded": 0,
+    "featureDefinitionsAdded": 0,
+    "confirmedChatGptExclusionsAdded": 0
+  },
+  "existingScopeUnchanged": {
+    "feature-scope-v11.json": {
+      "path": "feature-scope-v11.json",
+      "bytes": 739359,
+      "sha256": "43c25761904d1ec87bc58208ce2edb8875b73da23d24982ae2a4fef56bb7e0fa"
+    },
+    "feature-scope-v11-scenarios.json": {
+      "path": "feature-scope-v11-scenarios.json",
+      "bytes": 915944,
+      "sha256": "bc73caa0fc97bd339080b8c2aa2a8dbbdee75bd8990e0457695112ac19e83ea0"
+    },
+    "restoration-coverage-v2.json": {
+      "path": "restoration-coverage-v2.json",
+      "bytes": 336772,
+      "sha256": "f22fa8c8aa8709af0c2a53eaf7e51ebc0152a70013f1221c1757e10b7e1c30e8"
+    },
+    "implementation-plan-v7.md": {
+      "path": "implementation-plan-v7.md",
+      "bytes": 13860,
+      "sha256": "1397b81e63000b2997a1c62392293290e8abfaf6a2737023b9e7549f0a9da1a0"
+    },
+    "approval-response-settlement-contracts.json": {
+      "path": "approval-response-settlement-contracts.json",
+      "bytes": 14734,
+      "sha256": "94594c779aaf5073c6ecd68ec6af162f5d05323c73ee5832f874234ecba6d620"
+    }
+  },
+  "fullAnalysisCompleted": false
+}

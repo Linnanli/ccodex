@@ -1,0 +1,1816 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-13T11:14:58.174867+00:00",
+  "status": "reviewed-contract-maintenance-proposal; not recovered original module layout",
+  "scope": {
+    "proposalCount": 11,
+    "fullModuleCoverage": false,
+    "clientCodeGenerated": false
+  },
+  "runnerSource": {
+    "path": "scripts/analysis/propose_module_boundaries.py",
+    "sha256": "78bf8336a2278f1da1f1b4c4a5899d23cfca3c4f3ad8524dab10874eb0be2d2a"
+  },
+  "inputs": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-contracts.json",
+      "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/chunk-transport.json",
+      "sha256": "d7c54e7b6faa6a95f9b7875d6c23281b5176eeac240e8bf03b51dae46ac2b842"
+    },
+    {
+      "path": ".analysis-local/embedded-dependency-work/embedded-dependency-contracts.json",
+      "sha256": "f4a73656679a89285617af334c7703e057578b7fd078bb65b3b53cf4798dfff4"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "STRUCT-RWC-MANAGER",
+      "sourceContract": "RWC-MANAGER",
+      "responsibility": "Request scheduling and transport facade",
+      "proposedPath": "packages/app-server-client/src/request-manager.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REQUEST-WRAPPER-TARGET-0001",
+        "REQUEST-WRAPPER-TARGET-0002",
+        "REQUEST-WRAPPER-TARGET-0003",
+        "REQUEST-WRAPPER-TARGET-0004",
+        "REQUEST-WRAPPER-TARGET-0005",
+        "REQUEST-WRAPPER-TARGET-0006",
+        "REQUEST-WRAPPER-TARGET-0007",
+        "REQUEST-WRAPPER-TARGET-0008",
+        "REQUEST-WRAPPER-TARGET-0009",
+        "REQUEST-WRAPPER-TARGET-0010",
+        "REQUEST-WRAPPER-TARGET-0011",
+        "REQUEST-WRAPPER-TARGET-0012",
+        "REQUEST-WRAPPER-TARGET-0013",
+        "REQUEST-WRAPPER-TARGET-0014",
+        "REQUEST-WRAPPER-TARGET-0050",
+        "REQUEST-WRAPPER-TARGET-0051",
+        "REQUEST-WRAPPER-TARGET-0048",
+        "REQUEST-WRAPPER-TARGET-0049",
+        "REQUEST-WRAPPER-TARGET-0060"
+      ],
+      "maintenanceRule": "Multiple configured transports remain separate; do not collapse them into one public app-server client.",
+      "unresolved": [
+        "Which manager/transport branch is active in the running renderer.",
+        "Main handler mapping for mcp-request and method support are not proven by this scoped artifact.",
+        "thread/stop and thread/rollback are transport-bound observations, not confirmed public protocol methods."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0001",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3199539,
+            "endExclusive": 3255806
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0002",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3202551,
+            "endExclusive": 3213517
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0003",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3220271,
+            "endExclusive": 3220710
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0004",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3227242,
+            "endExclusive": 3227510
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0005",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3238499,
+            "endExclusive": 3238773
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0006",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3238773,
+            "endExclusive": 3238964
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0007",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3239400,
+            "endExclusive": 3239876
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0008",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3250788,
+            "endExclusive": 3250978
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0009",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3267029,
+            "endExclusive": 3281510
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0010",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3267659,
+            "endExclusive": 3267819
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0011",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3270956,
+            "endExclusive": 3271224
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0012",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3271224,
+            "endExclusive": 3271531
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0013",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3273145,
+            "endExclusive": 3275845
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0014",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3275845,
+            "endExclusive": 3277747
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0050",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 5725254,
+            "endExclusive": 5725551
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0051",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 5726121,
+            "endExclusive": 5726215
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0048",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 5719770,
+            "endExclusive": 5719890
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0049",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 5695409,
+            "endExclusive": 5699751
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0060",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3258847,
+            "endExclusive": 3258902
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-RWC-SELECTOR",
+      "sourceContract": "RWC-SELECTOR",
+      "responsibility": "Host-specific service selection",
+      "proposedPath": "packages/app-host-client/src/host-selector.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REQUEST-WRAPPER-TARGET-0023",
+        "REQUEST-WRAPPER-TARGET-0061",
+        "REQUEST-WRAPPER-TARGET-0062",
+        "REQUEST-WRAPPER-TARGET-0063",
+        "REQUEST-WRAPPER-BINDING-0005"
+      ],
+      "maintenanceRule": "Retain host selection, deferred resolution and connection lifetime as explicit interfaces.",
+      "unresolved": [
+        "Runtime selected branch and configured forHost implementation.",
+        "Underlying RPC manager method translation and public app-server delivery for each call."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0023",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2181016,
+            "endExclusive": 2181910
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0061",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2181982,
+            "endExclusive": 2181999
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0062",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2179416,
+            "endExclusive": 2179464
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0063",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2182000,
+            "endExclusive": 2182016
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-BINDING-0005",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 8172397,
+            "endExclusive": 8172406
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-RWC-FETCH",
+      "sourceContract": "RWC-FETCH",
+      "responsibility": "Desktop HTTP transport adapter",
+      "proposedPath": "apps/desktop/src/main/network/desktop-fetch.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REQUEST-WRAPPER-TARGET-0019",
+        "REQUEST-WRAPPER-TARGET-0020",
+        "REQUEST-WRAPPER-TARGET-0021",
+        "REQUEST-WRAPPER-TARGET-0022",
+        "REQUEST-WRAPPER-BINDING-0001"
+      ],
+      "maintenanceRule": "Keep ordinary HTTP, desktop fetch and cancellation distinct from app-server method requests.",
+      "unresolved": [
+        "Actual network responses and desktop fetch handler completion."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0019",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3421140,
+            "endExclusive": 3427997
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0020",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3421326,
+            "endExclusive": 3421390
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0021",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3421440,
+            "endExclusive": 3421581
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0022",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3427087,
+            "endExclusive": 3427996
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-BINDING-0001",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 8122282,
+            "endExclusive": 8122291
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-RWC-RESOLVER",
+      "sourceContract": "RWC-RESOLVER",
+      "responsibility": "Injected request resolver",
+      "proposedPath": "packages/app-host-client/src/request-resolver.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REQUEST-WRAPPER-TARGET-0015",
+        "REQUEST-WRAPPER-TARGET-0016",
+        "REQUEST-WRAPPER-TARGET-0017",
+        "REQUEST-WRAPPER-TARGET-0018"
+      ],
+      "maintenanceRule": "Preserve dependency injection until concrete callers and transport ownership are bound.",
+      "unresolved": [
+        "The concrete resolver passed at runtime; no app-server classification follows from this facade alone."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0015",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2532715,
+            "endExclusive": 2547537
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0016",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2532741,
+            "endExclusive": 2532818
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0017",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2539258,
+            "endExclusive": 2539318
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0018",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2539318,
+            "endExclusive": 2539409
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-RWC-HOSTED-FILES",
+      "sourceContract": "RWC-HOSTED-FILES",
+      "responsibility": "Hosted-file extension connection",
+      "proposedPath": "packages/app-server-client/src/extensions/hosted-files.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REQUEST-WRAPPER-TARGET-0037",
+        "REQUEST-WRAPPER-TARGET-0038",
+        "REQUEST-WRAPPER-TARGET-0039",
+        "REQUEST-WRAPPER-TARGET-0040",
+        "REQUEST-WRAPPER-TARGET-0041",
+        "REQUEST-WRAPPER-TARGET-0042",
+        "REQUEST-WRAPPER-TARGET-0054",
+        "REQUEST-WRAPPER-TARGET-0066"
+      ],
+      "maintenanceRule": "Treat extension methods as a separate contract; public backend support is unresolved.",
+      "unresolved": [
+        "Extension method implementation, schema and actual completion downstream of the connection."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0037",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 523023,
+            "endExclusive": 527114
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0038",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 523092,
+            "endExclusive": 523160
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0039",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 524737,
+            "endExclusive": 525380
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0040",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 525380,
+            "endExclusive": 525520
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0041",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 525520,
+            "endExclusive": 526045
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0042",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 526045,
+            "endExclusive": 527113
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0054",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3340019,
+            "endExclusive": 3340113
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0066",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3329810,
+            "endExclusive": 3341402
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-RWC-HOST-TRANSPORT",
+      "sourceContract": "RWC-HOST-TRANSPORT",
+      "responsibility": "Host connection adapter",
+      "proposedPath": "packages/app-server-client/src/host-connection.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REQUEST-WRAPPER-TARGET-0031",
+        "REQUEST-WRAPPER-TARGET-0032",
+        "REQUEST-WRAPPER-TARGET-0033",
+        "REQUEST-WRAPPER-TARGET-0034",
+        "REQUEST-WRAPPER-TARGET-0035",
+        "REQUEST-WRAPPER-TARGET-0036",
+        "REQUEST-WRAPPER-TARGET-0055"
+      ],
+      "maintenanceRule": "Preserve request envelope, trace context and prewarm branch; concrete wire transport is unresolved.",
+      "unresolved": [
+        "Injected connection identity at each host and its final public protocol wire implementation."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0031",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 732520,
+            "endExclusive": 735042
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0032",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 732608,
+            "endExclusive": 732705
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0033",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 732705,
+            "endExclusive": 732914
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0034",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 732914,
+            "endExclusive": 733031
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0035",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 733599,
+            "endExclusive": 733688
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0036",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 733802,
+            "endExclusive": 735041
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0055",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 744360,
+            "endExclusive": 744425
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-RWC-COORDINATION",
+      "sourceContract": "RWC-COORDINATION",
+      "responsibility": "Cross-client coordination adapter",
+      "proposedPath": "apps/desktop/src/main/coordination/socket-client.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REQUEST-WRAPPER-TARGET-0056",
+        "REQUEST-WRAPPER-TARGET-0057",
+        "REQUEST-WRAPPER-TARGET-0058",
+        "REQUEST-WRAPPER-TARGET-0059",
+        "REQUEST-WRAPPER-TARGET-0070",
+        "REQUEST-WRAPPER-TARGET-0071",
+        "REQUEST-WRAPPER-TARGET-0072",
+        "REQUEST-WRAPPER-TARGET-0073",
+        "REQUEST-WRAPPER-TARGET-0074"
+      ],
+      "maintenanceRule": "Keep source/target client identity, host identity and timeout; actual socket lifecycle requires verification.",
+      "unresolved": [
+        "Concrete client passed to p1 at runtime and actual socket execution."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0056",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1529735,
+            "endExclusive": 1536293
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0057",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1529992,
+            "endExclusive": 1530092
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0058",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1530792,
+            "endExclusive": 1531360
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0059",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1531850,
+            "endExclusive": 1532881
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0070",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1536333,
+            "endExclusive": 1539660
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0071",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1536470,
+            "endExclusive": 1536609
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0072",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1538453,
+            "endExclusive": 1538727
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0073",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1538727,
+            "endExclusive": 1539059
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0074",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1539059,
+            "endExclusive": 1539659
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-RWC-PROJECTS",
+      "sourceContract": "RWC-PROJECTS",
+      "responsibility": "Project domain and state contracts",
+      "proposedPath": "packages/projects/src/project-service.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "PROJECT-LOCAL-E001",
+        "PROJECT-LOCAL-E002",
+        "PROJECT-LOCAL-E003",
+        "PROJECT-LOCAL-E004",
+        "PROJECT-LOCAL-E005",
+        "PROJECT-LOCAL-E006",
+        "PROJECT-LOCAL-E007",
+        "PROJECT-LOCAL-E008",
+        "PROJECT-LOCAL-E009",
+        "PROJECT-LOCAL-E010",
+        "PROJECT-LOCAL-E011",
+        "PROJECT-LOCAL-E012",
+        "PROJECT-LOCAL-E013",
+        "PROJECT-LOCAL-E014",
+        "PROJECT-LOCAL-E015",
+        "PROJECT-LOCAL-E016",
+        "PROJECT-LOCAL-E017",
+        "PROJECT-LOCAL-E018",
+        "PROJECT-LOCAL-E019",
+        "PROJECT-LOCAL-E020",
+        "PROJECT-LOCAL-E021",
+        "PROJECT-LOCAL-E022",
+        "PROJECT-LOCAL-E023",
+        "PROJECT-LOCAL-E024",
+        "PROJECT-FILTER-E001",
+        "PROJECT-FILTER-E002",
+        "PROJECT-FILTER-E003",
+        "PROJECT-FILTER-E004",
+        "PROJECT-FILTER-E005",
+        "PROJECT-FILTER-E006",
+        "PROJECT-FILTER-E007",
+        "PROJECT-FILTER-E008",
+        "PROJECT-FILTER-E009",
+        "PROJECT-FILTER-E010",
+        "PROJECT-FILTER-E011",
+        "PROJECT-FILTER-E012",
+        "PROJECT-FILTER-E013",
+        "REQUEST-WRAPPER-TARGET-0043",
+        "REQUEST-WRAPPER-TARGET-0044",
+        "REQUEST-WRAPPER-TARGET-0045",
+        "REQUEST-WRAPPER-TARGET-0046",
+        "REQUEST-WRAPPER-TARGET-0047",
+        "REQUEST-WRAPPER-TARGET-0067",
+        "REQUEST-WRAPPER-TARGET-0068",
+        "REQUEST-WRAPPER-TARGET-0069",
+        "REQUEST-WRAPPER-TARGET-0064",
+        "REQUEST-WRAPPER-TARGET-0065",
+        "REQUEST-WRAPPER-TARGET-0052",
+        "REQUEST-WRAPPER-TARGET-0053"
+      ],
+      "maintenanceRule": "Renderer client, shared service interface and main persistence implementation occupy different runtime files; this path names the domain boundary, not a literal move of all ranges.",
+      "unresolved": [
+        "Live capability presence, renderer account/mode guards and confirmation callback behavior.",
+        "Explicit /private/tmp path is authored input shape, not an observed literal or runtime success.",
+        "Actual own-directory existence and state isolation require independent evidence."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "PROJECT-LOCAL-E001",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 7956,
+            "endExclusive": 8081
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E002",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 4819,
+            "endExclusive": 17209
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E003",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 7930,
+            "endExclusive": 8612
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E004",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 6110,
+            "endExclusive": 6134
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E005",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 8070,
+            "endExclusive": 8079
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E006",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 13120,
+            "endExclusive": 13256
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E007",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 803,
+            "endExclusive": 812
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E008",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 777,
+            "endExclusive": 1069
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E009",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 793,
+            "endExclusive": 802
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E010",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 777,
+            "endExclusive": 1069
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E011",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 477,
+            "endExclusive": 485
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E012",
+          "sourcePath": "app.asar/webview/assets/create-project-dialog-1b5add5efff1.js",
+          "sourceHash": "d7e42fe09d218e3b6eacd7e7eda6ba2edfaa6bbe0827feeee5d73ed2f33627f2",
+          "locator": {
+            "kind": "byte-range",
+            "start": 55,
+            "endExclusive": 777
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E013",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 11360871,
+            "endExclusive": 11360880
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E014",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2998617,
+            "endExclusive": 2998734
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E015",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 121244,
+            "endExclusive": 121252
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E016",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 95660,
+            "endExclusive": 136889
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E017",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 11341714,
+            "endExclusive": 11341724
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E018",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3803698,
+            "endExclusive": 3807538
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E019",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3776487,
+            "endExclusive": 3776590
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E020",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3811448,
+            "endExclusive": 3811657
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E021",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 8142877,
+            "endExclusive": 8142885
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E022",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 5753819,
+            "endExclusive": 5754148
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E023",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 5753143,
+            "endExclusive": 5753295
+          }
+        },
+        {
+          "evidenceId": "PROJECT-LOCAL-E024",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 5753852,
+            "endExclusive": 5753872
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E001",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2653218,
+            "endExclusive": 2653628
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E002",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2639386,
+            "endExclusive": 2640132
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E003",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2629468,
+            "endExclusive": 2631607
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E004",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2631607,
+            "endExclusive": 2632032
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E005",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2629663,
+            "endExclusive": 2629675
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E006",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2629709,
+            "endExclusive": 2629753
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E007",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2630077,
+            "endExclusive": 2630103
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E008",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2630258,
+            "endExclusive": 2630391
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E009",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2630504,
+            "endExclusive": 2630508
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E010",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2630925,
+            "endExclusive": 2630957
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E011",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2630994,
+            "endExclusive": 2631082
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E012",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2631104,
+            "endExclusive": 2631188
+          }
+        },
+        {
+          "evidenceId": "PROJECT-FILTER-E013",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2631419,
+            "endExclusive": 2631606
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0043",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2634622,
+            "endExclusive": 2654791
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0044",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2634697,
+            "endExclusive": 2634719
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0045",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2634758,
+            "endExclusive": 2634785
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0046",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2635257,
+            "endExclusive": 2635568
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0047",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2639386,
+            "endExclusive": 2640132
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0067",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3302500,
+            "endExclusive": 3360341
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0068",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3304353,
+            "endExclusive": 3329810
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0069",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3329810,
+            "endExclusive": 3341402
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0064",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2634100,
+            "endExclusive": 2634240
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0065",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3305533,
+            "endExclusive": 3306022
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0052",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2118759,
+            "endExclusive": 2118766
+          }
+        },
+        {
+          "evidenceId": "REQUEST-WRAPPER-TARGET-0053",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 2071135,
+            "endExclusive": 2071202
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-CHUNK",
+      "sourceContract": "chunk-transport.json",
+      "responsibility": "Host-to-view framing, acknowledgement and assembly",
+      "proposedPath": "packages/desktop-transport/src/chunked-messages.ts",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "REVIEW-CHUNK-E001",
+        "REVIEW-CHUNK-E002",
+        "REVIEW-CHUNK-E003",
+        "REVIEW-CHUNK-E004",
+        "REVIEW-CHUNK-E005",
+        "REVIEW-CHUNK-E006",
+        "REVIEW-CHUNK-E007",
+        "REVIEW-CHUNK-E008",
+        "REVIEW-CHUNK-E009",
+        "REVIEW-CHUNK-E010",
+        "REVIEW-CHUNK-E011",
+        "REVIEW-CHUNK-E012",
+        "REVIEW-CHUNK-E013",
+        "REVIEW-CHUNK-E014",
+        "REVIEW-CHUNK-E015",
+        "REVIEW-CHUNK-E016",
+        "REVIEW-CHUNK-E017",
+        "REVIEW-CHUNK-E018",
+        "REVIEW-CHUNK-E019",
+        "REVIEW-CHUNK-E020",
+        "REVIEW-CHUNK-E021",
+        "REVIEW-CHUNK-E022",
+        "REVIEW-CHUNK-E023",
+        "REVIEW-CHUNK-E024",
+        "REVIEW-CHUNK-E025",
+        "REVIEW-CHUNK-E026",
+        "REVIEW-CHUNK-E027",
+        "REVIEW-CHUNK-E028",
+        "REVIEW-CHUNK-E029",
+        "REVIEW-CHUNK-E030"
+      ],
+      "maintenanceRule": "Separate pure codec from sender/receiver lifecycle and IPC adapters; preserve reviewed frame and acknowledgement contracts.",
+      "unresolved": [
+        {
+          "id": "CHUNK-G01",
+          "question": "Missing-ack deadline, abort and recovery policy outside sender class",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E009"
+          ],
+          "nextAction": "Trace class callers and window-message error boundaries; use independent fault-injection fixture before choosing retry/abort semantics.",
+          "impact": "A successfully delivered part without ack may block that target indefinitely unless another lifecycle path resets it."
+        },
+        {
+          "id": "CHUNK-G02",
+          "question": "Exception boundary when renderer assembler consume/finish throws",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E021",
+            "REVIEW-CHUNK-E022"
+          ],
+          "nextAction": "Trace message listener caller chain, logging and cleanup; verify fault path in fixture.",
+          "impact": "An exception can prevent acknowledgement and stall sender."
+        },
+        {
+          "id": "CHUNK-G03",
+          "question": "Chunked shared-object cache update parity",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E018",
+            "REVIEW-CHUNK-E022"
+          ],
+          "nextAction": "Trace assembled shared-object-updated handlers and all getSharedObjectSnapshotValue users; verify inline versus chunked cache contract.",
+          "impact": "Preload cache is updated before dispatch only for nonchunk host messages."
+        },
+        {
+          "id": "CHUNK-G04",
+          "question": "Size-cache creation provenance and argument contract",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E009",
+            "REVIEW-CHUNK-E027"
+          ],
+          "nextAction": "Find callers of exported cached-size setters and chunked-array constructors; correlate parent message/result/params paths.",
+          "impact": "Threshold selection uses estimates/cached values and may differ from raw payload bytes."
+        },
+        {
+          "id": "CHUNK-G05",
+          "question": "Cross-window sender trust and complete listener disposal",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E013",
+            "REVIEW-CHUNK-E022"
+          ],
+          "nextAction": "Trace isTrustedIpcEvent setup, window types, frame allowlist and renderer subscription disposal.",
+          "impact": "Shape and current-transfer checks alone do not establish sender authorization or all lifecycle ownership."
+        },
+        {
+          "id": "CHUNK-G06",
+          "question": "Domain caller coverage, transfer sizes and queue growth",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E009"
+          ],
+          "nextAction": "Map send/sendInline/sendCritical callers and getPayload structures by feature; add realistic large thread/diff fixtures.",
+          "impact": "Transport is confirmed but individual Codex feature coverage/maximum memory use remains unproven."
+        },
+        {
+          "id": "CHUNK-G07",
+          "question": "Runtime parity with Electron/Owl structured clone and custom data representations",
+          "evidenceIds": [
+            "REVIEW-CHUNK-E004",
+            "REVIEW-CHUNK-E023",
+            "REVIEW-CHUNK-E025"
+          ],
+          "nextAction": "Define supported serialization types and test both inline/chunk paths in intended independent runtime, after runtime choice.",
+          "impact": "Blind replacement by JSON.stringify changes undefined, special-array, identity and nonplain-object handling."
+        }
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "REVIEW-CHUNK-E001",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3498,
+            "endExclusive": 3537
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E002",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1342705,
+            "endExclusive": 1342721
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E003",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1342721,
+            "endExclusive": 1343231
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E004",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1343231,
+            "endExclusive": 1344423
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E005",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1344423,
+            "endExclusive": 1344666
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E006",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1344666,
+            "endExclusive": 1344809
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E007",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1344809,
+            "endExclusive": 1344854
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E008",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1344854,
+            "endExclusive": 1344879
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E009",
+          "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+          "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1344880,
+            "endExclusive": 1349491
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E010",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 269357,
+            "endExclusive": 269364
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E011",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 269365,
+            "endExclusive": 270378
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E012",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 270379,
+            "endExclusive": 270407
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E013",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "locator": {
+            "kind": "byte-range",
+            "start": 270408,
+            "endExclusive": 270585
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E014",
+          "sourcePath": "app.asar/.vite/build/preload.js",
+          "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1002,
+            "endExclusive": 1367
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E015",
+          "sourcePath": "app.asar/.vite/build/preload.js",
+          "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1367,
+            "endExclusive": 1812
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E016",
+          "sourcePath": "app.asar/.vite/build/preload.js",
+          "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+          "locator": {
+            "kind": "byte-range",
+            "start": 1816,
+            "endExclusive": 1853
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E017",
+          "sourcePath": "app.asar/.vite/build/preload.js",
+          "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+          "locator": {
+            "kind": "byte-range",
+            "start": 3341,
+            "endExclusive": 3401
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E018",
+          "sourcePath": "app.asar/.vite/build/preload.js",
+          "sourceHash": "a3e622f8d80a83e58fb3cfcc640fa7e14e6461cccdae9ef7d7b0c821dde256b7",
+          "locator": {
+            "kind": "byte-range",
+            "start": 4768,
+            "endExclusive": 5123
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E019",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 9473,
+            "endExclusive": 10283
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E020",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 10320,
+            "endExclusive": 10386
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E021",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 10396,
+            "endExclusive": 12823
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E022",
+          "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+          "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+          "locator": {
+            "kind": "byte-range",
+            "start": 294735,
+            "endExclusive": 295161
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E023",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 226035,
+            "endExclusive": 226104
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E024",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 226651,
+            "endExclusive": 226689
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E025",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 227032,
+            "endExclusive": 227872
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E026",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 227872,
+            "endExclusive": 227917
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E027",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 227921,
+            "endExclusive": 227997
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E028",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 289881,
+            "endExclusive": 289957
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E029",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 284461,
+            "endExclusive": 284537
+          }
+        },
+        {
+          "evidenceId": "REVIEW-CHUNK-E030",
+          "sourcePath": "app.asar/.vite/build/application-network-startup-CfAQmSYg.js",
+          "sourceHash": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8",
+          "locator": {
+            "kind": "byte-range",
+            "start": 281829,
+            "endExclusive": 281905
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-browser-annotation-lifecycle",
+      "sourceContract": "browser-annotation-lifecycle",
+      "responsibility": "Browser annotation application adapter",
+      "proposedPath": "apps/desktop/src/browser-preload/annotation/browser-annotation-lifecycle.tsx",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "EMBDEP-E00044"
+      ],
+      "maintenanceRule": "Retain this behavior in first-party adapter; replace embedded React implementation with package imports after interface verification.",
+      "unresolved": [
+        "Codex/shared mode ownership, runtime reachability, library import equivalence and closure remain unverified."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "EMBDEP-E00044",
+          "sourcePath": "app.asar/.vite/build/browser-page-preload.js",
+          "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+          "locator": {
+            "kind": "byte-range",
+            "start": 476027,
+            "endExclusive": 476661
+          }
+        }
+      ]
+    },
+    {
+      "id": "STRUCT-browser-annotation-root",
+      "sourceContract": "browser-annotation-root",
+      "responsibility": "Browser annotation application adapter",
+      "proposedPath": "apps/desktop/src/browser-preload/annotation/browser-annotation-root.tsx",
+      "proposalConfidence": "inferred",
+      "mode": "unknown",
+      "runtimePlacementRequiresReview": true,
+      "evidenceIds": [
+        "EMBDEP-E00051"
+      ],
+      "maintenanceRule": "Retain this behavior in first-party adapter; replace embedded React implementation with package imports after interface verification.",
+      "unresolved": [
+        "Codex/shared mode ownership, runtime reachability, library import equivalence and closure remain unverified."
+      ],
+      "sourceMappings": [
+        {
+          "evidenceId": "EMBDEP-E00051",
+          "sourcePath": "app.asar/.vite/build/browser-page-preload.js",
+          "sourceHash": "6844ec68a38171555a8dbdd97c1bfb524e358edff60e0146fd77073694dbb515",
+          "locator": {
+            "kind": "byte-range",
+            "start": 476661,
+            "endExclusive": 513871
+          }
+        }
+      ]
+    }
+  ],
+  "openArchitectureDecisions": [
+    "Owl shell source/distribution and required API replacements must be settled before selecting a runnable desktop shell.",
+    "Prediction and other private backend capabilities need an explicit contract decision; equal schemas or version gates do not establish support.",
+    "No complete feature denominator or confirmed ChatGPT-only removal set exists yet.",
+    "Embedded library self-reports are not sufficient to select an unmodified upstream dependency.",
+    "These reviewed ranges do not account for all 438 module candidates, shared closures, state ownership or platform integrations."
+  ],
+  "upgradeRule": "Create a new frozen baseline; compare contract IDs, source mappings, entry guards, dependency identities and owned behavior scenarios; update first-party modules through reviewed changes and regenerate dependency lockfiles only after provenance decisions."
+}

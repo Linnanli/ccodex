@@ -1,0 +1,495 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "createdAtUtc": "2026-10-13T07:43:15.631253+00:00",
+  "investigation": "credential isolation boundary from frozen distribution source only",
+  "boundaries": {
+    "authFilesOpened": false,
+    "personalDataOpened": false,
+    "keychainQueried": false,
+    "credentialsPrinted": false,
+    "applicationStartedStoppedOrOperated": false
+  },
+  "conclusion": {
+    "status": "account-origin-unresolved",
+    "statement": "A separate CODEX_HOME and Electron userData do not establish credential isolation. Frozen JS confirms shell environment import, inherited app-server environment, optional external websocket/local-daemon transports, and a secret-auth-storage config gate. Which mechanism caused the already signed-in runtime observed by the root agent has not been proven."
+  },
+  "evidence": [
+    {
+      "id": "AUTH-SOURCE-01",
+      "kind": "source",
+      "sourcePath": ".vite/build/src-BJv5Mk7n.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08"
+      },
+      "range": {
+        "byteStart": 1207881,
+        "byteEndExclusive": 1208481,
+        "lineStart": 696,
+        "lineEnd": 696
+      },
+      "confidence": "confirmed",
+      "claim": "Main-side auth status is requested from app-server getAuthStatus, including optional token; this JS function does not read auth storage itself.",
+      "snippet": "async requestAuthStatus(e,t=!0){let n=await this.sendInternalRequest({id:`desktop-auth:${(0,x.randomUUID)()}`,method:`getAuthStatus`,params:{includeToken:t,refreshToken:e}},{timeoutMs:this.getAuthStatusTimeoutMs()});if(n.error)throw Error(n.error.message??`Failed to retrieve auth status (code ${n.error.code})`);return n.result??null}async listSkills(e){await this.ensureReady();let t=await this.sendInternalRequest({id:`skills:${(0,x.randomUUID)()}`,method:`skills/list`,params:e});if(t.error)throw Error(t.error.message??`Failed to fetch skills from app server`);return t.result??{data:[]}}async l"
+    },
+    {
+      "id": "AUTH-SOURCE-02",
+      "kind": "source",
+      "sourcePath": ".vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d"
+      },
+      "range": {
+        "byteStart": 99840,
+        "byteEndExclusive": 101390,
+        "lineStart": 19,
+        "lineEnd": 19
+      },
+      "confidence": "confirmed",
+      "claim": "Startup loads interactive shell environment and Object.assign merges all returned vars into process.env; only initial CODEX_HOME is explicitly restored when CODEX_ELECTRON_USER_DATA_PATH was set.",
+      "snippet": "var Hi=5e3,Ui=process.env.CODEX_ELECTRON_USER_DATA_PATH?.trim()?process.env.CODEX_HOME:void 0,Z=null,Wi=null,Q=null;async function Gi(){return Ki({caller:`startup`,retryFailed:!1})}async function Ki({caller:e=`startup`,retryFailed:t=!0,timeoutMs:n=Hi}={}){if(Q?.status===`loaded`||Q!=null&&!t)return Xi(Q,e);if(Z!=null&&Wi!=null&&Wi>=n)return Z.then(t=>({...t,caller:e}));let r=qi(e,n);Z=r,Wi=n;try{let e=await r;return Zi(e),e}finally{Z===r&&(Z=null,Wi=null)}}async function qi(e,t){let r=Date.now();c.app.isPackaged||Vi(process.env);let a=new AbortController,s=null,l=await Promise.race([i.Rt({interactive:!0,extraEnv:{[n.D]:`1`},signal:a.signal}).then(e=>({status:`loaded`,userEnv:e})).catch(e=>({status:`failed`,error:e})),new Promise(e=>{s=setTimeout(()=>{a.abort(),e({status:`timed_out`})},t),s.unref()})]).finally(()=>{s!=null&&clearTimeout(s)});if(l.status===`loaded`)return Object.assign(process.env,l.userEnv),Ui!=null&&(process.env.CODEX_HOME=Ui),c.app.isPackaged||Vi(process.env),{status:`loaded`,path:process.env.PATH??null,...Ji(r,e,t)};let u=l.status===`timed_out`?`Timed out after ${t}ms.`:l.error instanceof Error?l.error.message:String(l.error);return o.n().warning(`Failed to load shell env`,{safe:{caller:e,durationMs:Date.now()-r,pathEntryCount:Yi(process.env.PATH??null),resultSource:`load`,status:l.status,timeoutMs:t},sensitive:{detail:u,path:process.env.PATH??null}}),{status:l.status,detail:u,path:process.env.PATH??null,...Ji(r,e,t)}}function Ji(e,t,n){let r=process.env.PATH??null;return{caller:t,durationMs:Date.now()-e,p"
+    },
+    {
+      "id": "AUTH-SOURCE-03",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 39424,
+        "byteEndExclusive": 40154,
+        "lineStart": 6,
+        "lineEnd": 7
+      },
+      "confidence": "confirmed",
+      "claim": "Shell environment loader spawns a shell with baseline marker env; returns parsed environment.",
+      "snippet": "function ht(e,t,r,i){if(i?.aborted)return Promise.reject(vt(i));let a=(0,ot.default)(e,yt(e,t),{env:{...n.A,...r},windowsHide:!0}),o=a.then(({stdout:t})=>bt(n.j(t,m.default.platform===`win32`&&Ct(e)!==`posix`?`\n`:`\\0`),e));return i==null?o:(a.catch(()=>{}),new Promise((e,t)=>{let n=()=>{a.cancel(),t(vt(i))};i.addEventListener(`abort`,n,{once:!0}),o.then(e,t).finally(()=>{i.removeEventListener(`abort`,n)})}))}function gt(e){return typeof e==`string`?{shell:e,interactive:!0,extraEnv:void 0,signal:void 0}:{shell:e?.shell,interactive:e?.interactive??!0,extraEnv:e?.extraEnv,signal:e?.signal}}function _t(e){return e instanceof Error&&e.name===`AbortError`||typeof e==`object`&&!!e&&`isCanceled`in e&&e.isCanceled===!0}function v"
+    },
+    {
+      "id": "AUTH-SOURCE-04",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 40917,
+        "byteEndExclusive": 41537,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "confidence": "confirmed",
+      "claim": "On macOS/Linux shell selection prefers os.userInfo().shell; SHELL alone does not reliably redirect it. Fallback can try zsh/bash.",
+      "snippet": "function xt(e=m.default.platform,t=m.default.env){if(e===`win32`){let e=ct(t);if(e!=null)return e;let n=wt(t,`COMSPEC`);return n!=null&&n.length>0?n:`cmd.exe`}try{let e=(0,p.userInfo)().shell;if(e)return e}catch{}return e===`darwin`?t.SHELL||`/bin/zsh`:t.SHELL||`/bin/sh`}function St(e){if(m.default.platform!==`win32`)return[`/bin/zsh`,`/bin/bash`].filter(t=>t!==e);let t=[],n=ct(m.default.env);n!=null&&Et(t,n);let r=wt(m.default.env,`COMSPEC`);return r!=null&&r.length>0&&Et(t,r),Et(t,`powershell.exe`),Et(t,`pwsh.exe`),Et(t,`cmd.exe`),t.filter(t=>!Dt(t,e))}function Ct(e){let t=s.default.win32.basename(e).toLowerCas"
+    },
+    {
+      "id": "AUTH-SOURCE-05",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 261857,
+        "byteEndExclusive": 264037,
+        "lineStart": 32,
+        "lineEnd": 32
+      },
+      "confidence": "confirmed",
+      "claim": "CLI child launch environment begins with spread process.env, keeps CODEX_HOME for ordinary local macOS host, and sets CODEX_CLI_PATH based on resolved runtime.",
+      "snippet": "function Ks(e,t=[]){if(process.platform===`win32`&&e.hostConfig.kind===`local`&&(e.spawnInsideWsl??zn()))return Ys(e,t);let r=$s({hostConfig:e.hostConfig,repoRoot:e.repoRoot,resourcesPath:e.resourcesPath});if(e.hostConfig.kind===`local`&&U({component:`codex`,consumer:`app-server`,executablePath:r?.executablePath??null,source:r?.source}),!r)return null;let i=Vt(),a=process.platform===`win32`&&e.hostConfig.kind===`local`&&r.source!==`override`&&i!=null&&r.executablePath===(0,s.join)(i,`codex.exe`),o={...process.env,LOG_FORMAT:`json`,RUST_LOG:process.env.RUST_LOG??`warn`,CODEX_INTERNAL_ORIGINATOR_OVERRIDE:e.defaultOriginator??Ts};if(a||delete o.CODEX_WINDOWS_REGISTERED_CORE,(e.hostConfig.kind!==`local`||r.source===`override`||o.CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY!=null&&r.executablePath!==Zt(e.resourcesPath))&&delete o.CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY,e.hostConfig.kind===`local`){e.hostConfig.codex_cli_command?.length||(o.CODEX_CLI_PATH=r.executablePath);let t=Kt(e.resourcesPath);if(process.platform===`win32`&&Vt()!=null&&t==null)return null;t!=null&&(o.CODEX_MCP_NODE_PATH=t)}let c=Ri();xc(c)&&V(o,rc(B(o),c));let l=zi();xc(l)&&V(o,ic(B(o),l)),Vi(o);let u=e.hostConfig.kind===`local`?Js(e.resourcesPath):null;if(u!=null){let e=o.CODEX_PREFERRED_GIT_EXECUTABLE?.trim()||u;V(o,rc(rc(B(o),(0,s.dirname)(u)),(0,s.dirname)(e)))}let d=Wt(e.resourcesPath);d!=null&&V(o,nc(B(o),(0,s.dirname)(d))),r.binDirectory&&V(o,nc(B(o),r.binDirectory));let f=n.Wi(e.hostConfig)?uc(o):o;return{executablePath:r.executablePath,args:[...r.args,...t.flatMap(e=>[`-c`,e]),...a?[`-c`,`features.windows_sandbox_service=true`]:[]],env:G(f),cwd:e.hostConfig.kind===`local`?r.cwd:void 0}}async function qs(e,t=[]){if(process.platform===`win32`&&e.hostConfig.kind===`local`&&(e.spawnInsideWsl??zn())){let n=await Hn();return n==null?null:Xs(e,n,await Zn(n),t)}let n=Ks(e,t);return n!=null||process.platform!==`win32`||e.hostConfig.kind!==`local`||e.hostConfig.codex_cli_command?.length||Zs()?n:(await new Promise(e=>setTimeout(e,100)),Ks(e,t))}function Js(e){if(e==null||process.platform!==`darwin`)return null;let t=(0,s.join)(e,`git`,`bin`,`git`);return Sc(t)?t:null}function Ys(e,t){let n"
+    },
+    {
+      "id": "AUTH-SOURCE-06",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 225838,
+        "byteEndExclusive": 226068,
+        "lineStart": 31,
+        "lineEnd": 31
+      },
+      "confidence": "confirmed",
+      "claim": "CODEX_APP_SERVER_FORCE_CLI=1 disables websocket URL routing from CODEX_APP_SERVER_WS_URL or host websocket_url.",
+      "snippet": "function Yo(e){if(process.env.CODEX_APP_SERVER_FORCE_CLI===`1`)return null;let t=process.env.CODEX_APP_SERVER_WS_URL??e.websocket_url;return!t||typeof t!=`string`?null:t}var Xo=4194304,Zo=32,Qo=16,$o=class{chunks;length;constructo"
+    },
+    {
+      "id": "AUTH-SOURCE-07",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 260977,
+        "byteEndExclusive": 261777,
+        "lineStart": 32,
+        "lineEnd": 32
+      },
+      "confidence": "confirmed",
+      "claim": "Local daemon route requires USE_LOCAL_DAEMON=1 and FORCE_CLI!=1 and no explicit CLI path, plus other conditions.",
+      "snippet": "let n=(0,s.join)(xr(),`app-server-control`,`app-server-control.sock`);return process.platform!==`win32`&&!e?.length&&this.options.hostConfig.kind===`local`&&process.env.CODEX_APP_SERVER_USE_LOCAL_DAEMON===`1`&&process.env.CODEX_APP_SERVER_FORCE_CLI!==`1`&&!process.env.CODEX_CLI_PATH?.trim()&&this.options.hostConfig.codex_cli_command==null&&Js(this.options.resourcesPath)==null&&await Gs(t)?(this.kind=`websocket`,new Jo({hostConfig:this.options.hostConfig,websocketUrl:`ws://localhost/rpc`,createConnection:()=>(0,f.createConnection)(n)}).connect()):(this.kind=`stdio`,new Us(t,this.ioStatsTracker))}getIoStatsSnapshot(){return this.ioStatsTracker.getSnapshot()}};async function Gs(e){try{let{stdout:t}=await ks(e.executablePath,[`app-server`,`daemon`,`version`],{encoding:`utf8`,env:e.env,timeout:"
+    },
+    {
+      "id": "AUTH-SOURCE-08",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 269718,
+        "byteEndExclusive": 270118,
+        "lineStart": 32,
+        "lineEnd": 32
+      },
+      "confidence": "confirmed",
+      "claim": "CODEX_CLI_PATH is a real supported runtime override.",
+      "snippet": "function _c(){let e=process.env.CODEX_CLI_PATH;if(e==null)return null;let t=e.trim();return t.length===0?null:t}function vc(){let e=_c();return e==null||Cc(e)?null:e}function yc(e){return Ut({resourcesPath:e.resourcesPath,executableName:e.executableName,windowsSiblingExecutableNames:e.executableName===`codex`?[`codex-code-mode-host`]:[],windowsDestinationPath:(0,s.join)(e.windowsCodexHome,...Ls,e."
+    },
+    {
+      "id": "AUTH-SOURCE-09",
+      "kind": "source",
+      "sourcePath": ".vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0"
+      },
+      "range": {
+        "byteStart": 420114,
+        "byteEndExclusive": 420754,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "confidence": "confirmed",
+      "claim": "CODEX_ELECTRON_USER_DATA_PATH directly controls application userData path.",
+      "snippet": "function oD({appDataPath:e,buildFlavor:t,env:n}){let i=n.CODEX_ELECTRON_USER_DATA_PATH?.trim();if(i)return(0,h.resolve)(i);let a=r.Ht(t),o=(0,h.join)(e,a==null?`Codex`:`Codex (${a})`),s=n.CODEX_ELECTRON_AGENT_RUN_ID?.trim()||null;return t===`agent`&&s!=null?(0,h.join)(o,`agent`,s):o}function sD(){let e=process.execPath;for(;;){if(h.extname(e)===`.app`)return e;let t=h.dirname(e);if(t===e)return process.execPath;e=t}}var cD=`ChatGPT.app`,lD=`ChatGPT Classic.app`,uD=[`com.openai.chat-sparkle-updater`,`com.openai.chat-sparkle-progress`],dD=`2DC432GLL2`;function fD(e,{applicationsDirectory:t=`/Applications`,hasExpectedOpenAISignature:n="
+    },
+    {
+      "id": "AUTH-SOURCE-10",
+      "kind": "source",
+      "sourcePath": ".vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0"
+      },
+      "range": {
+        "byteStart": 417765,
+        "byteEndExclusive": 417861,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "confidence": "confirmed",
+      "claim": "Explicit userData path controls macOS packaged single-instance lock policy.",
+      "snippet": "function iD({isMacOS:e,isPackaged:t,hasExplicitUserDataPath:n=!1}){return t?!e||n:!1}function aD"
+    },
+    {
+      "id": "AUTH-SOURCE-11",
+      "kind": "source",
+      "sourcePath": ".vite/build/main-CqEoQDOU.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6"
+      },
+      "range": {
+        "byteStart": 1078308,
+        "byteEndExclusive": 1079158,
+        "lineStart": 690,
+        "lineEnd": 690
+      },
+      "confidence": "confirmed",
+      "claim": "Demo launcher creates separate Codex home and userData, and passes --user-data-dir; no dedicated anonymous/demo auth flag is present in this launch block.",
+      "snippet": "let e=(0,C.join)(_.app.getPath(`home`),`.codex-demo`),t=(0,C.join)(_.app.getPath(`appData`),`Codex Demo`,`user-data`);try{return await Promise.all([x.mkdir(e,{recursive:!0,mode:448}),x.mkdir(t,{recursive:!0,mode:448})]),await(0,O.promisify)(k.execFile)(`/usr/bin/open`,[`-n`,`--env`,`CODEX_HOME=`+e,`--env`,`CODEX_ELECTRON_USER_DATA_PATH=`+t,RT,`--args`,`--user-data-dir=`+t],{env:c.bt(process.env),timeout:6e4}),{status:`launched`}}catch{return{status:`error`,code:`launch-failed`,message:zT[`launch-failed`]}}}};function Jge(e){return`https://oaisidekickupdates.blob.core.windows.net/codex-desktop/prod-internal/${e===`x64`?`ChatGPT-latest-x64.dmg`:`ChatGPT.dmg`}`}var Yge=class{backend;logger=f.r(`demo-tools`);disposed=!1;constructor(e){this.backend=e}createService(e){if(this.disposed)throw Error(`Demo Tools has been disposed`);return new Xge(t"
+    },
+    {
+      "id": "AUTH-SOURCE-12",
+      "kind": "source",
+      "sourcePath": ".vite/build/main-CqEoQDOU.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6"
+      },
+      "range": {
+        "byteStart": 3137130,
+        "byteEndExclusive": 3138130,
+        "lineStart": 1253,
+        "lineEnd": 1253
+      },
+      "confidence": "confirmed",
+      "claim": "Preauth Statsig network gate codex_desktop_secret_auth_storage can return features.secret_auth_storage=true for app-server config overrides.",
+      "snippet": "async function pqe({sdkKey:e,stableId:t,platform:n,appVersion:r,fetch:i}){if(!e||t==null||n!==`darwin`&&n!==`linux`)return[];let a=new AbortController,o=new o_.StatsigClient(e,{customIDs:{stableID:t},appVersion:r,custom:{platform:n}},{disableStorage:!0,disableStatsigEncoding:!0,loggingEnabled:`disabled`,networkConfig:{api:`https://ab.chatgpt.com/v1`,sdkExceptionUrl:`https://ab.chatgpt.com/v1/sdk_exception`,networkTimeoutMs:z8,networkOverrideFunc:(e,t)=>i(e,{...t,credentials:`omit`,signal:a.signal})}});try{let e=await o.initializeAsync({timeoutMs:z8}),t=o.getFeatureGate(`codex_desktop_secret_auth_storage`);return e.success&&e.source===`Network`&&t.details.reason===`Network:Recognized`&&t.value?[`features.secret_auth_storage=true`]:[]}catch{return[]}finally{a.abort(),await o.shutdown()}}var B8=n.N().min(1).max(256),mqe=class extends l.Pt{storage;pendingImport=null;constructor(e){super(),this.storage=e}async getStableId(){if(this.pendingImport!=null)return this.pendingImport;let e=B8.safe"
+    },
+    {
+      "id": "AUTH-SOURCE-13",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 266496,
+        "byteEndExclusive": 267066,
+        "lineStart": 32,
+        "lineEnd": 32
+      },
+      "confidence": "confirmed",
+      "claim": "App-server argv uses -c config overrides and app-server --analytics-default-enabled.",
+      "snippet": "function tc(){let e=Ds.flatMap(({configKey:e,envVar:t})=>{let n=process.env[t]?.trim();return n==null||n===``?[]:[`-c`,`${e}=${JSON.stringify(n)}`]});return e.length===0?[...Es,`app-server`,`--analytics-default-enabled`]:[`app-server`,...Es,...e,`--analytics-default-enabled`]}function nc(e,t){let n=process.platform===`win32`?`;`:`:`,r=e??``;return r.split(n).includes(t)?r:`${r}${r?n:``}${t}`}function rc(e,t){let n=process.platform===`win32`?`;`:`:`,r=e??``;return r.length===0?t:[t,...r.split(n).filter(e=>!ac(e,t))].join(n)}function ic(e,t){let n=process.platform=="
+    },
+    {
+      "id": "AUTH-SOURCE-14",
+      "kind": "source",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 54323,
+        "byteEndExclusive": 54458,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "confidence": "confirmed",
+      "claim": "Child env sanitization removes selected Electron/crashpad variables; it is not an auth credential allowlist.",
+      "snippet": "function G(e){let t={...e};for(let e of Object.keys(t))bn.has(e.toUpperCase())&&delete t[e];return t}var xn,K=void 0,Sn=[],Cn,wn=0,Tn=n"
+    },
+    {
+      "id": "AUTH-BINARY-01",
+      "kind": "binary-string",
+      "sourcePath": "ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+      },
+      "range": {
+        "byteStart": 220633058,
+        "byteEndExclusive": 220633248
+      },
+      "confidence": "indicator-only",
+      "claim": "Binary includes login/auth/storage and Codex Auth keyring service strings; this supports capability, not the active login source.",
+      "snippet": "Codex Authfailed to delete auth from keyring\u0000\u0000\u0002ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_���������������������������������������������>��456789:;<=�������\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r"
+    },
+    {
+      "id": "AUTH-BINARY-02",
+      "kind": "binary-string",
+      "sourcePath": "ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+      },
+      "range": {
+        "byteStart": 220637258,
+        "byteEndExclusive": 220637489
+      },
+      "confidence": "indicator-only",
+      "claim": "Binary includes encrypted auth storage backend error text.",
+      "snippet": "failed to load CLI auth from encrypted auth storageevent login/src/auth/storage.rs:430event login/src/auth/storage.rs:418failed to write OAuth tokens to encrypted auth storagefailed to delete auth from encrypted auth storagefreegop"
+    },
+    {
+      "id": "AUTH-BINARY-03",
+      "kind": "binary-string",
+      "sourcePath": "ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+      },
+      "range": {
+        "byteStart": 261706205,
+        "byteEndExclusive": 261706450
+      },
+      "confidence": "indicator-only",
+      "claim": "Symbol name identifies SecretsKeyringAuthStorage backend; runtime selection and namespace not proven.",
+      "snippet": "__ZN120_$LT$codex_login..auth..storage..SecretsKeyringAuthStorage$u20$as$u20$codex_login..auth..storage..AuthStorageBackend$GT$4load17h7f1252e7573b7a23E\u0000__ZN120_$LT$codex_login..auth..storage..SecretsKeyringAuthStorage$u20$as$u20$codex_login..au"
+    },
+    {
+      "id": "AUTH-BINARY-04",
+      "kind": "binary-string",
+      "sourcePath": "ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+      },
+      "range": {
+        "byteStart": 265924371,
+        "byteEndExclusive": 265924573
+      },
+      "confidence": "indicator-only",
+      "claim": "Signed CLI binary includes keychain access group 2DC432GLL2.com.openai.codex.cli; this is signature metadata, not proof it read a credential.",
+      "snippet": "keychain-access-groups</key>\n\t<array>\n\t\t<string>2DC432GLL2.com.openai.codex.cli</string>\n\t</array>\n</dict>\n</plist>��qr\u0000\u0000\u0001+p�\u0001\u001f\u0002\u0001\u0001��\u0001\u00180C\f com.apple.application-identifier\f\u001f2DC432GLL2.com.openai.codex.cl"
+    },
+    {
+      "id": "AUTH-BINARY-05",
+      "kind": "binary-string",
+      "sourcePath": "ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+      },
+      "range": {
+        "byteStart": 218524100,
+        "byteEndExclusive": 218524315
+      },
+      "confidence": "indicator-only",
+      "claim": "Embedded sample config exposes file auth-store option; does not prove it suppresses migration in current build.",
+      "snippet": "cli_auth_credentials_store = \"file\"\nmcp_oauth_credentials_store = \"auto\"\nproject_doc_max_bytes = 32768\nproject_doc_fallback_filenames = []\nbackground_terminal_max_timeout = 300000\nfile_opener = \"vscode\"\nhide_agent_r"
+    },
+    {
+      "id": "AUTH-BINARY-06",
+      "kind": "binary-string",
+      "sourcePath": "ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+      },
+      "range": {
+        "byteStart": 220636763,
+        "byteEndExclusive": 220636975
+      },
+      "confidence": "indicator-only",
+      "claim": "Native binary owns auth.json storage strings; this file was never opened by this investigation.",
+      "snippet": "auth.jsonAgentIdentityAuthRecordagent_runtime_idagent_private_keytask_iddata did not match any variant of untagged enum AgentIdentityStorage\u0000\u0000\u0000auth_modetokenslast_refreshagent_identitypersonal_access_tokenbedrock"
+    }
+  ],
+  "scan": {
+    "scope": ".vite/build/*.js only",
+    "literalOccurrences": {
+      "auth.json": [],
+      "keychain": [],
+      "Keychain": [],
+      "keytar": [],
+      "CODEX_APP_SERVER_WS_URL": [
+        {
+          "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+          "count": 1
+        }
+      ],
+      "secret_auth_storage": [
+        {
+          "sourcePath": ".vite/build/main-CqEoQDOU.js",
+          "count": 2
+        }
+      ],
+      "CODEX_DEMO": [],
+      "DEMO_MODE": [],
+      "CODEX_INSTANCE": []
+    }
+  },
+  "hypotheses": [
+    {
+      "name": "inherited or reimported websocket/CLI environment",
+      "status": "plausible-unverified",
+      "evidence": [
+        "AUTH-SOURCE-02",
+        "AUTH-SOURCE-05",
+        "AUTH-SOURCE-06",
+        "AUTH-SOURCE-08"
+      ],
+      "verification": "Observe variable names only and actual selected executable/transport with values redacted. A websocket to an existing server can ignore local storage isolation."
+    },
+    {
+      "name": "shell environment restored credentials or runtime override",
+      "status": "plausible-unverified",
+      "evidence": [
+        "AUTH-SOURCE-02",
+        "AUTH-SOURCE-03",
+        "AUTH-SOURCE-04"
+      ],
+      "verification": "Use test OS account with empty shell initialization and no credentials, or inspect instrumentation emitting only env key names after shell import. Do not print values."
+    },
+    {
+      "name": "native keyring/encrypted authentication storage",
+      "status": "capability-indicated-not-cause",
+      "evidence": [
+        "AUTH-SOURCE-12",
+        "AUTH-BINARY-01",
+        "AUTH-BINARY-02",
+        "AUTH-BINARY-03",
+        "AUTH-BINARY-04"
+      ],
+      "verification": "Confirm selected native auth backend and migration branch from matching public source or controlled test account. Binary strings alone cannot prove keychain read or home scoping."
+    },
+    {
+      "name": "independent application accidentally routes to existing instance",
+      "status": "possible-unverified",
+      "evidence": [
+        "AUTH-SOURCE-09",
+        "AUTH-SOURCE-10",
+        "AUTH-SOURCE-11"
+      ],
+      "verification": "Verify process executable and current userData/CODEX_HOME paths; no app management performed here."
+    }
+  ],
+  "knownControls": [
+    {
+      "name": "CODEX_ELECTRON_USER_DATA_PATH",
+      "purpose": "separate Electron storage and preserve initial CODEX_HOME across startup shell import",
+      "evidence": [
+        "AUTH-SOURCE-02",
+        "AUTH-SOURCE-09"
+      ]
+    },
+    {
+      "name": "--user-data-dir=<task path>",
+      "purpose": "demo launch uses this with explicit userData env; auth anonymity not guaranteed",
+      "evidence": [
+        "AUTH-SOURCE-11"
+      ]
+    },
+    {
+      "name": "CODEX_APP_SERVER_FORCE_CLI=1",
+      "purpose": "force stdio CLI instead of configured websocket/local-daemon routes; does not disable native credentials",
+      "evidence": [
+        "AUTH-SOURCE-06",
+        "AUTH-SOURCE-07"
+      ]
+    },
+    {
+      "name": "CODEX_CLI_PATH=<frozen bin/codex>",
+      "purpose": "pin app-server executable; shell import may override it, so verify resolved executable",
+      "evidence": [
+        "AUTH-SOURCE-05",
+        "AUTH-SOURCE-08"
+      ]
+    },
+    {
+      "name": "-c cli_auth_credentials_store=\"file\" and -c features.secret_auth_storage=false",
+      "purpose": "candidate native configuration for separate file storage; neither selection precedence nor suppression of credential migration is verified; do not treat as proven anonymous mode",
+      "evidence": [
+        "AUTH-SOURCE-12",
+        "AUTH-SOURCE-13",
+        "AUTH-BINARY-05"
+      ]
+    }
+  ],
+  "reproducibleIndependentTestConditions": {
+    "status": "proposed-not-executed",
+    "conditions": [
+      "Use a test OS account whose shell startup and OS credential store contain no personal Codex/ChatGPT authentication; CODEX_HOME alone cannot isolate os.userInfo or OS keychain.",
+      "Launch the frozen application executable directly with an explicit environment allowlist rather than inheriting parent process.env. Include required graphical/runtime variables, absolute PATH, task CODEX_HOME and task CODEX_ELECTRON_USER_DATA_PATH.",
+      "Set CODEX_APP_SERVER_FORCE_CLI=1 and CODEX_CLI_PATH to frozen resources/codex-cli/bin/codex; ensure they survive shell-env initialization. Use new --user-data-dir path.",
+      "Verify selected app-server transport is stdio and selected CLI is frozen copy before attributing behavior to that baseline.",
+      "Begin with empty task-owned config and storage; observe login screen/account absent without reading any auth.json or token values.",
+      "If file storage/secret storage overrides are tested, record actual argv and backend selection with secrets redacted; current investigation does not prove these options stop native auto-import."
+    ],
+    "unsafeToInfer": [
+      "Already signed in proves keychain caused it",
+      "Removing ChatGPT mode means removing ChatGPT-account login needed by Codex",
+      "Separate userData/CODEX_HOME proves anonymous runtime",
+      "Setting SHELL alone avoids the real user shell startup",
+      "Demo launch is credential-isolated"
+    ]
+  }
+}

@@ -1,0 +1,846 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "plan": {
+    "path": "../../docs/reverse-engineering/analysis-plan.md",
+    "bytes": 16461,
+    "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+  },
+  "historicalAudit": {
+    "path": "analysis-requirements-current-audit.json",
+    "bytes": 46813,
+    "sha256": "7a68c28cd81120f80f8b888df5d813d88d6e2e260ece60bc8d8be97ca440db27"
+  },
+  "criteria": [
+    {
+      "id": "AC-01",
+      "requirement": "输入版本和哈希已固定，分析结果未混用版本。",
+      "status": "satisfied-with-scope-limits",
+      "currentFinding": "固定基线沿用；本批11个Program选择按原字节核对，公开后台候选与冻结客户端来源分列。",
+      "closeWhen": "后续目标或字节变化建立独立baseline；外部公开包、app-server和运行时候选不混写为本基线安装身份。",
+      "evidence": [
+        {
+          "path": "baseline.json",
+          "bytes": 1162,
+          "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+        },
+        {
+          "path": "baseline-reverification.json",
+          "bytes": 11124,
+          "sha256": "9f27c67bfffe7a6f2069c11ddf64a20df44abe3612ba9cf5e7541159794883b7"
+        },
+        {
+          "path": "public-runtime-comparison.json",
+          "bytes": 7231,
+          "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "requirement": "已登记所有发现的文件、入口和功能候选，并说明分析覆盖的范围。",
+      "status": "partial",
+      "currentFinding": "当前103项有限定义、107用户操作、27支撑、1待审；968旧入口与35个设置容器的完整功能处置仍未结束，完整分母未知。",
+      "closeWhen": "每个已发现域逐ID标已登记／新增登记／重复／未映射，来源和边界可核对；再以职责与后效建立功能粒度，保留未知。",
+      "evidence": [
+        {
+          "path": "entry-family-map.json",
+          "bytes": 3217503,
+          "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+        },
+        {
+          "path": "feature-scope-v7.json",
+          "bytes": 361318,
+          "sha256": "e20e97b801f69715126e995f2f71a41ec6663a5f5a4bb1c0819200389ade5a47"
+        },
+        {
+          "path": "command-consumer-contracts.json",
+          "bytes": 397516,
+          "sha256": "2444abe6b5385ae8b761bccdeb24ebb86190062f702c6040da440f9ae4c4a4ba"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "restoration-coverage-v1.json",
+          "bytes": 296000,
+          "sha256": "f357b6f3086c6fed2ff74de4ed423882ba215f94ffe9759ad1064f09b5dd0493"
+        },
+        {
+          "path": "feature-scope-v10.json",
+          "bytes": 655239,
+          "sha256": "37fe36ad93a5fb19ef1bad1cb5d75e45fdd82bc20456b5472469dabb5af1d276"
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "requirement": "已区分 Codex、ChatGPT 专属、共享和未知项，排除理由可追溯。",
+      "status": "partial",
+      "currentFinding": "103项定义均unknown，确认ChatGPT专属排除0；共享扩展管理器和桌面通知的混合来源不允许整块删除。",
+      "closeWhen": "每个拟排除项有模式条件、实际消费者和不被Codex依赖的依据；保留项的共享依赖进入恢复表。",
+      "evidence": [
+        {
+          "path": "feature-scope-v7.json",
+          "bytes": 361318,
+          "sha256": "e20e97b801f69715126e995f2f71a41ec6663a5f5a4bb1c0819200389ade5a47"
+        },
+        {
+          "path": "settings-mode-boundary-contracts.json",
+          "bytes": 477440,
+          "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "feature-scope-v10.json",
+          "bytes": 655239,
+          "sha256": "37fe36ad93a5fb19ef1bad1cb5d75e45fdd82bc20456b5472469dabb5af1d276"
+        },
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "requirement": "每个保留功能已追踪到足以说明其职责的模块和关键跨进程或外部边界。",
+      "status": "partial",
+      "currentFinding": "环境保存/激活、Hooks信任/启停和MCP配置/OAuth已接到选定provider及协议字段；真实实例、运行消费者及全功能闭包仍不完整。",
+      "closeWhen": "保留功能逐项映射真实caller／receiver来源、payload与response、状态与持久化、取消／销毁后效；未知单列而不靠同名拼接。",
+      "evidence": [
+        {
+          "path": "thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        },
+        {
+          "path": "global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e"
+        },
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        },
+        {
+          "path": "restoration-coverage-v1.json",
+          "bytes": 296000,
+          "sha256": "f357b6f3086c6fed2ff74de4ed423882ba215f94ffe9759ad1064f09b5dd0493"
+        }
+      ]
+    },
+    {
+      "id": "AC-05",
+      "requirement": "第三方依赖有版本与来源依据；无法确认的条目列出调查动作。",
+      "status": "satisfied-with-scope-limits",
+      "currentFinding": "202项依赖及来源/引入动作保留；78根声明仅6有root安装版本，候选和新工程锁分开，完整替换兼容仍待验证。",
+      "closeWhen": "对保留功能所需依赖完成公开消费入口、第一方wrapper职责、修改／多版本决定和自己的锁文件；基线实际lock与新工程lock分开。",
+      "evidence": [
+        {
+          "path": "dependencies.csv",
+          "bytes": 208587,
+          "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+        },
+        {
+          "path": "dependency-summary.json",
+          "bytes": 7125,
+          "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2"
+        },
+        {
+          "path": "dependency-import-decisions.md",
+          "bytes": 6280,
+          "sha256": "bdec218950e57c7eb6627d97bd33900f17f4487a65355d983ce0211188e644a2"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "dependency-import-decisions.json",
+          "bytes": 12781,
+          "sha256": "e7465bf0381c463b184fe7d943c08147c5b21ab5b991179be9d81ffe576e4d96"
+        }
+      ]
+    },
+    {
+      "id": "AC-06",
+      "requirement": "原生、Wasm、辅助程序、定制运行时和私有服务均有独立记录。",
+      "status": "satisfied-with-scope-limits",
+      "currentFinding": "原生/Wasm/Owl等特殊边界独立记录保留；公共运行时局部原语与objc构建候选不证明全能力和目标ABI。",
+      "closeWhen": "选定可独立取得并固定版本／完整性的运行时或明确适配路线，所需特殊桌面能力逐合同有实现来源及可验证验收。",
+      "evidence": [
+        {
+          "path": "native-runtime.json",
+          "bytes": 421989,
+          "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b"
+        },
+        {
+          "path": "objc-independent-build-summary.md",
+          "bytes": 1929,
+          "sha256": "0644b1ad05f0c70d2e627158cae1b63883622c3ec9fb4469d5f370b844a1cbbf"
+        },
+        {
+          "path": "public-runtime-comparison.json",
+          "bytes": 7231,
+          "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "runtime-capability-decisions.json",
+          "bytes": 18241,
+          "sha256": "d2a280962ddc6f36f0fc817b21195413c4c67cec550204abe5a3707b465e74b7"
+        },
+        {
+          "path": "public-runtime-comparison.json",
+          "bytes": 7231,
+          "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+        }
+      ]
+    },
+    {
+      "id": "AC-07",
+      "requirement": "Source map 覆盖、构建输入缺失、REA 解析限制和动态关系均有说明。",
+      "status": "satisfied-with-scope-limits",
+      "currentFinding": "map、REA截断、动态关系和构建缺口已记录；本批对30条缺失输入提出逐项处置，尚未生成替代配置或证明独立构建。",
+      "closeWhen": "所有报告沿用限定覆盖；按保留功能优先补动态断点和工程输入决定，未知不被successful parse覆盖。",
+      "evidence": [
+        {
+          "path": "source-map-validation.json",
+          "bytes": 382,
+          "sha256": "55ccdba951360264f714265458459668aaf51e0ae66af69b158ec6ef5a99395c"
+        },
+        {
+          "path": "build-inputs.json",
+          "bytes": 5040,
+          "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31"
+        },
+        {
+          "path": "raw/stage-consolidation/analysis-state-before.json",
+          "bytes": 173380,
+          "sha256": "903ed4ca5bca9de9905da77dbfe84ec6c72e3a309efb331ab052e4ff9ae966d6"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "build-input-dispositions-v1.json",
+          "bytes": 33279,
+          "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+        }
+      ]
+    },
+    {
+      "id": "AC-08",
+      "requirement": "主要行为与静态结论已对照，未验证项有明确触发条件。",
+      "status": "partial",
+      "currentFinding": "真实完成/重开和停止重启记录保留；取消仍未测。新增41隔离源码场景与16对schema核对不增加产品通过数；模型样例剩余0。",
+      "closeWhen": "每个主要保留链有前置条件、动作、预期／实测、静态差异和未验证理由；完成后reopen与执行中断恢复分别验收。",
+      "evidence": [
+        {
+          "path": "behavior-checks.md",
+          "bytes": 45093,
+          "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+        },
+        {
+          "path": "behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        },
+        {
+          "path": "behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        }
+      ]
+    },
+    {
+      "id": "AC-09",
+      "requirement": "项目结构建议、恢复顺序和验收条件能够引用分析证据。",
+      "status": "partial",
+      "currentFinding": "103定义、107操作、27支撑和406规格已接到恢复任务；30构建输入有处置，目录/依赖/顺序/升级已统一。完整功能映射、运行时路线和真实验收尚未完成。",
+      "closeWhen": "每个任务、顺序边和验收卡引用来源；未决工程方案有明确开始条件，完整覆盖表可核对。本轮不要求客户端已经实现或打包。",
+      "evidence": [
+        {
+          "path": "implementation-plan-v6.md",
+          "bytes": 15938,
+          "sha256": "f4f8ab2f61706a6a2d22c13188ce25531e3cac61438bcaa6a1e624a23931fa5a"
+        },
+        {
+          "path": "implementation-milestones-v6.json",
+          "bytes": 17750,
+          "sha256": "984eabf13a7e4627f64b2ac2859bb0160187362071e30d5bbae2ab15d5c1a862"
+        },
+        {
+          "path": "feature-scope-v7-scenarios.json",
+          "bytes": 580977,
+          "sha256": "c91f822e7a0f8cbcb8e549919a68738cbf656c7193aa9ad1295aff16204fd4c9"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "implementation-plan-v7.md",
+          "bytes": 13860,
+          "sha256": "1397b81e63000b2997a1c62392293290e8abfaf6a2737023b9e7549f0a9da1a0"
+        },
+        {
+          "path": "implementation-milestones-v7.json",
+          "bytes": 45469,
+          "sha256": "3ac122d4a539240c65d0ab3ca89f3ba7f94d2b5423d199c72680ef438a6a8a4b"
+        },
+        {
+          "path": "restoration-coverage-v1.json",
+          "bytes": 296000,
+          "sha256": "f357b6f3086c6fed2ff74de4ed423882ba215f94ffe9759ad1064f09b5dd0493"
+        },
+        {
+          "path": "build-input-dispositions-v1.json",
+          "bytes": 33279,
+          "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "number": 1,
+      "deliveryStatus": "satisfied-with-scope-limits",
+      "requirements": [
+        {
+          "id": "1.1",
+          "requirement": "记录版本、构建号、平台、CPU 架构、应用入口以及实际 Electron 或定制运行时信息。",
+          "priorStatus": "proved-with-limits",
+          "currentDisposition": "recorded-with-limits"
+        },
+        {
+          "id": "1.2",
+          "requirement": "保存只读分析副本，覆盖 ASAR、unpacked 文件和必要的辅助资源；对输入生成哈希和文件清单。",
+          "priorStatus": "indirectly-supported",
+          "currentDisposition": "recorded-with-limits"
+        },
+        {
+          "id": "1.3",
+          "requirement": "识别 JS、HTML、CSS、资源、原生模块、Wasm、可执行文件及包元数据；记录归档内外的关联关系。",
+          "priorStatus": "proved-records",
+          "currentDisposition": "recorded-with-limits"
+        },
+        {
+          "id": "1.4",
+          "requirement": "查找外置及内联 source map，检查是否包含 `sourcesContent`，记录源码覆盖范围。",
+          "priorStatus": "proved-scoped-coverage",
+          "currentDisposition": "recorded-with-limits"
+        },
+        {
+          "id": "1.5",
+          "requirement": "核对构建脚本引用的文件和上级工程，列出存在、缺失及来源未明的构建输入。",
+          "priorStatus": "proved-records",
+          "currentDisposition": "recorded-with-limits"
+        }
+      ],
+      "currentEvidence": [
+        {
+          "path": "baseline.json",
+          "bytes": 1162,
+          "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+        },
+        {
+          "path": "files.json",
+          "bytes": 9406196,
+          "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+        },
+        {
+          "path": "build-inputs.json",
+          "bytes": 5040,
+          "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "2.1",
+          "requirement": "以代码中的路由、菜单、命令、快捷键、设置项、功能开关及处理函数建立功能候选清单，再对照实际界面和可触发行为核实。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.2",
+          "requirement": "调查范围包括会话与项目管理、消息与流式展示、任务执行与取消、审批、文件与变更查看、终端、设置、窗口和系统集成。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.3",
+          "requirement": "稳定的功能标识、用户可理解的名称",
+          "priorStatus": "proved-candidate-fields",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.4",
+          "requirement": "页面、菜单、快捷键、命令或后台事件",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.5",
+          "requirement": "输入、输出、状态变化、失败与取消行为",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.6",
+          "requirement": "平台、账户、功能开关、服务或环境条件",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.7",
+          "requirement": "`codex`、`chatgpt`、`shared`、`unknown`",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.8",
+          "requirement": "入口、关键模块、IPC、后台服务、数据存储",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.9",
+          "requirement": "来源标识；静态确认、行为确认或待验证",
+          "priorStatus": "proved-scope-records",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "2.10",
+          "requirement": "后续能够判断该功能已复刻的具体观察点",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        }
+      ],
+      "currentEvidence": [
+        {
+          "path": "entry-family-map.json",
+          "bytes": 3217503,
+          "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+        },
+        {
+          "path": "feature-scope-v7.json",
+          "bytes": 361318,
+          "sha256": "e20e97b801f69715126e995f2f71a41ec6663a5f5a4bb1c0819200389ade5a47"
+        },
+        {
+          "path": "settings-mode-boundary-contracts.json",
+          "bytes": 477440,
+          "sha256": "a3357f68a7307971e60e610ef37ea8f8740aaf936d71dbf25d0b1c0d7d08dc4b"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "restoration-coverage-v1.json",
+          "bytes": 296000,
+          "sha256": "f357b6f3086c6fed2ff74de4ed423882ba215f94ffe9759ad1064f09b5dd0493"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "3.1",
+          "requirement": "已确认且未修改的公开包",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "3.2",
+          "requirement": "bundle 内嵌的公开库",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "3.3",
+          "requirement": "同时存在多个版本",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "3.4",
+          "requirement": "修改过的上游库",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "3.5",
+          "requirement": "私有包或未知代码",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "3.6",
+          "requirement": "原生模块与 Wasm",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "3.7",
+          "requirement": "每个条目包含名称、版本及其依据、来源、许可证线索、使用位置、运行时或构建时用途、模式归属、修改状态、建议引入方式和未解决问题。",
+          "priorStatus": "proved-records-with-unknowns",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        }
+      ],
+      "currentEvidence": [
+        {
+          "path": "dependencies.csv",
+          "bytes": 208587,
+          "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+        },
+        {
+          "path": "dependency-import-decisions.md",
+          "bytes": 6280,
+          "sha256": "bdec218950e57c7eb6627d97bd33900f17f4487a65355d983ce0211188e644a2"
+        },
+        {
+          "path": "objc-independent-build-summary.md",
+          "bytes": 1929,
+          "sha256": "0644b1ad05f0c70d2e627158cae1b63883622c3ec9fb4469d5f370b844a1cbbf"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "4.1",
+          "requirement": "建立 main、preload、renderer、worker 和辅助进程的入口与生命周期关系。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "4.2",
+          "requirement": "对 IPC 记录发送方、接收方、通道、请求与响应结构、通知、异常、超时和取消方式。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "4.3",
+          "requirement": "对页面及状态记录路由、组件调用、状态所有权、订阅、持久化和恢复行为。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "4.4",
+          "requirement": "对后台边界记录 app-server、命令行工具、MCP、原生接口和服务端接口的实际使用关系。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "4.5",
+          "requirement": "对动态导入、计算得到的通道名、循环依赖、模块副作用和共享闭包补充验证。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "4.6",
+          "requirement": "对无法直接解析的大 bundle，使用 AST 和作用域关系辅助分析，并保留原位置到格式化代码的映射。",
+          "priorStatus": "proved-method-with-partial-coverage",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "4.7",
+          "requirement": "公开 app-server 是候选集成方案，采用与否由覆盖情况决定；不能仅凭接入成功就认为桌面功能已全部恢复。",
+          "priorStatus": "pending-adoption",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        }
+      ],
+      "currentEvidence": [
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+        },
+        {
+          "path": "command-consumer-summary.md",
+          "bytes": 1841,
+          "sha256": "5387f2f49dbda90b0ecba9987e96d4b72f72989d0f3cc30ed30cc1d97ac33307"
+        },
+        {
+          "path": "thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "5.1",
+          "requirement": "对主要功能链执行可重复的行为观察，将运行结果与静态推断对照。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "5.2",
+          "requirement": "覆盖正常完成、失败、取消、重启恢复等有实际实现依据的路径。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "5.3",
+          "requirement": "账户、平台或服务条件不满足时，保留对应功能及其静态证据，标明待验证条件。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        }
+      ],
+      "currentEvidence": [
+        {
+          "path": "behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        {
+          "path": "behavior-checks.md",
+          "bytes": 45093,
+          "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+        },
+        {
+          "path": "feature-scope-v7-scenarios.json",
+          "bytes": 580977,
+          "sha256": "c91f822e7a0f8cbcb8e549919a68738cbf656c7193aa9ad1295aff16204fd4c9"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "6.1",
+          "requirement": "由模块职责、运行环境和共享关系决定的源码目录与包边界。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "6.2",
+          "requirement": "从原始文件或代码范围到拟恢复模块的映射。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "6.3",
+          "requirement": "ChatGPT 专属功能剥离清单及共享依赖保留理由。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "6.4",
+          "requirement": "第三方依赖引入方案，以及原生、Wasm、定制运行时和私有组件的处理决定。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "6.5",
+          "requirement": "缺失构建输入的补齐方案和公开 app-server 的适用范围。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "6.6",
+          "requirement": "根据依赖关系排列的功能恢复顺序、阶段验收和完整功能覆盖表。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        },
+        {
+          "id": "6.7",
+          "requirement": "基于固定版本证据、协议与行为差异的后续升级方式。",
+          "priorStatus": "partial",
+          "currentDisposition": "partial-stage; no blanket completion asserted"
+        }
+      ],
+      "currentEvidence": [
+        {
+          "path": "implementation-plan-v6.md",
+          "bytes": 15938,
+          "sha256": "f4f8ab2f61706a6a2d22c13188ce25531e3cac61438bcaa6a1e624a23931fa5a"
+        },
+        {
+          "path": "implementation-milestones-v6.json",
+          "bytes": 17750,
+          "sha256": "984eabf13a7e4627f64b2ac2859bb0160187362071e30d5bbae2ab15d5c1a862"
+        },
+        {
+          "path": "public-runtime-comparison.json",
+          "bytes": 7231,
+          "sha256": "8fbf53a658b8d736a6c73c8d6fa638b132ef1919d40548e4026094ec63742412"
+        }
+      ],
+      "currentSupplementaryEvidence": [
+        {
+          "path": "implementation-plan-v7.md",
+          "bytes": 13860,
+          "sha256": "1397b81e63000b2997a1c62392293290e8abfaf6a2737023b9e7549f0a9da1a0"
+        },
+        {
+          "path": "build-input-dispositions-v1.json",
+          "bytes": 33279,
+          "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+        }
+      ]
+    }
+  ],
+  "remainingIssues": [
+    {
+      "id": "SD-01",
+      "kind": "internal-analysis",
+      "impact": "功能分母和ChatGPT剥离范围",
+      "nextAction": "用当前旧入口族/owner与具体功能表建立逐组保留、支撑、重复或待定关系，并接上页面/命令实际条件；首先处理设置页使用条件与48定义的关联。",
+      "closeWhen": "已发现入口逐项有功能处置；每个拟排除分支有模式和共享依赖证明；未知保留。"
+    },
+    {
+      "id": "SD-02",
+      "kind": "mixed-source-and-external-input",
+      "impact": "运行时和原生组件能否独立引入",
+      "nextAction": "沿已列能力合同核对可取得运行时/源码或适配实现来源；保留公共视图移动的可用原语与clone、lease、网络/IPC隔离缺口。",
+      "closeWhen": "每个所需特殊能力有独立来源或验证过的替代合同；目标平台ABI与构建方式明确。"
+    },
+    {
+      "id": "SD-03",
+      "kind": "internal-contract-and-runtime-validation",
+      "impact": "公开app-server能否覆盖实际后台能力",
+      "nextAction": "连接实际provider/receiver与已比较协议方法，按字段和通知差异逐项决定适配。",
+      "closeWhen": "保留功能所需请求、通知、状态和失败后效均有明确适配与实际验收条件。"
+    },
+    {
+      "id": "SD-04",
+      "kind": "mixed-validation-conditions",
+      "impact": "主要功能的真实行为证据",
+      "nextAction": "按现有212条规格核对具体前提和可执行场景；无模型路径先执行。新增模型提交保持待授权，不能重用已耗尽次数。",
+      "closeWhen": "主要链的正常、失败、取消、恢复有实测或具体受限条件；不把公共原语计作产品验收。"
+    },
+    {
+      "id": "SD-05",
+      "kind": "internal-source-and-platform-validation",
+      "impact": "独立数据目录、持久化与认证范围",
+      "nextAction": "沿已有globalState、CUA与host合同核对全部存储和认证来源；保持不读取个人凭据或会话的边界。",
+      "closeWhen": "独立启动所需路径、权限及存储迁移有来源和验收，目录不同不能替代隔离证据。"
+    },
+    {
+      "id": "SD-06",
+      "kind": "engineering-decision-after-contracts",
+      "impact": "可维护目录、干净构建和升级",
+      "nextAction": "复用v6职责布局，将已明确功能接到来源/依赖/任务/场景；30个缺失输入按自行重建、独立依赖或不需要原脚本分别处置。",
+      "closeWhen": "完整恢复覆盖表与独立构建路线成立；最终源码不含第三方实现副本，后续升级有版本差异和回归映射。"
+    }
+  ],
+  "counts": {
+    "completionCriteria": 9,
+    "satisfiedRecordOrScopeObligations": 4,
+    "partialCriteria": 5,
+    "stages": 6,
+    "requirementItems": 39,
+    "remainingDecisionGroups": 6,
+    "legacyEntryRecords": 968,
+    "legacyMechanismFamilies": 10,
+    "legacyLexicalOwnerGroups": 165,
+    "currentFeatureDefinitions": 103,
+    "currentRootOperationCandidates": 133,
+    "currentUnexecutedScenarios": 406,
+    "confirmedChatGptExclusions": 0
+  },
+  "decisionsAlreadySupported": [
+    "按main/preload/renderer/worker、状态所有权和生命周期划分维护模块；chunk只作来源定位。",
+    "第三方组件通过包/独立运行时/受维护补丁引入；第一方wrapper、状态和生命周期仍需恢复。",
+    "固定Electron42.3.0不能原样替换Owl；同一公共view的跨窗口移动可作适配原语，不能据此认定clone/lease/权限完整兼容。",
+    "公开app-server需要协议适配决定；候选版本、基线实际版本和新工程锁分开。",
+    "当前不生成ChatGPT删除清单；模式unknown合法保留，设置访问分类不代替产品模式。"
+  ],
+  "interpretation": "Four satisfied items are record/scope obligations, not a completion percentage or a claim that independent building works. Thirty-nine subordinate requirements remain enumerated; older statuses are historical, not renewed full-source verification.",
+  "nextAction": {
+    "issueId": "SD-01/SD-03/SD-06",
+    "completedSubstep": "统一103项有限定义与全部406规格的恢复任务映射；处置30构建输入；新增环境/Hooks/MCP合同、16对schema核对及41隔离场景。",
+    "fixedInput": "本批三个页面/选定provider及已有源码，复用已完成AST；完整范围仍含35个待归属设置容器及其余入口族。",
+    "question": "先完成三个页面的操作与实际provider链归属，再核对普通创建/提交/审批/中断/恢复的关键接收链。",
+    "closure": "稳定用户目标、源范围、状态/字段/错误/接收方/持久化及具体运行缺口接到恢复任务；不增加未授权模型请求。",
+    "deferredDedicatedVerification": "OS/账户/OAuth、真实配置耐久性、原生ABI/Owl全能力、实际取消与完整模式共享闭包。"
+  },
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "modelSubmissionsAdded": 0,
+  "originalClientRunsAdded": 0,
+  "previousSnapshot": {
+    "path": "analysis-stage-decisions.json",
+    "bytes": 29821,
+    "sha256": "2f2e95da3da64232b4a095bf685a1a115af9a34bda6549ee61bcf007160aadab"
+  },
+  "recordedAtUtc": "2026-10-24T07:25:42.491553+00:00",
+  "currentScope": {
+    "featureLedger": {
+      "path": "feature-scope-v10.json",
+      "bytes": 655239,
+      "sha256": "37fe36ad93a5fb19ef1bad1cb5d75e45fdd82bc20456b5472469dabb5af1d276"
+    },
+    "scenarioLedger": {
+      "path": "feature-scope-v10-scenarios.json",
+      "bytes": 848054,
+      "sha256": "18e72e31551c84e4670ebf5510cc15673b479119a704e303eaf392b6a9d20fd7"
+    },
+    "restorationCoverage": {
+      "path": "restoration-coverage-v1.json",
+      "bytes": 296000,
+      "sha256": "f357b6f3086c6fed2ff74de4ed423882ba215f94ffe9759ad1064f09b5dd0493"
+    },
+    "buildInputDispositions": {
+      "path": "build-input-dispositions-v1.json",
+      "bytes": 33279,
+      "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+    },
+    "completeFeatureDenominator": null,
+    "pendingSettingsOperationContainers": 35,
+    "modelSamplesRemaining": 0
+  }
+}

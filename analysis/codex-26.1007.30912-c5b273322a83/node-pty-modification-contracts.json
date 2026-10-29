@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "package": "node-pty",
+  "declaredExactVersion": "1.1.0",
+  "status": "static-core-ready-package-peer-pending",
+  "counts": {
+    "records": 18,
+    "confirmed": 15,
+    "inferred": 1,
+    "unresolved": 2,
+    "sourceFilesCompared": 2,
+    "changedSpans": 9,
+    "scenarioProposals": 11
+  },
+  "parsedScope": {
+    "completePrograms": 4,
+    "selectedClientDeclarationWindows": 1,
+    "astNodes": 5332,
+    "completeFunctionsAndMethods": 142
+  },
+  "records": [
+    {
+      "id": "NODE-PTY-MOD-001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The shipped constructor adds an eleventh optional process-list override parameter, defaults it to undefined, and stores it.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent",
+        "utf16Start": 1056,
+        "utf16End": 4120,
+        "byteStart": 1056,
+        "byteEnd": 4120,
+        "unitBytes": 3064,
+        "unitSha256": "3438124ce0494324db77582bf8e853f6d73c1900c86fcba69386ba4ee132bd07"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The shipped terminal constructor passes opt.getConsoleProcessList as the eleventh WindowsPtyAgent argument.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsTerminal.js",
+      "sourceHash": "6baba184f22a6d1d625df35ac5cc47252dcdac52f9f440760e26d73a0bef2cf7",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsTerminal",
+        "utf16Start": 1185,
+        "utf16End": 4832,
+        "byteStart": 1185,
+        "byteEnd": 4832,
+        "unitBytes": 3647,
+        "unitSha256": "a9726921a8c99e03fb007d24b11c68fe6938e37d7e64acd941ec9ee981000af5"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "A truthy override is called with innerPid. Its returned .catch handles rejection by returning [innerPid]; no function or Promise shape validation is performed.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent.prototype._getConsoleProcessList",
+        "utf16Start": 8273,
+        "utf16End": 9065,
+        "byteStart": 8273,
+        "byteEnd": 9065,
+        "unitBytes": 792,
+        "unitSha256": "3aea5f508b57c73cfe99f415540300ac9218011434ebb017af91d178de2f810f"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The override call and .catch property access occur before the rejection handler can apply: synchronous throw, truthy non-function or missing .catch is not handled by that fallback.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent.prototype._getConsoleProcessList",
+        "utf16Start": 8273,
+        "utf16End": 9065,
+        "byteStart": 8273,
+        "byteEnd": 9065,
+        "unitBytes": 792,
+        "unitSha256": "3aea5f508b57c73cfe99f415540300ac9218011434ebb017af91d178de2f810f"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "For ConPTY without the DLL and with a truthy override, kill disables socket readability, obtains the list, returns its then chain, and calls native kill/worker dispose before killing listed processes.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent.prototype.kill",
+        "utf16Start": 5621,
+        "utf16End": 7726,
+        "byteStart": 5621,
+        "byteEnd": 7726,
+        "unitBytes": 2105,
+        "unitSha256": "4f57a82ba719b4215ac4a0cffaa93e7382d3c68f7a75f55657687ce47bee632d"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "For ConPTY without the DLL and without an override, process-list handling is scheduled asynchronously, native kill/worker dispose runs immediately, and kill returns undefined.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent.prototype.kill",
+        "utf16Start": 5621,
+        "utf16End": 7726,
+        "byteStart": 5621,
+        "byteEnd": 7726,
+        "unitBytes": 2105,
+        "unitSha256": "4f57a82ba719b4215ac4a0cffaa93e7382d3c68f7a75f55657687ce47bee632d"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The DLL and non-ConPTY branches remain distinct; the added override wait/return contract is not applied to all Windows termination paths.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent.prototype.kill",
+        "utf16Start": 5621,
+        "utf16End": 7726,
+        "byteStart": 5621,
+        "byteEnd": 7726,
+        "unitBytes": 2105,
+        "unitSha256": "4f57a82ba719b4215ac4a0cffaa93e7382d3c68f7a75f55657687ce47bee632d"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The helper calls native kill before worker.dispose; a synchronous failure in either operation can prevent subsequent statements in the caller.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent.prototype._killConpty",
+        "utf16Start": 8092,
+        "utf16End": 8216,
+        "byteStart": 8092,
+        "byteEnd": 8216,
+        "unitBytes": 124,
+        "unitSha256": "2738320d2302c456c508f46449de9445063faf1d1273efd1f163275f50124fb1"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Each process.kill is inside an unfiltered catch: all its synchronous errors are swallowed, and iteration continues. The comment mentioning ESRCH does not narrow that catch.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsPtyAgent.js",
+      "sourceHash": "021e3efc1cd3122b15016c27bde387cc1e6965ab1323781353f4bd5590a20674",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsPtyAgent.prototype._killConsoleProcesses",
+        "utf16Start": 7782,
+        "utf16End": 8046,
+        "byteStart": 7782,
+        "byteEnd": 8046,
+        "unitBytes": 264,
+        "unitSha256": "9ea009106e5c9c391ace17fb9e42a54af836f0105200b6af060659fd5f7d5965"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Before readiness kill queues a later self-call and returns undefined. Once ready it rejects truthy signals synchronously, then calls _close and, if that returns, returns agent.kill.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsTerminal.js",
+      "sourceHash": "6baba184f22a6d1d625df35ac5cc47252dcdac52f9f440760e26d73a0bef2cf7",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsTerminal.prototype.kill",
+        "utf16Start": 6074,
+        "utf16End": 6416,
+        "byteStart": 6074,
+        "byteEnd": 6416,
+        "unitBytes": 342,
+        "unitSha256": "5bfa3c19a4dcc8b12201e0277727f9d7de243eb162438a92e7091a82a09e7a1b"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The helper either calls deferredFn and discards its return or queues a run closure returning deferredFn.call; kill does not return a completion promise while pre-ready.",
+      "sourcePath": "app.asar/node_modules/node-pty/lib/windowsTerminal.js",
+      "sourceHash": "6baba184f22a6d1d625df35ac5cc47252dcdac52f9f440760e26d73a0bef2cf7",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "WindowsTerminal.prototype._deferNoArgs",
+        "utf16Start": 6463,
+        "utf16End": 6807,
+        "byteStart": 6463,
+        "byteEnd": 6807,
+        "unitBytes": 344,
+        "unitSha256": "098995640a0a4688e4a8bcd05f36de75b617ea01db9406bdbf8c1a0f7f551443"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "In the contiguous client declaration window, qS.create obtains spawn from KS(node-pty), splits command into executable/args, and supplies getConsoleProcessList as win32 ? GS : undefined. No create-local binding shadows GS or KS.",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "static create",
+        "utf16Start": 885430,
+        "utf16End": 885740,
+        "byteStart": 885448,
+        "byteEnd": 885758,
+        "unitBytes": 310,
+        "unitSha256": "fbbdcb9a0d0258acfac104b69e174acb9b86a714b769cadc40643bd82db8cb42"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-013",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The async callback calls the selected VS operation on the PowerShell path derived from SystemRoot/windir/default Windows path, with 5000ms timeout and 65536 maxBuffer. It passes a computed PID environment field; blank stdout yields [], other text is split on commas and HS.parse is called. External identities VS/WS/HS/US/c remain unresolved here.",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "GS",
+        "utf16Start": 884982,
+        "utf16End": 885375,
+        "byteStart": 885000,
+        "byteEnd": 885393,
+        "unitBytes": 393,
+        "unitSha256": "75f1b15def19cda860a999887fc248ceb1ed0ba5e5318766ea5dca14cc7b5c17"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-014",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The selected qS.terminate awaits this.pty.kill. The package return contract is conditional; this await alone does not prove pre-ready or every native termination path has completed.",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "terminate",
+        "utf16Start": 885838,
+        "utf16End": 885878,
+        "byteStart": 885856,
+        "byteEnd": 885896,
+        "unitBytes": 40,
+        "unitSha256": "806b4956868f63fb7922c103d1752224615a7eeb31499bb887cb8060e9de0d74"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-015",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "For killProcessTree on darwin, qS.dispose awaits i.an(pid), reverses the returned list, sends SIGKILL, ignores selected ESRCH errors and accumulates other errors, then always awaits pty.kill(SIGKILL) in finally. Other paths await pty.kill; i.an identity and actual native results remain unverified.",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "dispose",
+        "utf16Start": 885878,
+        "utf16End": 886318,
+        "byteStart": 885896,
+        "byteEnd": 886336,
+        "unitBytes": 440,
+        "unitSha256": "09234daa3c5dc0e58edc177e1b1fe1119d531dd1c8a3f6d6b5c399e335afb152"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "static-only"
+    },
+    {
+      "id": "NODE-PTY-MOD-016",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Recovery should retain the first-party terminal adapter and consume a separately maintained patched dependency or equivalent adapter with these return/error contracts, rather than copying upstream implementation into client source.",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "static create",
+        "utf16Start": 885430,
+        "utf16End": 885740,
+        "byteStart": 885448,
+        "byteEnd": 885758,
+        "unitBytes": 310,
+        "unitSha256": "fbbdcb9a0d0258acfac104b69e174acb9b86a714b769cadc40643bd82db8cb42"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "inferred",
+      "verificationStatus": "pending"
+    },
+    {
+      "id": "NODE-PTY-MOD-017",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The exact two Windows JS modifications are established; native provenance/ABI, whole-package equivalence, independent Windows build and actual platform execution remain unresolved.",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "static create",
+        "utf16Start": 885430,
+        "utf16End": 885740,
+        "byteStart": 885448,
+        "byteEnd": 885758,
+        "unitBytes": 310,
+        "unitSha256": "fbbdcb9a0d0258acfac104b69e174acb9b86a714b769cadc40643bd82db8cb42"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "unresolved",
+      "verificationStatus": "pending"
+    },
+    {
+      "id": "NODE-PTY-MOD-018",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "The renderer services.terminal to this qS main adapter identity is not established by this selected declaration window; this batch must not close that cross-process instance gap.",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "type": "complete-ast-function-or-method",
+        "owner": "static create",
+        "utf16Start": 885430,
+        "utf16End": 885740,
+        "byteStart": 885448,
+        "byteEnd": 885758,
+        "unitBytes": 310,
+        "unitSha256": "fbbdcb9a0d0258acfac104b69e174acb9b86a714b769cadc40643bd82db8cb42"
+      },
+      "method": "static-bounded-ast-and-fixed-byte-comparison",
+      "confidence": "unresolved",
+      "verificationStatus": "pending"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "NPMOD-S01",
+      "condition": "Ready, ConPTY, non-DLL, override fulfills with PID list",
+      "expected": "Read list before native kill, dispose worker next, then attempt each listed process; return then completion.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-005",
+        "NODE-PTY-MOD-008",
+        "NODE-PTY-MOD-009",
+        "NODE-PTY-MOD-010"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S02",
+      "condition": "Override returns a rejecting Promise",
+      "expected": "List falls back to innerPid; remaining termination sequence is attempted subject to native/helper success.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-003",
+        "NODE-PTY-MOD-005"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S03",
+      "condition": "Override throws synchronously or has invalid function/.catch shape",
+      "expected": "The fallback does not handle this failure; no later kill sequence is guaranteed.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-004"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S04",
+      "condition": "ConPTY non-DLL without override",
+      "expected": "Native kill/dispose proceeds before the list callback; returned value does not await the process-list callback.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-006"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S05",
+      "condition": "Termination invoked before terminal readiness",
+      "expected": "Call queues and returns undefined; the first-party await cannot represent completion of the future queued kill.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-010",
+        "NODE-PTY-MOD-011",
+        "NODE-PTY-MOD-014"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S06",
+      "condition": "Ready terminal receives a truthy signal",
+      "expected": "Signals-not-supported error precedes _close and agent kill.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-010"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S07",
+      "condition": "A listed process.kill throws a synchronous error other than ESRCH",
+      "expected": "That helper swallows the error and attempts subsequent PIDs.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-009"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S08",
+      "condition": "Native kill or worker.dispose throws in override then callback",
+      "expected": "Returned chain rejects and later statements including listed-process kills may not occur.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-005",
+        "NODE-PTY-MOD-008"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S09",
+      "condition": "Client callback gets blank PowerShell stdout",
+      "expected": "Callback returns []; selected package sequence still attempts native kill/dispose before empty iteration.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-013",
+        "NODE-PTY-MOD-005"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S10",
+      "condition": "Client callback process timeout or output schema parse rejects",
+      "expected": "Async callback rejection reaches the package rejection fallback if this callback is the actual selected override.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-003",
+        "NODE-PTY-MOD-012",
+        "NODE-PTY-MOD-013"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    },
+    {
+      "id": "NPMOD-S11",
+      "condition": "darwin killProcessTree branch encounters a non-ESRCH descendant kill error",
+      "expected": "Selected wrapper remembers an error, while finally still invokes/awaits pty.kill(SIGKILL); actual native outcomes require separate observation.",
+      "evidenceRefs": [
+        "NODE-PTY-MOD-015"
+      ],
+      "status": "static-derived-not-executed",
+      "mode": "unknown",
+      "runtimeConfirmed": false
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/node-pty-modification-contracts-work/inspection.json",
+      "bytes": 6102,
+      "sha256": "7a1742d0c8181d97f78d2bde0fddeae920a7eeacede7c91e85a6155227c86a55"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/node-pty-modification-contracts-work/parsed-metadata.json",
+      "bytes": 70887,
+      "sha256": "2518d7dcf994b1ca431e34aa2d32e047fb78a9e1a46e3eae5ccd0a00c770937c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/node-pty-modification-contracts-work/main-selected-window.json",
+      "bytes": 876,
+      "sha256": "656ea3673b405ae41ced5bca713e55622d0051754b76ec025a0fa702826bec65"
+    }
+  ],
+  "dependencyDecision": "Retain an explicit maintained dependency patch/fork or equivalent adapter; do not generate upstream implementation inside client maintained source.",
+  "actualWindowsBehavior": "unknown",
+  "nativeOriginAndAbi": "unknown",
+  "fullEquivalence": "unknown",
+  "rendererServiceToMainAdapter": "unknown",
+  "globalRecordsAdded": 0,
+  "runtimeRunsAdded": 0,
+  "additionalModelTasks": 0,
+  "sourceImplementationCopiedToFormalOutput": false
+}

@@ -1,0 +1,1981 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T19:07:29.753344+00:00",
+  "scope": "RAM-02 selected source producer/consumer and lifecycle analysis; native bridge/complete product closure remains open.",
+  "facts": [
+    {
+      "id": "AMO-01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "通用histogram provider由jNe按两个app方法均为function决定是否创建，并缓存MNe实例；该factory没有平台条件。已缓存后不重新检查方法存在性。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 2145706,
+        "endExclusive": 2145869
+      },
+      "spanHash": "176b71c8c66cfc8907270f3f8811e458891de23be47d25f2c88843ee908d5052",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "MNe.configureMeasurementCollection是async方法但既不return也不await运行时configure返回值；collectMeasurements则return运行时返回值，异步方法会采用其Promise结果。两方法均不在本地捕获异常。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 2145873,
+        "endExclusive": 2146040
+      },
+      "spanHash": "4c7f2f2f448053fa594ed2d0797ad07ddbdf38ff2f09f8ded07f83bbf92db972",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "createAppHost服务对象直接构造new vIe；与同对象的histogramCollector:jNe()为不同provider。vIe构造函数调用gIe，通用provider被能力检查省略不代表具名诊断不尝试配置。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 3336556,
+        "endExclusive": 3336585
+      },
+      "spanHash": "4a4f44ed3c111250cbecf3de04337b24b7653a01c0c1334506a5d131dcfecae7",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "具名配置的进程级dZ在等待app readiness前即置true；ready立即调用hZ，否则whenReady().then(hZ)。后续构造不会重试；此函数没有本地平台判断或whenReady拒绝处理。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 2410584,
+        "endExclusive": 2410659
+      },
+      "spanHash": "2c40fd27ea14c5edd020608d6d815d2ff6f873df399ae1801d28efe6c66270d1",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "hZ用单元素数组配置Media.AudioSystem.GetDeviceDescription.Result；同步成功后写configuredAtMs/intervalStartedAtMs、generation=1、status=missing，异常只改unavailable。它不检查方法存在性，也不await配置返回值。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 2411297,
+        "endExclusive": 2411486
+      },
+      "spanHash": "311d6e015ad5a0babdc35552af989d00ac835ce81fe7733c0b955a2289fad2d7",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "_Ie仅在configuredAtMs非null后增加collectionSequence并同步读取collectedAt、measurements。ready时[0,1)桶累加到droppedReplyCount、[1,2)桶累加到deliveredReplyCount；JS没有对前后快照做差，不能从此确认native返回的是增量。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 2410659,
+        "endExclusive": 2411297
+      },
+      "spanHash": "8be4e0555bd0fad6405e17e2b00cd2ce4198f7e832dbfb9c51428fad2c624b57",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "找不到具名histogram时status为missing；不支持的桶或counter_discontinuity会清零两计数、增加generation并以本次collectedAt重设interval。收集异常改unavailable且不主动清旧计数；只有ready向返回对象暴露累计计数。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 2410659,
+        "endExclusive": 2411297
+      },
+      "spanHash": "8be4e0555bd0fad6405e17e2b00cd2ce4198f7e832dbfb9c51428fad2c624b57",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "vIe.getSnapshot依次组合Date.now()、_le()的audioService和_Ie()的audioDiscovery；两项数据源不同。getSnapshot本身没有本地catch或平台分支。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 2411490,
+        "endExclusive": 2411628
+      },
+      "spanHash": "e59bdbe4102aee2008ab69b0e4e3ae0bb945ab37891619068da17ae9c420ef27",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-09",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "音频服务生命周期处理器仅在type=Utility且serviceName=audio.mojom.AudioService时调用vle；该调用先于clean-exit检查，故选定处理器也累计符合条件的clean exit。register将此处理器接到child-process-gone，Nh/_le/vle分别保存、复制读取、更新退出次数与末次原因/退出码。",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "start": 469444,
+        "endExclusive": 469842
+      },
+      "spanHash": "478b4dd068bee9bbbd1a398c2cedf9209dbde6ac7169ba308e756384b3c735d1",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-10",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Gli先删旧全局入口，provider存在时发布window.__codexHistogramCollector。configure等待RPC；collect通过GI.u要求结果可dispose，structuredClone后在finally释放，释放失败可使调用拒绝。cleanup只删除仍属于本次安装的全局对象。",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "start": 5753340,
+        "endExclusive": 5753778
+      },
+      "spanHash": "9132862616fa2dfa6c194b06db32108a54103754db2729f26dbe56dc77216fbb",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-11",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "qli把await $3.services赋给Program e6，并安装Gli(e6.histogramCollector)的断链cleanup。e6导出为fN，app-initial以Pd导入fN，Gia读取Pd.microphoneDiagnostics；这是选定静态装配关系，不证明实际RPC receiver实例或送达。",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "start": 5753819,
+        "endExclusive": 5754148
+      },
+      "spanHash": "81c1de5db00da5fcff7c3120cbcb22be758347810747023c32ea37fa27878d5d",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-12",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定capture方法在diagnosticContext存在且采集成功时以Math.random()<.01抽样调用Gia；错误路径须为Error且name为NotFoundError或DevicesNotFoundError才调用。调用均未await，不阻塞原成功返回或错误重新抛出；其余失败不由该分支诊断。",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "start": 5360433,
+        "endExclusive": 5362910
+      },
+      "spanHash": "a863c67cafdd20c5143787265244abe4206c5177d1db3f6b950cbedd2ea30170",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-13",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Gia并行查询浏览器audioinput聚合与可选host快照，合入session、采集上下文、开始/结束时间、visibility和focus，再写Realtime microphone discovery diagnostics日志并调用可选onDiagnostic。浏览器子结果只含计数、布尔和时间，不包含原始deviceId/label；其它合入字段t的内容不据此获得全日志匿名保证。host缺席为unsupported，外层异常被吞掉。",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "start": 5355311,
+        "endExclusive": 5356297
+      },
+      "spanHash": "6c0d6e688f940ef21554fe8804e35ee6d5bc2611a831df79d950456751971a03",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-14",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "Kia将回调成功/拒绝转为succeeded/failed，与qia超时竞争；Jia把qia初始化为2000ms。超时返回timed_out并abort，finally总会清timer并abort。Gia的host请求通过uh包装。",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "start": 5356297,
+        "endExclusive": 5356595
+      },
+      "spanHash": "66396fa1d3b77d11e9e88908f098909144714ccfa2d292d84ffd91996125e8b6",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-15",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "app-initial的uh导入shared s$t，后者导出Program JL。JL在signal abort或finally至多一次调用请求的Symbol.dispose，前后检查abort并移除监听；浏览器enumerateDevices回调未将signal转给浏览器API。",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "start": 2300121,
+        "endExclusive": 2300348
+      },
+      "spanHash": "12a4716f7d092515b6150536ace14f430aeec4e47b12bff04719e625a60f025f",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    },
+    {
+      "id": "AMO-16",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定createMediaSetupAnalytics传给raa的diagnosticContext.onDiagnostic为e=>{}；媒体setup事件另交给connectionSetup.observeMediaSetup和Ap。本轮没有把完整诊断对象经该空回调发送的证据；日志接收和其它实例仍未验证。",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "start": 5370721,
+        "endExclusive": 5371090
+      },
+      "spanHash": "97e0eda147b9ccdf3daf60adec8dfecc5aae7f17341a6cad97ea8c2f1d495b8e",
+      "method": "static-code",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-complete-Program-source-confirmed; actual-native-RPC-and-product-behavior-unverified"
+    }
+  ],
+  "sourceUnits": [
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 719,
+        "endExclusive": 740
+      },
+      "spanHash": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-_"
+      ],
+      "id": "AMO-SOURCE-01",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/01.js.txt",
+        "bytes": 21,
+        "sha256": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 468980,
+        "endExclusive": 469052
+      },
+      "spanHash": "97b6fa3b17be1d1cabad5777b1769b7af2b42c733341068b73ea8d09afe5b3fc",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-Nh"
+      ],
+      "id": "AMO-SOURCE-02",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/02.js.txt",
+        "bytes": 72,
+        "sha256": "97b6fa3b17be1d1cabad5777b1769b7af2b42c733341068b73ea8d09afe5b3fc"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 469053,
+        "endExclusive": 469082
+      },
+      "spanHash": "3b4695bb21f595ec90076ab0a8398912b9a33a96dcc5adbc1b1c7a8ee25fa67f",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-_le"
+      ],
+      "id": "AMO-SOURCE-03",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/03.js.txt",
+        "bytes": 29,
+        "sha256": "3b4695bb21f595ec90076ab0a8398912b9a33a96dcc5adbc1b1c7a8ee25fa67f"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 469082,
+        "endExclusive": 469200
+      },
+      "spanHash": "facd9143be56f5aa73867095de2aced9d9e4a0bb7137e10414c3169dba83abc6",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-vle"
+      ],
+      "id": "AMO-SOURCE-04",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/04.js.txt",
+        "bytes": 118,
+        "sha256": "facd9143be56f5aa73867095de2aced9d9e4a0bb7137e10414c3169dba83abc6"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 469375,
+        "endExclusive": 469444
+      },
+      "spanHash": "4ad50ea491954536c1e17fa09ac4cdbf787845213921c62e12574ff1862d6e5f",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "audio-service-register"
+      ],
+      "id": "AMO-SOURCE-05",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/05.js.txt",
+        "bytes": 69,
+        "sha256": "4ad50ea491954536c1e17fa09ac4cdbf787845213921c62e12574ff1862d6e5f"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 469444,
+        "endExclusive": 469842
+      },
+      "spanHash": "478b4dd068bee9bbbd1a398c2cedf9209dbde6ac7169ba308e756384b3c735d1",
+      "nodeType": "ClassProperty",
+      "labels": [
+        "audio-service-onChildProcessGone"
+      ],
+      "id": "AMO-SOURCE-06",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/06.js.txt",
+        "bytes": 398,
+        "sha256": "478b4dd068bee9bbbd1a398c2cedf9209dbde6ac7169ba308e756384b3c735d1"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 469538,
+        "endExclusive": 469544
+      },
+      "spanHash": "0ae243c759ea58f17b93e1f83edd1086202f631f65e2b2c49f88d679d44b78c9",
+      "nodeType": "CallExpression",
+      "labels": [
+        "vle-call"
+      ],
+      "id": "AMO-SOURCE-07",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/07.js.txt",
+        "bytes": 6,
+        "sha256": "0ae243c759ea58f17b93e1f83edd1086202f631f65e2b2c49f88d679d44b78c9"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 469463,
+        "endExclusive": 469841
+      },
+      "spanHash": "93078998a1438e03e41f3573773e40078500493b58cf5b630882f694de83beac",
+      "nodeType": "ArrowFunctionExpression",
+      "labels": [
+        "audio-service-exit-owner"
+      ],
+      "id": "AMO-SOURCE-08",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/08.js.txt",
+        "bytes": 378,
+        "sha256": "93078998a1438e03e41f3573773e40078500493b58cf5b630882f694de83beac"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2145703,
+        "endExclusive": 2145705
+      },
+      "spanHash": "d5c8f7460d2f08fa88fa6e987c42ca83e2fe6eea6f84c0a047c5726a3829d15d",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-rX"
+      ],
+      "id": "AMO-SOURCE-09",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/09.js.txt",
+        "bytes": 2,
+        "sha256": "d5c8f7460d2f08fa88fa6e987c42ca83e2fe6eea6f84c0a047c5726a3829d15d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2145706,
+        "endExclusive": 2145869
+      },
+      "spanHash": "176b71c8c66cfc8907270f3f8811e458891de23be47d25f2c88843ee908d5052",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-jNe"
+      ],
+      "id": "AMO-SOURCE-10",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/10.js.txt",
+        "bytes": 163,
+        "sha256": "176b71c8c66cfc8907270f3f8811e458891de23be47d25f2c88843ee908d5052"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2145873,
+        "endExclusive": 2146040
+      },
+      "spanHash": "4c7f2f2f448053fa594ed2d0797ad07ddbdf38ff2f09f8ded07f83bbf92db972",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-MNe"
+      ],
+      "id": "AMO-SOURCE-11",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/11.js.txt",
+        "bytes": 167,
+        "sha256": "4c7f2f2f448053fa594ed2d0797ad07ddbdf38ff2f09f8ded07f83bbf92db972"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2410345,
+        "endExclusive": 2410395
+      },
+      "spanHash": "44bb4f94d58f9359b7d9b22e06a15864efd3ee399d4f94a2a714920a5015ffcd",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-uZ"
+      ],
+      "id": "AMO-SOURCE-12",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/12.js.txt",
+        "bytes": 50,
+        "sha256": "44bb4f94d58f9359b7d9b22e06a15864efd3ee399d4f94a2a714920a5015ffcd"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2410396,
+        "endExclusive": 2410401
+      },
+      "spanHash": "f0d2ae92bfb52f8141b70a7d4003b4f2503614b8cb112b5e7ccb01ab3f6e1e14",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-dZ"
+      ],
+      "id": "AMO-SOURCE-13",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/13.js.txt",
+        "bytes": 5,
+        "sha256": "f0d2ae92bfb52f8141b70a7d4003b4f2503614b8cb112b5e7ccb01ab3f6e1e14"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2410402,
+        "endExclusive": 2410406
+      },
+      "spanHash": "9a6a3bc2d00af49ed97d00d4bce9add4d6a5e96b5c5c33e8e51ba5acab949282",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-fZ"
+      ],
+      "id": "AMO-SOURCE-14",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/14.js.txt",
+        "bytes": 4,
+        "sha256": "9a6a3bc2d00af49ed97d00d4bce9add4d6a5e96b5c5c33e8e51ba5acab949282"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2410407,
+        "endExclusive": 2410411
+      },
+      "spanHash": "11766296bc9d7c0e2e507193b7212f7a3b453f968656fabedf2ec15d79ab115d",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-pZ"
+      ],
+      "id": "AMO-SOURCE-15",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/15.js.txt",
+        "bytes": 4,
+        "sha256": "11766296bc9d7c0e2e507193b7212f7a3b453f968656fabedf2ec15d79ab115d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2410412,
+        "endExclusive": 2410583
+      },
+      "spanHash": "4c227ad5aa837ce61f23e504bb01cc55652c051f384b8250fd407229de4aad41",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-mZ"
+      ],
+      "id": "AMO-SOURCE-16",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/16.js.txt",
+        "bytes": 171,
+        "sha256": "4c227ad5aa837ce61f23e504bb01cc55652c051f384b8250fd407229de4aad41"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2410584,
+        "endExclusive": 2410659
+      },
+      "spanHash": "2c40fd27ea14c5edd020608d6d815d2ff6f873df399ae1801d28efe6c66270d1",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-gIe"
+      ],
+      "id": "AMO-SOURCE-17",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/17.js.txt",
+        "bytes": 75,
+        "sha256": "2c40fd27ea14c5edd020608d6d815d2ff6f873df399ae1801d28efe6c66270d1"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2410659,
+        "endExclusive": 2411297
+      },
+      "spanHash": "8be4e0555bd0fad6405e17e2b00cd2ce4198f7e832dbfb9c51428fad2c624b57",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-_Ie"
+      ],
+      "id": "AMO-SOURCE-18",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/18.js.txt",
+        "bytes": 638,
+        "sha256": "8be4e0555bd0fad6405e17e2b00cd2ce4198f7e832dbfb9c51428fad2c624b57"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2411297,
+        "endExclusive": 2411486
+      },
+      "spanHash": "311d6e015ad5a0babdc35552af989d00ac835ce81fe7733c0b955a2289fad2d7",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-hZ"
+      ],
+      "id": "AMO-SOURCE-19",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/19.js.txt",
+        "bytes": 189,
+        "sha256": "311d6e015ad5a0babdc35552af989d00ac835ce81fe7733c0b955a2289fad2d7"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2411490,
+        "endExclusive": 2411628
+      },
+      "spanHash": "e59bdbe4102aee2008ab69b0e4e3ae0bb945ab37891619068da17ae9c420ef27",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-vIe"
+      ],
+      "id": "AMO-SOURCE-20",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/20.js.txt",
+        "bytes": 138,
+        "sha256": "e59bdbe4102aee2008ab69b0e4e3ae0bb945ab37891619068da17ae9c420ef27"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3336556,
+        "endExclusive": 3336585
+      },
+      "spanHash": "4a4f44ed3c111250cbecf3de04337b24b7653a01c0c1334506a5d131dcfecae7",
+      "nodeType": "ObjectProperty",
+      "labels": [
+        "property-microphoneDiagnostics-3331688"
+      ],
+      "id": "AMO-SOURCE-21",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/21.js.txt",
+        "bytes": 29,
+        "sha256": "4a4f44ed3c111250cbecf3de04337b24b7653a01c0c1334506a5d131dcfecae7"
+      }
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3337920,
+        "endExclusive": 3337944
+      },
+      "spanHash": "744eb9b9f0cdad3a4d8cd2f82e4ce554f507eb4deeb817b9a11e691cd12f6391",
+      "nodeType": "ObjectProperty",
+      "labels": [
+        "property-histogramCollector-3333052"
+      ],
+      "id": "AMO-SOURCE-22",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/22.js.txt",
+        "bytes": 24,
+        "sha256": "744eb9b9f0cdad3a4d8cd2f82e4ce554f507eb4deeb817b9a11e691cd12f6391"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2179906,
+        "endExclusive": 2180975
+      },
+      "spanHash": "b276b90534717452db22952a1d825315a924cde8da3daecef73ad5a25e80befc",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-GI"
+      ],
+      "id": "AMO-SOURCE-23",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/23.js.txt",
+        "bytes": 1069,
+        "sha256": "b276b90534717452db22952a1d825315a924cde8da3daecef73ad5a25e80befc"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2300121,
+        "endExclusive": 2300348
+      },
+      "spanHash": "12a4716f7d092515b6150536ace14f430aeec4e47b12bff04719e625a60f025f",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-JL"
+      ],
+      "id": "AMO-SOURCE-24",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/24.js.txt",
+        "bytes": 227,
+        "sha256": "12a4716f7d092515b6150536ace14f430aeec4e47b12bff04719e625a60f025f"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5752733,
+        "endExclusive": 5752736
+      },
+      "spanHash": "92446a3db2a65bca0e146491a5ea049be9f4f5055951d25d65969a667370e38e",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-Vli"
+      ],
+      "id": "AMO-SOURCE-25",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/25.js.txt",
+        "bytes": 3,
+        "sha256": "92446a3db2a65bca0e146491a5ea049be9f4f5055951d25d65969a667370e38e"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5753340,
+        "endExclusive": 5753778
+      },
+      "spanHash": "9132862616fa2dfa6c194b06db32108a54103754db2729f26dbe56dc77216fbb",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-Gli"
+      ],
+      "id": "AMO-SOURCE-26",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/26.js.txt",
+        "bytes": 438,
+        "sha256": "9132862616fa2dfa6c194b06db32108a54103754db2729f26dbe56dc77216fbb"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5753819,
+        "endExclusive": 5754148
+      },
+      "spanHash": "81c1de5db00da5fcff7c3120cbcb22be758347810747023c32ea37fa27878d5d",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-qli"
+      ],
+      "id": "AMO-SOURCE-27",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/27.js.txt",
+        "bytes": 329,
+        "sha256": "81c1de5db00da5fcff7c3120cbcb22be758347810747023c32ea37fa27878d5d"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5754152,
+        "endExclusive": 5754154
+      },
+      "spanHash": "fe5fc5a67987b8b69b9e7ad38544df2a0b96b32370a14b679e9c3675dfb34643",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-$3"
+      ],
+      "id": "AMO-SOURCE-28",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/28.js.txt",
+        "bytes": 2,
+        "sha256": "fe5fc5a67987b8b69b9e7ad38544df2a0b96b32370a14b679e9c3675dfb34643"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 5754155,
+        "endExclusive": 5754157
+      },
+      "spanHash": "f33422b95e3b98310adedc93655de579f6e311120ea0c27c3e2317b5116d6afb",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-e6"
+      ],
+      "id": "AMO-SOURCE-29",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/29.js.txt",
+        "bytes": 2,
+        "sha256": "f33422b95e3b98310adedc93655de579f6e311120ea0c27c3e2317b5116d6afb"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8142877,
+        "endExclusive": 8142885
+      },
+      "spanHash": "a64e78fb1a516dff00075cc7a316661d35a2313dc3007d3eab644217101b8182",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export-fN"
+      ],
+      "id": "AMO-SOURCE-30",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/30.js.txt",
+        "bytes": 8,
+        "sha256": "a64e78fb1a516dff00075cc7a316661d35a2313dc3007d3eab644217101b8182"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 8162910,
+        "endExclusive": 8162919
+      },
+      "spanHash": "05475f6d032a5b974477ef6a3597600f2272c527cc44df15e38b03b135270476",
+      "nodeType": "ExportSpecifier",
+      "labels": [
+        "export-s$t"
+      ],
+      "id": "AMO-SOURCE-31",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/31.js.txt",
+        "bytes": 9,
+        "sha256": "05475f6d032a5b974477ef6a3597600f2272c527cc44df15e38b03b135270476"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 97733,
+        "endExclusive": 97742
+      },
+      "spanHash": "fb695d1cbc5d08fe527bf81f8758703db308347e59ae832def5493ed8d861189",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import-gr"
+      ],
+      "id": "AMO-SOURCE-32",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/32.js.txt",
+        "bytes": 9,
+        "sha256": "fb695d1cbc5d08fe527bf81f8758703db308347e59ae832def5493ed8d861189"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 136858,
+        "endExclusive": 136888
+      },
+      "spanHash": "c3a4035e463dc7f60dce7a71f6086506de3b0ef56c27dc19350b8e5217441f5b",
+      "nodeType": "StringLiteral",
+      "labels": [
+        "import-source-gr",
+        "import-source-Pd",
+        "import-source-uh"
+      ],
+      "id": "AMO-SOURCE-33",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/33.js.txt",
+        "bytes": 30,
+        "sha256": "c3a4035e463dc7f60dce7a71f6086506de3b0ef56c27dc19350b8e5217441f5b"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 121244,
+        "endExclusive": 121252
+      },
+      "spanHash": "e11f1f27e69253df33c7bc61d4114f92ea9bf27ffd8f6ecebc548f57bd05f0d1",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import-Pd"
+      ],
+      "id": "AMO-SOURCE-34",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/34.js.txt",
+        "bytes": 8,
+        "sha256": "e11f1f27e69253df33c7bc61d4114f92ea9bf27ffd8f6ecebc548f57bd05f0d1"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 130695,
+        "endExclusive": 130704
+      },
+      "spanHash": "5809e819a196fe40231e54bc5cbdea8c7f0e9e13587ae0bdf1326cc1921f3255",
+      "nodeType": "ImportSpecifier",
+      "labels": [
+        "import-uh"
+      ],
+      "id": "AMO-SOURCE-35",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/35.js.txt",
+        "bytes": 9,
+        "sha256": "5809e819a196fe40231e54bc5cbdea8c7f0e9e13587ae0bdf1326cc1921f3255"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5355311,
+        "endExclusive": 5356297
+      },
+      "spanHash": "6c0d6e688f940ef21554fe8804e35ee6d5bc2611a831df79d950456751971a03",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-Gia"
+      ],
+      "id": "AMO-SOURCE-36",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/36.js.txt",
+        "bytes": 986,
+        "sha256": "6c0d6e688f940ef21554fe8804e35ee6d5bc2611a831df79d950456751971a03"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5356297,
+        "endExclusive": 5356595
+      },
+      "spanHash": "66396fa1d3b77d11e9e88908f098909144714ccfa2d292d84ffd91996125e8b6",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-Kia"
+      ],
+      "id": "AMO-SOURCE-37",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/37.js.txt",
+        "bytes": 298,
+        "sha256": "66396fa1d3b77d11e9e88908f098909144714ccfa2d292d84ffd91996125e8b6"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5356599,
+        "endExclusive": 5356602
+      },
+      "spanHash": "ed0ad968df46e4c86efa742eac92f718bd0425437b118f430560c4dbc905d324",
+      "nodeType": "VariableDeclarator",
+      "labels": [
+        "binding-qia"
+      ],
+      "id": "AMO-SOURCE-38",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/38.js.txt",
+        "bytes": 3,
+        "sha256": "ed0ad968df46e4c86efa742eac92f718bd0425437b118f430560c4dbc905d324"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5356603,
+        "endExclusive": 5356661
+      },
+      "spanHash": "5d3b7eb73cf50045f4d6b1cd699a356912881aa77065768f8d237990792f29b2",
+      "nodeType": "FunctionDeclaration",
+      "labels": [
+        "binding-Jia"
+      ],
+      "id": "AMO-SOURCE-39",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/39.js.txt",
+        "bytes": 58,
+        "sha256": "5d3b7eb73cf50045f4d6b1cd699a356912881aa77065768f8d237990792f29b2"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5361948,
+        "endExclusive": 5362146
+      },
+      "spanHash": "9b1f5cb8ee017cb18f09a0e042c411efd516c3f4b61a4515e7a5d438190b3ece",
+      "nodeType": "CallExpression",
+      "labels": [
+        "Gia-call-5350443"
+      ],
+      "id": "AMO-SOURCE-40",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/40.js.txt",
+        "bytes": 198,
+        "sha256": "9b1f5cb8ee017cb18f09a0e042c411efd516c3f4b61a4515e7a5d438190b3ece"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5360433,
+        "endExclusive": 5362910
+      },
+      "spanHash": "a863c67cafdd20c5143787265244abe4206c5177d1db3f6b950cbedd2ea30170",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "Gia-caller-5350443",
+        "Gia-caller-5351127"
+      ],
+      "id": "AMO-SOURCE-41",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/41.js.txt",
+        "bytes": 2477,
+        "sha256": "a863c67cafdd20c5143787265244abe4206c5177d1db3f6b950cbedd2ea30170"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5362632,
+        "endExclusive": 5362828
+      },
+      "spanHash": "aae13bab47a18f5504eb8dc1aa88f92b7343526d6005de8e6d9c2b0db16b702e",
+      "nodeType": "CallExpression",
+      "labels": [
+        "Gia-call-5351127"
+      ],
+      "id": "AMO-SOURCE-42",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/42.js.txt",
+        "bytes": 196,
+        "sha256": "aae13bab47a18f5504eb8dc1aa88f92b7343526d6005de8e6d9c2b0db16b702e"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5370721,
+        "endExclusive": 5371090
+      },
+      "spanHash": "97e0eda147b9ccdf3daf60adec8dfecc5aae7f17341a6cad97ea8c2f1d495b8e",
+      "nodeType": "ClassMethod",
+      "labels": [
+        "media-setup-analytics"
+      ],
+      "id": "AMO-SOURCE-43",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/43.js.txt",
+        "bytes": 369,
+        "sha256": "97e0eda147b9ccdf3daf60adec8dfecc5aae7f17341a6cad97ea8c2f1d495b8e"
+      }
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 5371069,
+        "endExclusive": 5371087
+      },
+      "spanHash": "381443a854dc9868d201977f28a9dbc3fcb770a1a24569ccb29fbfb38de04f48",
+      "nodeType": "ObjectProperty",
+      "labels": [
+        "property-onDiagnostic-5359564"
+      ],
+      "id": "AMO-SOURCE-44",
+      "selection": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/audio-measurement-owner/44.js.txt",
+        "bytes": 18,
+        "sha256": "381443a854dc9868d201977f28a9dbc3fcb770a1a24569ccb29fbfb38de04f48"
+      }
+    }
+  ],
+  "sourceJoins": [
+    {
+      "id": "AMO-J01",
+      "claim": "Separate service providers -> shared native app methods; named process-wide collector state",
+      "unitIds": [
+        "AMO-SOURCE-21",
+        "AMO-SOURCE-22",
+        "AMO-SOURCE-10",
+        "AMO-SOURCE-11",
+        "AMO-SOURCE-20",
+        "AMO-SOURCE-17",
+        "AMO-SOURCE-19",
+        "AMO-SOURCE-18",
+        "AMO-SOURCE-12",
+        "AMO-SOURCE-16"
+      ],
+      "qualification": "Selected static lexical/assembly relationship; actual instances and native/RPC effects unverified."
+    },
+    {
+      "id": "AMO-J02",
+      "claim": "Main lifecycle hook -> filtered service exit -> Nh -> _le -> diagnostic snapshot",
+      "unitIds": [
+        "AMO-SOURCE-05",
+        "AMO-SOURCE-06",
+        "AMO-SOURCE-04",
+        "AMO-SOURCE-02",
+        "AMO-SOURCE-03",
+        "AMO-SOURCE-20"
+      ],
+      "qualification": "Selected static lexical/assembly relationship; actual instances and native/RPC effects unverified."
+    },
+    {
+      "id": "AMO-J03",
+      "claim": "Awaited shared services -> e6/fN -> initial Pd -> Gia host snapshot; s$t/JL -> initial uh",
+      "unitIds": [
+        "AMO-SOURCE-27",
+        "AMO-SOURCE-30",
+        "AMO-SOURCE-26",
+        "AMO-SOURCE-23",
+        "AMO-SOURCE-31",
+        "AMO-SOURCE-24",
+        "AMO-SOURCE-34",
+        "AMO-SOURCE-35",
+        "AMO-SOURCE-33",
+        "AMO-SOURCE-36",
+        "AMO-SOURCE-37",
+        "AMO-SOURCE-39"
+      ],
+      "qualification": "Selected static lexical/assembly relationship; actual instances and native/RPC effects unverified."
+    },
+    {
+      "id": "AMO-J04",
+      "claim": "Capture success sampling/not-found error -> Gia -> aggregate/log/optional callback; selected callback is empty",
+      "unitIds": [
+        "AMO-SOURCE-41",
+        "AMO-SOURCE-40",
+        "AMO-SOURCE-42",
+        "AMO-SOURCE-36",
+        "AMO-SOURCE-43",
+        "AMO-SOURCE-44"
+      ],
+      "qualification": "Selected static lexical/assembly relationship; actual instances and native/RPC effects unverified."
+    }
+  ],
+  "lexicalWitnesses": {
+    "main": {
+      "programDeclarations": [
+        {
+          "name": "_",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 719,
+            "endExclusive": 740
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Nh",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 468980,
+            "endExclusive": 469052
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "_le",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 469053,
+            "endExclusive": 469082
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "vle",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 469082,
+            "endExclusive": 469200
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "rX",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2145703,
+            "endExclusive": 2145705
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "jNe",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 2145706,
+            "endExclusive": 2145869
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "MNe",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2145873,
+            "endExclusive": 2146040
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "uZ",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2410345,
+            "endExclusive": 2410395
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "dZ",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2410396,
+            "endExclusive": 2410401
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "fZ",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2410402,
+            "endExclusive": 2410406
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "pZ",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2410407,
+            "endExclusive": 2410411
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "mZ",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2410412,
+            "endExclusive": 2410583
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "gIe",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 2410584,
+            "endExclusive": 2410659
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "_Ie",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 2410659,
+            "endExclusive": 2411297
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "hZ",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 2411297,
+            "endExclusive": 2411486
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "vIe",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 2411490,
+            "endExclusive": 2411628
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedCalls": [
+        {
+          "kind": "call",
+          "callee": "_.app.configureMeasurementCollection",
+          "byteRange": {
+            "start": 2145936,
+            "endExclusive": 2145975
+          },
+          "scopes": [
+            {
+              "type": "ClassMethod",
+              "name": "configureMeasurementCollection",
+              "byteRange": {
+                "start": 2145896,
+                "endExclusive": 2145976
+              },
+              "parameters": [
+                "e"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "call",
+          "callee": "_.app.collectMeasurements",
+          "byteRange": {
+            "start": 2146011,
+            "endExclusive": 2146038
+          },
+          "scopes": [
+            {
+              "type": "ClassMethod",
+              "name": "collectMeasurements",
+              "byteRange": {
+                "start": 2145976,
+                "endExclusive": 2146039
+              },
+              "parameters": []
+            }
+          ]
+        },
+        {
+          "kind": "call",
+          "callee": "_.app.collectMeasurements",
+          "byteRange": {
+            "start": 2410749,
+            "endExclusive": 2410776
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "_Ie",
+              "byteRange": {
+                "start": 2410659,
+                "endExclusive": 2411297
+              },
+              "parameters": []
+            }
+          ]
+        },
+        {
+          "kind": "call",
+          "callee": "_.app.configureMeasurementCollection",
+          "byteRange": {
+            "start": 2411315,
+            "endExclusive": 2411357
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "hZ",
+              "byteRange": {
+                "start": 2411297,
+                "endExclusive": 2411486
+              },
+              "parameters": []
+            }
+          ]
+        },
+        {
+          "kind": "object-property",
+          "key": "microphoneDiagnostics",
+          "byteRange": {
+            "start": 3336556,
+            "endExclusive": 3336585
+          },
+          "scopes": [
+            {
+              "type": "ClassMethod",
+              "name": "createAppHost",
+              "byteRange": {
+                "start": 3329810,
+                "endExclusive": 3341402
+              },
+              "parameters": [
+                "e"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "object-property",
+          "key": "histogramCollector",
+          "byteRange": {
+            "start": 3337920,
+            "endExclusive": 3337944
+          },
+          "scopes": [
+            {
+              "type": "ClassMethod",
+              "name": "createAppHost",
+              "byteRange": {
+                "start": 3329810,
+                "endExclusive": 3341402
+              },
+              "parameters": [
+                "e"
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": []
+    },
+    "shared": {
+      "programDeclarations": [
+        {
+          "name": "GI",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 2179906,
+            "endExclusive": 2180975
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "JL",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 2300121,
+            "endExclusive": 2300348
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Vli",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 5752733,
+            "endExclusive": 5752736
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Gli",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 5753340,
+            "endExclusive": 5753778
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "qli",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 5753819,
+            "endExclusive": 5754148
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "$3",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 5754152,
+            "endExclusive": 5754154
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "e6",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 5754155,
+            "endExclusive": 5754157
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedCalls": [
+        {
+          "kind": "call",
+          "callee": "e.configureMeasurementCollection",
+          "byteRange": {
+            "start": 5753473,
+            "endExclusive": 5753508
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "Gli",
+              "byteRange": {
+                "start": 5753340,
+                "endExclusive": 5753778
+              },
+              "parameters": [
+                "e"
+              ]
+            },
+            {
+              "type": "ObjectMethod",
+              "name": "configureMeasurementCollection",
+              "byteRange": {
+                "start": 5753427,
+                "endExclusive": 5753509
+              },
+              "parameters": [
+                "t"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "call",
+          "callee": "e.collectMeasurements",
+          "byteRange": {
+            "start": 5753569,
+            "endExclusive": 5753592
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "Gli",
+              "byteRange": {
+                "start": 5753340,
+                "endExclusive": 5753778
+              },
+              "parameters": [
+                "e"
+              ]
+            },
+            {
+              "type": "ObjectMethod",
+              "name": "collectMeasurements",
+              "byteRange": {
+                "start": 5753510,
+                "endExclusive": 5753650
+              },
+              "parameters": []
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "local": "e6",
+          "exported": "fN",
+          "byteRange": {
+            "start": 8142877,
+            "endExclusive": 8142885
+          }
+        },
+        {
+          "local": "JL",
+          "exported": "s$t",
+          "byteRange": {
+            "start": 8162910,
+            "endExclusive": 8162919
+          }
+        }
+      ]
+    },
+    "initial": {
+      "programDeclarations": [
+        {
+          "name": "gr",
+          "imported": "Bvn",
+          "source": "./app-shared-8bd9d0399038.js",
+          "type": "ImportSpecifier",
+          "byteRange": {
+            "start": 97733,
+            "endExclusive": 97742
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Pd",
+          "imported": "fN",
+          "source": "./app-shared-8bd9d0399038.js",
+          "type": "ImportSpecifier",
+          "byteRange": {
+            "start": 121244,
+            "endExclusive": 121252
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "uh",
+          "imported": "s$t",
+          "source": "./app-shared-8bd9d0399038.js",
+          "type": "ImportSpecifier",
+          "byteRange": {
+            "start": 130695,
+            "endExclusive": 130704
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Gia",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 5355311,
+            "endExclusive": 5356297
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Kia",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 5356297,
+            "endExclusive": 5356595
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "qia",
+          "type": "VariableDeclarator",
+          "byteRange": {
+            "start": 5356599,
+            "endExclusive": 5356602
+          },
+          "programScope": true,
+          "scopes": []
+        },
+        {
+          "name": "Jia",
+          "type": "FunctionDeclaration",
+          "byteRange": {
+            "start": 5356603,
+            "endExclusive": 5356661
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ],
+      "selectedCalls": [
+        {
+          "kind": "call",
+          "callee": "Gia",
+          "byteRange": {
+            "start": 5361948,
+            "endExclusive": 5362146
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "iaa",
+              "byteRange": {
+                "start": 5357103,
+                "endExclusive": 5363678
+              },
+              "parameters": []
+            },
+            {
+              "type": "ArrowFunctionExpression",
+              "name": null,
+              "byteRange": {
+                "start": 5357132,
+                "endExclusive": 5363672
+              },
+              "parameters": []
+            },
+            {
+              "type": "ClassMethod",
+              "name": "capture",
+              "byteRange": {
+                "start": 5360433,
+                "endExclusive": 5362910
+              },
+              "parameters": [
+                "e",
+                "t",
+                "n=null"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "call",
+          "callee": "Gia",
+          "byteRange": {
+            "start": 5362632,
+            "endExclusive": 5362828
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "iaa",
+              "byteRange": {
+                "start": 5357103,
+                "endExclusive": 5363678
+              },
+              "parameters": []
+            },
+            {
+              "type": "ArrowFunctionExpression",
+              "name": null,
+              "byteRange": {
+                "start": 5357132,
+                "endExclusive": 5363672
+              },
+              "parameters": []
+            },
+            {
+              "type": "ClassMethod",
+              "name": "capture",
+              "byteRange": {
+                "start": 5360433,
+                "endExclusive": 5362910
+              },
+              "parameters": [
+                "e",
+                "t",
+                "n=null"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "object-property",
+          "key": "onDiagnostic",
+          "byteRange": {
+            "start": 5371069,
+            "endExclusive": 5371087
+          },
+          "scopes": [
+            {
+              "type": "FunctionDeclaration",
+              "name": "Iq",
+              "byteRange": {
+                "start": 5366134,
+                "endExclusive": 5372428
+              },
+              "parameters": []
+            },
+            {
+              "type": "ArrowFunctionExpression",
+              "name": null,
+              "byteRange": {
+                "start": 5366161,
+                "endExclusive": 5372422
+              },
+              "parameters": []
+            },
+            {
+              "type": "ClassMethod",
+              "name": "createMediaSetupAnalytics",
+              "byteRange": {
+                "start": 5370721,
+                "endExclusive": 5371090
+              },
+              "parameters": []
+            }
+          ]
+        }
+      ],
+      "exports": [],
+      "PdDeclarationsAllScopes": [
+        {
+          "name": "Pd",
+          "imported": "fN",
+          "source": "./app-shared-8bd9d0399038.js",
+          "type": "ImportSpecifier",
+          "byteRange": {
+            "start": 121244,
+            "endExclusive": 121252
+          },
+          "programScope": true,
+          "scopes": []
+        }
+      ]
+    }
+  },
+  "decision": {
+    "runtimeGroup": "RAM-02",
+    "status": "selected-JS-producer-consumer-contract-resolved; native-producer-provider-open",
+    "firstPartyUnits": [
+      {
+        "responsibility": "Generic guarded RPC histogram provider",
+        "proposedPath": "apps/desktop/src/main/diagnostics/histogram-provider.ts"
+      },
+      {
+        "responsibility": "Named process-wide audio discovery counters/readiness",
+        "proposedPath": "apps/desktop/src/main/diagnostics/microphone-discovery.ts"
+      },
+      {
+        "responsibility": "Audio service exit lifecycle snapshot",
+        "proposedPath": "apps/desktop/src/main/diagnostics/audio-service-lifecycle.ts"
+      },
+      {
+        "responsibility": "Renderer capture diagnostic aggregation/sampling integration",
+        "proposedPath": "apps/desktop/src/renderer/realtime/microphone-discovery-diagnostics.ts"
+      },
+      {
+        "responsibility": "Renderer generic global entry and owned cleanup",
+        "proposedPath": "apps/desktop/src/renderer/diagnostics/histogram-access.ts"
+      }
+    ],
+    "providerBoundary": "packages/runtime-adapter/src/measurement; runtime histogram implementation remains a dependency/provider, never generated vendor code.",
+    "contractDecisions": [
+      "Specify configure and collect sync/async behavior separately; named JS assumes synchronous snapshots.",
+      "Preserve unavailable/missing/ready/unsupported/counter_discontinuity distinctions, generation and interval boundaries.",
+      "Never substitute ordinary process metrics, audio samples, or empty ready responses for this histogram.",
+      "Resolve native delta/reset and configured-set behavior before choosing a counter adapter. JS adds every ready bucket.",
+      "Keep process-wide state separate from per-window service object lifetimes; serialize or coordinate only if native semantics require it, with parity tests.",
+      "Retain required disposal/cancel interfaces through a dependency contract; GI/JL code is analysis evidence, not a recovered vendor implementation."
+    ],
+    "consumerOwnership": {
+      "confirmedSelectedConsumer": "Realtime microphone capture diagnostics, a support path.",
+      "taskProposal": "W03 runtime foundation; Voice/T28 is a potential product owner, but its existing ten settings features do not establish this capture flow identity.",
+      "confirmedFeatureIdsAdded": [],
+      "completeConsumerCensus": false
+    },
+    "mode": "unknown; retained; no ChatGPT-only exclusion follows from voice/chat naming",
+    "resolutionBuckets": {
+      "analysisResolvedHere": [
+        "Two providers and their readiness/one-shot/error paths.",
+        "Named JS response fields, bucket accumulation and reset behavior.",
+        "Selected renderer import/service/sampling/timeout/disposal/log path and empty callback.",
+        "Separate process audio-service exit state."
+      ],
+      "implementationVerification": [
+        "Selected runtime must supply the exact histogram data and status/interval semantics.",
+        "Actual RPC result disposal/structuredClone, cancellation, readiness and restart behavior.",
+        "Configuration interaction and multi-window/multi-reader collection without duplicated or lost counts.",
+        "Actual platform/device-discovery failures and mode/feature integration."
+      ],
+      "externalInputOrProviderDevelopment": [
+        "Owl/native bridge source/build inputs, or a separately implemented and validated equivalent provider.",
+        "Revision/provenance binding between upstream Chromium and frozen Owl."
+      ],
+      "notReopenedByMissingRuntime": "Selected JS source findings stay resolved; native unknowns do not require repeating the same JS census."
+    },
+    "fullRuntimeRouteAccepted": false
+  },
+  "counts": {
+    "sourceFacts": 16,
+    "sourceUnits": 44,
+    "sourceBytes": 9496,
+    "sourceJoins": 4,
+    "distinctCompletePrograms": 3,
+    "isolatedSourceCasesPassed": 22,
+    "newReaRuns": 0,
+    "modelSubmissions": 0,
+    "clientLaunches": 0,
+    "realNativeCalls": 0,
+    "productScenariosExecuted": 0,
+    "featureDefinitionsAdded": 0,
+    "featureModeChanges": 0,
+    "clientImplementationAdded": 0
+  },
+  "replay": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/audio-measurement-owner-v1-replay.json",
+    "bytes": 17543,
+    "sha256": "a7d9a049c4262391e59ac5e8a4948fd1d176bba19832b5bbae81e2d9e0387a11"
+  },
+  "evidence": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/audio-measurement-owner-v1-evidence.jsonl",
+    "bytes": 12484,
+    "sha256": "42654297bef7d7262d7daa31b2eb5614abceb05aa5b4618aeb4f1cf5a8b5eb0f"
+  },
+  "primaryReview": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/audio-measurement-primary-review-v1.json",
+    "bytes": 1712,
+    "sha256": "c3bd00d18210b79ebfa9534bb2ceeeb41f881d7e023e4a247bba51e34ac0c5b7"
+  },
+  "query": {
+    "path": ".analysis-local/audio-measurement-owner-work/exact-literal-query.json",
+    "bytes": 1100,
+    "sha256": "2dc48360725557ddc16e3bbcd55cda0cf2a3a9b89c2aa1c3c61cd97542779f07"
+  },
+  "inputPins": [
+    {
+      "path": ".analysis-local/audio-measurement-owner-work/inspect.cjs",
+      "bytes": 6484,
+      "sha256": "a495125b54735fa75586cbfed1c2d0fbd9f1d306ead839a65131ca9918aea1c7"
+    },
+    {
+      "path": ".analysis-local/audio-measurement-owner-work/main-inspection.json",
+      "bytes": 104416,
+      "sha256": "ea3fe44188918667f6cc404b9415bcb62d39ddc796873c86df201a75c0da7f5e"
+    },
+    {
+      "path": ".analysis-local/audio-measurement-owner-work/shared-inspection.json",
+      "bytes": 166552,
+      "sha256": "8ea0cb8324ca1fba98fade0a5c70e642ed3b25ffb6f4fe9a9f88d94faee685ea"
+    },
+    {
+      "path": ".analysis-local/audio-measurement-owner-work/initial-inspection.json",
+      "bytes": 728945,
+      "sha256": "766732e6c6af60bbd36f21109773bed70f9b55bd4c4b24f520656ab6df2bf328"
+    },
+    {
+      "path": ".analysis-local/audio-measurement-owner-work/replay.cjs",
+      "bytes": 13979,
+      "sha256": "ab6fc8439896fb83db8f4b99084f9bf8193e4115e4dacbbf44ae118e8d1242e3"
+    },
+    {
+      "path": ".analysis-local/audio-measurement-owner-work/replay.json",
+      "bytes": 17543,
+      "sha256": "a7d9a049c4262391e59ac5e8a4948fd1d176bba19832b5bbae81e2d9e0387a11"
+    },
+    {
+      "path": ".analysis-local/audio-measurement-owner-work/primary-retrieval.json",
+      "bytes": 405,
+      "sha256": "8b1b1adfc846be5906a6e8ac116337ea54beb9bb617b5a682d44469c04dd22fa"
+    },
+    {
+      "path": "scripts/analysis/publish_audio_measurement_owner_v1.py",
+      "bytes": 22543,
+      "sha256": "cc9c8171acdcf228c315454534c7032693bad1251a06cf1c4bb05c847a22dfe4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-adoption-matrix-v1.json",
+      "bytes": 54887,
+      "sha256": "a52d4b415dbef9ae6bdd0c084a64bfd2c4f5589a4be2ecd3d4149ec939d323bd"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-surface-disposition.json",
+      "bytes": 62319,
+      "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v18.json",
+      "bytes": 1171222,
+      "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v27.json",
+      "bytes": 2065758,
+      "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v24-scenarios.json",
+      "bytes": 1944258,
+      "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+    }
+  ],
+  "fullAnalysisCompleted": false,
+  "fullRuntimeRouteSelected": false
+}

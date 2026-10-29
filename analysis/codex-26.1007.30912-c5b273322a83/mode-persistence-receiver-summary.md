@@ -1,0 +1,9 @@
+# 主进程persisted-atom接收候选
+
+依据已保存REA/AST坐标，从冻结main读取4个完整范围，共1235字节：2个switch case、sendPersistedAtomState与updatePersistedAtomState。形成11条限定来源事实及1条receiver关联推断，见[合同](mode-persistence-receiver.json)与[来源索引](mode-persistence-receiver-provenance.json)。只作一次Node包装范围语法检查，未执行目标代码；MMe归属与同类方法关联沿用固定旧metadata，没有新增独立词法绑定分析。
+
+更新分支把deleted转换为undefined后连同recordUpdate传入方法；recordUpdate仍可能参与计算，不能把deleted直接等同于最终删除。方法保留unread key／非primary owner门控；pR返回false时仅广播旧值并返回。其他分支用直接值或hR的record更新，旧值为空时才考虑legacyStorageKey回退；最终undefined删除键，其他值定义own configurable/enumerable/writable属性，再调用globalState.set并广播。所选方法内同步set抛错会阻止后续广播；没有await，不推断异步落盘。
+
+同步快照按primary owner、TY及shouldSync条件筛选状态；critical优先级走chunked sender，其余走普通发送。原窗口、sender、存储实例及g.bt频道绑定未闭合。TY/pR/hR、广播实现、Rkc真实caller、gS store/provider、renderer实际送达及耐久后端仍未知；匹配消息type不等于已验证跨进程通信。
+
+建议维护路径apps/desktop/src/main/persistence/persisted-atoms.ts，只承载第一方消息与状态适配，四个完整原范围逐项映射。该路径为inferred提案；globalState、owner/filter和sender应保留依赖接口，不能假设都是localStorage或复制运行时实现。未恢复原目录、未重建客户端，旧全局证据分母和模式排除数保持。

@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T22:28:33.071212+00:00",
+  "scope": "Two already-saved CLI native artifacts, desktop launcher, selected voice/package metadata and saved public-source commit; no new acquisition or runtime calls.",
+  "facts": [
+    {
+      "id": "BBI-F01",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "旧protocol-generation.cliPath及cliSha256标识328字节shell启动脚本。该脚本经过自身符号链接解析后exec ../CodexCLI.app/Contents/MacOS/codex；本批静态解析出独立native路径，不运行脚本或CLI。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+      "sourceHash": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 328
+        },
+        "spanHash": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "nativeBinary": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+          "nativeSha256": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+        }
+      ]
+    },
+    {
+      "id": "BBI-F02",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "冻结native CLI是x86_64 Mach-O，265940608字节，SHA256=13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0，与原files.json清单一致。其__TEXT.__const在218652532处嵌有740e5af33c71225640e0c1c1555c514c2c93ab74；同一值出现于随包voice manifest.buildCommit与runtime.sourceCommit，manifest.appVersion为0.162.0-alpha.17.2。嵌入值和元数据对应不证明当前运行实例或源码可重建。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "sourceHash": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0",
+      "locator": {
+        "byteRange": {
+          "start": 218652532,
+          "endExclusive": 218652572
+        },
+        "spanHash": "6715db69aeea698ba52abd47fae7107770a1b80849d55417ce2641c52f46ac3a",
+        "text": "740e5af33c71225640e0c1c1555c514c2c93ab74"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "file": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/files.json",
+            "bytes": 9406196,
+            "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+          },
+          "jsonPointer": "/applicationFiles"
+        },
+        {
+          "file": {
+            "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/codex-resources/voice/manifest.json",
+            "bytes": 4646,
+            "sha256": "8ea1dab6d005946071c8b36ecd26d34c4bbf0a9a4831f22f16434c8af4065acd"
+          },
+          "jsonPointer": "/buildCommit"
+        },
+        {
+          "file": {
+            "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/codex-resources/voice/runtime.json",
+            "bytes": 14914,
+            "sha256": "2dcb3cd1f6d51d7f674b89c53560d4a6252dd3b41da643febd6bf4cbabb419a5"
+          },
+          "jsonPointer": "/sourceCommit"
+        }
+      ]
+    },
+    {
+      "id": "BBI-F03",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "桌面voice manifest.sha256[bin/codex]记录ed65a15386358011fe2e222fdec63cc9b820ed764810476e60b080c4304561dc；它与实际328字节启动脚本和native CLI两者均不同。差异原因未确定；本批未把该manifest摘要当作已校验的桌面native文件身份。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/codex-resources/voice/manifest.json",
+      "sourceHash": "8ea1dab6d005946071c8b36ecd26d34c4bbf0a9a4831f22f16434c8af4065acd",
+      "locator": {
+        "jsonPointer": "/sha256/bin~1codex"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "wrapper": {
+            "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+            "bytes": 328,
+            "sha256": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8"
+          },
+          "nativeSha256": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+        }
+      ]
+    },
+    {
+      "id": "BBI-F04",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "保存的公开0.162.0-darwin-x64 npm tar符合已保存metadata的dist.integrity(SHA512)、dist.shasum(SHA1)以及既有archive SHA256。metadata未给gitHead，但提供SLSA provenance attestation URL；URL存在不代表证明正文或签名已经取得和验证。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/npm-codex-0.162.0-darwin-x64.json",
+      "sourceHash": "4c8ff46d66ae963cfe4c36b11b7423b044e3f6442270b9ef6548bd9e7b13cef1",
+      "locator": {
+        "jsonPointer": "/dist"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "archive": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/codex-0.162.0-darwin-x64.tgz",
+            "bytes": 145619081,
+            "sha256": "6e15917be0145f5c63139f18703a8b16dee1041351697542d0fe4c80bf436e6d"
+          },
+          "archiveDigestChecks": [
+            {
+              "id": "public-platform-archive-sha512-sha1-and-sha256",
+              "status": "passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BBI-F05",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "公开tar内package/vendor/x86_64-apple-darwin/bin/codex的内容摘要、已提取265742000字节native文件及voice manifest.sha256[bin/codex]均为fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d。native在218694664处嵌有c1382380de69521303b416720a52f42d51af6248，与同tar的manifest.buildCommit和runtime.sourceCommit相同。",
+      "sourcePath": ".analysis-local/public-cli-npm/codex-26.1007.30912-c5b273322a83/0.162.0-darwin-x64/bin/codex",
+      "sourceHash": "fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d",
+      "locator": {
+        "byteRange": {
+          "start": 218694664,
+          "endExclusive": 218694704
+        },
+        "spanHash": "365bc349eb937b10b800021ff692e18e3899e533fb86213a3c160ccb13ce742a",
+        "text": "c1382380de69521303b416720a52f42d51af6248"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "archive": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/codex-0.162.0-darwin-x64.tgz",
+            "bytes": 145619081,
+            "sha256": "6e15917be0145f5c63139f18703a8b16dee1041351697542d0fe4c80bf436e6d"
+          },
+          "metadataMembers": [
+            {
+              "member": "package/vendor/x86_64-apple-darwin/codex-resources/voice/manifest.json",
+              "bytes": 4635,
+              "sha256": "c1f9584787c4bc710c50220caa5f32e659de63918c0b4c0d7125af57b8557098"
+            },
+            {
+              "member": "package/vendor/x86_64-apple-darwin/codex-resources/voice/runtime.json",
+              "bytes": 14914,
+              "sha256": "e12732a0d8295036bea917595ee0e0431ee1d952db792484157ff5069be3aefe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BBI-F06",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "公开npm包的声明及嵌入提交值，与已保存的GitHub commit对象和选定公开源码提交c1382380de69521303b416720a52f42d51af6248对应。因此来源结论可从“仅无gitHead，绑定未知”细化为“声明/嵌入提交对应；未经构建证明或源码重建验证”。包摘要校验不单独证明源码到二进制的可重复或可信构建。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/commit.json",
+      "sourceHash": "10188c49f6faeb9fc133e5b97122e4e5e012baf44723c925962c5421dee34cbe",
+      "locator": {
+        "jsonPointer": "/sha"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "inferred",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "sourceRecord": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/public-protocol-source.json",
+            "bytes": 7557,
+            "sha256": "391a3cd072656ea4f45c3c8d9c2202bef8a422d01bc0af5b1360a6a82df3a0bb"
+          },
+          "jsonPointer": "/commit"
+        },
+        {
+          "nativeLiteral": {
+            "byteRange": {
+              "start": 218694664,
+              "endExclusive": 218694704
+            },
+            "spanHash": "365bc349eb937b10b800021ff692e18e3899e533fb86213a3c160ccb13ce742a",
+            "text": "c1382380de69521303b416720a52f42d51af6248"
+          },
+          "nativeSha256": "fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d"
+        }
+      ]
+    },
+    {
+      "id": "BBI-F07",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "桌面与公开npm包的voice/sources.json字节SHA256同为e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937，并分别对应runtime.sourceManifestSha256。这只证明该voice依赖来源清单一致；两个CLI版本、native摘要和声明/嵌入提交仍然不同。",
+      "sourcePath": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/codex-resources/voice/sources.json",
+      "sourceHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937",
+      "locator": {
+        "byteRange": {
+          "start": 0,
+          "endExclusive": 4911
+        },
+        "spanHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "confirmed",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "archive": {
+            "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/codex-0.162.0-darwin-x64.tgz",
+            "bytes": 145619081,
+            "sha256": "6e15917be0145f5c63139f18703a8b16dee1041351697542d0fe4c80bf436e6d"
+          },
+          "member": "package/vendor/x86_64-apple-darwin/codex-resources/voice/sources.json",
+          "memberHash": "e2f6b124f6277e7c3c4f5c7cc8830c66190f671ad65e972bb2cc9507dbfcb937"
+        }
+      ]
+    },
+    {
+      "id": "BBI-F08",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "本批没有取得740e5af3…对应源码、构建证明正文或源码构建结果。桌面alpha.17.2与公开0.162.0候选必须继续分列；既有11项schema差异采用决定、成功prediction/通知语义及实际provider身份仍开放。新的最小来源取证对象是精确740e5af3…提交及metadata所列npm attestation入口；不再以“无gitHead”作为来源调查终点。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/protocol-delta-adoption-v1.json",
+      "sourceHash": "95b28c89373abbff9a61f7dacb9a5c83f5dc44a09621884f71e90ac428b77028",
+      "locator": {
+        "jsonPointer": "/counts"
+      },
+      "method": "Read-only frozen file and saved npm tar metadata/member review; independent Mach-O section, archive digest and exact byte/JSON value checks.",
+      "confidence": "unresolved",
+      "verificationStatus": "selected-artifact identity evidence only; no verified source build, build-attestation verification or actual running backend identity",
+      "relatedEvidence": [
+        {
+          "targetCommit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+          "publicCommit": "c1382380de69521303b416720a52f42d51af6248",
+          "publicAttestation": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@openai%2fcodex@0.162.0-darwin-x64",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+      "bytes": 153219,
+      "sha256": "75235ff3de9231a1da1a90f2ef36caf1123a6e88ea668bade8adb3e2e191558c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+      "bytes": 169129,
+      "sha256": "8eb9383db2c1a4540300b69a14e33ea7557167cf4182309875082a497749ccc6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/public-protocol-source.json",
+      "bytes": 7557,
+      "sha256": "391a3cd072656ea4f45c3c8d9c2202bef8a422d01bc0af5b1360a6a82df3a0bb"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-protocol/commit.json",
+      "bytes": 20908,
+      "sha256": "10188c49f6faeb9fc133e5b97122e4e5e012baf44723c925962c5421dee34cbe"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/npm-codex-0.162.0-darwin-x64.json",
+      "bytes": 3377,
+      "sha256": "4c8ff46d66ae963cfe4c36b11b7423b044e3f6442270b9ef6548bd9e7b13cef1"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/files.json",
+      "bytes": 9406196,
+      "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/independent-build-feasibility-v1.json",
+      "bytes": 228841,
+      "sha256": "84166ba8bdf713204ab708663ef7767018dff524c47742d432fadfa21a168aa5"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/protocol-delta-adoption-v1.json",
+      "bytes": 50808,
+      "sha256": "95b28c89373abbff9a61f7dacb9a5c83f5dc44a09621884f71e90ac428b77028"
+    },
+    {
+      "path": "docs/reverse-engineering/analysis-plan.md",
+      "bytes": 16461,
+      "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+    }
+  ],
+  "rawEvidence": {
+    "extract.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-identity-v1/extract.py",
+      "bytes": 5672,
+      "sha256": "b59b4b22cd1ef36f3246edadb5e429fd96738f38d7df2c646d5bf68ffc5cb339"
+    },
+    "verify.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-identity-v1/verify.py",
+      "bytes": 7560,
+      "sha256": "e92d242ab165de1d398ba589c7a5c92b00334768ed787f476e4dd38ce76f720f"
+    },
+    "verification.json": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-identity-v1/verification.json",
+      "bytes": 1875,
+      "sha256": "3397e863bf2e1204ab26677de5262517152f0dcd4ce4436909119de1aad87d7d"
+    },
+    "publish.py": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-identity-v1/publish.py",
+      "bytes": 19391,
+      "sha256": "a018910644304c5d1bd177b8aa1567c2598d9946b6351d2564df7350515ec4da"
+    },
+    "identity-extraction.json.gz": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/backend-build-identity-v1/identity-extraction.json.gz",
+      "bytes": 17262,
+      "sha256": "517239e936ee044e6aeb254720dc9324f7d86ca9bd34712cd8ce77fd7c507142"
+    }
+  },
+  "verification": {
+    "status": "passed",
+    "baselineId": "codex-26.1007.30912-c5b273322a83",
+    "checks": [
+      {
+        "id": "wrapper-and-native-identities-separated",
+        "status": "passed"
+      },
+      {
+        "id": "two-native-macho-files-and-selected-section-coordinates",
+        "status": "passed"
+      },
+      {
+        "id": "desktop-declared-commit-and-native-literal",
+        "status": "passed"
+      },
+      {
+        "id": "desktop-manifest-digest-mismatch-preserved",
+        "status": "passed"
+      },
+      {
+        "id": "public-platform-archive-sha512-sha1-and-sha256",
+        "status": "passed"
+      },
+      {
+        "id": "public-archive-native-member-extracted-file-and-manifest",
+        "status": "passed"
+      },
+      {
+        "id": "public-archive-four-metadata-members",
+        "status": "passed"
+      },
+      {
+        "id": "public-declared-commit-native-literal-and-saved-git-commit",
+        "status": "passed"
+      },
+      {
+        "id": "desktop-and-public-candidate-remain-distinct",
+        "status": "passed"
+      },
+      {
+        "id": "voice-source-manifest-equality-is-separate-from-cli-build-identity",
+        "status": "passed"
+      },
+      {
+        "id": "metadata-provenance-pointer-not-an-attestation-verification",
+        "status": "passed"
+      },
+      {
+        "id": "no-live-or-target-execution",
+        "status": "passed"
+      }
+    ],
+    "targetCommit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+    "publicCommit": "c1382380de69521303b416720a52f42d51af6248",
+    "targetNativeSha256": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0",
+    "publicNativeSha256": "fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d",
+    "sourceProvenanceQualification": "Declared/embedded commit correspondence only; no verified build attestation, source checkout/build or actual app-server instance identity.",
+    "targetManifestMismatchExplained": false,
+    "fullBackendQualified": false
+  },
+  "identities": {
+    "desktop": {
+      "launcher": {
+        "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/bin/codex",
+        "bytes": 328,
+        "sha256": "50ab38ba21d0d9f8346f32f41848382f15b556190f3c7a07e885a4fb73e379c8"
+      },
+      "native": {
+        "path": ".analysis-local/baselines/codex-26.1007.30912-c5b273322a83/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+        "bytes": 265940608,
+        "sha256": "13c90fa898602a5f165da3b61265142d3a2bfb77786def29a313d3a3756b88d0"
+      },
+      "declaredEmbeddedCommit": "740e5af33c71225640e0c1c1555c514c2c93ab74",
+      "version": "0.162.0-alpha.17.2",
+      "manifestNativeDigestMatched": false,
+      "mismatchCause": "unresolved; no signing/transformation cause established"
+    },
+    "publicCandidate": {
+      "native": {
+        "path": ".analysis-local/public-cli-npm/codex-26.1007.30912-c5b273322a83/0.162.0-darwin-x64/bin/codex",
+        "bytes": 265742000,
+        "sha256": "fd4bb93679bfcc546765a3363a0df9a855f364b61ea6681009b28ba4c2e5b60d"
+      },
+      "archive": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/codex-0.162.0-darwin-x64.tgz",
+        "bytes": 145619081,
+        "sha256": "6e15917be0145f5c63139f18703a8b16dee1041351697542d0fe4c80bf436e6d"
+      },
+      "version": "0.162.0",
+      "declaredEmbeddedCommit": "c1382380de69521303b416720a52f42d51af6248",
+      "manifestNativeDigestMatched": true,
+      "savedPublicSourceCommitMatched": true,
+      "sourceProvenance": "declared/embedded correspondence; build attestation and source rebuild unverified"
+    }
+  },
+  "independentRuntimeRoutes": {
+    "existingDecision": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/independent-build-feasibility-v1.json",
+      "bytes": 228841,
+      "sha256": "84166ba8bdf713204ab708663ef7767018dff524c47742d432fadfa21a168aa5"
+    },
+    "reanalysisRequired": false,
+    "reason": "Existing three-route/15-group feasibility already names missing native implementation/provenance/headers; this batch adds backend build identity evidence only.",
+    "fullRoutesQualified": 0
+  },
+  "remaining": [
+    {
+      "id": "BBI-U01",
+      "question": "Is exact desktop-declared commit available as independently usable source?",
+      "nextEvidence": "Exact public/authorized commit object and source for 740e5af33c71225640e0c1c1555c514c2c93ab74, with parent/tree identity and relevant backend implementation/build inputs.",
+      "impact": "Decides whether exact baseline source is a candidate before selecting a later public backend."
+    },
+    {
+      "id": "BBI-U02",
+      "question": "Does saved public npm provenance bind the verified package to source/build inputs?",
+      "nextEvidence": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/@openai%2fcodex@0.162.0-darwin-x64",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v1"
+        }
+      },
+      "qualification": "Retrieve and validate provenance subject digest, source revision, builder/workflow identity and signatures separately; metadata URL alone is not verification."
+    },
+    {
+      "id": "BBI-U03",
+      "question": "Why does the desktop voice manifest native digest differ from the actual launcher/native artifact?",
+      "nextEvidence": "Version-matched packaging/signing/build transformation record or independently corresponding pre/post artifact; do not infer cause from signature presence."
+    },
+    {
+      "id": "BBI-U04",
+      "question": "Does a selected independently available backend preserve retained behavior?",
+      "nextEvidence": "Keep existing 11 schema delta decisions and controlled success/failure/cancel/restart requirements; source identity alone does not close runtime acceptance."
+    }
+  ],
+  "nextPublicAcquisition": {
+    "readOnly": true,
+    "modelRequired": false,
+    "credentialsRequired": false,
+    "targets": [
+      "https://api.github.com/repos/openai/codex/commits/740e5af33c71225640e0c1c1555c514c2c93ab74",
+      "https://registry.npmjs.org/-/npm/v1/attestations/@openai%2fcodex@0.162.0-darwin-x64"
+    ],
+    "performed": false,
+    "stopCondition": "Only the exact two source/provenance targets. Preserve absence/error without expanding to unrelated releases or running target code."
+  },
+  "counts": {
+    "sourceFacts": 8,
+    "independentlyCheckedCases": 12,
+    "nativeArtifacts": 2,
+    "desktopLaunchers": 1,
+    "archiveMetadataMembers": 4,
+    "canonicalCountChanges": 0
+  },
+  "newExecution": {
+    "reaRuns": 0,
+    "targetEvaluations": 0,
+    "clientLaunches": 0,
+    "modelSubmissions": 0,
+    "serviceCalls": 0,
+    "networkRequests": 0,
+    "sourceBuilds": 0,
+    "clientImplementation": 0
+  },
+  "selectedIdentityBatchClosed": true,
+  "fullBackendQualified": false,
+  "fullRuntimeRouteSelected": false,
+  "fullAnalysisCompleted": false,
+  "actualRunningBackendIdentityVerified": false
+}

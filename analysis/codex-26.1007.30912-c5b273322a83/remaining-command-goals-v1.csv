@@ -1,0 +1,79 @@
+recordId,commandId,commandKind,groupId,disposition,candidateExistingFeatureIds,boundary,remainingEvidence
+RCG-R001,openControlWindow,webview,RCG-G01,descriptor-consumer-gap,,命令 registry 到控制窗口宿主消费者,需要该 ID 的具体派发接收器，或计算 ID 的生产者与消费者关联。
+RCG-R002,composer.startVoiceMode,webview,RCG-G02,candidate-user-operation,,Pd.realtimeVoiceRuntime.requestRealtimeStart 与 Pd.realtimeVoice.controlActive,宿主能力的可用性、会话状态变化及实际音频结果；不能按语音名称排除为 ChatGPT 专属。
+RCG-R003,realtimeVoice.toggleMicrophoneMute,webview,RCG-G02,candidate-user-operation,,Pd.realtimeVoiceRuntime.requestRealtimeStart 与 Pd.realtimeVoice.controlActive,宿主能力的可用性、会话状态变化及实际音频结果；不能按语音名称排除为 ChatGPT 专属。
+RCG-R004,realtimeVoice.toggleOutputMute,webview,RCG-G02,candidate-user-operation,,Pd.realtimeVoiceRuntime.requestRealtimeStart 与 Pd.realtimeVoice.controlActive,宿主能力的可用性、会话状态变化及实际音频结果；不能按语音名称排除为 ChatGPT 专属。
+RCG-R005,realtimeVoice.endCall,webview,RCG-G02,candidate-user-operation,,Pd.realtimeVoiceRuntime.requestRealtimeStart 与 Pd.realtimeVoice.controlActive,宿主能力的可用性、会话状态变化及实际音频结果；不能按语音名称排除为 ChatGPT 专属。
+RCG-R006,meetings.takeNotes,webview,RCG-G03,candidate-user-operation,,app-initial 的 L2 导出及会议录制宿主,L2 对应的完整业务契约及录制许可、失败、停止和实际笔记结果。
+RCG-R007,browser.toggleAnnotationMode,webview,RCG-G04,candidate-user-operation,,browser-sidebar-command 与浏览器宿主 interaction mode,真实浏览器宿主应用模式、批注保存和跨入口一致性。
+RCG-R008,artifact.sendAnnotations,webview,RCG-G05,candidate-user-operation,,注入的 onSend；use-command-hotkey 的 accelerator 订阅和键盘监听器,onSend 所属业务提交器与失败、重复提交、取消后的批注保留。
+RCG-R009,composer.submitInBackground,webview,RCG-G06,candidate-user-operation,FSC-0035;FSC-0048,注入 submit/backgroundSubmit、听写控制和 composer controller,按具体 local/cloud/new-thread 调用方去重并关联已有提交功能；提交结果、排队语义、失败、取消及服务持久化需要各自验证。
+RCG-R010,composer.submit,webview,RCG-G06,candidate-user-operation,FSC-0035;FSC-0048,注入 submit/backgroundSubmit、听写控制和 composer controller,按具体 local/cloud/new-thread 调用方去重并关联已有提交功能；提交结果、排队语义、失败、取消及服务持久化需要各自验证。
+RCG-R011,composer.steer,webview,RCG-G06,candidate-user-operation,FSC-0035;FSC-0048,注入 submit/backgroundSubmit、听写控制和 composer controller,按具体 local/cloud/new-thread 调用方去重并关联已有提交功能；提交结果、排队语义、失败、取消及服务持久化需要各自验证。
+RCG-R012,composer.queue,webview,RCG-G06,candidate-user-operation,FSC-0035;FSC-0048,注入 submit/backgroundSubmit、听写控制和 composer controller,按具体 local/cloud/new-thread 调用方去重并关联已有提交功能；提交结果、排队语义、失败、取消及服务持久化需要各自验证。
+RCG-R013,composer.clear,webview,RCG-G06,candidate-user-operation,,注入 submit/backgroundSubmit、听写控制和 composer controller,按具体 local/cloud/new-thread 调用方去重并关联已有提交功能；提交结果、排队语义、失败、取消及服务持久化需要各自验证。
+RCG-R014,composer.addPhotos,webview,RCG-G07,candidate-user-operation,,文件选择器、附件 handler、appshot-shortcut 消息及 ndc 原生捕获,选择器返回、目标宿主传输、附件生成代次与取消、前台窗口许可和实际捕获结果。快捷键配置功能不等于附件功能。
+RCG-R015,composer.captureAppshot,webview,RCG-G07,candidate-user-operation,,文件选择器、附件 handler、appshot-shortcut 消息及 ndc 原生捕获,选择器返回、目标宿主传输、附件生成代次与取消、前台窗口许可和实际捕获结果。快捷键配置功能不等于附件功能。
+RCG-R016,composer.addFiles,webview,RCG-G07,candidate-user-operation,,文件选择器、附件 handler、appshot-shortcut 消息及 ndc 原生捕获,选择器返回、目标宿主传输、附件生成代次与取消、前台窗口许可和实际捕获结果。快捷键配置功能不等于附件功能。
+RCG-R017,approval.approve,webview,RCG-G08,support-mechanism,FSC-0037,注入的审批回调及具体请求类型,各调用方的请求身份、重复应答和持久化策略；不能把所有审批与 FSC-0037 的 MCP 请求直接等同。
+RCG-R018,approval.decline,webview,RCG-G08,support-mechanism,FSC-0037,注入的审批回调及具体请求类型,各调用方的请求身份、重复应答和持久化策略；不能把所有审批与 FSC-0037 的 MCP 请求直接等同。
+RCG-R019,forkThread,webview,RCG-G09,existing-goal-candidate,FSC-0047,ahe 分支协调器和导航,与既有 FSC-0047 的 manager/destination 变体作精确关联；实际创建、工作树和恢复结果仍待验证。
+RCG-R020,openAvatarOverlay,webview,RCG-G10,candidate-user-operation,,avatar-overlay-open 与 toggleAvatarOverlay,覆盖层宿主接收、开关状态与实际显示；不能把打开命令等同于宠物外观设置。
+RCG-R021,togglePriorityFilter,webview,RCG-G11,candidate-user-operation,,侧边栏活动筛选状态及 fei/gei/pei,筛选结果、持久化、模式实例和不同 UI 条件下的实际行为。
+RCG-R022,focusMainChat,webview,RCG-G12,candidate-user-operation,,IP/YTc/主侧 scope 与浮动 surface focus,各 surface 的焦点路由及 originPanel/browser 的优先级；打开侧聊 FSC-0451 不等于聚焦侧聊。
+RCG-R023,focusSideChat,webview,RCG-G12,candidate-user-operation,,IP/YTc/主侧 scope 与浮动 surface focus,各 surface 的焦点路由及 originPanel/browser 的优先级；打开侧聊 FSC-0451 不等于聚焦侧聊。
+RCG-R024,artifacts.selectTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R025,artifacts.handTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R026,canvas.prompt,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R027,artifacts.rectangleTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R028,artifacts.circleTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R029,artifacts.arrowTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R030,artifacts.lineTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R031,artifacts.textTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R032,artifacts.noteTool,webview,RCG-G13,descriptor-consumer-gap,,产物编辑器的计算 ID 注册或外部编辑器命令桥,需要工具 ID 的生产者、注册回调及具体编辑器实例；本批结果不能证明应用中不存在这些功能。
+RCG-R033,copyPageLink,webview,RCG-G14,candidate-user-operation,,fn 复制协作者与页面链接状态,fn 对应的 clipboard 协议、实际链接值和失败提示；本批没有读取剪贴板。
+RCG-R034,focusPageBlockControls,webview,RCG-G15,candidate-user-operation,,块控件 onFocusControls 与 editor selection,具体控件目标和键盘可访问行为；不把其他 Page 格式命令合并进来。
+RCG-R035,openOrbit,webview,RCG-G16,candidate-user-operation,,og 路由和 Orbit 页面,路由 w3 的值、页面 mode/capability 及实际导航结果；本批不继续追页面内部 provider。
+RCG-R036,nextThreadNeedingAttention,webview,RCG-G17,candidate-user-operation,,侧边栏会话状态、Ykr 排序和 DF 导航,Ykr 的排序契约、实际候选来源和模式；不能把该命令解释为简单数组 next。
+RCG-R037,previousRecentThread,webview,RCG-G18,candidate-user-operation,,fLs/pLs/mLs 的选择状态和 lbc 导航,MRU 列表来源、循环边界、与标签页的优先规则和实际键盘观察。
+RCG-R038,nextRecentThread,webview,RCG-G18,candidate-user-operation,,fLs/pLs/mLs 的选择状态和 lbc 导航,MRU 列表来源、循环边界、与标签页的优先规则和实际键盘观察。
+RCG-R039,recentThread1,webview,RCG-G19,candidate-user-operation,,WQa 有序列表和 DF 导航,WQa 的完整有序列表定义、模式和实际可见目标；六个入口作为一个参数化目标候选，不按六个功能计数。
+RCG-R040,recentThread2,webview,RCG-G19,candidate-user-operation,,WQa 有序列表和 DF 导航,WQa 的完整有序列表定义、模式和实际可见目标；六个入口作为一个参数化目标候选，不按六个功能计数。
+RCG-R041,recentThread3,webview,RCG-G19,candidate-user-operation,,WQa 有序列表和 DF 导航,WQa 的完整有序列表定义、模式和实际可见目标；六个入口作为一个参数化目标候选，不按六个功能计数。
+RCG-R042,recentThread4,webview,RCG-G19,candidate-user-operation,,WQa 有序列表和 DF 导航,WQa 的完整有序列表定义、模式和实际可见目标；六个入口作为一个参数化目标候选，不按六个功能计数。
+RCG-R043,recentThread5,webview,RCG-G19,candidate-user-operation,,WQa 有序列表和 DF 导航,WQa 的完整有序列表定义、模式和实际可见目标；六个入口作为一个参数化目标候选，不按六个功能计数。
+RCG-R044,recentThread6,webview,RCG-G19,candidate-user-operation,,WQa 有序列表和 DF 导航,WQa 的完整有序列表定义、模式和实际可见目标；六个入口作为一个参数化目标候选，不按六个功能计数。
+RCG-R045,switchToMode1,webview,RCG-G20,candidate-user-operation,,模式协调器、路由及 composer onModeChange,模式宿主实例和草稿迁移结果。显式目标值是局部分支证据；本批不据此排除整条命令或所有共享组件。
+RCG-R046,switchToMode2,webview,RCG-G20,candidate-user-operation,,模式协调器、路由及 composer onModeChange,模式宿主实例和草稿迁移结果。显式目标值是局部分支证据；本批不据此排除整条命令或所有共享组件。
+RCG-R047,switchToMode3,webview,RCG-G20,candidate-user-operation,,模式协调器、路由及 composer onModeChange,模式宿主实例和草稿迁移结果。显式目标值是局部分支证据；本批不据此排除整条命令或所有共享组件。
+RCG-R048,codexMicroSettings,webview,RCG-G21,support-mechanism,,navigate-to-route 接收器及五个页面容器,Map 消费者的资格/优先级与实际路由接收；keyboardShortcuts 页面不等同 FSC-0425 的快捷键对话框。
+RCG-R049,mcpSettings,webview,RCG-G21,support-mechanism,,navigate-to-route 接收器及五个页面容器,Map 消费者的资格/优先级与实际路由接收；keyboardShortcuts 页面不等同 FSC-0425 的快捷键对话框。
+RCG-R050,personalitySettings,webview,RCG-G21,support-mechanism,,navigate-to-route 接收器及五个页面容器,Map 消费者的资格/优先级与实际路由接收；keyboardShortcuts 页面不等同 FSC-0425 的快捷键对话框。
+RCG-R051,importExternalAgent,webview,RCG-G22,existing-goal-candidate,FSC-0270,eva 检测服务与 z6s 导入选择控制器,同 FSC-0270 的设置入口核对 provider/session limits 和 source 差异后有条件关联；实际复制、覆盖和取消仍委托控制器。
+RCG-R052,keyboardShortcuts,webview,RCG-G21,support-mechanism,,navigate-to-route 接收器及五个页面容器,Map 消费者的资格/优先级与实际路由接收；keyboardShortcuts 页面不等同 FSC-0425 的快捷键对话框。
+RCG-R053,forceReloadSkills,webview,RCG-G23,existing-goal-candidate,FSC-0138,skills/list 或 Pd.hostedThreadFiles.listSkills 与查询缓存,与 FSC-0138 刷新 coordinator 的缓存/nonce/推荐刷新差异；真实服务结果与失效传播。
+RCG-R054,openSkills,webview,RCG-G21,support-mechanism,,navigate-to-route 接收器及五个页面容器,Map 消费者的资格/优先级与实际路由接收；keyboardShortcuts 页面不等同 FSC-0425 的快捷键对话框。
+RCG-R055,toggleReviewTab,webview,RCG-G24,candidate-user-operation,FSC-0452,Kr 标签切换与审查面板状态,Kr 打开/关闭行为与实际面板；可扩展 FSC-0452 的操作，不能凭同一组件宣称与 open 相同。
+RCG-R056,toggleMaximizeSidePanel,webview,RCG-G25,candidate-user-operation,,CS、活动标签、yii 与布局包装器,实际布局尺寸、焦点、还原和持久化；不将两个注册变体的条件合并为一个。
+RCG-R057,file.goToDefinition,webview,RCG-G26,candidate-user-operation,,定义 provider、onOpenLocation、文件历史状态与行号 surface adapter,定义结果及错误、跨文件历史、预览取消和实际焦点；这些不是浏览器地址历史功能。
+RCG-R058,file.navigateBack,webview,RCG-G26,candidate-user-operation,,定义 provider、onOpenLocation、文件历史状态与行号 surface adapter,定义结果及错误、跨文件历史、预览取消和实际焦点；这些不是浏览器地址历史功能。
+RCG-R059,file.navigateForward,webview,RCG-G26,candidate-user-operation,,定义 provider、onOpenLocation、文件历史状态与行号 surface adapter,定义结果及错误、跨文件历史、预览取消和实际焦点；这些不是浏览器地址历史功能。
+RCG-R060,goToLine,webview,RCG-G26,candidate-user-operation,,定义 provider、onOpenLocation、文件历史状态与行号 surface adapter,定义结果及错误、跨文件历史、预览取消和实际焦点；这些不是浏览器地址历史功能。
+RCG-R061,implementTodo,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R062,openSidebar,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R063,newCodexPanel,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R064,addToThread,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R065,addFileToThread,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R066,showLspMcpCliArgs,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R067,dumpNuxState,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R068,resetNuxState,vscode-only,RCG-G27,external-host-consumer-gap,,VS Code 扩展的命令注册和宿主上下文,需要对应版本扩展的实现或桌面桥接消费者；在此之前保留契约与缺口，不生成虚构处理代码。
+RCG-R069,spotlightSearch,electron-only,RCG-G28,candidate-user-operation,,XQe 与 createWindow(/spotlight),搜索窗口内部检索结果、窗口实际激活和跨平台快捷键注册。
+RCG-R070,toggleNotch,electron-only,RCG-G29,legacy-descriptor-consumer-gap,,旧命令的迁移规则或实际派发消费者,需要元数据 resolver 的别名关系或旧宿主注册；保留这两项的差异，不能仅凭 notch 名称删除。
+RCG-R071,notchVoice,electron-only,RCG-G29,legacy-descriptor-consumer-gap,,旧命令的迁移规则或实际派发消费者,需要元数据 resolver 的别名关系或旧宿主注册；保留这两项的差异，不能仅凭 notch 名称删除。
+RCG-R072,screenshotToCurrentChat,electron-only,RCG-G30,candidate-user-operation,,主窗口消息及区域截图 renderer/native 捕获器,选择区域、取消、截图附件与 current/new 会话创建的真实结果。
+RCG-R073,screenshotToNewChat,electron-only,RCG-G30,candidate-user-operation,,主窗口消息及区域截图 renderer/native 捕获器,选择区域、取消、截图附件与 current/new 会话创建的真实结果。
+RCG-R074,hotkeyWindow,electron-only,RCG-G31,candidate-user-operation,,Pd.hotkeyWindowCommands 与 UQe/window controller,窗口状态机、激活、路由恢复和实际全局热键；FSC-0023 仅为配置入口。
+RCG-R075,globalDictationHold,electron-only,RCG-G32,candidate-user-operation,,DQe 会话、窗口、原生热键与转写/粘贴协作者,录音、转写、取消、重启、目标应用插入与权限的实际行为；本批不读取剪贴板。
+RCG-R076,globalDictationSingleTap,electron-only,RCG-G32,candidate-user-operation,,DQe 会话、窗口、原生热键与转写/粘贴协作者,录音、转写、取消、重启、目标应用插入与权限的实际行为；本批不读取剪贴板。
+RCG-R077,realtimeVoice,electron-only,RCG-G33,candidate-user-operation,,requestRealtimeToggle 与 subscribeRealtimeVoiceSessionReservation,真实语音 provider、reservation 与锁屏停止的实际结果；FSC-0231 的热键设置不是语音运行功能。
+RCG-R078,toggleTraceRecording,electron-only,RCG-G34,candidate-user-operation,,contentTracing、文件输出、对话框和可选 trace 上传,实际定制运行时支持、录制文件与上传协议；本批只分析，不录制或上传。

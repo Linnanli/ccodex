@@ -1,0 +1,1967 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "publishedAtUtc": "2026-10-25T04:17:27.511593+00:00",
+  "scope": "Existing owned synthetic records versus saved source contracts; no new desktop/runtime/service/model execution.",
+  "batchId": "behavior-existing-records-comparison",
+  "issueId": "SD-04",
+  "comparisons": [
+    {
+      "id": "BC-01",
+      "path": "normal",
+      "title": "正常提交、只读样例完成与已完成历史恢复",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E001",
+        "BEHAVIOR-COMPARE-E002",
+        "BEHAVIOR-COMPARE-E003",
+        "BEHAVIOR-COMPARE-E004",
+        "BEHAVIOR-COMPARE-E005",
+        "BEHAVIOR-COMPARE-E006",
+        "BEHAVIOR-COMPARE-E012"
+      ],
+      "identity": {
+        "threadId": "01a134be-d8bd-7bb0-a124-5cb92fe7b1d3",
+        "turnId": "01a134bf-263f-7d70-bcc2-645cf8ce5358"
+      },
+      "observed": "同一 turn 的开始/完成事件、合成回复和工具输入记录相互支持一个只读样例完成；重启后手动选择已观察行恢复其历史。",
+      "sourceContract": "首 turn accepted 与最终完成不同；创建、请求、turn、客户端消息各有身份，不能凭方法名合并普通 composer 与辅助会话入口。",
+      "comparison": "已保存正常样例与分阶段接受/完成设计相容；未把该 UI 的真实 provider/receiver 绑定到选定源码分支。",
+      "observedStatus": "completed-sample-supported; complete-feature-acceptance-unproven",
+      "missing": [
+        "普通 composer 实例到实际 manager/transport 的运行时关联",
+        "其他主机、模式、附件、写入、审批及 PTY 路径"
+      ],
+      "missingIds": [
+        "BG-01",
+        "BG-07"
+      ],
+      "newProductPass": false
+    },
+    {
+      "id": "BC-02",
+      "path": "failure",
+      "title": "请求失败、未知交付和重连",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E007",
+        "BEHAVIOR-COMPARE-E005",
+        "BEHAVIOR-COMPARE-E006",
+        "BEHAVIOR-COMPARE-E012",
+        "BEHAVIOR-COMPARE-E013",
+        "BEHAVIOR-COMPARE-E014"
+      ],
+      "identity": {
+        "threadId": "01a13824-439b-7683-b9dd-5b2d0180fe9a",
+        "turnId": "01a13824-774d-7c50-8cfb-851f008f635a"
+      },
+      "observed": "取消样例有重连项和 responseStreamDisconnected 键，后来 UI 为 completed，最终回复称没有直接文件工具；未保存可据以认定相同 turn 为 failed 的终态。",
+      "sourceContract": "rejected、not-started 与 outcome-unknown 各有结果；unknown 可稍后 settle。控制观察超时与工具缺失回复不等于这些交付结果。",
+      "comparison": "没有足够证据验证真实失败/未知交付 UI；重连不能确定为额度、限流或服务端故障。观察器失败与产品失败分开。",
+      "observedStatus": "reconnect-and-tool-unavailable-reply-only; failed-turn-unobserved",
+      "missing": [
+        "同一请求/turn 的可归因错误、实际 UI 及最终结局",
+        "outcome-unknown 后实际晚到结算与防重复发送行为"
+      ],
+      "missingIds": [
+        "BG-02",
+        "BG-03"
+      ],
+      "newProductPass": false
+    },
+    {
+      "id": "BC-03",
+      "path": "cancellation",
+      "title": "执行中点击取消",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E007",
+        "BEHAVIOR-COMPARE-E008",
+        "BEHAVIOR-COMPARE-E015"
+      ],
+      "identity": {
+        "threadId": "01a13824-439b-7683-b9dd-5b2d0180fe9a",
+        "turnId": "01a13824-774d-7c50-8cfb-851f008f635a"
+      },
+      "observed": "实际点击0；虽看见可用停止按钮，未封闭同一 props 的 thread/turn/running 关联，未点击。后来 completed 不能算取消结果。",
+      "sourceContract": "选定中断 helper 有明确 guard/错误/清理分支；历史34个隔离场景仅验证替身下的选择代码。",
+      "comparison": "取消按钮到实际请求、终态和清理副作用仍未测；进程 SIGTERM 是另一个场景，不能填补点击取消。",
+      "observedStatus": "not-tested/control-binding-unavailable",
+      "missing": [
+        "稳定且唯一的运行中自有 turn/停止控件关联",
+        "一次真实点击后相同 turn 的终态、工具清理及后台/存储对照"
+      ],
+      "missingIds": [
+        "BG-04"
+      ],
+      "newProductPass": false
+    },
+    {
+      "id": "BC-04",
+      "path": "restart",
+      "title": "执行中停止进程、重启与继续执行",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E009",
+        "BEHAVIOR-COMPARE-E010",
+        "BEHAVIOR-COMPARE-E004",
+        "BEHAVIOR-COMPARE-E016",
+        "BEHAVIOR-COMPARE-E017",
+        "BEHAVIOR-COMPARE-E011"
+      ],
+      "identity": {
+        "threadId": "01a1692d-c81a-7071-9fa6-62610f1b6090",
+        "turnId": "01a1692d-e641-78f3-b0bc-4546a4b0ebc7"
+      },
+      "observed": "运行中 UI 取样后停止自有进程一次、重启一次；首次取样未绑定当前页，后经实际观察到的侧栏行打开同一 turn，终态 interrupted；未发 resume RPC 或继续提示。",
+      "sourceContract": "历史 hydration、thread/resume、首 turn start 与实际继续执行分开；will-quit 的 flush 不能直接视为 SIGTERM 已走过的路径。",
+      "comparison": "仅支持本次受控停止后相同 turn 的 interrupted 显示与历史可访问；未支持自动继续执行、退出 drain 或崩溃持久化策略。",
+      "observedStatus": "same-turn-interrupted-observed-after-restart; resumed-execution-unobserved",
+      "missing": [
+        "自动页恢复策略与真正继续执行的证据",
+        "SIGTERM/Electron quit/后台恢复之间因果及持久化层"
+      ],
+      "missingIds": [
+        "BG-05",
+        "BG-06"
+      ],
+      "newProductPass": false
+    }
+  ],
+  "interpretationCorrections": [
+    {
+      "id": "BI-01",
+      "appearance": "submissionIndicated=false 与任务已完成",
+      "resolution": "不同采样时刻/证据强度；完成由同 turn 事件和回复共同支持，早期 false 不触发重发。",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E005",
+        "BEHAVIOR-COMPARE-E001",
+        "BEHAVIOR-COMPARE-E002"
+      ]
+    },
+    {
+      "id": "BI-02",
+      "appearance": "工具名 exec 与不执行命令",
+      "resolution": "exec 是编排工具名；保存的三个输入 AST 无 shell 调用，其中一个直接读取文件。内部实现不作普遍断言。",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E003"
+      ]
+    },
+    {
+      "id": "BI-03",
+      "appearance": "旧 decoder 没找到提示，v2 找到",
+      "resolution": "旧观察器格式覆盖不足；保留两个历史记录，以 v2 同 turn 事件限定判断。",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E006",
+        "BEHAVIOR-COMPARE-E001"
+      ]
+    },
+    {
+      "id": "BI-04",
+      "appearance": "completed 但模型称未读文件",
+      "resolution": "终态描述该 turn 的处理结束；不等于用户的文件读取目标达成，更不等于取消或失败分支通过。",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E007"
+      ]
+    },
+    {
+      "id": "BI-05",
+      "appearance": "重启恢复但没有继续执行",
+      "resolution": "恢复历史/显示 interrupted 与执行继续不同；此次只支持前者。",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E010",
+        "BEHAVIOR-COMPARE-E017"
+      ]
+    },
+    {
+      "id": "BI-06",
+      "appearance": "旧干预报告剩余1，当前剩余0",
+      "resolution": "旧报告在最后一次停止/重启样例前发布；后发记录明确该组消耗2。既有授权不重复申请，也不据旧快照再次提交。",
+      "evidenceIds": [
+        "BEHAVIOR-COMPARE-E011"
+      ]
+    }
+  ],
+  "remainingObservationConditions": [
+    {
+      "id": "BG-01",
+      "title": "正常 UI 到实际服务实例关联",
+      "precondition": "在允许的自有测试环境中关联实际 UI 事件、请求身份、通知和结果；仅有已保存文本不能补采。",
+      "requiresNewLiveObservation": true,
+      "modelFreeOfflineClosure": false
+    },
+    {
+      "id": "BG-02",
+      "title": "真实失败 UI/同 turn 终态",
+      "precondition": "先确定受控且获授权的错误触发方式、回滚和归因信号；真实服务新提交需额外授权。用替身只能验适配器。",
+      "requiresNewLiveObservation": true,
+      "modelFreeOfflineClosure": false
+    },
+    {
+      "id": "BG-03",
+      "title": "未知交付与晚到结算",
+      "precondition": "可观测且可控的在途请求和晚到结果，保留 requestId/clientUserMessageId/turnId；观察超时不重发。",
+      "requiresNewLiveObservation": true,
+      "modelFreeOfflineClosure": false
+    },
+    {
+      "id": "BG-04",
+      "title": "实际取消点击和后效",
+      "precondition": "先完成唯一控件与自有运行中 turn 的绑定；若需新模型运行，应单独获得次数授权。不能猜控件、改为直接 RPC 或拿 SIGTERM 代替。",
+      "requiresNewLiveObservation": true,
+      "modelFreeOfflineClosure": false
+    },
+    {
+      "id": "BG-05",
+      "title": "自动恢复和继续执行",
+      "precondition": "区分首屏自动选中、手动历史 hydration、thread/resume 与真正的新输出/工具进度；运行中的样例和重启须有对应授权。",
+      "requiresNewLiveObservation": true,
+      "modelFreeOfflineClosure": false
+    },
+    {
+      "id": "BG-06",
+      "title": "退出/持久化因果",
+      "precondition": "精确自有进程、信号、Electron 生命周期和后台/存储观察；正常退出与崩溃另列。SIGTERM 历史不足以证明 flush 完成。",
+      "requiresNewLiveObservation": true,
+      "modelFreeOfflineClosure": false
+    },
+    {
+      "id": "BG-07",
+      "title": "四路径以外主要能力",
+      "precondition": "审批、写入、PTY、其他主机/模式另有有限场景与对应边界；本次单一样例不外推。",
+      "requiresNewLiveObservation": true,
+      "modelFreeOfflineClosure": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "BEHAVIOR-COMPARE-E001",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "同一自有 thread/turn 的提示出现一次，task_started/task_complete 各一次，完成回复含 Sentinel。此为已保存事件观察，非本轮重新读取后台。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-storage-v2.json",
+      "sourceHash": "507ae7960acec1f59cd4666630271515eadfa10eafefd24c8c8ab547aa14ffc9",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/observations"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-storage-v2.json",
+          "bytes": 2215,
+          "sha256": "507ae7960acec1f59cd4666630271515eadfa10eafefd24c8c8ab547aa14ffc9"
+        },
+        "jsonPointer": "/observations",
+        "valueCanonicalSha256": "4fb090b292dfd9d7aba48cb4469405816c5c4ce5365d63a0773f9ec6f0d3c067"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E002",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "初始样例的有界界面回复可见且匹配合成 Sentinel；该观察不单独证明工具调用或完成事件。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-bounded-reply.json",
+      "sourceHash": "1cd550023c657af916bc10f7526fea0352fe94c34111b1bd86be574e8f7c4e2c",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/observations"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-bounded-reply.json",
+          "bytes": 2866,
+          "sha256": "1cd550023c657af916bc10f7526fea0352fe94c34111b1bd86be574e8f7c4e2c"
+        },
+        "jsonPointer": "/observations",
+        "valueCanonicalSha256": "1d3a9ae822ccfaf93c18f5d459df55c71b4ab1f983e3ef9ca6c97ac28016c637"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E003",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "已保存的三条 exec 输入审阅：两条查工具元数据，一条经 Node fs.readFile 读取自有 README；这些输入中未发现 shell 调用，不能推广到工具内部所有进程。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-tool-review.json",
+      "sourceHash": "023a9ba72238cff024b3f4337909230233d607a938bf568288fc7feff2dc85d6",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/observations"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-tool-review.json",
+          "bytes": 3244,
+          "sha256": "023a9ba72238cff024b3f4337909230233d607a938bf568288fc7feff2dc85d6"
+        },
+        "jsonPointer": "/observations",
+        "valueCanonicalSha256": "1057a8a65f72e8ef41a4aaa1b25c3f2532a5a430f2afe6b0200f5c99e9c0e55b"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E004",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "已完成样例重启后经唯一自有侧栏行导航可见相同提示与回复；首次采样未显示提示/回复，不能据此断言自动恢复策略。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-recovery-04.json",
+      "sourceHash": "091c1af0f9d0d37e709b6f2b2a1bc454fb04d53b8b291409d04785138b1d400c",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/observations"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-recovery-04.json",
+          "bytes": 2231,
+          "sha256": "091c1af0f9d0d37e709b6f2b2a1bc454fb04d53b8b291409d04785138b1d400c"
+        },
+        "jsonPointer": "/observations",
+        "valueCanonicalSha256": "e6701c1b2d3eeed036fde91b58ad624e6f57ce189d07165bb55f4063efdd78e9"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E005",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "提交后早期采样 submissionIndicated=false；这不是提交失败或允许重发的证据。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-submit.json",
+      "sourceHash": "cc3165a43decad5d428770100f0eec4127ea3ff33fadd9bd683b6840964e8c44",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/observations"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-submit.json",
+          "bytes": 2391,
+          "sha256": "cc3165a43decad5d428770100f0eec4127ea3ff33fadd9bd683b6840964e8c44"
+        },
+        "jsonPointer": "/observations",
+        "valueCanonicalSha256": "b03dd29dc66bd02c2c2a9df98c099d41d27221e32db2ab389cac409e901d7d32"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E006",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "旧存储观察器记录 ownedPromptRecorded=false；v2 使用实际 response_item 和同 turn 事件纠正，不据旧 false 认定产品丢失提示。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-storage.json",
+      "sourceHash": "5368c8c6fd2dc6c5747fe42294e538c4602611594110131a7acae63dd6e4295a",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/observations"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-storage.json",
+          "bytes": 989,
+          "sha256": "5368c8c6fd2dc6c5747fe42294e538c4602611594110131a7acae63dd6e4295a"
+        },
+        "jsonPointer": "/observations",
+        "valueCanonicalSha256": "10d343a8d0de9d33d3ebc5ecbf4360d03b80ac168c741fa76785364dc83c1622"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E007",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "取消样例提交一次、实际取消点击为零；后来 UI 为 completed，含 responseStreamDisconnected 重连项，模型称没有直接只读工具；未测得取消结果或服务失败根因。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions.json",
+      "sourceHash": "049423d8ea61b881a2c483893b219917321ade6bf1bc519ae56000a58cfa2be1",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/cancelScenario"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions.json",
+          "bytes": 3887,
+          "sha256": "049423d8ea61b881a2c483893b219917321ade6bf1bc519ae56000a58cfa2be1"
+        },
+        "jsonPointer": "/cancelScenario",
+        "valueCanonicalSha256": "888175fb74d520c29a032392c16a175b354c7914a41c18598b77e406eef47ce5"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E008",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "历史隔离执行为34个受控替身场景，实际取消点击0、客户端启动0、运行时等价未建立；本轮没有重放。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/interrupt-control-flow-observations.json",
+      "sourceHash": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": ""
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "historical-isolated-observations; not-desktop-acceptance",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/interrupt-control-flow-observations.json",
+          "bytes": 34385,
+          "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7"
+        },
+        "jsonPointer": "",
+        "valueCanonicalSha256": "f19b9a1a13b978c09b8484cff463200c834e594b227ef8c14073df5b12e53557"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E009",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "SIGTERM 前同一 UI props 关联的自有 turn 为 inProgress，cwd 匹配；这不是独立后台开始事件。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+      "sourceHash": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/preStop"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        "jsonPointer": "/preStop",
+        "valueCanonicalSha256": "60699070be49453195a5c1f2553c4c0be768559f25aba28095cf48d73d262879"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E010",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "保存的停止/重启样例最终经观察到的自有行恢复同一 turn 为 interrupted；没有继续提示或 resume RPC，未观察到继续执行。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+      "sourceHash": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": ""
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        "jsonPointer": "",
+        "valueCanonicalSha256": "622ac34d25a65d5fa06d785b52c892043fe6658769eb0f6ced0f68fec6fa5308"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E011",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "后续两条授权样例均已使用，剩余0；更早单条授权另计且已用。旧干预记录中的剩余1是历史快照。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+      "sourceHash": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/authorization"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-owned-observation; no-replay",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        "jsonPointer": "/authorization",
+        "valueCanonicalSha256": "45e4bb33a35abb194cd34c001775311ac1d3c55473a087457a57f98fad978d48"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E012",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "源码 zln 区分 accepted、rejected、not-started 和 outcome-unknown；accepted 是首 turn 接受结果，不能替代实际完成事件。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+      "sourceHash": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/facts/7"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-source-contract; actual-provider-binding-pending",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        },
+        "jsonPointer": "/facts/7",
+        "valueCanonicalSha256": "55477dfbfa17439e9ccdde746a46da35065afd7b6a63fc42e24de7752b7dde21"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E013",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "源码提前返回 outcome-unknown 后原等待链仍可到 onSettled；不能把观察超时当作取消或后台失败。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+      "sourceHash": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/facts/8"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-source-contract; actual-provider-binding-pending",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        },
+        "jsonPointer": "/facts/8",
+        "valueCanonicalSha256": "1ad8b7bc8076342a8dc483f6e8417a1430b371d6d728787ad38733b911e4a6d8"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E014",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "源码 iK 对 not-started/rejected/unknown 映射 WGi；未知结果提示不应重复发送，需保留原请求身份。样例未验证这些错误 UI。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+      "sourceHash": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/facts/16"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-source-contract; actual-error-ui-unobserved",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        },
+        "jsonPointer": "/facts/16",
+        "valueCanonicalSha256": "c4753bebf9b0f356d3bb5ea6e809f2289cebe834fc93cb938b0ca087ddd76719"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E015",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定 Ien 源码有 turn/status guard、限定错误重试、本地标记与分支清理；它不等待完成通知，不能以此证明实际停止按钮已执行。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/interrupt-control-flow.json",
+      "sourceHash": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/records/1"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-source-contract; actual-stop-ui-unobserved",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/interrupt-control-flow.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214"
+        },
+        "jsonPointer": "/records/1",
+        "valueCanonicalSha256": "276a23fac0e3f4407217b334e22bef5924d009f32f73addc85da4827f0f5f89e"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E016",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定 will-quit 源码有 flush/stop/allSettled 顺序；SIGTERM 是否进入该 Electron 退出链未观察到，不能用重启 interrupted 反证完整 drain。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+      "sourceHash": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/records/6"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-source-contract; signal-to-quit-route-unobserved",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+        },
+        "jsonPointer": "/records/6",
+        "valueCanonicalSha256": "17eedd601267b03ac730342feea2395414b7efac54ac9af77ea0df1c98dc9414"
+      }
+    },
+    {
+      "id": "BEHAVIOR-COMPARE-E017",
+      "baselineId": "codex-26.1007.30912-c5b273322a83",
+      "claim": "选定 Wan 源码存在已有 stream role 且无需 resume 时直接 ready 的分支；打开历史会话不必每次发后台 resume，显示历史不能证明新 turn 继续执行。",
+      "sourcePath": "analysis/codex-26.1007.30912-c5b273322a83/thread-resume-entry-contracts.json",
+      "sourceHash": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34",
+      "locator": {
+        "kind": "json-pointer",
+        "pointer": "/facts/9"
+      },
+      "method": "saved-record-comparison",
+      "confidence": "confirmed",
+      "verificationStatus": "saved-source-contract; actual-runtime-route-unobserved",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-resume-entry-contracts.json",
+          "bytes": 38794,
+          "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+        },
+        "jsonPointer": "/facts/9",
+        "valueCanonicalSha256": "76c9f8f3aed3b2f977e091c6d633ef35de15edb98d54da3ee0d70c538f8df825"
+      }
+    }
+  ],
+  "selectedSourceFacts": [
+    {
+      "id": "THREAD-START-ENTRY-008",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        },
+        "jsonPointer": "/facts/7",
+        "valueCanonicalSha256": "55477dfbfa17439e9ccdde746a46da35065afd7b6a63fc42e24de7752b7dde21"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3055505,
+        "endExclusive": 3061033
+      },
+      "spanSha256": null,
+      "claim": "zln 首 turn 成功返回 accepted/turnId；带 jsonRpcCode 的 Error 为 rejected，其他普通错误为 not-started；delivery.stage=outcome-unknown 保留 requestId 与 clientUserMessageId。外层创建失败通常拒绝，onSettled 仍收到 failed，delivery unknown 则返回顶层 outcome-unknown。",
+      "verificationStatus": "selected-source-contract; actual-ui-provider-service-storage-pending"
+    },
+    {
+      "id": "THREAD-START-ENTRY-009",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        },
+        "jsonPointer": "/facts/8",
+        "valueCanonicalSha256": "1ad8b7bc8076342a8dc483f6e8417a1430b371d6d728787ad38733b911e4a6d8"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3055505,
+        "endExclusive": 3061033
+      },
+      "spanSha256": null,
+      "claim": "zln 用 Promise.race 提前返回未知结果，原等待链仍可继续到 onSettled。settlement callback 异常被捕获记录；dup 回调 lease 在最终 finally dispose，不能把提前返回当作工作已取消或后台失败。",
+      "verificationStatus": "selected-source-contract; actual-ui-provider-service-storage-pending"
+    },
+    {
+      "id": "THREAD-START-ENTRY-017",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+          "bytes": 40523,
+          "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+        },
+        "jsonPointer": "/facts/16",
+        "valueCanonicalSha256": "c4753bebf9b0f356d3bb5ea6e809f2289cebe834fc93cb938b0ca087ddd76719"
+      },
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "locator": {
+        "kind": "byte-range",
+        "start": 4913397,
+        "endExclusive": 4914279
+      },
+      "spanSha256": null,
+      "claim": "iK 对 created+accepted/not-requested 返回 null；created+not-started/rejected 与顶层/首 turn outcome-unknown 返回携带原 result 的 WGi。未确认提示明确要求不要重复发送，恢复时应保留创建、首 turn、请求与客户端消息身份。",
+      "verificationStatus": "selected-source-contract; actual-ui-provider-service-storage-pending"
+    },
+    {
+      "id": "INTERRUPT-CONTROL-002",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/interrupt-control-flow.json",
+          "bytes": 38511,
+          "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214"
+        },
+        "jsonPointer": "/records/1",
+        "valueCanonicalSha256": "276a23fac0e3f4407217b334e22bef5924d009f32f73addc85da4827f0f5f89e"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2834333,
+        "endExclusive": 2835615
+      },
+      "spanSha256": "9a17f3c202bb30a654878c4b544c3c4815eb83f8f386b8f28d9c0b3e0d321009",
+      "claim": "The selected interruption helper snapshots the last non-null turn ID, guards an explicit expectedTurnId against that snapshot and inProgress status, and distinguishes inactive fallback, initial interrupt, recognized mismatch retry and recognized no-active-turn error. Local state writes and cleanup have branch-specific order; no notification is awaited here.",
+      "verificationStatus": "frozen-original-program; selected-source-only"
+    },
+    {
+      "id": "SHUTDOWN-007",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+        },
+        "jsonPointer": "/records/6",
+        "valueCanonicalSha256": "17eedd601267b03ac730342feea2395414b7efac54ac9af77ea0df1c98dc9414"
+      },
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "locator": {
+        "kind": "byte-range",
+        "start": 3389234,
+        "endExclusive": 3389582
+      },
+      "spanSha256": "df749cf946186f56e108ecb3a2f7d3deb005ca775fc400512309e6e106fe37f0",
+      "claim": "The ordinary will-quit branch disposes hotkey then dictation, invokes globalState.flush, settingsStore.flush, stopCodexMicro, and flushTracingBeforeQuit in array evaluation order, and waits on Promise.allSettled. The Promises may run concurrently after invocation.",
+      "verificationStatus": "source-only/not-executed"
+    },
+    {
+      "id": "THREAD-RESUME-ENTRY-010",
+      "reference": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-resume-entry-contracts.json",
+          "bytes": 38794,
+          "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+        },
+        "jsonPointer": "/facts/9",
+        "valueCanonicalSha256": "76c9f8f3aed3b2f977e091c6d633ef35de15edb98d54da3ee0d70c538f8df825"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "locator": {
+        "kind": "byte-range",
+        "start": 2959943,
+        "endExclusive": 2984496
+      },
+      "spanSha256": null,
+      "claim": "Wan 在 attempt 过期、无权取得 stream ownership、local follower 等 owner 恢复等条件下提前返回；已有 stream role 且 resumeState 不为 needs_resume 时直接 ready 并更新 recent。打开已有会话不必每次发送后台 resume。",
+      "verificationStatus": "selected-source-contract; actual-ui-rpc-storage-pending"
+    }
+  ],
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-storage-v2.json",
+      "bytes": 2215,
+      "sha256": "507ae7960acec1f59cd4666630271515eadfa10eafefd24c8c8ab547aa14ffc9"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-bounded-reply.json",
+      "bytes": 2866,
+      "sha256": "1cd550023c657af916bc10f7526fea0352fe94c34111b1bd86be574e8f7c4e2c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-tool-review.json",
+      "bytes": 3244,
+      "sha256": "023a9ba72238cff024b3f4337909230233d607a938bf568288fc7feff2dc85d6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-recovery-04.json",
+      "bytes": 2231,
+      "sha256": "091c1af0f9d0d37e709b6f2b2a1bc454fb04d53b8b291409d04785138b1d400c"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-submit.json",
+      "bytes": 2391,
+      "sha256": "cc3165a43decad5d428770100f0eec4127ea3ff33fadd9bd683b6840964e8c44"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/runtime-artifacts/owned-task-storage.json",
+      "bytes": 989,
+      "sha256": "5368c8c6fd2dc6c5747fe42294e538c4602611594110131a7acae63dd6e4295a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions.json",
+      "bytes": 3887,
+      "sha256": "049423d8ea61b881a2c483893b219917321ade6bf1bc519ae56000a58cfa2be1"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+      "bytes": 6407,
+      "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart.json",
+      "bytes": 4289,
+      "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+      "bytes": 7728,
+      "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/interrupt-control-flow-observations.json",
+      "bytes": 34385,
+      "sha256": "71d6d8ebc488c72d8de4b29bfbe9503c65859e562847ae2d4055f05e8ba468c7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-start-entry-contracts.json",
+      "bytes": 40523,
+      "sha256": "60b0ed0a34e4da8bd83305ed88835da70535f970653f5880dbd190a272305957"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/interrupt-control-flow.json",
+      "bytes": 38511,
+      "sha256": "40b0b85fc5ffd558250513c350dd5eef0e7a1cdc6d3023576926aa845e0f1214"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/shutdown-persistence.json",
+      "bytes": 54306,
+      "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/thread-resume-entry-contracts.json",
+      "bytes": 38794,
+      "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/analysis-stage-decisions-v5.json",
+      "bytes": 167244,
+      "sha256": "500dff50da716247c562d3e1c8c1d1fcfe0c47443919ff38f3aeef0ce6559826"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v43.json",
+      "bytes": 2656265,
+      "sha256": "d57e16ac11f5a75c49a5490054671117364b01946d5ac138e52e28ce8eef4a9f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v40-scenarios.json",
+      "bytes": 2551955,
+      "sha256": "56208d6243a3fc08b5606e91e88b0bc2b704a380541f2da5808a9a29cc0e71f0"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/remaining-command-adoption-v1.json",
+      "bytes": 305101,
+      "sha256": "32c6c6a89c704c15bbf64a1398f21ea6727bc894a7a0125973d34ef77bf0fd3b"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v34.json",
+      "bytes": 1487371,
+      "sha256": "9a778c56ab84a61243b8e075b3756ef1930a22d942498c294f575d11d8bd7a85"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-current-ordering-v17.json",
+      "bytes": 54119,
+      "sha256": "e1f9e8826f7a531fd3a5e241b8905c30ab3e935964ee3e270121a981965d2bf6"
+    }
+  ],
+  "historicalRawCopyPins": [
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/authorization.json",
+        "bytes": 1184,
+        "sha256": "d14cb29c215d14192c7a2ef47213396a96a347cd2ddb3ed9bfc1ee36b057b223"
+      },
+      "recordedSha256": "d14cb29c215d14192c7a2ef47213396a96a347cd2ddb3ed9bfc1ee36b057b223",
+      "recordedBytes": 1184,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/0",
+        "valueCanonicalSha256": "96060559566be7b799b1d9adc3bb3fb3498a7cdcde4fb03e4efc3211b9db479f"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/approved-scenarios.json",
+        "bytes": 18823,
+        "sha256": "558e8115120e5ab186d56925339076ce89190f730f0eea37beec86d406ecff89"
+      },
+      "recordedSha256": "558e8115120e5ab186d56925339076ce89190f730f0eea37beec86d406ecff89",
+      "recordedBytes": 18823,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/1",
+        "valueCanonicalSha256": "f493b22eae74b4c54f1b42f24307213dc969a5eb3ad0481275301db53a019bb1"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-preflight-failure.json",
+        "bytes": 1840,
+        "sha256": "ed9fc74a8af1c4a921a92f8f4883e229b252b952c205b3384f251f586b7fda3f"
+      },
+      "recordedSha256": "ed9fc74a8af1c4a921a92f8f4883e229b252b952c205b3384f251f586b7fda3f",
+      "recordedBytes": 1840,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/2",
+        "valueCanonicalSha256": "87fee2bbc7dadba682ac100740f5d1f9a67bea93fb2b3312c80f70f0ff21b4ac"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-submitted.json",
+        "bytes": 50443,
+        "sha256": "16f84291db3e2045cbcb6cd97009c41be4cfc6e125cafa8c40d49cccc8d743fd"
+      },
+      "recordedSha256": "16f84291db3e2045cbcb6cd97009c41be4cfc6e125cafa8c40d49cccc8d743fd",
+      "recordedBytes": 50443,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/3",
+        "valueCanonicalSha256": "c3c0524e08ba0d393da1e5cc04c0d6fa0808ee9ec58d2fab07934bac60a9c3ed"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-reservation.json",
+        "bytes": 944,
+        "sha256": "991f3640f62522f8a028a60c85b2501b218951f02e8da0ee5a66e7afe731e7ea"
+      },
+      "recordedSha256": "991f3640f62522f8a028a60c85b2501b218951f02e8da0ee5a66e7afe731e7ea",
+      "recordedBytes": 944,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/4",
+        "valueCanonicalSha256": "54532780b6e3257ed2bee4d8d6aea6c5415f7ef95752e7cd94c16f39888d2841"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-later-state.json",
+        "bytes": 5183,
+        "sha256": "125af01719c4c61278077a4325e3383209febe8db42da2f4878d8d33404feb13"
+      },
+      "recordedSha256": "125af01719c4c61278077a4325e3383209febe8db42da2f4878d8d33404feb13",
+      "recordedBytes": 5183,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/5",
+        "valueCanonicalSha256": "1212af4e0f6efb9b45f09ae6ef750aabd3aa0a350780f8ffaa744e2d8f3debc4"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-later-reply-row.json",
+        "bytes": 23372,
+        "sha256": "811bae3668159cbf906c18d4aadacdfedee1f7e20e3d11dadfddb45dfebb625b"
+      },
+      "recordedSha256": "811bae3668159cbf906c18d4aadacdfedee1f7e20e3d11dadfddb45dfebb625b",
+      "recordedBytes": 23372,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/6",
+        "valueCanonicalSha256": "ecb88cca4be4889526c13b92ed20619d650a3b196866ceda4a63a64bbb537dd8"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-command-receipt.json",
+        "bytes": 1064,
+        "sha256": "8ea3e5f113d0ce0dc525fec625675752fcb1e1e402fe32e3d8e34b0574b3b201"
+      },
+      "recordedSha256": "8ea3e5f113d0ce0dc525fec625675752fcb1e1e402fe32e3d8e34b0574b3b201",
+      "recordedBytes": 1064,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/7",
+        "valueCanonicalSha256": "33f9549ba40a6c49007790f6b11e7b99c482c2e6a1bf9081a3ac0b89c79f1111"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-state-command-receipt.json",
+        "bytes": 1055,
+        "sha256": "aa4d1e41028333180d12dcdfb74932e7f016e1f60a00f1eec948bcaf9b667141"
+      },
+      "recordedSha256": "aa4d1e41028333180d12dcdfb74932e7f016e1f60a00f1eec948bcaf9b667141",
+      "recordedBytes": 1055,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/8",
+        "valueCanonicalSha256": "c0b51fa732f1ab045774b6438150e270a9301a978fb109884fad32fa50d92065"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/cancel-reply-command-receipt.json",
+        "bytes": 1068,
+        "sha256": "bb851edaec258bfadbf0c20edf41742f61315c7f377428c88bb9d3631833b83c"
+      },
+      "recordedSha256": "bb851edaec258bfadbf0c20edf41742f61315c7f377428c88bb9d3631833b83c",
+      "recordedBytes": 1068,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/9",
+        "valueCanonicalSha256": "802df67ec160d4ff9c31e3e21fa5cc4c57e76932f03d521aa6da31fcf9e9a890"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/resume-launch.json",
+        "bytes": 3679,
+        "sha256": "930d9ed315b31b3f044926002f45978a265e3986543edee4506a6adce52a418b"
+      },
+      "recordedSha256": "930d9ed315b31b3f044926002f45978a265e3986543edee4506a6adce52a418b",
+      "recordedBytes": 3679,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/10",
+        "valueCanonicalSha256": "4e417fa3e40b05d5c84167e25254f91abfa8858996d681ab9dff707a37fddf3d"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/resume-project-preflight.json",
+        "bytes": 392,
+        "sha256": "cdf2af4f74f2d871436e7413153614780dd9198f9954ff9fb036b4d4d33e25fe"
+      },
+      "recordedSha256": "cdf2af4f74f2d871436e7413153614780dd9198f9954ff9fb036b4d4d33e25fe",
+      "recordedBytes": 392,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/11",
+        "valueCanonicalSha256": "5b66bc80daeb1bb3eb99d771bdf93347c1780f63d8c6dac95871c1b2c622c2b4"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/resume-project-preflight-receipt.json",
+        "bytes": 968,
+        "sha256": "e49354e7b7f7185707c1f508eb55ecef554ed0174b92769a47e805b12b153f8f"
+      },
+      "recordedSha256": "e49354e7b7f7185707c1f508eb55ecef554ed0174b92769a47e805b12b153f8f",
+      "recordedBytes": 968,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/12",
+        "valueCanonicalSha256": "6915a469fdef0accab29b59818ff9f31d2d0d0324251b5fe8829a911ffbc6acf"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/resume-ui-counts.json",
+        "bytes": 1799,
+        "sha256": "ff0e8a3f938392d3c30e52031689548427099117305e6fcb8c6f106d7ef77cbf"
+      },
+      "recordedSha256": "ff0e8a3f938392d3c30e52031689548427099117305e6fcb8c6f106d7ef77cbf",
+      "recordedBytes": 1799,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/13",
+        "valueCanonicalSha256": "57e74d30567ca86eb3ecc68e20c59c9f274be3628c50c14aa101a736080d46a7"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-interventions/author/resume-cleanup.json",
+        "bytes": 5519,
+        "sha256": "d2fec412e29a6b4da0f66a1a36598c3c916b48cbc9f900b47a986e06575db5c5"
+      },
+      "recordedSha256": "d2fec412e29a6b4da0f66a1a36598c3c916b48cbc9f900b47a986e06575db5c5",
+      "recordedBytes": 5519,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-interventions-provenance.json",
+          "bytes": 6407,
+          "sha256": "2e02923e14fc621047d759e534a3c795499eb9570d7b8c84ef6576cdc7b1bdd7"
+        },
+        "jsonPointer": "/exactCopies/14",
+        "valueCanonicalSha256": "c614355b41f1df76fdfb0b2d17c87c276549952bef740fae46351d9e7c99ebef"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/project-recovery-proposal.md",
+        "bytes": 2177,
+        "sha256": "855456c37c47dcb7f5c11cb93f5bcab4c139ed3481bca4ba93296380ffbae5dc"
+      },
+      "recordedSha256": "855456c37c47dcb7f5c11cb93f5bcab4c139ed3481bca4ba93296380ffbae5dc",
+      "recordedBytes": 2177,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/0",
+        "valueCanonicalSha256": "4c323f130af476252204b139dfc8951dfc9008deaaaf953f874f841a9cd4af73"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/project-recovery-authorization.json",
+        "bytes": 819,
+        "sha256": "3b0d38b454ff775f8646cbc2b0329f46738489667c1209e2ed245e424c18a9bd"
+      },
+      "recordedSha256": "3b0d38b454ff775f8646cbc2b0329f46738489667c1209e2ed245e424c18a9bd",
+      "recordedBytes": 819,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/1",
+        "valueCanonicalSha256": "b9891afea64f10ddc0a0bfcea8b79f12f39ee7b38bc67fa08f7147b793bbda4d"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/project-registration-20261023.json",
+        "bytes": 273,
+        "sha256": "7454a63df53f2901ff1ddfd621c721a7a770bf619526886243930e1557a591c1"
+      },
+      "recordedSha256": "7454a63df53f2901ff1ddfd621c721a7a770bf619526886243930e1557a591c1",
+      "recordedBytes": 273,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/2",
+        "valueCanonicalSha256": "111af2b65b9c1c3c1351845bbccc3fa22d8aff37fff52c6c6e05d63f02ecf276"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/project-recovery-result.json",
+        "bytes": 654,
+        "sha256": "0a5a49a2e401d728ec29d283b1189e59738d9f709549bb3d7d2b75b56c2cd499"
+      },
+      "recordedSha256": "0a5a49a2e401d728ec29d283b1189e59738d9f709549bb3d7d2b75b56c2cd499",
+      "recordedBytes": 654,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/3",
+        "valueCanonicalSha256": "8107179590256190101ffb9c4656c08996fe29c5c9b31da2ea1d222ac07baad6"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/project-recovery-dialog-readonly.json",
+        "bytes": 302,
+        "sha256": "8ac38bb2690cf85e4e59089daaec8a07b57b8b51ccefed87047ce0671730e8c2"
+      },
+      "recordedSha256": "8ac38bb2690cf85e4e59089daaec8a07b57b8b51ccefed87047ce0671730e8c2",
+      "recordedBytes": 302,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/4",
+        "valueCanonicalSha256": "9e68415e221e29ec0ccb3ab230814f7e23284ca6e2e7423bbcd41c053d2640de"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/project-recovery-resolution.json",
+        "bytes": 588,
+        "sha256": "5c8d36cad02fce08285e128ee6b1abdfb8b410381210b953eb6602f8fa341f49"
+      },
+      "recordedSha256": "5c8d36cad02fce08285e128ee6b1abdfb8b410381210b953eb6602f8fa341f49",
+      "recordedBytes": 588,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/5",
+        "valueCanonicalSha256": "f56c317cc36a50e20e32e93ace4e7f154ecb974f26288edc8fa6ca57f4bc6ca3"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/project-scope-override.json",
+        "bytes": 740,
+        "sha256": "8ebdc3095bcf5af0fa69726d878f1a46d23729bd7a1935ac74a867aba7421a58"
+      },
+      "recordedSha256": "8ebdc3095bcf5af0fa69726d878f1a46d23729bd7a1935ac74a867aba7421a58",
+      "recordedBytes": 740,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/6",
+        "valueCanonicalSha256": "5d44e0f7fbe68f63ea8fb098e2e7c0cb914911fcab1cd615f48b9cc816ccc938"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/resume-20261023-02/result.json",
+        "bytes": 3113,
+        "sha256": "a62f0eea5e572b1005dc4b6e60885ef388b24ad15bcfdec6c30a3dd871021b75"
+      },
+      "recordedSha256": "a62f0eea5e572b1005dc4b6e60885ef388b24ad15bcfdec6c30a3dd871021b75",
+      "recordedBytes": 3113,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/7",
+        "valueCanonicalSha256": "a865ac7b8d5fdd1fd256e52729100e905bcd2a7d7f68d3b150dc7b9ca4cdea73"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/owned-running-stop-restart-03-attempt-05.json",
+        "bytes": 51454,
+        "sha256": "51c09eb144ca6a34f16ba2c021741d42b52b9ef6882b2ec840e48a735935edcf"
+      },
+      "recordedSha256": "51c09eb144ca6a34f16ba2c021741d42b52b9ef6882b2ec840e48a735935edcf",
+      "recordedBytes": 51454,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/8",
+        "valueCanonicalSha256": "95023c975826f52e6a603773a1d20705eab8fa19d83ed8942930a0e448c28b18"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/submission-owned-running-stop-restart-03.json",
+        "bytes": 1000,
+        "sha256": "2f961b12bc8b24750eb96b3eb74e7ce0eafb722b1f625c288832138869d5a587"
+      },
+      "recordedSha256": "2f961b12bc8b24750eb96b3eb74e7ce0eafb722b1f625c288832138869d5a587",
+      "recordedBytes": 1000,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/9",
+        "valueCanonicalSha256": "b27104ad03fc1c79353f3a5ac4c4c49a93c84f7fc864a89395627835e0073774"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/resume-20261023-03/result.json",
+        "bytes": 3444,
+        "sha256": "4b6c7615cb667f341df10b47729071bfbd55b1e1c7aec084a8c0d0acd7915735"
+      },
+      "recordedSha256": "4b6c7615cb667f341df10b47729071bfbd55b1e1c7aec084a8c0d0acd7915735",
+      "recordedBytes": 3444,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/10",
+        "valueCanonicalSha256": "0aa52d77c790134ff614f825d2cc6379f5d0ea554f65b98a007ba18f2da0ea26"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/stop-restart-observation-01.json",
+        "bytes": 2688,
+        "sha256": "c18fe94ac26e4889f4f8533e293bb2a3f42c8d8e34fe057a01081d07339429ca"
+      },
+      "recordedSha256": "c18fe94ac26e4889f4f8533e293bb2a3f42c8d8e34fe057a01081d07339429ca",
+      "recordedBytes": 2688,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/11",
+        "valueCanonicalSha256": "37054349156156883a30d5c75b5fca613b43f00889743980a150e2aaec111309"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/resume-20261023-03/cleanup.json",
+        "bytes": 7334,
+        "sha256": "0926dd8a38709ce4a00c2e2558acb9696097c74324b0494fd3fdbe52b972a58b"
+      },
+      "recordedSha256": "0926dd8a38709ce4a00c2e2558acb9696097c74324b0494fd3fdbe52b972a58b",
+      "recordedBytes": 7334,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/12",
+        "valueCanonicalSha256": "bdce9f13798c3783014729d8ba182082363f442a17645567479f290dea182af0"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/attempts/project-recovery-01/receipt.json",
+        "bytes": 964,
+        "sha256": "ec1dc57a154827e32f71029880f8116558e4dbdc8c62fb6ec745294fe9a4f4a2"
+      },
+      "recordedSha256": "ec1dc57a154827e32f71029880f8116558e4dbdc8c62fb6ec745294fe9a4f4a2",
+      "recordedBytes": 964,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/13",
+        "valueCanonicalSha256": "9899aaa360bf0b4302f0e8e75c3f6dfcc6982dc45bdcca4a5b957b4c8b2b97b6"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/attempts/project-recovery-resolve-01/receipt.json",
+        "bytes": 971,
+        "sha256": "1026698319d95315b50d39171e0fe351c8749fb4eb1399669e4ff2fa92719797"
+      },
+      "recordedSha256": "1026698319d95315b50d39171e0fe351c8749fb4eb1399669e4ff2fa92719797",
+      "recordedBytes": 971,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/14",
+        "valueCanonicalSha256": "bd4805cf73cb42bf8a0d8bc81e4fe899d69772fd0f033dcd15a0b28c262aadff"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/attempts/ui-prepare-resume-02/receipt.json",
+        "bytes": 977,
+        "sha256": "b5103891a4e772944c59bbbb7c660200ae77e3756a13067fc464b5455dec2ce8"
+      },
+      "recordedSha256": "b5103891a4e772944c59bbbb7c660200ae77e3756a13067fc464b5455dec2ce8",
+      "recordedBytes": 977,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/15",
+        "valueCanonicalSha256": "c333070ca149a4f23b51520666304760f4bda83db7ba68081be941d658482e3e"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/attempts/stop-05/receipt.json",
+        "bytes": 971,
+        "sha256": "d56671272f54694777431d2df514b0c87fa96e2cdb1502dd99619003154925c2"
+      },
+      "recordedSha256": "d56671272f54694777431d2df514b0c87fa96e2cdb1502dd99619003154925c2",
+      "recordedBytes": 971,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/16",
+        "valueCanonicalSha256": "05ce9bf649d97f0bee73e8b8c5d0f391ac748991759002d14cd8370633ca0685"
+      }
+    },
+    {
+      "source": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/raw/behavior-stop-restart/author/attempts/restart-observation-01/receipt.json",
+        "bytes": 974,
+        "sha256": "c21b0717e5ed44d6c0f655c43c84082fb2a44f9f832317efad231b67aa3aafda"
+      },
+      "recordedSha256": "c21b0717e5ed44d6c0f655c43c84082fb2a44f9f832317efad231b67aa3aafda",
+      "recordedBytes": 974,
+      "provenanceRef": {
+        "source": {
+          "path": "analysis/codex-26.1007.30912-c5b273322a83/behavior-stop-restart-provenance.json",
+          "bytes": 7728,
+          "sha256": "6449ea2336cf54be5b07c93a5e6e2fb5a29df141efc1268184cd21c4b41f240d"
+        },
+        "jsonPointer": "/exactCopies/17",
+        "valueCanonicalSha256": "236eb2e3ad574882f64ace700336a7447ee41572cc115678f46890f0a856c2ac"
+      }
+    }
+  ],
+  "offlineChecks": [
+    {
+      "id": "OC-01",
+      "action": "核对固定输入、33份已发布原观察副本与原 provenance 的哈希/字节数；不读取当前测试 profile。"
+    },
+    {
+      "id": "OC-02",
+      "action": "核对所有 JSON pointer、规范值哈希、选定源码范围与原文件哈希；不执行目标 JS。"
+    },
+    {
+      "id": "OC-03",
+      "action": "逐项断言正常 turn 身份与事件、取消点击0、重启 interrupted、授权剩余0及隔离场景不作产品通过。"
+    },
+    {
+      "id": "OC-04",
+      "action": "检查当前488功能/534操作/125支撑/1650未执行规格及九项原标准保持；不生成新功能/计划版本。"
+    }
+  ],
+  "futureExecutionRules": [
+    "BG-01至BG-07是尚缺的运行观察，离线核对不能补足。",
+    "本批不请求也不消耗新模型授权，不启动客户端或调用服务。",
+    "控制环境中不调用模型的替身检查只能证明适配器，不能升级为原客户端或真实服务通过。"
+  ],
+  "counts": {
+    "comparedPaths": 4,
+    "interpretationCorrections": 6,
+    "remainingObservationConditions": 7,
+    "evidenceRecords": 17,
+    "selectedSourceFacts": 6,
+    "historicalRawCopies": 33,
+    "historicalInitialModelSubmissions": 1,
+    "historicalLaterGroupModelSubmissions": 2,
+    "modelSubmissionsRemaining": 0,
+    "actualCancelClicksObserved": 0,
+    "currentFeatures": 488,
+    "currentDistinctUserOperations": 534,
+    "currentSupportOperations": 125,
+    "currentUnexecutedSpecifications": 1650,
+    "currentTaskGroups": 51,
+    "newSourceParses": 0,
+    "newReaRuns": 0,
+    "newTargetEvaluations": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newProductPasses": 0,
+    "newFeatureDefinitions": 0,
+    "newClientImplementation": 0
+  },
+  "originalCriteriaSnapshot": [
+    {
+      "id": "AC-01",
+      "requirement": "输入版本和哈希已固定，分析结果未混用版本。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14227,
+          "endExclusive": 14290
+        },
+        "spanHash": "fff46e39f58836de1a12f2666bfacc77b6ca260135162d4e9504601a4c9f42b9"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "固定版本、公开候选及来源分列；7项冻结声明矛盾保留，未混用版本。",
+      "evidence": [
+        {
+          "path": "baseline.json",
+          "bytes": 1162,
+          "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+        },
+        {
+          "path": "baseline-reverification.json",
+          "bytes": 11124,
+          "sha256": "9f27c67bfffe7a6f2069c11ddf64a20df44abe3612ba9cf5e7541159794883b7"
+        },
+        {
+          "path": "runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+        }
+      ],
+      "remainingIssueIds": [],
+      "implementationAcceptanceDeferred": "按新工程锁定的输入重建和发布，建立后续版本差异检查。",
+      "currentReviewEvidenceId": "ARD-V5-E001"
+    },
+    {
+      "id": "AC-02",
+      "requirement": "已登记所有发现的文件、入口和功能候选，并说明分析覆盖的范围。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14297,
+          "endExclusive": 14387
+        },
+        "spanHash": "101b7147742e4521c7681329e6f357a76cc2f1e3804933d121ace69ebfe06e43"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "发现文件与候选均有记录；968来源角色处置完成、12关联/3重叠有决定，旧待审数字退休。373功能仍是有限集合，菜单/命令/路由角色不能替代完整用户功能定义。",
+      "evidence": [
+        {
+          "path": "files.json",
+          "bytes": 9406196,
+          "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+        },
+        {
+          "path": "feature-scope-v27.json",
+          "bytes": 2065758,
+          "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+        },
+        {
+          "path": "legacy-entry-dispositions-v5.json",
+          "bytes": 1405687,
+          "sha256": "0c4d817f5e4f25046f01789b01a733dde1d862761a12f3e78ff63c85ad6c74dd"
+        },
+        {
+          "path": "association-overlap-decisions-v1.json",
+          "bytes": 99969,
+          "sha256": "3861d5f766f40a7929a4c6e1339131c497defbcd49bff7e1334fa692ec2c1627"
+        },
+        {
+          "path": "entry-composition-roles-v1.json",
+          "bytes": 1004567,
+          "sha256": "3853f79bf744fad5b9af63eba8a598f40f3dc6b554a6046ddd7cb909cd5c81b2"
+        },
+        {
+          "path": "native-menu-roles-v1.json",
+          "bytes": 866774,
+          "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-01"
+      ],
+      "implementationAcceptanceDeferred": "完整保留功能清单逐项实现并验收；mock和占位不算复刻。",
+      "currentReviewEvidenceId": "ARD-V5-E002"
+    },
+    {
+      "id": "AC-03",
+      "requirement": "已区分 Codex、ChatGPT 专属、共享和未知项，排除理由可追溯。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14394,
+          "endExclusive": 14474
+        },
+        "spanHash": "73838e22f642aa4ea08c8ecd4f23dbde38b7c27d3886ecd32af23f2fedeb9e53"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "unknown 372、shared 1；3组Chat专属分支决定与多个Codex正向保留已记录。项目source标签不能作剥离条件；完整共享/模式闭包仍未形成。",
+      "evidence": [
+        {
+          "path": "feature-scope-v27.json",
+          "bytes": 2065758,
+          "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+        },
+        {
+          "path": "chat-branch-decisions.json",
+          "bytes": 12041,
+          "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+        },
+        {
+          "path": "archive-mode-ownership.json",
+          "bytes": 9556,
+          "sha256": "b3182a76e980d2959bc6c71c7f02c4fb1b480cc60221c8ebda3cb03513321d5f"
+        },
+        {
+          "path": "project-dialog-mode-v1.json",
+          "bytes": 71834,
+          "sha256": "154f10c49a70c11f8b49b46fba699e4fde95b05739866997771f8090303a7bfb"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-01"
+      ],
+      "implementationAcceptanceDeferred": "在实际模式、账户与开关条件下核验剥离及共享依赖。",
+      "currentReviewEvidenceId": "ARD-V5-E003"
+    },
+    {
+      "id": "AC-04",
+      "requirement": "每个保留功能已追踪到足以说明其职责的模块和关键跨进程或外部边界。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14481,
+          "endExclusive": 14577
+        },
+        "spanHash": "a24c507e2f2550891b666eaf29b12e278e5d583ee2a662666290cd2e6f570022"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "37职责十字段合同和选定运行时/后台/存储边界已交付；职责范围视图只涉及12文件，主合同诊断涉及68文件。完整功能到职责及跨进程/外部边界的统一映射仍未证明。",
+      "evidence": [
+        {
+          "path": "restoration-coverage-v16.json",
+          "bytes": 1109752,
+          "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+        },
+        {
+          "path": "modules.json",
+          "bytes": 1396068,
+          "sha256": "fb328ab9b49fe3540d30f9925575c7226c2e186c8abc59f35f6b72a77faf00af"
+        },
+        {
+          "path": "thread-resume-entry-contracts.json",
+          "bytes": 38794,
+          "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+        },
+        {
+          "path": "runtime-feature-policy-contracts.json",
+          "bytes": 66085,
+          "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492"
+        },
+        {
+          "path": "logical-module-contracts-v1.json",
+          "bytes": 646540,
+          "sha256": "463709cd4c524fdab93a997670f9f9030fa6a9aec5b3d8f7a0a0cb90147496d7"
+        },
+        {
+          "path": "raw/analysis-requirement-disposition-v5/feature-owner-range-diagnostic.json",
+          "bytes": 761079,
+          "sha256": "1e2f773c7939e73c74a0c3124e91b66634a9b6055710b5a786c75613a5d54024"
+        },
+        {
+          "path": "protocol-delta-adoption-v1.json",
+          "bytes": 50808,
+          "sha256": "95b28c89373abbff9a61f7dacb9a5c83f5dc44a09621884f71e90ac428b77028"
+        },
+        {
+          "path": "storage-domain-map-v1.json",
+          "bytes": 100758,
+          "sha256": "4bebdfe05307995d295911687826b8d4d1d8d07e4e3002b261e0f75899ee1512"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-02",
+        "SD-03",
+        "SD-05"
+      ],
+      "implementationAcceptanceDeferred": "实现具体模块、生命周期、错误、取消、持久化与端到端行为。",
+      "currentReviewEvidenceId": "ARD-V5-E004"
+    },
+    {
+      "id": "AC-05",
+      "requirement": "第三方依赖有版本与来源依据；无法确认的条目列出调查动作。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14584,
+          "endExclusive": 14668
+        },
+        "spanHash": "f19b6b142e4baa2ac3724947c252ae8de90a1c61f4f39d0ab2279970abcda0dd"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "202依赖条目都有来源/版本依据或明确未知及调查动作；资料义务有交付，未将未知修改/来源提升为确认。",
+      "evidence": [
+        {
+          "path": "dependencies.csv",
+          "bytes": 208587,
+          "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+        },
+        {
+          "path": "dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+        },
+        {
+          "path": "dependency-import-decisions.json",
+          "bytes": 12781,
+          "sha256": "e7465bf0381c463b184fe7d943c08147c5b21ab5b991179be9d81ffe576e4d96"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-02"
+      ],
+      "implementationAcceptanceDeferred": "生成并验证自己的依赖锁文件，接入公开包/补丁，构建并验证兼容；最终源码不复制第三方实现。",
+      "currentReviewEvidenceId": "ARD-V5-E005"
+    },
+    {
+      "id": "AC-06",
+      "requirement": "原生、Wasm、辅助程序、定制运行时和私有服务均有独立记录。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14675,
+          "endExclusive": 14757
+        },
+        "spanHash": "f36499c48d111e0301b79add1a9f36586531f5202bbcc5d7d464e352bf508427"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "native/Wasm/helper/Owl/私有服务分别登记；15能力组及选定JS消费者已有决定。独立运行时完整采用资格0，这不是记录义务缺失，也不是独立构建已通过。",
+      "evidence": [
+        {
+          "path": "native-runtime.json",
+          "bytes": 421989,
+          "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b"
+        },
+        {
+          "path": "runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+        },
+        {
+          "path": "runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+        },
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        },
+        {
+          "path": "runtime-adoption-matrix-v1.json",
+          "bytes": 54887,
+          "sha256": "a52d4b415dbef9ae6bdd0c084a64bfd2c4f5589a4be2ecd3d4149ec939d323bd"
+        },
+        {
+          "path": "runtime-native-consumers-v1.json",
+          "bytes": 53360,
+          "sha256": "bd42cf9e6b6d4ab9b4b39e8aef16c1f80906a315f56fa1803f2e512654aa515c"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-02"
+      ],
+      "implementationAcceptanceDeferred": "构建或独立引入选定原生/运行时依赖，验证目标平台、ABI及替代能力。",
+      "currentReviewEvidenceId": "ARD-V5-E006"
+    },
+    {
+      "id": "AC-07",
+      "requirement": "Source map 覆盖、构建输入缺失、REA 解析限制和动态关系均有说明。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14764,
+          "endExclusive": 14851
+        },
+        "spanHash": "f512ce93f6e92a6cbbca7e9d3fdd33e4c605af1401617adbefa98e94746fcbff"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "source map、30缺失构建输入、REA截断和动态未知均有范围说明；本轮无新REA/原客户端运行，未宣称未知关系清零。",
+      "evidence": [
+        {
+          "path": "source-maps.json",
+          "bytes": 12442678,
+          "sha256": "7fb85727fd0b01fe836e2d5f7fb5a437e6245abf4f1c7aff1c3ab4596a227475"
+        },
+        {
+          "path": "build-input-dispositions-v1.json",
+          "bytes": 33279,
+          "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+        },
+        {
+          "path": "rea-application-observed.run.json",
+          "bytes": 1223,
+          "sha256": "153b69862e6960564424f9db0435bef1893eb2de135c038b13929700d5742280"
+        },
+        {
+          "path": "runtime-api-contracts.json",
+          "bytes": 3913933,
+          "sha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363"
+        }
+      ],
+      "remainingIssueIds": [],
+      "implementationAcceptanceDeferred": "编写并验证工程配置、源码和缺失构建输入，在干净环境安装、构建、打包。",
+      "currentReviewEvidenceId": "ARD-V5-E007"
+    },
+    {
+      "id": "AC-08",
+      "requirement": "主要行为与静态结论已对照，未验证项有明确触发条件。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14858,
+          "endExclusive": 14933
+        },
+        "spanHash": "1c17d4f1280c61483e6b60dd926014b56f717b71bb63f4e183c3d3ec6ee3ee21"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "完成/重开及停止重启后interrupted有实际观察；执行中取消未测、自动续跑未证明，主要行为覆盖不全。1216产品规格全未执行；源码回放/文件核对不计产品通过。",
+      "evidence": [
+        {
+          "path": "behavior-checks.md",
+          "bytes": 45093,
+          "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+        },
+        {
+          "path": "behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        {
+          "path": "feature-scope-v24-scenarios.json",
+          "bytes": 1944258,
+          "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-04"
+      ],
+      "implementationAcceptanceDeferred": "执行完整功能验收与回归场景，检验失败、取消、重启恢复及实际服务。",
+      "currentReviewEvidenceId": "ARD-V5-E008"
+    },
+    {
+      "id": "AC-09",
+      "requirement": "项目结构建议、恢复顺序和验收条件能够引用分析证据。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14940,
+          "endExclusive": 15015
+        },
+        "spanHash": "57249c2237cf63a2cbeed461d230a40b308cb0543c49a52b95c3e593100dd6d9"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "v10的373功能/48任务已接入两套57节点DAG；37职责十字段和协议差异采用子步已结案。完整功能、统一模块及独立运行时/后台路线仍有实质缺口，不能宣称完整分析完成。",
+      "evidence": [
+        {
+          "path": "restoration-current-ordering-v1.json",
+          "bytes": 46210,
+          "sha256": "8eb9b40751421a3a58d3dca0030e9959d4e404c2e3d8a56ef2b8e78bad942b7f"
+        },
+        {
+          "path": "implementation-plan-v9.md",
+          "bytes": 15268,
+          "sha256": "10facc86a4806f3c4eabf6064946435f12eaafdc2f1f15cd4b38d50eaa2476e7"
+        },
+        {
+          "path": "restoration-coverage-v16.json",
+          "bytes": 1109752,
+          "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+        },
+        {
+          "path": "runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+        },
+        {
+          "path": "implementation-milestones-v10.json",
+          "bytes": 447273,
+          "sha256": "fb50e937ee73f969847f50ba91d4c59ca85edb87a35923523a626adc0e67ad2d"
+        },
+        {
+          "path": "logical-module-contracts-v1.json",
+          "bytes": 646540,
+          "sha256": "463709cd4c524fdab93a997670f9f9030fa6a9aec5b3d8f7a0a0cb90147496d7"
+        },
+        {
+          "path": "protocol-delta-adoption-v1.json",
+          "bytes": 50808,
+          "sha256": "95b28c89373abbff9a61f7dacb9a5c83f5dc44a09621884f71e90ac428b77028"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-01",
+        "SD-02",
+        "SD-03",
+        "SD-05",
+        "SD-06"
+      ],
+      "implementationAcceptanceDeferred": "独立应用标识和数据目录，运行不依赖原安装目录；完整构建、打包和升级回归通过。",
+      "currentReviewEvidenceId": "ARD-V5-E009"
+    }
+  ],
+  "currentEngineeringCountsSnapshot": {
+    "finiteFeatureDefinitions": 488,
+    "userOperations": 534,
+    "supportOperations": 125,
+    "productScenarioSpecifications": 1650,
+    "owningTaskGroupsWithFiniteDefinitions": 51,
+    "additionalSourceContractTaskGroups": 0,
+    "pendingSettingsPages": 0,
+    "featuresImplemented": 0,
+    "newProductScenarioPasses": 0,
+    "confirmedChatGptExclusions": 0,
+    "modeCounts": {
+      "unknown": 487,
+      "shared": 1
+    },
+    "qualifiedResponsibilityRecords": 92,
+    "coarseWorkflowFacades": 48,
+    "sourceWitnesses": 1758,
+    "sharedWitnessDispositions": 34,
+    "runtimeCapabilityGroups": 15,
+    "storageDomains": 11,
+    "selectedStorageBoundaries": 16,
+    "dependencyRecords": 202,
+    "buildInputOccurrences": 30,
+    "fullRuntimeRoutesQualified": 0,
+    "modelSubmissionsRemaining": 0,
+    "savedLegacyEntriesWithoutFeatureMapping": 721,
+    "remainingCommandGoalAssociations": 20
+  },
+  "batchClosed": true,
+  "fullAnalysisCompleted": false,
+  "independentClientBuildProven": false,
+  "actualRuntimeCoverageComplete": false,
+  "thirdPartyImplementationsPublished": false
+}

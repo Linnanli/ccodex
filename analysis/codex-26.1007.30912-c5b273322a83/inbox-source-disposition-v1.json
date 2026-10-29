@@ -1,0 +1,612 @@
+{
+  "schemaVersion": "inbox-source-disposition/1",
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-25T13:39:40.659868+00:00",
+  "requirements": [
+    "2.1",
+    "2.2"
+  ],
+  "acceptanceGap": "SD-01 / RG-01",
+  "previousGoalTurnClassification": {
+    "classification": "progress",
+    "evidence": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-terminal-mechanism-adoption-v1.json",
+      "bytes": 124760,
+      "sha256": "d522cd357cf2141b07284c1b7e9b947a92f29f45f966192dc001f2bb532e1182"
+    },
+    "result": "39 selected receiver terminals adopted and current readers activated."
+  },
+  "scope": "Two saved inbox write source entries, using existing contracts only. One existing-goal association and one retained internal mechanism.",
+  "assumptions": [
+    "Message type is a stable primitive string across the predicate and switch reads.",
+    "Standard String.prototype.startsWith and Error semantics apply."
+  ],
+  "sourceContract": {
+    "path": "analysis/codex-26.1007.30912-c5b273322a83/inbox-storage-authority-v1.json",
+    "bytes": 182411,
+    "sha256": "c4b59e28d57a0f25c56ce19243488ec5c4f76f2afbcc7440cca632971196c006"
+  },
+  "existingFeatureId": "FSC-0434",
+  "existingOperationIds": [
+    "operation:automations:fsc-0434:mark-read",
+    "operation:automations:fsc-0434:mark-unread"
+  ],
+  "existingOwner": {
+    "taskId": "T50",
+    "moduleProposalId": "AUT-M03",
+    "nativeWriteAdapter": "Previously proposed main/automations inbox adapter and run store; no new canonical responsibility."
+  },
+  "records": [
+    {
+      "decisionId": "IWS-D01",
+      "entryId": "host-top-level-message-case:c47fc2d7d68cf919e5404d76",
+      "label": "inbox-item-set-read-state",
+      "decision": "conditional-existing-user-goal-support",
+      "featureIds": [
+        "FSC-0434"
+      ],
+      "operationIds": [
+        "operation:automations:fsc-0434:mark-read",
+        "operation:automations:fsc-0434:mark-unread"
+      ],
+      "sourceId": "ISA-S040",
+      "sourceIds": [
+        "ISA-S038",
+        "ISA-S039",
+        "ISA-S040",
+        "ISA-S001",
+        "ISA-S021"
+      ],
+      "source": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2080881,
+          "endExclusive": 2081027
+        },
+        "spanHash": "94567527a5c3b00ebd38e260f35921c1a7dc1cfb4b69142ea6264c359815c8ec",
+        "nodeType": "SwitchCase"
+      },
+      "previousDispositionRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v33.json",
+        "bytes": 1605254,
+        "sha256": "36e714a162518ab1351ffa36b1a73e97da9725a5ca8d14b1bef0dc6c78f50e6f",
+        "jsonPointer": "/entries/666"
+      },
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/666"
+      },
+      "sourceContractFactIds": [
+        "ISA-F01",
+        "ISA-F02",
+        "ISA-F03",
+        "ISA-F06"
+      ],
+      "productMode": "unknown",
+      "functionalEntryFullyResolved": false,
+      "actualRuntimeVerified": false,
+      "previousRemainingWork": "Identify concrete senders, services and retained user consumers; establish mode/shared and actual effect separately.",
+      "remainingWork": "Conditional support for existing mark-read/mark-unread operations. Effective mount, bridge delivery, selected manager/native SQL results, identity/mode and durable effects remain unobserved.",
+      "claim": "The selected inbox-item-set-read-state receiver conditionally supports existing FSC-0434 mark-read/mark-unread: its adopted q7r/K7r callbacks send the matching type and the selected manager routes to read_at SQL. Actual transport, selected runtime instance, mode and durability remain unproven."
+    },
+    {
+      "decisionId": "IWS-D02",
+      "entryId": "host-top-level-message-case:4f58a418d5d6153ee746b84b",
+      "label": "inbox-items-create",
+      "decision": "explicit-retained-automation-run-write-mechanism",
+      "featureIds": [],
+      "operationIds": [],
+      "sourceId": "ISA-S042",
+      "sourceIds": [
+        "ISA-S042",
+        "ISA-S001",
+        "ISA-S020",
+        "ISA-S024"
+      ],
+      "source": {
+        "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+        "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+        "byteRange": {
+          "start": 2081130,
+          "endExclusive": 2081617
+        },
+        "spanHash": "1639c085f156f00b39210f4a2ff15ff2f7246396e95baea1a9de3977bf67e446",
+        "nodeType": "SwitchCase"
+      },
+      "previousDispositionRef": {
+        "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v33.json",
+        "bytes": 1605254,
+        "sha256": "36e714a162518ab1351ffa36b1a73e97da9725a5ca8d14b1bef0dc6c78f50e6f",
+        "jsonPointer": "/entries/668"
+      },
+      "sourceEntryRef": {
+        "path": "entry-family-map.json",
+        "bytes": 3217503,
+        "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e",
+        "jsonPointer": "/entries/668"
+      },
+      "sourceContractFactIds": [
+        "ISA-F01",
+        "ISA-F04",
+        "ISA-F05"
+      ],
+      "productMode": "unknown",
+      "functionalEntryFullyResolved": false,
+      "actualRuntimeVerified": false,
+      "previousRemainingWork": "Identify concrete senders, services and retained user consumers; establish mode/shared and actual effect separately.",
+      "remainingWork": "Selected receiver is a retained automation-run metadata/status write mechanism, not evidence of a separate create-inbox user goal. Producer intent, other handlers, product mode, actual SQL/broadcast effects and durability remain separate retained work.",
+      "claim": "The selected inbox-items-create receiver normalizes payload and calls persistAndNotify→X$→da, which only updates existing automation_runs metadata/status. Adopt this source as a retained write mechanism; no independent user-visible create feature, global absence or mode exclusion is inferred."
+    }
+  ],
+  "exactSourceJoins": [
+    {
+      "alias": "I:q7r",
+      "adoptedSourceId": "AIEC-SOURCE-93ff322de0cd2b2f",
+      "writeSourceId": "ISA-S038",
+      "qualification": "Exact Program hash and source range, not equal identifier spelling."
+    },
+    {
+      "alias": "I:K7r",
+      "adoptedSourceId": "AIEC-SOURCE-0390a5e830b9aaf0",
+      "writeSourceId": "ISA-S039",
+      "qualification": "Exact Program hash and source range, not equal identifier spelling."
+    }
+  ],
+  "sourceContractFactIds": [
+    "ISA-F01",
+    "ISA-F02",
+    "ISA-F03",
+    "ISA-F04",
+    "ISA-F05",
+    "ISA-F06"
+  ],
+  "sourceSpansChecked": [
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 512733,
+        "endExclusive": 513913
+      },
+      "spanHash": "c7d70da7d67de9803547faece3f46000ddd068fd05d64b6598cbaf72d0d72b14",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3361693,
+        "endExclusive": 3366660
+      },
+      "spanHash": "d3dc99db6944d9f12885e44e0fda7707d518659a32e359a7ad4fdb6a20b15618",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2069689,
+        "endExclusive": 2117518
+      },
+      "spanHash": "d75e45c64c47251dd2a49827240f5a05b5b7eeac0b0aa712f4f29766797ed904",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3302496,
+        "endExclusive": 3360341
+      },
+      "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1519522,
+        "endExclusive": 1519636
+      },
+      "spanHash": "4916699fc07b46eb3083c1634967c129e3d4b08b86398614302e68206f53a740",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1521500,
+        "endExclusive": 1522303
+      },
+      "spanHash": "3084f8acbe2b0d621158e6d8abb4a3de5e75d4e9f017e8c3b9d9c32e3cfaf972",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 114908,
+        "endExclusive": 115220
+      },
+      "spanHash": "1cde2a41946204716f768f36fe4b1f81b105bb19670eb19f97bbd0c68cc220d5",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1064595,
+        "endExclusive": 1064691
+      },
+      "spanHash": "5a90d3c81b030e825466932ead88f91bf42aa09cb5e2549358a97ceebe7a4242",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4022878,
+        "endExclusive": 4024143
+      },
+      "spanHash": "89996dd1183ecd9505533fb3398a974193d5bb160e97da07a0e593fdac008b20",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4022640,
+        "endExclusive": 4022878
+      },
+      "spanHash": "636dd497c8e32c3e7d4739ab41b234a18d04f50237f139bbc3c424e75f133adb",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2080881,
+        "endExclusive": 2081027
+      },
+      "spanHash": "94567527a5c3b00ebd38e260f35921c1a7dc1cfb4b69142ea6264c359815c8ec",
+      "nodeType": "SwitchCase"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081027,
+        "endExclusive": 2081130
+      },
+      "spanHash": "122e645b52d9170518152c7a6c8a1efb842f06e9aa97f7ba04ab52ae62cc6d3e",
+      "nodeType": "SwitchCase"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081130,
+        "endExclusive": 2081617
+      },
+      "spanHash": "1639c085f156f00b39210f4a2ff15ff2f7246396e95baea1a9de3977bf67e446",
+      "nodeType": "SwitchCase"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 1443885,
+        "endExclusive": 1443944
+      },
+      "spanHash": "82aeb730e3342cb47cc4e7c659d260fb9a6c582dfc8f6960f909603dc28e99b6",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2077834,
+        "endExclusive": 2105402
+      },
+      "spanHash": "58539c2e26bcbdbfbea437d2a38da590850dbd0e7037f81c1f589ddbf0d4962b",
+      "nodeType": "ClassMethod"
+    },
+    {
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2077859,
+        "endExclusive": 2078008
+      },
+      "spanHash": "c68114cea5e8e485f0d8a4cf0632ad8fd3920990433bec17693ee1fe1938a549",
+      "nodeType": "IfStatement"
+    }
+  ],
+  "reusedWriteSources": [
+    {
+      "id": "ISA-S001",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 512733,
+        "endExclusive": 513913
+      },
+      "spanHash": "c7d70da7d67de9803547faece3f46000ddd068fd05d64b6598cbaf72d0d72b14",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "ISA-S003",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3361693,
+        "endExclusive": 3366660
+      },
+      "spanHash": "d3dc99db6944d9f12885e44e0fda7707d518659a32e359a7ad4fdb6a20b15618",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "ISA-S008",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2069689,
+        "endExclusive": 2117518
+      },
+      "spanHash": "d75e45c64c47251dd2a49827240f5a05b5b7eeac0b0aa712f4f29766797ed904",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "ISA-S009",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3302496,
+        "endExclusive": 3360341
+      },
+      "spanHash": "8e1685de74e5a8dd9dcf1532f983b01bd7b63a6df4ab21927c541bf7b7d5cc75",
+      "nodeType": "VariableDeclarator"
+    },
+    {
+      "id": "ISA-S020",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1519522,
+        "endExclusive": 1519636
+      },
+      "spanHash": "4916699fc07b46eb3083c1634967c129e3d4b08b86398614302e68206f53a740",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "ISA-S021",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1521500,
+        "endExclusive": 1522303
+      },
+      "spanHash": "3084f8acbe2b0d621158e6d8abb4a3de5e75d4e9f017e8c3b9d9c32e3cfaf972",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "ISA-S024",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 114908,
+        "endExclusive": 115220
+      },
+      "spanHash": "1cde2a41946204716f768f36fe4b1f81b105bb19670eb19f97bbd0c68cc220d5",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "ISA-S025",
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "byteRange": {
+        "start": 1064595,
+        "endExclusive": 1064691
+      },
+      "spanHash": "5a90d3c81b030e825466932ead88f91bf42aa09cb5e2549358a97ceebe7a4242",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "ISA-S038",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4022878,
+        "endExclusive": 4024143
+      },
+      "spanHash": "89996dd1183ecd9505533fb3398a974193d5bb160e97da07a0e593fdac008b20",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "ISA-S039",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4022640,
+        "endExclusive": 4022878
+      },
+      "spanHash": "636dd497c8e32c3e7d4739ab41b234a18d04f50237f139bbc3c424e75f133adb",
+      "nodeType": "FunctionDeclaration"
+    },
+    {
+      "id": "ISA-S040",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2080881,
+        "endExclusive": 2081027
+      },
+      "spanHash": "94567527a5c3b00ebd38e260f35921c1a7dc1cfb4b69142ea6264c359815c8ec",
+      "nodeType": "SwitchCase"
+    },
+    {
+      "id": "ISA-S041",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081027,
+        "endExclusive": 2081130
+      },
+      "spanHash": "122e645b52d9170518152c7a6c8a1efb842f06e9aa97f7ba04ab52ae62cc6d3e",
+      "nodeType": "SwitchCase"
+    },
+    {
+      "id": "ISA-S042",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2081130,
+        "endExclusive": 2081617
+      },
+      "spanHash": "1639c085f156f00b39210f4a2ff15ff2f7246396e95baea1a9de3977bf67e446",
+      "nodeType": "SwitchCase"
+    }
+  ],
+  "currentLedgers": {
+    "legacy": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v34.json",
+      "bytes": 1607793,
+      "sha256": "8cba41896d6ab2fc61a2b4a7099ac2dcfcf10d086209f3892e0b93eae3479c55"
+    },
+    "backlog": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v18.json",
+      "bytes": 509066,
+      "sha256": "d3a2b2e709497119709f3492dc26b4002d08b9a13c1d310edf1f728c309fdd17"
+    },
+    "csv": {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v34.csv",
+      "bytes": 126069,
+      "sha256": "6cbbb05b8534542d8990c564b6268f5a080713b840b8ac3dcf88cab87de9c9ee"
+    }
+  },
+  "inputPins": [
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/legacy-entry-dispositions-v33.json",
+      "bytes": 1605254,
+      "sha256": "36e714a162518ab1351ffa36b1a73e97da9725a5ca8d14b1bef0dc6c78f50e6f"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/retained-entry-backlog-v17.json",
+      "bytes": 508292,
+      "sha256": "6b434c284023e448889684c073a2d3b99fdc8a1706a3af7a0ee3d129096c864b"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/inbox-storage-authority-v1.json",
+      "bytes": 182411,
+      "sha256": "c4b59e28d57a0f25c56ce19243488ec5c4f76f2afbcc7440cca632971196c006"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/inbox-query-refresh-v1.json",
+      "bytes": 62336,
+      "sha256": "5d1a837477d380bdcc62f6c088b6e86e88c506a09f3c8448916c260e015ee624"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/automations-entry-contracts-v1.json",
+      "bytes": 135245,
+      "sha256": "fc689405ff1eb0c9a1a95040ddf03838112934ae8893473bc7ea6645461414b7"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/automations-ledger-integration-v1.json",
+      "bytes": 86102,
+      "sha256": "0c0d874b4db2bf57014c34051ecf546671d613acada4b39da2cbc3f6bc3292a4"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/host-terminal-disposition-v1.json",
+      "bytes": 53390,
+      "sha256": "d14a73aca8cd18d49719ebcf7df926ef1498099c62f2528115c61677127b21a6"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/entry-family-map.json",
+      "bytes": 3217503,
+      "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v52.json",
+      "bytes": 2853644,
+      "sha256": "b9c4a2b2f75a45c3e4d48f96a594b5b24c8757dbaa0826da7e44f57c633ab647"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-scope-v49-scenarios.json",
+      "bytes": 2694848,
+      "sha256": "7b11da6e403f58ce07697245c75398b7abda13476eef48ad31a92dd80d97ea9a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-mode-dispositions-v6.json",
+      "bytes": 2512,
+      "sha256": "14ad5dbf8905dffe4a9c5b79399ba1177e35f3fd618b62d5e098fdb5f1a86c8a"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/feature-module-ownership-v18.json",
+      "bytes": 8560856,
+      "sha256": "6b000f0c8a5e50596906f1cb40b557b8d5b8e3bf6f30f56151d0be6c7e483600"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-coverage-v43.json",
+      "bytes": 1556177,
+      "sha256": "6a89977a41a466b13fe07479e3a82a35c872328d54fba757d25f623ada10cd5e"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/restoration-current-ordering-v26.json",
+      "bytes": 49708,
+      "sha256": "7c9859baa26645b0731b9ae8537e43ba1e9f267c92224474c2cad9a7c9b7c349"
+    },
+    {
+      "path": "analysis/codex-26.1007.30912-c5b273322a83/implementation-plan-v11.md",
+      "bytes": 21504,
+      "sha256": "84fa4d10ac9a1d57a4fc1e563f935572b1bee9d3ec85e6cde94444b68b3753a7"
+    }
+  ],
+  "counts": {
+    "sourceIdentities": 968,
+    "previousUnassociatedSources": 709,
+    "unassociatedSources": 708,
+    "previousExplicitMechanisms": 180,
+    "explicitMechanisms": 181,
+    "previousPendingSourceDecisions": 529,
+    "pendingSourceDecisions": 527,
+    "sourceDecisionsAdopted": 2,
+    "newConditionalFeatureAssociations": 1,
+    "newExplicitMechanisms": 1,
+    "unchangedLegacyRecords": 966,
+    "commandConsumerGaps": 20,
+    "remainingHostGoalOrMechanismDecisions": 100,
+    "sourceSpans": 16,
+    "sourceFiles": 3,
+    "newSourceParses": 0,
+    "newSourceSemanticDiscoveries": 0,
+    "newFeatureDefinitions": 0,
+    "newOperations": 0,
+    "newModeClassifications": 0,
+    "newProductScenarios": 0,
+    "newRuntimePasses": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newImplementation": 0
+  },
+  "preservedBulkAssociation": {
+    "entryId": "host-top-level-message-case:0b2ba2aa7ecaba2a3b5d8b92",
+    "newAdoption": false,
+    "featureIds": [
+      "FSC-0434"
+    ]
+  },
+  "remainingBoundaries": [
+    "Actual callback mounting, transport and selected host instance.",
+    "Effective identity, native SQL effects and restart durability.",
+    "Global product-mode classification and sender intent for inbox-items-create.",
+    "Other automation/run operations remain separate scope work."
+  ],
+  "stopCondition": "Selected factory/manager/store contract only. No provider recursion, target/client/model/service execution or personal data.",
+  "selectedAccountingBatchClosed": true,
+  "actualRuntimeVerified": false,
+  "fullAnalysisCompleted": false
+}

@@ -1,0 +1,28 @@
+{
+  "reviewedAtUtc": "2026-10-24T19:07:29.753344+00:00",
+  "scope": "Public upstream candidate; not frozen Owl provenance or a native-bridge implementation.",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/chromium/chromium/main/services/audio/public/cpp/audio_system_to_service_adapter.cc",
+      "locator": "ReportGetDeviceDescriptionResult, lines 169-172; GetDeviceDescriptions, lines 225-245",
+      "retrieval": "web tool read succeeded; moving main branch, no immutable commit or saved body hash established",
+      "observation": "A Boolean histogram records normal replies versus default callbacks. Both input and output device-description queries use it, so the name is not microphone-exclusive."
+    },
+    {
+      "url": "https://chromium.googlesource.com/chromium/src/+/bb8f0e1d53b56671df73fe9440b9af88538e8de0/tools/metrics/histograms/metadata/media/histograms.xml",
+      "locator": "Media.AudioSystem.GetDeviceDescription.Result",
+      "retrieval": "web search returned indexed XML fragment; direct open failed; not a complete body retrieval",
+      "observation": "Metadata describes successful service replies versus crash-related default empty results. This corroborates intent, not Owl build identity or collection delta semantics."
+    }
+  ],
+  "localSavedBodyRetrieval": {
+    "path": ".analysis-local/audio-measurement-owner-work/primary-retrieval.json",
+    "bytes": 405,
+    "sha256": "8b1b1adfc846be5906a6e8ac116337ea54beb9bb617b5a682d44469c04dd22fa"
+  },
+  "unresolved": [
+    "Exact Chromium/Owl revision and patches.",
+    "Native JS bridge, configured-set ownership, sampling/reset semantics and multi-reader effects."
+  ],
+  "frozenSourceFactCountAdded": 0
+}

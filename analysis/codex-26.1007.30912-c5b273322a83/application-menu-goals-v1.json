@@ -1,0 +1,3428 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T22:04:54.248919+00:00",
+  "scope": "SQ-01 fixed 12 CZe menu schemas; definitions and necessary callback boundaries only.",
+  "goals": [
+    {
+      "id": "AMG-GOAL-01",
+      "featureId": "FSC-0374",
+      "name": "从应用菜单发起新建项目",
+      "entryIds": [
+        "native-menu-schema:90414ba86791abc840bde4e2"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:90414ba86791abc840bde4e2",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/42"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3406112,
+            "endExclusive": 3406467
+          },
+          "spanHash": "562361430f403f91ce18c08294557a15284e4acfb12c510a0f13ce0d69428851",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/9"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-01",
+      "inputs": [
+        "focused/primary/hotkey window",
+        "shortcut state",
+        "renderer mode, access, host and eligibility atoms"
+      ],
+      "conditions": [
+        "N(newProject) metadata visibility/access and accelerator policy apply",
+        "enabled snapshot: ue != null && getAppShellShortcutState?.(ue.webContents.id)?.newProjectEnabled === true",
+        "renderer enabled = !(a===work && o && l===loading) && (u || (a===work?s:c)); u=a===work && o && l===allowed"
+      ],
+      "behavior": [
+        "M selects non-destroyed focused window or injected ensurePrimaryWindowVisible; hotkey thread is redirected through that injector; send run-command newProject",
+        "selected iMi registration: u -> gji; else LW() nonlocal -> z0r; else L0r",
+        "gji delegates hji then updates selection chatgpt:${gizmo.id}, navigation and close-autofocus flag",
+        "z0r records local flow and emits electron-add-new-workspace-root-option",
+        "L0r called without options defaults device=local; opens V0r; H0r lazy-loads named CreateProjectDialog"
+      ],
+      "failureAndCancellation": [
+        "menu callback has no local recheck of snapshot enabled; no local recovery for ensure/send rejection",
+        "picker/modal/service cancel and failure remain delegated; do not invent a successful project before completion"
+      ],
+      "knownGaps": [
+        "actual run-command transport/registration mount and effective atom values",
+        "hji/modal/picker completion, project registration, selection durability and navigation effects"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "AMG-M01"
+      ],
+      "consumerModules": [
+        "projects/dialog",
+        "projects/folder-picker",
+        "desktop-transport",
+        "project-selection"
+      ],
+      "sourceUnits": [
+        {
+          "id": "AMG-SOURCE-001",
+          "name": "iMi",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4641888,
+            "endExclusive": 4642278
+          },
+          "spanHash": "18edff9ff6c24034b1b039d586fa2fb8cb88848336005ad034d8fb0e1915e5d5",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-001-iMi.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-002",
+          "name": "gji",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4624720,
+            "endExclusive": 4624893
+          },
+          "spanHash": "32e25fb173c8bfd39e8baa2888dfd2815e694b6ad24b5f1c18cedb699b9b1eaf",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-002-gji.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-003",
+          "name": "LW",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4624973,
+            "endExclusive": 4625027
+          },
+          "spanHash": "9a3f31ecc3d215f0db690482dbfdb29a635f30d1bd1671b96f53f3fac8cd6d6e",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-003-LW.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-004",
+          "name": "z0r",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882431,
+            "endExclusive": 3882545
+          },
+          "spanHash": "fff8325824cc00827d47385422697c410c08afa3a87816f2ad6c2fddc8831f60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-004-z0r.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-005",
+          "name": "L0r",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882057,
+            "endExclusive": 3882281
+          },
+          "spanHash": "ed6349cb92a4fb792ad6616ed83230bd5a922893626e21bcfbf5ed65f87168f3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-005-L0r.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-006",
+          "name": "H0r",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882680,
+            "endExclusive": 3883035
+          },
+          "spanHash": "896b3c3adc3519e5494cc0dfeb3903f77f5a8eccd5407add6238859b8172e77c",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-006-H0r.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-010",
+          "name": "Pw",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-010-Pw.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        }
+      ],
+      "deduplication": [
+        "No whole-goal equivalent in existing 373 definitions after name/contract review",
+        "FSC-0105 shares z0r picker subflow only; keep separate goal because this command also selects gji/L0r",
+        "FSC-0048 starts a conversation, FSC-0045 adds a WSL project; neither is this complete dispatch goal",
+        "chatgpt-prefixed project selection remains unknown/shared candidate; reuse project-dialog-mode-v1 positive Codex consumer evidence"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0374:AMG:1",
+          "featureId": "FSC-0374",
+          "operationId": "operation:application-menu:AMG-GOAL-01",
+          "kind": "availability",
+          "preconditions": "access metadata and shortcut state can be controlled",
+          "trigger": "refresh menu and vary newProjectEnabled and renderer loading/access values",
+          "expectedEffect": "preserve both menu snapshot and renderer predicate; hidden/disabled behavior must match source",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0374:AMG:2",
+          "featureId": "FSC-0374",
+          "operationId": "operation:application-menu:AMG-GOAL-01",
+          "kind": "window-selection",
+          "preconditions": "owned normal, hotkey and absent focused windows",
+          "trigger": "invoke newProject through the menu",
+          "expectedEffect": "use M then primary-window fallback for hotkey thread; send exactly newProject only when a window exists",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0374:AMG:3",
+          "featureId": "FSC-0374",
+          "operationId": "operation:application-menu:AMG-GOAL-01",
+          "kind": "work-branch",
+          "preconditions": "u true and mounted iMi",
+          "trigger": "invoke command and complete or cancel hji flow",
+          "expectedEffect": "delegate gji; completion selects returned gizmo ID and navigates; cancellation effects must be learned from delegate",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0374:AMG:4",
+          "featureId": "FSC-0374",
+          "operationId": "operation:application-menu:AMG-GOAL-01",
+          "kind": "shared-picker",
+          "preconditions": "u false and LW nonlocal",
+          "trigger": "invoke command then cancel or complete directory picker",
+          "expectedEffect": "delegate same z0r subflow as FSC-0105; cancellation must not be mistaken for successful createLocal",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0374:AMG:5",
+          "featureId": "FSC-0374",
+          "operationId": "operation:application-menu:AMG-GOAL-01",
+          "kind": "local-dialog",
+          "preconditions": "u false and LW local",
+          "trigger": "invoke command and fail lazy dialog load or cancel/create",
+          "expectedEffect": "L0r local defaults and lazy import options retained; modal/registration outcomes require delegate evidence",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E037",
+        "AMG-E001",
+        "AMG-E002",
+        "AMG-E003",
+        "AMG-E004",
+        "AMG-E005",
+        "AMG-E006",
+        "AMG-E010"
+      ],
+      "decisionEvidenceId": "AMG-E038"
+    },
+    {
+      "id": "AMG-GOAL-02",
+      "featureId": "FSC-0375",
+      "name": "重载应用窗口",
+      "entryIds": [
+        "native-menu-schema:a375ef4d5deddb14ef34e4f5"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:a375ef4d5deddb14ef34e4f5",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/69"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3412021,
+            "endExclusive": 3412204
+          },
+          "spanHash": "d129575064aa0339ccbcddbdd21c090f9160f524837d1ffcbaaf9c59917b61da",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/36"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-02",
+      "inputs": [
+        "focused window or ensurePrimaryWindowVisible"
+      ],
+      "conditions": [
+        "CZe includes nt only when allowWindowReload; PZe passes buildFlavor !== p.t.Prod",
+        "accelerator literal Command+Control+R"
+      ],
+      "behavior": [
+        "await M; if window exists call window.reload()"
+      ],
+      "failureAndCancellation": [
+        "no local reload error handler or state-save guarantee",
+        "absence of window yields no reload; no separate cancel flow in selected callback"
+      ],
+      "knownGaps": [
+        "native reload and unsaved UI/task state behavior; actual injected ensure window"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/windows"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Distinct from FSC-0109 Hooks refresh, FSC-0120 MCP restart and the new browser-page reload entries outside this fixed batch"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0375:AMG:1",
+          "featureId": "FSC-0375",
+          "operationId": "operation:application-menu:AMG-GOAL-02",
+          "kind": "availability",
+          "preconditions": "vary build flavor",
+          "trigger": "refresh menu",
+          "expectedEffect": "exclude nt for Prod; preserve configured accelerator",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0375:AMG:2",
+          "featureId": "FSC-0375",
+          "operationId": "operation:application-menu:AMG-GOAL-02",
+          "kind": "target",
+          "preconditions": "focused valid window or fallback can be controlled",
+          "trigger": "click Reload Window",
+          "expectedEffect": "reload M-selected window once; no focused window uses injected ensure",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0375:AMG:3",
+          "featureId": "FSC-0375",
+          "operationId": "operation:application-menu:AMG-GOAL-02",
+          "kind": "failure",
+          "preconditions": "reload/ensure can reject in owned environment",
+          "trigger": "invoke reload",
+          "expectedEffect": "record actual error/state preservation; source provides no local catch or cancel guarantee",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E039"
+      ],
+      "decisionEvidenceId": "AMG-E040"
+    },
+    {
+      "id": "AMG-GOAL-03",
+      "featureId": "FSC-0376",
+      "name": "检查桌面客户端更新",
+      "entryIds": [
+        "native-menu-schema:5fa0de7e26d1020fb3fa86d8"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:5fa0de7e26d1020fb3fa86d8",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/86"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3415734,
+            "endExclusive": 3416285
+          },
+          "spanHash": "bdb1b52f5875d219b00121ca6bbe0ee4a18730db8bf2c78e5004e474d0993442",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/53"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-03",
+      "inputs": [
+        "injected appUpdates",
+        "enableUpdater, isMacOS and process.platform"
+      ],
+      "conditions": [
+        "mac app submenu iff enableUpdater; nonmac Help iff enableUpdater && platform !== linux",
+        "item enabled literal true"
+      ],
+      "behavior": [
+        "log then call appUpdates.checkForUpdates().then(...)",
+        "after resolution: hasUpdater true -> no local unavailable dialog; false -> reason ?? unknown and Updates Unavailable dialog",
+        "reuse managed-update-policy-v1 for selected Kn policy/check boundary; download/install/native updater remain delegated"
+      ],
+      "failureAndCancellation": [
+        "click neither returns nor awaits the Promise chain; no local catch",
+        "check completion does not prove update found, downloaded or installed"
+      ],
+      "knownGaps": [
+        "actual injected updater eligibility/backend/native progress; rejected Promise effects and policy environment"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "main/updates/managed-update-policy",
+        "runtime-adapter/updater"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Distinct from FSC-0015 release-channel preference and FSC-0129 plugin published-version update; native updater source contracts are reused"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0376:AMG:1",
+          "featureId": "FSC-0376",
+          "operationId": "operation:application-menu:AMG-GOAL-03",
+          "kind": "visibility",
+          "preconditions": "vary mac/nonmac/linux and enableUpdater",
+          "trigger": "refresh menu",
+          "expectedEffect": "show only under the exact platform/enable conditions",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0376:AMG:2",
+          "featureId": "FSC-0376",
+          "operationId": "operation:application-menu:AMG-GOAL-03",
+          "kind": "available",
+          "preconditions": "check resolves and hasUpdater true",
+          "trigger": "click Check for Updates",
+          "expectedEffect": "delegate check; do not show unavailable dialog",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0376:AMG:3",
+          "featureId": "FSC-0376",
+          "operationId": "operation:application-menu:AMG-GOAL-03",
+          "kind": "unavailable",
+          "preconditions": "check resolves and hasUpdater false",
+          "trigger": "click Check for Updates",
+          "expectedEffect": "display reason or unknown fallback in Updates Unavailable dialog",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0376:AMG:4",
+          "featureId": "FSC-0376",
+          "operationId": "operation:application-menu:AMG-GOAL-03",
+          "kind": "rejection",
+          "preconditions": "check rejects in owned controlled provider",
+          "trigger": "click once",
+          "expectedEffect": "observe actual outer error handling; selected callback has no catch and does not await return",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E041"
+      ],
+      "decisionEvidenceId": "AMG-E042"
+    },
+    {
+      "id": "AMG-GOAL-04",
+      "featureId": "FSC-0377",
+      "name": "切换当前窗口全屏",
+      "entryIds": [
+        "native-menu-schema:8226d9f9d01bac508f18bfe1",
+        "native-menu-schema:a85dc8a278fd848823cba06d"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:8226d9f9d01bac508f18bfe1",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/110"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3419476,
+            "endExclusive": 3419586
+          },
+          "spanHash": "4bb47141826c3d2f766ba8e924ce21229581ae5ac93661c334f4b394b0a55f63",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/77"
+          }
+        },
+        {
+          "entryId": "native-menu-schema:a85dc8a278fd848823cba06d",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/111"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3419615,
+            "endExclusive": 3419755
+          },
+          "spanHash": "33c038699b6c98940ea8374133e7e2f424b29e5b136061bb748a296ad20876be",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/78"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-04",
+      "inputs": [
+        "focused BrowserWindow and current isFullScreen()"
+      ],
+      "conditions": [
+        "mac hidden Command+Control+F with acceleratorWorksWhenHidden=true; nonmac visible F11"
+      ],
+      "behavior": [
+        "both schemas bind same CZe local Et; valid focused window -> setFullScreen(!isFullScreen())"
+      ],
+      "failureAndCancellation": [
+        "no ensurePrimaryWindowVisible fallback; absent/destroyed window does nothing",
+        "no local error handler or persistence guarantee"
+      ],
+      "knownGaps": [
+        "actual native fullscreen transitions, focus/race and restoration"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/windows"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Two platform schemas are variants of one goal, one normalized user operation; no equivalent existing definition"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0377:AMG:1",
+          "featureId": "FSC-0377",
+          "operationId": "operation:application-menu:AMG-GOAL-04",
+          "kind": "platform-variants",
+          "preconditions": "mac and nonmac owned menu fixtures",
+          "trigger": "use respective fullscreen entry",
+          "expectedEffect": "same goal/Et callback; preserve visibility and accelerator differences",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0377:AMG:2",
+          "featureId": "FSC-0377",
+          "operationId": "operation:application-menu:AMG-GOAL-04",
+          "kind": "toggle",
+          "preconditions": "valid focused window initially fullscreen or windowed",
+          "trigger": "invoke twice",
+          "expectedEffect": "set inverse of each current native state",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0377:AMG:3",
+          "featureId": "FSC-0377",
+          "operationId": "operation:application-menu:AMG-GOAL-04",
+          "kind": "no-target",
+          "preconditions": "no focused window or destroyed window",
+          "trigger": "invoke",
+          "expectedEffect": "do nothing; never create a primary window as fallback",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E043",
+        "AMG-E044"
+      ],
+      "decisionEvidenceId": "AMG-E045"
+    },
+    {
+      "id": "AMG-GOAL-05",
+      "featureId": "FSC-0378",
+      "name": "打开 Codex 应用文档",
+      "entryIds": [
+        "native-menu-schema:e89f777509d1b7fd712224a6"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:e89f777509d1b7fd712224a6",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/113"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3420047,
+            "endExclusive": 3420222
+          },
+          "spanHash": "bb4bc4e37a874c46a94da5a128cb91e1fb95cf4124da1599f0a6f82f7f636050",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/80"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-05",
+      "inputs": [
+        "fixed URL: https://developers.openai.com/codex/app"
+      ],
+      "conditions": [
+        "Help menu schema; no local account/platform guard in selected item"
+      ],
+      "behavior": [
+        "call shell.openExternal(https://developers.openai.com/codex/app); selected callback does not return or await it"
+      ],
+      "failureAndCancellation": [
+        "no local success/error UI; external browser/page interactions and cancellation outside client callback"
+      ],
+      "knownGaps": [
+        "OS external URL handler and remote contents; remote pages were not fetched or tested"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/external-links"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Distinct information purpose documentation; shared openExternal executor is support, not four copied implementations",
+        "FSC-0027 dependency-license view and FSC-0335 contact-specific help are different targets"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0378:AMG:1",
+          "featureId": "FSC-0378",
+          "operationId": "operation:application-menu:AMG-GOAL-05",
+          "kind": "dispatch",
+          "preconditions": "owned external-link adapter records calls",
+          "trigger": "activate documentation",
+          "expectedEffect": "open exact pinned URL once",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0378:AMG:2",
+          "featureId": "FSC-0378",
+          "operationId": "operation:application-menu:AMG-GOAL-05",
+          "kind": "failure",
+          "preconditions": "owned external-link adapter rejects",
+          "trigger": "activate documentation",
+          "expectedEffect": "record outer behavior; no local catch, completion or cancellation semantics are established",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E046"
+      ],
+      "decisionEvidenceId": "AMG-E047"
+    },
+    {
+      "id": "AMG-GOAL-06",
+      "featureId": "FSC-0379",
+      "name": "查看 Codex 更新说明",
+      "entryIds": [
+        "native-menu-schema:26e18f82ec1c0248092b51c3"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:26e18f82ec1c0248092b51c3",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/115"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3420306,
+            "endExclusive": 3420475
+          },
+          "spanHash": "f1898480516efaceec23f823b0a20af7159f7ac041a17aacdd987884ceec9ba6",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/82"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-06",
+      "inputs": [
+        "fixed URL: https://developers.openai.com/codex/changelog"
+      ],
+      "conditions": [
+        "Help menu schema; no local account/platform guard in selected item"
+      ],
+      "behavior": [
+        "call shell.openExternal(https://developers.openai.com/codex/changelog); selected callback does not return or await it"
+      ],
+      "failureAndCancellation": [
+        "no local success/error UI; external browser/page interactions and cancellation outside client callback"
+      ],
+      "knownGaps": [
+        "OS external URL handler and remote contents; remote pages were not fetched or tested"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/external-links"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Distinct information purpose changelog; shared openExternal executor is support, not four copied implementations",
+        "FSC-0027 dependency-license view and FSC-0335 contact-specific help are different targets"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0379:AMG:1",
+          "featureId": "FSC-0379",
+          "operationId": "operation:application-menu:AMG-GOAL-06",
+          "kind": "dispatch",
+          "preconditions": "owned external-link adapter records calls",
+          "trigger": "activate changelog",
+          "expectedEffect": "open exact pinned URL once",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0379:AMG:2",
+          "featureId": "FSC-0379",
+          "operationId": "operation:application-menu:AMG-GOAL-06",
+          "kind": "failure",
+          "preconditions": "owned external-link adapter rejects",
+          "trigger": "activate changelog",
+          "expectedEffect": "record outer behavior; no local catch, completion or cancellation semantics are established",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E048"
+      ],
+      "decisionEvidenceId": "AMG-E049"
+    },
+    {
+      "id": "AMG-GOAL-07",
+      "featureId": "FSC-0380",
+      "name": "打开 Codex 故障排查指南",
+      "entryIds": [
+        "native-menu-schema:b944f9e1ac624c5a50db007f"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:b944f9e1ac624c5a50db007f",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/116"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3420495,
+            "endExclusive": 3420696
+          },
+          "spanHash": "fd7b396f70756f21fb11c7a9770c6325da463c8c2db7186af01920b3a879e31d",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/83"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-07",
+      "inputs": [
+        "fixed URL: https://developers.openai.com/codex/app/troubleshooting"
+      ],
+      "conditions": [
+        "Help menu schema; no local account/platform guard in selected item"
+      ],
+      "behavior": [
+        "call shell.openExternal(https://developers.openai.com/codex/app/troubleshooting); selected callback does not return or await it"
+      ],
+      "failureAndCancellation": [
+        "no local success/error UI; external browser/page interactions and cancellation outside client callback"
+      ],
+      "knownGaps": [
+        "OS external URL handler and remote contents; remote pages were not fetched or tested"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/external-links"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Distinct information purpose troubleshooting; shared openExternal executor is support, not four copied implementations",
+        "FSC-0027 dependency-license view and FSC-0335 contact-specific help are different targets"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0380:AMG:1",
+          "featureId": "FSC-0380",
+          "operationId": "operation:application-menu:AMG-GOAL-07",
+          "kind": "dispatch",
+          "preconditions": "owned external-link adapter records calls",
+          "trigger": "activate troubleshooting",
+          "expectedEffect": "open exact pinned URL once",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0380:AMG:2",
+          "featureId": "FSC-0380",
+          "operationId": "operation:application-menu:AMG-GOAL-07",
+          "kind": "failure",
+          "preconditions": "owned external-link adapter rejects",
+          "trigger": "activate troubleshooting",
+          "expectedEffect": "record outer behavior; no local catch, completion or cancellation semantics are established",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E050"
+      ],
+      "decisionEvidenceId": "AMG-E051"
+    },
+    {
+      "id": "AMG-GOAL-08",
+      "featureId": "FSC-0381",
+      "name": "查看服务运行状态",
+      "entryIds": [
+        "native-menu-schema:9e1912b42884d5d0e3f2a956"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:9e1912b42884d5d0e3f2a956",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/117"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3420697,
+            "endExclusive": 3420863
+          },
+          "spanHash": "3dd4a89822f3a758ac5dbea2ff6bcbab0e9fddd6d515d8e6b65561a31a5b0886",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/84"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-08",
+      "inputs": [
+        "fixed URL: https://status.openai.com"
+      ],
+      "conditions": [
+        "Help menu schema; no local account/platform guard in selected item"
+      ],
+      "behavior": [
+        "call shell.openExternal(https://status.openai.com); selected callback does not return or await it"
+      ],
+      "failureAndCancellation": [
+        "no local success/error UI; external browser/page interactions and cancellation outside client callback"
+      ],
+      "knownGaps": [
+        "OS external URL handler and remote contents; remote pages were not fetched or tested"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/external-links"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Distinct information purpose service-status; shared openExternal executor is support, not four copied implementations",
+        "FSC-0027 dependency-license view and FSC-0335 contact-specific help are different targets"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0381:AMG:1",
+          "featureId": "FSC-0381",
+          "operationId": "operation:application-menu:AMG-GOAL-08",
+          "kind": "dispatch",
+          "preconditions": "owned external-link adapter records calls",
+          "trigger": "activate service-status",
+          "expectedEffect": "open exact pinned URL once",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0381:AMG:2",
+          "featureId": "FSC-0381",
+          "operationId": "operation:application-menu:AMG-GOAL-08",
+          "kind": "failure",
+          "preconditions": "owned external-link adapter rejects",
+          "trigger": "activate service-status",
+          "expectedEffect": "record outer behavior; no local catch, completion or cancellation semantics are established",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E052"
+      ],
+      "decisionEvidenceId": "AMG-E053"
+    },
+    {
+      "id": "AMG-GOAL-09",
+      "featureId": "FSC-0382",
+      "name": "打开并提交应用反馈",
+      "entryIds": [
+        "native-menu-schema:4a46e207adc3292eca3d2858"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:4a46e207adc3292eca3d2858",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/118"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3420864,
+            "endExclusive": 3420972
+          },
+          "spanHash": "eb3e7bbd947c6f30a5904c86b328d75bef28d85ade5c93bdae361e1646f09b3a",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/85"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-09",
+      "inputs": [
+        "selected window; route/host/cwd/thread IDs",
+        "feedbackDetails/context event",
+        "includeDesktopLogArchive/native diagnostics props",
+        "user form fields"
+      ],
+      "conditions": [
+        "menu ve -> _e(feedback); _e uses M and run-command feedback",
+        "d7s registers Pw(feedback) and /feedback U5s alias, requiresEmptyComposer=false",
+        "_7s composes d7s.onOpen=D; b7s guard plus generation x.current check before opening",
+        "r = event?.feedbackTarget !== app && false is always false in selected artifact; do not invent active alternate target branch"
+      ],
+      "behavior": [
+        "cache appInfo.get().catch(v7s); optional E5s document preparation only if both temporary-file create/release APIs exist",
+        "open w7s with additionalOptionsEnabled=false and exact browser-tab/memory/log/conversation availability fields",
+        "onSubmit prepares app-info/startFeedbackUpload/submitCodexFeedback concurrently; b7s recheck; durable host -> i5s; no chat ID -> submitCodexFeedback; else z8s",
+        "startFeedbackUpload gets deferred submit closure; includeLogs controls native diagnostics via includeLogs && prop; only includeDocument passes captureDocuments"
+      ],
+      "failureAndCancellation": [
+        "preparation failure logs and danger toast then returns false",
+        "guard failure or changed generation suppresses opening; modal cancel and upload/service failures are delegated",
+        "m7s is separate failure fallback component; selection does not prove when it is mounted"
+      ],
+      "knownGaps": [
+        "actual command delivery/mount, b7s guard/provider, w7s form, E5s capture/release lifetime and upload completion",
+        "mode closure of chat-ID branch and native diagnostics; do not exclude whole feedback feature"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "AMG-M02"
+      ],
+      "consumerModules": [
+        "runtime-adapter/diagnostics",
+        "feedback/upload",
+        "backend/feedback"
+      ],
+      "sourceUnits": [
+        {
+          "id": "AMG-SOURCE-007",
+          "name": "d7s",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9469730,
+            "endExclusive": 9470639
+          },
+          "spanHash": "632b4ecc63ed05177cef72270962d48e5975be812d1cf8aac6db932aa7f93c53",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-007-d7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-008",
+          "name": "_7s",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9471841,
+            "endExclusive": 9475176
+          },
+          "spanHash": "9bea48be92ef2350ccbf5c87aed57a2efa808ac77e94ff8e2e01e5ca18593090",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-008-_7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-011",
+          "name": "call-d7s",
+          "role": "selected use of a reviewed function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9475129,
+            "endExclusive": 9475156
+          },
+          "spanHash": "23d3f3fb25e7c84a6c654075993451f3483ca8543e173c2d325dd1c45f93b7ee",
+          "nodeType": "CallExpression",
+          "savedPath": "source/AMG-SOURCE-011-call-d7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-009",
+          "name": "m7s",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9470716,
+            "endExclusive": 9471752
+          },
+          "spanHash": "2f2c5d5fe87ab7599eff0235d98e9bce1c58fb632769fca383b98a8381b520d6",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-009-m7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        }
+      ],
+      "deduplication": [
+        "No existing feedback goal; native menu, Pw and /feedback are alternate entries to one goal",
+        "Renderer app-info/document preparation and backend submit are parts of this goal; no model task is required to define source contract"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0382:AMG:1",
+          "featureId": "FSC-0382",
+          "operationId": "operation:application-menu:AMG-GOAL-09",
+          "kind": "opening",
+          "preconditions": "owned route/host guard and generation can be controlled",
+          "trigger": "invoke menu, command and slash alias",
+          "expectedEffect": "same onOpen flow; failed guard or changed generation suppresses modal",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0382:AMG:2",
+          "featureId": "FSC-0382",
+          "operationId": "operation:application-menu:AMG-GOAL-09",
+          "kind": "cancel-options",
+          "preconditions": "modal visible with optional APIs present/absent",
+          "trigger": "inspect options then cancel",
+          "expectedEffect": "preserve available fields and app-target constant; no onSubmit upload should be inferred from opening",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0382:AMG:3",
+          "featureId": "FSC-0382",
+          "operationId": "operation:application-menu:AMG-GOAL-09",
+          "kind": "prepare-failure",
+          "preconditions": "one preparation Promise rejects",
+          "trigger": "submit synthetic feedback",
+          "expectedEffect": "danger toast and false return; no delegated upload preparation success claimed",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0382:AMG:4",
+          "featureId": "FSC-0382",
+          "operationId": "operation:application-menu:AMG-GOAL-09",
+          "kind": "submit-routing",
+          "preconditions": "owned durable/local/chat-ID fixture providers",
+          "trigger": "submit once with log/document choices",
+          "expectedEffect": "select exact provider and flags; actual upload/service success requires separate observation",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E054",
+        "AMG-E007",
+        "AMG-E008",
+        "AMG-E009",
+        "AMG-E011"
+      ],
+      "decisionEvidenceId": "AMG-E055"
+    },
+    {
+      "id": "AMG-GOAL-10",
+      "featureId": "FSC-0383",
+      "name": "打开桌面任务管理器",
+      "entryIds": [
+        "native-menu-schema:fad37efc3977c5dfc4be773c"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:fad37efc3977c5dfc4be773c",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/119"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3420992,
+            "endExclusive": 3421128
+          },
+          "spanHash": "734c02690a349b73c9854e0d8b66f643262546f950f97d397df49744d0dac1e0",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/86"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-10",
+      "inputs": [],
+      "conditions": [
+        "Help menu item; no local guard in callback; reuse runtime-native-consumers-v1 bootstrap capability check"
+      ],
+      "behavior": [
+        "call app.showTaskManager() with no arguments"
+      ],
+      "failureAndCancellation": [
+        "no local catch or user-defined cancel flow; native task list, controls and postconditions not known from selected JS"
+      ],
+      "knownGaps": [
+        "independent runtime implementation and native Task Manager contents/actions"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu"
+      ],
+      "consumerModules": [
+        "runtime-adapter/task-manager"
+      ],
+      "sourceUnits": [],
+      "deduplication": [
+        "Distinct from FSC-0305 persistent-storage measurement; reuse earlier native entry evidence and do not rerun native probe"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0383:AMG:1",
+          "featureId": "FSC-0383",
+          "operationId": "operation:application-menu:AMG-GOAL-10",
+          "kind": "entry",
+          "preconditions": "owned runtime with capability available",
+          "trigger": "click Task Manager",
+          "expectedEffect": "call zero-argument showTaskManager once",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0383:AMG:2",
+          "featureId": "FSC-0383",
+          "operationId": "operation:application-menu:AMG-GOAL-10",
+          "kind": "native-boundary",
+          "preconditions": "controlled qualified runtime and UI observation",
+          "trigger": "open and dismiss Task Manager",
+          "expectedEffect": "record real native contents/actions; source entry alone does not restore this window",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E056"
+      ],
+      "decisionEvidenceId": "AMG-E057"
+    },
+    {
+      "id": "AMG-GOAL-11",
+      "featureId": "FSC-0384",
+      "name": "重启并记录启动性能",
+      "entryIds": [
+        "native-menu-schema:769b042209668b23a7de78a7"
+      ],
+      "menuEntries": [
+        {
+          "entryId": "native-menu-schema:769b042209668b23a7de78a7",
+          "roleRef": {
+            "path": "native-menu-roles-v1.json",
+            "bytes": 866774,
+            "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+            "jsonPointer": "/records/120"
+          },
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 3421179,
+            "endExclusive": 3421410
+          },
+          "spanHash": "ad738f12979486825100510a978f376285fdd325ccc821260c607f449b8afcf5",
+          "contractRef": {
+            "path": "menu-command-contracts.json",
+            "bytes": 10630684,
+            "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf",
+            "jsonPointer": "/nativeMenuItems/87"
+          }
+        }
+      ],
+      "operationId": "operation:application-menu:AMG-GOAL-11",
+      "inputs": [
+        "build flavor",
+        "bootstrap VO and main manual-trace state oY",
+        "confirmation response",
+        "runtime userData root"
+      ],
+      "conditions": [
+        "included only for supportsStartupPerformanceRecording: Dev/Nightly/InternalAlpha enum identities",
+        "enabled and click recheck !g.y() && mY()===idle; no pending-confirmation latch in selected UO",
+        "g.b -> bootstrap UO; g.y -> HO returning VO"
+      ],
+      "behavior": [
+        "UO confirmation defaults and cancelId are 1; response 0 writes empty record-next-startup mode 0600 then zO",
+        "zO: relaunch provider FO result truthy suppresses app.relaunch; app.quit always follows; provider internals unselected",
+        "eligible startup WO first unlinks marker; on success sets VO true; waits Promise.race(GO(), 1000ms unref delay)",
+        "GO mkdir startup-performance recursive mode 0700; records selected categories into startup-${Date.now()}.pftrace using record-until-full, useJsonOutput=false",
+        "after start resolves, 120000ms unref timer stops tracing, reveals file, then KO resets VO/menu flags; 1000ms startup wait is not recording duration"
+      ],
+      "failureAndCancellation": [
+        "confirmation rejection lies outside UO write/relaunch try; write/relaunch synchronous errors logged",
+        "ENOENT marker or unlink failure returns before VO; consumed marker is not recreated on recording failure",
+        "GO start error and stop-chain finally call KO; selected path has no upload call",
+        "menu g.b is not awaited/returned; no source claim of confirmation serialization or guaranteed shutdown durability"
+      ],
+      "knownGaps": [
+        "actual userData isolation/permissions, native trace behavior, relaunch provider and next-process startup ordering",
+        "real quit/restart and trace saved/revealed; no application was restarted here"
+      ],
+      "maintenanceUnitIds": [
+        "MENU-UNIT-application-menu",
+        "AMG-M03"
+      ],
+      "consumerModules": [
+        "runtime-adapter/tracing",
+        "runtime-adapter/application",
+        "storage/diagnostics"
+      ],
+      "sourceUnits": [
+        {
+          "id": "AMG-SOURCE-012",
+          "name": "mY",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2041340,
+            "endExclusive": 2041364
+          },
+          "spanHash": "8a6b5b6b7419b17fd37506b000ec0db513e7f5d9fef11d81b74b8cba645c6125",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-012-mY.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-013",
+          "name": "dY",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2040815,
+            "endExclusive": 2041030
+          },
+          "spanHash": "5371ae2e462dc5ef2bf5798e3fd5414e41ca5947243e5cc08f8764447a66ea29",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-013-dY.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-014",
+          "name": "oY",
+          "role": "selected state or policy declaration",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2037232,
+            "endExclusive": 2037241
+          },
+          "spanHash": "b964943991226c4ab2f69070b3110ed1fc229ee74f42259392d75993c802ae0c",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-014-oY.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-018",
+          "name": "HO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439807,
+            "endExclusive": 439831
+          },
+          "spanHash": "4815adca983dbfad3d5e72880ead4bb10177c5f29c1ae67bfb182e61d47f61f2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-018-HO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-019",
+          "name": "UO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439831,
+            "endExclusive": 440791
+          },
+          "spanHash": "0fe6ba2b23298112028dfc3adea7e52b73432acd96ee5554242e8d98af382f9f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-019-UO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-020",
+          "name": "WO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 440791,
+            "endExclusive": 441180
+          },
+          "spanHash": "7fbc4b453aa9a55b0f8095ca8296211e0f5f1f09c603d6177ab1365124759e64",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-020-WO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-021",
+          "name": "GO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 441180,
+            "endExclusive": 441905
+          },
+          "spanHash": "f13be523cc7638a5946736e69f2c38cfac49a03bb53813ea9898587d360d6ab8",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-021-GO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-022",
+          "name": "KO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 441905,
+            "endExclusive": 442105
+          },
+          "spanHash": "c258e3f2d2927ddbfccb0064e18e70b3b96afb36b8139436c55f9581d0ce6a60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-022-KO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-023",
+          "name": "zO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439576,
+            "endExclusive": 439757
+          },
+          "spanHash": "c7fa71ad55efd9b1c705dc1ef9e31d775c5134f0b8594b563d80b96fe68671c1",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-023-zO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-024",
+          "name": "VO",
+          "role": "selected state or policy declaration",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439801,
+            "endExclusive": 439806
+          },
+          "spanHash": "87d24131920f978a9ea9dc87d6b34c752bb713b5ea4d83fa66d23b335f2fc351",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-024-VO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-030",
+          "name": "export-b",
+          "role": "CommonJS export binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 460842,
+            "endExclusive": 460854
+          },
+          "spanHash": "6f65637436a6157ca00d7de3b3739d937c098a0db716e9a2c319123300e0a710",
+          "nodeType": "AssignmentExpression",
+          "savedPath": "source/AMG-SOURCE-030-export-b.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-031",
+          "name": "export-y",
+          "role": "CommonJS export binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 461436,
+            "endExclusive": 461448
+          },
+          "spanHash": "87f370d51cd57ddf76af9b0563b757f6b7dd9dd9b8a5349f3251eef36ffc65bc",
+          "nodeType": "AssignmentExpression",
+          "savedPath": "source/AMG-SOURCE-031-export-y.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-032",
+          "name": "export-x",
+          "role": "CommonJS export binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 461409,
+            "endExclusive": 461421
+          },
+          "spanHash": "772018bf6f9e4e7c77aa05d5e37d830f1b323a8c487f935907de53995a3db390",
+          "nodeType": "AssignmentExpression",
+          "savedPath": "source/AMG-SOURCE-032-export-x.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-033",
+          "name": "call-WO",
+          "role": "selected use of a reviewed function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 458373,
+            "endExclusive": 458378
+          },
+          "spanHash": "7fca1dd73b7d221c4acb09bd8feec1c8278a74545e2ce088bc81b7fa9540f083",
+          "nodeType": "CallExpression",
+          "savedPath": "source/AMG-SOURCE-033-call-WO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-036",
+          "name": "export-t",
+          "role": "CommonJS getter export",
+          "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+          "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+          "byteRange": {
+            "start": 3727,
+            "endExclusive": 3803
+          },
+          "spanHash": "b1b9c6d57a820c41d7d302b3ecc014d059e96feff1a6ee70e1eacd33033d8e3e",
+          "nodeType": "ExpressionStatement",
+          "savedPath": "source/AMG-SOURCE-036-export-t.txt",
+          "qualification": "Exact complete export statement from frozen build-flavor Program; selected syntax is separately parsed. Returns the selected Program declaration m."
+        }
+      ],
+      "deduplication": [
+        "Distinct from FSC-0261 privileged Chrome debug preference, regular live trace toggle and Reload Window",
+        "No whole-goal equivalent in existing 373 definitions; reuse selected updater/debug contracts without folding this new marker/restart workflow into them"
+      ],
+      "mode": "unknown",
+      "modeEvidence": "Selected source does not establish complete caller/mode/shared closure; labels and chatgpt IDs are not exclusion evidence.",
+      "retentionStatus": "preserve-pending-mode-and-dependency-closure",
+      "scenarios": [
+        {
+          "scenarioId": "FSC-0384:AMG:1",
+          "featureId": "FSC-0384",
+          "operationId": "operation:application-menu:AMG-GOAL-11",
+          "kind": "eligibility",
+          "preconditions": "vary build enum and VO/oY",
+          "trigger": "refresh or invoke menu",
+          "expectedEffect": "restrict inclusion and busy state; click rechecks VO/oY",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0384:AMG:2",
+          "featureId": "FSC-0384",
+          "operationId": "operation:application-menu:AMG-GOAL-11",
+          "kind": "cancel",
+          "preconditions": "confirmation response 1 or dismiss",
+          "trigger": "request recording then cancel",
+          "expectedEffect": "no marker write or relaunch from selected UO branch",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0384:AMG:3",
+          "featureId": "FSC-0384",
+          "operationId": "operation:application-menu:AMG-GOAL-11",
+          "kind": "arm",
+          "preconditions": "confirmation response 0, owned userData and relaunch provider",
+          "trigger": "confirm recording",
+          "expectedEffect": "write empty marker mode 0600 before relaunch provider; app.quit after conditional app.relaunch",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0384:AMG:4",
+          "featureId": "FSC-0384",
+          "operationId": "operation:application-menu:AMG-GOAL-11",
+          "kind": "arm-failure",
+          "preconditions": "owned dialog/write/relaunch failures",
+          "trigger": "confirm once",
+          "expectedEffect": "dialog rejection is outside local try; arming failure logs; no invented rollback or serialization",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0384:AMG:5",
+          "featureId": "FSC-0384",
+          "operationId": "operation:application-menu:AMG-GOAL-11",
+          "kind": "consume",
+          "preconditions": "eligible next startup with missing/failed/present marker",
+          "trigger": "call startup consume path",
+          "expectedEffect": "ENOENT/error returns; successful unlink precedes VO=true and trace start; no marker retry after failure",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0384:AMG:6",
+          "featureId": "FSC-0384",
+          "operationId": "operation:application-menu:AMG-GOAL-11",
+          "kind": "record",
+          "preconditions": "native tracing succeeds in qualified owned runtime",
+          "trigger": "consume marker and observe timers",
+          "expectedEffect": "mkdir 0700; retain categories/output options; 1s race bounds wait while 120s timer governs stop; reveal saved path",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        },
+        {
+          "scenarioId": "FSC-0384:AMG:7",
+          "featureId": "FSC-0384",
+          "operationId": "operation:application-menu:AMG-GOAL-11",
+          "kind": "cleanup",
+          "preconditions": "native start or stop fails",
+          "trigger": "run controlled trace path",
+          "expectedEffect": "GO start catch or stop finally resets VO/menu through KO; consumed marker stays consumed",
+          "executionStatus": "not-executed",
+          "runtimeObservationRefs": [],
+          "sourceQualification": "static expectation; real native/service/UI result unobserved",
+          "authorization": "Specification only; no menu action, client, model or service call authorized or executed here."
+        }
+      ],
+      "completeChainProven": false,
+      "actualRuntimeVerified": false,
+      "evidenceIds": [
+        "AMG-E058",
+        "AMG-E012",
+        "AMG-E013",
+        "AMG-E014",
+        "AMG-E018",
+        "AMG-E019",
+        "AMG-E020",
+        "AMG-E021",
+        "AMG-E022",
+        "AMG-E023",
+        "AMG-E024",
+        "AMG-E030",
+        "AMG-E031",
+        "AMG-E032",
+        "AMG-E033",
+        "AMG-E036"
+      ],
+      "decisionEvidenceId": "AMG-E059"
+    }
+  ],
+  "additionalMaintenanceProposals": [
+    {
+      "id": "AMG-M01",
+      "responsibility": "新建项目命令的条件、宿主分流与项目流程委托",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "AMG-SOURCE-001",
+          "name": "iMi",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4641888,
+            "endExclusive": 4642278
+          },
+          "spanHash": "18edff9ff6c24034b1b039d586fa2fb8cb88848336005ad034d8fb0e1915e5d5",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-001-iMi.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-002",
+          "name": "gji",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4624720,
+            "endExclusive": 4624893
+          },
+          "spanHash": "32e25fb173c8bfd39e8baa2888dfd2815e694b6ad24b5f1c18cedb699b9b1eaf",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-002-gji.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-003",
+          "name": "LW",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 4624973,
+            "endExclusive": 4625027
+          },
+          "spanHash": "9a3f31ecc3d215f0db690482dbfdb29a635f30d1bd1671b96f53f3fac8cd6d6e",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-003-LW.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-004",
+          "name": "z0r",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882431,
+            "endExclusive": 3882545
+          },
+          "spanHash": "fff8325824cc00827d47385422697c410c08afa3a87816f2ad6c2fddc8831f60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-004-z0r.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-005",
+          "name": "L0r",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882057,
+            "endExclusive": 3882281
+          },
+          "spanHash": "ed6349cb92a4fb792ad6616ed83230bd5a922893626e21bcfbf5ed65f87168f3",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-005-L0r.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-006",
+          "name": "H0r",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 3882680,
+            "endExclusive": 3883035
+          },
+          "spanHash": "896b3c3adc3519e5494cc0dfeb3903f77f5a8eccd5407add6238859b8172e77c",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-006-H0r.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-010",
+          "name": "Pw",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 1501107,
+            "endExclusive": 1501954
+          },
+          "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-010-Pw.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        }
+      ],
+      "imports": [
+        "scope/navigation/atom/eligibility providers; actual values unknown",
+        "hji, tI, bf and Ho dispatch; project creation/picker/modal remain delegated",
+        "lazy CreateProjectDialog export in create-project-dialog-411efc88945b.js"
+      ],
+      "exports": [
+        "Pw(newProject) registration; selected mount and message delivery unobserved"
+      ],
+      "sharedState": [
+        "mode/access/host atoms; compiler memo slots; imported V0r dialog binding",
+        "gji completion flag and project selection providers"
+      ],
+      "sideEffects": [
+        "register command",
+        "dispatch add-root message or open project modal",
+        "completion selection and navigation"
+      ],
+      "thirdPartyDependencies": [
+        "renderer hook/JSX/memo providers: exact package binding not established in this selection; reuse dependency catalog"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/projects/new-project-command.tsx",
+      "assignment": "inferred-maintenance-proposal; not recovered original source modules",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "AMG-E060"
+    },
+    {
+      "id": "AMG-M02",
+      "responsibility": "应用反馈命令、打开前检查、诊断选项及提交路由委托",
+      "environment": "renderer",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "AMG-SOURCE-007",
+          "name": "d7s",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9469730,
+            "endExclusive": 9470639
+          },
+          "spanHash": "632b4ecc63ed05177cef72270962d48e5975be812d1cf8aac6db932aa7f93c53",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-007-d7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-008",
+          "name": "_7s",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9471841,
+            "endExclusive": 9475176
+          },
+          "spanHash": "9bea48be92ef2350ccbf5c87aed57a2efa808ac77e94ff8e2e01e5ca18593090",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-008-_7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-009",
+          "name": "m7s",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9470716,
+            "endExclusive": 9471752
+          },
+          "spanHash": "2f2c5d5fe87ab7599eff0235d98e9bce1c58fb632769fca383b98a8381b520d6",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-009-m7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-011",
+          "name": "call-d7s",
+          "role": "selected use of a reviewed function",
+          "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+          "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+          "byteRange": {
+            "start": 9475129,
+            "endExclusive": 9475156
+          },
+          "spanHash": "23d3f3fb25e7c84a6c654075993451f3483ca8543e173c2d325dd1c45f93b7ee",
+          "nodeType": "CallExpression",
+          "savedPath": "source/AMG-SOURCE-011-call-d7s.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        }
+      ],
+      "imports": [
+        "Pw and U5s command registries; route/host/thread/scope providers",
+        "b7s guard; Pd.appInfo/workspaceFiles/debug/processMemory adapters",
+        "w7s modal, T7s startFeedbackUpload, E7s submitCodexFeedback, i5s/z8s branches: delegated"
+      ],
+      "exports": [
+        "feedback command and /feedback slash command; _7s composes d7s.onOpen"
+      ],
+      "sharedState": [
+        "cached app-info Promise b.current",
+        "generation x.current changed by layout effect setup/cleanup",
+        "captured route/host/cwd/thread identifiers and optional document capture handle"
+      ],
+      "sideEffects": [
+        "register commands",
+        "read app metadata",
+        "conditionally prepare document capture",
+        "open modal",
+        "on submission prepare providers and delegate upload/feedback",
+        "toast on preparation failure"
+      ],
+      "thirdPartyDependencies": [
+        "renderer hook/JSX/memo providers: reuse dependency catalog; no third-party implementations generated",
+        "native diagnostic adapters and backend are external boundaries"
+      ],
+      "proposedPath": "apps/desktop/src/renderer/features/feedback/feedback-command.tsx",
+      "assignment": "inferred-maintenance-proposal; not recovered original source modules",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "AMG-E061"
+    },
+    {
+      "id": "AMG-M03",
+      "responsibility": "启动性能录制确认、一次性标记、重启委托与录制清理",
+      "environment": "main/bootstrap",
+      "mode": "unknown",
+      "sourceRanges": [
+        {
+          "id": "AMG-SOURCE-012",
+          "name": "mY",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2041340,
+            "endExclusive": 2041364
+          },
+          "spanHash": "8a6b5b6b7419b17fd37506b000ec0db513e7f5d9fef11d81b74b8cba645c6125",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-012-mY.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-013",
+          "name": "dY",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2040815,
+            "endExclusive": 2041030
+          },
+          "spanHash": "5371ae2e462dc5ef2bf5798e3fd5414e41ca5947243e5cc08f8764447a66ea29",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-013-dY.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-014",
+          "name": "oY",
+          "role": "selected state or policy declaration",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 2037232,
+            "endExclusive": 2037241
+          },
+          "spanHash": "b964943991226c4ab2f69070b3110ed1fc229ee74f42259392d75993c802ae0c",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-014-oY.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-015",
+          "name": "g",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 678,
+            "endExclusive": 714
+          },
+          "spanHash": "3322e6f3e0f6aa5dfaaf1c559925ee1f81f47e4502f60e2c8595b12d44765933",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-015-g.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-016",
+          "name": "p",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 556,
+            "endExclusive": 595
+          },
+          "spanHash": "f950e1232c77a26a2124da1f341fe702e89958a60b21bb27d4a3ebf17fd877b5",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-016-p.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-017",
+          "name": "_",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+          "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+          "byteRange": {
+            "start": 719,
+            "endExclusive": 740
+          },
+          "spanHash": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-017-_.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-018",
+          "name": "HO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439807,
+            "endExclusive": 439831
+          },
+          "spanHash": "4815adca983dbfad3d5e72880ead4bb10177c5f29c1ae67bfb182e61d47f61f2",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-018-HO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-019",
+          "name": "UO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439831,
+            "endExclusive": 440791
+          },
+          "spanHash": "0fe6ba2b23298112028dfc3adea7e52b73432acd96ee5554242e8d98af382f9f",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-019-UO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-020",
+          "name": "WO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 440791,
+            "endExclusive": 441180
+          },
+          "spanHash": "7fbc4b453aa9a55b0f8095ca8296211e0f5f1f09c603d6177ab1365124759e64",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-020-WO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-021",
+          "name": "GO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 441180,
+            "endExclusive": 441905
+          },
+          "spanHash": "f13be523cc7638a5946736e69f2c38cfac49a03bb53813ea9898587d360d6ab8",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-021-GO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-022",
+          "name": "KO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 441905,
+            "endExclusive": 442105
+          },
+          "spanHash": "c258e3f2d2927ddbfccb0064e18e70b3b96afb36b8139436c55f9581d0ce6a60",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-022-KO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-023",
+          "name": "zO",
+          "role": "selected first-party function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439576,
+            "endExclusive": 439757
+          },
+          "spanHash": "c7fa71ad55efd9b1c705dc1ef9e31d775c5134f0b8594b563d80b96fe68671c1",
+          "nodeType": "FunctionDeclaration",
+          "savedPath": "source/AMG-SOURCE-023-zO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-024",
+          "name": "VO",
+          "role": "selected state or policy declaration",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 439801,
+            "endExclusive": 439806
+          },
+          "spanHash": "87d24131920f978a9ea9dc87d6b34c752bb713b5ea4d83fa66d23b335f2fc351",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-024-VO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-025",
+          "name": "f",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 507,
+            "endExclusive": 528
+          },
+          "spanHash": "51582011736da65b1797bc3ab0eaad96881fbb8f20007c082e8b5c63d8a37fad",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-025-f.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-026",
+          "name": "l",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 381,
+            "endExclusive": 420
+          },
+          "spanHash": "bc631dd01976a5dca0f599449cdd47ef3f14f9c5d5baa0b5de6bcc0de5f0343a",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-026-l.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-027",
+          "name": "m",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 576,
+            "endExclusive": 605
+          },
+          "spanHash": "aa97ced4b7503e3e4ceda74f5f11f34cb9547738ee50a951d5fc602cc4f3b6e7",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-027-m.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-028",
+          "name": "h",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 619,
+            "endExclusive": 641
+          },
+          "spanHash": "696cd6e50117e5a80468ebd3bc751232dda32bd04f83863b35f7898c6e2582fb",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-028-h.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-029",
+          "name": "E",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 902,
+            "endExclusive": 935
+          },
+          "spanHash": "c182520d7fe9c5109552a5236edb5c3ac368919272818e2c049221c07b6504c5",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-029-E.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-030",
+          "name": "export-b",
+          "role": "CommonJS export binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 460842,
+            "endExclusive": 460854
+          },
+          "spanHash": "6f65637436a6157ca00d7de3b3739d937c098a0db716e9a2c319123300e0a710",
+          "nodeType": "AssignmentExpression",
+          "savedPath": "source/AMG-SOURCE-030-export-b.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-031",
+          "name": "export-y",
+          "role": "CommonJS export binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 461436,
+            "endExclusive": 461448
+          },
+          "spanHash": "87f370d51cd57ddf76af9b0563b757f6b7dd9dd9b8a5349f3251eef36ffc65bc",
+          "nodeType": "AssignmentExpression",
+          "savedPath": "source/AMG-SOURCE-031-export-y.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-032",
+          "name": "export-x",
+          "role": "CommonJS export binding",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 461409,
+            "endExclusive": 461421
+          },
+          "spanHash": "772018bf6f9e4e7c77aa05d5e37d830f1b323a8c487f935907de53995a3db390",
+          "nodeType": "AssignmentExpression",
+          "savedPath": "source/AMG-SOURCE-032-export-x.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-033",
+          "name": "call-WO",
+          "role": "selected use of a reviewed function",
+          "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+          "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+          "byteRange": {
+            "start": 458373,
+            "endExclusive": 458378
+          },
+          "spanHash": "7fca1dd73b7d221c4acb09bd8feec1c8278a74545e2ce088bc81b7fa9540f083",
+          "nodeType": "CallExpression",
+          "savedPath": "source/AMG-SOURCE-033-call-WO.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-034",
+          "name": "m",
+          "role": "selected state or policy declaration",
+          "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+          "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+          "byteRange": {
+            "start": 1340,
+            "endExclusive": 3650
+          },
+          "spanHash": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-034-m.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-035",
+          "name": "t",
+          "role": "selected require binding",
+          "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+          "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+          "byteRange": {
+            "start": 50,
+            "endExclusive": 80
+          },
+          "spanHash": "060ce4f1125baa0a78b2520163b0e439f8cb226a6c06fc6915b06ea392c82826",
+          "nodeType": "VariableDeclarator",
+          "savedPath": "source/AMG-SOURCE-035-t.txt",
+          "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved."
+        },
+        {
+          "id": "AMG-SOURCE-036",
+          "name": "export-t",
+          "role": "CommonJS getter export",
+          "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+          "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+          "byteRange": {
+            "start": 3727,
+            "endExclusive": 3803
+          },
+          "spanHash": "b1b9c6d57a820c41d7d302b3ecc014d059e96feff1a6ee70e1eacd33033d8e3e",
+          "nodeType": "ExpressionStatement",
+          "savedPath": "source/AMG-SOURCE-036-export-t.txt",
+          "qualification": "Exact complete export statement from frozen build-flavor Program; selected syntax is separately parsed. Returns the selected Program declaration m."
+        }
+      ],
+      "imports": [
+        "bootstrap.b=UO, bootstrap.y=HO; build-flavor.t getter returns policy m",
+        "electron dialog/app/contentTracing/Menu/shell; node:fs/promises, node:path, node:timers/promises",
+        "FO relaunch provider and logging/localization; provider implementation not selected"
+      ],
+      "exports": [
+        "selected bootstrap CommonJS b/y/x; main mY/dY are internal selected declarations"
+      ],
+      "sharedState": [
+        "bootstrap VO false initially",
+        "main oY idle initially and cY manual-trace timer reference",
+        "userData/record-next-startup and userData/startup-performance/*.pftrace",
+        "menu enabled flags; GO unref stop timer"
+      ],
+      "sideEffects": [
+        "confirmation dialog",
+        "write marker mode 0600",
+        "relaunch provider then app.quit",
+        "consume marker",
+        "mkdir mode 0700",
+        "start/stop native tracing",
+        "reveal saved trace",
+        "reset menu flags"
+      ],
+      "thirdPartyDependencies": [
+        "Owl distribution exposing electron APIs; ordinary Electron substitution not qualified",
+        "Node built-ins: not copied implementations"
+      ],
+      "proposedPath": "apps/desktop/src/main/diagnostics/startup-recording.ts",
+      "assignment": "inferred-maintenance-proposal; not recovered original source modules",
+      "fullDependencyClosureProven": false,
+      "runtimeValidated": false,
+      "evidenceId": "AMG-E062"
+    }
+  ],
+  "reusedMaintenanceUnits": [
+    {
+      "id": "MENU-UNIT-application-menu",
+      "ref": {
+        "path": "native-menu-roles-v1.json",
+        "bytes": 866774,
+        "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2",
+        "jsonPointer": "/maintenanceUnits/0"
+      },
+      "qualification": "Existing standalone proposal reused; does not add one owner to the 37-owner unified inventory."
+    }
+  ],
+  "sourceUnits": [
+    {
+      "id": "AMG-SOURCE-001",
+      "name": "iMi",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4641888,
+        "endExclusive": 4642278
+      },
+      "spanHash": "18edff9ff6c24034b1b039d586fa2fb8cb88848336005ad034d8fb0e1915e5d5",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-001-iMi.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E001"
+    },
+    {
+      "id": "AMG-SOURCE-002",
+      "name": "gji",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4624720,
+        "endExclusive": 4624893
+      },
+      "spanHash": "32e25fb173c8bfd39e8baa2888dfd2815e694b6ad24b5f1c18cedb699b9b1eaf",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-002-gji.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E002"
+    },
+    {
+      "id": "AMG-SOURCE-003",
+      "name": "LW",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 4624973,
+        "endExclusive": 4625027
+      },
+      "spanHash": "9a3f31ecc3d215f0db690482dbfdb29a635f30d1bd1671b96f53f3fac8cd6d6e",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-003-LW.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E003"
+    },
+    {
+      "id": "AMG-SOURCE-004",
+      "name": "z0r",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3882431,
+        "endExclusive": 3882545
+      },
+      "spanHash": "fff8325824cc00827d47385422697c410c08afa3a87816f2ad6c2fddc8831f60",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-004-z0r.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E004"
+    },
+    {
+      "id": "AMG-SOURCE-005",
+      "name": "L0r",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3882057,
+        "endExclusive": 3882281
+      },
+      "spanHash": "ed6349cb92a4fb792ad6616ed83230bd5a922893626e21bcfbf5ed65f87168f3",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-005-L0r.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E005"
+    },
+    {
+      "id": "AMG-SOURCE-006",
+      "name": "H0r",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 3882680,
+        "endExclusive": 3883035
+      },
+      "spanHash": "896b3c3adc3519e5494cc0dfeb3903f77f5a8eccd5407add6238859b8172e77c",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-006-H0r.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E006"
+    },
+    {
+      "id": "AMG-SOURCE-007",
+      "name": "d7s",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9469730,
+        "endExclusive": 9470639
+      },
+      "spanHash": "632b4ecc63ed05177cef72270962d48e5975be812d1cf8aac6db932aa7f93c53",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-007-d7s.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E007"
+    },
+    {
+      "id": "AMG-SOURCE-008",
+      "name": "_7s",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9471841,
+        "endExclusive": 9475176
+      },
+      "spanHash": "9bea48be92ef2350ccbf5c87aed57a2efa808ac77e94ff8e2e01e5ca18593090",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-008-_7s.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E008"
+    },
+    {
+      "id": "AMG-SOURCE-009",
+      "name": "m7s",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9470716,
+        "endExclusive": 9471752
+      },
+      "spanHash": "2f2c5d5fe87ab7599eff0235d98e9bce1c58fb632769fca383b98a8381b520d6",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-009-m7s.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E009"
+    },
+    {
+      "id": "AMG-SOURCE-010",
+      "name": "Pw",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 1501107,
+        "endExclusive": 1501954
+      },
+      "spanHash": "8489e93129fd7b433d594c4c0354898c7147686b31abdf0150fec9cdcb4bbf8f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-010-Pw.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E010"
+    },
+    {
+      "id": "AMG-SOURCE-011",
+      "name": "call-d7s",
+      "role": "selected use of a reviewed function",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 9475129,
+        "endExclusive": 9475156
+      },
+      "spanHash": "23d3f3fb25e7c84a6c654075993451f3483ca8543e173c2d325dd1c45f93b7ee",
+      "nodeType": "CallExpression",
+      "savedPath": "source/AMG-SOURCE-011-call-d7s.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E011"
+    },
+    {
+      "id": "AMG-SOURCE-012",
+      "name": "mY",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2041340,
+        "endExclusive": 2041364
+      },
+      "spanHash": "8a6b5b6b7419b17fd37506b000ec0db513e7f5d9fef11d81b74b8cba645c6125",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-012-mY.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E012"
+    },
+    {
+      "id": "AMG-SOURCE-013",
+      "name": "dY",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2040815,
+        "endExclusive": 2041030
+      },
+      "spanHash": "5371ae2e462dc5ef2bf5798e3fd5414e41ca5947243e5cc08f8764447a66ea29",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-013-dY.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E013"
+    },
+    {
+      "id": "AMG-SOURCE-014",
+      "name": "oY",
+      "role": "selected state or policy declaration",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 2037232,
+        "endExclusive": 2037241
+      },
+      "spanHash": "b964943991226c4ab2f69070b3110ed1fc229ee74f42259392d75993c802ae0c",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-014-oY.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E014"
+    },
+    {
+      "id": "AMG-SOURCE-015",
+      "name": "g",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 678,
+        "endExclusive": 714
+      },
+      "spanHash": "3322e6f3e0f6aa5dfaaf1c559925ee1f81f47e4502f60e2c8595b12d44765933",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-015-g.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E015"
+    },
+    {
+      "id": "AMG-SOURCE-016",
+      "name": "p",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 556,
+        "endExclusive": 595
+      },
+      "spanHash": "f950e1232c77a26a2124da1f341fe702e89958a60b21bb27d4a3ebf17fd877b5",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-016-p.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E016"
+    },
+    {
+      "id": "AMG-SOURCE-017",
+      "name": "_",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 719,
+        "endExclusive": 740
+      },
+      "spanHash": "4c5d74ee85975fc70238fa60087aaf6ed3bf05fea91402b37aa29f3f43dfecfa",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-017-_.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E017"
+    },
+    {
+      "id": "AMG-SOURCE-018",
+      "name": "HO",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 439807,
+        "endExclusive": 439831
+      },
+      "spanHash": "4815adca983dbfad3d5e72880ead4bb10177c5f29c1ae67bfb182e61d47f61f2",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-018-HO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E018"
+    },
+    {
+      "id": "AMG-SOURCE-019",
+      "name": "UO",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 439831,
+        "endExclusive": 440791
+      },
+      "spanHash": "0fe6ba2b23298112028dfc3adea7e52b73432acd96ee5554242e8d98af382f9f",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-019-UO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E019"
+    },
+    {
+      "id": "AMG-SOURCE-020",
+      "name": "WO",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 440791,
+        "endExclusive": 441180
+      },
+      "spanHash": "7fbc4b453aa9a55b0f8095ca8296211e0f5f1f09c603d6177ab1365124759e64",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-020-WO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E020"
+    },
+    {
+      "id": "AMG-SOURCE-021",
+      "name": "GO",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 441180,
+        "endExclusive": 441905
+      },
+      "spanHash": "f13be523cc7638a5946736e69f2c38cfac49a03bb53813ea9898587d360d6ab8",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-021-GO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E021"
+    },
+    {
+      "id": "AMG-SOURCE-022",
+      "name": "KO",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 441905,
+        "endExclusive": 442105
+      },
+      "spanHash": "c258e3f2d2927ddbfccb0064e18e70b3b96afb36b8139436c55f9581d0ce6a60",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-022-KO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E022"
+    },
+    {
+      "id": "AMG-SOURCE-023",
+      "name": "zO",
+      "role": "selected first-party function",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 439576,
+        "endExclusive": 439757
+      },
+      "spanHash": "c7fa71ad55efd9b1c705dc1ef9e31d775c5134f0b8594b563d80b96fe68671c1",
+      "nodeType": "FunctionDeclaration",
+      "savedPath": "source/AMG-SOURCE-023-zO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E023"
+    },
+    {
+      "id": "AMG-SOURCE-024",
+      "name": "VO",
+      "role": "selected state or policy declaration",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 439801,
+        "endExclusive": 439806
+      },
+      "spanHash": "87d24131920f978a9ea9dc87d6b34c752bb713b5ea4d83fa66d23b335f2fc351",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-024-VO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E024"
+    },
+    {
+      "id": "AMG-SOURCE-025",
+      "name": "f",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 507,
+        "endExclusive": 528
+      },
+      "spanHash": "51582011736da65b1797bc3ab0eaad96881fbb8f20007c082e8b5c63d8a37fad",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-025-f.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E025"
+    },
+    {
+      "id": "AMG-SOURCE-026",
+      "name": "l",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 381,
+        "endExclusive": 420
+      },
+      "spanHash": "bc631dd01976a5dca0f599449cdd47ef3f14f9c5d5baa0b5de6bcc0de5f0343a",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-026-l.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E026"
+    },
+    {
+      "id": "AMG-SOURCE-027",
+      "name": "m",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 576,
+        "endExclusive": 605
+      },
+      "spanHash": "aa97ced4b7503e3e4ceda74f5f11f34cb9547738ee50a951d5fc602cc4f3b6e7",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-027-m.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E027"
+    },
+    {
+      "id": "AMG-SOURCE-028",
+      "name": "h",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 619,
+        "endExclusive": 641
+      },
+      "spanHash": "696cd6e50117e5a80468ebd3bc751232dda32bd04f83863b35f7898c6e2582fb",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-028-h.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E028"
+    },
+    {
+      "id": "AMG-SOURCE-029",
+      "name": "E",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 902,
+        "endExclusive": 935
+      },
+      "spanHash": "c182520d7fe9c5109552a5236edb5c3ac368919272818e2c049221c07b6504c5",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-029-E.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E029"
+    },
+    {
+      "id": "AMG-SOURCE-030",
+      "name": "export-b",
+      "role": "CommonJS export binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 460842,
+        "endExclusive": 460854
+      },
+      "spanHash": "6f65637436a6157ca00d7de3b3739d937c098a0db716e9a2c319123300e0a710",
+      "nodeType": "AssignmentExpression",
+      "savedPath": "source/AMG-SOURCE-030-export-b.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E030"
+    },
+    {
+      "id": "AMG-SOURCE-031",
+      "name": "export-y",
+      "role": "CommonJS export binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 461436,
+        "endExclusive": 461448
+      },
+      "spanHash": "87f370d51cd57ddf76af9b0563b757f6b7dd9dd9b8a5349f3251eef36ffc65bc",
+      "nodeType": "AssignmentExpression",
+      "savedPath": "source/AMG-SOURCE-031-export-y.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E031"
+    },
+    {
+      "id": "AMG-SOURCE-032",
+      "name": "export-x",
+      "role": "CommonJS export binding",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 461409,
+        "endExclusive": 461421
+      },
+      "spanHash": "772018bf6f9e4e7c77aa05d5e37d830f1b323a8c487f935907de53995a3db390",
+      "nodeType": "AssignmentExpression",
+      "savedPath": "source/AMG-SOURCE-032-export-x.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E032"
+    },
+    {
+      "id": "AMG-SOURCE-033",
+      "name": "call-WO",
+      "role": "selected use of a reviewed function",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0",
+      "byteRange": {
+        "start": 458373,
+        "endExclusive": 458378
+      },
+      "spanHash": "7fca1dd73b7d221c4acb09bd8feec1c8278a74545e2ce088bc81b7fa9540f083",
+      "nodeType": "CallExpression",
+      "savedPath": "source/AMG-SOURCE-033-call-WO.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E033"
+    },
+    {
+      "id": "AMG-SOURCE-034",
+      "name": "m",
+      "role": "selected state or policy declaration",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 1340,
+        "endExclusive": 3650
+      },
+      "spanHash": "94c8a6464c2e6ef69f6b662f5c43dfef2ea7258b1346c0e6dfbf22af858a777c",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-034-m.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E034"
+    },
+    {
+      "id": "AMG-SOURCE-035",
+      "name": "t",
+      "role": "selected require binding",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 50,
+        "endExclusive": 80
+      },
+      "spanHash": "060ce4f1125baa0a78b2520163b0e439f8cb226a6c06fc6915b06ea392c82826",
+      "nodeType": "VariableDeclarator",
+      "savedPath": "source/AMG-SOURCE-035-t.txt",
+      "qualification": "Frozen complete AST selection; source boundary only, actual mount/runtime/service effects unobserved.",
+      "evidenceId": "AMG-E035"
+    },
+    {
+      "id": "AMG-SOURCE-036",
+      "name": "export-t",
+      "role": "CommonJS getter export",
+      "sourcePath": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceHash": "23229dac961a82c52237acc32598ddb2c1cf370b24c64fc507b9c24bcf2c4d93",
+      "byteRange": {
+        "start": 3727,
+        "endExclusive": 3803
+      },
+      "spanHash": "b1b9c6d57a820c41d7d302b3ecc014d059e96feff1a6ee70e1eacd33033d8e3e",
+      "nodeType": "ExpressionStatement",
+      "savedPath": "source/AMG-SOURCE-036-export-t.txt",
+      "qualification": "Exact complete export statement from frozen build-flavor Program; selected syntax is separately parsed. Returns the selected Program declaration m.",
+      "evidenceId": "AMG-E036"
+    }
+  ],
+  "sourceJoins": [
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "iMi",
+      "callee": "LW",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "iMi",
+      "callee": "P1r",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "iMi",
+      "callee": "gji",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "iMi",
+      "callee": "z0r",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "iMi",
+      "callee": "L0r",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "iMi",
+      "callee": "Pw",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "gji",
+      "callee": "hji",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "gji",
+      "callee": "YI",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "z0r",
+      "callee": "tI",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "L0r",
+      "callee": "tI",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "H0r",
+      "callee": "iI",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "H0r",
+      "callee": "I0r",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "H0r",
+      "callee": "__vite__mapDeps",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "VariableDeclarator"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "d7s",
+      "callee": "Pw",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "d7s",
+      "callee": "U5s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "UVi",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "MA",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "T7s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "VariableDeclarator"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "E7s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "VariableDeclarator"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "b7s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "L8s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "i5s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "z8s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "E5s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "_7s",
+      "callee": "R8s",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "Pw",
+      "callee": "Pqt",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "Pw",
+      "callee": "fJt",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "Pw",
+      "callee": "pJt",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "dY",
+      "callee": "pY",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "dY",
+      "callee": "uY",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "CommonJS-export",
+      "export": "b",
+      "local": "UO",
+      "program": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceUnit": "AMG-SOURCE-030"
+    },
+    {
+      "kind": "CommonJS-export",
+      "export": "y",
+      "local": "HO",
+      "program": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceUnit": "AMG-SOURCE-031"
+    },
+    {
+      "kind": "CommonJS-export",
+      "export": "x",
+      "local": "zO",
+      "program": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "sourceUnit": "AMG-SOURCE-032"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "UO",
+      "callee": "zO",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "UO",
+      "callee": "BO",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "calleeNodeType": "VariableDeclarator"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "WO",
+      "callee": "BO",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "calleeNodeType": "VariableDeclarator"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "WO",
+      "callee": "GO",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "GO",
+      "callee": "BO",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "calleeNodeType": "VariableDeclarator"
+    },
+    {
+      "kind": "same-original-Program-binding",
+      "caller": "GO",
+      "callee": "KO",
+      "sourcePath": "app.asar/.vite/build/bootstrap-CooIJpZm.js",
+      "calleeNodeType": "FunctionDeclaration"
+    },
+    {
+      "kind": "CommonJS-getter-export",
+      "export": "t",
+      "local": "m",
+      "program": "app.asar/.vite/build/build-flavor-CYXpoCFI.js",
+      "sourceUnit": "AMG-SOURCE-036"
+    }
+  ],
+  "referenceCalls": [
+    {
+      "ref": "d7s",
+      "expression": "(0,C7s.jsx)(d7s,{onOpen:D})",
+      "sourceUnit": "AMG-SOURCE-011",
+      "owner": "_7s",
+      "ownerUnit": "AMG-SOURCE-008"
+    },
+    {
+      "ref": "WO",
+      "expression": "WO($)",
+      "sourceUnit": "AMG-SOURCE-033",
+      "owner": null,
+      "ownerUnit": null
+    }
+  ],
+  "menuAssemblySourceRanges": [
+    {
+      "name": "CZe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3401957,
+        "endExclusive": 3422782
+      },
+      "spanHash": "0d834e238554780d5e9b4a700d4f629077b5d81a34393e55074403c56bb5d6b2",
+      "nodeType": "FunctionDeclaration",
+      "parseWrapper": "complete FunctionDeclaration"
+    },
+    {
+      "name": "PZe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3430079,
+        "endExclusive": 3432577
+      },
+      "spanHash": "5ea16fd586bca964d1ea451661ab33853e1569d14e7e50c546e4bb67749c23ba",
+      "nodeType": "FunctionDeclaration",
+      "parseWrapper": "complete FunctionDeclaration"
+    },
+    {
+      "name": "bZe",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 3399181,
+        "endExclusive": 3401894
+      },
+      "spanHash": "f8d4654923c524d75c294c62a22373a2581f6e1b404479f8d366576cff52925e",
+      "nodeType": "FunctionDeclaration",
+      "parseWrapper": "complete FunctionDeclaration"
+    }
+  ],
+  "dependencyPolicy": {
+    "implementationCopiesGenerated": 0,
+    "reuseCatalog": {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    "runtime": "Owl electron module APIs remain external; public Electron replacement not qualified by this batch.",
+    "nodeBuiltIns": [
+      "node:fs/promises",
+      "node:path",
+      "node:timers/promises"
+    ],
+    "renderer": "Mixed-bundle hook/JSX/memo dependencies retained as imports; exact selected aliases/version closure not newly established.",
+    "updateAndFeedback": "Keep first-party policy/feedback wrappers; updater, native diagnostics, upload and backend implementations are delegated."
+  },
+  "inputPins": [
+    {
+      "path": "feature-scope-v27.json",
+      "bytes": 2065758,
+      "sha256": "8fb82c0626053d652d976ebdb65cbbcaead0b3a55fd63664ff9b871d753d2899"
+    },
+    {
+      "path": "feature-scope-v24-scenarios.json",
+      "bytes": 1944258,
+      "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+    },
+    {
+      "path": "restoration-coverage-v18.json",
+      "bytes": 1171222,
+      "sha256": "7c1f29a0e375cca05156d5d667942d58d959c160c8eb45611479681e27aaf512"
+    },
+    {
+      "path": "legacy-entry-dispositions-v5.json",
+      "bytes": 1405687,
+      "sha256": "0c4d817f5e4f25046f01789b01a733dde1d862761a12f3e78ff63c85ad6c74dd"
+    },
+    {
+      "path": "native-menu-roles-v1.json",
+      "bytes": 866774,
+      "sha256": "648ed900a1aaa37ea4ffb2283ab90e8e4beb2f1314d24e4f5789f541c2c420d2"
+    },
+    {
+      "path": "menu-command-contracts.json",
+      "bytes": 10630684,
+      "sha256": "7f463b9d2bb53bf6266ac70612133d4a64cc5a876d5e17f5fa46399bd9d5edbf"
+    },
+    {
+      "path": "command-registration-contracts.json",
+      "bytes": 292164,
+      "sha256": "6a59f0a2287e186396b70c2aa54a22a9b12a0fee578b730ee7247ba0900a7193"
+    },
+    {
+      "path": "project-local-delegation-v1.json",
+      "bytes": 22687,
+      "sha256": "ce2e0cdc6dc982ea665107c45da9fdc91453b6156f20510872971e7e35c35151"
+    },
+    {
+      "path": "project-dialog-mode-v1.json",
+      "bytes": 71834,
+      "sha256": "154f10c49a70c11f8b49b46fba699e4fde95b05739866997771f8090303a7bfb"
+    },
+    {
+      "path": "managed-update-policy-v1.json",
+      "bytes": 42822,
+      "sha256": "4ae77600dea2f4130fccdce6e3f9d84211ca6327486da9fbd1ee17ad330e40a5"
+    },
+    {
+      "path": "runtime-native-consumers-v1.json",
+      "bytes": 53360,
+      "sha256": "bd42cf9e6b6d4ab9b4b39e8aef16c1f80906a315f56fa1803f2e512654aa515c"
+    }
+  ],
+  "sourceQuery": {
+    "path": "raw/application-menu-goals-v1/source-query.json",
+    "bytes": 34981,
+    "sha256": "589c5ed0ce2a9cf31993ecb45108436370e95c764d9dd2a5e005beff319489c0"
+  },
+  "selectionVerification": {
+    "path": "raw/application-menu-goals-v1/selection-verification.json",
+    "bytes": 489,
+    "sha256": "a6fb9e2683ab197e88e3ddf6e8a5a2206b734b5bea57a2074bd66d4723e30251"
+  },
+  "counts": {
+    "selectedMenuSchemas": 12,
+    "normalizedUserGoals": 11,
+    "newFiniteDefinitions": 11,
+    "newUserOperations": 11,
+    "newScenarioSpecifications": 36,
+    "savedNewSourceSelections": 36,
+    "reusedCompleteMenuFunctions": 3,
+    "selectedSourceJoins": 40,
+    "additionalMaintenanceProposals": 3,
+    "existingUnifiedResponsibilityOwnersUnchanged": 37,
+    "newProductScenarioPasses": 0,
+    "newClientLaunches": 0,
+    "newModelSubmissions": 0,
+    "newServiceCalls": 0,
+    "newClientImplementation": 0
+  },
+  "completedQuestion": "SQ-01",
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "limits": [
+    "All 11 goal modes unknown; no whole-feature exclusion.",
+    "12 partial entry-to-goal associations are not full legacy functional resolution.",
+    "Existing unified 37-owner view is unchanged; these 3 proposals await cross-feature integration in SQ-03.",
+    "Scenarios are unexecuted specifications; byte/syntax checks are not product/native/build acceptance."
+  ]
+}

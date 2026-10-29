@@ -1,0 +1,421 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "createdAtUtc": "2026-10-13T08:40:52.064426+00:00",
+  "status": "static-investigation-complete",
+  "applicationRun": false,
+  "credentialFilesRead": false,
+  "scope": ".vite/build/*.js in frozen extraction; complete selected entry/bootstrap/startup/loader functions and direct env-name usage",
+  "conclusions": [
+    {
+      "claim": "No genuine supported shell-env skip/disable flag was identified in the traced startup path. The entry/initializer unconditionally execute it. This is a scoped static conclusion, not a guarantee that an undocumented native flag cannot exist.",
+      "evidence": [
+        "SHELL-01",
+        "SHELL-02",
+        "SHELL-03",
+        "SHELL-04"
+      ]
+    },
+    {
+      "claim": "Launch-time FORCE_CLI and CODEX_CLI_PATH are inherited by the shell child through execa extendEnv=true. If shell initialization leaves them unchanged, they survive; shell exports can override them before routing/runtime resolution.",
+      "evidence": [
+        "SHELL-03",
+        "SHELL-07",
+        "SHELL-08",
+        "SHELL-09",
+        "SHELL-10"
+      ]
+    },
+    {
+      "claim": "Only CODEX_HOME has explicit restoration after shell import, conditional on an initially nonempty CODEX_ELECTRON_USER_DATA_PATH. FORCE_CLI, CLI_PATH and USER_DATA_PATH lack equivalent protection.",
+      "evidence": [
+        "SHELL-03",
+        "SHELL-11",
+        "SHELL-13"
+      ]
+    },
+    {
+      "claim": "CODEX_SHELL is a marker passed to shell loading, not a shell selection or disable control. SHELL alone is insufficient because os.userInfo().shell is preferred.",
+      "evidence": [
+        "SHELL-03",
+        "SHELL-05",
+        "SHELL-06"
+      ]
+    }
+  ],
+  "stageOrder": [
+    "early-bootstrap imports startup-requirements",
+    "startup module captures initial CODEX_HOME only if initial explicit userData env is set",
+    "initializeNodeNetworkPermissions calls Gi/Ki/qi and imports interactive login shell environment",
+    "Object.assign(process.env, shellEnv); protected CODEX_HOME restoration only",
+    "prepare/read startup requirements uses current env for CLI/network-policy preparation",
+    "bootstrap imports and explicitly sets Electron userData from current env",
+    "main routing reads current FORCE_CLI; runtime resolver reads current CLI_PATH; spawn environment spreads current process.env"
+  ],
+  "controls": [
+    {
+      "control": "CODEX_ELECTRON_USER_DATA_PATH",
+      "readPhase": "before shell import to protect CODEX_HOME; after shell import to set userData",
+      "guarantee": "Protects original CODEX_HOME only. Verify final userData if shell scripts could redefine userData env."
+    },
+    {
+      "control": "CODEX_APP_SERVER_FORCE_CLI=1",
+      "readPhase": "after shell import at transport/routing selection",
+      "guarantee": "Disables WebSocket and local daemon candidates only if effective current value remains 1."
+    },
+    {
+      "control": "CODEX_CLI_PATH=<absolute frozen bin/codex>",
+      "readPhase": "after shell import at CLI runtime resolution",
+      "guarantee": "Pins executable only if effective current value remains intended path; host codex_cli_command can be an earlier override."
+    },
+    {
+      "control": "--user-data-dir=<task profile>",
+      "readPhase": "native Chromium launch; JS subsequently calls app.setPath(userData, oD(...))",
+      "guarantee": "Used in demo launcher but not evidence of effective final userData without verification."
+    },
+    {
+      "control": "CODEX_SHELL=1",
+      "readPhase": "set internally as extraEnv on shell loader",
+      "guarantee": "Marker only; no built-in disable branch found."
+    }
+  ],
+  "independentLaunchLimits": [
+    "Clearing inherited CODEX_* before launch reduces parent session coupling; startup shell may reintroduce any exported CODEX_* or auth variables.",
+    "Force CLI plus frozen CLI_PATH require post-hydration executable/transport observation. Never infer them from launch argv alone.",
+    "Separate profile and Codex home do not exclude native keyring or encrypted secret storage; exact active backend remains unresolved.",
+    "A test OS account with no credentials and no personal startup exports supplies stronger evidence; no such test was performed here.",
+    "No fake skip-shell-env flag should be used. If a task-owned instrumented clone protects additional env keys, document that source modification and do not call it unmodified baseline behavior."
+  ],
+  "evidence": [
+    {
+      "id": "SHELL-01",
+      "sourcePath": ".vite/build/early-bootstrap.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "36b8494989d89f9b063a27f10b60119243c8e4cc8abd2ef8a9743c507d15019c"
+      },
+      "range": {
+        "byteStart": 2964,
+        "byteEndExclusive": 3260,
+        "lineStart": 1,
+        "lineEnd": 1
+      },
+      "claim": "Entry awaits initializeNodeNetworkPermissions before importing bootstrap.",
+      "completeSourceBlock": "async function d(){process.platform===`linux`&&await r.app.whenReady(),await n.a();let{initializeNodeNetworkPermissions:e}=await Promise.resolve().then(()=>require(\"./startup-requirements-C6B1x9gL.js\")).then(e=>e.n);await e()&&await Promise.resolve().then(()=>require(\"./bootstrap-CooIJpZm.js\"))}"
+    },
+    {
+      "id": "SHELL-02",
+      "sourcePath": ".vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d"
+      },
+      "range": {
+        "byteStart": 105926,
+        "byteEndExclusive": 108156,
+        "lineStart": 19,
+        "lineEnd": 24
+      },
+      "claim": "Permissions init unconditionally awaits Gi; no shell-env bypass check in the complete function.",
+      "completeSourceBlock": "async function da(){la=null,await Gi(),process.env.CODEX_HOME!=null&&(process.env.CODEX_HOME=(0,d.resolve)(process.env.CODEX_HOME));let e=!1,t=!1,r=!1,a=0,s=null,l=null;for(;;){a+=1;let f=`home-creation`;try{t||=(process.platform===`win32`&&c.app.isPackaged?await Qi():await(0,u.mkdir)(i.ot(),{recursive:!0}),!0),f=`preparation`,l??=Promise.resolve().then(async()=>{let e=!1;if(process.platform===`win32`){let t=i.ot();e=new ki((0,d.join)(t,`config.toml`),new Vr((0,d.join)(t,`.codex-global-state.json`))).getEffective(n.H.runCodexInWsl.key)===!0&&await i.ft()!=null}return i.i({hostConfig:$r,spawnInsideWsl:e,repoRoot:(0,d.join)(c.app.getAppPath(),`..`),resourcesPath:oe({env:process.env,resourcesPath:process.resourcesPath})})}).catch(e=>{throw l=null,e});let a=await fa(l);f=`policy-read`,s??=performance.now()+6e4,r||=e;let{appServerVersion:o,response:p}=await i.a(a,c.app.getVersion(),{signOut:e,timeoutMs:Math.max(1,Math.min(3e4,s-performance.now()))});f=`policy-validation`;let m=oa(o,p);return f=`node-permissions`,ta(m)?(la=m,!0):!1}catch(t){if(!r&&Ri(t)){e=!0,a=0,s=null;continue}let n=t instanceof i.n?t.reason:f,u=1e3*2**(a-1),p=f===`policy-read`&&s!=null&&!e&&t instanceof i.n&&t.retryable&&a<3&&performance.now()+u<s;if(o.n().warning(`Desktop startup policy read failed`,{safe:{reason:n,phase:f,attempt:a,retrying:p}}),p){await new Promise(e=>setTimeout(e,u));continue}await c.app.whenReady(),await ni((0,d.join)(c.app.getAppPath(),`..`));let m=ri(),h=t instanceof i.t?t.configError:null,g=[m.formatMessage($.retry)];h??g.push(m.formatMessage($.signOut)),g.push(m.formatMessage($.quit));let ee=g.length-1,_;_=h==null?m.formatMessage($.detail):h.filePath==null?m.formatMessage({...$.configDetailWithoutLocation,values:{detail:h.detail,paragraphBreak:`\n\n`}}):m.formatMessage({...$.configDetailWithLocation,values:{location:[h.filePath,h.line,h.column].filter(e=>e!=null).join(`:`),detail:h.detail,paragraphBreak:`\n\n`,lineBreak:`\n`}});let{response:te}=await c.dialog.showMessageBox({type:`warning`,message:h==null?m.formatMessage($.title):m.formatMessage($.configTitle),detail:_,buttons:g,defaultId:0,cancelId:ee,noLink:!0});if(te===ee)return c.app.exit(0),!1;e=h==null&&te===1,a=0,s=null,f!==`preparation`&&(l=null)}}}"
+    },
+    {
+      "id": "SHELL-03",
+      "sourcePath": ".vite/build/startup-requirements-C6B1x9gL.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "73f93b81152bff48cd27bcebcf27c430fb763e5c7418c67824950f4092ba933d"
+      },
+      "range": {
+        "byteStart": 99840,
+        "byteEndExclusive": 101637,
+        "lineStart": 19,
+        "lineEnd": 19
+      },
+      "claim": "Complete shell hydration state block: Gi -> Ki -> qi -> shell loader -> Object.assign. Only initial CODEX_HOME is restored; no skip flag branch.",
+      "completeSourceBlock": "var Hi=5e3,Ui=process.env.CODEX_ELECTRON_USER_DATA_PATH?.trim()?process.env.CODEX_HOME:void 0,Z=null,Wi=null,Q=null;async function Gi(){return Ki({caller:`startup`,retryFailed:!1})}async function Ki({caller:e=`startup`,retryFailed:t=!0,timeoutMs:n=Hi}={}){if(Q?.status===`loaded`||Q!=null&&!t)return Xi(Q,e);if(Z!=null&&Wi!=null&&Wi>=n)return Z.then(t=>({...t,caller:e}));let r=qi(e,n);Z=r,Wi=n;try{let e=await r;return Zi(e),e}finally{Z===r&&(Z=null,Wi=null)}}async function qi(e,t){let r=Date.now();c.app.isPackaged||Vi(process.env);let a=new AbortController,s=null,l=await Promise.race([i.Rt({interactive:!0,extraEnv:{[n.D]:`1`},signal:a.signal}).then(e=>({status:`loaded`,userEnv:e})).catch(e=>({status:`failed`,error:e})),new Promise(e=>{s=setTimeout(()=>{a.abort(),e({status:`timed_out`})},t),s.unref()})]).finally(()=>{s!=null&&clearTimeout(s)});if(l.status===`loaded`)return Object.assign(process.env,l.userEnv),Ui!=null&&(process.env.CODEX_HOME=Ui),c.app.isPackaged||Vi(process.env),{status:`loaded`,path:process.env.PATH??null,...Ji(r,e,t)};let u=l.status===`timed_out`?`Timed out after ${t}ms.`:l.error instanceof Error?l.error.message:String(l.error);return o.n().warning(`Failed to load shell env`,{safe:{caller:e,durationMs:Date.now()-r,pathEntryCount:Yi(process.env.PATH??null),resultSource:`load`,status:l.status,timeoutMs:t},sensitive:{detail:u,path:process.env.PATH??null}}),{status:l.status,detail:u,path:process.env.PATH??null,...Ji(r,e,t)}}function Ji(e,t,n){let r=process.env.PATH??null;return{caller:t,durationMs:Date.now()-e,pathEntryCount:Yi(r),resultSource:`load`,timeoutMs:n}}function Yi(e){return e==null||e===``?0:e.split(d.delimiter).length}function Xi(e,t){return{...e,caller:t,resultSource:`cache`}}function Zi(e){(Q?.status!==`loaded`||e.status===`loaded`)&&(Q=e)}"
+    },
+    {
+      "id": "SHELL-04",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 39080,
+        "byteEndExclusive": 39836,
+        "lineStart": 6,
+        "lineEnd": 7
+      },
+      "claim": "Complete shell env loader and fallback chain ft/pt/mt/ht. Fallback may return process.env after failures; no startup env control bypass.",
+      "completeSourceBlock": "function ft(e){let{shell:t,interactive:n,extraEnv:r,signal:i}=gt(e),a=t??xt();return ht(a,n,r,i).catch(e=>{if(t||_t(e))throw e;return pt(a,n,r,i)})}function pt(e,t,n,r){return mt(St(e),t,n,r,0)}async function mt(e,t,n,r,i){let a=e[i];if(a==null)return m.default.env;try{return await ht(a,t,n,r)}catch(e){if(_t(e))throw e}return mt(e,t,n,r,i+1)}function ht(e,t,r,i){if(i?.aborted)return Promise.reject(vt(i));let a=(0,ot.default)(e,yt(e,t),{env:{...n.A,...r},windowsHide:!0}),o=a.then(({stdout:t})=>bt(n.j(t,m.default.platform===`win32`&&Ct(e)!==`posix`?`\n`:`\\0`),e));return i==null?o:(a.catch(()=>{}),new Promise((e,t)=>{let n=()=>{a.cancel(),t(vt(i))};i.addEventListener(`abort`,n,{once:!0}),o.then(e,t).finally(()=>{i.removeEventListener(`abort`,n)})}))}"
+    },
+    {
+      "id": "SHELL-05",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 40306,
+        "byteEndExclusive": 40554,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "claim": "Shell argv uses interactive login -ilc at startup on non-Windows.",
+      "completeSourceBlock": "function yt(e,t){if(m.default.platform!==`win32`)return[t?`-ilc`:`-lc`,n.O];let r=Ct(e);return r===`powershell`?t?[`-NoLogo`,`-Command`,dt]:[`-NoLogo`,`-NoProfile`,`-NonInteractive`,`-Command`,dt]:r===`cmd`?[`/d`,`/s`,`/c`,ut]:[t?`-ilc`:`-lc`,n.O]}"
+    },
+    {
+      "id": "SHELL-06",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 40917,
+        "byteEndExclusive": 41478,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "claim": "Actual shell is selected using os.userInfo().shell before SHELL fallback; failure falls back to zsh/bash.",
+      "completeSourceBlock": "function xt(e=m.default.platform,t=m.default.env){if(e===`win32`){let e=ct(t);if(e!=null)return e;let n=wt(t,`COMSPEC`);return n!=null&&n.length>0?n:`cmd.exe`}try{let e=(0,p.userInfo)().shell;if(e)return e}catch{}return e===`darwin`?t.SHELL||`/bin/zsh`:t.SHELL||`/bin/sh`}function St(e){if(m.default.platform!==`win32`)return[`/bin/zsh`,`/bin/bash`].filter(t=>t!==e);let t=[],n=ct(m.default.env);n!=null&&Et(t,n);let r=wt(m.default.env,`COMSPEC`);return r!=null&&r.length>0&&Et(t,r),Et(t,`powershell.exe`),Et(t,`pwsh.exe`),Et(t,`cmd.exe`),t.filter(t=>!Dt(t,e))}"
+    },
+    {
+      "id": "SHELL-07",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 34697,
+        "byteEndExclusive": 35241,
+        "lineStart": 6,
+        "lineEnd": 6
+      },
+      "claim": "Execa env merging defaults extendEnv=true, so the launch flags are also inherited by the shell child unless its startup scripts change them.",
+      "completeSourceBlock": "T=({env:e,extendEnv:t,preferLocal:n,localDir:r,execPath:i})=>{let a=t?{...process.env,...e}:e;return n?o.env({env:a,cwd:r,execPath:i}):a},E=(e,t,r={})=>{let a=i._parse(e,t,r);return e=a.command,t=a.args,r=a.options,r={maxBuffer:w,buffer:!0,stripFinalNewline:!0,extendEnv:!0,preferLocal:!1,localDir:r.cwd||process.cwd(),execPath:process.execPath,encoding:`utf8`,reject:!0,cleanup:!0,all:!1,windowsHide:!0,...r},r.env=T(r),r.stdio=l(r),process.platform===`win32`&&n.basename(e,`.exe`)===`cmd`&&t.unshift(`/q`),{file:e,args:t,options:r,parsed:a}},"
+    },
+    {
+      "id": "SHELL-08",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 225838,
+        "byteEndExclusive": 226008,
+        "lineStart": 31,
+        "lineEnd": 31
+      },
+      "claim": "FORCE_CLI is read from current process.env when WebSocket routing is chosen, after entry hydration.",
+      "completeSourceBlock": "function Yo(e){if(process.env.CODEX_APP_SERVER_FORCE_CLI===`1`)return null;let t=process.env.CODEX_APP_SERVER_WS_URL??e.websocket_url;return!t||typeof t!=`string`?null:t}"
+    },
+    {
+      "id": "SHELL-09",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 261857,
+        "byteEndExclusive": 263535,
+        "lineStart": 32,
+        "lineEnd": 32
+      },
+      "claim": "Resolved CLI launch environment derives from current process.env; FORCE_CLI and CODEX_CLI_PATH have no protection against shell changes.",
+      "completeSourceBlock": "function Ks(e,t=[]){if(process.platform===`win32`&&e.hostConfig.kind===`local`&&(e.spawnInsideWsl??zn()))return Ys(e,t);let r=$s({hostConfig:e.hostConfig,repoRoot:e.repoRoot,resourcesPath:e.resourcesPath});if(e.hostConfig.kind===`local`&&U({component:`codex`,consumer:`app-server`,executablePath:r?.executablePath??null,source:r?.source}),!r)return null;let i=Vt(),a=process.platform===`win32`&&e.hostConfig.kind===`local`&&r.source!==`override`&&i!=null&&r.executablePath===(0,s.join)(i,`codex.exe`),o={...process.env,LOG_FORMAT:`json`,RUST_LOG:process.env.RUST_LOG??`warn`,CODEX_INTERNAL_ORIGINATOR_OVERRIDE:e.defaultOriginator??Ts};if(a||delete o.CODEX_WINDOWS_REGISTERED_CORE,(e.hostConfig.kind!==`local`||r.source===`override`||o.CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY!=null&&r.executablePath!==Zt(e.resourcesPath))&&delete o.CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY,e.hostConfig.kind===`local`){e.hostConfig.codex_cli_command?.length||(o.CODEX_CLI_PATH=r.executablePath);let t=Kt(e.resourcesPath);if(process.platform===`win32`&&Vt()!=null&&t==null)return null;t!=null&&(o.CODEX_MCP_NODE_PATH=t)}let c=Ri();xc(c)&&V(o,rc(B(o),c));let l=zi();xc(l)&&V(o,ic(B(o),l)),Vi(o);let u=e.hostConfig.kind===`local`?Js(e.resourcesPath):null;if(u!=null){let e=o.CODEX_PREFERRED_GIT_EXECUTABLE?.trim()||u;V(o,rc(rc(B(o),(0,s.dirname)(u)),(0,s.dirname)(e)))}let d=Wt(e.resourcesPath);d!=null&&V(o,nc(B(o),(0,s.dirname)(d))),r.binDirectory&&V(o,nc(B(o),r.binDirectory));let f=n.Wi(e.hostConfig)?uc(o):o;return{executablePath:r.executablePath,args:[...r.args,...t.flatMap(e=>[`-c`,e]),...a?[`-c`,`features.windows_sandbox_service=true`]:[]],env:G(f),cwd:e.hostConfig.kind===`local`?r.cwd:void 0}}"
+    },
+    {
+      "id": "SHELL-10",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 269718,
+        "byteEndExclusive": 269884,
+        "lineStart": 32,
+        "lineEnd": 32
+      },
+      "claim": "CLI override reads current CODEX_CLI_PATH; whitespace/empty normalization only.",
+      "completeSourceBlock": "function _c(){let e=process.env.CODEX_CLI_PATH;if(e==null)return null;let t=e.trim();return t.length===0?null:t}function vc(){let e=_c();return e==null||Cc(e)?null:e}"
+    },
+    {
+      "id": "SHELL-11",
+      "sourcePath": ".vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0"
+      },
+      "range": {
+        "byteStart": 420114,
+        "byteEndExclusive": 420398,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "claim": "Bootstrap computes userData from current CODEX_ELECTRON_USER_DATA_PATH; original value is not separately restored by shell loader.",
+      "completeSourceBlock": "function oD({appDataPath:e,buildFlavor:t,env:n}){let i=n.CODEX_ELECTRON_USER_DATA_PATH?.trim();if(i)return(0,h.resolve)(i);let a=r.Ht(t),o=(0,h.join)(e,a==null?`Codex`:`Codex (${a})`),s=n.CODEX_ELECTRON_AGENT_RUN_ID?.trim()||null;return t===`agent`&&s!=null?(0,h.join)(o,`agent`,s):o}"
+    },
+    {
+      "id": "SHELL-12",
+      "sourcePath": ".vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0"
+      },
+      "range": {
+        "byteStart": 417765,
+        "byteEndExclusive": 417850,
+        "lineStart": 7,
+        "lineEnd": 7
+      },
+      "claim": "Single-instance behavior uses explicit userData path; unrelated to credential isolation.",
+      "completeSourceBlock": "function iD({isMacOS:e,isPackaged:t,hasExplicitUserDataPath:n=!1}){return t?!e||n:!1}"
+    },
+    {
+      "id": "SHELL-13",
+      "sourcePath": ".vite/build/bootstrap-CooIJpZm.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "d1ab6d0bb5aabf4d56a3cb39d979dc1145e41b47be6821b967cba3802af3fbf0"
+      },
+      "range": {
+        "byteStart": 457406,
+        "byteEndExclusive": 457673
+      },
+      "claim": "Application actively sets userData using oD after shell hydration; --user-data-dir alone does not prove final effective profile.",
+      "completeSourceBlock": "f.app.setPath(`userData`,oD({appDataPath:f.app.getPath(`appData`),buildFlavor:Hk,env:process.env})),process.platform===`win32`&&(delete process.env.CODEX_WINDOWS_REGISTERED_CORE,delete process.env.CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY,f.app.setAppUserModelId(rr(Hk)));"
+    },
+    {
+      "id": "SHELL-14",
+      "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "cd6e8a8fbc4354a6e6ff19c6e4bf6fc1fb3960c63708c83871357c6238f516a8"
+      },
+      "range": {
+        "byteStart": 260977,
+        "byteEndExclusive": 261579
+      },
+      "claim": "FORCE_CLI=1 also excludes local-daemon selection condition; read after awaited CLI preparation.",
+      "completeSourceBlock": "let n=(0,s.join)(xr(),`app-server-control`,`app-server-control.sock`);return process.platform!==`win32`&&!e?.length&&this.options.hostConfig.kind===`local`&&process.env.CODEX_APP_SERVER_USE_LOCAL_DAEMON===`1`&&process.env.CODEX_APP_SERVER_FORCE_CLI!==`1`&&!process.env.CODEX_CLI_PATH?.trim()&&this.options.hostConfig.codex_cli_command==null&&Js(this.options.resourcesPath)==null&&await Gs(t)?(this.kind=`websocket`,new Jo({hostConfig:this.options.hostConfig,websocketUrl:`ws://localhost/rpc`,createConnection:()=>(0,f.createConnection)(n)}).connect()):(this.kind=`stdio`,new Us(t,this.ioStatsTracker))}"
+    },
+    {
+      "id": "SHELL-15",
+      "sourcePath": ".vite/build/main-CqEoQDOU.js",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6"
+      },
+      "range": {
+        "byteStart": 1078308,
+        "byteEndExclusive": 1078822
+      },
+      "claim": "Actual demo launch block uses CODEX_HOME, CODEX_ELECTRON_USER_DATA_PATH and --user-data-dir; no anonymous auth or shell-env skip control in this block.",
+      "completeSourceBlock": "let e=(0,C.join)(_.app.getPath(`home`),`.codex-demo`),t=(0,C.join)(_.app.getPath(`appData`),`Codex Demo`,`user-data`);try{return await Promise.all([x.mkdir(e,{recursive:!0,mode:448}),x.mkdir(t,{recursive:!0,mode:448})]),await(0,O.promisify)(k.execFile)(`/usr/bin/open`,[`-n`,`--env`,`CODEX_HOME=`+e,`--env`,`CODEX_ELECTRON_USER_DATA_PATH=`+t,RT,`--args`,`--user-data-dir=`+t],{env:c.bt(process.env),timeout:6e4}),{status:`launched`}}catch{return{status:`error`,code:`launch-failed`,message:zT[`launch-failed`]}}}};"
+    }
+  ],
+  "scan": {
+    "jsFileCount": 34,
+    "searches": [
+      {
+        "pattern": "disableShellEnv",
+        "hits": []
+      },
+      {
+        "pattern": "skipShellEnv",
+        "hits": []
+      },
+      {
+        "pattern": "(?:disable|skip)[_-]shell[_-]env",
+        "hits": []
+      },
+      {
+        "pattern": "CODEX_[A-Z_]*(?:SHELL|ENV)[A-Z_]*",
+        "hits": [
+          {
+            "sourcePath": ".vite/build/worker.js",
+            "matches": [
+              "CODEX_SHELL"
+            ]
+          },
+          {
+            "sourcePath": ".vite/build/application-network-startup-CfAQmSYg.js",
+            "matches": [
+              "CODEX_SHELL_ENV_KEY"
+            ]
+          },
+          {
+            "sourcePath": ".vite/build/src-CP7XXlpZ.js",
+            "matches": [
+              "CODEX_SHELL"
+            ]
+          },
+          {
+            "sourcePath": ".vite/build/startup-requirements-C6B1x9gL.js",
+            "matches": [
+              "CODEX_ENVIRONMENT_ID"
+            ]
+          }
+        ]
+      },
+      {
+        "pattern": "process\\.env\\.[A-Z0-9_]+",
+        "hits": [
+          {
+            "sourcePath": ".vite/build/startup-requirements-C6B1x9gL.js",
+            "matches": [
+              "process.env.CODEX_ELECTRON_USER_DATA_PATH",
+              "process.env.CODEX_HOME",
+              "process.env.NODE_OPTIONS",
+              "process.env.PATH"
+            ]
+          },
+          {
+            "sourcePath": ".vite/build/bootstrap-CooIJpZm.js",
+            "matches": [
+              "process.env.ALIYUN_REGION_ID",
+              "process.env.AWS_EXECUTION_ENV",
+              "process.env.AWS_REGION",
+              "process.env.BUILD_FLAVOR",
+              "process.env.CODEX_API_BASE_URL",
+              "process.env.CODEX_API_ENDPOINT",
+              "process.env.CODEX_APP_VERSION",
+              "process.env.CODEX_BUILD_COMMIT",
+              "process.env.CODEX_BUILD_NUMBER",
+              "process.env.CODEX_CLI_PATH",
+              "process.env.CODEX_DESKTOP_NETWORK_POLICY",
+              "process.env.CODEX_DESKTOP_RELAUNCH_OPEN_EVENTS",
+              "process.env.CODEX_ELECTRON_USER_DATA_PATH",
+              "process.env.CODEX_MAX_LOG_LEVEL",
+              "process.env.CODEX_OTEL_TRACES_ENDPOINT",
+              "process.env.CODEX_WINDOWS_REGISTERED_CORE",
+              "process.env.CODEX_WINDOWS_SANDBOX_PACKAGE_FAMILY",
+              "process.env.DYNO",
+              "process.env.FLY_REGION",
+              "process.env.GCP_PROJECT",
+              "process.env.IBM_CLOUD_REGION",
+              "process.env.NETLIFY",
+              "process.env.NODE_ENV",
+              "process.env.REGION_NAME",
+              "process.env.SENTRY_NAME",
+              "process.env.SPARKLE_UPDATE_INTERVAL_MINUTES",
+              "process.env.TENCENTCLOUD_APPID",
+              "process.env.TENCENTCLOUD_REGION",
+              "process.env.TENCENTCLOUD_ZONE",
+              "process.env.VERCEL",
+              "process.env.VERCEL_REGION",
+              "process.env.WEBSITE_SITE_NAME"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

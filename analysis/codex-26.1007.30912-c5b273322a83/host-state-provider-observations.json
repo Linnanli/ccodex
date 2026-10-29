@@ -1,0 +1,595 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "nodeVersion": "v22.23.2",
+  "scope": "One Node VM command; saved provider/shared-state/repository units only, with synthetic route/access/store/status/memo/bridge substitutes.",
+  "executed": 26,
+  "passed": 26,
+  "failed": 0,
+  "scenarios": [
+    {
+      "id": "HSP-VM-01",
+      "label": "local access false forces local and hides remote list",
+      "status": "passed",
+      "output": {
+        "selected": "local",
+        "connected": "undefined"
+      }
+    },
+    {
+      "id": "HSP-VM-02",
+      "label": "plugin route host precedes query and stored selection",
+      "status": "passed",
+      "output": {
+        "selected": "fixture-plugin"
+      }
+    },
+    {
+      "id": "HSP-VM-03",
+      "label": "settings query host is trimmed",
+      "status": "passed",
+      "output": {
+        "selected": "fixture-query"
+      }
+    },
+    {
+      "id": "HSP-VM-04",
+      "label": "blank query falls back to stored host",
+      "status": "passed",
+      "output": {
+        "selected": "fixture-stored"
+      }
+    },
+    {
+      "id": "HSP-VM-05",
+      "label": "known disconnected selected host falls back to local",
+      "status": "passed",
+      "output": {
+        "selected": "local"
+      }
+    },
+    {
+      "id": "HSP-VM-06",
+      "label": "unknown connection status preserves the selected id while list is undefined",
+      "status": "passed",
+      "output": {
+        "selected": "fixture-stored",
+        "connected": "undefined"
+      }
+    },
+    {
+      "id": "HSP-VM-07",
+      "label": "missing connection data preserves selected id",
+      "status": "passed",
+      "output": {
+        "selected": "fixture-stored"
+      }
+    },
+    {
+      "id": "HSP-VM-08",
+      "label": "outside settings ignores hostId query",
+      "status": "passed",
+      "output": {
+        "selected": "fixture-stored"
+      }
+    },
+    {
+      "id": "HSP-VM-09",
+      "label": "local id survives an empty connected list",
+      "status": "passed",
+      "output": {
+        "selected": "local"
+      }
+    },
+    {
+      "id": "HSP-VM-10",
+      "label": "plugin setter writes state before replace navigation and skips query update",
+      "status": "passed",
+      "output": {
+        "log": [
+          [
+            "store-set",
+            "selection",
+            "fixture new/host"
+          ],
+          [
+            "navigate",
+            {
+              "pathname": "/settings/plugins-settings",
+              "search": "hostId=fixture+new%2Fhost"
+            },
+            {
+              "replace": true
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-11",
+      "label": "settings setter updates an existing query key and preserves other keys",
+      "status": "passed",
+      "output": {
+        "query": "hostId=fixture-new&tab=fixture",
+        "log": [
+          [
+            "store-set",
+            "selection",
+            "fixture-new"
+          ],
+          [
+            "query-update",
+            {
+              "replace": true
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-12",
+      "label": "settings setter does not create an absent hostId query key",
+      "status": "passed",
+      "output": {
+        "query": "tab=fixture",
+        "log": [
+          [
+            "store-set",
+            "selection",
+            "fixture-new"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-13",
+      "label": "outside settings setter changes only the preference",
+      "status": "passed",
+      "output": {
+        "log": [
+          [
+            "store-set",
+            "selection",
+            "fixture-new"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-14",
+      "label": "synchronous state setter failure prevents navigation",
+      "status": "passed",
+      "output": {
+        "log": [
+          [
+            "store-set",
+            "selection",
+            "fixture-new"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-15",
+      "label": "navigation failure happens after preference update",
+      "status": "passed",
+      "output": {
+        "selectedPreference": "fixture-new",
+        "log": [
+          [
+            "store-set",
+            "selection",
+            "fixture-new"
+          ],
+          [
+            "navigate",
+            {
+              "pathname": "/settings/plugins-settings",
+              "search": "hostId=fixture-new"
+            },
+            {
+              "replace": true
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-16",
+      "label": "query setter failure also leaves preference updated",
+      "status": "passed",
+      "output": {
+        "selectedPreference": "fixture-new",
+        "query": "hostId=old"
+      }
+    },
+    {
+      "id": "HSP-VM-17",
+      "label": "shared family initializer reads snapshot getter",
+      "status": "passed",
+      "output": {
+        "log": [
+          [
+            "snapshot-read",
+            "fixture"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-18",
+      "label": "missing bridge gives undefined seed",
+      "status": "passed",
+      "output": {
+        "seed": "undefined"
+      }
+    },
+    {
+      "id": "HSP-VM-19",
+      "label": "shared family mount matches key and cleanup removes listener before unsubscribe message",
+      "status": "passed",
+      "output": {
+        "values": [
+          "fixture-update"
+        ],
+        "log": [
+          [
+            "subscribe",
+            "shared-object-updated"
+          ],
+          [
+            "dispatch",
+            "shared-object-subscribe",
+            {
+              "key": "fixture"
+            }
+          ],
+          [
+            "unsubscribe-listener"
+          ],
+          [
+            "dispatch",
+            "shared-object-unsubscribe",
+            {
+              "key": "fixture"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-20",
+      "label": "subscribe message synchronous failure occurs after listener registration",
+      "status": "passed",
+      "output": {
+        "listenerStillRegistered": true,
+        "log": [
+          [
+            "subscribe",
+            "shared-object-updated"
+          ],
+          [
+            "dispatch",
+            "shared-object-subscribe",
+            {
+              "key": "fixture"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-21",
+      "label": "listener cleanup failure prevents unsubscribe dispatch",
+      "status": "passed",
+      "output": {
+        "log": [
+          [
+            "subscribe",
+            "shared-object-updated"
+          ],
+          [
+            "dispatch",
+            "shared-object-subscribe",
+            {
+              "key": "fixture"
+            }
+          ],
+          [
+            "unsubscribe-listener"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-22",
+      "label": "functional shared setter uses current value and records history before dispatch and local write",
+      "status": "passed",
+      "output": {
+        "value": "old-new",
+        "log": [
+          [
+            "history-call"
+          ],
+          [
+            "history-record"
+          ],
+          [
+            "dispatch",
+            "shared-object-set",
+            {
+              "key": "fixture",
+              "value": "old-new"
+            }
+          ],
+          [
+            "store-set",
+            "shared",
+            "fixture",
+            "old-new"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-23",
+      "label": "shared dispatch synchronous failure prevents local write after history registration",
+      "status": "passed",
+      "output": {
+        "value": "old",
+        "log": [
+          [
+            "history-call"
+          ],
+          [
+            "history-record"
+          ],
+          [
+            "dispatch",
+            "shared-object-set",
+            {
+              "key": "fixture",
+              "value": "fixture-new"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-24",
+      "label": "same shared value skips history record but still dispatches and writes",
+      "status": "passed",
+      "output": {
+        "log": [
+          [
+            "history-call"
+          ],
+          [
+            "dispatch",
+            "shared-object-set",
+            {
+              "key": "fixture",
+              "value": "old"
+            }
+          ],
+          [
+            "store-set",
+            "shared",
+            "fixture",
+            "old"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "HSP-VM-25",
+      "label": "repository null is retained, undefined deletes, snapshots are shallow copies",
+      "status": "passed",
+      "output": {
+        "snapshot": {
+          "null-value": null
+        },
+        "nestedIdentityRetained": true
+      }
+    },
+    {
+      "id": "HSP-VM-26",
+      "label": "repository listener exception leaves changed value and prevents later listener",
+      "status": "passed",
+      "output": {
+        "value": "changed",
+        "events": [
+          "first"
+        ]
+      }
+    }
+  ],
+  "savedSourceUnitsLoaded": 9,
+  "savedFunctionsLoaded": 7,
+  "savedClassesLoaded": 1,
+  "savedFactoryAssignmentsLoaded": 1,
+  "savedSourceBytesLoaded": 2243,
+  "units": [
+    {
+      "stage": "source-02",
+      "name": "definition-p8a",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6349079,
+        "endExclusive": 6350035
+      },
+      "utf16Range": {
+        "start": 6337533,
+        "endExclusive": 6338489
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "c7f828ab6afb0fc60ca490195cfe700d662a78cc6a0236aa42a44c4cc7e78428",
+      "localSourceFilename": "01-002-definition-p8a.txt",
+      "completeAstNode": true,
+      "bytes": 956
+    },
+    {
+      "stage": "source-02",
+      "name": "definition-u8a",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6348815,
+        "endExclusive": 6348891
+      },
+      "utf16Range": {
+        "start": 6337269,
+        "endExclusive": 6337345
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "aa1379c3befa2a75a87e859b633e984829b234b9173c20037c5bd36e7ed6a207",
+      "localSourceFilename": "01-003-definition-u8a.txt",
+      "completeAstNode": true,
+      "bytes": 76
+    },
+    {
+      "stage": "source-02",
+      "name": "definition-s8a",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6348528,
+        "endExclusive": 6348753
+      },
+      "utf16Range": {
+        "start": 6336982,
+        "endExclusive": 6337207
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "2eb0c21a6305451a69bd03ddbfa901ef9a788ebf58dcf2d94b57d3473c4b2f31",
+      "localSourceFilename": "01-004-definition-s8a.txt",
+      "completeAstNode": true,
+      "bytes": 225
+    },
+    {
+      "stage": "source-02",
+      "name": "definition-_Q",
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "byteRange": {
+        "start": 6349049,
+        "endExclusive": 6349079
+      },
+      "utf16Range": {
+        "start": 6337503,
+        "endExclusive": 6337533
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "fbc5c006a60d63ade3003d4e6249ef569f46acd8e6c1ca72e3e0ef41e391ff9d",
+      "localSourceFilename": "01-005-definition-_Q.txt",
+      "completeAstNode": true,
+      "bytes": 30
+    },
+    {
+      "stage": "source-02",
+      "name": "assignment-NI",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2177568,
+        "endExclusive": 2177879
+      },
+      "utf16Range": {
+        "start": 2140506,
+        "endExclusive": 2140817
+      },
+      "nodeType": "AssignmentExpression",
+      "spanHash": "4029cafd44e602a83b15462c7558796c6fff3c6478df591f4f3088574828e04e",
+      "localSourceFilename": "02-011-assignment-NI.txt",
+      "completeAstNode": true,
+      "bytes": 311
+    },
+    {
+      "stage": "source-02",
+      "name": "definition-izt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2177189,
+        "endExclusive": 2177379
+      },
+      "utf16Range": {
+        "start": 2140127,
+        "endExclusive": 2140317
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "bb5d01e0969b3b4c622f2d91e9794cd192081a71682d3dfb6c20822513d0d843",
+      "localSourceFilename": "02-008-definition-izt.txt",
+      "completeAstNode": true,
+      "bytes": 190
+    },
+    {
+      "stage": "source-02",
+      "name": "definition-MI",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2177454,
+        "endExclusive": 2177486
+      },
+      "utf16Range": {
+        "start": 2140392,
+        "endExclusive": 2140424
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "ef1fd568101fe899554341bbe2b511ef52be60a6d21f9531fcff265d18098e75",
+      "localSourceFilename": "02-009-definition-MI.txt",
+      "completeAstNode": true,
+      "bytes": 32
+    },
+    {
+      "stage": "source-02",
+      "name": "definition-azt",
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "byteRange": {
+        "start": 2177379,
+        "endExclusive": 2177454
+      },
+      "utf16Range": {
+        "start": 2140317,
+        "endExclusive": 2140392
+      },
+      "nodeType": "FunctionDeclaration",
+      "spanHash": "1beccf59189e207b0291faf225ef286d3af3fe4664d58fd42ce16c6e49ae875e",
+      "localSourceFilename": "02-007-definition-azt.txt",
+      "completeAstNode": true,
+      "bytes": 75
+    },
+    {
+      "stage": "source-03",
+      "name": "definition-wee",
+      "sourcePath": "app.asar/.vite/build/main-CqEoQDOU.js",
+      "sourceHash": "09d19386e1f23cf4ccbc950fc40d85a1e8a064a08be588b2a4be6a89f6ada9e6",
+      "byteRange": {
+        "start": 43451,
+        "endExclusive": 43799
+      },
+      "utf16Range": {
+        "start": 43451,
+        "endExclusive": 43799
+      },
+      "nodeType": "VariableDeclarator",
+      "spanHash": "88fc21509f48eee86b3fc4d0492ada92a7cd25d62e0cc3fe336d95d8bbe9325f",
+      "localSourceFilename": "01-014-definition-wee.txt",
+      "completeAstNode": true,
+      "bytes": 348
+    }
+  ],
+  "targetCodeExecuted": true,
+  "savedTargetExecutionScope": "Isolated Node VM only.",
+  "syntheticProvidersOnly": true,
+  "originalClientRunsAdded": 0,
+  "originalStorageInstanceRunsAdded": 0,
+  "actualIpcMessagesAdded": 0,
+  "actualSettingsMutationsAdded": 0,
+  "modelSubmissionsAdded": 0,
+  "independentSemanticPeerReviewAdded": false,
+  "fullAnalysisCompleted": false
+}

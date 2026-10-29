@@ -1,0 +1,3669 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "reviewedAtUtc": "2026-10-13T17:17:11.190059+00:00",
+  "status": "bounded-read-only-metadata-review-complete",
+  "scope": "Seven saved thread/turn protocol declarations, prior generated-schema comparison, inherited static evidence, and prior owned negative/command samples; no new target/CLI/UI/network/model task.",
+  "publicCandidateIdentity": {
+    "source": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-source.json",
+      "bytes": 7557,
+      "sha256": "391a3cd072656ea4f45c3c8d9c2202bef8a422d01bc0af5b1360a6a82df3a0bb"
+    },
+    "repositoryPointer": "/repository",
+    "tagPointer": "/tag",
+    "commitPointer": "/commit",
+    "repository": "https://github.com/openai/codex",
+    "tag": "rust-v0.162.0",
+    "commit": "c1382380de69521303b416720a52f42d51af6248",
+    "scope": "pinned public-source comparison candidate; exact desktop implementation/source identity and npm binary-to-source binding not established"
+  },
+  "methods": [
+    {
+      "method": "thread/start",
+      "scope": "protocol declaration and saved comparison only",
+      "notes": [
+        "No stable parameter is required by the generated schema.",
+        "The ephemeral field is declared here; successful durable or ephemeral creation was not sampled by these inputs."
+      ],
+      "modes": {
+        "stable": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartParams.json",
+              "bytes": 10358,
+              "sha256": "e9c6d3cc18d049bfbc0249add3808fb8e5a27e1a0b5a423767aafbc3859a9428",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/288"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "baseInstructions",
+              "config",
+              "cwd",
+              "developerInstructions",
+              "ephemeral",
+              "model",
+              "modelProvider",
+              "personality",
+              "sandbox",
+              "serviceName",
+              "serviceTier",
+              "sessionStartSource",
+              "threadSource"
+            ],
+            "requiredPointer": null,
+            "required": []
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+              "bytes": 78926,
+              "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/289"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "disabledPluginIds",
+              "instructionSources",
+              "model",
+              "modelProvider",
+              "reasoningEffort",
+              "sandbox",
+              "serviceTier",
+              "thread"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "model",
+              "modelProvider",
+              "sandbox",
+              "thread"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+              "bytes": 211862,
+              "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/7"
+            },
+            "pointer": "/oneOf/1",
+            "paramsRef": "#/definitions/ThreadStartParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/stable/variantContracts/92",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/stable/fileComparisons/289",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadStartParams.json",
+              "bytes": 10358,
+              "sha256": "e9c6d3cc18d049bfbc0249add3808fb8e5a27e1a0b5a423767aafbc3859a9428",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/288"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadStartResponse.json",
+              "bytes": 79517,
+              "sha256": "7247cd531d3f78174444f8262fd3090d5acf8ab74084547b4e0a831d74e77c9a",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/289"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        },
+        "experimental": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadStartParams.json",
+              "bytes": 13453,
+              "sha256": "80a40a7fac15b4bf70efb7f893fb353acc0a0d30c68f54aee4f01923deca85de",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/403"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "allowProviderModelFallback",
+              "approvalPolicy",
+              "approvalsReviewer",
+              "baseInstructions",
+              "config",
+              "cwd",
+              "daybreakEnabled",
+              "developerInstructions",
+              "dynamicTools",
+              "environments",
+              "ephemeral",
+              "experimentalRawEvents",
+              "historyMode",
+              "mockExperimentalField",
+              "model",
+              "modelProvider",
+              "multiAgentMode",
+              "permissions",
+              "personality",
+              "projectId",
+              "runtimeWorkspaceRoots",
+              "sandbox",
+              "selectedCapabilityRoots",
+              "serviceName",
+              "serviceTier",
+              "sessionStartSource",
+              "threadSource"
+            ],
+            "requiredPointer": null,
+            "required": []
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadStartResponse.json",
+              "bytes": 81065,
+              "sha256": "b655cd7e620307ca7fe7943a5a0ef4d24ae07df848e7d63d1649ea6c7ff7ba88",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/404"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "activePermissionProfile",
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "disabledPluginIds",
+              "instructionSources",
+              "model",
+              "modelProvider",
+              "multiAgentMode",
+              "reasoningEffort",
+              "runtimeWorkspaceRoots",
+              "sandbox",
+              "serviceTier",
+              "thread"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "model",
+              "modelProvider",
+              "sandbox",
+              "thread"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+              "bytes": 300474,
+              "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/7"
+            },
+            "pointer": "/oneOf/7",
+            "paramsRef": "#/definitions/ThreadStartParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/experimental/variantContracts/150",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/experimental/fileComparisons/404",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadStartParams.json",
+              "bytes": 13453,
+              "sha256": "80a40a7fac15b4bf70efb7f893fb353acc0a0d30c68f54aee4f01923deca85de",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/403"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadStartResponse.json",
+              "bytes": 81656,
+              "sha256": "107fe36c99ebaeb750a371580beec807a28c6451e9c8a02cd7d451a0135f1c91",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/404"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        }
+      },
+      "experimentalOnlyParameterNames": [
+        "allowProviderModelFallback",
+        "daybreakEnabled",
+        "dynamicTools",
+        "environments",
+        "experimentalRawEvents",
+        "historyMode",
+        "mockExperimentalField",
+        "multiAgentMode",
+        "permissions",
+        "projectId",
+        "runtimeWorkspaceRoots",
+        "selectedCapabilityRoots"
+      ],
+      "coverageReferences": [
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/otherWrapperMethods/96",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        }
+      ]
+    },
+    {
+      "method": "thread/resume",
+      "scope": "protocol declaration and saved comparison only",
+      "notes": [
+        "threadId is required in both modes.",
+        "The description mentions history/path precedence, but history/path are only experimental schema properties.",
+        "excludeTurns declares metadata/live-resume response hydration behavior; paginated history retrieval and restart recovery are not runtime-verified here."
+      ],
+      "modes": {
+        "stable": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadResumeParams.json",
+              "bytes": 41461,
+              "sha256": "948779cace55dda4384689a1627cd6675aa4782744bb5820cca16bfc0118586c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/268"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "baseInstructions",
+              "config",
+              "cwd",
+              "developerInstructions",
+              "excludeTurns",
+              "model",
+              "modelProvider",
+              "personality",
+              "sandbox",
+              "serviceTier",
+              "threadId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadResumeResponse.json",
+              "bytes": 81467,
+              "sha256": "de584907214ffd2210b2a6be7072bb63f41e3c31e086b2665af90e385c8a6098",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/269"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "collaborationMode",
+              "cwd",
+              "disabledPluginIds",
+              "instructionSources",
+              "itemsBackwardsCursor",
+              "model",
+              "modelProvider",
+              "reasoningEffort",
+              "sandbox",
+              "serviceTier",
+              "thread",
+              "turnsBackwardsCursor"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "model",
+              "modelProvider",
+              "sandbox",
+              "thread"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+              "bytes": 211862,
+              "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/7"
+            },
+            "pointer": "/oneOf/2",
+            "paramsRef": "#/definitions/ThreadResumeParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/stable/variantContracts/88",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/stable/fileComparisons/269",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadResumeParams.json",
+              "bytes": 41461,
+              "sha256": "948779cace55dda4384689a1627cd6675aa4782744bb5820cca16bfc0118586c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/268"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadResumeResponse.json",
+              "bytes": 82058,
+              "sha256": "3f19a9c3a9891526685b0f61ce781098ddd65bfa2aed8c24ba4722fef10e08fe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/269"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        },
+        "experimental": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadResumeParams.json",
+              "bytes": 42913,
+              "sha256": "c69d0d08d046e48b2f9e631761e1127c347fac2f8c2776df458559eb3aa4bd83",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/377"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "baseInstructions",
+              "config",
+              "cwd",
+              "developerInstructions",
+              "excludeTurns",
+              "history",
+              "initialTurnsPage",
+              "model",
+              "modelProvider",
+              "path",
+              "permissions",
+              "personality",
+              "runtimeWorkspaceRoots",
+              "sandbox",
+              "serviceTier",
+              "threadId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadResumeResponse.json",
+              "bytes": 83893,
+              "sha256": "e6adffd058b4a87ff4532d2608628cd0e29bfa721326c417e2622da31a2ac1dd",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/378"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "activePermissionProfile",
+              "approvalPolicy",
+              "approvalsReviewer",
+              "collaborationMode",
+              "cwd",
+              "disabledPluginIds",
+              "initialTurnsPage",
+              "instructionSources",
+              "itemsBackwardsCursor",
+              "model",
+              "modelProvider",
+              "multiAgentMode",
+              "reasoningEffort",
+              "runtimeWorkspaceRoots",
+              "sandbox",
+              "serviceTier",
+              "thread",
+              "turnsBackwardsCursor"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "model",
+              "modelProvider",
+              "sandbox",
+              "thread"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+              "bytes": 300474,
+              "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/7"
+            },
+            "pointer": "/oneOf/8",
+            "paramsRef": "#/definitions/ThreadResumeParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/experimental/variantContracts/143",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/experimental/fileComparisons/378",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadResumeParams.json",
+              "bytes": 42913,
+              "sha256": "c69d0d08d046e48b2f9e631761e1127c347fac2f8c2776df458559eb3aa4bd83",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/377"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadResumeResponse.json",
+              "bytes": 84484,
+              "sha256": "3ea7c6d06bab091cea98431c72b644ac026492217842335fcc2105a472be4aa2",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/378"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        }
+      },
+      "experimentalOnlyParameterNames": [
+        "history",
+        "initialTurnsPage",
+        "path",
+        "permissions",
+        "runtimeWorkspaceRoots"
+      ],
+      "coverageReferences": [
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/otherWrapperMethods/90",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        }
+      ]
+    },
+    {
+      "method": "thread/fork",
+      "scope": "protocol declaration and saved comparison only",
+      "notes": [
+        "threadId is required in both modes.",
+        "lastTurnId declares an inclusive cutoff and excludes an in-progress referenced turn; beforeTurnId is experimental and mutually exclusive by description.",
+        "path and prediction behavior are experimental declarations; the saved negative fixture never produced a successful fork."
+      ],
+      "modes": {
+        "stable": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadForkParams.json",
+              "bytes": 5385,
+              "sha256": "60540b97d453ddbc5e12bfaa007a3718f31847d18dec0da59a5e4b89be4717ad",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/231"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "baseInstructions",
+              "config",
+              "cwd",
+              "developerInstructions",
+              "ephemeral",
+              "excludeTurns",
+              "lastTurnId",
+              "model",
+              "modelProvider",
+              "sandbox",
+              "serviceTier",
+              "threadId",
+              "threadSource"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadForkResponse.json",
+              "bytes": 78925,
+              "sha256": "8759d76b9bd28cf4a01ac8a9f15efe25bdcdd5d2ed12515ece3ea21017fa14cc",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/232"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "disabledPluginIds",
+              "instructionSources",
+              "model",
+              "modelProvider",
+              "reasoningEffort",
+              "sandbox",
+              "serviceTier",
+              "thread"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "model",
+              "modelProvider",
+              "sandbox",
+              "thread"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+              "bytes": 211862,
+              "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/7"
+            },
+            "pointer": "/oneOf/3",
+            "paramsRef": "#/definitions/ThreadForkParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/stable/variantContracts/77",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/stable/fileComparisons/232",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadForkParams.json",
+              "bytes": 5385,
+              "sha256": "60540b97d453ddbc5e12bfaa007a3718f31847d18dec0da59a5e4b89be4717ad",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/231"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadForkResponse.json",
+              "bytes": 79516,
+              "sha256": "1488ab8371b209dbb10bb99351062983fb0f42084f7dc29c10bda19ff9ea84cd",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/232"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        },
+        "experimental": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadForkParams.json",
+              "bytes": 7006,
+              "sha256": "87fd7fba8a6c6ee6ab70f133ea788e93bfcceb1433fe078599f8f6f4d3c8182c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/310"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "baseInstructions",
+              "beforeTurnId",
+              "config",
+              "cwd",
+              "deferGoalContinuation",
+              "developerInstructions",
+              "ephemeral",
+              "excludeTurns",
+              "experimentalPredictionMode",
+              "lastTurnId",
+              "model",
+              "modelProvider",
+              "path",
+              "permissions",
+              "runtimeWorkspaceRoots",
+              "sandbox",
+              "serviceTier",
+              "threadId",
+              "threadSource"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadForkResponse.json",
+              "bytes": 81064,
+              "sha256": "3489c7f18a47d6a7b5c0590b2b9291c3a8f46f6fcd2f4205ee164ca30a64a67f",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/311"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "activePermissionProfile",
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "disabledPluginIds",
+              "instructionSources",
+              "model",
+              "modelProvider",
+              "multiAgentMode",
+              "reasoningEffort",
+              "runtimeWorkspaceRoots",
+              "sandbox",
+              "serviceTier",
+              "thread"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "cwd",
+              "model",
+              "modelProvider",
+              "sandbox",
+              "thread"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+              "bytes": 300474,
+              "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/7"
+            },
+            "pointer": "/oneOf/9",
+            "paramsRef": "#/definitions/ThreadForkParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/experimental/variantContracts/117",
+            "requestEffectiveContract": "different",
+            "requestDifferencePointers": [
+              "/definitions/ThreadForkParams/properties/experimentalPredictionMode"
+            ],
+            "responsePointer": "/comparisons/experimental/fileComparisons/311",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadForkParams.json",
+              "bytes": 6584,
+              "sha256": "674134467796c011068b9dd5efc912de4560fa31f65c0fb2163f14e352be7a61",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/310"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadForkResponse.json",
+              "bytes": 81655,
+              "sha256": "e63cfbeb846304309c9c64fa1235abb1723f8a0abd413aef2d342598bbaf902c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/311"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        }
+      },
+      "experimentalOnlyParameterNames": [
+        "beforeTurnId",
+        "deferGoalContinuation",
+        "experimentalPredictionMode",
+        "path",
+        "permissions",
+        "runtimeWorkspaceRoots"
+      ],
+      "coverageReferences": [
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/otherWrapperMethods/68",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        }
+      ]
+    },
+    {
+      "method": "thread/archive",
+      "scope": "protocol declaration and saved comparison only",
+      "notes": [
+        "threadId is required; the response declares an empty object.",
+        "An empty response alone does not establish disk/archive transition, sidebar removal, recovery, notification ordering or active-turn cancellation."
+      ],
+      "modes": {
+        "stable": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadArchiveParams.json",
+              "bytes": 218,
+              "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/213"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "threadId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadArchiveResponse.json",
+              "bytes": 114,
+              "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/214"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [],
+            "requiredPointer": null,
+            "required": []
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+              "bytes": 211862,
+              "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/7"
+            },
+            "pointer": "/oneOf/4",
+            "paramsRef": "#/definitions/ThreadArchiveParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/stable/variantContracts/70",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/stable/fileComparisons/214",
+            "responseSchemaShape": "equal",
+            "responseDifferencePointers": [],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadArchiveParams.json",
+              "bytes": 218,
+              "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/213"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadArchiveResponse.json",
+              "bytes": 114,
+              "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/214"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        },
+        "experimental": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadArchiveParams.json",
+              "bytes": 218,
+              "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/284"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "threadId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadArchiveResponse.json",
+              "bytes": 114,
+              "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/285"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [],
+            "requiredPointer": null,
+            "required": []
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+              "bytes": 300474,
+              "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/7"
+            },
+            "pointer": "/oneOf/10",
+            "paramsRef": "#/definitions/ThreadArchiveParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/experimental/variantContracts/106",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/experimental/fileComparisons/285",
+            "responseSchemaShape": "equal",
+            "responseDifferencePointers": [],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadArchiveParams.json",
+              "bytes": 218,
+              "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/284"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadArchiveResponse.json",
+              "bytes": 114,
+              "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/285"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        }
+      },
+      "experimentalOnlyParameterNames": [],
+      "coverageReferences": [
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/clientMethods/33",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        },
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/otherWrapperMethods/60",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        }
+      ]
+    },
+    {
+      "method": "turn/start",
+      "scope": "protocol declaration and saved comparison only",
+      "notes": [
+        "threadId and input are required.",
+        "Several overrides declare effects on this and later turns; serviceTierForTurn declares only-new-turn behavior.",
+        "The descriptions distinguish starting a turn from adding input to an active turn; this is not an observed desktop runtime transition."
+      ],
+      "modes": {
+        "stable": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnStartParams.json",
+              "bytes": 23170,
+              "sha256": "583aff13e7a2da43fbb0150e0edc3c73171f374f0aa745dddba256166988a005",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/306"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "approvalPolicy",
+              "approvalsReviewer",
+              "clientUserMessageId",
+              "cwd",
+              "disabledPluginIds",
+              "effort",
+              "input",
+              "model",
+              "outputSchema",
+              "parentTurnId",
+              "personality",
+              "rootTurnId",
+              "sandboxPolicy",
+              "serviceTier",
+              "serviceTierForTurn",
+              "summary",
+              "threadId",
+              "toolOutput",
+              "turnTrigger"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "input",
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnStartResponse.json",
+              "bytes": 57727,
+              "sha256": "787dc264389e09baf0297d0d819da069034f998a5ef21cd5dc7ddd438fac3b36",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/307"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "turn"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "turn"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+              "bytes": 211862,
+              "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/7"
+            },
+            "pointer": "/oneOf/63",
+            "paramsRef": "#/definitions/TurnStartParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/stable/variantContracts/101",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/stable/fileComparisons/307",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnStartParams.json",
+              "bytes": 23170,
+              "sha256": "583aff13e7a2da43fbb0150e0edc3c73171f374f0aa745dddba256166988a005",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/306"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnStartResponse.json",
+              "bytes": 58318,
+              "sha256": "20e837d07826b9c01578ff40b962ab08f58a355a9984e96226733498514e9bad",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/307"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        },
+        "experimental": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnStartParams.json",
+              "bytes": 26060,
+              "sha256": "062373a7dfc290b506e591bc5c2a35005211df27b3c60358cee3efed12859062",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/425"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "additionalContext",
+              "approvalPolicy",
+              "approvalsReviewer",
+              "clientUserMessageId",
+              "collaborationMode",
+              "cwd",
+              "cyberAccessProgram",
+              "disabledPluginIds",
+              "effort",
+              "environments",
+              "input",
+              "model",
+              "multiAgentMode",
+              "outputSchema",
+              "parentTurnId",
+              "permissions",
+              "personality",
+              "responsesapiClientMetadata",
+              "rootTurnId",
+              "runtimeWorkspaceRoots",
+              "sandboxPolicy",
+              "serviceTier",
+              "serviceTierForTurn",
+              "summary",
+              "threadId",
+              "toolOutput",
+              "turnTrigger"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "input",
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnStartResponse.json",
+              "bytes": 57727,
+              "sha256": "787dc264389e09baf0297d0d819da069034f998a5ef21cd5dc7ddd438fac3b36",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/426"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "turn"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "turn"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+              "bytes": 300474,
+              "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/7"
+            },
+            "pointer": "/oneOf/96",
+            "paramsRef": "#/definitions/TurnStartParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/experimental/variantContracts/161",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/experimental/fileComparisons/426",
+            "responseSchemaShape": "different",
+            "responseDifferencePointers": [
+              "/definitions/ThreadItem/oneOf/11/properties/model",
+              "/definitions/ThreadItem/oneOf/11/properties/reasoningEffort"
+            ],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnStartParams.json",
+              "bytes": 26060,
+              "sha256": "062373a7dfc290b506e591bc5c2a35005211df27b3c60358cee3efed12859062",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/425"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnStartResponse.json",
+              "bytes": 58318,
+              "sha256": "20e837d07826b9c01578ff40b962ab08f58a355a9984e96226733498514e9bad",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/426"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        }
+      },
+      "experimentalOnlyParameterNames": [
+        "additionalContext",
+        "collaborationMode",
+        "cyberAccessProgram",
+        "environments",
+        "multiAgentMode",
+        "permissions",
+        "responsesapiClientMetadata",
+        "runtimeWorkspaceRoots"
+      ],
+      "coverageReferences": [
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/otherWrapperMethods/104",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        }
+      ]
+    },
+    {
+      "method": "turn/steer",
+      "scope": "protocol declaration and saved comparison only",
+      "notes": [
+        "threadId, input and expectedTurnId are required.",
+        "expectedTurnId declares an active-turn precondition; a mismatch is declared to fail.",
+        "The response declares turnId; no steer success, race or mismatch fixture is present in these saved inputs."
+      ],
+      "modes": {
+        "stable": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnSteerParams.json",
+              "bytes": 6923,
+              "sha256": "857e7a2b061ae46ed6aedea6a5fddd3a6ce14f0334bf7eafaf10d4cbe68ec78b",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/309"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "clientUserMessageId",
+              "expectedTurnId",
+              "input",
+              "threadId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "expectedTurnId",
+              "input",
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnSteerResponse.json",
+              "bytes": 212,
+              "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/310"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "turnId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "turnId"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+              "bytes": 211862,
+              "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/7"
+            },
+            "pointer": "/oneOf/64",
+            "paramsRef": "#/definitions/TurnSteerParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/stable/variantContracts/102",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/stable/fileComparisons/310",
+            "responseSchemaShape": "equal",
+            "responseDifferencePointers": [],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnSteerParams.json",
+              "bytes": 6923,
+              "sha256": "857e7a2b061ae46ed6aedea6a5fddd3a6ce14f0334bf7eafaf10d4cbe68ec78b",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/309"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnSteerResponse.json",
+              "bytes": 212,
+              "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/310"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        },
+        "experimental": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnSteerParams.json",
+              "bytes": 7786,
+              "sha256": "99f7fdff8b090065b68f36420b70870b5eafed048c024b308230aaa02f15d891",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/428"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "additionalContext",
+              "clientUserMessageId",
+              "expectedTurnId",
+              "input",
+              "responsesapiClientMetadata",
+              "threadId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "expectedTurnId",
+              "input",
+              "threadId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnSteerResponse.json",
+              "bytes": 212,
+              "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/429"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "turnId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "turnId"
+            ]
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+              "bytes": 300474,
+              "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/7"
+            },
+            "pointer": "/oneOf/98",
+            "paramsRef": "#/definitions/TurnSteerParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/experimental/variantContracts/162",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/experimental/fileComparisons/429",
+            "responseSchemaShape": "equal",
+            "responseDifferencePointers": [],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnSteerParams.json",
+              "bytes": 7786,
+              "sha256": "99f7fdff8b090065b68f36420b70870b5eafed048c024b308230aaa02f15d891",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/428"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnSteerResponse.json",
+              "bytes": 212,
+              "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/429"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        }
+      },
+      "experimentalOnlyParameterNames": [
+        "additionalContext",
+        "responsesapiClientMetadata"
+      ],
+      "coverageReferences": [
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/otherWrapperMethods/105",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        }
+      ]
+    },
+    {
+      "method": "turn/interrupt",
+      "scope": "protocol declaration and saved comparison only",
+      "notes": [
+        "threadId and turnId are required; the response declares an empty object.",
+        "No turn interrupt fixture, interruption completion, item finalization, late notification, persistence or restart behavior is established."
+      ],
+      "modes": {
+        "stable": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnInterruptParams.json",
+              "bytes": 278,
+              "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/302"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "threadId",
+              "turnId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId",
+              "turnId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnInterruptResponse.json",
+              "bytes": 114,
+              "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/303"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [],
+            "requiredPointer": null,
+            "required": []
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+              "bytes": 211862,
+              "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/0/schemaFiles/7"
+            },
+            "pointer": "/oneOf/65",
+            "paramsRef": "#/definitions/TurnInterruptParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/stable/variantContracts/100",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/stable/fileComparisons/303",
+            "responseSchemaShape": "equal",
+            "responseDifferencePointers": [],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnInterruptParams.json",
+              "bytes": 278,
+              "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/302"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnInterruptResponse.json",
+              "bytes": 114,
+              "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/1/schemaFiles/303"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        },
+        "experimental": {
+          "parameters": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnInterruptParams.json",
+              "bytes": 278,
+              "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/419"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [
+              "threadId",
+              "turnId"
+            ],
+            "requiredPointer": "/required",
+            "required": [
+              "threadId",
+              "turnId"
+            ]
+          },
+          "response": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnInterruptResponse.json",
+              "bytes": 114,
+              "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/420"
+            },
+            "propertiesPointer": "/properties",
+            "propertyNames": [],
+            "requiredPointer": null,
+            "required": []
+          },
+          "requestUnion": {
+            "source": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+              "bytes": 300474,
+              "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+              "manifestPointer": "/runs/1/schemaFiles/7"
+            },
+            "pointer": "/oneOf/99",
+            "paramsRef": "#/definitions/TurnInterruptParams"
+          },
+          "publicComparison": {
+            "comparisonSource": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            "requestPointer": "/comparisons/experimental/variantContracts/159",
+            "requestEffectiveContract": "equal",
+            "requestDifferencePointers": [],
+            "responsePointer": "/comparisons/experimental/fileComparisons/420",
+            "responseSchemaShape": "equal",
+            "responseDifferencePointers": [],
+            "publicParameters": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnInterruptParams.json",
+              "bytes": 278,
+              "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/419"
+            },
+            "publicResponse": {
+              "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnInterruptResponse.json",
+              "bytes": 114,
+              "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1",
+              "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+              "manifestPointer": "/runs/2/schemaFiles/420"
+            },
+            "independentlyComparedSelectedSchemaShapes": true
+          }
+        }
+      },
+      "experimentalOnlyParameterNames": [],
+      "coverageReferences": [
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/clientMethods/51",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        },
+        {
+          "source": {
+            "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+            "bytes": 14183,
+            "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+          },
+          "pointer": "/otherWrapperMethods/102",
+          "scope": "method candidate inventory; receiver/mode/runtime/UI reachability not established"
+        }
+      ]
+    }
+  ],
+  "stateDeclarations": [
+    {
+      "name": "ThreadStatus",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/ThreadStatus",
+      "scope": "protocol declaration; no UI-state or successful persistence test",
+      "declaredValues": [
+        "notLoaded",
+        "idle",
+        "systemError",
+        "active"
+      ],
+      "activeRequires": [
+        "activeFlags",
+        "type"
+      ]
+    },
+    {
+      "name": "ThreadActiveFlag",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/ThreadActiveFlag",
+      "scope": "protocol declaration; no UI-state or successful persistence test",
+      "declaredValues": [
+        "waitingOnApproval",
+        "waitingOnUserInput"
+      ]
+    },
+    {
+      "name": "ThreadHistoryMode",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/ThreadHistoryMode",
+      "scope": "protocol declaration; no UI-state or successful persistence test",
+      "declaredValues": [
+        "legacy",
+        "paginated"
+      ]
+    },
+    {
+      "name": "TurnStatus",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/TurnStatus",
+      "scope": "protocol declaration; no UI-state or successful persistence test",
+      "declaredValues": [
+        "completed",
+        "interrupted",
+        "failed",
+        "inProgress"
+      ]
+    },
+    {
+      "name": "TurnItemsView",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/TurnItemsView",
+      "scope": "protocol declaration; no UI-state or successful persistence test",
+      "declaredValues": [
+        "notLoaded",
+        "summary",
+        "full"
+      ]
+    },
+    {
+      "name": "TurnError",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/TurnError",
+      "scope": "protocol declaration; no UI-state or successful persistence test",
+      "propertyNames": [
+        "additionalDetails",
+        "codexErrorInfo",
+        "message",
+        "misalignment"
+      ],
+      "required": [
+        "message"
+      ]
+    }
+  ],
+  "notificationDeclarations": [
+    {
+      "name": "ThreadStartedNotification",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartedNotification.json",
+        "bytes": 71640,
+        "sha256": "ad25d0e096542ab6469117eee0a7930bb271c102c6145a4515ea4c79966d670c",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/290"
+      },
+      "requiredPointer": "/required",
+      "required": [
+        "thread"
+      ],
+      "propertiesPointer": "/properties",
+      "propertyNames": [
+        "thread"
+      ],
+      "scope": "declaration only; emission/order/desktop consumption not observed"
+    },
+    {
+      "name": "ThreadArchivedNotification",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadArchivedNotification.json",
+        "bytes": 225,
+        "sha256": "54ca94956719ade8682c766f31419ee9953dee8f4587b5b30efd0927de6ca26e",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/215"
+      },
+      "requiredPointer": "/required",
+      "required": [
+        "threadId"
+      ],
+      "propertiesPointer": "/properties",
+      "propertyNames": [
+        "threadId"
+      ],
+      "scope": "declaration only; emission/order/desktop consumption not observed"
+    },
+    {
+      "name": "ThreadStatusChangedNotification",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStatusChangedNotification.json",
+        "bytes": 2207,
+        "sha256": "26f3c60c1b73f7fa2d31c74429cdc36f8746c76c33e3d314b3fb61d3661f05f6",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/291"
+      },
+      "requiredPointer": "/required",
+      "required": [
+        "status",
+        "threadId"
+      ],
+      "propertiesPointer": "/properties",
+      "propertyNames": [
+        "status",
+        "threadId"
+      ],
+      "scope": "declaration only; emission/order/desktop consumption not observed"
+    },
+    {
+      "name": "TurnStartedNotification",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnStartedNotification.json",
+        "bytes": 57797,
+        "sha256": "82b22cdff68277f1a35b13354d4dba53975f01bec8702d415d0185023231f19c",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/308"
+      },
+      "requiredPointer": "/required",
+      "required": [
+        "threadId",
+        "turn"
+      ],
+      "propertiesPointer": "/properties",
+      "propertyNames": [
+        "threadId",
+        "turn"
+      ],
+      "scope": "declaration only; emission/order/desktop consumption not observed"
+    },
+    {
+      "name": "TurnCompletedNotification",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnCompletedNotification.json",
+        "bytes": 57799,
+        "sha256": "756017d04296be2f4fb02853fcf1385e7a63c60d9f8d84c04993b9b0638bae40",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/300"
+      },
+      "requiredPointer": "/required",
+      "required": [
+        "threadId",
+        "turn"
+      ],
+      "propertiesPointer": "/properties",
+      "propertyNames": [
+        "threadId",
+        "turn"
+      ],
+      "scope": "declaration only; emission/order/desktop consumption not observed"
+    },
+    {
+      "name": "ErrorNotification",
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ErrorNotification.json",
+        "bytes": 7283,
+        "sha256": "63518d8faae38b8eb73518d59b113f77603d238dd0cf36260b4232f381f43f8c",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/75"
+      },
+      "requiredPointer": "/required",
+      "required": [
+        "error",
+        "threadId",
+        "turnId",
+        "willRetry"
+      ],
+      "propertiesPointer": "/properties",
+      "propertyNames": [
+        "error",
+        "threadId",
+        "turnId",
+        "willRetry"
+      ],
+      "scope": "declaration only; emission/order/desktop consumption not observed"
+    }
+  ],
+  "persistenceDeclarations": [
+    {
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/Thread/properties/ephemeral",
+      "meaning": "The schema describes non-materialization on disk.",
+      "observed": false
+    },
+    {
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/Thread/properties/historyMode",
+      "meaning": "The schema describes a persisted history contract.",
+      "observed": false
+    },
+    {
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/Thread/properties/path",
+      "meaning": "The schema describes an unstable disk path.",
+      "observed": false
+    },
+    {
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/Thread/properties/forkedFromId",
+      "meaning": "The schema describes source-thread identity for a fork.",
+      "observed": false
+    },
+    {
+      "source": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+        "bytes": 78926,
+        "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70",
+        "manifest": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+        "manifestPointer": "/runs/0/schemaFiles/289"
+      },
+      "pointer": "/definitions/Thread/properties/turns",
+      "meaning": "The schema describes hydration on resume/fork/read; other Thread payloads have an empty turns list.",
+      "observed": false
+    }
+  ],
+  "inheritedStaticEvidence": [
+    {
+      "id": "WRAPPER-LOCAL-E0103",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 177,
+      "jsonlByteRange": {
+        "start": 132509,
+        "endExclusive": 133442,
+        "sha256": "c9874c2eb9161f48a1ab015cf0408fcee3d7db9ce98237ed55c8f16fc9d4d171"
+      },
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 1396732,
+        "endExclusive": 1396851
+      },
+      "originalSpanSha256": "cdcc3cd39611e8409574bbb75ef20e692a92bbbc52fcd0bf10a758d4386fc979",
+      "claim": "sendRequest callsite `thread/start`",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00530",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1498,
+      "jsonlByteRange": {
+        "start": 1200614,
+        "endExclusive": 1201326,
+        "sha256": "bea652310e3a8bf843bf8fc155443fbd2bd525903b5115db2dfadb7f63803f43"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 622767,
+        "endExclusive": 622795
+      },
+      "originalSpanSha256": "a531e286bae48a948a517f7a16cf6621afd5798ff90067eee6391016d3a17303",
+      "claim": "请求方法字面调用 thread/archive",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00548",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1516,
+      "jsonlByteRange": {
+        "start": 1213454,
+        "endExclusive": 1214163,
+        "sha256": "8ae1cd9f0240e40f1a2252736f4ad0d63694378b5c79fe4f4e11aa09f9f3eef4"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 677682,
+        "endExclusive": 677707
+      },
+      "originalSpanSha256": "9dd91ebec2d688aa31a00c28280bcd3be288da14a5f9591a6162cb54a8efba00",
+      "claim": "请求方法字面调用 thread/fork",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00557",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1525,
+      "jsonlByteRange": {
+        "start": 1219881,
+        "endExclusive": 1220589,
+        "sha256": "d8c93545b3014a305596432248c9476d3dd4d3637eb8ea3a19ed0c5c84f80efd"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 848869,
+        "endExclusive": 848893
+      },
+      "originalSpanSha256": "48b0d57aa2f6573aed358a64122b03ed5eb14e778b619926ac22191f9d853bae",
+      "claim": "请求方法字面调用 turn/start",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00558",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1526,
+      "jsonlByteRange": {
+        "start": 1220589,
+        "endExclusive": 1221297,
+        "sha256": "cff6515fae08a6a883eacf457bae0fd2495ad71e2e720062a3b6fda16d03a5c2"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 856631,
+        "endExclusive": 856655
+      },
+      "originalSpanSha256": "011043499c674fbc820bf8a2f6a2d1af57b024802ec57ba92154cf45bea49c10",
+      "claim": "请求方法字面调用 turn/steer",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00559",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1527,
+      "jsonlByteRange": {
+        "start": 1221297,
+        "endExclusive": 1222005,
+        "sha256": "2a968854adb17c0d81803265b02fdb0878085b99b55982f13d4a8d49e146f29f"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 856663,
+        "endExclusive": 856687
+      },
+      "originalSpanSha256": "48b0d57aa2f6573aed358a64122b03ed5eb14e778b619926ac22191f9d853bae",
+      "claim": "请求方法字面调用 turn/start",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00572",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1540,
+      "jsonlByteRange": {
+        "start": 1230581,
+        "endExclusive": 1231293,
+        "sha256": "eb94bfee3593f99bb16078a12e05c98ed890135257d823bcdd7dbdfa8b85864f"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 960966,
+        "endExclusive": 960994
+      },
+      "originalSpanSha256": "a531e286bae48a948a517f7a16cf6621afd5798ff90067eee6391016d3a17303",
+      "claim": "请求方法字面调用 thread/archive",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00574",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1542,
+      "jsonlByteRange": {
+        "start": 1232006,
+        "endExclusive": 1232717,
+        "sha256": "6d4f268806496973c8386ab793cc458b579166b693e11fc5dceec73744a1b752"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 975509,
+        "endExclusive": 975536
+      },
+      "originalSpanSha256": "df2ceb9aed67711b259d0979da95e12a62561cf725b7f142434c2cc7a11b1271",
+      "claim": "请求方法字面调用 thread/resume",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00578",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1546,
+      "jsonlByteRange": {
+        "start": 1234861,
+        "endExclusive": 1235573,
+        "sha256": "133a40c519afb0c63f130195479d12a9eccd6138537aa1eee17941a7e22f1907"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 996347,
+        "endExclusive": 996375
+      },
+      "originalSpanSha256": "76fbc14bdd0110df71641fb78279ee85b5b3fe03cb1e19bfa84858ed61d6d6f8",
+      "claim": "请求方法字面调用 turn/interrupt",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E00579",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1547,
+      "jsonlByteRange": {
+        "start": 1235573,
+        "endExclusive": 1236285,
+        "sha256": "32c40106c7f7112c27b3d99b9d2e3d730af258a6755190d03dd4ebde36e0a1ee"
+      },
+      "sourcePath": "app.asar/.vite/build/src-BJv5Mk7n.js",
+      "sourceHash": "72e2b366d574206f76fc079c79b64c31ce378970a797475ded8709908d338f08",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 998360,
+        "endExclusive": 998388
+      },
+      "originalSpanSha256": "76fbc14bdd0110df71641fb78279ee85b5b3fe03cb1e19bfa84858ed61d6d6f8",
+      "claim": "请求方法字面调用 turn/interrupt",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02040",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1557,
+      "jsonlByteRange": {
+        "start": 1242789,
+        "endExclusive": 1243516,
+        "sha256": "30669e0c8d733d7d320c7f461a69d7f3f8fcbd9906cd5558f692d353fbb94dca"
+      },
+      "sourcePath": "app.asar/webview/assets/app-initial-6350d04672d0.js",
+      "sourceHash": "604b5d2de4fbb41f3d0dc5b3662129c558e1c7b8aac8cc87225286f58dcfaf8f",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 1396734,
+        "endExclusive": 1396760
+      },
+      "originalSpanSha256": "1de67b42359491c5747f4e3afb466cb055ec757bc45aa74ce7431ec06f749bf8",
+      "claim": "请求方法字面调用 thread/start",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02352",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1675,
+      "jsonlByteRange": {
+        "start": 1329175,
+        "endExclusive": 1329903,
+        "sha256": "5a5be28ebe9c790d2dd59f856394d672d4d2b3a8a9eec22995e7a59b1e4d58d6"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 2899318,
+        "endExclusive": 2899346
+      },
+      "originalSpanSha256": "a531e286bae48a948a517f7a16cf6621afd5798ff90067eee6391016d3a17303",
+      "claim": "请求方法字面调用 thread/archive",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02370",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1693,
+      "jsonlByteRange": {
+        "start": 1342303,
+        "endExclusive": 1343028,
+        "sha256": "9e4ed8d21779ba61a205e1d8a2d391697148a4fc8033b4498bf1db091f0e9d34"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 2952386,
+        "endExclusive": 2952411
+      },
+      "originalSpanSha256": "9dd91ebec2d688aa31a00c28280bcd3be288da14a5f9591a6162cb54a8efba00",
+      "claim": "请求方法字面调用 thread/fork",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02379",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1702,
+      "jsonlByteRange": {
+        "start": 1348874,
+        "endExclusive": 1349598,
+        "sha256": "7a20de5c5a52d212ddb3ff3a7327404c1e81f6e1bbd81abc223a9c0d4820329a"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 3089958,
+        "endExclusive": 3089982
+      },
+      "originalSpanSha256": "48b0d57aa2f6573aed358a64122b03ed5eb14e778b619926ac22191f9d853bae",
+      "claim": "请求方法字面调用 turn/start",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02380",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1703,
+      "jsonlByteRange": {
+        "start": 1349598,
+        "endExclusive": 1350322,
+        "sha256": "c983501a141f056883e713c03de03ca37c7ea5729c3a539e550df085493ced32"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 3097863,
+        "endExclusive": 3097887
+      },
+      "originalSpanSha256": "011043499c674fbc820bf8a2f6a2d1af57b024802ec57ba92154cf45bea49c10",
+      "claim": "请求方法字面调用 turn/steer",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02381",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1704,
+      "jsonlByteRange": {
+        "start": 1350322,
+        "endExclusive": 1351046,
+        "sha256": "606eaecfaa0062efcaa8c15b9ef53ae2092fa63d3f68612dcedb12cf7007de9a"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 3097895,
+        "endExclusive": 3097919
+      },
+      "originalSpanSha256": "48b0d57aa2f6573aed358a64122b03ed5eb14e778b619926ac22191f9d853bae",
+      "claim": "请求方法字面调用 turn/start",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02394",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1717,
+      "jsonlByteRange": {
+        "start": 1359814,
+        "endExclusive": 1360542,
+        "sha256": "3458e8e3bb69dcb0ea3c979c313448f6fa7ce5ffef14945d39a80e0e3ad8ad8c"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 3205134,
+        "endExclusive": 3205162
+      },
+      "originalSpanSha256": "a531e286bae48a948a517f7a16cf6621afd5798ff90067eee6391016d3a17303",
+      "claim": "请求方法字面调用 thread/archive",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02396",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1719,
+      "jsonlByteRange": {
+        "start": 1361271,
+        "endExclusive": 1361998,
+        "sha256": "8d66eb3c6419a6a500b1df9028939ebbc9377aa5298133a59e1b380c1a867079"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 3219708,
+        "endExclusive": 3219735
+      },
+      "originalSpanSha256": "df2ceb9aed67711b259d0979da95e12a62561cf725b7f142434c2cc7a11b1271",
+      "claim": "请求方法字面调用 thread/resume",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02400",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1723,
+      "jsonlByteRange": {
+        "start": 1364190,
+        "endExclusive": 1364918,
+        "sha256": "165eb5788c95d5705436e6efe70309fb587519745657e4ef938b30319b48c1a3"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 3240571,
+        "endExclusive": 3240599
+      },
+      "originalSpanSha256": "76fbc14bdd0110df71641fb78279ee85b5b3fe03cb1e19bfa84858ed61d6d6f8",
+      "claim": "请求方法字面调用 turn/interrupt",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    },
+    {
+      "id": "FEATURE-E02401",
+      "evidenceSource": {
+        "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+        "bytes": 1411812,
+        "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+      },
+      "jsonlLine": 1724,
+      "jsonlByteRange": {
+        "start": 1364918,
+        "endExclusive": 1365646,
+        "sha256": "46f6007e8857fde04d54b9a6ec24531dc2fbb3f10c5b0e696e6b40b3a42a74ba"
+      },
+      "sourcePath": "app.asar/webview/assets/app-shared-8bd9d0399038.js",
+      "sourceHash": "607ad0866dd25ed3764711b4467a9b60708353a599485b5249ff4cbe0e870245",
+      "originalLocator": {
+        "kind": "byte-range",
+        "start": 3242584,
+        "endExclusive": 3242612
+      },
+      "originalSpanSha256": "76fbc14bdd0110df71641fb78279ee85b5b3fe03cb1e19bfa84858ed61d6d6f8",
+      "claim": "请求方法字面调用 turn/interrupt",
+      "scope": "Inherited old static evidence; this review does not read target implementation or revalidate its source span."
+    }
+  ],
+  "savedNegativeForkSamples": {
+    "comparisonSource": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-comparison.json",
+      "bytes": 39856,
+      "sha256": "b67312f70f0c69887f253f0f66e935ca0155b7bedade37e9388b31d7c68e3845"
+    },
+    "pairedCases": 16,
+    "sameErrorContracts": 13,
+    "differentErrorContracts": 3,
+    "references": [
+      {
+        "comparisonPointer": "/comparison/matrix/0/frozen",
+        "case": "without-prediction-field",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/1/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 6,
+        "rawByteRange": {
+          "start": 1012,
+          "endExclusive": 1213,
+          "sha256": "eeb81e66f6fb8639cf52b87e1ab788dd4162dfa43bfd2d739f85df02272402d6"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/0/publicNpm",
+        "case": "without-prediction-field",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/1/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 6,
+        "rawByteRange": {
+          "start": 1014,
+          "endExclusive": 1215,
+          "sha256": "6ba430a9ee3d0a5f586755eea3436f785c73de2d46f871513c8e505f1494838b"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/1/frozen",
+        "case": "prediction-false",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/2/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 8,
+        "rawByteRange": {
+          "start": 1455,
+          "endExclusive": 1656,
+          "sha256": "fd414147a0f09186a852f85ad025a26f5be3e9a86ae59b8a98caf6e1eb32be62"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/1/publicNpm",
+        "case": "prediction-false",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/2/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 8,
+        "rawByteRange": {
+          "start": 1457,
+          "endExclusive": 1658,
+          "sha256": "8815f1a6fe83d3838ce566e9d8f88130adbf08d1232ce4024ba7dcd23a398309"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/2/frozen",
+        "case": "prediction-true",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/3/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 10,
+        "rawByteRange": {
+          "start": 1897,
+          "endExclusive": 2098,
+          "sha256": "f08de802afa54a28247f0ec3e579e594639194abe2c3dae415cec09172f4887e"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/2/publicNpm",
+        "case": "prediction-true",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/3/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 10,
+        "rawByteRange": {
+          "start": 1899,
+          "endExclusive": 2100,
+          "sha256": "72150f5f965397f55e1b0a1d87dee9d9b455e67e38094d30d7c85afd3761c12e"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/3/frozen",
+        "case": "prediction-invalid-string",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/4/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 12,
+        "rawByteRange": {
+          "start": 2357,
+          "endExclusive": 2573,
+          "sha256": "2d869a83e68e34f9ba7c7db7c64da9e688e046d08755475272e3e5cb82c9b9ae"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/3/publicNpm",
+        "case": "prediction-invalid-string",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/4/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 12,
+        "rawByteRange": {
+          "start": 2359,
+          "endExclusive": 2560,
+          "sha256": "0dfe4c19b2204539fbcf157734fb73fa3f6f103738ce817fd3626c4f9635e20c"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/4/frozen",
+        "case": "unknown-field-control",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/5/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 14,
+        "rawByteRange": {
+          "start": 2832,
+          "endExclusive": 3032,
+          "sha256": "55c6cd351c92ed8a2b6c3f7c389ec9e57cb0927c5454c5c26e342adec254c701"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/4/publicNpm",
+        "case": "unknown-field-control",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/5/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 14,
+        "rawByteRange": {
+          "start": 2818,
+          "endExclusive": 3019,
+          "sha256": "f536b5a6a5634b9a1ee0decfdc506fcd07e126e3acc8cb561b5f031242c3ba3f"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/5/frozen",
+        "case": "known-ephemeral-invalid-string",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/6/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 16,
+        "rawByteRange": {
+          "start": 3254,
+          "endExclusive": 3470,
+          "sha256": "d704eadce45e18cc5c4d4c3fe5531c712bd4cdf365dd8c10612a3240b73de548"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/5/publicNpm",
+        "case": "known-ephemeral-invalid-string",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/6/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 16,
+        "rawByteRange": {
+          "start": 3242,
+          "endExclusive": 3458,
+          "sha256": "31422858e27c0646990a7197fc90ac572961351809c716bce4be4c7128614ed1"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/6/frozen",
+        "case": "known-experimental-before-turn-id",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/7/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 18,
+        "rawByteRange": {
+          "start": 3731,
+          "endExclusive": 3932,
+          "sha256": "d9496b00f114e9bd498a1c8592e1a0d322dc01543829ac8279349527cde7a367"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/6/publicNpm",
+        "case": "known-experimental-before-turn-id",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/7/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 18,
+        "rawByteRange": {
+          "start": 3719,
+          "endExclusive": 3920,
+          "sha256": "924509e1c0f9f12e893ccf9483747a2449ff802be2c87b62c26ec57fa1ddb259"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/7/frozen",
+        "case": "known-experimental-before-turn-invalid-bool",
+        "experimentalApi": true,
+        "backend": "frozen",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/0/checks/8/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+        },
+        "rawLine": 20,
+        "rawByteRange": {
+          "start": 4159,
+          "endExclusive": 4357,
+          "sha256": "d4fd0d8e93ec4611cb39334d91a0f0a9d0b1d4d86b2c7aa12a5b3e21aefe2bee"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/7/publicNpm",
+        "case": "known-experimental-before-turn-invalid-bool",
+        "experimentalApi": true,
+        "backend": "publicNpm",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/0/checks/8/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+          "bytes": 4345,
+          "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+        },
+        "rawLine": 20,
+        "rawByteRange": {
+          "start": 4147,
+          "endExclusive": 4345,
+          "sha256": "40894b39e7e5e2bfd16782a5968e20b73f9021d62847b29f4740e19aedfc9021"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/8/frozen",
+        "case": "without-prediction-field",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/1/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 6,
+        "rawByteRange": {
+          "start": 1013,
+          "endExclusive": 1214,
+          "sha256": "f768a2881c32c2b31331361e6ddea6456e66ea4dac05161160718704034b9e51"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/8/publicNpm",
+        "case": "without-prediction-field",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/1/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 6,
+        "rawByteRange": {
+          "start": 1014,
+          "endExclusive": 1214,
+          "sha256": "495368664eff90ec6400c6f898cbba528f27a5fc6692b0eb818c4741703c9ff6"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/9/frozen",
+        "case": "prediction-false",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/2/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 8,
+        "rawByteRange": {
+          "start": 1456,
+          "endExclusive": 1657,
+          "sha256": "3c1dea5f82e3660b6c21fc4121d856c402896a2517a7fef1985052da7899d0a1"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/9/publicNpm",
+        "case": "prediction-false",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/2/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 8,
+        "rawByteRange": {
+          "start": 1456,
+          "endExclusive": 1657,
+          "sha256": "389d52f710796451decf64edb8b3912e00c7c85992d5ae3f4d6a8334aefa5d62"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/10/frozen",
+        "case": "prediction-true",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "experimental-capability-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/3/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 10,
+        "rawByteRange": {
+          "start": 1898,
+          "endExclusive": 2106,
+          "sha256": "cabcf351b9b7df1c5fc680122a2ce68bcd83ca3db0c5022edb3872a786848d80"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/10/publicNpm",
+        "case": "prediction-true",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/3/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 10,
+        "rawByteRange": {
+          "start": 1898,
+          "endExclusive": 2099,
+          "sha256": "f39343dd41a810892d647f6e03e6b09ff72520574534034ff935afd78ae92c38"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/11/frozen",
+        "case": "prediction-invalid-string",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/4/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 12,
+        "rawByteRange": {
+          "start": 2365,
+          "endExclusive": 2581,
+          "sha256": "d262f71d8437e0686e60ce3e35992e9cfadc54f3971d2577b8db135033665ded"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/11/publicNpm",
+        "case": "prediction-invalid-string",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/4/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 12,
+        "rawByteRange": {
+          "start": 2358,
+          "endExclusive": 2559,
+          "sha256": "f28540a218d01371e6eeb22f0c245c823c92f5e8eae6167845dd35e466576083"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/12/frozen",
+        "case": "unknown-field-control",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/5/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 14,
+        "rawByteRange": {
+          "start": 2840,
+          "endExclusive": 3040,
+          "sha256": "7d5671a47950442e8b73bc154229121d8e0b7f67448bb534743445145342ba55"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/12/publicNpm",
+        "case": "unknown-field-control",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "absent-thread-or-rollout-lookup-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/5/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 14,
+        "rawByteRange": {
+          "start": 2818,
+          "endExclusive": 3019,
+          "sha256": "c81cf22c7222d0fd39fa8470e595405a191ebbb0f9e6b73c56325c265494ecea"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/13/frozen",
+        "case": "known-ephemeral-invalid-string",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/6/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 16,
+        "rawByteRange": {
+          "start": 3263,
+          "endExclusive": 3479,
+          "sha256": "691404c69785693cf1c720971ba82ab08ad3172962caa471f6b269a496f7c645"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/13/publicNpm",
+        "case": "known-ephemeral-invalid-string",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/6/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 16,
+        "rawByteRange": {
+          "start": 3242,
+          "endExclusive": 3458,
+          "sha256": "1f3b5160ea46490cefee990921efdfabfb6b9ccba1283d025bf60660f43ffe0b"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/14/frozen",
+        "case": "known-experimental-before-turn-id",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "experimental-capability-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/7/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 18,
+        "rawByteRange": {
+          "start": 3740,
+          "endExclusive": 3934,
+          "sha256": "7a2c244bf3dd9cc7f0671e02ba0f442b21ca9c0d4df79e1f7b876b7c0f03304c"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/14/publicNpm",
+        "case": "known-experimental-before-turn-id",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "experimental-capability-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/7/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 18,
+        "rawByteRange": {
+          "start": 3719,
+          "endExclusive": 3913,
+          "sha256": "ac3c362c6105385619b0aaff60a27fd04e1418638d0dc4f5dd93271eb8bba6e9"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/15/frozen",
+        "case": "known-experimental-before-turn-invalid-bool",
+        "experimentalApi": false,
+        "backend": "frozen",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+          "bytes": 43188,
+          "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+        },
+        "summaryPointer": "/sessions/1/checks/8/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+          "bytes": 4357,
+          "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+        },
+        "rawLine": 20,
+        "rawByteRange": {
+          "start": 4161,
+          "endExclusive": 4357,
+          "sha256": "548ff13bed99f7250ea1c2e2cbf698dd0f2b35efee95871d328c7873bb1de83e"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      },
+      {
+        "comparisonPointer": "/comparison/matrix/15/publicNpm",
+        "case": "known-experimental-before-turn-invalid-bool",
+        "experimentalApi": false,
+        "backend": "publicNpm",
+        "classification": "parameter-decoding-rejection",
+        "responseCode": -32600,
+        "summarySource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+          "bytes": 43307,
+          "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+        },
+        "summaryPointer": "/sessions/1/checks/8/response",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+          "bytes": 4338,
+          "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+        },
+        "rawLine": 20,
+        "rawByteRange": {
+          "start": 4140,
+          "endExclusive": 4338,
+          "sha256": "d1c7ed17141eebef4d1e79cbba30b1ed059fbfded8ba3c9f489819e4ebaf7770"
+        },
+        "scope": "existing missing-rollout/decoding/capability negative sample only; no successful fork, prediction, desktop sender or complete compatibility"
+      }
+    ]
+  },
+  "savedCommandCancellationSamples": {
+    "comparisonSource": {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/command-backend-comparison.json",
+      "bytes": 4768,
+      "sha256": "68d0da7506c4029c5b7f48194c580cfa93f97386f61cbdecc103011d18af6b25"
+    },
+    "references": [
+      {
+        "source": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/command-protocol-frozen-home-normal-host.json",
+          "bytes": 2859,
+          "sha256": "4c8224d67a795d95425aa0836c9764f9cb6479e1defe34a54c53b832c7b980fc"
+        },
+        "pointer": "/checks/4",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/command-protocol/frozen-home-normal-host/observations.jsonl",
+          "bytes": 3035,
+          "sha256": "cd43ac25437d92608b87c3d1970466a463314af78b87518ef651257dac515b44"
+        },
+        "terminationResult": {},
+        "finalExitCode": 137,
+        "scope": "command/exec and command/exec/terminate fixture only; not turn/interrupt or model-turn cancellation evidence"
+      },
+      {
+        "source": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/command-protocol-public-npm-normal-host.json",
+          "bytes": 2858,
+          "sha256": "6d860fdd0e745a076034401083d74a8e5212ba4c05e7cc905aad5161537ef7d3"
+        },
+        "pointer": "/checks/4",
+        "rawSource": {
+          "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/command-protocol/public-npm-normal-host/observations.jsonl",
+          "bytes": 3032,
+          "sha256": "c4d19bf0490594967fcaa4aca05a9200ca89638178f1274321773be2e2985946"
+        },
+        "terminationResult": {},
+        "finalExitCode": 137,
+        "scope": "command/exec and command/exec/terminate fixture only; not turn/interrupt or model-turn cancellation evidence"
+      }
+    ]
+  },
+  "unknowns": [
+    "Desktop sender/receiver binding and request mode for each business path require separately scoped static evidence; protocol presence supplies neither.",
+    "Successful thread creation, resume, fork and archive persistence, restart recovery and history hydration are not observed here.",
+    "Successful turn start, steer, interrupt and notification sequence, item finalization or late-event handling are not observed here.",
+    "Thread/turn protocol states are not a verified desktop UI-state mapping.",
+    "Active-thread archive semantics and its relationship to cancellation are not established by these inputs.",
+    "No historical initialize version is inferred or used; no new target, CLI, UI, network or model task was launched."
+  ],
+  "inputPins": [
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/command-backend-comparison.json",
+      "bytes": 4768,
+      "sha256": "68d0da7506c4029c5b7f48194c580cfa93f97386f61cbdecc103011d18af6b25"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/command-protocol-frozen-home-normal-host.json",
+      "bytes": 2859,
+      "sha256": "4c8224d67a795d95425aa0836c9764f9cb6479e1defe34a54c53b832c7b980fc"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/command-protocol-public-npm-normal-host.json",
+      "bytes": 2858,
+      "sha256": "6d860fdd0e745a076034401083d74a8e5212ba4c05e7cc905aad5161537ef7d3"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/exported-protocol-comparison.json",
+      "bytes": 1393221,
+      "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-comparison.json",
+      "bytes": 39856,
+      "sha256": "b67312f70f0c69887f253f0f66e935ca0155b7bedade37e9388b31d7c68e3845"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-frozen-os-normal-host-1.json",
+      "bytes": 43188,
+      "sha256": "d59414c9818ee61c91907248c5a50b3c4d0d0ea471b13fd47c0629726ca6915f"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/fork-negative-protocol-public-npm-os-normal-host-2.json",
+      "bytes": 43307,
+      "sha256": "1cf0a5b17dd32723e1dbe73ff916ecd07040e73acf3e17ef3f216d2f1b366eef"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-coverage.json",
+      "bytes": 14183,
+      "sha256": "94e98efdde378911c5d951d8e88089c8782edacd086c7b564d28c30c98b0898c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/protocol-generation.json",
+      "bytes": 153219,
+      "sha256": "75235ff3de9231a1da1a90f2ef36caf1123a6e88ea668bade8adb3e2e191558c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-generation-npm.json",
+      "bytes": 169129,
+      "sha256": "8eb9383db2c1a4540300b69a14e33ea7557167cf4182309875082a497749ccc6"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/public-protocol-source.json",
+      "bytes": 7557,
+      "sha256": "391a3cd072656ea4f45c3c8d9c2202bef8a422d01bc0af5b1360a6a82df3a0bb"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/command-protocol/frozen-home-normal-host/observations.jsonl",
+      "bytes": 3035,
+      "sha256": "cd43ac25437d92608b87c3d1970466a463314af78b87518ef651257dac515b44"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/command-protocol/public-npm-normal-host/observations.jsonl",
+      "bytes": 3032,
+      "sha256": "c4d19bf0490594967fcaa4aca05a9200ca89638178f1274321773be2e2985946"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/experimental-client/observations.jsonl",
+      "bytes": 4357,
+      "sha256": "2c2e0f444568a8f322b1bc03361fb5bb97f90fc4988164efd6287c1f4350ba1d"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/frozen-os-normal-host-1/stable-client-control/observations.jsonl",
+      "bytes": 4357,
+      "sha256": "20d6ce8584370e0445514224f67483781eb216d65ea044990f4393cec9010428"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/experimental-client/observations.jsonl",
+      "bytes": 4345,
+      "sha256": "3e55e2cb58f992e6a0b5608f1822ea382600e6489e40202bbd9a37daa964ce3a"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/fork-negative-protocol/public-npm-os-normal-host-2/stable-client-control/observations.jsonl",
+      "bytes": 4338,
+      "sha256": "d9de323329e9bc525b38b996c57e7e9867b32ce952128769a1dbd38197af1497"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/ClientRequest.json",
+      "bytes": 300474,
+      "sha256": "fd400e7c7daed7e3103e08093e7b1576439fe5ebc39a494f8e2696656e5a3cbe"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadArchiveParams.json",
+      "bytes": 218,
+      "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadArchiveResponse.json",
+      "bytes": 114,
+      "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadForkParams.json",
+      "bytes": 7006,
+      "sha256": "87fd7fba8a6c6ee6ab70f133ea788e93bfcceb1433fe078599f8f6f4d3c8182c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadForkResponse.json",
+      "bytes": 81064,
+      "sha256": "3489c7f18a47d6a7b5c0590b2b9291c3a8f46f6fcd2f4205ee164ca30a64a67f"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadResumeParams.json",
+      "bytes": 42913,
+      "sha256": "c69d0d08d046e48b2f9e631761e1127c347fac2f8c2776df458559eb3aa4bd83"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadResumeResponse.json",
+      "bytes": 83893,
+      "sha256": "e6adffd058b4a87ff4532d2608628cd0e29bfa721326c417e2622da31a2ac1dd"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadStartParams.json",
+      "bytes": 13453,
+      "sha256": "80a40a7fac15b4bf70efb7f893fb353acc0a0d30c68f54aee4f01923deca85de"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/ThreadStartResponse.json",
+      "bytes": 81065,
+      "sha256": "b655cd7e620307ca7fe7943a5a0ef4d24ae07df848e7d63d1649ea6c7ff7ba88"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnInterruptParams.json",
+      "bytes": 278,
+      "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnInterruptResponse.json",
+      "bytes": 114,
+      "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnStartParams.json",
+      "bytes": 26060,
+      "sha256": "062373a7dfc290b506e591bc5c2a35005211df27b3c60358cee3efed12859062"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnStartResponse.json",
+      "bytes": 57727,
+      "sha256": "787dc264389e09baf0297d0d819da069034f998a5ef21cd5dc7ddd438fac3b36"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnSteerParams.json",
+      "bytes": 7786,
+      "sha256": "99f7fdff8b090065b68f36420b70870b5eafed048c024b308230aaa02f15d891"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/experimental/v2/TurnSteerResponse.json",
+      "bytes": 212,
+      "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/ClientRequest.json",
+      "bytes": 211862,
+      "sha256": "f75203a3d8fbe013035377ccb976103721abf46d4b267fb7b5b35f351ab4f399"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ErrorNotification.json",
+      "bytes": 7283,
+      "sha256": "63518d8faae38b8eb73518d59b113f77603d238dd0cf36260b4232f381f43f8c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadArchiveParams.json",
+      "bytes": 218,
+      "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadArchiveResponse.json",
+      "bytes": 114,
+      "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadArchivedNotification.json",
+      "bytes": 225,
+      "sha256": "54ca94956719ade8682c766f31419ee9953dee8f4587b5b30efd0927de6ca26e"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadForkParams.json",
+      "bytes": 5385,
+      "sha256": "60540b97d453ddbc5e12bfaa007a3718f31847d18dec0da59a5e4b89be4717ad"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadForkResponse.json",
+      "bytes": 78925,
+      "sha256": "8759d76b9bd28cf4a01ac8a9f15efe25bdcdd5d2ed12515ece3ea21017fa14cc"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadResumeParams.json",
+      "bytes": 41461,
+      "sha256": "948779cace55dda4384689a1627cd6675aa4782744bb5820cca16bfc0118586c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadResumeResponse.json",
+      "bytes": 81467,
+      "sha256": "de584907214ffd2210b2a6be7072bb63f41e3c31e086b2665af90e385c8a6098"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartParams.json",
+      "bytes": 10358,
+      "sha256": "e9c6d3cc18d049bfbc0249add3808fb8e5a27e1a0b5a423767aafbc3859a9428"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartResponse.json",
+      "bytes": 78926,
+      "sha256": "ff110778dc7c57d4d8b2d50f85c8bd21d817dfb31c74cc7fa06f77c6ebb5be70"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStartedNotification.json",
+      "bytes": 71640,
+      "sha256": "ad25d0e096542ab6469117eee0a7930bb271c102c6145a4515ea4c79966d670c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/ThreadStatusChangedNotification.json",
+      "bytes": 2207,
+      "sha256": "26f3c60c1b73f7fa2d31c74429cdc36f8746c76c33e3d314b3fb61d3661f05f6"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnCompletedNotification.json",
+      "bytes": 57799,
+      "sha256": "756017d04296be2f4fb02853fcf1385e7a63c60d9f8d84c04993b9b0638bae40"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnInterruptParams.json",
+      "bytes": 278,
+      "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnInterruptResponse.json",
+      "bytes": 114,
+      "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnStartParams.json",
+      "bytes": 23170,
+      "sha256": "583aff13e7a2da43fbb0150e0edc3c73171f374f0aa745dddba256166988a005"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnStartResponse.json",
+      "bytes": 57727,
+      "sha256": "787dc264389e09baf0297d0d819da069034f998a5ef21cd5dc7ddd438fac3b36"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnStartedNotification.json",
+      "bytes": 57797,
+      "sha256": "82b22cdff68277f1a35b13354d4dba53975f01bec8702d415d0185023231f19c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnSteerParams.json",
+      "bytes": 6923,
+      "sha256": "857e7a2b061ae46ed6aedea6a5fddd3a6ce14f0334bf7eafaf10d4cbe68ec78b"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/protocol/stable/v2/TurnSteerResponse.json",
+      "bytes": 212,
+      "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadArchiveParams.json",
+      "bytes": 218,
+      "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadArchiveResponse.json",
+      "bytes": 114,
+      "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadForkParams.json",
+      "bytes": 6584,
+      "sha256": "674134467796c011068b9dd5efc912de4560fa31f65c0fb2163f14e352be7a61"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadForkResponse.json",
+      "bytes": 81655,
+      "sha256": "e63cfbeb846304309c9c64fa1235abb1723f8a0abd413aef2d342598bbaf902c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadResumeParams.json",
+      "bytes": 42913,
+      "sha256": "c69d0d08d046e48b2f9e631761e1127c347fac2f8c2776df458559eb3aa4bd83"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadResumeResponse.json",
+      "bytes": 84484,
+      "sha256": "3ea7c6d06bab091cea98431c72b644ac026492217842335fcc2105a472be4aa2"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadStartParams.json",
+      "bytes": 13453,
+      "sha256": "80a40a7fac15b4bf70efb7f893fb353acc0a0d30c68f54aee4f01923deca85de"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/ThreadStartResponse.json",
+      "bytes": 81656,
+      "sha256": "107fe36c99ebaeb750a371580beec807a28c6451e9c8a02cd7d451a0135f1c91"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnInterruptParams.json",
+      "bytes": 278,
+      "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnInterruptResponse.json",
+      "bytes": 114,
+      "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnStartParams.json",
+      "bytes": 26060,
+      "sha256": "062373a7dfc290b506e591bc5c2a35005211df27b3c60358cee3efed12859062"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnStartResponse.json",
+      "bytes": 58318,
+      "sha256": "20e837d07826b9c01578ff40b962ab08f58a355a9984e96226733498514e9bad"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnSteerParams.json",
+      "bytes": 7786,
+      "sha256": "99f7fdff8b090065b68f36420b70870b5eafed048c024b308230aaa02f15d891"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/experimental/v2/TurnSteerResponse.json",
+      "bytes": 212,
+      "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadArchiveParams.json",
+      "bytes": 218,
+      "sha256": "dc2c0b133b814a5d9d543cc37afdb3f4f22feca35b7cea4272834b20a1e47705"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadArchiveResponse.json",
+      "bytes": 114,
+      "sha256": "2e021dabd0930ae3e2beb68cd0ddbafc40fc20cfbf8dbcb5e2f9c0493d06a08c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadForkParams.json",
+      "bytes": 5385,
+      "sha256": "60540b97d453ddbc5e12bfaa007a3718f31847d18dec0da59a5e4b89be4717ad"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadForkResponse.json",
+      "bytes": 79516,
+      "sha256": "1488ab8371b209dbb10bb99351062983fb0f42084f7dc29c10bda19ff9ea84cd"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadResumeParams.json",
+      "bytes": 41461,
+      "sha256": "948779cace55dda4384689a1627cd6675aa4782744bb5820cca16bfc0118586c"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadResumeResponse.json",
+      "bytes": 82058,
+      "sha256": "3f19a9c3a9891526685b0f61ce781098ddd65bfa2aed8c24ba4722fef10e08fe"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadStartParams.json",
+      "bytes": 10358,
+      "sha256": "e9c6d3cc18d049bfbc0249add3808fb8e5a27e1a0b5a423767aafbc3859a9428"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/ThreadStartResponse.json",
+      "bytes": 79517,
+      "sha256": "7247cd531d3f78174444f8262fd3090d5acf8ab74084547b4e0a831d74e77c9a"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnInterruptParams.json",
+      "bytes": 278,
+      "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnInterruptResponse.json",
+      "bytes": 114,
+      "sha256": "531de6be06fe979b5963f249bab82498a175e614bf65ac12fb2e849dfe60bcf1"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnStartParams.json",
+      "bytes": 23170,
+      "sha256": "583aff13e7a2da43fbb0150e0edc3c73171f374f0aa745dddba256166988a005"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnStartResponse.json",
+      "bytes": 58318,
+      "sha256": "20e837d07826b9c01578ff40b962ab08f58a355a9984e96226733498514e9bad"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnSteerParams.json",
+      "bytes": 6923,
+      "sha256": "857e7a2b061ae46ed6aedea6a5fddd3a6ce14f0334bf7eafaf10d4cbe68ec78b"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/raw/public-cli-npm/schema/stable/v2/TurnSteerResponse.json",
+      "bytes": 212,
+      "sha256": "866ba9a77c12b5d570c837d58f73bf40b24e50fa93404bdf792dd984d313b1aa"
+    },
+    {
+      "path": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/request-wrapper-evidence.jsonl",
+      "bytes": 1411812,
+      "sha256": "770d8d34a97e784b9213021a6f800494c2bfb0a4f933ce5ba200bc377d0ad433"
+    }
+  ],
+  "producer": {
+    "path": "/Users/nallylin/Documents/code/ccodex/.analysis-local/thread-turn-feature-contracts-work/protocol-source-review-producer.py",
+    "bytes": 17282,
+    "sha256": "735ed4fa6dcb915720e7097255669d8bf2fc56db3419c8873672f9057cc95818"
+  },
+  "verification": {
+    "checks": 328,
+    "passed": 328,
+    "errors": [],
+    "checksScope": "manifest pins, selected schema-shape equality/difference agreement, union/comparison uniqueness and saved sample pins; not runtime implementation validation"
+  }
+}

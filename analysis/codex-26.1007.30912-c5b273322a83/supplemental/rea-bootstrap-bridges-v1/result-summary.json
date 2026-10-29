@@ -1,0 +1,140 @@
+{
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "toolVersion": "6.4.0",
+  "analysisEvidenceId": "ev_4ea4d310a87223d27447ffe932a60ced32cf79820ccf5270b0a91f5eeb573363",
+  "rootArtifactSha256": "d7603fc40a518476aa08b19aba2b16c58dfd4231e3e23de158bce67c09898f23",
+  "graphId": "jag_0a1e133fc42ca9b1cb30bbe29fb3e4e1c73a3954dceacd45cb656afeb3fb25b6",
+  "statistics": {
+    "relevant_files": 4,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 18073,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 3,
+    "visited_ast_nodes": 3115,
+    "findings": 48,
+    "modules": 0,
+    "parse_failures": 0
+  },
+  "electronSummary": {
+    "browser_windows": 0,
+    "explicit_web_preferences": 0,
+    "preload_entrypoints": 0,
+    "context_bridge_apis": 3,
+    "exposed_api_members": 0,
+    "ipc": {
+      "operations": 26,
+      "literal_channels": 1,
+      "dynamic_channel_operations": 25,
+      "renderer_transmissions": 21,
+      "renderer_listeners": 5,
+      "main_handlers": 0,
+      "paired_renderer_transmissions": 0,
+      "ambiguous_renderer_transmissions": 0,
+      "unpaired_literal_renderer_transmissions": 1
+    },
+    "sender_validation_observations": 0,
+    "utility_processes": 0,
+    "resolved_utility_entrypoints": 0,
+    "native_addon_bindings": 0,
+    "resolved_native_addon_bindings": 0
+  },
+  "applicationGraph": {
+    "nodes": 63,
+    "edges": 63,
+    "coverage": {
+      "status": "partial",
+      "truncated": false,
+      "omitted_count": null,
+      "limits": []
+    }
+  },
+  "semanticGraph": {
+    "nodes": 2024,
+    "relations": 1828,
+    "unknowns": 661,
+    "coverage": {
+      "status": "unknown",
+      "truncated": false,
+      "omitted_nodes": 0,
+      "omitted_relations": 0,
+      "limits": []
+    }
+  },
+  "limitations": [
+    "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+    "Dynamic IPC channel expressions remain unresolved and are never paired by textual similarity.",
+    "Electron API identity follows proven lexical module aliases. Reassigned bindings, dynamic selections, and visibly overwritten namespace members are unresolved; missing findings do not establish absence. Arbitrary call side effects and runtime registration are not evaluated.",
+    "Electron relationships are derived from inert syntax; runtime registration, reachability, defaults, and enforcement remain unproven.",
+    "Graph coverage is incomplete; unavailable facts remain explicit and must not be read as absence.",
+    "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+    "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+    "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+    "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code."
+  ],
+  "traces": [
+    {
+      "runName": "trace",
+      "evidenceId": "ev_b32ccbe29334743d45f1c33180d55ca3ad1359490f732ae0a6d6edae89937b1f",
+      "seed": {
+        "kind": "channel",
+        "value": "codex_desktop:message-from-view",
+        "match": "exact",
+        "case_sensitive": true
+      },
+      "summary": {
+        "matched_seeds": 0,
+        "traced_nodes": 0,
+        "traced_edges": 0,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 0,
+        "inferred_facts": 0,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      },
+      "coverage": {
+        "status": "no-match",
+        "source_graph_status": "partial",
+        "total_seed_matches": 0
+      },
+      "limitations": [
+        "No graph entity matched the literal seed; this is not evidence that the feature is absent.",
+        "The source application graph is incomplete; unmatched seeds and frontiers remain unknown."
+      ],
+      "runRecord": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/supplemental/rea-bootstrap-bridges-v1/trace.run.json"
+    },
+    {
+      "runName": "trace-shared-object",
+      "evidenceId": "ev_bd6ac6080c324bde72016551a4a7f064d7152f6408bad17e5d7a16bc19a64524",
+      "seed": {
+        "kind": "channel",
+        "value": "codex_desktop:get-shared-object-snapshot",
+        "match": "exact",
+        "case_sensitive": true
+      },
+      "summary": {
+        "matched_seeds": 1,
+        "traced_nodes": 63,
+        "traced_edges": 63,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 55,
+        "inferred_facts": 71,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      },
+      "coverage": {
+        "status": "partial",
+        "source_graph_status": "partial",
+        "total_seed_matches": 1
+      },
+      "limitations": [
+        "A trace reports graph relationships, not proof that code executed or that a feature is reachable in every state.",
+        "Native handoffs never open a binary or invoke a provider automatically; snapshot reuse remains provider/profile/target exact.",
+        "Static, native, passive-runtime, inferred, and unknown facts retain their original authority in the returned graph.",
+        "The source application graph is incomplete; unmatched seeds and frontiers remain unknown."
+      ],
+      "runRecord": "/Users/nallylin/Documents/code/ccodex/analysis/codex-26.1007.30912-c5b273322a83/supplemental/rea-bootstrap-bridges-v1/trace-shared-object.run.json"
+    }
+  ]
+}

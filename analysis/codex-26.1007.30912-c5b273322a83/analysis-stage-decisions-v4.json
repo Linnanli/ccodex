@@ -1,0 +1,2214 @@
+{
+  "schemaVersion": 4,
+  "baselineId": "codex-26.1007.30912-c5b273322a83",
+  "recordedAtUtc": "2026-10-24T15:34:26.838532+00:00",
+  "plan": {
+    "path": "docs/reverse-engineering/analysis-plan.md",
+    "bytes": 16461,
+    "sha256": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4"
+  },
+  "previousSnapshot": {
+    "path": "analysis-stage-decisions-v3.json",
+    "bytes": 28698,
+    "sha256": "8e0821361f8d4db620bda296977f11af4ca243898046ddef1714a084e470df4a"
+  },
+  "historicalStageRequirements": {
+    "path": "analysis-stage-decisions-v2.json",
+    "bytes": 35901,
+    "sha256": "5b70bc474ae0de7b1069fa210a439121dd125b0d4f3cdabd575e5a56d65c3e24"
+  },
+  "reviewScope": "Unchanged nine completion criteria, all 39 mapped plan requirements, six issue groups and explicit evidence/module format obligations. Existing artifacts only; no target rescan.",
+  "criteria": [
+    {
+      "id": "AC-01",
+      "requirement": "输入版本和哈希已固定，分析结果未混用版本。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14227,
+          "endExclusive": 14290
+        },
+        "spanHash": "fff46e39f58836de1a12f2666bfacc77b6ca260135162d4e9504601a4c9f42b9"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "固定输入与公开候选版本分列；冻结复核的7个声明矛盾继续保留，未混用版本。",
+      "evidence": [
+        {
+          "path": "baseline.json",
+          "bytes": 1162,
+          "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+        },
+        {
+          "path": "baseline-reverification.json",
+          "bytes": 11124,
+          "sha256": "9f27c67bfffe7a6f2069c11ddf64a20df44abe3612ba9cf5e7541159794883b7"
+        },
+        {
+          "path": "runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+        }
+      ],
+      "remainingIssueIds": [],
+      "implementationAcceptanceDeferred": "按新工程锁定的输入重建和发布，建立后续版本差异检查。"
+    },
+    {
+      "id": "AC-02",
+      "requirement": "已登记所有发现的文件、入口和功能候选，并说明分析覆盖的范围。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14297,
+          "endExclusive": 14387
+        },
+        "spanHash": "101b7147742e4521c7681329e6f357a76cc2f1e3804933d121ace69ebfe06e43"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "24895条归档/磁盘清单记录分别登记；373项有限定义/48任务已对齐。726条旧来源角色、12关联和3重叠仍待处置，完整分母未知。",
+      "evidence": [
+        {
+          "path": "files.json",
+          "bytes": 9406196,
+          "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+        },
+        {
+          "path": "feature-scope-v25.json",
+          "bytes": 2063087,
+          "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+        },
+        {
+          "path": "legacy-entry-dispositions.json",
+          "bytes": 1000943,
+          "sha256": "471be3ddfa30188fff195606e23b20600a4d445e0973830937cfb7ece01b311c"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-01"
+      ],
+      "implementationAcceptanceDeferred": "完整保留功能清单逐项实现并验收；mock和占位不算复刻。"
+    },
+    {
+      "id": "AC-03",
+      "requirement": "已区分 Codex、ChatGPT 专属、共享和未知项，排除理由可追溯。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14394,
+          "endExclusive": 14474
+        },
+        "spanHash": "73838e22f642aa4ea08c8ecd4f23dbde38b7c27d3886ecd32af23f2fedeb9e53"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "shared 1、unknown 372；3组分支级Chat专属决定和Codex正向保留已有证据，整项排除0。未知无需机械归零，影响保留范围的共享闭包仍须查明。",
+      "evidence": [
+        {
+          "path": "feature-scope-v25.json",
+          "bytes": 2063087,
+          "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+        },
+        {
+          "path": "chat-branch-decisions.json",
+          "bytes": 12041,
+          "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+        },
+        {
+          "path": "archive-mode-ownership.json",
+          "bytes": 9556,
+          "sha256": "b3182a76e980d2959bc6c71c7f02c4fb1b480cc60221c8ebda3cb03513321d5f"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-01"
+      ],
+      "implementationAcceptanceDeferred": "在实际模式、账户与开关条件下核验剥离及共享依赖。"
+    },
+    {
+      "id": "AC-04",
+      "requirement": "每个保留功能已追踪到足以说明其职责的模块和关键跨进程或外部边界。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14481,
+          "endExclusive": 14577
+        },
+        "spanHash": "a24c507e2f2550891b666eaf29b12e278e5d583ee2a662666290cd2e6f570022"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "373项均有任务、拟议模块、来源及规格；实际provider/receiver和部分委托/原生/存储断点仍影响架构。438发布文件记录不是完整逻辑模块清单。",
+      "evidence": [
+        {
+          "path": "restoration-coverage-v16.json",
+          "bytes": 1109752,
+          "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+        },
+        {
+          "path": "modules.json",
+          "bytes": 1396068,
+          "sha256": "fb328ab9b49fe3540d30f9925575c7226c2e186c8abc59f35f6b72a77faf00af"
+        },
+        {
+          "path": "thread-resume-entry-contracts.json",
+          "bytes": 38794,
+          "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+        },
+        {
+          "path": "runtime-feature-policy-contracts.json",
+          "bytes": 66085,
+          "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-02",
+        "SD-03",
+        "SD-05"
+      ],
+      "implementationAcceptanceDeferred": "实现具体模块、生命周期、错误、取消、持久化与端到端行为。"
+    },
+    {
+      "id": "AC-05",
+      "requirement": "第三方依赖有版本与来源依据；无法确认的条目列出调查动作。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14584,
+          "endExclusive": 14668
+        },
+        "spanHash": "f19b6b142e4baa2ac3724947c252ae8de90a1c61f4f39d0ab2279970abcda0dd"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "202项依赖的版本/来源依据与未知分列；补齐185行原空白的显式调查动作，17行原动作保留。没有新增版本或修改状态确认。",
+      "evidence": [
+        {
+          "path": "dependencies.csv",
+          "bytes": 208587,
+          "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+        },
+        {
+          "path": "dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+        },
+        {
+          "path": "dependency-import-decisions.json",
+          "bytes": 12781,
+          "sha256": "e7465bf0381c463b184fe7d943c08147c5b21ab5b991179be9d81ffe576e4d96"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-02"
+      ],
+      "implementationAcceptanceDeferred": "生成并验证自己的依赖锁文件，接入公开包/补丁，构建并验证兼容；最终源码不复制第三方实现。"
+    },
+    {
+      "id": "AC-06",
+      "requirement": "原生、Wasm、辅助程序、定制运行时和私有服务均有独立记录。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14675,
+          "endExclusive": 14757
+        },
+        "spanHash": "f36499c48d111e0301b79add1a9f36586531f5202bbcc5d7d464e352bf508427"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "native/Wasm/辅助程序/Owl/私有服务分别登记；这项记录义务不证明独立运行时来源、ABI或源码构建已取得资格。",
+      "evidence": [
+        {
+          "path": "native-runtime.json",
+          "bytes": 421989,
+          "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b"
+        },
+        {
+          "path": "runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+        },
+        {
+          "path": "runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+        },
+        {
+          "path": "environment-extension-contracts.json",
+          "bytes": 34744,
+          "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-02"
+      ],
+      "implementationAcceptanceDeferred": "构建或独立引入选定原生/运行时依赖，验证目标平台、ABI及替代能力。"
+    },
+    {
+      "id": "AC-07",
+      "requirement": "Source map 覆盖、构建输入缺失、REA 解析限制和动态关系均有说明。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14764,
+          "endExclusive": 14851
+        },
+        "spanHash": "f512ce93f6e92a6cbbca7e9d3fdd33e4c605af1401617adbefa98e94746fcbff"
+      },
+      "status": "record-or-proposal-obligation-supported-with-limits",
+      "finding": "source map、30项缺失输入、REA限制和动态未知有范围说明；本批未重跑工具或宣称未知关系清零。",
+      "evidence": [
+        {
+          "path": "source-maps.json",
+          "bytes": 12442678,
+          "sha256": "7fb85727fd0b01fe836e2d5f7fb5a437e6245abf4f1c7aff1c3ab4596a227475"
+        },
+        {
+          "path": "build-input-dispositions-v1.json",
+          "bytes": 33279,
+          "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+        },
+        {
+          "path": "rea-application-observed.run.json",
+          "bytes": 1223,
+          "sha256": "153b69862e6960564424f9db0435bef1893eb2de135c038b13929700d5742280"
+        },
+        {
+          "path": "runtime-api-contracts.json",
+          "bytes": 3913933,
+          "sha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363"
+        }
+      ],
+      "remainingIssueIds": [],
+      "implementationAcceptanceDeferred": "编写并验证工程配置、源码和缺失构建输入，在干净环境安装、构建、打包。"
+    },
+    {
+      "id": "AC-08",
+      "requirement": "主要行为与静态结论已对照，未验证项有明确触发条件。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14858,
+          "endExclusive": 14933
+        },
+        "spanHash": "1c17d4f1280c61483e6b60dd926014b56f717b71bb63f4e183c3d3ec6ee3ee21"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "完成/重开及执行中停止重启有实际观察；执行中取消未测、自动续跑未证明。源码回放/公开运行时探针及1216条未执行规格不计产品通过。",
+      "evidence": [
+        {
+          "path": "behavior-checks.md",
+          "bytes": 45093,
+          "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+        },
+        {
+          "path": "behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        {
+          "path": "feature-scope-v24-scenarios.json",
+          "bytes": 1944258,
+          "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-04"
+      ],
+      "implementationAcceptanceDeferred": "执行完整功能验收与回归场景，检验失败、取消、重启恢复及实际服务。"
+    },
+    {
+      "id": "AC-09",
+      "requirement": "项目结构建议、恢复顺序和验收条件能够引用分析证据。",
+      "planLocator": {
+        "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+        "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+        "byteRange": {
+          "start": 14940,
+          "endExclusive": 15015
+        },
+        "spanHash": "57249c2237cf63a2cbeed461d230a40b308cb0543c49a52b95c3e593100dd6d9"
+      },
+      "status": "partial; material-analysis-work-remains",
+      "finding": "当前373项、48任务的排序已接到两套57节点依赖图；目录和升级方法有依据。完整模块/模式范围和运行时/后台决定仍缺证据，不能宣称最终方案已闭合。",
+      "evidence": [
+        {
+          "path": "restoration-current-ordering-v1.json",
+          "bytes": 46210,
+          "sha256": "8eb9b40751421a3a58d3dca0030e9959d4e404c2e3d8a56ef2b8e78bad942b7f"
+        },
+        {
+          "path": "implementation-plan-v9.md",
+          "bytes": 15268,
+          "sha256": "10facc86a4806f3c4eabf6064946435f12eaafdc2f1f15cd4b38d50eaa2476e7"
+        },
+        {
+          "path": "restoration-coverage-v16.json",
+          "bytes": 1109752,
+          "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+        },
+        {
+          "path": "runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+        }
+      ],
+      "remainingIssueIds": [
+        "SD-01",
+        "SD-02",
+        "SD-03",
+        "SD-05",
+        "SD-06"
+      ],
+      "implementationAcceptanceDeferred": "独立应用标识和数据目录，运行不依赖原安装目录；完整构建、打包和升级回归通过。"
+    }
+  ],
+  "stages": [
+    {
+      "number": 1,
+      "deliveryStatus": "record-obligations-supported-with-limits",
+      "requirements": [
+        {
+          "id": "1.1",
+          "requirement": "记录版本、构建号、平台、CPU 架构、应用入口以及实际 Electron 或定制运行时信息。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 5188,
+              "endExclusive": 5298
+            },
+            "spanHash": "acc3c65b23049359a2b73b40ae51d2818dcc699045870fe2ae5bbf6080f410c0"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "版本、构建、入口、架构及Owl身份已记录；实际ABI和独立运行时来源仍未知。",
+          "evidence": [
+            {
+              "path": "baseline.json",
+              "bytes": 1162,
+              "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+            },
+            {
+              "path": "runtime-distribution.json",
+              "bytes": 35755,
+              "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+            },
+            {
+              "path": "runtime-node-version-summary.md",
+              "bytes": 2127,
+              "sha256": "0f0697196ca17a6666e52f5bce3a85087f96cbc737207f06fa8ec0c55af5c719"
+            }
+          ]
+        },
+        {
+          "id": "1.2",
+          "requirement": "保存只读分析副本，覆盖 ASAR、unpacked 文件和必要的辅助资源；对输入生成哈希和文件清单。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 5302,
+              "endExclusive": 5424
+            },
+            "spanHash": "fe1adc8f1703cbb0524a70c12d0ba6c9d1ad99a066adfaaab02dd9d00d41fdea"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "继承冻结副本与原归档/副本哈希复核；7项unpacked声明矛盾保留，本轮不重扫全部原始字节。",
+          "evidence": [
+            {
+              "path": "baseline.json",
+              "bytes": 1162,
+              "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+            },
+            {
+              "path": "baseline-reverification.json",
+              "bytes": 11124,
+              "sha256": "9f27c67bfffe7a6f2069c11ddf64a20df44abe3612ba9cf5e7541159794883b7"
+            },
+            {
+              "path": "files.json",
+              "bytes": 9406196,
+              "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+            }
+          ]
+        },
+        {
+          "id": "1.3",
+          "requirement": "识别 JS、HTML、CSS、资源、原生模块、Wasm、可执行文件及包元数据；记录归档内外的关联关系。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 5428,
+              "endExclusive": 5553
+            },
+            "spanHash": "b1e878c864a1374c0d1e7953dceaf7c4ec58770b659ab310d55cc2772cfe8e04"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "归档内外文件及native/Wasm/可执行类别分别登记，不把识别当源码可构建证明。",
+          "evidence": [
+            {
+              "path": "files.json",
+              "bytes": 9406196,
+              "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+            },
+            {
+              "path": "native-runtime.json",
+              "bytes": 421989,
+              "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b"
+            },
+            {
+              "path": "dependency-summary.json",
+              "bytes": 7125,
+              "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2"
+            }
+          ]
+        },
+        {
+          "id": "1.4",
+          "requirement": "查找外置及内联 source map，检查是否包含 `sourcesContent`，记录源码覆盖范围。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 5557,
+              "endExclusive": 5657
+            },
+            "spanHash": "abc91d64d08032e5542d6733fd23888cb20ffb20c813ee43ed45fbe191aa775c"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "限定扩展的17848输入扫描完成；11316条map指令指向冻结输入中缺失文件，sourcesContent覆盖0。",
+          "evidence": [
+            {
+              "path": "source-maps.json",
+              "bytes": 12442678,
+              "sha256": "7fb85727fd0b01fe836e2d5f7fb5a437e6245abf4f1c7aff1c3ab4596a227475"
+            },
+            {
+              "path": "source-map-validation.json",
+              "bytes": 382,
+              "sha256": "55ccdba951360264f714265458459668aaf51e0ae66af69b158ec6ef5a99395c"
+            }
+          ]
+        },
+        {
+          "id": "1.5",
+          "requirement": "核对构建脚本引用的文件和上级工程，列出存在、缺失及来源未明的构建输入。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 5661,
+              "endExclusive": 5766
+            },
+            "spanHash": "c83a91752d90c63d199208d31db15102a5975bde933470d2daed25b2788a61e5"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "30个缺失引用、21个独立路径已有补齐职责和验收建议，实施数0。",
+          "evidence": [
+            {
+              "path": "build-inputs.json",
+              "bytes": 5040,
+              "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31"
+            },
+            {
+              "path": "build-input-dispositions-v1.json",
+              "bytes": 33279,
+              "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "2.1",
+          "requirement": "以代码中的路由、菜单、命令、快捷键、设置项、功能开关及处理函数建立功能候选清单，再对照实际界面和可触发行为核实。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 5977,
+              "endExclusive": 6145
+            },
+            "spanHash": "6459e0f9032de252908e67e1f45e608b223269849b2b315834334be3c3b199b4"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "发现域有登记，尚有726条旧来源角色、12项关联与3项重叠未收口；完整功能分母不能成立。",
+          "evidence": [
+            {
+              "path": "feature-scope-v25.json",
+              "bytes": 2063087,
+              "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+            },
+            {
+              "path": "legacy-entry-dispositions.json",
+              "bytes": 1000943,
+              "sha256": "471be3ddfa30188fff195606e23b20600a4d445e0973830937cfb7ece01b311c"
+            },
+            {
+              "path": "entry-family-map.json",
+              "bytes": 3217503,
+              "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+            }
+          ]
+        },
+        {
+          "id": "2.2",
+          "requirement": "调查范围包括会话与项目管理、消息与流式展示、任务执行与取消、审批、文件与变更查看、终端、设置、窗口和系统集成。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6147,
+              "endExclusive": 6312
+            },
+            "spanHash": "1a107d5c34cfb88ff8fd003f0f484459a3ba63b588c38a5df1299b55350edd7c"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "任务、审批、文件、终端、项目及系统集成均有调查合同；设置清单373项不能覆盖全部非设置功能。",
+          "evidence": [
+            {
+              "path": "core-feature-scope.json",
+              "bytes": 157717,
+              "sha256": "e41d1fbaf4f5652845ceb5153aa075eccd28a68a6965e6dfbfe1ecf19f2fb74d"
+            },
+            {
+              "path": "terminal-feature-contracts.json",
+              "bytes": 151763,
+              "sha256": "1b636bc2f5bae3ff138481372488eb44c619cf45e1f526189b23ae26c04aa3c6"
+            },
+            {
+              "path": "file-change-view-contracts-v2.json",
+              "bytes": 181686,
+              "sha256": "459e1ab894c85074a7d324780b620d0346aefbd281f4bbf9a441aaf55def5cbc"
+            }
+          ]
+        },
+        {
+          "id": "2.3",
+          "requirement": "稳定的功能标识、用户可理解的名称",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6527,
+              "endExclusive": 6575
+            },
+            "spanHash": "3da4241b56891f6c1ff4d1ff0a45da0401d17e1bd5b706944d747e0524308fb9"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "373项有限定义均有唯一稳定ID和名称；不称完整产品分母。",
+          "evidence": [
+            {
+              "path": "feature-scope-v25.json",
+              "bytes": 2063087,
+              "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+            }
+          ]
+        },
+        {
+          "id": "2.4",
+          "requirement": "页面、菜单、快捷键、命令或后台事件",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6595,
+              "endExclusive": 6646
+            },
+            "spanHash": "776a2a824ec60218b4f97c6b9069abba2c11e7ef5e9a2e49e8eae4e41c31f47d"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "373项均保留操作成员及触发描述/来源合同；这些是源码入口记录，不是已挂载界面。",
+          "evidence": [
+            {
+              "path": "feature-scope-v25.json",
+              "bytes": 2063087,
+              "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+            }
+          ]
+        },
+        {
+          "id": "2.5",
+          "requirement": "输入、输出、状态变化、失败与取消行为",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6660,
+              "endExclusive": 6714
+            },
+            "spanHash": "e57b11209a7b6b1fa219c49fc77db78fde97be340c0ff4222576efa6266e66db"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "输入、状态、失败与取消已有局部合同及规格；主要流程真实后效与部分委托实现未闭合。",
+          "evidence": [
+            {
+              "path": "feature-scope-v25.json",
+              "bytes": 2063087,
+              "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+            },
+            {
+              "path": "feature-scope-v24-scenarios.json",
+              "bytes": 1944258,
+              "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+            },
+            {
+              "path": "behavior-stop-restart.json",
+              "bytes": 4289,
+              "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+            }
+          ]
+        },
+        {
+          "id": "2.6",
+          "requirement": "平台、账户、功能开关、服务或环境条件",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6734,
+              "endExclusive": 6788
+            },
+            "spanHash": "13e95d5c467885f699849aa45303fdee24621b7eee069da0e99e120369acff30"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "373项均保留条件字段和未求值说明，平台/账号/开关的实际取值不据此确认。",
+          "evidence": [
+            {
+              "path": "feature-scope-v25.json",
+              "bytes": 2063087,
+              "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+            },
+            {
+              "path": "settings-feature-entry-conditions.json",
+              "bytes": 200971,
+              "sha256": "2a730bce88aef7dcb04daa9cd7be45e7429bfe244cea46f48898d1f77040a807"
+            }
+          ]
+        },
+        {
+          "id": "2.7",
+          "requirement": "`codex`、`chatgpt`、`shared`、`unknown`",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6808,
+              "endExclusive": 6850
+            },
+            "spanHash": "6bde49a04a26a60d2a5d70b067c170a17f4ea9154edf12800a2afd05da0c9ce8"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "模式枚举完整登记：shared 1、unknown 372；未知合法保留，但这不关闭模式边界调查。",
+          "evidence": [
+            {
+              "path": "feature-scope-v25.json",
+              "bytes": 2063087,
+              "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+            },
+            {
+              "path": "chat-branch-decisions.json",
+              "bytes": 12041,
+              "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+            }
+          ]
+        },
+        {
+          "id": "2.8",
+          "requirement": "入口、关键模块、IPC、后台服务、数据存储",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6870,
+              "endExclusive": 6927
+            },
+            "spanHash": "4b5af04b58f2e5b3050e6b09b109e412d35069462e1824ca2e5e9dab33fe3af1"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "每项有来源和拟议职责，仍有真实provider、receiver、持久化及服务后效断点。",
+          "evidence": [
+            {
+              "path": "restoration-coverage-v16.json",
+              "bytes": 1109752,
+              "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+            },
+            {
+              "path": "thread-resume-entry-contracts.json",
+              "bytes": 38794,
+              "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+            }
+          ]
+        },
+        {
+          "id": "2.9",
+          "requirement": "来源标识；静态确认、行为确认或待验证",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 6950,
+              "endExclusive": 7004
+            },
+            "spanHash": "184aba62d37e1c117346e10452bb428f71642445995b2f36364f6784d810933b"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "功能保留源码/元数据引用和静态、行为、待验证状态；引用完整性另由本批回读检查。",
+          "evidence": [
+            {
+              "path": "feature-scope-v25.json",
+              "bytes": 2063087,
+              "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+            },
+            {
+              "path": "restoration-coverage-v16.json",
+              "bytes": 1109752,
+              "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+            }
+          ]
+        },
+        {
+          "id": "2.10",
+          "requirement": "后续能够判断该功能已复刻的具体观察点",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 7024,
+              "endExclusive": 7078
+            },
+            "spanHash": "e50970c826bae2749515b8de063cec6c029e2f6ffd04ca22879b34b70580ff13"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "1216条规格记录前置、动作和期望；它们全部未执行，不计产品通过。",
+          "evidence": [
+            {
+              "path": "feature-scope-v24-scenarios.json",
+              "bytes": 1944258,
+              "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "3.1",
+          "requirement": "已确认且未修改的公开包",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 8006,
+              "endExclusive": 8039
+            },
+            "spanHash": "31932365160f5b2107a5216567fe0d6ab35395a77d8ce22fdbaf81ecf30418a6"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "包元数据、公开候选与条件性引入建议分列；未知未修改状态没有被提升为已确认。",
+          "evidence": [
+            {
+              "path": "dependencies.csv",
+              "bytes": 208587,
+              "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+            },
+            {
+              "path": "dependency-summary.json",
+              "bytes": 7125,
+              "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2"
+            },
+            {
+              "path": "upstream-comparison.json",
+              "bytes": 350806,
+              "sha256": "7fb44e3f4e8f30fe73f76b653d1ef016b5cddb04f9dd0832e92bdd629436264d"
+            }
+          ]
+        },
+        {
+          "id": "3.2",
+          "requirement": "bundle 内嵌的公开库",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 8089,
+              "endExclusive": 8114
+            },
+            "spanHash": "e29f7ae70e0674b4a39e4b57816e56b6e0f595eaabff85e7d2ec4f71e1b61f5d"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "17个内嵌提示及选定React/Sentry等接口边界有记录；按依赖导入而非导出其实现。",
+          "evidence": [
+            {
+              "path": "dependencies.csv",
+              "bytes": 208587,
+              "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+            },
+            {
+              "path": "dependency-import-decisions.json",
+              "bytes": 12781,
+              "sha256": "e7465bf0381c463b184fe7d943c08147c5b21ab5b991179be9d81ffe576e4d96"
+            }
+          ]
+        },
+        {
+          "id": "3.3",
+          "requirement": "同时存在多个版本",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 8185,
+              "endExclusive": 8209
+            },
+            "spanHash": "fc242aaadd81039129cc291cb8525a34d40bb9b029607630b4847b282e3685e4"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "安装/声明/通知候选及多版本分列，不能用根声明替代实际锁定版本。",
+          "evidence": [
+            {
+              "path": "dependency-summary.json",
+              "bytes": 7125,
+              "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2"
+            },
+            {
+              "path": "dependencies.csv",
+              "bytes": 208587,
+              "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+            }
+          ]
+        },
+        {
+          "id": "3.4",
+          "requirement": "修改过的上游库",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 8271,
+              "endExclusive": 8292
+            },
+            "spanHash": "43757ffcae695b4bea78d84369a4b44014ff755726e384bb23617f814c16b4b1"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "node-pty/objc等修改或候选边界有证据，其他unknown修改与fork适配仍需来源和消费者确认。",
+          "evidence": [
+            {
+              "path": "node-pty-modification-contracts.json",
+              "bytes": 23614,
+              "sha256": "cb0b08b8a3b0f364d3f4eda3c0c03e938fb416357c9a80e46fa174a978cbf0bd"
+            },
+            {
+              "path": "objc-independent-build-summary.md",
+              "bytes": 1929,
+              "sha256": "0644b1ad05f0c70d2e627158cae1b63883622c3ec9fb4469d5f370b844a1cbbf"
+            },
+            {
+              "path": "dependency-import-decisions.json",
+              "bytes": 12781,
+              "sha256": "e7465bf0381c463b184fe7d943c08147c5b21ab5b991179be9d81ffe576e4d96"
+            }
+          ]
+        },
+        {
+          "id": "3.5",
+          "requirement": "私有包或未知代码",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 8408,
+              "endExclusive": 8432
+            },
+            "spanHash": "c93aa195c7495ef54ebe297d6e19eabbc5efda00d118575f9d7e92b3dd8277b1"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "私有包、Owl和服务来源缺口已列出；独立取得/完整替代的可行性仍影响架构。",
+          "evidence": [
+            {
+              "path": "dependencies.csv",
+              "bytes": 208587,
+              "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+            },
+            {
+              "path": "runtime-distribution.json",
+              "bytes": 35755,
+              "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+            },
+            {
+              "path": "app-host-maintenance-summary.md",
+              "bytes": 5020,
+              "sha256": "9cb7f48661631fd4cdddb87f79f0c0d18b9b828fee92c67393b86309c01b0077"
+            }
+          ]
+        },
+        {
+          "id": "3.6",
+          "requirement": "原生模块与 Wasm",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 8503,
+              "endExclusive": 8523
+            },
+            "spanHash": "af5eb491739d3c2d762351cc89e2119c15f984ce2bcc26da662fc5bbe66415f8"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "native/Wasm/辅助组件版本、平台及接口有独立记录；ABI、独立运行时和若干组件构建路线未闭合。",
+          "evidence": [
+            {
+              "path": "native-runtime.json",
+              "bytes": 421989,
+              "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b"
+            },
+            {
+              "path": "runtime-surface-disposition.json",
+              "bytes": 62319,
+              "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+            },
+            {
+              "path": "objc-independent-build-summary.md",
+              "bytes": 1929,
+              "sha256": "0644b1ad05f0c70d2e627158cae1b63883622c3ec9fb4469d5f370b844a1cbbf"
+            }
+          ]
+        },
+        {
+          "id": "3.7",
+          "requirement": "每个条目包含名称、版本及其依据、来源、许可证线索、使用位置、运行时或构建时用途、模式归属、修改状态、建议引入方式和未解决问题。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 8599,
+              "endExclusive": 8788
+            },
+            "spanHash": "cb2a7b71330a84636df3ca9e40c769c2b2f01e72c3df1d64f52e5004194126b0"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "202行保留版本依据、来源、许可线索、用途、模式和引入建议；本批给全部202行接上明确调查动作，未知结论不变。",
+          "evidence": [
+            {
+              "path": "dependencies.csv",
+              "bytes": 208587,
+              "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+            },
+            {
+              "path": "dependency-investigation-actions-v1.json",
+              "bytes": 392136,
+              "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "4.1",
+          "requirement": "建立 main、preload、renderer、worker 和辅助进程的入口与生命周期关系。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 9301,
+              "endExclusive": 9391
+            },
+            "spanHash": "7284e68f6c1a0659fc322b965bcc39b3cae2ff7ad6ace510eefa87e52e5c5f67"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "main/preload/renderer/worker入口和局部生命周期有图与合同，全部辅助进程及保留功能生命周期闭包尚未证明。",
+          "evidence": [
+            {
+              "path": "boundaries.json",
+              "bytes": 3811,
+              "sha256": "82fd8e37ac2a78c47aa22f2450a60c6c8a4cf8378bdd821fbd940400d56e05fe"
+            },
+            {
+              "path": "ipc.json",
+              "bytes": 67650,
+              "sha256": "c98654aa436764b8758b315c7c423e5e8d69f10b2c92820c9f40982fd4422be0"
+            },
+            {
+              "path": "preload-app-host-summary.md",
+              "bytes": 2259,
+              "sha256": "5201e786fd07f36db160c7550278c4fdedc35560fa22005612d50c507eb09258"
+            },
+            {
+              "path": "app-host-maintenance-summary.md",
+              "bytes": 5020,
+              "sha256": "9cb7f48661631fd4cdddb87f79f0c0d18b9b828fee92c67393b86309c01b0077"
+            }
+          ]
+        },
+        {
+          "id": "4.2",
+          "requirement": "对 IPC 记录发送方、接收方、通道、请求与响应结构、通知、异常、超时和取消方式。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 9395,
+              "endExclusive": 9508
+            },
+            "spanHash": "6f18b63471ca01167ac86ba4f177fe5a6e48ce2e54f79de9a9eb0c93e5eb8d4d"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "中央分发、chunk、MessagePort和局部请求契约有来源；实际接收方、超时/取消后效仍有断点。",
+          "evidence": [
+            {
+              "path": "ipc.json",
+              "bytes": 67650,
+              "sha256": "c98654aa436764b8758b315c7c423e5e8d69f10b2c92820c9f40982fd4422be0"
+            },
+            {
+              "path": "host-message-contracts.json",
+              "bytes": 599124,
+              "sha256": "10493de416d59e4fa306895a40cc09d613ff7cd3d742fb4caccb3670bb12b7e2"
+            },
+            {
+              "path": "request-wrapper-contracts.json",
+              "bytes": 585390,
+              "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+            },
+            {
+              "path": "approval-response-wire-contracts.json",
+              "bytes": 12830,
+              "sha256": "73843a549cdf73a9c3901fae4c9104e3626a6a3b876d17a073e6285f246ea573"
+            }
+          ]
+        },
+        {
+          "id": "4.3",
+          "requirement": "对页面及状态记录路由、组件调用、状态所有权、订阅、持久化和恢复行为。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 9512,
+              "endExclusive": 9614
+            },
+            "spanHash": "e4c98063cbbd5c890dfdd00688da00562dd7076ec3f0c098b7cf626cf101b93c"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "路由、模式、globalState与退出保存有局部状态所有权合同，完整持久化/恢复和所有功能接入未证明。",
+          "evidence": [
+            {
+              "path": "route-contracts.json",
+              "bytes": 3708633,
+              "sha256": "55c96e171a5cb524d72b93be6bb44e3f9a8fa0686574e1ef9e863adf1e29dcae"
+            },
+            {
+              "path": "global-state-storage-origin.json",
+              "bytes": 99552,
+              "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e"
+            },
+            {
+              "path": "shutdown-persistence.json",
+              "bytes": 54306,
+              "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+            }
+          ]
+        },
+        {
+          "id": "4.4",
+          "requirement": "对后台边界记录 app-server、命令行工具、MCP、原生接口和服务端接口的实际使用关系。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 9618,
+              "endExclusive": 9731
+            },
+            "spanHash": "b83578cb28378ab769d6827c445e33e2692c3e90a7960a151caeee9cc0a4d788"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "app-server、HTTP、resolver、socket及native边界有分列；不能因方法同名将其合并为公开后台。",
+          "evidence": [
+            {
+              "path": "request-wrapper-contracts.json",
+              "bytes": 585390,
+              "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+            },
+            {
+              "path": "application-network-summary.md",
+              "bytes": 2879,
+              "sha256": "9785d1e4b105f435f6e1fb859823ee45e5fa2c1ae773592ce8821541b2234060"
+            },
+            {
+              "path": "environment-extension-contracts.json",
+              "bytes": 34744,
+              "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+            }
+          ]
+        },
+        {
+          "id": "4.5",
+          "requirement": "对动态导入、计算得到的通道名、循环依赖、模块副作用和共享闭包补充验证。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 9735,
+              "endExclusive": 9840
+            },
+            "spanHash": "aa9f83223c7b7bbe2d92e34a1d794b8f49a796a3d2abb43d6716fc670821a075"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "动态导入、通道计算与闭包有定向补充，完整保留依赖闭包和副作用仍未形成全域结论。",
+          "evidence": [
+            {
+              "path": "route-contracts.json",
+              "bytes": 3708633,
+              "sha256": "55c96e171a5cb524d72b93be6bb44e3f9a8fa0686574e1ef9e863adf1e29dcae"
+            },
+            {
+              "path": "request-wrapper-contracts.json",
+              "bytes": 585390,
+              "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+            },
+            {
+              "path": "settings-di-source-summary.md",
+              "bytes": 1691,
+              "sha256": "7134c5d18a18286d1ec0787b129c7e9d96ab5b701f8a14363ed8583b89e07ae8"
+            }
+          ]
+        },
+        {
+          "id": "4.6",
+          "requirement": "对无法直接解析的大 bundle，使用 AST 和作用域关系辅助分析，并保留原位置到格式化代码的映射。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 9844,
+              "endExclusive": 9973
+            },
+            "spanHash": "a29970e63188c009e01f94ce2f57bf4206290a5601740c6489305899c70868b0"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "整Program/作用域和精确字节映射已有实际产物；最新四Program定向结果仍是有限语义范围。",
+          "evidence": [
+            {
+              "path": "runtime-feature-policy-contracts.json",
+              "bytes": 66085,
+              "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492"
+            },
+            {
+              "path": "runtime-api-contracts.json",
+              "bytes": 3913933,
+              "sha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363"
+            }
+          ]
+        },
+        {
+          "id": "4.7",
+          "requirement": "公开 app-server 是候选集成方案，采用与否由覆盖情况决定；不能仅凭接入成功就认为桌面功能已全部恢复。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 10255,
+              "endExclusive": 10396
+            },
+            "spanHash": "18823c18d3e1385ff6ef2572080abd750463e5c6442d45475c82439793977c45"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "固定公开CLI的764文件/466方法变体比较和有限运行差异已有证据；实际provider绑定及11组有效契约差异的采用决定未全闭合。",
+          "evidence": [
+            {
+              "path": "exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            {
+              "path": "command-backend-comparison.json",
+              "bytes": 4768,
+              "sha256": "68d0da7506c4029c5b7f48194c580cfa93f97386f61cbdecc103011d18af6b25"
+            },
+            {
+              "path": "fork-negative-protocol-comparison.json",
+              "bytes": 39856,
+              "sha256": "b67312f70f0c69887f253f0f66e935ca0155b7bedade37e9388b31d7c68e3845"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "5.1",
+          "requirement": "对主要功能链执行可重复的行为观察，将运行结果与静态推断对照。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 10564,
+              "endExclusive": 10654
+            },
+            "spanHash": "f2038c5a3f0edae4175a34172166f466767f5c75ccba8e2685871289af3ffa5c"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "一个自有只读任务完成/重开及另一执行中停止重启有观察；不能推广到全部主要功能链。",
+          "evidence": [
+            {
+              "path": "behavior-checks.md",
+              "bytes": 45093,
+              "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+            },
+            {
+              "path": "behavior-stop-restart.json",
+              "bytes": 4289,
+              "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+            }
+          ]
+        },
+        {
+          "id": "5.2",
+          "requirement": "覆盖正常完成、失败、取消、重启恢复等有实际实现依据的路径。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 10746,
+              "endExclusive": 10833
+            },
+            "spanHash": "5a4f838d5612b01439243bbeed36b3e945cd95484d181ba3faca5872ca3749b6"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "完成与interrupted重开分别记录；取消未测、自动续跑未证明，失败/审批/PTY等主要行为仍不完整。",
+          "evidence": [
+            {
+              "path": "behavior-stop-restart.json",
+              "bytes": 4289,
+              "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+            },
+            {
+              "path": "behavior-checks.md",
+              "bytes": 45093,
+              "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+            }
+          ]
+        },
+        {
+          "id": "5.3",
+          "requirement": "账户、平台或服务条件不满足时，保留对应功能及其静态证据，标明待验证条件。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11036,
+              "endExclusive": 11144
+            },
+            "spanHash": "ad0539a9071769a7a38c165b2bc9fe2a46f901a4443335aed317adaf81310c34"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "未观察条件、保留功能和未来具体场景均有登记；本批不新增模型任务或个人数据读取。",
+          "evidence": [
+            {
+              "path": "feature-scope-v24-scenarios.json",
+              "bytes": 1944258,
+              "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+            },
+            {
+              "path": "behavior-stop-restart.json",
+              "bytes": 4289,
+              "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "deliveryStatus": "partial",
+      "requirements": [
+        {
+          "id": "6.1",
+          "requirement": "由模块职责、运行环境和共享关系决定的源码目录与包边界。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11450,
+              "endExclusive": 11531
+            },
+            "spanHash": "4f304f4484c7a39f00c7c8e062b47f2a350d609ecec98288cab05b0a38517a4f"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "进程、状态所有权与共享关系支持目录/包边界建议；它们是拟维护设计，不是还原的原作者目录。",
+          "evidence": [
+            {
+              "path": "implementation-plan-v9.md",
+              "bytes": 15268,
+              "sha256": "10facc86a4806f3c4eabf6064946435f12eaafdc2f1f15cd4b38d50eaa2476e7"
+            },
+            {
+              "path": "module-boundary-proposals.json",
+              "bytes": 69138,
+              "sha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6"
+            },
+            {
+              "path": "source-contract-module-proposals.json",
+              "bytes": 8621,
+              "sha256": "b28207a64b47f5e1566f24dbdc36e24460f639d4ead127819ca686ed3b13b2b0"
+            }
+          ]
+        },
+        {
+          "id": "6.2",
+          "requirement": "从原始文件或代码范围到拟恢复模块的映射。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11534,
+              "endExclusive": 11594
+            },
+            "spanHash": "3833c2c605040c69e19d283e6ad80d5a836de4e7343f1935dfe533ff46cbe0a5"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "438条发布文件记录和局部逻辑模块映射并存；职责、导出、第三方边界等尚无覆盖全部保留功能的统一模块表。",
+          "evidence": [
+            {
+              "path": "modules.json",
+              "bytes": 1396068,
+              "sha256": "fb328ab9b49fe3540d30f9925575c7226c2e186c8abc59f35f6b72a77faf00af"
+            },
+            {
+              "path": "module-boundary-proposals.json",
+              "bytes": 69138,
+              "sha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6"
+            },
+            {
+              "path": "restoration-coverage-v16.json",
+              "bytes": 1109752,
+              "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+            }
+          ]
+        },
+        {
+          "id": "6.3",
+          "requirement": "ChatGPT 专属功能剥离清单及共享依赖保留理由。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11597,
+              "endExclusive": 11659
+            },
+            "spanHash": "ccbb2724a6216decae0a4908bb06014ab5d7def1f5e7f5b9bf38868db73ccc62"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "3组Chat专属分支决定、1项Codex正向保留及1项共享归属已有证据；整项排除0，完整剥离范围未闭合。",
+          "evidence": [
+            {
+              "path": "chat-branch-decisions.json",
+              "bytes": 12041,
+              "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+            },
+            {
+              "path": "archive-mode-ownership.json",
+              "bytes": 9556,
+              "sha256": "b3182a76e980d2959bc6c71c7f02c4fb1b480cc60221c8ebda3cb03513321d5f"
+            },
+            {
+              "path": "product-flow-ownership.json",
+              "bytes": 21987,
+              "sha256": "3732839cdbd9b2080f74d023146ad36a4751cfc6b0e80713b6ec8ab540561906"
+            }
+          ]
+        },
+        {
+          "id": "6.4",
+          "requirement": "第三方依赖引入方案，以及原生、Wasm、定制运行时和私有组件的处理决定。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11662,
+              "endExclusive": 11762
+            },
+            "spanHash": "3f7c89bd7fcecd79a329d97776e6bb5700da84dab3a6c3e543ace82f6c879fe8"
+          },
+          "status": "partial; material-analysis-work-remains",
+          "finding": "第三方引入和native/provider职责有建议，Owl独立来源及若干底层等价效果仍未知。",
+          "evidence": [
+            {
+              "path": "dependency-investigation-actions-v1.json",
+              "bytes": 392136,
+              "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+            },
+            {
+              "path": "runtime-feature-policy-contracts.json",
+              "bytes": 66085,
+              "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492"
+            },
+            {
+              "path": "runtime-distribution.json",
+              "bytes": 35755,
+              "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+            }
+          ]
+        },
+        {
+          "id": "6.5",
+          "requirement": "缺失构建输入的补齐方案和公开 app-server 的适用范围。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11765,
+              "endExclusive": 11837
+            },
+            "spanHash": "b0238c73fbe96486e8cae2463f8c2782a9a5c6aac4dce6b88a0dc6ce8fb1b114"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "30项构建输入有处置；公开app-server的候选范围与差异、采用前置条件明确列出。实际补齐和服务接入属于实施。",
+          "evidence": [
+            {
+              "path": "build-input-dispositions-v1.json",
+              "bytes": 33279,
+              "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+            },
+            {
+              "path": "exported-protocol-comparison.json",
+              "bytes": 1393221,
+              "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+            },
+            {
+              "path": "implementation-plan-v9.md",
+              "bytes": 15268,
+              "sha256": "10facc86a4806f3c4eabf6064946435f12eaafdc2f1f15cd4b38d50eaa2476e7"
+            }
+          ]
+        },
+        {
+          "id": "6.6",
+          "requirement": "根据依赖关系排列的功能恢复顺序、阶段验收和完整功能覆盖表。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11840,
+              "endExclusive": 11927
+            },
+            "spanHash": "dc77cc1f53aa9d5a165553567331e14dcbf340ed573779840e235088e26ced9f"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "本批把373项/48任务接入源码准备与真实集成两套57节点无环图；完整产品分母仍未知，全部产品验收未开始。",
+          "evidence": [
+            {
+              "path": "restoration-current-ordering-v1.json",
+              "bytes": 46210,
+              "sha256": "8eb9b40751421a3a58d3dca0030e9959d4e404c2e3d8a56ef2b8e78bad942b7f"
+            },
+            {
+              "path": "restoration-coverage-v16.json",
+              "bytes": 1109752,
+              "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+            }
+          ]
+        },
+        {
+          "id": "6.7",
+          "requirement": "基于固定版本证据、协议与行为差异的后续升级方式。",
+          "planLocator": {
+            "sourcePath": "docs/reverse-engineering/analysis-plan.md",
+            "sourceHash": "48dd8b65348efd4a8b5634aac5341c4507c262e7b5c88e8ed9368c88eeb96db4",
+            "byteRange": {
+              "start": 11930,
+              "endExclusive": 12002
+            },
+            "spanHash": "ab1222cb65ab5c2936a48d9eba176217ea5c5326ad2e26d8c4c76ef98b886e04"
+          },
+          "status": "record-or-proposal-obligation-supported-with-limits",
+          "finding": "新基线、协议/依赖/行为差异、模块/回归映射及迁移回退有升级建议；升级实测属于实施期。",
+          "evidence": [
+            {
+              "path": "implementation-plan-v9.md",
+              "bytes": 15268,
+              "sha256": "10facc86a4806f3c4eabf6064946435f12eaafdc2f1f15cd4b38d50eaa2476e7"
+            },
+            {
+              "path": "chat-branch-decisions.json",
+              "bytes": 12041,
+              "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "remainingIssues": [
+    {
+      "id": "SD-01",
+      "status": "open-internal",
+      "impact": "完整功能分母、ChatGPT剥离与共享依赖",
+      "evidence": [
+        {
+          "path": "feature-scope-v25.json",
+          "bytes": 2063087,
+          "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+        },
+        {
+          "path": "legacy-entry-dispositions.json",
+          "bytes": 1000943,
+          "sha256": "471be3ddfa30188fff195606e23b20600a4d445e0973830937cfb7ece01b311c"
+        },
+        {
+          "path": "chat-branch-decisions.json",
+          "bytes": 12041,
+          "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+        }
+      ],
+      "remaining": "726角色待定、12关联、3重叠及影响保留边界的模式闭包；45设置容器局部合同已全部交付，不再列为缺口。",
+      "boundedResolution": "按已保存来源分组处置角色/关联/重复，保留unknown；每个拟排除分支独立核对Codex共享消费者。",
+      "externalPrerequisite": null
+    },
+    {
+      "id": "SD-02",
+      "status": "open-mixed",
+      "impact": "独立运行时、native来源与完整能力",
+      "evidence": [
+        {
+          "path": "runtime-distribution.json",
+          "bytes": 35755,
+          "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+        },
+        {
+          "path": "runtime-surface-disposition.json",
+          "bytes": 62319,
+          "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+        },
+        {
+          "path": "runtime-feature-policy-contracts.json",
+          "bytes": 66085,
+          "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492"
+        },
+        {
+          "path": "browser-ownership-contracts.json",
+          "bytes": 17166,
+          "sha256": "7c2ff4a4e9f6179ab474a4194c1d57db2ffefbd69b201b2edb80b4704827e14b"
+        },
+        {
+          "path": "public-history-duplicate-comparison.json",
+          "bytes": 27890,
+          "sha256": "51d16a4db824fdff6f04d767a01bd428a4822c78f61761b1fe7c7297b811eff1"
+        }
+      ],
+      "remaining": "17个已解析私有接口不是全部分母；两特性键、reset和predicate已收口，native效果、clone/lease、权限隔离、特权设置及更新等仍未取得完整独立实现资格。",
+      "boundedResolution": "复用现有差异与源码合同，逐能力明确可独立取得的provider/源码、所需行为及采用决定；不重复接口存在性探针。",
+      "externalPrerequisite": "适用Owl的独立发行/源码及构建来源，或足以实现全部保留能力的公开来源与原生行为证据；当前没有合格路线。"
+    },
+    {
+      "id": "SD-03",
+      "status": "open-internal-and-service",
+      "impact": "实际provider/receiver及公开app-server采用范围",
+      "evidence": [
+        {
+          "path": "thread-resume-entry-contracts.json",
+          "bytes": 38794,
+          "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+        },
+        {
+          "path": "request-wrapper-contracts.json",
+          "bytes": 585390,
+          "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+        },
+        {
+          "path": "exported-protocol-comparison.json",
+          "bytes": 1393221,
+          "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+        },
+        {
+          "path": "fork-negative-protocol-comparison.json",
+          "bytes": 39856,
+          "sha256": "b67312f70f0c69887f253f0f66e935ca0155b7bedade37e9388b31d7c68e3845"
+        }
+      ],
+      "remaining": "公开导出差异11组、实际接收身份与通知后效尚未全闭合，npm二进制与公开提交绑定未知；UI resume与raw API仍有1项排队判定。",
+      "boundedResolution": "Locate both concrete provider/receiver chains and their request/notification/state effects, or give the exact unresolvable injection boundary. Classify the one existing queued operation without adding new features or redoing route discovery. Static closure is separate from actual service acceptance.",
+      "externalPrerequisite": "成功路径实际服务/后台契约与发行来源；负例/schema等同不能代替。"
+    },
+    {
+      "id": "SD-04",
+      "status": "open-validation",
+      "impact": "主要行为对照",
+      "evidence": [
+        {
+          "path": "behavior-checks.md",
+          "bytes": 45093,
+          "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+        },
+        {
+          "path": "behavior-stop-restart.json",
+          "bytes": 4289,
+          "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+        },
+        {
+          "path": "feature-scope-v24-scenarios.json",
+          "bytes": 1944258,
+          "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+        }
+      ],
+      "remaining": "执行中取消未测；自动续跑未证明；失败、审批、PTY等主要路径缺实际观察。",
+      "boundedResolution": "保留每条未验证场景的前置、动作、预期和限制；仅在已获相应授权/环境时执行实际观察，源码回放不充抵。",
+      "externalPrerequisite": "需要新增模型任务的场景必须有新授权；当前剩余0。平台/服务相关场景还需匹配环境。"
+    },
+    {
+      "id": "SD-05",
+      "status": "open-source-and-platform",
+      "impact": "独立数据、认证、持久化与迁移",
+      "evidence": [
+        {
+          "path": "global-state-storage-origin.json",
+          "bytes": 99552,
+          "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e"
+        },
+        {
+          "path": "main-persistence-policy.json",
+          "bytes": 26906,
+          "sha256": "9282195e19d07e5be2970bb8661cd66958d0df830187b221614a1c95e9ddee31"
+        },
+        {
+          "path": "shutdown-persistence.json",
+          "bytes": 54306,
+          "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+        },
+        {
+          "path": "mode-persistence-receiver.json",
+          "bytes": 12553,
+          "sha256": "ea1636f999e24e659f6b7112ba855e8252f67eba4598085ace6ecd76a25c0938"
+        }
+      ],
+      "remaining": "globalState保存合同不能证明所有backend/native/账号数据均隔离；实际有效根目录、认证存储、异常退出和迁移边界仍需全域职责映射。",
+      "boundedResolution": "从已有store/owner/provider合同列出每个保留存储及认证来源的路径输入、权限、写入/迁移/退出责任和明确未验证条件；不读个人数据。",
+      "externalPrerequisite": "平台认证/密钥存储和真实驱动后效需受控自有环境；目录名称不同本身不能证明隔离。"
+    },
+    {
+      "id": "SD-06",
+      "status": "open-design-integration",
+      "impact": "逻辑模块、证据格式、构建与升级依据",
+      "evidence": [
+        {
+          "path": "modules.json",
+          "bytes": 1396068,
+          "sha256": "fb328ab9b49fe3540d30f9925575c7226c2e186c8abc59f35f6b72a77faf00af"
+        },
+        {
+          "path": "restoration-current-ordering-v1.json",
+          "bytes": 46210,
+          "sha256": "8eb9b40751421a3a58d3dca0030e9959d4e404c2e3d8a56ef2b8e78bad942b7f"
+        },
+        {
+          "path": "build-input-dispositions-v1.json",
+          "bytes": 33279,
+          "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+        },
+        {
+          "path": "dependency-investigation-actions-v1.json",
+          "bytes": 392136,
+          "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+        }
+      ],
+      "remaining": "当前373/48排序已统一，30缺失输入有处置。438记录仍为发布文件；统一逻辑模块必要字段与部分旧journal格式仍需闭合。",
+      "boundedResolution": "将已审查职责/范围/导入导出/共享状态/副作用/第三方/拟议路径接成统一视图；缺证据显式unknown，保持原始journal并补具备来源的规范视图。运行时/后台决定继承SD02/03。",
+      "externalPrerequisite": "实际干净构建、安装、打包、平台ABI与升级回归属于后续实施验收，不要求本阶段伪造通过。"
+    }
+  ],
+  "counts": {
+    "completionCriteria": 9,
+    "satisfiedRecordOrScopeObligations": 4,
+    "partialCriteria": 5,
+    "stages": 6,
+    "requirementItems": 39,
+    "requirementStatusCounts": {
+      "record-or-proposal-obligation-supported-with-limits": 21,
+      "partial; material-analysis-work-remains": 18
+    },
+    "currentFeatureDefinitions": 373,
+    "currentUnexecutedScenarios": 1216,
+    "currentRestorationTaskGroups": 48,
+    "remainingDecisionGroups": 6,
+    "modeCounts": {
+      "unknown": 372,
+      "shared": 1
+    },
+    "confirmedWholeFeatureExclusions": 0,
+    "confirmedChatOnlyBranchDecisionGroups": 3,
+    "newOriginalSourceParses": 0,
+    "newReaRuns": 0,
+    "newModelSubmissions": 0,
+    "newOriginalClientLaunches": 0,
+    "newFeatureDefinitions": 0,
+    "newProductScenarioPasses": 0,
+    "newClientImplementation": 0
+  },
+  "dependencyActionOverlay": {
+    "path": "dependency-investigation-actions-v1.json",
+    "bytes": 392136,
+    "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+  },
+  "currentOrdering": {
+    "path": "restoration-current-ordering-v1.json",
+    "bytes": 46210,
+    "sha256": "8eb9b40751421a3a58d3dca0030e9959d4e404c2e3d8a56ef2b8e78bad942b7f"
+  },
+  "moduleInventoryAudit": {
+    "records": 438,
+    "boundaryKind": "published-file; not recovered logical module",
+    "missingExplicitFields": {
+      "responsibility": 438,
+      "exports": 438,
+      "thirdPartyDependencies": 438
+    },
+    "qualification": "Logical-module proposals and per-feature references supplement this inventory, but no complete unified required-field view is proved. Whole-file hashes/bytes are not logical module cuts."
+  },
+  "selectedJournalSchemaAudit": [
+    {
+      "path": "evidence.jsonl",
+      "records": 65571,
+      "missingFields": {
+        "id": 0,
+        "baselineId": 0,
+        "claim": 0,
+        "sourcePath": 0,
+        "sourceHash": 0,
+        "locator": 0,
+        "method": 0,
+        "confidence": 0,
+        "verificationStatus": 0
+      },
+      "nonPlanConfidenceValues": {}
+    },
+    {
+      "path": "runtime-feature-policy-evidence.jsonl",
+      "records": 9,
+      "missingFields": {
+        "id": 0,
+        "baselineId": 0,
+        "claim": 0,
+        "sourcePath": 0,
+        "sourceHash": 0,
+        "locator": 0,
+        "method": 0,
+        "confidence": 0,
+        "verificationStatus": 0
+      },
+      "nonPlanConfidenceValues": {}
+    },
+    {
+      "path": "request-entry-unmatched-review-evidence.jsonl",
+      "records": 38,
+      "missingFields": {
+        "id": 0,
+        "baselineId": 0,
+        "claim": 0,
+        "sourcePath": 0,
+        "sourceHash": 0,
+        "locator": 0,
+        "method": 0,
+        "confidence": 0,
+        "verificationStatus": 38
+      },
+      "nonPlanConfidenceValues": {
+        "confirmed-source-locator": 38
+      }
+    }
+  ],
+  "crossCuttingRequirements": [
+    {
+      "id": "X-01",
+      "requirement": "完整固定基线Codex范围；最小流程只是实施中间里程碑",
+      "status": "partial",
+      "evidence": "SD-01, AC-02/04; 373 finite definitions retained, complete denominator unknown"
+    },
+    {
+      "id": "X-02",
+      "requirement": "仅排除ChatGPT专属；保留Codex共享依赖",
+      "status": "partial",
+      "evidence": "SD-01, AC-03; three bounded branch decisions, zero whole-feature exclusions"
+    },
+    {
+      "id": "X-03",
+      "requirement": "第三方实现通过依赖引入，临时分析副本与维护源码分开",
+      "status": "proposal-and-analysis-boundary-supported",
+      "evidence": "AC-05/06; no client code or third-party implementation generated by this batch"
+    },
+    {
+      "id": "X-04",
+      "requirement": "独立标识/目录、干净构建打包及升级，无原安装路径依赖",
+      "status": "analysis-route-partial; implementation-acceptance-deferred",
+      "evidence": "SD-02/05/06; ordering does not prove a qualified runtime or build"
+    },
+    {
+      "id": "X-05",
+      "requirement": "结论可回溯且证据记录具备计划九字段与规定confidence",
+      "status": "partial",
+      "evidence": "selectedJournalSchemaAudit; known producer deviations retained, no blanket normalization/equivalence claimed"
+    },
+    {
+      "id": "X-06",
+      "requirement": "模块清单职责/环境/模式/范围/导入导出/状态/副作用/第三方/拟议路径齐备",
+      "status": "partial",
+      "evidence": "moduleInventoryAudit; scoped proposals do not establish complete logical module inventory"
+    },
+    {
+      "id": "X-07",
+      "requirement": "分别统计发现、分类、分析、验证、排除、未知并保留分母",
+      "status": "bounded-counts-supported",
+      "evidence": "counts + current ledger/coverage; file entries, source roles, functional mapping, branch decisions and runtime observations counted separately"
+    }
+  ],
+  "interpretation": [
+    "R supports the specific record/proposal obligation with stated limits; it is not product completion.",
+    "Unknown mode/version/platform values may remain explicit, but architecture-changing gaps stay open.",
+    "All 1216 implementation specifications are unexecuted; analysis exit does not require executing them all.",
+    "No independent client implementation/build is claimed or required as a substitute for the current analysis deliverable.",
+    "Original plan is unchanged. Current scope overlays supersede historical 340/45 counts without overwriting old snapshots."
+  ],
+  "nextAction": {
+    "issueId": "SD-03",
+    "question": "For the existing UI resumeConversation path and old raw resumeThread candidate, which exact provider/request descriptor and receiver are selected, and are their operations equivalent?",
+    "fixedInput": "thread-resume-entry-contracts.json, request wrapper/facade contracts and their saved source selections; frozen sources only if a specific binding is missing.",
+    "closure": "Locate both concrete provider/receiver chains and their request/notification/state effects, or give the exact unresolvable injection boundary. Classify the one existing queued operation without adding new features or redoing route discovery. Static closure is separate from actual service acceptance.",
+    "authorization": "Offline analysis only; no new model submission, original-client launch, account mutation or client implementation."
+  },
+  "fullAnalysisCompleted": false,
+  "clientImplementationStarted": false,
+  "inputPins": [
+    {
+      "path": "analysis-stage-decisions-v2.json",
+      "bytes": 35901,
+      "sha256": "5b70bc474ae0de7b1069fa210a439121dd125b0d4f3cdabd575e5a56d65c3e24"
+    },
+    {
+      "path": "analysis-stage-decisions-v3.json",
+      "bytes": 28698,
+      "sha256": "8e0821361f8d4db620bda296977f11af4ca243898046ddef1714a084e470df4a"
+    },
+    {
+      "path": "app-host-maintenance-summary.md",
+      "bytes": 5020,
+      "sha256": "9cb7f48661631fd4cdddb87f79f0c0d18b9b828fee92c67393b86309c01b0077"
+    },
+    {
+      "path": "application-network-summary.md",
+      "bytes": 2879,
+      "sha256": "9785d1e4b105f435f6e1fb859823ee45e5fa2c1ae773592ce8821541b2234060"
+    },
+    {
+      "path": "approval-response-wire-contracts.json",
+      "bytes": 12830,
+      "sha256": "73843a549cdf73a9c3901fae4c9104e3626a6a3b876d17a073e6285f246ea573"
+    },
+    {
+      "path": "archive-mode-ownership.json",
+      "bytes": 9556,
+      "sha256": "b3182a76e980d2959bc6c71c7f02c4fb1b480cc60221c8ebda3cb03513321d5f"
+    },
+    {
+      "path": "baseline-reverification.json",
+      "bytes": 11124,
+      "sha256": "9f27c67bfffe7a6f2069c11ddf64a20df44abe3612ba9cf5e7541159794883b7"
+    },
+    {
+      "path": "baseline.json",
+      "bytes": 1162,
+      "sha256": "bf87bd9ff578a169ca37d44b9f536d4f1e51f6e2356ead36ac2d73fed572d736"
+    },
+    {
+      "path": "behavior-checks.md",
+      "bytes": 45093,
+      "sha256": "868fd0d1fb72a475ffa8b8bd7c59b6bb81b405f3813adc66a5318f8099bda482"
+    },
+    {
+      "path": "behavior-stop-restart.json",
+      "bytes": 4289,
+      "sha256": "131495ee13c4db81126b46c26a85bf68eb4dc2dc147a77f5a0e1e1d0e0f72957"
+    },
+    {
+      "path": "boundaries.json",
+      "bytes": 3811,
+      "sha256": "82fd8e37ac2a78c47aa22f2450a60c6c8a4cf8378bdd821fbd940400d56e05fe"
+    },
+    {
+      "path": "build-input-dispositions-v1.json",
+      "bytes": 33279,
+      "sha256": "effad37500f8d383d5c2ff2ccfccc890f3f98bf855ca73647a8e9f9228c39cda"
+    },
+    {
+      "path": "build-inputs.json",
+      "bytes": 5040,
+      "sha256": "c095c31536a0697e8e980c5fdee18a73ef96fa3aa439e64da99cd3cb85c60d31"
+    },
+    {
+      "path": "chat-branch-decisions.json",
+      "bytes": 12041,
+      "sha256": "c398b466b8ed01139570248c6ddc0230352776cd890e39a027096549eb40fea6"
+    },
+    {
+      "path": "command-backend-comparison.json",
+      "bytes": 4768,
+      "sha256": "68d0da7506c4029c5b7f48194c580cfa93f97386f61cbdecc103011d18af6b25"
+    },
+    {
+      "path": "core-feature-scope.json",
+      "bytes": 157717,
+      "sha256": "e41d1fbaf4f5652845ceb5153aa075eccd28a68a6965e6dfbfe1ecf19f2fb74d"
+    },
+    {
+      "path": "dependencies.csv",
+      "bytes": 208587,
+      "sha256": "1c6fafb22d33f46d4c84de86fee4eaa63e38097a53137991b7d22b1b8f4b8eba"
+    },
+    {
+      "path": "dependency-import-decisions.json",
+      "bytes": 12781,
+      "sha256": "e7465bf0381c463b184fe7d943c08147c5b21ab5b991179be9d81ffe576e4d96"
+    },
+    {
+      "path": "dependency-investigation-actions-v1.json",
+      "bytes": 392136,
+      "sha256": "342f2738edccdb0dfcd3636b136e44e87ae35706baa8ab2d7e885c0885af0fef"
+    },
+    {
+      "path": "dependency-summary.json",
+      "bytes": 7125,
+      "sha256": "e0cc37feac1f37ce80cb5b273521f93dede72f998ea19012ab0f770e72feafe2"
+    },
+    {
+      "path": "entry-family-map.json",
+      "bytes": 3217503,
+      "sha256": "679b4ec700c544e8e3d491bc22effea265824b48e25cfa582e6796f50be6ff8e"
+    },
+    {
+      "path": "environment-extension-contracts.json",
+      "bytes": 34744,
+      "sha256": "a0ff304084111f6170d32117e7d1b8464e7bef07c96caac0beab12069f745c73"
+    },
+    {
+      "path": "evidence.jsonl",
+      "bytes": 40489526,
+      "sha256": "8f150fa1216f2c5e28891e09f4e10c2f7a259a7a4a5a8cdcd3810c1725a3d2b3"
+    },
+    {
+      "path": "exported-protocol-comparison.json",
+      "bytes": 1393221,
+      "sha256": "8244af2d6d591a3e813b025486ec44cb9903156e468e9af409f81170fcb56328"
+    },
+    {
+      "path": "feature-scope-v24-scenarios.json",
+      "bytes": 1944258,
+      "sha256": "d5b1ec0c6700be26519f8a9547455fb51e98f3383c5391c16db0f8ed655629f7"
+    },
+    {
+      "path": "feature-scope-v25.json",
+      "bytes": 2063087,
+      "sha256": "e505b5c015ce1f5d8410a0231b3e64abd4d00cc17cc11667fa2c705bf5b443aa"
+    },
+    {
+      "path": "file-change-view-contracts-v2.json",
+      "bytes": 181686,
+      "sha256": "459e1ab894c85074a7d324780b620d0346aefbd281f4bbf9a441aaf55def5cbc"
+    },
+    {
+      "path": "files.json",
+      "bytes": 9406196,
+      "sha256": "c060ca29cd413f3d4438ffea3c70382a41959bad4c243d2ddd1c88df8a96b305"
+    },
+    {
+      "path": "fork-negative-protocol-comparison.json",
+      "bytes": 39856,
+      "sha256": "b67312f70f0c69887f253f0f66e935ca0155b7bedade37e9388b31d7c68e3845"
+    },
+    {
+      "path": "global-state-storage-origin.json",
+      "bytes": 99552,
+      "sha256": "52139bd5cb0c56733ef2e8ee2eb3ae2c4ed81117c1fef90bec2cfcc84fff7a3e"
+    },
+    {
+      "path": "host-message-contracts.json",
+      "bytes": 599124,
+      "sha256": "10493de416d59e4fa306895a40cc09d613ff7cd3d742fb4caccb3670bb12b7e2"
+    },
+    {
+      "path": "implementation-plan-v9.md",
+      "bytes": 15268,
+      "sha256": "10facc86a4806f3c4eabf6064946435f12eaafdc2f1f15cd4b38d50eaa2476e7"
+    },
+    {
+      "path": "ipc.json",
+      "bytes": 67650,
+      "sha256": "c98654aa436764b8758b315c7c423e5e8d69f10b2c92820c9f40982fd4422be0"
+    },
+    {
+      "path": "legacy-entry-dispositions.json",
+      "bytes": 1000943,
+      "sha256": "471be3ddfa30188fff195606e23b20600a4d445e0973830937cfb7ece01b311c"
+    },
+    {
+      "path": "module-boundary-proposals.json",
+      "bytes": 69138,
+      "sha256": "208495416d92fedc8bc8a0762f304216d6d6ecb5a8e0999291883182063f57d6"
+    },
+    {
+      "path": "modules.json",
+      "bytes": 1396068,
+      "sha256": "fb328ab9b49fe3540d30f9925575c7226c2e186c8abc59f35f6b72a77faf00af"
+    },
+    {
+      "path": "native-runtime.json",
+      "bytes": 421989,
+      "sha256": "766fdbf0ce19daf6f2712fabc458b6101ebe797b7ed6e8990cbf3b6cffa7e78b"
+    },
+    {
+      "path": "node-pty-modification-contracts.json",
+      "bytes": 23614,
+      "sha256": "cb0b08b8a3b0f364d3f4eda3c0c03e938fb416357c9a80e46fa174a978cbf0bd"
+    },
+    {
+      "path": "objc-independent-build-summary.md",
+      "bytes": 1929,
+      "sha256": "0644b1ad05f0c70d2e627158cae1b63883622c3ec9fb4469d5f370b844a1cbbf"
+    },
+    {
+      "path": "preload-app-host-summary.md",
+      "bytes": 2259,
+      "sha256": "5201e786fd07f36db160c7550278c4fdedc35560fa22005612d50c507eb09258"
+    },
+    {
+      "path": "product-flow-ownership.json",
+      "bytes": 21987,
+      "sha256": "3732839cdbd9b2080f74d023146ad36a4751cfc6b0e80713b6ec8ab540561906"
+    },
+    {
+      "path": "rea-application-observed.run.json",
+      "bytes": 1223,
+      "sha256": "153b69862e6960564424f9db0435bef1893eb2de135c038b13929700d5742280"
+    },
+    {
+      "path": "request-entry-unmatched-review-evidence.jsonl",
+      "bytes": 39289,
+      "sha256": "3f3dfb0e3f9bc934f7930aae16e2d6fc8427b250cd9f780343f0345d75b66ded"
+    },
+    {
+      "path": "request-wrapper-contracts.json",
+      "bytes": 585390,
+      "sha256": "8b787ffcec396a73bb2d540d644a7aa6b2c03840d90be45c91c0a3053c5fdad9"
+    },
+    {
+      "path": "restoration-coverage-v16.json",
+      "bytes": 1109752,
+      "sha256": "17eac8e438305763bce60fa2e17ded271dbe5dc32bf5c0c0b3e1be2b7678ea88"
+    },
+    {
+      "path": "restoration-current-ordering-v1.json",
+      "bytes": 46210,
+      "sha256": "8eb9b40751421a3a58d3dca0030e9959d4e404c2e3d8a56ef2b8e78bad942b7f"
+    },
+    {
+      "path": "route-contracts.json",
+      "bytes": 3708633,
+      "sha256": "55c96e171a5cb524d72b93be6bb44e3f9a8fa0686574e1ef9e863adf1e29dcae"
+    },
+    {
+      "path": "runtime-api-contracts.json",
+      "bytes": 3913933,
+      "sha256": "d7784275cf9c045d6b5e257536fcd607bf1d8be1010049dd31ba83d7e432a363"
+    },
+    {
+      "path": "runtime-distribution.json",
+      "bytes": 35755,
+      "sha256": "e5ed6d6b6e576bf6f3740ce72fcfac86909dff9511194398d85ee6d665c7f02b"
+    },
+    {
+      "path": "runtime-feature-policy-contracts.json",
+      "bytes": 66085,
+      "sha256": "2d2a3d3f1f188a135771a439f4fa7cfd7759e2f95f319db89ce5099b64817492"
+    },
+    {
+      "path": "runtime-feature-policy-evidence.jsonl",
+      "bytes": 19821,
+      "sha256": "58314557679fac647d49909cdaa8156859ec0fd885a3e93ff23002a6099a7020"
+    },
+    {
+      "path": "runtime-node-version-summary.md",
+      "bytes": 2127,
+      "sha256": "0f0697196ca17a6666e52f5bce3a85087f96cbc737207f06fa8ec0c55af5c719"
+    },
+    {
+      "path": "runtime-surface-disposition.json",
+      "bytes": 62319,
+      "sha256": "ae6d244f4b979aec698c298a321a2c1720f8e9463161f60ba56e73d40c5d14e6"
+    },
+    {
+      "path": "settings-di-source-summary.md",
+      "bytes": 1691,
+      "sha256": "7134c5d18a18286d1ec0787b129c7e9d96ab5b701f8a14363ed8583b89e07ae8"
+    },
+    {
+      "path": "settings-feature-entry-conditions.json",
+      "bytes": 200971,
+      "sha256": "2a730bce88aef7dcb04daa9cd7be45e7429bfe244cea46f48898d1f77040a807"
+    },
+    {
+      "path": "shutdown-persistence.json",
+      "bytes": 54306,
+      "sha256": "005cdabda5594809bcadabd2caf7959c0ca7c81a9961e59d7fc4b6cf0cdfa27f"
+    },
+    {
+      "path": "source-contract-module-proposals.json",
+      "bytes": 8621,
+      "sha256": "b28207a64b47f5e1566f24dbdc36e24460f639d4ead127819ca686ed3b13b2b0"
+    },
+    {
+      "path": "source-map-validation.json",
+      "bytes": 382,
+      "sha256": "55ccdba951360264f714265458459668aaf51e0ae66af69b158ec6ef5a99395c"
+    },
+    {
+      "path": "source-maps.json",
+      "bytes": 12442678,
+      "sha256": "7fb85727fd0b01fe836e2d5f7fb5a437e6245abf4f1c7aff1c3ab4596a227475"
+    },
+    {
+      "path": "terminal-feature-contracts.json",
+      "bytes": 151763,
+      "sha256": "1b636bc2f5bae3ff138481372488eb44c619cf45e1f526189b23ae26c04aa3c6"
+    },
+    {
+      "path": "thread-resume-entry-contracts.json",
+      "bytes": 38794,
+      "sha256": "e36c5927ec764c81c7ca5d31dc8a693d10fa4170c3ef8646105017a815f04a34"
+    },
+    {
+      "path": "upstream-comparison.json",
+      "bytes": 350806,
+      "sha256": "7fb44e3f4e8f30fe73f76b653d1ef016b5cddb04f9dd0832e92bdd629436264d"
+    },
+    {
+      "path": "raw/analysis-convergence-v4/state-before.json",
+      "bytes": 252625,
+      "sha256": "7bf239c5c75348d438d56494742f5e565b35443f2cc4f523a950f31b6d39c525"
+    }
+  ]
+}
